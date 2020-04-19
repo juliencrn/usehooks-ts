@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/camelcase */
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Typescript blog Starter`,
-    description: `A simple blog starter using Typescript in front & back side with eslint & prettier.`,
+    title: `useHooks.ts`,
+    description: `Simple React hooks ready to use written in typescript.`,
     author: {
       name: 'Julien CARON',
       content: 'I like build some things using Javascript',
@@ -15,21 +15,26 @@ module.exports = {
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-helmet`,
     {
-      resolve: 'gatsby-plugin-material-ui',
-      // If you want to use styled components you should change the injection order.
+      resolve: `gatsby-source-filesystem`,
       options: {
-        // stylesProvider: {
-        //   injectFirst: true,
-        // },
+        path: `${__dirname}/content/posts`,
+        name: `posts`,
       },
     },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.md`],
+        plugins: [],
+      },
+    },
+    `gatsby-plugin-catch-links`,
+    `gatsby-plugin-material-ui`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         //trackingId: `ADD YOUR TRACKING ID HERE`,
-        // Puts script in the head instead of the body
-        head: false,
-        // Setting this parameter is optional
+        head: false, // Puts script in the head instead of the body
         anonymize: true,
       },
     },

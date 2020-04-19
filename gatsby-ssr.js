@@ -4,4 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
 
+/**
+ * Support for @Material-ui SSR
+ */
 export { default as wrapRootElement } from './src/libs/wrapRootElement'

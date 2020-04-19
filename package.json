@@ -27,19 +27,27 @@
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/styles": "latest",
+    "@mdx-js/mdx": "^1.5.8",
+    "@mdx-js/react": "^1.5.8",
     "deepmerge": "^4.2.2",
     "gatsby": "latest",
+    "gatsby-plugin-catch-links": "^2.2.3",
     "gatsby-plugin-google-analytics": "latest",
     "gatsby-plugin-manifest": "latest",
     "gatsby-plugin-material-ui": "^2.1.6",
+    "gatsby-plugin-mdx": "^1.1.9",
     "gatsby-plugin-offline": "latest",
     "gatsby-plugin-react-helmet": "latest",
     "gatsby-plugin-typescript": "latest",
+    "gatsby-source-filesystem": "^2.2.4",
+    "node-fetch": "^2.6.0",
+    "prism-react-renderer": "^1.0.2",
     "react": "latest",
     "react-dom": "latest",
     "react-helmet": "^6.0.0"
   },
   "devDependencies": {
+    "@types/mdx-js__react": "^1.5.1",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
@@ -54,8 +62,6 @@
     "graphql": "14.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
-    "source-map-support": "^0.5.16",
-    "ts-node": "^8.8.2",
     "typescript": "^3.8.3"
   },
   "repository": {

@@ -20,8 +20,7 @@ const Hero: FC<HeroProps> = ({ title, description = '', children }) => {
     <div className={classes.heroContent}>
       <Container maxWidth="sm">
         <Typography
-          component="h1"
-          variant="h2"
+          variant="h1"
           align="center"
           color="textPrimary"
           gutterBottom

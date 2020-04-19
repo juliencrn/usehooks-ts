@@ -14,6 +14,7 @@
     "typescriptreact"
   ],
   "files.exclude": {
+    "node_modules/wonka/esy.lock/**/*": false,
     "**/logs": true,
     "**/*.log": true,
     "**/npm-debug.log*": true,
@@ -49,5 +50,10 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll": true
-  }
+  },
+  "cSpell.words": [
+    "frontmatter",
+    "okaidia",
+    "prismjs"
+  ]
 }
