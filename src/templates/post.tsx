@@ -22,7 +22,7 @@ const PostTemplate: FC<any> = ({ data, pageContext }) => {
 
       <MdxRenderer>{post.body}</MdxRenderer>
 
-      <Code code={code} />
+      {code && <Code code={code} />}
 
       <Typography variant="body1">
         <Link component={GatsbyLink} to="/">
@@ -40,7 +40,6 @@ export const pageQuery = graphql`
     mdx(frontmatter: { path: { eq: $path } }) {
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
-        gistId
         keywords
         path
         title

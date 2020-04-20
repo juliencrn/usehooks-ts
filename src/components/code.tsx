@@ -7,7 +7,7 @@ import { Theme, Typography } from '@material-ui/core'
 const useStyles = makeStyles((theme: Theme) => ({
   pre: {
     textAlign: 'left',
-    margin: theme.spacing(2, 0),
+    margin: theme.spacing(3, 0),
     padding: theme.spacing(2, 1),
     borderRadius: 4,
     fontFamily: 'fira code',

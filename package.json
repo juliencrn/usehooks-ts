@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-material-typescript-starter",
+  "name": "useHooks.ts",
   "private": true,
-  "description": "A simple starter using Typescript & Material-ui",
+  "description": "Simple React hooks ready to use written in typescript.",
   "version": "0.1.0",
   "author": "Julien CARON <juliencaron@protonmail.com>",
   "keywords": [
@@ -15,7 +15,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "start": "npm run develop",
+    "start": "yarn develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "lint": "run-p lint:**",
@@ -66,9 +66,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Junscuzzy/gatsby-material-typescript-starter"
+    "url": "https://github.com/Junscuzzy/usehooks.ts"
   },
   "bugs": {
-    "url": "https://github.com/Junscuzzy/gatsby-material-typescript-starter/issues"
+    "url": "https://github.com/Junscuzzy/usehooks.ts/issues"
   }
 }

@@ -8,6 +8,8 @@
 const path = require('path')
 const fetch = require('node-fetch')
 
+const isDev = process.env.NODE_ENV !== 'production'
+
 async function fetchGist(url) {
   const response = await fetch(url)
   const data = await response.json()
@@ -38,17 +40,24 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return
   }
 
-  // Exclude posts without gist url
-  const posts = result.data.allMdx.edges.filter(
-    ({ node }) => !!node.frontmatter.gistId && !!node.frontmatter.gistFilename,
-  )
+  const posts = result.data.allMdx.edges.filter(({ node }) => {
+    // Do not create /demo page in production
+    if (node.frontmatter.path === '/demo') {
+      return isDev
+    }
+    return true
+  })
 
   for (const post of posts) {
     const { frontmatter } = post.node
+    const hasGist = !!frontmatter.gistId && !!frontmatter.gistFilename
+    let code = null
 
-    const gistUrl = `https://api.github.com/gists/${frontmatter.gistId}`
-    const data = await fetchGist(gistUrl)
-    const code = data.files[frontmatter.gistFilename].content
+    if (hasGist) {
+      const gistUrl = `https://api.github.com/gists/${frontmatter.gistId}`
+      const data = await fetchGist(gistUrl)
+      code = data.files[frontmatter.gistFilename].content
+    }
 
     createPage({
       path: frontmatter.path,

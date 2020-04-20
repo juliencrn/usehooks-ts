@@ -10,45 +10,19 @@ keywords: [
 ]
 ---
 
-## Markdown subtitle
-### Markdown subtitle
-#### Markdown subtitle
-##### Markdown subtitle
-###### Markdown subtitle
+Persist the state with local storage so that it remains after a page refresh. This can be useful for a dark theme or to record session information.
+This hook is used in the same way as useState except that you must pass the storage key in the 1st parameter.
+If the window object is not present (as in SSR), `useLocalStorage()` will return the default value.
 
-This in a [link](https://google.fr) and a [homepage link](/)
+You can use it like:
 
-Sync state to local storage so that it persists through a page refresh.
-Usage is similar to useState except we pass in a local storage key so that we can
-default to that value on page load instead of the specified initial value.
 
-- list
-- list
-- list
+```typescript
+// Signature
+const [state, dispatch] = useLocalStorage('uniqKey', initialValue)
 
-1. Ordened
-1. Ordened
-1. Ordened
-
-inline `code` yeahh
-
- ```shell
-yarn develop
+// Or with real data
+const [theme, setTheme] = useLocalStorage('theme', 'light')
 ```
-
-> Block quote
-
-**strong**
-
-*italic*
-
-~~texte barré~~
-<!--
-
------
-
-![alt](https://www.gatsbyjs.org/static/28c4ba5382f78331bf3165a8e119cbaf/ab31f/PayPal.png) -->
-
-**`hello-word.js`**
 
 
