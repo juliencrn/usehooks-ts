@@ -9,9 +9,14 @@ import Code from '../components/code'
 
 const PostTemplate: FC<any> = ({ data, pageContext }) => {
   const { mdx: post } = data
-  const { code } = pageContext
-
+  const { code, prev, next } = pageContext
   const { title, description } = post.frontmatter
+
+  console.log('pagination:', {
+    current: title,
+    next: next.frontmatter.title,
+    prev: prev.frontmatter.title,
+  })
 
   return (
     <Layout container>

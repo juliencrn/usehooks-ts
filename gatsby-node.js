@@ -25,6 +25,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         edges {
           node {
             frontmatter {
+              title
               path
               gistId
               gistFilename
@@ -48,21 +49,30 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return true
   })
 
-  for (const post of posts) {
+  for (let index = 0; index < posts.length; index++) {
+    const post = posts[index]
+
     const { frontmatter } = post.node
     const hasGist = !!frontmatter.gistId && !!frontmatter.gistFilename
     let code = null
 
+    // Fetch gist code from github.com
     if (hasGist) {
       const gistUrl = `https://api.github.com/gists/${frontmatter.gistId}`
       const data = await fetchGist(gistUrl)
       code = data.files[frontmatter.gistFilename].content
     }
 
+    // Get prev/next post
+    const next = posts[index + 1] ? posts[index + 1].node : posts[0].node
+    const prev = posts[index - 1]
+      ? posts[index - 1].node
+      : posts[posts.length - 1].node
+
     createPage({
       path: frontmatter.path,
       component: path.resolve(`src/templates/post.tsx`),
-      context: { code }, // additional data can be passed via context
+      context: { code, next, prev },
     })
   }
 }
