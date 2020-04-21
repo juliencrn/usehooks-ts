@@ -3,6 +3,8 @@ import React, { FC } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Container, Typography, Theme, Link } from '@material-ui/core'
 
+import useSiteMetadata from '../hooks/useSiteMetadata'
+
 const useStyles = makeStyles((theme: Theme) => ({
   footer: {
     padding: theme.spacing(3, 2),
@@ -13,25 +15,37 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Footer: FC = () => {
   const classes = useStyles()
+  const { author, social } = useSiteMetadata()
+
   return (
     <footer className={classes.footer}>
       <Container maxWidth="md">
         <Typography variant="body1" color="textSecondary">
           © {new Date().getFullYear()}, Built with
           {` `}
-          <Link href="https://www.gatsbyjs.org" color="inherit">
+          <Link href="https://www.gatsbyjs.org" target="_blank">
             Gatsby
           </Link>
           ,{` `}
-          <Link href="https://www.typescriptlang.org" color="inherit">
+          <Link href="https://www.typescriptlang.org" target="_blank">
             Typescript
           </Link>{' '}
           and
           {` `}
-          <Link href="https://material-ui.com/" color="inherit">
+          <Link href="https://material-ui.com/" target="_blank">
             @Material-ui
           </Link>
-          ,
+          , written by
+          {` `}
+          <Link href={social.github} target="_blank">
+            {author.name}
+          </Link>{' '}
+          and hosted on
+          {` `}
+          <Link href="https://www.netlify.com/" target="_blank">
+            Netlify
+          </Link>
+          .
         </Typography>
       </Container>
     </footer>

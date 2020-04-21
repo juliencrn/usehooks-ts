@@ -24,5 +24,3 @@ const [state, dispatch] = useLocalStorage('uniqKey', initialValue)
 // Or with real data
 const [theme, setTheme] = useLocalStorage('theme', 'light')
 ```
-
-

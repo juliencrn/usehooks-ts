@@ -1,8 +1,9 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
-import theme from 'prism-react-renderer/themes/vsDark'
 import { Theme, Typography } from '@material-ui/core'
+
+import theme from '../libs/prismjs-theme-dracula'
 
 const useStyles = makeStyles((theme: Theme) => ({
   pre: {

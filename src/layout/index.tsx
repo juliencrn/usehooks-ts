@@ -7,6 +7,7 @@ import Footer from './footer'
 import themes from '../theme'
 import useSiteMetadata from '../hooks/useSiteMetadata'
 import useLocalStorage from '../hooks/useLocalStorage'
+import BackToTop from '../components/backToTop'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -47,6 +48,8 @@ const Layout: FC<{ container?: boolean }> = ({
           <main>{children}</main>
         )}
         <Footer />
+
+        <BackToTop />
       </div>
     </ThemeProvider>
   )

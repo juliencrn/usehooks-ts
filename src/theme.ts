@@ -1,5 +1,5 @@
 import deepMerge from 'deepmerge'
-import { red } from '@material-ui/core/colors'
+import { red, blue } from '@material-ui/core/colors'
 import {
   createMuiTheme,
   responsiveFontSizes,
@@ -68,12 +68,18 @@ const makeTheme = (variant: ThemeOptions): Theme => {
 const light: ThemeOptions = {
   palette: {
     type: 'light',
+    primary: {
+      main: blue[700],
+    },
   },
 }
 
 const dark: ThemeOptions = {
   palette: {
     type: 'dark',
+    primary: {
+      main: blue[300],
+    },
   },
 }
 
