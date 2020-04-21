@@ -1,5 +1,6 @@
 {
   "editor.formatOnSave": true,
+  "editor.tabSize": 2,
   "files.encoding": "utf8",
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,

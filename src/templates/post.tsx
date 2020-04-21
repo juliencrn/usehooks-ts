@@ -6,21 +6,36 @@ import Layout from '../layout'
 import SEO from '../components/seo'
 import MdxRenderer from '../components/mdxRenderer'
 import Code from '../components/code'
+import { PageTemplate, Post } from '../utils/interfaces'
 
-const PostTemplate: FC<any> = ({ data, pageContext }) => {
+export interface PostTemplateProps extends PageTemplate {
+  data: {
+    mdx: Post
+  }
+  pageContext: {
+    code?: string
+    next: Post
+    prev: Post
+  }
+}
+
+const PostTemplate: FC<PostTemplateProps> = props => {
+  const { data, pageContext } = props
   const { mdx: post } = data
   const { code, prev, next } = pageContext
-  const { title, description } = post.frontmatter
+  const { title } = post.frontmatter
 
-  console.log('pagination:', {
-    current: title,
-    next: next.frontmatter.title,
-    prev: prev.frontmatter.title,
-  })
+  // console.log('pagination:', {
+  //   props,
+  //   post,
+  //   current: title,
+  //   next: next.frontmatter.title,
+  //   prev: prev.frontmatter.title,
+  // })
 
   return (
     <Layout container>
-      <SEO title={title} description={description} />
+      <SEO title={title} description={post.excerpt} />
       <Typography variant="h1" gutterBottom>
         {title}
       </Typography>
@@ -43,13 +58,7 @@ export default PostTemplate
 export const pageQuery = graphql`
   query BlogPostByPath($path: String!) {
     mdx(frontmatter: { path: { eq: $path } }) {
-      frontmatter {
-        date(formatString: "MMMM DD, YYYY")
-        keywords
-        path
-        title
-      }
-      body
+      ...postFragment
     }
   }
 `

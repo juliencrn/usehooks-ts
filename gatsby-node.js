@@ -24,12 +24,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       allMdx(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
         edges {
           node {
-            frontmatter {
-              title
-              path
-              gistId
-              gistFilename
-            }
+            ...postFragment
           }
         }
       }
