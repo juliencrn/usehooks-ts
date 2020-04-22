@@ -9,12 +9,15 @@ import { Post } from '../interfaces'
 
 const useStyles = makeStyles((theme: Theme) => ({
   article: {
-    marginBottom: theme.spacing(6),
+    marginBottom: theme.spacing(8),
     [theme.breakpoints.up('md')]: {
       marginBottom: theme.spacing(10),
     },
   },
-  title: {},
+  title: {
+    fontFamily: 'Fira Code',
+    wordBreak: 'break-all',
+  },
 }))
 
 const PostCard: FC<Post> = ({ frontmatter, shortDescription }) => {
@@ -25,7 +28,7 @@ const PostCard: FC<Post> = ({ frontmatter, shortDescription }) => {
     <article className={classes.article}>
       <Typography variant="h3" className={classes.title}>
         <Link to={path} component={GatsbyLink} color="inherit">
-          {title}
+          {`${title}()`}
         </Link>
       </Typography>
       <Box py={2} />

@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   toolbar: {},
   title: {
     flexGrow: 1,
+    fontFamily: 'Fira Code',
   },
   link: {
     textDecoration: 'none',

@@ -17,6 +17,7 @@ import { PageTemplate, Post } from '../interfaces'
 
 const useStyles = makeStyles((theme: Theme) => ({
   title: {
+    fontFamily: 'Fira Code',
     margin: theme.spacing(3, 0),
     wordBreak: 'break-all',
     [theme.breakpoints.up('md')]: {
@@ -30,6 +31,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 1,
     textAlign: 'center',
     margin: theme.spacing(6, 0),
+  },
+  metaValue: {
+    fontFamily: 'Fira Code',
   },
 }))
 
@@ -53,7 +57,7 @@ const PostTemplate: FC<PostTemplateProps> = ({ pageContext }) => {
       <SEO title={title} description={excerpt} />
 
       <Typography variant="h2" component="h1" className={classes.title}>
-        {title}
+        {`${title}()`}
       </Typography>
 
       <MdxRenderer>{body}</MdxRenderer>
@@ -84,8 +88,12 @@ const PostTemplate: FC<PostTemplateProps> = ({ pageContext }) => {
             <Typography variant="body1" align="center">
               Next hook:
               <br />
-              <Link to={next.frontmatter.path} component={GatsbyLink}>
-                {next.frontmatter.title}
+              <Link
+                to={next.frontmatter.path}
+                className={classes.metaValue}
+                component={GatsbyLink}
+              >
+                {`${next.frontmatter.title}()`}
               </Link>
             </Typography>
           </Grid>
