@@ -1,9 +1,11 @@
 import React, { FC } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 
+import Typography from '@material-ui/core/Typography'
+import Link from '@material-ui/core/Link'
+
 import Layout from '../layout'
 import SEO from '../components/seo'
-import { Typography, Link } from '@material-ui/core'
 
 const SecondPage: FC = () => (
   <Layout container>

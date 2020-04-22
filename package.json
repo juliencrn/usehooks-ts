@@ -42,6 +42,7 @@
     "gatsby-plugin-react-helmet": "latest",
     "gatsby-plugin-typescript": "latest",
     "gatsby-source-filesystem": "^2.2.4",
+    "moment": "^2.24.0",
     "node-fetch": "^2.6.0",
     "prism-react-renderer": "^1.0.2",
     "react": "latest",
@@ -52,6 +53,7 @@
   },
   "devDependencies": {
     "@types/mdx-js__react": "^1.5.1",
+    "@types/moment": "^2.13.0",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",

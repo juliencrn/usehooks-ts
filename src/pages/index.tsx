@@ -1,7 +1,9 @@
 import React, { FC } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import { Grid, Button, Theme } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles, Theme } from '@material-ui/core/styles'
+
+import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button'
 
 import Layout from '../layout'
 import SEO from '../components/seo'

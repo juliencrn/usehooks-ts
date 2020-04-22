@@ -1,8 +1,9 @@
 import React, { FC } from 'react'
 
+import Typography from '@material-ui/core/Typography'
+
 import Layout from '../layout'
 import SEO from '../components/seo'
-import { Typography } from '@material-ui/core'
 
 const NotFoundPage: FC = () => (
   <Layout container>

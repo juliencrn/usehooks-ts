@@ -1,15 +1,16 @@
-type TemplateKey = 'post'
+export interface Gist {
+  url: string
+  updated: string
+  code: string
+}
 
 export interface Post {
   excerpt: string
   frontmatter: {
-    templateKey: TemplateKey
     path: string
     title: string
-    date: string
-    keywords?: string[]
-    gistId?: string
-    gistFilename?: string
+    gistId: string
+    gistFilename: string
   }
   body: string
 }

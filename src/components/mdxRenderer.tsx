@@ -1,21 +1,17 @@
 /* eslint-disable react/display-name */
-import React, { Fragment } from 'react'
+import React from 'react'
 import { MDXProvider } from '@mdx-js/react'
-import {
-  Typography,
-  TypographyProps,
-  LinkProps,
-  Link,
-  TableContainer,
-  Paper,
-  Table,
-  TableRow,
-  TableCell,
-  makeStyles,
-  Theme,
-  Divider,
-} from '@material-ui/core'
+import { makeStyles, Theme } from '@material-ui/core/styles'
 import { MDXRenderer, MDXRendererProps } from 'gatsby-plugin-mdx'
+
+import Typography, { TypographyProps } from '@material-ui/core/Typography'
+import Link, { LinkProps } from '@material-ui/core/Link'
+import Divider from '@material-ui/core/Divider'
+import Paper from '@material-ui/core/Paper'
+import TableContainer from '@material-ui/core/TableContainer'
+import Table from '@material-ui/core/Table'
+import TableRow from '@material-ui/core/TableRow'
+import TableCell from '@material-ui/core/TableCell'
 
 import Code from './code'
 
@@ -90,7 +86,7 @@ const MdxRenderer = ({ children }: Readonly<MDXRendererProps>) => {
         ),
 
         // Code
-        pre: (props: any) => <Fragment {...props} />,
+        pre: (props: any) => props.children,
         code: (props: any) => {
           // Extract code language
           let lang = undefined

@@ -1,7 +1,8 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/styles'
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
-import { Theme, Typography } from '@material-ui/core'
+import { Theme, makeStyles } from '@material-ui/core/styles'
+
+import Typography from '@material-ui/core/Typography'
 
 import theme from '../libs/prismjs-theme-dracula'
 
@@ -12,6 +13,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(2, 1),
     borderRadius: 4,
     fontFamily: 'fira code',
+    overflowX: 'auto',
+    boxShadow: theme.shadows[6],
   },
   line: {
     display: 'inline-block',

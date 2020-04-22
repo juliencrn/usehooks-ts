@@ -2,7 +2,9 @@
 templateKey: post
 title: MDX Demo
 path: "/demo"
-date: "2019-04-20"
+date: "2019-04-19"
+gistId: "59598636c81071fd8c66af092fb02a09"
+gistFilename: useLocalStorage.ts
 ---
 
 

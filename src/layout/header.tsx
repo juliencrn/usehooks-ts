@@ -1,15 +1,13 @@
 import { Link as GatsbyLink } from 'gatsby'
 import React, { FC } from 'react'
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Link,
-  Button,
-  Theme,
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
 import Headroom from 'react-headroom'
+import { makeStyles, Theme } from '@material-ui/core/styles'
+
+import Typography from '@material-ui/core/Typography'
+import Link from '@material-ui/core/Link'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles((theme: Theme) => ({
   appBar: {

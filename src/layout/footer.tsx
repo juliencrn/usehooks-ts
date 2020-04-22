@@ -1,7 +1,10 @@
 import React, { FC } from 'react'
 
-import { makeStyles } from '@material-ui/styles'
-import { Container, Typography, Theme, Link } from '@material-ui/core'
+import { makeStyles, Theme } from '@material-ui/core/styles'
+
+import Typography from '@material-ui/core/Typography'
+import Link from '@material-ui/core/Link'
+import Container from '@material-ui/core/Container'
 
 import useSiteMetadata from '../hooks/useSiteMetadata'
 

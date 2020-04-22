@@ -1,6 +1,8 @@
 import React, { FC } from 'react'
-import { makeStyles, ThemeProvider } from '@material-ui/styles'
-import { Container, Theme, CssBaseline } from '@material-ui/core'
+import { makeStyles, ThemeProvider, Theme } from '@material-ui/core/styles'
+
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Container from '@material-ui/core/Container'
 
 import Header from './header'
 import Footer from './footer'

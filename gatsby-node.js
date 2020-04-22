@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 /**
  * Implement Gatsby's Node APIs in this file.
  *
@@ -24,7 +25,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       allMdx(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
         edges {
           node {
-            ...postFragment
+            excerpt(pruneLength: 155)
+            frontmatter {
+              path
+              title
+              gistId
+              gistFilename
+            }
+            body
           }
         }
       }
@@ -45,29 +53,36 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   })
 
   for (let index = 0; index < posts.length; index++) {
-    const post = posts[index]
+    const { node } = posts[index]
 
-    const { frontmatter } = post.node
-    const hasGist = !!frontmatter.gistId && !!frontmatter.gistFilename
-    let code = null
+    // Need gistId & gistFilename fields
+    if (!!node.frontmatter.gistId && !!node.frontmatter.gistFilename) {
+      const { gistId, gistFilename } = node.frontmatter
 
-    // Fetch gist code from github.com
-    if (hasGist) {
-      const gistUrl = `https://api.github.com/gists/${frontmatter.gistId}`
-      const data = await fetchGist(gistUrl)
-      code = data.files[frontmatter.gistFilename].content
+      // Fetch gist code from github.com
+      try {
+        const gistUrl = `https://api.github.com/gists/${gistId}`
+        const { html_url, updated_at, files } = await fetchGist(gistUrl)
+        const gist = {
+          url: html_url,
+          updated: updated_at,
+          code: files[gistFilename].content,
+        }
+
+        // Get prev/next post
+        const next = posts[index + 1] ? posts[index + 1].node : posts[0].node
+        const prev = posts[index - 1]
+          ? posts[index - 1].node
+          : posts[posts.length - 1].node
+
+        createPage({
+          path: node.frontmatter.path,
+          component: path.resolve(`src/templates/post.tsx`),
+          context: { gist, post: node, next, prev },
+        })
+      } catch (error) {
+        console.error('Error on github API fetch', error)
+      }
     }
-
-    // Get prev/next post
-    const next = posts[index + 1] ? posts[index + 1].node : posts[0].node
-    const prev = posts[index - 1]
-      ? posts[index - 1].node
-      : posts[posts.length - 1].node
-
-    createPage({
-      path: frontmatter.path,
-      component: path.resolve(`src/templates/post.tsx`),
-      context: { code, next, prev },
-    })
   }
 }
