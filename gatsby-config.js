@@ -6,9 +6,10 @@ module.exports = {
     author: {
       name: 'Julien CARON',
       content: 'I like build some things using Javascript',
+      github: 'https://github.com/Junscuzzy',
     },
     social: {
-      github: 'https://github.com/Junscuzzy',
+      github: 'https://github.com/Junscuzzy/usehooks.ts',
     },
   },
   plugins: [

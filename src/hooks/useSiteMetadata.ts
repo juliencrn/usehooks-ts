@@ -6,6 +6,7 @@ export interface SiteMetadata {
   author: {
     name: string
     content: string
+    github: string
   }
   social: {
     github: string
@@ -22,6 +23,7 @@ export default (): SiteMetadata => {
           author {
             name
             content
+            github
           }
           social {
             github

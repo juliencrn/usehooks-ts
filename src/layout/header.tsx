@@ -1,13 +1,21 @@
 import { Link as GatsbyLink } from 'gatsby'
 import React, { FC } from 'react'
 import Headroom from 'react-headroom'
+
 import { makeStyles, Theme } from '@material-ui/core/styles'
 
 import Typography from '@material-ui/core/Typography'
 import Link from '@material-ui/core/Link'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton'
+
+import WbSunnyIcon from '@material-ui/icons/WbSunny'
+import Brightness3Icon from '@material-ui/icons/Brightness3'
+import GitHubIcon from '@material-ui/icons/GitHub'
+
+import useSiteMetadata from '../hooks/useSiteMetadata'
+import SearchBar from '../components/searchBar'
 
 const useStyles = makeStyles((theme: Theme) => ({
   appBar: {
@@ -32,8 +40,9 @@ export interface HeaderProps {
   onToggleTheme: () => void
 }
 
-const Header: FC<HeaderProps> = ({ siteTitle = '', onToggleTheme }) => {
+const Header: FC<HeaderProps> = ({ siteTitle = '', onToggleTheme, theme }) => {
   const classes = useStyles()
+  const { social } = useSiteMetadata()
 
   return (
     <Headroom>
@@ -49,9 +58,13 @@ const Header: FC<HeaderProps> = ({ siteTitle = '', onToggleTheme }) => {
               {siteTitle}
             </Link>
           </Typography>
-          <Button color="inherit" onClick={onToggleTheme}>
-            Toggle Theme
-          </Button>
+          <SearchBar />
+          <IconButton color="inherit" onClick={onToggleTheme}>
+            {theme === 'light' ? <Brightness3Icon /> : <WbSunnyIcon />}
+          </IconButton>
+          <IconButton color="inherit" href={social.github} target="_blank">
+            <GitHubIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
     </Headroom>

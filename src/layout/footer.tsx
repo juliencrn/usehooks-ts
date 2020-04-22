@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Footer: FC = () => {
   const classes = useStyles()
-  const { author, social } = useSiteMetadata()
+  const { author } = useSiteMetadata()
 
   return (
     <footer className={classes.footer}>
@@ -29,18 +29,20 @@ const Footer: FC = () => {
           <Link href="https://www.gatsbyjs.org" target="_blank">
             Gatsby
           </Link>
-          ,{` `}
-          <Link href="https://www.typescriptlang.org" target="_blank">
-            Typescript
-          </Link>{' '}
+          {` `}
           and
           {` `}
           <Link href="https://material-ui.com/" target="_blank">
             @Material-ui
           </Link>
-          , written by
+          , written in{' '}
+          <Link href="https://www.typescriptlang.org" target="_blank">
+            Typescript
+          </Link>
           {` `}
-          <Link href={social.github} target="_blank">
+          by
+          {` `}
+          <Link href={author.github} target="_blank">
             {author.name}
           </Link>{' '}
           and hosted on
