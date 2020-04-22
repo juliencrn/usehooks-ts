@@ -1,7 +1,7 @@
 ---
 templateKey: post
-title: useHover
-path: "/use-hover"
+title: useScrollPosition
+path: "/use-scroll-position"
 date: "2019-04-22"
 gistId: "59598636c81071fd8c66af092fb02a09"
 gistFilename: useLocalStorage.ts

@@ -13,7 +13,7 @@ import Layout from '../layout'
 import SEO from '../components/seo'
 import MdxRenderer from '../components/mdxRenderer'
 import Code from '../components/code'
-import { PageTemplate, Post, Gist } from '../interfaces'
+import { PageTemplate, Post } from '../interfaces'
 
 const useStyles = makeStyles((theme: Theme) => ({
   title: {
@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 export interface PostTemplateProps extends PageTemplate {
   pageContext: {
     post: Post
-    gist: Gist
     next: Post
     prev: Post
   }
@@ -44,19 +43,20 @@ export interface PostTemplateProps extends PageTemplate {
 
 const PostTemplate: FC<PostTemplateProps> = ({ pageContext }) => {
   const classes = useStyles()
-  const { gist, next, post } = pageContext
-  const { title } = post.frontmatter
+  const { next, post } = pageContext
+  const { body, excerpt, gist, frontmatter } = post
+  const { title } = frontmatter
   const date = moment(gist.updated).fromNow()
 
   return (
     <Layout container>
-      <SEO title={title} description={post.excerpt} />
+      <SEO title={title} description={excerpt} />
 
       <Typography variant="h2" component="h1" className={classes.title}>
         {title}
       </Typography>
 
-      <MdxRenderer>{post.body}</MdxRenderer>
+      <MdxRenderer>{body}</MdxRenderer>
 
       <Code code={gist.code} />
 

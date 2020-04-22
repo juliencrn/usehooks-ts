@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/camelcase */
 /**
  * Implement Gatsby's Node APIs in this file.
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
+/* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const fetch = require('node-fetch')
@@ -26,6 +26,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         edges {
           node {
             excerpt(pruneLength: 155)
+            shortDescription: excerpt(pruneLength: 280)
             frontmatter {
               path
               title
@@ -44,7 +45,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return
   }
 
-  const posts = result.data.allMdx.edges.filter(({ node }) => {
+  /**
+   * Filter correct posts
+   */
+  const filteredPosts = result.data.allMdx.edges.filter(({ node }) => {
+    // Ensure the presence of gist fields
+    if (!node.frontmatter.gistId || !node.frontmatter.gistFilename) {
+      return false
+    }
+
     // Do not create /demo page in production
     if (node.frontmatter.path === '/demo') {
       return isDev
@@ -52,37 +61,61 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return true
   })
 
-  for (let index = 0; index < posts.length; index++) {
-    const { node } = posts[index]
+  /**
+   * For each post,
+   * Fetch gist code from github.com
+   * And data gist data in post data
+   */
+  const posts = []
+  for (const post of filteredPosts) {
+    const { node } = post
+    const { gistId, gistFilename } = node.frontmatter
 
-    // Need gistId & gistFilename fields
-    if (!!node.frontmatter.gistId && !!node.frontmatter.gistFilename) {
-      const { gistId, gistFilename } = node.frontmatter
-
-      // Fetch gist code from github.com
-      try {
-        const gistUrl = `https://api.github.com/gists/${gistId}`
-        const { html_url, updated_at, files } = await fetchGist(gistUrl)
-        const gist = {
-          url: html_url,
-          updated: updated_at,
-          code: files[gistFilename].content,
-        }
-
-        // Get prev/next post
-        const next = posts[index + 1] ? posts[index + 1].node : posts[0].node
-        const prev = posts[index - 1]
-          ? posts[index - 1].node
-          : posts[posts.length - 1].node
-
-        createPage({
-          path: node.frontmatter.path,
-          component: path.resolve(`src/templates/post.tsx`),
-          context: { gist, post: node, next, prev },
-        })
-      } catch (error) {
-        console.error('Error on github API fetch', error)
+    try {
+      const gistUrl = `https://api.github.com/gists/${gistId}`
+      const { html_url, updated_at, files } = await fetchGist(gistUrl)
+      const gist = {
+        url: html_url,
+        updated: updated_at,
+        code: files[gistFilename].content,
       }
+
+      posts.push({ node: { ...node, gist } })
+    } catch (error) {
+      console.error('Error on github API fetch', error)
     }
   }
+
+  /**
+   * Create posts
+   */
+  posts.forEach(({ node }, i) => {
+    // Get prev/next post
+    const next = posts[i + 1] ? posts[i + 1].node : posts[0].node
+    const prev = posts[i - 1] ? posts[i - 1].node : posts[posts.length - 1].node
+
+    createPage({
+      path: node.frontmatter.path,
+      component: path.resolve(`./src/templates/post.tsx`),
+      context: { post: node, next, prev },
+    })
+  })
+
+  /**
+   * Create posts list
+   */
+  const postsPerPage = 5
+  const numPages = Math.ceil(posts.length / postsPerPage)
+
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/` : `/${i + 1}`,
+      component: path.resolve(`./src/templates/postList.tsx`),
+      context: {
+        numPages,
+        currentPage: i + 1,
+        posts: posts.slice(i * postsPerPage, i * postsPerPage + postsPerPage),
+      },
+    })
+  })
 }

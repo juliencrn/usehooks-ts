@@ -27,6 +27,7 @@
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.50",
     "@material-ui/styles": "latest",
     "@mdx-js/mdx": "^1.5.8",
     "@mdx-js/react": "^1.5.8",

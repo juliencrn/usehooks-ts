@@ -6,6 +6,7 @@ export interface Gist {
 
 export interface Post {
   excerpt: string
+  shortDescription: string
   frontmatter: {
     path: string
     title: string
@@ -13,6 +14,7 @@ export interface Post {
     gistFilename: string
   }
   body: string
+  gist: Gist
 }
 
 export interface PageTemplate {
