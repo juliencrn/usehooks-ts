@@ -40,6 +40,7 @@
     "**/.node_repl_history": true,
     "**/*.tgz": true,
     "**/.env*": true,
+    "**/.env.example": false,
     "**/.cache/": true,
     "**/public": true,
     "**/.DS_Store": true,
@@ -53,6 +54,7 @@
     "source.fixAll": true
   },
   "cSpell.words": [
+    "algolia",
     "fira",
     "frontmatter",
     "okaidia",

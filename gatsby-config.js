@@ -1,4 +1,9 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/camelcase */
+const algoliaQueries = require('./gatsby/algolia')
+
+require('dotenv').config({ path: `.env` })
+
 module.exports = {
   siteMetadata: {
     title: `useHooks.ts`,
@@ -27,6 +32,17 @@ module.exports = {
       options: {
         extensions: [`.md`],
         plugins: [],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        indexName: process.env.ALGOLIA_SEARCH_KEY, // for all queries
+        queries: algoliaQueries,
+        enablePartialUpdates: true,
+        chunkSize: 10000, // default: 1000
       },
     },
     `gatsby-plugin-catch-links`,

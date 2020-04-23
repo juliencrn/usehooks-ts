@@ -7,38 +7,14 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
-const fetch = require('node-fetch')
 
-const isDev = process.env.NODE_ENV !== 'production'
-
-async function fetchGist(url) {
-  const response = await fetch(url)
-  const data = await response.json()
-  return data
-}
+const queries = require('./gatsby/queries')
+const utils = require('./gatsby/utils')
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 
-  const result = await graphql(`
-    {
-      allMdx(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
-        edges {
-          node {
-            excerpt(pruneLength: 155)
-            shortDescription: excerpt(pruneLength: 280)
-            frontmatter {
-              path
-              title
-              gistId
-              gistFilename
-            }
-            body
-          }
-        }
-      }
-    }
-  `)
+  const result = await graphql(queries.postQuery)
 
   if (result.errors) {
     reporter.panicOnBuild(`Error while running GraphQL query.`)
@@ -48,43 +24,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   /**
    * Filter correct posts
    */
-  const filteredPosts = result.data.allMdx.edges.filter(({ node }) => {
-    // Ensure the presence of gist fields
-    if (!node.frontmatter.gistId || !node.frontmatter.gistFilename) {
-      return false
-    }
-
-    // Do not create /demo page in production
-    if (node.frontmatter.path === '/demo') {
-      return isDev
-    }
-    return true
-  })
+  const filteredPosts = utils.filterPosts(result.data.posts.edges)
 
   /**
-   * For each post,
    * Fetch gist code from github.com
    * And data gist data in post data
    */
-  const posts = []
-  for (const post of filteredPosts) {
-    const { node } = post
-    const { gistId, gistFilename } = node.frontmatter
-
-    try {
-      const gistUrl = `https://api.github.com/gists/${gistId}`
-      const { html_url, updated_at, files } = await fetchGist(gistUrl)
-      const gist = {
-        url: html_url,
-        updated: updated_at,
-        code: files[gistFilename].content,
-      }
-
-      posts.push({ node: { ...node, gist } })
-    } catch (error) {
-      console.error('Error on github API fetch', error)
-    }
-  }
+  const posts = await utils.addGistsToPosts(filteredPosts)
 
   /**
    * Create posts
