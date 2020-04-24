@@ -15,7 +15,7 @@ import Brightness3Icon from '@material-ui/icons/Brightness3'
 import GitHubIcon from '@material-ui/icons/GitHub'
 
 import useSiteMetadata from '../hooks/useSiteMetadata'
-import SearchBar from '../components/searchBar'
+import Search from '../components/search'
 
 const useStyles = makeStyles((theme: Theme) => ({
   appBar: {
@@ -59,7 +59,7 @@ const Header: FC<HeaderProps> = ({ siteTitle = '', onToggleTheme, theme }) => {
               {siteTitle}
             </Link>
           </Typography>
-          <SearchBar />
+          <Search />
           <IconButton color="inherit" onClick={onToggleTheme}>
             {theme === 'light' ? <Brightness3Icon /> : <WbSunnyIcon />}
           </IconButton>

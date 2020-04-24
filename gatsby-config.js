@@ -2,7 +2,9 @@
 /* eslint-disable @typescript-eslint/camelcase */
 const algoliaQueries = require('./gatsby/algolia')
 
-require('dotenv').config({ path: `.env` })
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 module.exports = {
   siteMetadata: {
@@ -37,11 +39,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-algolia`,
       options: {
-        appId: process.env.ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_ADMIN_KEY,
-        indexName: process.env.ALGOLIA_SEARCH_KEY, // for all queries
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.GATSBY_ALGOLIA_ADMIN_KEY,
+        indexName: process.env.GATSBY_ALGOLIA_SEARCH_KEY, // for all queries
         queries: algoliaQueries,
-        enablePartialUpdates: true,
+        enablePartialUpdates: false,
         chunkSize: 10000, // default: 1000
       },
     },

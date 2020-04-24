@@ -1,9 +1,7 @@
 import React, { FC } from 'react'
-import { navigate, Link as GatsbyLink } from 'gatsby'
+import { navigate } from 'gatsby'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 
-import Grid from '@material-ui/core/Grid'
-import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container'
 import Pagination from '@material-ui/lab/Pagination'
 
@@ -46,22 +44,7 @@ const PostListTemplate: FC<PostListTemplateProps> = ({ pageContext }) => {
     <Layout>
       <SEO title={title} description={description} />
 
-      <Hero title={title} description={description}>
-        <div className={classes.heroButtons}>
-          <Grid container spacing={2} justify="center">
-            <Grid item>
-              <Button
-                component={GatsbyLink}
-                to="/page-2/"
-                variant="contained"
-                color="primary"
-              >
-                Go to page 2
-              </Button>
-            </Grid>
-          </Grid>
-        </div>
-      </Hero>
+      <Hero title={title} description={description} />
 
       <Container maxWidth="md">
         {posts.map(({ node }) => (

@@ -5,10 +5,12 @@ const utils = require('./utils')
 const flatten = arr => {
   const filteredPosts = utils.filterPosts(arr)
   const formattedPosts = filteredPosts.map(
-    ({ node: { frontmatter, shortDescription } }) => ({
-      ...frontmatter,
+    ({ node: { frontmatter, shortDescription, excerpt } }) => ({
       id: frontmatter.path,
+      path: frontmatter.path,
+      title: frontmatter.title,
       shortDescription,
+      excerpt,
     }),
   )
   return formattedPosts

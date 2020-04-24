@@ -62,6 +62,7 @@
     "@types/react-dom": "^16.9.6",
     "@types/react-headroom": "^2.2.1",
     "@types/react-helmet": "^5.0.15",
+    "@types/react-instantsearch-dom": "^6.3.0",
     "@types/react-scroll": "^1.5.4",
     "@typescript-eslint/eslint-plugin": "^2.28.0",
     "@typescript-eslint/parser": "^2.28.0",

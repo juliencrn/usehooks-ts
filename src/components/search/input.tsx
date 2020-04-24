@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { fade, Theme, makeStyles } from '@material-ui/core/styles'
 
-import InputBase from '@material-ui/core/InputBase'
+import InputBase, { InputBaseProps } from '@material-ui/core/InputBase'
 import SearchIcon from '@material-ui/icons/Search'
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -45,10 +45,21 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-const SearchBar: FC = () => {
+export interface InputProps extends InputBaseProps {
+  refine?: (key: string) => void
+}
+
+const Input: FC<InputProps> = ({ refine, ...rest }) => {
   const classes = useStyles()
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (refine) {
+      refine(event.target.value)
+    }
+  }
+
   return (
-    <div className={classes.search}>
+    <form className={classes.search}>
       <div className={classes.searchIcon}>
         <SearchIcon />
       </div>
@@ -59,9 +70,11 @@ const SearchBar: FC = () => {
           input: classes.inputInput,
         }}
         inputProps={{ 'aria-label': 'search' }}
+        onChange={handleChange}
+        {...rest}
       />
-    </div>
+    </form>
   )
 }
 
-export default SearchBar
+export default Input

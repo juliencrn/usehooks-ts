@@ -26,28 +26,32 @@ const Footer: FC = () => {
         <Typography variant="body1" color="textSecondary">
           © {new Date().getFullYear()}, Built with
           {` `}
-          <Link href="https://www.gatsbyjs.org" target="_blank">
+          <Link href="https://www.gatsbyjs.org" color="inherit" target="_blank">
             Gatsby
           </Link>
           {` `}
           and
           {` `}
-          <Link href="https://material-ui.com/" target="_blank">
+          <Link href="https://material-ui.com/" color="inherit" target="_blank">
             @Material-ui
           </Link>
           , written in{' '}
-          <Link href="https://www.typescriptlang.org" target="_blank">
+          <Link
+            href="https://www.typescriptlang.org"
+            color="inherit"
+            target="_blank"
+          >
             Typescript
           </Link>
           {` `}
           by
           {` `}
-          <Link href={author.github} target="_blank">
+          <Link href={author.github} color="inherit" target="_blank">
             {author.name}
           </Link>{' '}
           and hosted on
           {` `}
-          <Link href="https://www.netlify.com/" target="_blank">
+          <Link href="https://www.netlify.com/" color="inherit" target="_blank">
             Netlify
           </Link>
           .
