@@ -5,15 +5,15 @@ import InputBase, { InputBaseProps } from '@material-ui/core/InputBase'
 import SearchIcon from '@material-ui/icons/Search'
 
 const useStyles = makeStyles((theme: Theme) => ({
-  search: {
+  form: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
-    width: '100%',
-    margin: theme.spacing(0, 2),
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(0),
     [theme.breakpoints.up('sm')]: {
       width: 'auto',
     },
@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
     width: '100%',
+    maxWidth: '100%',
     [theme.breakpoints.up('sm')]: {
       width: '12ch',
       '&:focus': {
@@ -59,7 +60,7 @@ const Input: FC<InputProps> = ({ refine, ...rest }) => {
   }
 
   return (
-    <form className={classes.search}>
+    <form className={classes.form}>
       <div className={classes.searchIcon}>
         <SearchIcon />
       </div>

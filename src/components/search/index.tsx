@@ -1,8 +1,7 @@
-import React, { useState, useRef, FC } from 'react'
+import React, { useState, useRef, FC, useEffect } from 'react'
 import {
   InstantSearch,
   Index,
-  Hits,
   connectStateResults,
   connectSearchBox,
   Configure,
@@ -16,7 +15,7 @@ import Divider from '@material-ui/core/Divider'
 import Box from '@material-ui/core/Box'
 
 import Input from './input'
-import { PostHit, PoweredBy } from './hitComps'
+import { PoweredBy, ConnectedHits } from './hitComps'
 import useOnClickOutside from '../../hooks/useOnClickOustide'
 
 const searchClient = algoliasearch(
@@ -43,26 +42,25 @@ const SearchBar = connectSearchBox(({ currentRefinement, refine }) => (
 ))
 
 const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    [theme.breakpoints.up('sm')]: {
+      position: 'relative',
+    },
+  },
   modal: {
-    width: 480,
+    width: '100%',
     height: 'auto',
-    marginRight: theme.spacing(2),
     position: 'absolute',
     top: 'calc(100% + 0.5em)',
     zIndex: 100,
     right: 0,
-    left: 'auto',
-    [theme.breakpoints.down('sm')]: {
-      maxWidth: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: 440,
     },
-    '& ul': {
-      padding: theme.spacing(0, 2),
-      maxHeight: 480,
-      overflowY: 'auto',
+    [theme.breakpoints.up('md')]: {
+      width: 500,
     },
-    '& li': {
-      listStyle: 'none',
-    },
+    display: (props: { open: boolean }) => (props.open ? 'block' : 'none'),
   },
   title: {
     padding: theme.spacing(2, 2, 1),
@@ -70,39 +68,42 @@ const useStyles = makeStyles((theme: Theme) => ({
 }))
 
 const Search: FC = () => {
-  const classes = useStyles()
   const ref = useRef<HTMLDivElement>(null)
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState<string>('')
+  const [open, setOpen] = useState<boolean>(!!query)
+  const classes = useStyles({ open })
 
-  useOnClickOutside(ref, () => setQuery(''))
+  const handleSearchClick = () => setOpen(!!query)
+
+  useOnClickOutside(ref, () => setOpen(false))
+
+  useEffect(() => setOpen(!!query), [query])
 
   return (
-    <div ref={ref} style={{ position: 'relative' }}>
+    <div ref={ref} className={classes.root}>
       <InstantSearch
         indexName="Posts"
         searchClient={searchClient}
         onSearchStateChange={({ query: q }) => setQuery(q)}
       >
         <Configure hitsPerPage={4} />
-        <SearchBar />
 
-        <Paper
-          className={classes.modal}
-          style={{ display: query ? 'block' : 'none' }}
-        >
+        <Box onClick={handleSearchClick}>
+          <SearchBar />
+        </Box>
+
+        <Paper className={classes.modal}>
           <Index indexName="Posts">
             <Typography variant="h5" className={classes.title}>
               Hooks
             </Typography>
             <Divider />
             <Results>
-              <Hits hitComponent={PostHit(() => setQuery(''))} />
+              <ConnectedHits />
             </Results>
           </Index>
 
-          <Box pb={1} pr={2}>
-            <PoweredBy />
-          </Box>
+          <PoweredBy />
         </Paper>
       </InstantSearch>
     </div>

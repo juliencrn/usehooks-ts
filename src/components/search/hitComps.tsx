@@ -1,18 +1,33 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import { Highlight } from 'react-instantsearch-dom'
+import { Highlight, connectHits } from 'react-instantsearch-dom'
 import { Theme, makeStyles } from '@material-ui/core/styles'
 
 import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
 
 const useStyles = makeStyles((theme: Theme) => ({
+  list: {
+    maxHeight: 500,
+    overflowY: 'auto',
+    padding: 0,
+  },
   hit: {
-    marginBottom: theme.spacing(2),
+    paddingTop: theme.spacing(2),
+    flexDirection: 'column',
+    alignItems: 'start',
   },
   title: {
     fontFamily: 'Fira Code',
     marginBottom: theme.spacing(1),
+    display: 'block',
+  },
+  powered: {
+    fontSize: '0.9em',
+    textAlign: 'end',
+    padding: theme.spacing(1, 2, 1),
   },
 }))
 
@@ -31,55 +46,38 @@ const Algolia = () => (
   </svg>
 )
 
-export const PoweredBy = () => (
-  <Typography
-    variant="body2"
-    style={{
-      fontSize: '0.9em',
-      textAlign: 'end',
-      padding: '0',
-    }}
-  >
-    Powered by{` `}
-    <Link href="https://algolia.com" target="_blank">
-      <Algolia /> Algolia
-    </Link>
-  </Typography>
-)
-
-interface HighlightProps {
-  value: string
-  matchLevel: string
-  fullyHighlighted?: boolean
-  matchedWords: string[]
-}
-export interface Hit {
-  path: string
-  title: string
-  excerpt: string
-  shortDescription: string
-  _highlightResult: {
-    path: HighlightProps
-    title: HighlightProps
-    excerpt: HighlightProps
-    shortDescription: HighlightProps
-  }
-}
-
-type PostHitFunc = (onClick: () => void) => ({ hit: Hit }) => ReactNode
-
-export const PostHit: PostHitFunc = onClick => ({ hit }) => {
+export const PoweredBy = () => {
   const classes = useStyles()
   return (
-    <div className={classes.hit}>
-      <Typography className={classes.title} variant="h6" component="h4">
-        <Link component={GatsbyLink} to={hit.path} onClick={onClick}>
-          {hit.title}()
-        </Link>
-      </Typography>
-      <Typography variant="body2" color="textSecondary">
-        <Highlight attribute="excerpt" hit={hit} />
-      </Typography>
-    </div>
+    <Typography variant="body2" className={classes.powered}>
+      Powered by{` `}
+      <Link href="https://algolia.com" target="_blank">
+        <Algolia /> Algolia
+      </Link>
+    </Typography>
   )
 }
+
+export const ConnectedHits = connectHits(({ hits }) => {
+  const classes = useStyles()
+  return (
+    <List className={classes.list}>
+      {hits.map(hit => (
+        <ListItem
+          button
+          key={hit.objectID}
+          component={GatsbyLink}
+          to={hit.path}
+          className={classes.hit}
+        >
+          <Typography className={classes.title} variant="h6" component="span">
+            {hit.title}()
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="span">
+            <Highlight attribute="excerpt" hit={hit} />
+          </Typography>
+        </ListItem>
+      ))}
+    </List>
+  )
+})
