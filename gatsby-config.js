@@ -11,7 +11,7 @@ require('dotenv').config({
 const siteMetadata = {
   title: `useHooks.ts`,
   description: `Simple React hooks ready to use written in typescript.`,
-  siteUrl: `https://usehooks.ts.netlify.app`,
+  siteUrl: `https://usehooks-ts.netlify.app`,
   author: {
     name: 'Julien CARON',
     content: 'I like build some things using Javascript',
@@ -90,7 +90,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-132477935-3`,
         head: false, // Puts script in the head instead of the body
         anonymize: true,
       },
