@@ -15,6 +15,7 @@ import WbSunnyIcon from '@material-ui/icons/WbSunny'
 import Brightness3Icon from '@material-ui/icons/Brightness3'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import InfoIcon from '@material-ui/icons/Info'
+import RssFeedIcon from '@material-ui/icons/RssFeed'
 
 import useSiteMetadata from '../hooks/useSiteMetadata'
 import Search from '../components/search'
@@ -72,6 +73,9 @@ const Header: FC<HeaderProps> = ({ siteTitle = '', onToggleTheme, theme }) => {
           </IconButton>
           <IconButton color="inherit" href={social.github} target="_blank">
             <GitHubIcon />
+          </IconButton>
+          <IconButton color="inherit" href="/rss.xml" target="_blank">
+            <RssFeedIcon />
           </IconButton>
         </Toolbar>
       </AppBar>

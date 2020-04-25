@@ -1,24 +1,29 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/camelcase */
+const moment = require('moment')
 const algoliaQueries = require('./gatsby/algolia')
+const queries = require('./gatsby/queries')
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-module.exports = {
-  siteMetadata: {
-    title: `useHooks.ts`,
-    description: `Simple React hooks ready to use written in typescript.`,
-    author: {
-      name: 'Julien CARON',
-      content: 'I like build some things using Javascript',
-      github: 'https://github.com/Junscuzzy',
-    },
-    social: {
-      github: 'https://github.com/Junscuzzy/usehooks.ts',
-    },
+const siteMetadata = {
+  title: `useHooks.ts`,
+  description: `Simple React hooks ready to use written in typescript.`,
+  siteUrl: `https://usehooks.ts.netlify.app`,
+  author: {
+    name: 'Julien CARON',
+    content: 'I like build some things using Javascript',
+    github: 'https://github.com/Junscuzzy',
   },
+  social: {
+    github: 'https://github.com/Junscuzzy/usehooks.ts',
+  },
+}
+
+module.exports = {
+  siteMetadata,
   plugins: [
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-helmet`,
@@ -50,8 +55,34 @@ module.exports = {
         apiKey: process.env.GATSBY_ALGOLIA_ADMIN_KEY,
         indexName: process.env.GATSBY_ALGOLIA_SEARCH_KEY, // for all queries
         queries: algoliaQueries,
-        enablePartialUpdates: false,
+        enablePartialUpdates: true,
         chunkSize: 10000, // default: 1000
+      },
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        feeds: [
+          {
+            query: `${queries.postQuery}`,
+            output: '/rss.xml',
+            title: `RSS Feed - ${siteMetadata.title}`,
+            description: `${siteMetadata.description}`,
+            serialize: ({ query: { posts } }) => {
+              return posts.edges.map(({ node }) => {
+                const { title, path, date } = node.frontmatter
+                return {
+                  title: `${title}`,
+                  description: node.excerpt || '',
+                  author: siteMetadata.author.name,
+                  date: moment(date).toString(),
+                  url: `${siteMetadata.siteUrl}${path}`,
+                  guid: `${siteMetadata.siteUrl}${path}`,
+                }
+              })
+            },
+          },
+        ],
       },
     },
     `gatsby-plugin-catch-links`,
