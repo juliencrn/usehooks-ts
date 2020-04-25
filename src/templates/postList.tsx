@@ -31,7 +31,7 @@ export interface PostListTemplateProps extends PageTemplate {
   }
 }
 
-const PostListTemplate: FC<PostListTemplateProps> = ({ pageContext }) => {
+const PostListTemplate: FC<PostListTemplateProps> = ({ pageContext, path }) => {
   const classes = useStyles()
   const { title, description } = useSiteMetadata()
   const { numPages, currentPage, posts } = pageContext
@@ -42,7 +42,7 @@ const PostListTemplate: FC<PostListTemplateProps> = ({ pageContext }) => {
 
   return (
     <Layout>
-      <SEO title={title} description={description} />
+      <SEO title={title} description={description} path={path} />
 
       <Hero title={title} description={description} />
 

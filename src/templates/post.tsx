@@ -45,7 +45,7 @@ export interface PostTemplateProps extends PageTemplate {
   }
 }
 
-const PostTemplate: FC<PostTemplateProps> = ({ pageContext }) => {
+const PostTemplate: FC<PostTemplateProps> = ({ pageContext, path }) => {
   const classes = useStyles()
   const { next, post } = pageContext
   const { body, excerpt, gist, frontmatter } = post
@@ -54,7 +54,7 @@ const PostTemplate: FC<PostTemplateProps> = ({ pageContext }) => {
 
   return (
     <Layout container>
-      <SEO title={title} description={excerpt} />
+      <SEO title={title} description={excerpt} path={path} />
 
       <Typography variant="h3" component="h1" className={classes.title}>
         {`${title}()`}

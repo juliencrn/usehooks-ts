@@ -15,13 +15,13 @@ export interface PageTemplateProps extends PageTemplate {
   }
 }
 
-const PostTemplate: FC<PageTemplateProps> = ({ pageContext }) => {
+const PostTemplate: FC<PageTemplateProps> = ({ pageContext, path }) => {
   const { body, frontmatter } = pageContext.page
   const { title, excerpt } = frontmatter
 
   return (
     <Layout>
-      <SEO title={title} description={excerpt} />
+      <SEO title={title} description={excerpt} path={path} />
 
       <Hero title={title} description={excerpt} />
 

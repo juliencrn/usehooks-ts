@@ -26,6 +26,7 @@ export interface SEOProps {
   description?: string
   lang?: string
   meta?: Meta[]
+  path?: string
 }
 
 const SEO: FC<SEOProps> = ({
@@ -33,9 +34,11 @@ const SEO: FC<SEOProps> = ({
   lang = 'en',
   meta = [],
   title,
+  path = '/',
 }) => {
   const siteMetadata = useSiteMetadata()
   const metaDescription = description || siteMetadata.description
+  const url = `${siteMetadata.siteUrl}${path}`
 
   return (
     <Helmet
@@ -44,6 +47,7 @@ const SEO: FC<SEOProps> = ({
       }}
       title={title}
       titleTemplate={`%s | ${siteMetadata.title}`}
+      link={[{ rel: 'canonical', key: url, href: url }]}
       meta={[
         {
           name: `description`,
@@ -58,8 +62,16 @@ const SEO: FC<SEOProps> = ({
           content: metaDescription,
         },
         {
+          property: `og:site_name`,
+          content: metaDescription,
+        },
+        {
           property: `og:type`,
           content: `website`,
+        },
+        {
+          property: `og:url`,
+          content: url,
         },
         {
           name: `twitter:card`,
