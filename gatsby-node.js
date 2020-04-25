@@ -14,17 +14,17 @@ const utils = require('./gatsby/utils')
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 
-  const result = await graphql(queries.postQuery)
+  const postsResult = await graphql(queries.postQuery)
 
-  if (result.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
+  if (postsResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL posts query.`)
     return
   }
 
   /**
    * Filter correct posts
    */
-  const filteredPosts = utils.filterPosts(result.data.posts.edges)
+  const filteredPosts = utils.filterPosts(postsResult.data.posts.edges)
 
   /**
    * Fetch gist code from github.com
@@ -62,6 +62,24 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         currentPage: i + 1,
         posts: posts.slice(i * postsPerPage, i * postsPerPage + postsPerPage),
       },
+    })
+  })
+
+  /**
+   * Create pages
+   */
+  const pagesResult = await graphql(queries.pageQuery)
+
+  if (pagesResult.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL pages query.`)
+    return
+  }
+
+  pagesResult.data.pages.edges.forEach(({ node }) => {
+    createPage({
+      path: node.frontmatter.path,
+      component: path.resolve(`./src/templates/page.tsx`),
+      context: { page: node },
     })
   })
 }

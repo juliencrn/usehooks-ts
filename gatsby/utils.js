@@ -6,7 +6,11 @@ const isDev = process.env.NODE_ENV !== 'production'
 
 const fetchGist = async gistId => {
   const url = `https://api.github.com/gists/${gistId}`
-  const response = await fetch(url)
+  const response = await fetch(url, {
+    headers: {
+      Authorization: `token ${process.env.GATSBY_GITHUB_TOKEN}`,
+    },
+  })
   const data = await response.json()
   return data
 }

@@ -4,6 +4,15 @@ export interface Gist {
   code: string
 }
 
+export interface Page {
+  frontmatter: {
+    path: string
+    title: string
+    excerpt: string
+  }
+  body: string
+}
+
 export interface Post {
   excerpt: string
   shortDescription: string
