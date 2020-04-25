@@ -17,7 +17,13 @@ const theme = {
       },
     },
     {
-      types: ['keyword', 'constant', 'builtin'],
+      types: [
+        'keyword',
+        'constant',
+        'builtin',
+        'class-name',
+        'maybe-class-name',
+      ],
       style: {
         color: 'rgb(139, 233, 253)',
       },

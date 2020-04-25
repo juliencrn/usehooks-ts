@@ -5,6 +5,7 @@ import { Theme, makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 
 import theme from '../libs/prismjs-theme-dracula'
+// import theme from 'prism-react-renderer/themes/vsDark'
 
 const useStyles = makeStyles((theme: Theme) => ({
   pre: {
@@ -29,7 +30,7 @@ export interface CodeProps {
   language?: Language
 }
 
-const Code = ({ code, language = 'typescript' }: CodeProps) => {
+const Code = ({ code, language = 'tsx' }: CodeProps) => {
   const classes = useStyles()
   return (
     <Highlight

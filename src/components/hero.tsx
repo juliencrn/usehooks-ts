@@ -7,8 +7,11 @@ import Container from '@material-ui/core/Container'
 const useStyles = makeStyles((theme: Theme) => ({
   heroContent: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
+    padding: theme.spacing(12, 0, 10),
     marginBottom: theme.spacing(10),
+  },
+  title: {
+    fontFamily: 'Fira Code',
   },
 }))
 
@@ -21,11 +24,13 @@ const Hero: FC<HeroProps> = ({ title, description = '', children }) => {
   const classes = useStyles()
   return (
     <div className={classes.heroContent}>
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <Typography
-          variant="h1"
+          variant="h2"
+          component="h1"
           align="center"
           color="textPrimary"
+          className={classes.title}
           gutterBottom
         >
           {title}

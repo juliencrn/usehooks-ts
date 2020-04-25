@@ -9,19 +9,21 @@ import Link from '@material-ui/core/Link'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
+import Box from '@material-ui/core/Box'
 
 import WbSunnyIcon from '@material-ui/icons/WbSunny'
 import Brightness3Icon from '@material-ui/icons/Brightness3'
 import GitHubIcon from '@material-ui/icons/GitHub'
+import InfoIcon from '@material-ui/icons/Info'
 
 import useSiteMetadata from '../hooks/useSiteMetadata'
 import Search from '../components/search'
 
 const useStyles = makeStyles((theme: Theme) => ({
   appBar: {
-    backgroundColor:
+    background:
       theme.palette.type === 'light'
-        ? theme.palette.primary.main
+        ? theme.gradient.primary
         : theme.palette.background.paper,
     color: theme.palette.common.white,
   },
@@ -59,7 +61,12 @@ const Header: FC<HeaderProps> = ({ siteTitle = '', onToggleTheme, theme }) => {
               {siteTitle}
             </Link>
           </Typography>
-          <Search />
+          <Box mx={2}>
+            <Search />
+          </Box>
+          <IconButton component={GatsbyLink} to="/about" color="inherit">
+            <InfoIcon />
+          </IconButton>
           <IconButton color="inherit" onClick={onToggleTheme}>
             {theme === 'light' ? <Brightness3Icon /> : <WbSunnyIcon />}
           </IconButton>

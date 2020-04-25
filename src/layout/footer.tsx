@@ -24,7 +24,10 @@ const Footer: FC = () => {
     <footer className={classes.footer}>
       <Container maxWidth="md">
         <Typography variant="body1" color="textSecondary">
-          © {new Date().getFullYear()}, Built with
+          <Link href="/about" color="inherit">
+            Uncopyright
+          </Link>
+          , built with
           {` `}
           <Link href="https://www.gatsbyjs.org" color="inherit" target="_blank">
             Gatsby

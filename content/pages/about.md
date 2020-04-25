@@ -5,6 +5,8 @@ path: "/about"
 excerpt: "What is useHook.ts ?"
 ---
 
+### Introduction
+
 > <a href="https://reactjs.org/docs/hooks-overview.html" target="_blank">Hooks</a> are a new addition in React 16.8. They let you use state and other React features without writing a class.
 
 This site presents a collection of hooks for react. Thanks to that, I save time each time I re-use a functionality I already coded, and you too. Nobody wants to re-invent the wheel for each project.

@@ -37,6 +37,10 @@ const makeTheme = (variant: ThemeOptions): Theme => {
         main: red.A400,
       },
     },
+    gradient: {
+      primary:
+        'linear-gradient(140deg, rgb(57, 45, 209) 0%, rgb(142, 41, 149) 100%);',
+    },
     typography: {
       fontFamily: [
         'Fira Sans Regular',

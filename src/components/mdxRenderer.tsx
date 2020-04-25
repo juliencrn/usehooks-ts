@@ -34,6 +34,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: 0,
     },
   },
+  title: {
+    marginTop: theme.spacing(4),
+  },
   divider: {
     margin: theme.spacing(3, 0),
   },
@@ -54,23 +57,59 @@ const MdxRenderer = ({ children }: Readonly<MDXRendererProps>) => {
     <MDXProvider
       components={{
         // Typography
-        h1: (props: TypographyProps) => (
-          <Typography gutterBottom variant="h1" {...props} />
+        h1: (props: any) => (
+          <Typography
+            gutterBottom
+            className={classes.title}
+            variant="h2"
+            component="h1"
+            {...props}
+          />
         ),
-        h2: (props: TypographyProps) => (
-          <Typography gutterBottom variant="h2" {...props} />
+        h2: (props: any) => (
+          <Typography
+            gutterBottom
+            className={classes.title}
+            variant="h3"
+            component="h2"
+            {...props}
+          />
         ),
-        h3: (props: TypographyProps) => (
-          <Typography gutterBottom variant="h3" {...props} />
+        h3: (props: any) => (
+          <Typography
+            gutterBottom
+            className={classes.title}
+            variant="h4"
+            component="h3"
+            {...props}
+          />
         ),
-        h4: (props: TypographyProps) => (
-          <Typography gutterBottom variant="h4" {...props} />
+        h4: (props: any) => (
+          <Typography
+            gutterBottom
+            className={classes.title}
+            variant="h5"
+            component="h4"
+            {...props}
+          />
         ),
-        h5: (props: TypographyProps) => (
-          <Typography gutterBottom variant="h5" {...props} />
+        h5: (props: any) => (
+          <Typography
+            gutterBottom
+            className={classes.title}
+            variant="h6"
+            component="h5"
+            {...props}
+          />
         ),
-        h6: (props: TypographyProps) => (
-          <Typography gutterBottom variant="h6" {...props} />
+        h6: (props: any) => (
+          <Typography
+            gutterBottom
+            className={classes.title}
+            variant="h6"
+            component="h6"
+            {...props}
+          />
         ),
         a: (props: LinkProps) => <Link {...props} />,
         p: (props: TypographyProps) => (

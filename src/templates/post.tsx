@@ -56,7 +56,7 @@ const PostTemplate: FC<PostTemplateProps> = ({ pageContext }) => {
     <Layout container>
       <SEO title={title} description={excerpt} />
 
-      <Typography variant="h2" component="h1" className={classes.title}>
+      <Typography variant="h3" component="h1" className={classes.title}>
         {`${title}()`}
       </Typography>
 

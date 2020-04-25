@@ -1,21 +1,19 @@
 import React, { FC, useState } from 'react'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { makeStyles, Theme } from '@material-ui/core/styles'
 import Fab from '@material-ui/core/Fab'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 import { Link } from 'react-scroll'
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      position: 'fixed',
-      bottom: theme.spacing(2),
-      right: theme.spacing(2),
-      zIndex: 1000,
-      transition: `opacity 200ms`,
-    },
-  }),
-)
+const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    position: 'fixed',
+    bottom: theme.spacing(2),
+    right: theme.spacing(2),
+    zIndex: 1000,
+    transition: `opacity 200ms`,
+  },
+}))
 
 const BackToTop: FC = () => {
   const classes = useStyles()
