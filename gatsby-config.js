@@ -11,7 +11,7 @@ require('dotenv').config({
 const siteMetadata = {
   title: `useHooks.ts`,
   description: `Simple React hooks ready to use written in typescript.`,
-  siteUrl: `https://usehooks-ts.netlify.app`,
+  siteUrl: `https://usehooks-typescript.com`,
   author: {
     name: 'Julien CARON',
     content: 'I like build some things using Javascript',
