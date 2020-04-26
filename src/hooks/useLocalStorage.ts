@@ -1,18 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react'
 
-/**
- * React Hook wrapper for LocalStorage
- * @usage has the same API of useState
- * @param key storage key like localStorage.getItem('key')
- * @param initialValue
- */
-
-type PersistReturn = [any, (arg1?: any) => void]
-
-export type usePersistFunc = (key: string) => PersistReturn
-
-export default function useLocalStorage(key: string, initialValue: any) {
+export default function useLocalStorage<T>(key: string, initialValue: T) {
   // Prevent build error "window is undefined" but keep keep working
   const isServer = typeof window === 'undefined'
 
@@ -36,7 +25,7 @@ export default function useLocalStorage(key: string, initialValue: any) {
 
   // Return a wrapped version of useState's setter function that ...
   // ... persists the new value to localStorage.
-  const setValue = (value: any) => {
+  const setValue = (value: T) => {
     try {
       // Allow value to be a function so we have same API as useState
       const valueToStore =

@@ -55,7 +55,7 @@ module.exports = {
         apiKey: process.env.GATSBY_ALGOLIA_ADMIN_KEY,
         indexName: process.env.GATSBY_ALGOLIA_SEARCH_KEY, // for all queries
         queries: algoliaQueries,
-        enablePartialUpdates: true,
+        // enablePartialUpdates: true, // default: false
         chunkSize: 10000, // default: 1000
       },
     },
