@@ -2,9 +2,10 @@ import { useEffect, RefObject, MutableRefObject } from 'react'
 
 type Event = MouseEvent | TouchEvent
 
-export default function useOnClickOutside<
-  T extends HTMLElement = HTMLDivElement
->(ref: RefObject<T>, handler: (event: Event) => void) {
+function useOnClickOutside<T extends HTMLElement = HTMLDivElement>(
+  ref: RefObject<T>,
+  handler: (event: Event) => void,
+) {
   useEffect(() => {
     const listener = (event: Event) => {
       const el = ref?.current
@@ -28,3 +29,5 @@ export default function useOnClickOutside<
     // Reload only if ref or handler changes
   }, [ref as MutableRefObject<T>, handler])
 }
+
+export default useOnClickOutside
