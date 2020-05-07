@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import { Highlight, connectHits } from 'react-instantsearch-dom'
-import { Theme, makeStyles } from '@material-ui/core/styles'
+import { Theme, makeStyles, fade } from '@material-ui/core/styles'
 
 import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
@@ -18,6 +18,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     paddingTop: theme.spacing(2),
     flexDirection: 'column',
     alignItems: 'start',
+    '& em': {
+      fontStyle: 'normal',
+      background: fade(theme.palette.primary.main, 0.3),
+    },
   },
   title: {
     fontFamily: 'Fira Code',
@@ -71,7 +75,8 @@ export const ConnectedHits = connectHits(({ hits }) => {
           className={classes.hit}
         >
           <Typography className={classes.title} variant="h6" component="span">
-            {hit.title}()
+            <Highlight attribute="title" hit={hit} />
+            ()
           </Typography>
           <Typography variant="body2" color="textSecondary" component="span">
             <Highlight attribute="excerpt" hit={hit} />
