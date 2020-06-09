@@ -1,22 +1,22 @@
-import React, { FC } from 'react'
+import React from 'react'
+import { graphql } from 'gatsby'
 
 import Container from '@material-ui/core/Container'
+import Box from '@material-ui/core/Box'
 
 import Layout from '../layout'
 import SEO from '../components/seo'
 import MdxRenderer from '../components/mdxRenderer'
 import { PageTemplate, Page } from '../interfaces'
 import Hero from '../components/hero'
-import { Box } from '@material-ui/core'
 
 export interface PageTemplateProps extends PageTemplate {
-  pageContext: {
-    page: Page
-  }
+  pageContext: { pageId: string }
+  data: { page: Page }
 }
 
-const PostTemplate: FC<PageTemplateProps> = ({ pageContext, path }) => {
-  const { body, frontmatter } = pageContext.page
+function PostTemplate({ path, data }: PageTemplateProps) {
+  const { body, frontmatter } = data.page
   const { title, excerpt } = frontmatter
 
   return (
@@ -34,3 +34,11 @@ const PostTemplate: FC<PageTemplateProps> = ({ pageContext, path }) => {
 }
 
 export default PostTemplate
+
+export const pageQuery = graphql`
+  query($pageId: String!) {
+    page: mdx(id: { eq: $pageId }) {
+      ...Page
+    }
+  }
+`

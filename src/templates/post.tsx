@@ -1,6 +1,6 @@
-import React, { FC } from 'react'
+import React from 'react'
 import moment from 'moment'
-import { Link as GatsbyLink } from 'gatsby'
+import { Link as GatsbyLink, graphql } from 'gatsby'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 
 import Typography from '@material-ui/core/Typography'
@@ -13,7 +13,7 @@ import Layout from '../layout'
 import SEO from '../components/seo'
 import MdxRenderer from '../components/mdxRenderer'
 import Code from '../components/code'
-import { PageTemplate, Post } from '../interfaces'
+import { PageTemplate, Post, Gist } from '../interfaces'
 
 const useStyles = makeStyles((theme: Theme) => ({
   title: {
@@ -39,16 +39,20 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export interface PostTemplateProps extends PageTemplate {
   pageContext: {
+    gist: Gist
+  }
+  data: {
     post: Post
     next: Post
     prev: Post
   }
 }
 
-const PostTemplate: FC<PostTemplateProps> = ({ pageContext, path }) => {
+function PostTemplate({ pageContext, path, data }: PostTemplateProps) {
   const classes = useStyles()
-  const { next, post } = pageContext
-  const { body, excerpt, gist, frontmatter } = post
+  const { gist } = pageContext
+  const { next, post } = data
+  const { body, excerpt, frontmatter } = post
   const { title } = frontmatter
   const date = moment(gist.updated).fromNow()
 
@@ -104,3 +108,17 @@ const PostTemplate: FC<PostTemplateProps> = ({ pageContext, path }) => {
 }
 
 export default PostTemplate
+
+export const pageQuery = graphql`
+  query($postId: String!, $nextId: String!, $prevId: String!) {
+    post: mdx(id: { eq: $postId }) {
+      ...Post
+    }
+    prev: mdx(id: { eq: $prevId }) {
+      ...Post
+    }
+    next: mdx(id: { eq: $nextId }) {
+      ...Post
+    }
+  }
+`

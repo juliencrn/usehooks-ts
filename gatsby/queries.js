@@ -6,6 +6,7 @@ const postQuery = `{
     ) {
     edges {
       node {
+        id
         excerpt(pruneLength: 155)
         shortDescription: excerpt(pruneLength: 280)
         frontmatter {
@@ -27,6 +28,7 @@ const pageQuery = `{
     ) {
     edges {
       node {
+        id
         frontmatter {
           path
           title
@@ -38,4 +40,20 @@ const pageQuery = `{
   }
 }`
 
-module.exports = { postQuery, pageQuery }
+const allMdx = `{
+  allMdx(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
+    edges {
+      node {
+        id
+        frontmatter {
+          path
+          gistId
+          gistFilename
+          templateKey
+        }
+      }
+    }
+  }
+}`
+
+module.exports = { postQuery, pageQuery, allMdx }

@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { navigate } from 'gatsby'
+import { navigate, graphql } from 'gatsby'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 
 import Container from '@material-ui/core/Container'
@@ -23,18 +23,23 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-export interface PostListTemplateProps extends PageTemplate {
+export interface PostListProps extends PageTemplate {
   pageContext: {
     numPages: number
     currentPage: number
-    posts: Array<{ node: Post }>
+  }
+  data: {
+    posts: {
+      edges: { node: Post }[]
+    }
   }
 }
 
-const PostListTemplate: FC<PostListTemplateProps> = ({ pageContext, path }) => {
+function PostListTemplate({ pageContext, path, data }: PostListProps) {
   const classes = useStyles()
   const { title, description } = useSiteMetadata()
-  const { numPages, currentPage, posts } = pageContext
+  const { numPages, currentPage } = pageContext
+  const posts = data.posts.edges
 
   const handleNavigate = (event: React.ChangeEvent<unknown>, value: number) => {
     navigate(value >= 2 ? `/${value}` : `/`)
@@ -66,3 +71,20 @@ const PostListTemplate: FC<PostListTemplateProps> = ({ pageContext, path }) => {
 }
 
 export default PostListTemplate
+
+export const pageQuery = graphql`
+  query($limit: Int!, $skip: Int!) {
+    posts: allMdx(
+      filter: { frontmatter: { templateKey: { eq: "post" } } }
+      limit: $limit
+      skip: $skip
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      edges {
+        node {
+          ...Post
+        }
+      }
+    }
+  }
+`

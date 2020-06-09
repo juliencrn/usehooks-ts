@@ -23,7 +23,6 @@ export interface Post {
     gistFilename: string
   }
   body: string
-  gist: Gist
 }
 
 export interface PageTemplate {

@@ -8,44 +8,42 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 
-const queries = require('./gatsby/queries')
-const utils = require('./gatsby/utils')
+const { allMdx } = require('./gatsby/queries')
+const { getGist, separateAllMdx } = require('./gatsby/utils')
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 
-  const postsResult = await graphql(queries.postQuery)
+  const results = await graphql(allMdx)
 
-  if (postsResult.errors) {
+  if (results.errors) {
     reporter.panicOnBuild(`Error while running GraphQL posts query.`)
     return
   }
 
-  /**
-   * Filter correct posts
-   */
-  const filteredPosts = utils.filterPosts(postsResult.data.posts.edges)
-
-  /**
-   * Fetch gist code from github.com
-   * And data gist data in post data
-   */
-  const posts = await utils.addGistsToPosts(filteredPosts)
+  // Range allMdx into "post" or "page"
+  const { posts, pages } = separateAllMdx(results.data.allMdx.edges)
 
   /**
    * Create posts
    */
-  posts.forEach(({ node }, i) => {
-    // Get prev/next post
-    const next = posts[i + 1] ? posts[i + 1].node : posts[0].node
-    const prev = posts[i - 1] ? posts[i - 1].node : posts[posts.length - 1].node
+  for (let i = 0; i < posts.length; i++) {
+    const post = posts[i]
+    const gist = await getGist(post)
+    const next = posts[i + 1] ? posts[i + 1] : posts[0]
+    const prev = posts[i - 1] ? posts[i - 1] : posts[posts.length - 1]
 
     createPage({
-      path: node.frontmatter.path,
+      path: post.frontmatter.path,
       component: path.resolve(`./src/templates/post.tsx`),
-      context: { post: node, next, prev },
+      context: {
+        gist,
+        postId: post.id,
+        nextId: next.id,
+        prevId: prev.id,
+      },
     })
-  })
+  }
 
   /**
    * Create posts list
@@ -60,7 +58,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       context: {
         numPages,
         currentPage: i + 1,
-        posts: posts.slice(i * postsPerPage, i * postsPerPage + postsPerPage),
+        skip: i * postsPerPage,
+        limit: postsPerPage,
       },
     })
   })
@@ -68,18 +67,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   /**
    * Create pages
    */
-  const pagesResult = await graphql(queries.pageQuery)
-
-  if (pagesResult.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL pages query.`)
-    return
-  }
-
-  pagesResult.data.pages.edges.forEach(({ node }) => {
+  pages.forEach(({ id, frontmatter }) => {
     createPage({
-      path: node.frontmatter.path,
+      path: frontmatter.path,
       component: path.resolve(`./src/templates/page.tsx`),
-      context: { page: node },
+      context: { pageId: id },
     })
   })
 }
