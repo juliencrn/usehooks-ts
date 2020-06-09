@@ -2,7 +2,7 @@
 templateKey: post
 title: useOnClickOutside
 path: "/use-on-click-outside"
-date: "2019-05-08"
+date: "2020-05-08"
 gistId: "343abc6449c220659c4f3b4a5c1ef885"
 gistFilename: useOnClickOutside.tsx
 ---

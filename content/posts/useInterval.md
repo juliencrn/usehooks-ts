@@ -2,7 +2,7 @@
 templateKey: post
 title: useInterval
 path: "/use-interval"
-date: "2019-04-27"
+date: "2020-04-27"
 gistId: "747e3127cc35600d9dc0270237a457cc"
 gistFilename: useInterval.tsx
 ---
