@@ -1,5 +1,5 @@
 import React from 'react'
-import moment from 'moment'
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import { Link as GatsbyLink, graphql } from 'gatsby'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 
@@ -54,7 +54,9 @@ function PostTemplate({ pageContext, path, data }: PostTemplateProps) {
   const { next, post } = data
   const { body, excerpt, frontmatter } = post
   const { title } = frontmatter
-  const date = moment(gist.updated).fromNow()
+  const date = formatDistanceToNow(new Date(gist.updated), {
+    addSuffix: true,
+  })
 
   return (
     <Layout container>

@@ -32,6 +32,7 @@
     "@mdx-js/mdx": "^1.5.8",
     "@mdx-js/react": "^1.5.8",
     "@n8tb1t/use-scroll-position": "^1.0.43",
+    "date-fns": "^2.14.0",
     "deepmerge": "^4.2.2",
     "gatsby": "^2.20.29",
     "gatsby-plugin-algolia": "^0.8.1",
@@ -47,7 +48,6 @@
     "gatsby-plugin-sitemap": "^2.3.6",
     "gatsby-plugin-typescript": "^2.3.3",
     "gatsby-source-filesystem": "^2.2.4",
-    "moment": "^2.24.0",
     "node-fetch": "^2.6.0",
     "prism-react-renderer": "^1.0.2",
     "react": "^16.13.1",
@@ -58,8 +58,8 @@
     "react-scroll": "^1.7.16"
   },
   "devDependencies": {
+    "@types/date-fns": "^2.6.0",
     "@types/mdx-js__react": "^1.5.1",
-    "@types/moment": "^2.13.0",
     "@types/node": "^13.13.2",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
