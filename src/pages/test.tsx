@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { navigate } from 'gatsby'
 
 import Container from '@material-ui/core/Container'
@@ -16,11 +16,11 @@ import Hero from '../components/hero'
  */
 
 // Usage
-const Component: FC = () => {
+function Component() {
   return <div>Example</div>
 }
 
-const TestPage: FC = () => {
+function TestPage() {
   if (process.env.NODE_ENV === 'production' && typeof window !== 'undefined') {
     navigate('/')
   }

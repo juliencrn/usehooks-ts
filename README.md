@@ -12,18 +12,17 @@ To run locally, `yarn`, then `yarn dev`, then open [localhost:8000](https://loca
 
 - [useLocalStorage](https://usehooks-typescript.com/use-local-storage)
 - [useHover](https://usehooks-typescript.com/use-hover)
+- [useOnClickOutside](https://usehooks-typescript.com/use-on-click-outside)
+- [useInterval](https://usehooks-typescript.com/use-interval)
+- [useSiteMetadata](https://usehooks-typescript.com/use-site-metadata)
+- [useDebounce](https://usehooks-typescript.com/use-debounce)
 
 ### Todo
 
 > TODO: Look in all my projects witch hooks I have used
 
 - [useScrollPosition](https://github.com/n8tb1t/use-scroll-position)
-- useDebounce
 - useWindowSize
-- useOnClickOutside
-- useInterval
-- useStaticQuery (gatsby)
-- useScrollPosition
 
 
 ### Ideas from useHooks.com
@@ -40,10 +39,8 @@ To run locally, `yarn`, then `yarn dev`, then open [localhost:8000](https://loca
 [useMemo](https://usehooks.com/useMemo/)<br/>
 [useOnScreen](https://usehooks.com/useOnScreen/)<br/>
 [usePrevious](https://usehooks.com/usePrevious/)<br/>
-[useOnClickOutside](https://usehooks.com/useOnClickOutside/)<br/>
 [useAnimation](https://usehooks.com/useAnimation/)<br/>
 [useWindowSize](https://usehooks.com/useWindowSize/)<br/>
-[useHover](https://usehooks.com/useHover/)<br/>
 
 <p align="center">
   <a href="./LICENSE"><strong>Unlicense</strong></a>  &mdash;  public domain

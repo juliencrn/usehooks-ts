@@ -13,8 +13,7 @@ export interface SiteMetadata {
     github: string
   }
 }
-
-export default (): SiteMetadata => {
+function useSiteMetadata(): SiteMetadata {
   const data = useStaticQuery(graphql`
     {
       site {
@@ -37,3 +36,5 @@ export default (): SiteMetadata => {
 
   return data.site.siteMetadata
 }
+
+export default useSiteMetadata
