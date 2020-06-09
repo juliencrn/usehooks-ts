@@ -1,12 +1,10 @@
 # Usehooks.ts
 
-This is the repository for [usehooks.ts](https://usehooks.ts), a [Gatsby](https://www.gatsbyjs.org) powered blog that publishes easy to understand React Hook code snippets.
+This is the repository for [usehooks.ts](https://usehooks.ts), a [Gatsby](https://www.gatsbyjs.org) powered blog hosted with Github & netlify that publishes easy to understand React Hook code snippets.
 
 UseHooks.ts has been strongly inspired by [usehooks.com](https://usehooks.com), thanks to him. My objective here is to publish my hooks in Typescript in order to find them quickly
 
 If you'd like to submit new post ideas, improve existing posts, or change anything about the website feel free to submit an issue or pull-request.
-
-To run locally, `yarn`, then `yarn dev`, then open [localhost:8000](https://localhost:8000).
 
 ## Summary
 
@@ -16,31 +14,23 @@ To run locally, `yarn`, then `yarn dev`, then open [localhost:8000](https://loca
 - [useInterval](https://usehooks-typescript.com/use-interval)
 - [useSiteMetadata](https://usehooks-typescript.com/use-site-metadata)
 - [useDebounce](https://usehooks-typescript.com/use-debounce)
+- [useWindowSize](https://usehooks-typescript.com/use-window-size)
 
-### Todo
+## Installation
 
-> TODO: Look in all my projects witch hooks I have used
+```bash
+# Download the repo
+git clone https://github.com/Junscuzzy/usehooks.ts usehooks
+cd usehooks
 
-- [useScrollPosition](https://github.com/n8tb1t/use-scroll-position)
-- useWindowSize
+# Install the dependencies
+yarn
+
+# Start the dev app
+yarn start
+```
 
 
-### Ideas from useHooks.com
-
-
-[useEventListener](https://usehooks.com/useEventListener/)<br/>
-[useWhyDidYouUpdate](https://usehooks.com/useWhyDidYouUpdate/)<br/>
-[useDarkMode](https://usehooks.com/useDarkMode/)<br/>
-[useMedia](https://usehooks.com/useMedia/)<br/>
-[useLockBodyScroll](https://usehooks.com/useLockBodyScroll/)<br/>
-[useTheme](https://usehooks.com/useTheme/)<br/>
-[useScript](https://usehooks.com/useScript/)<br/>
-[useKeyPress](https://usehooks.com/useKeyPress/)<br/>
-[useMemo](https://usehooks.com/useMemo/)<br/>
-[useOnScreen](https://usehooks.com/useOnScreen/)<br/>
-[usePrevious](https://usehooks.com/usePrevious/)<br/>
-[useAnimation](https://usehooks.com/useAnimation/)<br/>
-[useWindowSize](https://usehooks.com/useWindowSize/)<br/>
 
 <p align="center">
   <a href="./LICENSE"><strong>Unlicense</strong></a>  &mdash;  public domain

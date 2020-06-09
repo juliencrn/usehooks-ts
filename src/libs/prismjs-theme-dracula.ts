@@ -11,7 +11,7 @@ const theme = {
       },
     },
     {
-      types: ['boolean'],
+      types: ['boolean', 'number'],
       style: {
         color: 'rgb(189, 147, 249)',
       },
