@@ -53,11 +53,5 @@
     "source.fixAll.eslint": true,
     "source.fixAll": true
   },
-  "cSpell.words": [
-    "algolia",
-    "fira",
-    "frontmatter",
-    "okaidia",
-    "prismjs"
-  ]
+  "cSpell.words": ["algolia", "fira", "frontmatter", "okaidia", "prismjs"]
 }

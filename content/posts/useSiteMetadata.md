@@ -1,14 +1,13 @@
 ---
 templateKey: post
 title: useSiteMetadata
-path: "/use-site-metadata"
-date: "2020-06-09"
-gistId: "02ce2fb4386d3b0623c274458bab41c3"
+path: '/use-site-metadata'
+date: '2020-06-09'
+gistId: '02ce2fb4386d3b0623c274458bab41c3'
 gistFilename: useSiteMetadata.tsx
 ---
 
 > **Note:** This hook is intended for people who work with the [Gatsby.js](https://www.gatsbyjs.org/) framework.
-
 
 [Gatsby v2 introduces `StaticQuery`](https://www.gatsbyjs.org/docs/static-query/), a new API that allows components to retrieve data via a GraphQL query.
 

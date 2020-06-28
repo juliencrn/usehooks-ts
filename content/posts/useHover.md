@@ -1,9 +1,9 @@
 ---
 templateKey: post
 title: useHover
-path: "/use-hover"
-date: "2020-04-22"
-gistId: "c50263e3b46ae6c88346210e88d8de8e"
+path: '/use-hover'
+date: '2020-04-22'
+gistId: 'c50263e3b46ae6c88346210e88d8de8e'
 gistFilename: useHover.tsx
 ---
 

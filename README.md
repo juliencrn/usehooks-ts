@@ -30,8 +30,6 @@ yarn
 yarn start
 ```
 
-
-
 <p align="center">
   <a href="./LICENSE"><strong>Unlicense</strong></a>  &mdash;  public domain
 </p>

@@ -1,8 +1,8 @@
 ---
 templateKey: page
 title: About useHooks.ts
-path: "/about"
-excerpt: "What is useHook.ts ?"
+path: '/about'
+excerpt: 'What is useHook.ts ?'
 ---
 
 ### Introduction

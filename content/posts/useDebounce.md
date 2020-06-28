@@ -1,9 +1,9 @@
 ---
 templateKey: post
 title: useDebounce
-path: "/use-debounce"
-date: "2020-06-09"
-gistId: "31a965e4d64b91514228bb09d2f0de02"
+path: '/use-debounce'
+date: '2020-06-09'
+gistId: '31a965e4d64b91514228bb09d2f0de02'
 gistFilename: useDebounce.tsx
 ---
 
