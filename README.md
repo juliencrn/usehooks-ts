@@ -15,6 +15,8 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 - [useSiteMetadata](https://usehooks-typescript.com/use-site-metadata)
 - [useDebounce](https://usehooks-typescript.com/use-debounce)
 - [useWindowSize](https://usehooks-typescript.com/use-window-size)
+- [useEventListener](https://usehooks-typescript.com/use-event-listener)
+- [useElementSize](https://usehooks-typescript.com/use-element-size)
 
 ## Installation
 
