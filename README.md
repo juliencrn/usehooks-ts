@@ -1,5 +1,7 @@
 # Usehooks.ts
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f1f0f5a4-8207-499b-b912-d99acb04176e/deploy-status)](https://app.netlify.com/sites/usehooks-ts/deploys)
+
 This is the repository for [usehooks.ts](https://usehooks.ts), a [Gatsby](https://www.gatsbyjs.org) powered blog hosted with Github & netlify that publishes easy to understand React Hook code snippets.
 
 UseHooks.ts has been strongly inspired by [usehooks.com](https://usehooks.com), thanks to him. My objective here is to publish my hooks in Typescript in order to find them quickly
