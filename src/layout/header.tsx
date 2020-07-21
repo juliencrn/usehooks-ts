@@ -1,6 +1,6 @@
-import { Link as GatsbyLink } from 'gatsby'
-import React, { FC } from 'react'
+import React from 'react'
 import Headroom from 'react-headroom'
+import { Link as GatsbyLink } from 'gatsby'
 
 import { makeStyles, Theme } from '@material-ui/core/styles'
 
@@ -10,6 +10,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import Box from '@material-ui/core/Box'
+import Hidden from '@material-ui/core/Hidden'
 
 import WbSunnyIcon from '@material-ui/icons/WbSunny'
 import Brightness3Icon from '@material-ui/icons/Brightness3'
@@ -44,7 +45,7 @@ export interface HeaderProps {
   onToggleTheme: () => void
 }
 
-const Header: FC<HeaderProps> = ({ siteTitle = '', onToggleTheme, theme }) => {
+function Header({ siteTitle = '', onToggleTheme, theme }: HeaderProps) {
   const classes = useStyles()
   const { social } = useSiteMetadata()
 
@@ -62,21 +63,28 @@ const Header: FC<HeaderProps> = ({ siteTitle = '', onToggleTheme, theme }) => {
               {siteTitle}
             </Link>
           </Typography>
-          <Box mx={2}>
-            <Search />
-          </Box>
+
+          <Hidden xsDown>
+            <Box mx={2}>
+              <Search />
+            </Box>
+          </Hidden>
+
           <IconButton component={GatsbyLink} to="/about" color="inherit">
             <InfoIcon />
           </IconButton>
           <IconButton color="inherit" onClick={onToggleTheme}>
             {theme === 'light' ? <Brightness3Icon /> : <WbSunnyIcon />}
           </IconButton>
-          <IconButton color="inherit" href={social.github} target="_blank">
-            <GitHubIcon />
-          </IconButton>
-          <IconButton color="inherit" href="/rss.xml" target="_blank">
-            <RssFeedIcon />
-          </IconButton>
+
+          <Hidden xsDown>
+            <IconButton color="inherit" href={social.github} target="_blank">
+              <GitHubIcon />
+            </IconButton>
+            <IconButton color="inherit" href="/rss.xml" target="_blank">
+              <RssFeedIcon />
+            </IconButton>
+          </Hidden>
         </Toolbar>
       </AppBar>
     </Headroom>
