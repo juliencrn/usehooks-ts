@@ -42,6 +42,9 @@ const SEO: FC<SEOProps> = ({
   const metaDescription = description || siteMetadata.description
   const url = `${siteMetadata.siteUrl}${path}`
 
+  // Build image from title using "Typescript blue" optimized for Facebook banned
+  const image = `https://via.placeholder.com/1200x630.png/007ACC/fff/?text=${title}`
+
   return (
     <Helmet
       htmlAttributes={{
@@ -58,6 +61,10 @@ const SEO: FC<SEOProps> = ({
         {
           property: `og:title`,
           content: title,
+        },
+        {
+          property: `og:image`,
+          content: image,
         },
         {
           property: `og:description`,
