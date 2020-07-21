@@ -7,4 +7,4 @@
 /**
  * Support for @Material-ui SSR
  */
-// export { default as wrapRootElement } from './src/libs/wrapRootElement'
+export { default as wrapRootElement } from './src/libs/wrapRootElement'
