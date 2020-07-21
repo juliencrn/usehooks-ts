@@ -27,6 +27,7 @@ export interface SEOProps {
   lang?: string
   meta?: Meta[]
   path?: string
+  isPost?: boolean
 }
 
 const SEO: FC<SEOProps> = ({
@@ -35,6 +36,7 @@ const SEO: FC<SEOProps> = ({
   meta = [],
   title,
   path = '/',
+  isPost = false,
 }) => {
   const siteMetadata = useSiteMetadata()
   const metaDescription = description || siteMetadata.description
@@ -63,11 +65,11 @@ const SEO: FC<SEOProps> = ({
         },
         {
           property: `og:site_name`,
-          content: metaDescription,
+          content: siteMetadata.title,
         },
         {
           property: `og:type`,
-          content: `website`,
+          content: isPost ? `article` : `website`,
         },
         {
           property: `og:url`,

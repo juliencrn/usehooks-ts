@@ -53,17 +53,17 @@ function PostTemplate({ pageContext, path, data }: PostTemplateProps) {
   const { gist } = pageContext
   const { next, post } = data
   const { body, excerpt, frontmatter } = post
-  const { title } = frontmatter
+  const title = `${frontmatter.title}()`
   const date = formatDistanceToNow(new Date(gist.updated), {
     addSuffix: true,
   })
 
   return (
     <Layout container>
-      <SEO title={title} description={excerpt} path={path} />
+      <SEO title={title} description={excerpt} path={path} isPost />
 
       <Typography variant="h3" component="h1" className={classes.title}>
-        {`${title}()`}
+        {title}
       </Typography>
 
       <MdxRenderer>{body}</MdxRenderer>
