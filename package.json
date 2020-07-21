@@ -33,6 +33,8 @@
     "@mdx-js/mdx": "^1.5.8",
     "@mdx-js/react": "^1.5.8",
     "@n8tb1t/use-scroll-position": "^1.0.43",
+    "@types/axios": "^0.14.0",
+    "axios": "^0.19.2",
     "date-fns": "^2.14.0",
     "deepmerge": "^4.2.2",
     "gatsby": "^2.20.29",
