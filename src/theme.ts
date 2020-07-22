@@ -9,7 +9,6 @@ import {
 
 import FiraRegular from './assets/fonts/FiraSans-Regular.ttf'
 import FiraCode from './assets/fonts/FiraMono-Regular.otf'
-import Monaco from './assets/fonts/Monaco.ttf'
 
 const firaRegular = {
   fontFamily: 'Fira Sans Regular',
@@ -17,14 +16,6 @@ const firaRegular = {
   fontDisplay: 'swap',
   fontWeight: 400,
   src: `url(${FiraRegular}) format('truetype')`,
-}
-
-const monaco = {
-  fontFamily: 'Monaco',
-  fontStyle: 'normal',
-  fontDisplay: 'swap',
-  fontWeight: 400,
-  src: `url(${Monaco}) format('truetype')`,
 }
 
 const firaCode = {
@@ -68,7 +59,7 @@ const makeTheme = (variant: ThemeOptions): Theme => {
     overrides: {
       MuiCssBaseline: {
         '@global': {
-          '@font-face': [firaRegular, firaCode, monaco],
+          '@font-face': [firaRegular, firaCode],
         },
       },
     },

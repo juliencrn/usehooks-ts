@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: theme.spacing(10),
   },
   title: {
-    fontFamily: 'Fira Code, Monaco, monospace',
+    fontFamily: 'Fira Code, monospace',
   },
 }))
 

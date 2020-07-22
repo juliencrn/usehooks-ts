@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   title: {
-    fontFamily: 'Fira Code, Monaco, monospace',
+    fontFamily: 'Fira Code, monospace',
     marginBottom: theme.spacing(1),
     display: 'block',
   },
