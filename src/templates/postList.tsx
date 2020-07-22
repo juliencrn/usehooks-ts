@@ -53,7 +53,7 @@ function PostListTemplate({ pageContext, path, data }: PostListProps) {
 
       <Container maxWidth="md">
         {posts.map(({ node }) => (
-          <PostCard key={node.frontmatter.path} {...node} />
+          <PostCard key={`${node.frontmatter.path}/`} {...node} />
         ))}
 
         <div className={classes.pagination}>

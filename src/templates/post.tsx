@@ -84,7 +84,7 @@ function PostTemplate({ pageContext, path, data }: PostTemplateProps) {
             <Typography variant="body1" align="center">
               Would you like to report something?
               <br />
-              <Link href={gist.url} target="_blank">
+              <Link href={gist.url} target="_blank" rel="noreferrer">
                 Leave a comment on github.
               </Link>
             </Typography>

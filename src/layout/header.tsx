@@ -70,18 +70,37 @@ function Header({ siteTitle = '', onToggleTheme, theme }: HeaderProps) {
             </Box>
           </Hidden>
 
-          <IconButton component={GatsbyLink} to="/about" color="inherit">
+          <IconButton
+            aria-label="About"
+            component={GatsbyLink}
+            to="/about"
+            color="inherit"
+          >
             <InfoIcon />
           </IconButton>
-          <IconButton color="inherit" onClick={onToggleTheme}>
+          <IconButton
+            aria-label="Switch theme"
+            color="inherit"
+            onClick={onToggleTheme}
+          >
             {theme === 'light' ? <Brightness3Icon /> : <WbSunnyIcon />}
           </IconButton>
 
           <Hidden xsDown>
-            <IconButton color="inherit" href={social.github} target="_blank">
+            <IconButton
+              aria-label="Github"
+              color="inherit"
+              href={social.github}
+              target="_blank"
+            >
               <GitHubIcon />
             </IconButton>
-            <IconButton color="inherit" href="/rss.xml" target="_blank">
+            <IconButton
+              aria-label="RSS"
+              color="inherit"
+              href="/rss.xml"
+              target="_blank"
+            >
               <RssFeedIcon />
             </IconButton>
           </Hidden>

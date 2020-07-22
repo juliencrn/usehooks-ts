@@ -34,7 +34,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     const prev = posts[i - 1] ? posts[i - 1] : posts[posts.length - 1]
 
     createPage({
-      path: post.frontmatter.path,
+      path: `${post.frontmatter.path}/`,
       component: path.resolve(`./src/templates/post.tsx`),
       context: {
         gist,
@@ -69,7 +69,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
    */
   pages.forEach(({ id, frontmatter }) => {
     createPage({
-      path: frontmatter.path,
+      path: `${frontmatter.path}/`,
       component: path.resolve(`./src/templates/page.tsx`),
       context: { pageId: id },
     })

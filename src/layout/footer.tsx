@@ -29,13 +29,23 @@ const Footer: FC = () => {
           </Link>
           , built with
           {` `}
-          <Link href="https://www.gatsbyjs.org" color="inherit" target="_blank">
+          <Link
+            href="https://www.gatsbyjs.org"
+            color="inherit"
+            target="_blank"
+            rel="noreferrer"
+          >
             Gatsby
           </Link>
           {` `}
           and
           {` `}
-          <Link href="https://material-ui.com/" color="inherit" target="_blank">
+          <Link
+            href="https://material-ui.com/"
+            color="inherit"
+            target="_blank"
+            rel="noreferrer"
+          >
             @Material-ui
           </Link>
           , written in{' '}
@@ -43,18 +53,29 @@ const Footer: FC = () => {
             href="https://www.typescriptlang.org"
             color="inherit"
             target="_blank"
+            rel="noreferrer"
           >
             Typescript
           </Link>
           {` `}
           by
           {` `}
-          <Link href={author.github} color="inherit" target="_blank">
+          <Link
+            href={author.github}
+            color="inherit"
+            target="_blank"
+            rel="noreferrer"
+          >
             {author.name}
           </Link>{' '}
           and hosted on
           {` `}
-          <Link href="https://www.netlify.com/" color="inherit" target="_blank">
+          <Link
+            href="https://www.netlify.com/"
+            color="inherit"
+            target="_blank"
+            rel="noreferrer"
+          >
             Netlify
           </Link>
           .

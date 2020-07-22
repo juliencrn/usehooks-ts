@@ -55,7 +55,7 @@ export const PoweredBy = () => {
   return (
     <Typography variant="body2" className={classes.powered}>
       Powered by{` `}
-      <Link href="https://algolia.com" target="_blank">
+      <Link href="https://algolia.com" target="_blank" rel="noreferrer">
         <Algolia /> Algolia
       </Link>
     </Typography>
@@ -71,7 +71,7 @@ export const ConnectedHits = connectHits(({ hits }) => {
           button
           key={hit.objectID}
           component={GatsbyLink}
-          to={hit.path}
+          to={`${hit.path}/`}
           className={classes.hit}
         >
           <Typography className={classes.title} variant="h6" component="span">
