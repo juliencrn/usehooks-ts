@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   title: {
-    fontFamily: 'Fira Code',
+    fontFamily: 'Fira Code, Monaco, monospace',
     wordBreak: 'break-all',
   },
 }))

@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   toolbar: {},
   title: {
     flexGrow: 1,
-    fontFamily: 'Fira Code',
+    fontFamily: 'Fira Code, Monaco, monospace',
   },
   link: {
     textDecoration: 'none',

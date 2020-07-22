@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: theme.spacing(3, 0),
     padding: theme.spacing(2, 1),
     borderRadius: 4,
-    fontFamily: 'fira code',
+    fontFamily: 'Fira Code, Monaco, monospace',
     overflowX: 'auto',
     boxShadow: theme.shadows[6],
   },

@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: theme.spacing(3, 0),
   },
   inlineCode: {
-    fontFamily: 'Fira Code',
+    fontFamily: 'Fira Code, Monaco, monospace',
     background:
       theme.palette.type === 'light'
         ? theme.palette.grey[300]

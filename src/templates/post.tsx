@@ -17,7 +17,7 @@ import { PageTemplate, Post, Gist } from '../interfaces'
 
 const useStyles = makeStyles((theme: Theme) => ({
   title: {
-    fontFamily: 'Fira Code',
+    fontFamily: 'Fira Code, Monaco, monospace',
     margin: theme.spacing(3, 0),
     wordBreak: 'break-all',
     [theme.breakpoints.up('md')]: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: theme.spacing(6, 0),
   },
   metaValue: {
-    fontFamily: 'Fira Code',
+    fontFamily: 'Fira Code, Monaco, monospace',
   },
 }))
 
