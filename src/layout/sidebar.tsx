@@ -15,7 +15,7 @@ import usePostList from '../hooks/usePostList'
 import { openDrawer, closeDrawer } from '../redux/appModule'
 import { RootState } from '../redux/store'
 
-const drawerWidth = 240
+const drawerWidth = 260
 
 const useStyles = makeStyles((theme: Theme) => ({
   drawer: {
@@ -37,6 +37,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   textMono: {
     fontFamily: 'Fira Code, monospace',
+  },
+  active: {
+    color: theme.palette.primary.main,
+    fontWeight: theme.typography.fontWeightBold,
   },
 }))
 
@@ -87,19 +91,12 @@ function Sidebar({ matches }: SidebarProps) {
         <div className={classes.scrollable}>
           <Divider />
           <List>
-            {/* <ListItem
-              button
-              to="/"
-              component={GatsbyLink}
-              onClick={onClickLink}
-            >
-              <ListItemText primary="Introduction" />
-            </ListItem> */}
             <ListItem
               button
               to="/about"
               component={GatsbyLink}
               onClick={onClickLink}
+              activeClassName={classes.active}
             >
               <ListItemText primary="About" />
             </ListItem>
@@ -115,6 +112,7 @@ function Sidebar({ matches }: SidebarProps) {
                 key={frontmatter.path}
                 component={GatsbyLink}
                 onClick={onClickLink}
+                activeClassName={classes.active}
               >
                 <ListItemText
                   primaryTypographyProps={{ className: classes.textMono }}
