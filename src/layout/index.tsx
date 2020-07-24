@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   content: {
     flex: 1,
     display: 'flex',
+    flexDirection: 'column',
     '& #gatsby-focus-wrapper': {
       display: 'flex',
       flexDirection: 'column',
