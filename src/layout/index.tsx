@@ -22,7 +22,6 @@ import './style.css'
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     display: 'flex',
-    minHeight: '100vh',
   },
   topGutter: {
     ...theme.mixins.toolbar,
@@ -36,7 +35,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   content: {
     flex: 1,
-    marginBottom: theme.spacing(2),
+    display: 'flex',
+    '& #gatsby-focus-wrapper': {
+      display: 'flex',
+      flexDirection: 'column',
+      flex: 1,
+    },
   },
 }))
 

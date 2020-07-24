@@ -24,10 +24,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   // Range allMdx into "post" or "page"
   const { posts, pages } = separateAllMdx(results.data.allMdx.edges)
 
-  // For postList pagination
-  const postsPerPage = 5
-  const numPages = Math.ceil(posts.length / postsPerPage)
-
   await Promise.all([
     /**
      * Create posts
@@ -45,22 +41,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           postId: post.id,
           nextId: next.id,
           prevId: prev.id,
-        },
-      })
-    }),
-
-    /**
-     * Create posts list
-     */
-    ...Array.from({ length: numPages }).map((_, i) => {
-      createPage({
-        path: i === 0 ? `/` : `/${i + 1}`,
-        component: path.resolve(`./src/templates/postList.tsx`),
-        context: {
-          numPages,
-          currentPage: i + 1,
-          skip: i * postsPerPage,
-          limit: postsPerPage,
         },
       })
     }),
