@@ -9,13 +9,16 @@ import Box from '@material-ui/core/Box'
 import Divider from '@material-ui/core/Divider'
 import Grid from '@material-ui/core/Grid'
 
-import Layout from '../layout'
 import SEO from '../components/seo'
 import MdxRenderer from '../components/mdxRenderer'
 import Code from '../components/code'
 import { PageTemplate, Post, Gist } from '../interfaces'
+import { Container } from '@material-ui/core'
 
 const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    marginTop: theme.spacing(8),
+  },
   title: {
     fontFamily: 'Fira Code, monospace',
     margin: theme.spacing(3, 0),
@@ -59,7 +62,7 @@ function PostTemplate({ pageContext, path, data }: PostTemplateProps) {
   })
 
   return (
-    <Layout container>
+    <Container className={classes.root} maxWidth="md">
       <SEO title={title} description={excerpt} path={path} isPost />
 
       <Typography variant="h3" component="h1" className={classes.title}>
@@ -105,7 +108,7 @@ function PostTemplate({ pageContext, path, data }: PostTemplateProps) {
           </Grid>
         </Grid>
       </Box>
-    </Layout>
+    </Container>
   )
 }
 

@@ -1,11 +1,10 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { navigate, graphql } from 'gatsby'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 
 import Container from '@material-ui/core/Container'
 import Pagination from '@material-ui/lab/Pagination'
 
-import Layout from '../layout'
 import SEO from '../components/seo'
 import { PageTemplate, Post } from '../interfaces'
 import PostCard from '../components/PostCard'
@@ -46,7 +45,7 @@ function PostListTemplate({ pageContext, path, data }: PostListProps) {
   }
 
   return (
-    <Layout>
+    <>
       <SEO title={title} description={description} path={path} />
 
       <Hero title={title} description={description} />
@@ -66,7 +65,7 @@ function PostListTemplate({ pageContext, path, data }: PostListProps) {
           />
         </div>
       </Container>
-    </Layout>
+    </>
   )
 }
 

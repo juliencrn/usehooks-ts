@@ -3,7 +3,6 @@ import { navigate } from 'gatsby'
 
 import Container from '@material-ui/core/Container'
 
-import Layout from '../layout'
 import SEO from '../components/seo'
 import Hero from '../components/hero'
 
@@ -26,7 +25,7 @@ function TestPage() {
   }
 
   return (
-    <Layout>
+    <>
       <SEO title="Tests page" />
 
       <Hero
@@ -37,7 +36,7 @@ function TestPage() {
       <Container maxWidth="md">
         <Component />
       </Container>
-    </Layout>
+    </>
   )
 }
 

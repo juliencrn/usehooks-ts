@@ -1,6 +1,6 @@
 import React from 'react'
-import Headroom from 'react-headroom'
 import { Link as GatsbyLink } from 'gatsby'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { makeStyles, Theme } from '@material-ui/core/styles'
 
@@ -11,15 +11,17 @@ import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import Box from '@material-ui/core/Box'
 import Hidden from '@material-ui/core/Hidden'
+import MenuIcon from '@material-ui/icons/Menu'
 
 import WbSunnyIcon from '@material-ui/icons/WbSunny'
 import Brightness3Icon from '@material-ui/icons/Brightness3'
 import GitHubIcon from '@material-ui/icons/GitHub'
-import InfoIcon from '@material-ui/icons/Info'
 import RssFeedIcon from '@material-ui/icons/RssFeed'
 
 import useSiteMetadata from '../hooks/useSiteMetadata'
 import Search from '../components/search'
+import { openDrawer, toggleTheme } from '../redux/appModule'
+import { RootState } from '../redux/store'
 
 const useStyles = makeStyles((theme: Theme) => ({
   appBar: {
@@ -28,6 +30,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         ? theme.gradient.primary
         : theme.palette.background.paper,
     color: theme.palette.common.white,
+    zIndex: theme.zIndex.drawer + 1,
   },
   toolbar: {},
   title: {
@@ -41,72 +44,81 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export interface HeaderProps {
   siteTitle?: string
-  theme: 'light' | 'dark'
-  onToggleTheme: () => void
+  matches: boolean
 }
 
-function Header({ siteTitle = '', onToggleTheme, theme }: HeaderProps) {
+function Header({ siteTitle = '', matches }: HeaderProps) {
   const classes = useStyles()
   const { social } = useSiteMetadata()
+  const dispatch = useDispatch()
+  const { theme } = useSelector((state: RootState) => state.app)
+
+  const handleOpenDrawer = () => {
+    dispatch(openDrawer())
+  }
+
+  const handleToggleTheme = () => {
+    dispatch(toggleTheme())
+  }
 
   return (
-    <Headroom>
-      <AppBar component="header" position="static" className={classes.appBar}>
-        <Toolbar className={classes.toolbar}>
-          <Typography variant="h6" className={classes.title}>
-            <Link
-              to="/"
-              component={GatsbyLink}
-              color="inherit"
-              className={classes.link}
-            >
-              {siteTitle}
-            </Link>
-          </Typography>
-
-          <Hidden xsDown>
-            <Box mx={2}>
-              <Search />
-            </Box>
-          </Hidden>
-
+    <AppBar component="header" position="fixed" className={classes.appBar}>
+      <Toolbar className={classes.toolbar}>
+        {!matches && (
           <IconButton
-            aria-label="About"
+            aria-label="Open menu"
+            onClick={handleOpenDrawer}
+            color="inherit"
+          >
+            <MenuIcon />
+          </IconButton>
+        )}
+
+        <Typography variant="h6" className={classes.title}>
+          <Link
+            to="/"
             component={GatsbyLink}
-            to="/about"
             color="inherit"
+            className={classes.link}
           >
-            <InfoIcon />
+            {siteTitle}
+          </Link>
+        </Typography>
+
+        <Hidden xsDown>
+          <Box mx={2}>
+            <Search />
+          </Box>
+        </Hidden>
+
+        <IconButton
+          aria-label="Switch theme"
+          color="inherit"
+          onClick={handleToggleTheme}
+        >
+          {theme === 'light' ? <Brightness3Icon /> : <WbSunnyIcon />}
+        </IconButton>
+
+        <Hidden xsDown>
+          <IconButton
+            aria-label="Github"
+            color="inherit"
+            href={social.github}
+            target="_blank"
+          >
+            <GitHubIcon />
           </IconButton>
           <IconButton
-            aria-label="Switch theme"
+            aria-label="RSS"
             color="inherit"
-            onClick={onToggleTheme}
+            href="/rss.xml"
+            target="_blank"
           >
-            {theme === 'light' ? <Brightness3Icon /> : <WbSunnyIcon />}
+            <RssFeedIcon />
           </IconButton>
-
-          <Hidden xsDown>
-            <IconButton
-              aria-label="Github"
-              color="inherit"
-              href={social.github}
-              target="_blank"
-            >
-              <GitHubIcon />
-            </IconButton>
-            <IconButton
-              aria-label="RSS"
-              color="inherit"
-              href="/rss.xml"
-              target="_blank"
-            >
-              <RssFeedIcon />
-            </IconButton>
-          </Hidden>
-        </Toolbar>
-      </AppBar>
-    </Headroom>
+        </Hidden>
+      </Toolbar>
+    </AppBar>
   )
 }
 

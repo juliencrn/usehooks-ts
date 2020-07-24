@@ -4,7 +4,6 @@ import { graphql } from 'gatsby'
 import Container from '@material-ui/core/Container'
 import Box from '@material-ui/core/Box'
 
-import Layout from '../layout'
 import SEO from '../components/seo'
 import MdxRenderer from '../components/mdxRenderer'
 import { PageTemplate, Page } from '../interfaces'
@@ -20,7 +19,7 @@ function PostTemplate({ path, data }: PageTemplateProps) {
   const { title, excerpt } = frontmatter
 
   return (
-    <Layout>
+    <>
       <SEO title={title} description={excerpt} path={path} />
 
       <Hero title={title} description={excerpt} />
@@ -29,7 +28,7 @@ function PostTemplate({ path, data }: PageTemplateProps) {
         <MdxRenderer>{body}</MdxRenderer>
         <Box py={3} />
       </Container>
-    </Layout>
+    </>
   )
 }
 
