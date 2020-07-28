@@ -15,7 +15,7 @@ import usePostList from '../hooks/usePostList'
 import { openDrawer, closeDrawer } from '../redux/appModule'
 import { RootState } from '../redux/store'
 
-const drawerWidth = 260
+const drawerWidth = 280
 
 const useStyles = makeStyles((theme: Theme) => ({
   drawer: {
