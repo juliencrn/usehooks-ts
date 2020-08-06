@@ -34,7 +34,6 @@
     "@mdx-js/react": "^1.5.8",
     "@n8tb1t/use-scroll-position": "^1.0.43",
     "@reduxjs/toolkit": "^1.4.0",
-    "@types/axios": "^0.14.0",
     "axios": "^0.19.2",
     "date-fns": "^2.14.0",
     "deepmerge": "^4.2.2",
@@ -64,6 +63,7 @@
     "redux": "^4.0.5"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/date-fns": "^2.6.0",
     "@types/mdx-js__react": "^1.5.1",
     "@types/node": "^13.13.2",
