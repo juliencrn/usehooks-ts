@@ -4,7 +4,6 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-/* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 
@@ -28,10 +27,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     /**
      * Create posts
      */
-    ...posts.map(async (post, i) => {
+    ...posts.map(async post => {
       const gist = await getGist(post)
-      const next = posts[i + 1] ? posts[i + 1] : posts[0]
-      const prev = posts[i - 1] ? posts[i - 1] : posts[posts.length - 1]
 
       createPage({
         path: `${post.frontmatter.path}/`,
@@ -39,8 +36,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         context: {
           gist,
           postId: post.id,
-          nextId: next.id,
-          prevId: prev.id,
         },
       })
     }),

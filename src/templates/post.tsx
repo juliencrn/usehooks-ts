@@ -1,6 +1,6 @@
 import React from 'react'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
-import { Link as GatsbyLink, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 
 import Typography from '@material-ui/core/Typography'
@@ -46,16 +46,13 @@ export interface PostTemplateProps extends PageTemplate {
   }
   data: {
     post: Post
-    next: Post
-    prev: Post
   }
 }
 
 function PostTemplate({ pageContext, path, data }: PostTemplateProps) {
   const classes = useStyles()
   const { gist } = pageContext
-  const { next, post } = data
-  const { body, excerpt, frontmatter } = post
+  const { body, excerpt, frontmatter } = data.post
   const title = `${frontmatter.title}()`
   const date = formatDistanceToNow(new Date(gist.updated), {
     addSuffix: true,
@@ -92,20 +89,6 @@ function PostTemplate({ pageContext, path, data }: PostTemplateProps) {
               </Link>
             </Typography>
           </Grid>
-          <Divider orientation="vertical" flexItem />
-          <Grid item xs={12} md>
-            <Typography variant="body1" align="center">
-              Next hook:
-              <br />
-              <Link
-                to={next.frontmatter.path}
-                className={classes.metaValue}
-                component={GatsbyLink}
-              >
-                {`${next.frontmatter.title}()`}
-              </Link>
-            </Typography>
-          </Grid>
         </Grid>
       </Box>
     </Container>
@@ -115,14 +98,8 @@ function PostTemplate({ pageContext, path, data }: PostTemplateProps) {
 export default PostTemplate
 
 export const pageQuery = graphql`
-  query($postId: String!, $nextId: String!, $prevId: String!) {
+  query($postId: String!) {
     post: mdx(id: { eq: $postId }) {
-      ...Post
-    }
-    prev: mdx(id: { eq: $prevId }) {
-      ...Post
-    }
-    next: mdx(id: { eq: $nextId }) {
       ...Post
     }
   }
