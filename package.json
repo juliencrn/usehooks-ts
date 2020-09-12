@@ -15,14 +15,14 @@
   "scripts": {
     "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
     "develop": "gatsby develop",
-    "start": "yarn develop",
+    "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "lint": "run-p lint:**",
     "lint:prettier": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "lint:eslint": "eslint 'src/**/*.{ts,tsx}'",
     "lint:typescript": "tsc",
-    "plop": "plop && yarn lint:prettier",
+    "plop": "plop && npm run lint:prettier",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
@@ -81,7 +81,6 @@
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^3.0.0",
-    "graphql": "14.0.0",
     "npm-run-all": "^4.1.5",
     "plop": "^2.7.1",
     "prettier": "^2.0.4",

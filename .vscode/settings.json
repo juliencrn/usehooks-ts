@@ -15,7 +15,6 @@
     "typescriptreact"
   ],
   "files.exclude": {
-    "node_modules/wonka/esy.lock/**/*": false,
     "**/logs": true,
     "**/*.log": true,
     "**/npm-debug.log*": true,
@@ -43,11 +42,7 @@
     "**/.env.example": false,
     "**/.cache/": true,
     "**/public": true,
-    "**/.DS_Store": true,
-    "**/yarn-error.log": true,
-    "**/.pnp/": true,
-    "**/.pnp.js": true,
-    "**/.yarn-integrity": true
+    "**/.DS_Store": true
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
