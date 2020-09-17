@@ -11,7 +11,7 @@ This React Hook detects visibility of a component on the viewport using the [`In
 
 It can be very useful to lazy-loading of images, implementing "infinite scrolling" or starting animations for example.
 
-It takes `root`, `rootMargin` and `threshold` arguments from the [native `IntersectionObserver` API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) and takes `onAppearOnly` to only catch the first appearance too.
+It takes `root`, `rootMargin` and `threshold` arguments from the [native `IntersectionObserver` API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) and takes `freezeOnceVisible` to only catch the first appearance too.
 
 The returned object contains the full IntersectionObserver's `entry` object (with `isVisible`property in addition) and a [React ref](https://reactjs.org/docs/refs-and-the-dom.html).
 
