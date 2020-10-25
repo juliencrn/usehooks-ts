@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 // Hook
 export default function useScreen(): Screen | undefined {
   const getScreen = () => {
-    console.log('getScreen() called!')
     if (typeof window !== 'undefined') {
       return window.screen
     }
