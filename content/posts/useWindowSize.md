@@ -9,6 +9,4 @@ gistFilename: useWindowSize.tsx
 
 Easily retrieve window dimensions with this Hook React which also works onRezise.
 
-<br />
-
-=> Similar hook : (useScreen)[https://usehooks-typescript.com/use-screen]
+This hook uses [`useScreen`](/use-screen) internally.

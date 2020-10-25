@@ -11,4 +11,4 @@ Easily retrieve `window.screen` object with this Hook React which also works onR
 
 <br />
 
-=> Similar hook : (useWindowSize)[https://usehooks-typescript.com/use-window-size]
+=> Similar hook : [useWindowSize](/use-window-size)
