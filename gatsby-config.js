@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/camelcase */
-const moment = require('moment')
-const formatDistanceToNow = require('date-fns/formatDistanceToNow')
 const algoliaQueries = require('./gatsby/algolia')
 const queries = require('./gatsby/queries')
 
