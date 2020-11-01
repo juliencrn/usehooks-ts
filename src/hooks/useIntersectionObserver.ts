@@ -1,17 +1,21 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState, RefObject } from 'react'
 
-type Args = IntersectionObserverInit & { freezeOnceVisible?: boolean }
-type Return<T> = [(node: T) => void, IntersectionObserverEntry?]
+interface Args<T> extends IntersectionObserverInit {
+  elementRef: RefObject<T>
+  freezeOnceVisible?: boolean
+}
+
+type ReturnType = [boolean, IntersectionObserverEntry | undefined]
 
 function useIntersectionObserver<T extends HTMLElement = HTMLDivElement>({
+  elementRef,
   threshold = 0.1,
   root = null,
   rootMargin = '0%',
   freezeOnceVisible = false,
-}: Args): Return<T> {
+}: Args<T>): ReturnType {
   const observer = useRef<IntersectionObserver | null>(null)
   const [entry, setEntry] = useState<IntersectionObserverEntry>()
-  const [node, setNode] = useState<T>() // DOM Ref
 
   const isClient = typeof window !== `undefined`
   const hasIOSupport = isClient && !!window.IntersectionObserver
@@ -23,7 +27,9 @@ function useIntersectionObserver<T extends HTMLElement = HTMLDivElement>({
   }
 
   useEffect(() => {
-    if (!hasIOSupport || noUpdate || typeof node === `undefined`) {
+    const node = elementRef?.current // DOM Ref
+
+    if (!hasIOSupport || noUpdate || !node) {
       return
     }
 
@@ -40,9 +46,9 @@ function useIntersectionObserver<T extends HTMLElement = HTMLDivElement>({
     return () => {
       currentObserver.disconnect()
     }
-  }, [node, threshold, root, rootMargin, noUpdate])
+  }, [elementRef, threshold, root, rootMargin, noUpdate])
 
-  return [setNode, entry]
+  return [!!entry?.isIntersecting, entry]
 }
 
 export default useIntersectionObserver
