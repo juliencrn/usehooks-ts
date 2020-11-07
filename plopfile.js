@@ -18,7 +18,7 @@ module.exports = function (plop) {
           date: format(new Date(), 'yyyy-MM-dd'),
         },
         type: 'add',
-        path: 'content/posts/{{camelCase name}}.md',
+        path: 'src/content/posts/{{camelCase name}}.md',
         templateFile: 'plop-templates/post.md.hbs',
       },
     ],

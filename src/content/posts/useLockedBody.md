@@ -14,6 +14,7 @@ A good example of a use case is when you need to open a modal.
 <br />
 
 For flexibility, this hook offers 2 APIs:
+
 - Use it as we would use a useState (example 1)
 - Use it with our own logic, coming from a props or redux for example (example 2)
 
