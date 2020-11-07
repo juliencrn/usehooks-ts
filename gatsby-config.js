@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/camelcase */
-const algoliaQueries = require('./gatsby/algolia')
-const queries = require('./gatsby/queries')
+const algoliaQueries = require('./legacy/algolia')
+const feed = require('./legacy/feedSerializer')
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -69,26 +69,12 @@ module.exports = {
       options: {
         feeds: [
           {
-            query: `${queries.postQuery}`,
+            query: `${feed.query}`,
             output: '/rss.xml',
             title: `RSS Feed - ${siteMetadata.title}`,
             description: `${siteMetadata.description}`,
-            serialize: ({ query: { posts } }) => {
-              return posts.edges.map(({ node }) => {
-                const { title, path, date } = node.frontmatter
-                return {
-                  title: `${title}`,
-                  description: node.excerpt || '',
-                  author: siteMetadata.author.name,
-                  date,
-                  // date: formatDistanceToNow(new Date(gist.updated), {
-                  //   addSuffix: true,
-                  // }),
-                  url: `${siteMetadata.siteUrl}${path}`,
-                  guid: `${siteMetadata.siteUrl}${path}`,
-                }
-              })
-            },
+            serialize: ({ query }) =>
+              feed.serializer(query.posts, siteMetadata),
           },
         ],
       },
@@ -124,6 +110,7 @@ module.exports = {
         icon: `src/images/typescript.png`, // This path is relative to the root of the site.
       },
     },
+    // TODO Can I remove it ? To Test
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
