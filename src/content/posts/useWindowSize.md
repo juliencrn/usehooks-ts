@@ -1,5 +1,4 @@
 ---
-templateKey: post
 title: useWindowSize
 path: '/use-window-size'
 date: '2020-06-09'

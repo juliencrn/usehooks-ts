@@ -1,5 +1,4 @@
 ---
-templateKey: post
 title: useLocalStorage
 path: '/use-local-storage'
 date: '2020-04-20'

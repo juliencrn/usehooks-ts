@@ -1,5 +1,4 @@
 ---
-templateKey: post
 title: useInterval
 path: '/use-interval'
 date: '2020-04-27'

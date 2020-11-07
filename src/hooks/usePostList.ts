@@ -6,20 +6,18 @@ function usePostList(): Post[] {
   const data = useStaticQuery(graphql`
     {
       allMdx(
-        filter: { frontmatter: { templateKey: { eq: "post" } } }
+        filter: { fileAbsolutePath: { regex: "/content/posts/" } }
         limit: 1000
         sort: { fields: frontmatter___title, order: ASC }
       ) {
-        edges {
-          node {
-            ...Post
-          }
+        nodes {
+          ...Post
         }
       }
     }
   `)
 
-  return data.allMdx.edges.map(({ node }: { node: Post }) => node)
+  return data.allMdx.nodes
 }
 
 export default usePostList

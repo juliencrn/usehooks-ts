@@ -1,5 +1,4 @@
 ---
-templateKey: post
 title: useElementSize
 path: '/use-element-size'
 date: '2020-06-29'

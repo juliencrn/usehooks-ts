@@ -1,5 +1,4 @@
 ---
-templateKey: post
 title: useScreen
 path: '/use-screen'
 date: '2020-09-28'

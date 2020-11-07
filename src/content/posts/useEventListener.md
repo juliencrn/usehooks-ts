@@ -1,5 +1,4 @@
 ---
-templateKey: post
 title: useEventListener
 path: '/use-event-listener'
 date: '2020-06-28'

@@ -1,5 +1,4 @@
 ---
-templateKey: post
 title: useIntersectionObserver
 path: '/use-intersection-observer'
 date: '2020-07-28'

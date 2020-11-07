@@ -1,5 +1,4 @@
 ---
-templateKey: post
 title: useOnClickOutside
 path: '/use-on-click-outside'
 date: '2020-05-08'

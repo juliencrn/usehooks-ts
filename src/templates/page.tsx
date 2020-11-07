@@ -35,8 +35,8 @@ function PostTemplate({ path, data }: PageTemplateProps) {
 export default PostTemplate
 
 export const pageQuery = graphql`
-  query($pageId: String!) {
-    page: mdx(id: { eq: $pageId }) {
+  query($id: String!) {
+    page: mdx(id: { eq: $id }) {
       ...Page
     }
   }

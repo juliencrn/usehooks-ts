@@ -1,5 +1,4 @@
 ---
-templateKey: post
 title: useHover
 path: '/use-hover'
 date: '2020-04-22'

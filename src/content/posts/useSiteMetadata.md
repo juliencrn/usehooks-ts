@@ -1,5 +1,4 @@
 ---
-templateKey: post
 title: useSiteMetadata
 path: '/use-site-metadata'
 date: '2020-06-09'

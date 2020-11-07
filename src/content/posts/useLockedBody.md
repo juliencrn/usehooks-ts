@@ -1,5 +1,4 @@
 ---
-templateKey: post
 title: useLockedBody
 path: '/use-locked-body'
 date: '2020-11-01'

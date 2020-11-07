@@ -1,5 +1,4 @@
 ---
-templateKey: post
 title: useScript
 path: '/use-script'
 date: '2020-09-12'

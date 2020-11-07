@@ -1,5 +1,4 @@
 ---
-templateKey: post
 title: useIsClient
 path: '/use-is-client'
 date: '2020-09-28'

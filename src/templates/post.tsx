@@ -51,12 +51,14 @@ export interface PostTemplateProps extends PageTemplate {
 
 function PostTemplate({ pageContext, path, data }: PostTemplateProps) {
   const classes = useStyles()
-  const { gist } = pageContext
+  // const { gist } = pageContext
   const { body, excerpt, frontmatter } = data.post
   const title = `${frontmatter.title}()`
-  const date = formatDistanceToNow(new Date(gist.updated), {
-    addSuffix: true,
-  })
+  // const date = formatDistanceToNow(new Date(gist.updated), {
+  //   addSuffix: true,
+  // })
+
+  console.log({ pageContext, path, data })
 
   return (
     <Container className={classes.root} maxWidth="md">
@@ -68,7 +70,7 @@ function PostTemplate({ pageContext, path, data }: PostTemplateProps) {
 
       <MdxRenderer>{body}</MdxRenderer>
 
-      <Code code={gist.code} />
+      {/* <Code code={gist.code} /> */}
 
       <Box className={classes.meta}>
         <Grid container alignItems="center" alignContent="center" spacing={3}>
@@ -76,7 +78,7 @@ function PostTemplate({ pageContext, path, data }: PostTemplateProps) {
             <Typography variant="body1" align="center">
               Updated:
               <br />
-              {date}
+              {/* {date} */}
             </Typography>
           </Grid>
           <Divider orientation="vertical" flexItem />
@@ -84,9 +86,9 @@ function PostTemplate({ pageContext, path, data }: PostTemplateProps) {
             <Typography variant="body1" align="center">
               Would you like to report something?
               <br />
-              <Link href={gist.url} target="_blank" rel="noreferrer">
+              {/* <Link href={gist.url} target="_blank" rel="noreferrer">
                 Leave a comment on github.
-              </Link>
+              </Link> */}
             </Typography>
           </Grid>
         </Grid>
@@ -98,8 +100,8 @@ function PostTemplate({ pageContext, path, data }: PostTemplateProps) {
 export default PostTemplate
 
 export const pageQuery = graphql`
-  query($postId: String!) {
-    post: mdx(id: { eq: $postId }) {
+  query($id: String!) {
+    post: mdx(id: { eq: $id }) {
       ...Post
     }
   }

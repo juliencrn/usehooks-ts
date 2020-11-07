@@ -1,5 +1,4 @@
 ---
-templateKey: post
 title: useDebounce
 path: '/use-debounce'
 date: '2020-06-09'

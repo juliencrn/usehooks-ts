@@ -1,5 +1,4 @@
 ---
-templateKey: post
 title: useImageOnLoad
 path: '/use-image-on-load'
 date: '2020-08-06'
