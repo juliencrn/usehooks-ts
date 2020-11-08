@@ -16,7 +16,7 @@ import Box from '@material-ui/core/Box'
 
 import Input from './input'
 import { PoweredBy, ConnectedHits } from './hitComps'
-import useOnClickOutside from '../../hooks/useOnClickOustide'
+import useOnClickOutside from '../../hooks/useOnClickOutside'
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APP_ID || '',
