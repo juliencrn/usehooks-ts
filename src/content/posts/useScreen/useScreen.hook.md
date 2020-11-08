@@ -1,4 +1,5 @@
-```typescriptimport { useState, useEffect } from 'react'
+```typescript
+import { useState, useEffect } from 'react'
 
 // Hook
 export default function useScreen(): Screen | undefined {
@@ -25,4 +26,4 @@ export default function useScreen(): Screen | undefined {
 
   return screen
 }
-```
+```

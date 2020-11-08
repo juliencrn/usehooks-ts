@@ -1,4 +1,5 @@
-```typescriptimport { useState, useEffect, RefObject } from 'react'
+```typescript
+import { useState, useEffect, RefObject } from 'react'
 
 export default function useHover<T extends HTMLElement = HTMLElement>(
   elementRef: RefObject<T>,
@@ -23,4 +24,4 @@ export default function useHover<T extends HTMLElement = HTMLElement>(
 
   return !!value
 }
-```
+```

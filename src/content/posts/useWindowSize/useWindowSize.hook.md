@@ -1,4 +1,5 @@
-```typescriptimport useScreen from './useScreen'
+```typescript
+import useScreen from './useScreen'
 
 interface WindowSize {
   width: number
@@ -13,4 +14,4 @@ export default function useWindowSize(): WindowSize {
     height: screen?.height || 0,
   }
 }
-```
+```
