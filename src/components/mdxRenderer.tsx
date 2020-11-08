@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     background:
       theme.palette.type === 'light'
         ? theme.palette.grey[300]
-        : theme.palette.grey[700],
+        : theme.palette.background.paper,
     padding: theme.spacing(0.4),
     borderRadius: 4,
   },

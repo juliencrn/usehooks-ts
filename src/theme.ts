@@ -78,11 +78,16 @@ const light: ThemeOptions = {
   },
 }
 
+// See: https://github.com/dracula/dracula-theme#color-palette
 const dark: ThemeOptions = {
   palette: {
     type: 'dark',
     primary: {
-      main: blue[300],
+      main: '#ff79c6',
+    },
+    background: {
+      default: '#44475a',
+      paper: '#282a36',
     },
   },
 }
