@@ -1,77 +1,69 @@
 import { GatsbyNode } from 'gatsby'
 import path from 'path'
-// import fetch from 'node-fetch'
 
-interface MdxNode {
+interface Hook {
+  id: string
+  fields: { hookName: string }
+}
+interface Page {
   id: string
   fileAbsolutePath: string
-}
-interface Page extends MdxNode {
   frontmatter: {
     path?: string
   }
 }
 
-interface Post extends MdxNode {
-  frontmatter: {
-    path?: string
-    gistFilename?: string
-    gistId?: string
+interface Post {
+  id: string
+  fields: {
+    hookName: string
+    path: string
   }
 }
-
-// const fetchGist = async (gistId: string) => {
-//   const url = `https://api.github.com/gists/${gistId}`
-//   const response = await fetch(url, {
-//     headers: {
-//       Authorization: `token ${process.env.GATSBY_GITHUB_TOKEN}`,
-//     },
-//   })
-//   const data = await response.json()
-//   return data
-// }
 
 interface Query {
   pages: { nodes: Page[] }
   posts: { nodes: Post[] }
+  hooks: { nodes: Hook[] }
 }
 
 export const createPages: GatsbyNode['createPages'] = async args => {
   const { actions, graphql, reporter } = args
 
-  const results = await graphql<Query>(`
-    {
-      pages: allMdx(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 1000
-        filter: { fileAbsolutePath: { regex: "/content/pages/" } }
-      ) {
-        nodes {
-          id
-          fileAbsolutePath
-          frontmatter {
-            path
+  const results = await graphql<Query>(
+    `
+      {
+        pages: allMdx(filter: { fields: { type: { eq: "page" } } }) {
+          nodes {
+            id
+            fileAbsolutePath
+            frontmatter {
+              path
+            }
           }
         }
-      }
 
-      posts: allMdx(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 1000
-        filter: { fileAbsolutePath: { regex: "/content/posts/" } }
-      ) {
-        nodes {
-          id
-          fileAbsolutePath
-          frontmatter {
-            path
-            gistFilename
-            gistId
+        hooks: allMdx(filter: { fields: { type: { eq: "hook" } } }) {
+          nodes {
+            id
+            fields {
+              hookName
+            }
+          }
+        }
+
+        posts: allMdx(filter: { fields: { type: { eq: "post" } } }) {
+          nodes {
+            id
+            fields {
+              hookName
+              path
+            }
           }
         }
       }
-    }
-  `)
+    `,
+  )
 
   if (results.errors) {
     reporter.panicOnBuild(
@@ -85,6 +77,7 @@ export const createPages: GatsbyNode['createPages'] = async args => {
     const {
       pages: { nodes: pages },
       posts: { nodes: posts },
+      hooks: { nodes: hooks },
     } = results.data
 
     if (pages.length > 0) {
@@ -95,100 +88,44 @@ export const createPages: GatsbyNode['createPages'] = async args => {
         }
 
         actions.createPage({
-          path: `${page.frontmatter.path}/`,
+          path: page.frontmatter.path,
           component: path.resolve(`./src/templates/page.tsx`),
           context: { id: page.id },
         })
       })
     }
 
+    let postCreatedCount = 0
     if (posts.length > 0) {
-      posts.forEach(post => {
-        const { id, frontmatter, fileAbsolutePath } = post
+      posts.forEach(({ id, fields }) => {
+        // Check if have the corresponding hook
+        const hook = hooks.find(
+          ({ fields: { hookName } }) => hookName === fields.hookName,
+        )
 
-        if (!frontmatter?.path) {
-          reporter.warn(`"path" is missing in "${fileAbsolutePath}"`)
-          return
-        }
-        if (!frontmatter?.gistId) {
-          reporter.warn(`"gistId" is missing in "${fileAbsolutePath}"`)
-          return
-        }
-        if (!frontmatter?.gistFilename) {
-          reporter.warn(`"gistFilename" is missing in "${fileAbsolutePath}"`)
-          return
-        }
+        if (hook) {
+          const pageData = {
+            component: path.resolve(`./src/templates/post.tsx`),
+            context: {
+              id,
+              hookId: hook.id,
+            },
+          }
 
-        actions.createPage({
-          path: `${post.frontmatter.path}/`,
-          component: path.resolve(`./src/templates/post.tsx`),
-          context: {
-            id,
-          },
-        })
+          // Two URLs during the _Redirects
+          actions.createPage({ ...pageData, path: fields.path })
+          actions.createPage({ ...pageData, path: `/react-hook${fields.path}` })
+
+          postCreatedCount++
+        }
       })
+    }
+
+    if (postCreatedCount < posts.length) {
+      const percent = Math.round((postCreatedCount / posts.length) * 100)
+      reporter.warn(
+        `${postCreatedCount} / ${posts.length} (${percent}%) posts created`,
+      )
     }
   }
 }
-
-/*
-
-  posts: allMdx(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 1000
-        filter: { fileAbsolutePath: { regex: "/content/posts/" } }
-      ) {
-        nodes {
-          id
-          fileAbsolutePath
-          frontmatter {
-            path
-            gistFilename
-            gistId
-          }
-        }
-      }
-
-
-       if (posts.nodes) {
-      posts.nodes.map(async node => {
-        const errorMessage = messageMissingField(node)
-        const { id, frontmatter } = node
-
-        if (!frontmatter?.path) {
-          reporter.warn(errorMessage('path'))
-          return
-        }
-        if (!frontmatter?.gistId) {
-          reporter.warn(errorMessage('gistId'))
-          return
-        }
-        if (!frontmatter?.gistFilename) {
-          reporter.warn(errorMessage('gistFilename'))
-          return
-        }
-
-        // fetchGist(frontmatter.gistId)
-        //   .then(gist => {
-        //     actions.createPage({
-        //       path: `${frontmatter.path}/`,
-        //       component: path.resolve(`./src/templates/post.tsx`),
-        //       context: {
-        //         gist: {
-        //           url: gist.html_url,
-        //           updated: gist.updated_at,
-        //           code: gist.files[frontmatter.gistFilename as string].content,
-        //         },
-        //         postId: id,
-        //       },
-        //     })
-        //   })
-        //   .catch(() => {
-        //     reporter.warn(
-        //       `Cannot fetch Github Gists for "${node.frontmatter.path}"`,
-        //     )
-        //   })
-      })
-    }
-
-      */

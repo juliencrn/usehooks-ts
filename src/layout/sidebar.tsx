@@ -11,9 +11,12 @@ import ListItemText from '@material-ui/core/ListItemText'
 import IconButton from '@material-ui/core/IconButton'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 
-import usePostList from '../hooks/usePostList'
-import { openDrawer, closeDrawer } from '../redux/appModule'
 import { RootState } from '../redux/store'
+import { Post } from '../models'
+
+import { openDrawer, closeDrawer } from '../redux/appModule'
+import usePostList from '../hooks/private/usePostList'
+import useHookList from '../hooks/private/useHookList'
 
 const drawerWidth = 280
 
@@ -51,8 +54,19 @@ export interface SidebarProps {
 function Sidebar({ matches }: SidebarProps) {
   const classes = useStyles()
   const posts = usePostList()
+  const hooks = useHookList()
   const { drawerOpen } = useSelector((state: RootState) => state.app)
   const dispatch = useDispatch()
+
+  // Exclude posts without hook
+  const matchesPosts = hooks
+    .map(({ fields: { hookName } }) =>
+      posts.find(({ fields }) => fields.hookName === hookName),
+    )
+    .reduce(
+      (prev, curr) => (typeof curr !== 'undefined' ? [...prev, curr] : prev),
+      [] as Post[],
+    )
 
   const handleClose = () => {
     dispatch(closeDrawer())
@@ -105,11 +119,11 @@ function Sidebar({ matches }: SidebarProps) {
 
           <Divider />
           <List>
-            {posts.map(({ frontmatter }) => (
+            {matchesPosts.map(({ frontmatter, fields }) => (
               <ListItem
                 button
-                to={frontmatter.path}
-                key={frontmatter.path}
+                to={`/react-hook${fields.path}`}
+                key={fields.path}
                 component={GatsbyLink}
                 onClick={onClickLink}
                 activeClassName={classes.active}

@@ -3,31 +3,32 @@ module.exports.feed = {
     posts: allMdx(
       sort: { order: DESC, fields: [frontmatter___date] },
       limit: 1000,
-      filter: { fileAbsolutePath: { regex: "/content/posts/" } }
+      filter: { fields: { type: { eq: "post" } } }
     ) {
       nodes {
         id
         excerpt(pruneLength: 155)
         shortDescription: excerpt(pruneLength: 280)
-        frontmatter {
+        fields {
           path
+        }
+        frontmatter {
           title
-          gistId
-          gistFilename
         }
       }
     }
   }`,
   serializer: (posts, siteMetadata) => {
-    return posts.nodes.map(({ frontmatter, excerpt }) => {
-      const { title, path, date } = frontmatter
+    return posts.nodes.map(({ frontmatter, excerpt, fields }) => {
+      const { title, date } = frontmatter
+      const url = `${siteMetadata.siteUrl}/react-hook${fields.path}`
       return {
         title: `${title}`,
         description: excerpt || '',
         author: siteMetadata.author.name,
         date,
-        url: `${siteMetadata.siteUrl}${path}`,
-        guid: `${siteMetadata.siteUrl}${path}`,
+        url,
+        guid: url,
       }
     })
   },

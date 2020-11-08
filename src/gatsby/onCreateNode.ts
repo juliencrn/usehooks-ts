@@ -1,5 +1,13 @@
 import { CreateNodeArgs } from 'gatsby'
 
+const camelToKebabCase = (str: string): string =>
+  str
+    .split('')
+    .map(letter =>
+      letter.match('[A-Z]') ? `-${letter.toLowerCase()}` : letter,
+    )
+    .join('')
+
 export async function onCreateNode({ node, actions }: CreateNodeArgs) {
   const { createNodeField } = actions
 
@@ -20,6 +28,12 @@ export async function onCreateNode({ node, actions }: CreateNodeArgs) {
         node,
         name: `type`,
         value: filename.match('.hook.md') ? 'hook' : 'post',
+      })
+
+      createNodeField({
+        node,
+        name: 'path',
+        value: `/${camelToKebabCase(filename.split('.')[0])}`,
       })
     }
 

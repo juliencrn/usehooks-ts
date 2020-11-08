@@ -6,7 +6,7 @@ import Box from '@material-ui/core/Box'
 
 import SEO from '../components/seo'
 import MdxRenderer from '../components/mdxRenderer'
-import { PageTemplate, Page } from '../interfaces'
+import { PageTemplate, Page } from '../models'
 import Hero from '../components/hero'
 
 export interface PageTemplateProps extends PageTemplate {
