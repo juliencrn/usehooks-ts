@@ -9,3 +9,4 @@ require('ts-node').register()
 
 // typescript files
 exports.createPages = require('./src/gatsby/createPages').createPages
+exports.onCreateNode = require('./src/gatsby/onCreateNode').onCreateNode
