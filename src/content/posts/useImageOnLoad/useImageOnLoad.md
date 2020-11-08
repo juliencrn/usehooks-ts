@@ -1,9 +1,6 @@
 ---
 title: useImageOnLoad
-path: '/use-image-on-load'
 date: '2020-08-06'
-gistId: 'fc09dd67091e92ca1dbd5ebd4200b79e'
-gistFilename: useImageOnLoad.tsx
 ---
 
 A simple React Hook that helps you improve UX while images are loading. Rather than having an image that "unfolds" from top to bottom, we load a smaller version first which will be blurred and which will be replaced by the normal size image once loaded.

@@ -1,9 +1,6 @@
 ---
 title: useLocalStorage
-path: '/use-local-storage'
 date: '2020-04-20'
-gistId: '59598636c81071fd8c66af092fb02a09'
-gistFilename: useLocalStorage.tsx
 ---
 
 Persist the state with local storage so that it remains after a page refresh. This can be useful for a dark theme or to record session information.

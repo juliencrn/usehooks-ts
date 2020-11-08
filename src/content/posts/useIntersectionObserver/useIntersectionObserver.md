@@ -1,9 +1,6 @@
 ---
 title: useIntersectionObserver
-path: '/use-intersection-observer'
 date: '2020-07-28'
-gistId: 'a3d44c077268b982ae17a077e738fe01'
-gistFilename: useIntersectionObserver.tsx
 ---
 
 This React Hook detects visibility of a component on the viewport using the [`IntersectionObserver` API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) natively present in the browser.

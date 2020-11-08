@@ -1,9 +1,6 @@
 ---
 title: useSiteMetadata
-path: '/use-site-metadata'
 date: '2020-06-09'
-gistId: '02ce2fb4386d3b0623c274458bab41c3'
-gistFilename: useSiteMetadata.tsx
 ---
 
 > **Note:** This hook is intended for people who work with the [Gatsby.js](https://www.gatsbyjs.org/) framework.

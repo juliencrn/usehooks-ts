@@ -1,9 +1,6 @@
 ---
 title: useFetch
-path: '/use-fetch'
 date: '2020-07-21'
-gistId: '28560727bb94f65e1f5887cea561ab57'
-gistFilename: useFetch.tsx
 ---
 
 Here is a React Hook which aims to retrieve data on a Rest API using the [Axios](https://www.npmjs.com/package/axios) library.

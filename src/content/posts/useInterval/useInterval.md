@@ -1,9 +1,6 @@
 ---
 title: useInterval
-path: '/use-interval'
 date: '2020-04-27'
-gistId: '747e3127cc35600d9dc0270237a457cc'
-gistFilename: useInterval.tsx
 ---
 
 Use [`setInterval`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) in functional React component with the same API.

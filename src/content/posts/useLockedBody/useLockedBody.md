@@ -1,9 +1,6 @@
 ---
 title: useLockedBody
-path: '/use-locked-body'
 date: '2020-11-01'
-gistId: 'c90490e18cf97a4a7c05b276ea629b6f'
-gistFilename: useLockedBody.tsx
 ---
 
 This React hook is used to block the scrolling of the page.
