@@ -17,23 +17,26 @@ export async function onCreateNode({ node, actions }: CreateNodeArgs) {
     const pagesRegex = new RegExp(/\/content\/pages\/[a-zA-Z]/)
 
     if (absolutePath.match(postsRegex)) {
-      const [filename] = absolutePath.split('/').reverse()
+      const file = absolutePath.split('/').reverse()[0].split('.')
+      const filename = file[0]
+      const type = file.length === 3 ? file[1] : 'post'
+
       createNodeField({
         node,
         name: `hookName`,
-        value: filename.split('.')[0],
+        value: filename,
       })
 
       createNodeField({
         node,
         name: `type`,
-        value: filename.match('.hook.md') ? 'hook' : 'post',
+        value: type,
       })
 
       createNodeField({
         node,
         name: 'path',
-        value: `/${camelToKebabCase(filename.split('.')[0])}`,
+        value: `/${camelToKebabCase(filename)}`,
       })
     }
 

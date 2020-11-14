@@ -1,12 +1,12 @@
 import { graphql, useStaticQuery } from 'gatsby'
 
-import { Hook } from '../../models/Hook'
+import { AnyMdx } from '../../models'
 
 interface HookQuery {
-  hooks: { nodes: Hook[] }
+  hooks: { nodes: AnyMdx[] }
 }
 
-function useHookList(): Hook[] {
+function useHookList(): AnyMdx[] {
   const data = useStaticQuery<HookQuery>(graphql`
     {
       hooks: allMdx(
@@ -15,7 +15,7 @@ function useHookList(): Hook[] {
         sort: { fields: frontmatter___title, order: ASC }
       ) {
         nodes {
-          ...Hook
+          ...AnyMdx
         }
       }
     }

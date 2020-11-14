@@ -26,6 +26,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: theme.spacing(6, 0, 4),
     },
   },
+  subtitle: {
+    margin: theme.spacing(4, 0, 2),
+    wordBreak: 'break-all',
+  },
   divider: {
     margin: theme.spacing(3, 0),
   },
@@ -43,10 +47,14 @@ export interface PostTemplateProps extends PageTemplate {
   pageContext: {
     id: string
     hookId: string
+    demoId: string
   }
   data: {
     post: Post
     hook?: {
+      body: string
+    }
+    demo?: {
       body: string
     }
   }
@@ -54,7 +62,7 @@ export interface PostTemplateProps extends PageTemplate {
 
 function PostTemplate({ path, data }: PostTemplateProps) {
   const classes = useStyles()
-  const { post, hook } = data
+  const { post, hook, demo } = data
   const { body, excerpt, frontmatter } = post
   const title = `${frontmatter.title}()`
   // const date = formatDistanceToNow(new Date(gist.updated), {
@@ -71,7 +79,17 @@ function PostTemplate({ path, data }: PostTemplateProps) {
 
       <MdxRenderer>{body}</MdxRenderer>
 
+      <Typography variant="h5" component="h2" className={classes.subtitle}>
+        The Hook
+      </Typography>
+
       {hook && <MdxRenderer>{hook.body}</MdxRenderer>}
+
+      <Typography variant="h5" component="h2" className={classes.subtitle}>
+        Usage
+      </Typography>
+
+      {demo && <MdxRenderer>{demo.body}</MdxRenderer>}
 
       {/* <Box className={classes.meta}>
         <Grid container alignItems="center" alignContent="center" spacing={3}>
@@ -101,11 +119,14 @@ function PostTemplate({ path, data }: PostTemplateProps) {
 export default PostTemplate
 
 export const pageQuery = graphql`
-  query($id: String!, $hookId: String!) {
+  query($id: String!, $hookId: String!, $demoId: String!) {
     post: mdx(id: { eq: $id }) {
       ...Post
     }
     hook: mdx(id: { eq: $hookId }) {
+      body
+    }
+    demo: mdx(id: { eq: $demoId }) {
       body
     }
   }

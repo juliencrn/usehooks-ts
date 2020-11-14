@@ -1,30 +1,20 @@
 import { GatsbyNode } from 'gatsby'
 import path from 'path'
 
-interface Hook {
-  id: string
-  fields: { hookName: string }
-}
-interface Page {
-  id: string
-  fileAbsolutePath: string
+import { filterHook } from '../shared/filterHooks'
+import { Post, AnyMdx } from '../models'
+
+interface Page extends AnyMdx {
   frontmatter: {
     path?: string
-  }
-}
-
-interface Post {
-  id: string
-  fields: {
-    hookName: string
-    path: string
   }
 }
 
 interface Query {
   pages: { nodes: Page[] }
   posts: { nodes: Post[] }
-  hooks: { nodes: Hook[] }
+  hooks: { nodes: AnyMdx[] }
+  demos: { nodes: AnyMdx[] }
 }
 
 export const createPages: GatsbyNode['createPages'] = async args => {
@@ -43,6 +33,16 @@ export const createPages: GatsbyNode['createPages'] = async args => {
           }
         }
 
+        posts: allMdx(filter: { fields: { type: { eq: "post" } } }) {
+          nodes {
+            id
+            fields {
+              hookName
+              path
+            }
+          }
+        }
+
         hooks: allMdx(filter: { fields: { type: { eq: "hook" } } }) {
           nodes {
             id
@@ -52,12 +52,11 @@ export const createPages: GatsbyNode['createPages'] = async args => {
           }
         }
 
-        posts: allMdx(filter: { fields: { type: { eq: "post" } } }) {
+        demos: allMdx(filter: { fields: { type: { eq: "demo" } } }) {
           nodes {
             id
             fields {
               hookName
-              path
             }
           }
         }
@@ -78,6 +77,7 @@ export const createPages: GatsbyNode['createPages'] = async args => {
       pages: { nodes: pages },
       posts: { nodes: posts },
       hooks: { nodes: hooks },
+      demos: { nodes: demos },
     } = results.data
 
     if (pages.length > 0) {
@@ -95,36 +95,24 @@ export const createPages: GatsbyNode['createPages'] = async args => {
       })
     }
 
-    let postCreatedCount = 0
-    if (posts.length > 0) {
-      posts.forEach(({ id, fields }) => {
-        // Check if have the corresponding hook
-        const hook = hooks.find(
-          ({ fields: { hookName } }) => hookName === fields.hookName,
-        )
+    const matchesPosts = filterHook(posts, hooks, demos)
 
-        if (hook) {
-          const pageData = {
-            component: path.resolve(`./src/templates/post.tsx`),
-            context: {
-              id,
-              hookId: hook.id,
-            },
-          }
+    matchesPosts.forEach(({ post, hookId, demoId }) => {
+      const { id, fields } = post
+      const pageData = {
+        component: path.resolve(`./src/templates/post.tsx`),
+        context: { id, hookId, demoId },
+      }
 
-          // Two URLs during the _Redirects
-          actions.createPage({ ...pageData, path: fields.path })
-          actions.createPage({ ...pageData, path: `/react-hook${fields.path}` })
+      // Two URLs during the _Redirects
+      actions.createPage({ ...pageData, path: fields.path })
+      actions.createPage({ ...pageData, path: `/react-hook${fields.path}` })
+    })
 
-          postCreatedCount++
-        }
-      })
-    }
-
-    if (postCreatedCount < posts.length) {
-      const percent = Math.round((postCreatedCount / posts.length) * 100)
+    if (matchesPosts.length < posts.length) {
+      const percent = Math.round((matchesPosts.length / posts.length) * 100)
       reporter.warn(
-        `${postCreatedCount} / ${posts.length} (${percent}%) posts created`,
+        `${matchesPosts.length} / ${posts.length} (${percent}%) posts created`,
       )
     }
   }
