@@ -12,7 +12,7 @@ export interface HeroProps {
 
 const useStyles = makeStyles((theme: Theme) => ({
   heroContent: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.default,
     padding: theme.spacing(12, 0, 10),
     marginBottom: theme.spacing(10),
   },
