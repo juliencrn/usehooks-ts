@@ -4,6 +4,8 @@ import { Theme, makeStyles } from '@material-ui/core/styles'
 
 import Typography from '@material-ui/core/Typography'
 
+// TODO: Test that: https://github.com/dracula/highlightjs/tree/b80c704d6b081ec259d8e5b2ddf2925bd06e71bf
+// TODO: Test that: https://draculatheme.com/prism/
 import theme from '../libs/prismjs-theme-dracula'
 // import theme from 'prism-react-renderer/themes/vsDark'
 
