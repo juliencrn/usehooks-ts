@@ -1,4 +1,4 @@
-```typescript
+```ts
 import { useEffect, RefObject } from 'react'
 
 type Event = MouseEvent | TouchEvent

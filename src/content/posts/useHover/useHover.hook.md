@@ -1,4 +1,4 @@
-```typescript
+```ts
 import { useState, useEffect, RefObject } from 'react'
 
 export default function useHover<T extends HTMLElement = HTMLElement>(

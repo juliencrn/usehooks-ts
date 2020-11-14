@@ -1,4 +1,4 @@
-```typescript
+```ts
 import { graphql, useStaticQuery } from 'gatsby'
 
 export interface SiteMetadata {

@@ -1,4 +1,4 @@
-```typescript
+```ts
 import { useEffect, useLayoutEffect, useState } from 'react'
 
 type ReturnType = [boolean, (locked: boolean) => void]

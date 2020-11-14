@@ -1,4 +1,4 @@
-```typescript
+```ts
 import { useRef, useEffect, useState, RefObject } from 'react'
 
 interface Args<T> extends IntersectionObserverInit {

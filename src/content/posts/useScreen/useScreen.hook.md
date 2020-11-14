@@ -1,4 +1,4 @@
-```typescript
+```ts
 import { useState, useEffect } from 'react'
 
 // Hook

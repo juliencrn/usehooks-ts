@@ -1,4 +1,4 @@
-```typescript
+```ts
 import { useEffect, useState } from 'react'
 
 export default function useLocalStorage<T>(key: string, initialValue: T) {

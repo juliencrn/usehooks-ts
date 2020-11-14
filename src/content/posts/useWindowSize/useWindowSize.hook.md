@@ -1,4 +1,4 @@
-```typescript
+```ts
 import useScreen from './useScreen'
 
 interface WindowSize {
