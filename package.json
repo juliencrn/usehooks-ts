@@ -22,7 +22,8 @@
     "lint:prettier": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "lint:eslint": "eslint 'src/**/*.{ts,tsx}'",
     "lint:typescript": "tsc",
-    "copy:hooks": "node ./tools/copyHooks.js && npm run lint:prettier",
+    "format:content": "prettier --write --loglevel silent \"src/content/**/*.{md,mdx}\"",
+    "copy:hooks": "node ./tools/copyHooks.js && npm run format:content",
     "plop": "plop && npm run lint:prettier",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
