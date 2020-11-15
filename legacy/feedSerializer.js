@@ -25,7 +25,7 @@ module.exports.feed = {
       return {
         title: `${title}`,
         description: excerpt || '',
-        author: siteMetadata.author.name,
+        author: siteMetadata.author,
         date,
         url,
         guid: url,

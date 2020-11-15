@@ -55,12 +55,12 @@ function Footer() {
           by
           {` `}
           <Link
-            href={author.github}
+            href={`http://github.com/${author}`}
             color="inherit"
             target="_blank"
             rel="noreferrer"
           >
-            {author.name}
+            {author}
           </Link>
           <Hidden xsDown>
             {' '}

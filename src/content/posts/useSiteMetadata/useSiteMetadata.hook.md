@@ -5,14 +5,7 @@ export interface SiteMetadata {
   title: string
   description: string
   siteUrl: string
-  author: {
-    name: string
-    content: string
-    github: string
-  }
-  social: {
-    github: string
-  }
+  author: string
 }
 function useSiteMetadata(): SiteMetadata {
   const data = useStaticQuery(graphql`
@@ -22,14 +15,7 @@ function useSiteMetadata(): SiteMetadata {
           title
           description
           siteUrl
-          author {
-            name
-            content
-            github
-          }
-          social {
-            github
-          }
+          author
         }
       }
     }

@@ -49,7 +49,7 @@ export interface HeaderProps {
 
 function Header({ siteTitle = '', matches }: HeaderProps) {
   const classes = useStyles()
-  const { social } = useSiteMetadata()
+  const { author } = useSiteMetadata()
   const dispatch = useDispatch()
   const { theme } = useSelector((state: RootState) => state.app)
 
@@ -103,7 +103,7 @@ function Header({ siteTitle = '', matches }: HeaderProps) {
           <IconButton
             aria-label="Github"
             color="inherit"
-            href={social.github}
+            href={`https://github.com/${author}/useHooks.ts`}
             target="_blank"
           >
             <GitHubIcon />
