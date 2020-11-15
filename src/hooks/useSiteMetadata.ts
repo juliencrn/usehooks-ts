@@ -6,6 +6,7 @@ export interface SiteMetadata {
   siteUrl: string
   author: string
 }
+
 function useSiteMetadata(): SiteMetadata {
   const data = useStaticQuery(graphql`
     {
@@ -20,6 +21,7 @@ function useSiteMetadata(): SiteMetadata {
     }
   `)
 
+  // Return directly wanted data
   return data.site.siteMetadata
 }
 

@@ -12,3 +12,15 @@ Instead use `StaticQuery` everywhere in yours components, fetch static query in 
 In the following example, I need for example the sitename (AKA: `title`) in the header as well as in the footer, and surely I would like to display it elsewhere.
 
 Of course you can use this trick with all data type, enjoy!
+
+```js
+// In gatsby-config.js
+module.exports = {
+  siteMetadata: {
+    title: `useHooks.ts`,
+    description: `Simple React hooks ready to use written in typescript.`,
+    siteUrl: `https://usehooks-typescript.com`,
+    author: `Junscuzzy`,
+  },
+}
+```
