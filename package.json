@@ -19,12 +19,12 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "lint": "run-p lint:**",
-    "lint:prettier": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "lint:prettier": "prettier --write \"**/*.{js,jsx,json,md,mdx}\"",
     "lint:eslint": "eslint 'src/**/*.{ts,tsx}'",
     "lint:typescript": "tsc",
     "format:content": "prettier --write --loglevel silent \"src/content/**/*.{md,mdx}\"",
     "copy:hooks": "node ./tools/copyHooks.js && npm run format:content",
-    "plop": "plop && npm run lint:prettier",
+    "generate": "plop && npm run lint:prettier",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
