@@ -1,4 +1,4 @@
-module.exports.feed = {
+const feed = {
   query: `{
     posts: allMdx(
       sort: { order: DESC, fields: [frontmatter___date] },
@@ -14,6 +14,7 @@ module.exports.feed = {
         }
         frontmatter {
           title
+          date
         }
       }
     }
@@ -33,3 +34,5 @@ module.exports.feed = {
     })
   },
 }
+
+module.exports = feed
