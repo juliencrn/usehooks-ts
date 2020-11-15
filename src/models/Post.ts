@@ -1,47 +1,46 @@
 import { graphql } from 'gatsby'
 
-export interface AnyMdx {
+export interface HookNode {
   id: string
-  fileAbsolutePath: string
   fields: {
-    hookName: string
-    type: 'hook'
+    name: string
+    path: string
   }
-  body: string
 }
 
-export const AnyMdxQuery = graphql`
-  fragment AnyMdx on Mdx {
+export const HookNodeQuery = graphql`
+  fragment HookNode on Mdx {
     id
     fields {
-      hookName
-      type
+      name
+      path
     }
-    body
   }
 `
 
-export interface Post extends AnyMdx {
-  slug: string
+export interface Post {
+  id: string
   excerpt: string
   shortDescription: string
-  fields: AnyMdx['fields'] & {
+  fields: {
     path: string
+    name: string
+    type: 'hook'
   }
   frontmatter: {
     title: string
     date: string
   }
+  body: any
 }
 
 export const PostQuery = graphql`
   fragment Post on Mdx {
     id
-    slug
     excerpt(pruneLength: 155)
     shortDescription: excerpt(pruneLength: 280)
     fields {
-      hookName
+      name
       type
       path
     }

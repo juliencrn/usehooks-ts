@@ -1,14 +1,12 @@
 import React from 'react'
-// import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import { graphql } from 'gatsby'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 
 import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
-// import Link from '@material-ui/core/Link'
-// import Box from '@material-ui/core/Box'
-// import Divider from '@material-ui/core/Divider'
-// import Grid from '@material-ui/core/Grid'
+import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid'
 
 import SEO from '../components/seo'
 import MdxRenderer from '../components/mdxRenderer'
@@ -65,9 +63,9 @@ function PostTemplate({ path, data }: PostTemplateProps) {
   const { post, hook, demo } = data
   const { body, excerpt, frontmatter } = post
   const title = `${frontmatter.title}()`
-  // const date = formatDistanceToNow(new Date(gist.updated), {
-  //   addSuffix: true,
-  // })
+  const date = formatDistanceToNow(new Date(frontmatter.date), {
+    addSuffix: true,
+  })
 
   return (
     <Container className={classes.root} maxWidth="md">
@@ -79,39 +77,35 @@ function PostTemplate({ path, data }: PostTemplateProps) {
 
       <MdxRenderer>{body}</MdxRenderer>
 
-      <Typography variant="h5" component="h2" className={classes.subtitle}>
-        The Hook
-      </Typography>
+      {hook && (
+        <>
+          <Typography variant="h5" component="h2" className={classes.subtitle}>
+            The Hook
+          </Typography>
+          <MdxRenderer>{hook.body}</MdxRenderer>
+        </>
+      )}
 
-      {hook && <MdxRenderer>{hook.body}</MdxRenderer>}
+      {demo && (
+        <>
+          <Typography variant="h5" component="h2" className={classes.subtitle}>
+            Usage
+          </Typography>
+          <MdxRenderer>{demo.body}</MdxRenderer>
+        </>
+      )}
 
-      <Typography variant="h5" component="h2" className={classes.subtitle}>
-        Usage
-      </Typography>
-
-      {demo && <MdxRenderer>{demo.body}</MdxRenderer>}
-
-      {/* <Box className={classes.meta}>
+      <Box className={classes.meta}>
         <Grid container alignItems="center" alignContent="center" spacing={3}>
           <Grid item xs={12} md>
             <Typography variant="body1" align="center">
-              Updated:
+              Created:
               <br />
               {date}
             </Typography>
           </Grid>
-          <Divider orientation="vertical" flexItem />
-          <Grid item xs={12} md>
-            <Typography variant="body1" align="center">
-              Would you like to report something?
-              <br />
-              <Link href={gist.url} target="_blank" rel="noreferrer">
-                Leave a comment on github.
-              </Link>
-            </Typography>
-          </Grid>
         </Grid>
-      </Box> */}
+      </Box>
     </Container>
   )
 }

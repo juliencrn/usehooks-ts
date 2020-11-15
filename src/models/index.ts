@@ -1,4 +1,4 @@
-export type { Post, AnyMdx } from './Post'
+export type { Post, HookNode } from './Post'
 export type { Page } from './Page'
 
 export interface PageTemplate {

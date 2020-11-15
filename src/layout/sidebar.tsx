@@ -13,10 +13,8 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 
 import { RootState } from '../redux/store'
 import { openDrawer, closeDrawer } from '../redux/appModule'
-import usePostList from '../hooks/private/usePostList'
-import useHookList from '../hooks/private/useHookList'
-import useHookDemoList from '../hooks/private/useHookDemoList'
 import { filterHook } from '../shared/filterHooks'
+import useHookList from '../hooks/privateHooks/useHookList'
 
 const drawerWidth = 280
 
@@ -53,10 +51,8 @@ export interface SidebarProps {
 
 function Sidebar({ matches }: SidebarProps) {
   const classes = useStyles()
-  const posts = usePostList()
-  const hooks = useHookList()
-  const demos = useHookDemoList()
-  const matchesPosts = filterHook(posts, hooks, demos)
+  const { posts, hooks, demos } = useHookList()
+  const extendedPosts = filterHook(posts.nodes, hooks.nodes, demos.nodes)
   const { drawerOpen } = useSelector((state: RootState) => state.app)
   const dispatch = useDispatch()
 
@@ -111,7 +107,7 @@ function Sidebar({ matches }: SidebarProps) {
 
           <Divider />
           <List>
-            {matchesPosts.map(({ post: { frontmatter, fields } }) => (
+            {extendedPosts.map(({ post: { frontmatter, fields } }) => (
               <ListItem
                 button
                 to={`/react-hook${fields.path}`}
