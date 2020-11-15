@@ -18,10 +18,10 @@ import Brightness3Icon from '@material-ui/icons/Brightness3'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import RssFeedIcon from '@material-ui/icons/RssFeed'
 
-import { useSiteMetadata } from '../hooks'
-import Search from '../components/search'
-import { openDrawer, toggleTheme } from '../redux/appModule'
-import { RootState } from '../redux/store'
+import { useSiteMetadata } from '../../hooks'
+import Search from '../search'
+import { openDrawer, toggleTheme } from '../../redux/appModule'
+import { RootState } from '../../redux/store'
 
 const useStyles = makeStyles((theme: Theme) => ({
   appBar: {

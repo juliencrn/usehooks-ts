@@ -85,6 +85,10 @@ const dark: ThemeOptions = {
     primary: {
       main: '#ff79c6',
     },
+    common: {
+      white: '#f8f8f2',
+      black: '#282a36',
+    },
     background: {
       default: '#44475a',
       paper: '#282a36',

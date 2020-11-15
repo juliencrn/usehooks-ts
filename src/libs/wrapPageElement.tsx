@@ -3,7 +3,7 @@ import { ThemeProvider } from '@material-ui/styles'
 import { CssBaseline } from '@material-ui/core'
 
 import themes from '../theme'
-import Layout from '../layout'
+import Layout from '../components/layout'
 
 const wrapPageElement = ({ element }: { element: ReactNode }) => {
   return (

@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: theme.spacing(8),
   },
   title: {
-    fontFamily: 'Fira Code, monospace',
     margin: theme.spacing(3, 0),
     wordBreak: 'break-all',
     [theme.breakpoints.up('md')]: {
@@ -71,7 +70,7 @@ function PostTemplate({ path, data }: PostTemplateProps) {
     <Container className={classes.root} maxWidth="md">
       <SEO title={title} description={excerpt} path={path} isPost />
 
-      <Typography variant="h3" component="h1" className={classes.title}>
+      <Typography variant="h2" component="h1" className={classes.title}>
         {title}
       </Typography>
 
@@ -79,7 +78,7 @@ function PostTemplate({ path, data }: PostTemplateProps) {
 
       {hook && (
         <>
-          <Typography variant="h5" component="h2" className={classes.subtitle}>
+          <Typography variant="h4" component="h2" className={classes.subtitle}>
             The Hook
           </Typography>
           <MdxRenderer>{hook.body}</MdxRenderer>
@@ -88,7 +87,7 @@ function PostTemplate({ path, data }: PostTemplateProps) {
 
       {demo && (
         <>
-          <Typography variant="h5" component="h2" className={classes.subtitle}>
+          <Typography variant="h4" component="h2" className={classes.subtitle}>
             Usage
           </Typography>
           <MdxRenderer>{demo.body}</MdxRenderer>

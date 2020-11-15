@@ -11,11 +11,11 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import Header from './header'
 import Footer from './footer'
-import themes from '../theme'
-import { useSiteMetadata } from '../hooks'
-import BackToTop from '../components/backToTop'
+import themes from '../../theme'
+import { useSiteMetadata } from '../../hooks'
+import BackToTop from '../backToTop'
 import Sidebar from './sidebar'
-import { RootState } from '../redux/store'
+import { RootState } from '../../redux/store'
 
 import './style.css'
 

@@ -11,10 +11,10 @@ import ListItemText from '@material-ui/core/ListItemText'
 import IconButton from '@material-ui/core/IconButton'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 
-import { RootState } from '../redux/store'
-import { openDrawer, closeDrawer } from '../redux/appModule'
-import { filterHook } from '../shared/filterHooks'
-import useHookList from '../hooks/privateHooks/useHookList'
+import { RootState } from '../../redux/store'
+import { openDrawer, closeDrawer } from '../../redux/appModule'
+import { filterHook } from '../../shared/filterHooks'
+import useHookList from '../../hooks/privateHooks/useHookList'
 
 const drawerWidth = 280
 
