@@ -3,12 +3,11 @@ const fs = require('fs')
 const path = require('path')
 const chalk = require('chalk')
 
-const hooksDir = path.resolve('./src/hooks')
-const hookDemoDir = path.resolve('./src/hooks/demo')
-const postsDir = path.resolve('./src/content/posts')
+const inputDir = path.resolve('./src/hooks')
+const outputDir = path.resolve('./generated')
 
 const success = chalk.green('success')
-const info = chalk.blue('info')
+// const info = chalk.blue('info')
 const warn = chalk.yellow('warn')
 const error = chalk.yellow('error')
 
@@ -16,19 +15,11 @@ function getFileName(pathname) {
   return pathname.split('/').reverse()[0]
 }
 
-function copyHook({ sourceFile, destDir, destFile }) {
+function copyHook({ sourceFile, destFile }) {
   // Check source file
   if (!fs.existsSync(sourceFile)) {
     console.log(`${warn} ${getFileName(sourceFile)} doesn't exist`)
     return
-  }
-
-  // Check destination directory, or create it
-  if (!fs.existsSync(destDir)) {
-    console.log(
-      `${info} Destination directory doesn't exists, I will create one`,
-    )
-    fs.mkdirSync(destDir)
   }
 
   // If destination file exists, remove it
@@ -63,47 +54,26 @@ function copyHook({ sourceFile, destDir, destFile }) {
 }
 
 // Foreach hook, copy to content as markdown file
-fs.readdir(hooksDir, (err, files) => {
+fs.readdir(inputDir, (err, files) => {
   if (err) {
     throw err
   }
 
   files.forEach(file => {
-    const [filename, extension] = file.split('.')
+    const hookRegex = new RegExp('^use[A-Z][a-zA-Z]*$')
 
-    const options = {
-      sourceFile: path.resolve(`${hooksDir}/${filename}.ts`),
-      destDir: path.resolve(`${postsDir}/${filename}`),
-      destFile: path.resolve(`${postsDir}/${filename}/${filename}.hook.md`),
-    }
+    if (hookRegex.test(file)) {
+      // Copy the hook
+      copyHook({
+        sourceFile: path.resolve(`${inputDir}/${file}/${file}.ts`),
+        destFile: path.resolve(`${outputDir}/hooks/${file}.hook.md`),
+      })
 
-    const isHook = `use${filename.slice(3)}` === filename && extension === 'ts'
-
-    if (isHook) {
-      copyHook(options)
-    }
-  })
-})
-
-// Foreach demo hook, copy to content as markdown file
-fs.readdir(hookDemoDir, (err, files) => {
-  if (err) {
-    throw err
-  }
-
-  files.forEach(file => {
-    const [filename, extension] = file.split('.')
-
-    const options = {
-      sourceFile: path.resolve(`${hookDemoDir}/${filename}.tsx`),
-      destDir: path.resolve(`${postsDir}/${filename}`),
-      destFile: path.resolve(`${postsDir}/${filename}/${filename}.demo.md`),
-    }
-
-    const isHook = `use${filename.slice(3)}` === filename && extension === 'tsx'
-
-    if (isHook) {
-      copyHook(options)
+      // Copy the hook's demo
+      copyHook({
+        sourceFile: path.resolve(`${inputDir}/${file}/${file}.demo.tsx`),
+        destFile: path.resolve(`${outputDir}/hookDemos/${file}.demo.md`),
+      })
     }
   })
 })
