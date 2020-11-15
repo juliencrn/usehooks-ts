@@ -13,13 +13,27 @@ module.exports = function (plop) {
     ],
     actions: [
       {
+        type: 'add',
+        path: 'src/hooks/{{camelCase name}}/index.ts',
+        templateFile: 'plop-templates/hooks/index.ts.hbs',
+      },
+      {
         data: {
-          gistId: 'gistId super',
           date: format(new Date(), 'yyyy-MM-dd'),
         },
         type: 'add',
-        path: 'src/content/posts/{{camelCase name}}.md',
-        templateFile: 'plop-templates/post.md.hbs',
+        path: 'src/hooks/{{camelCase name}}/{{camelCase name}}.mdx',
+        templateFile: 'plop-templates/hooks/post.mdx.hbs',
+      },
+      {
+        type: 'add',
+        path: 'src/hooks/{{camelCase name}}/{{camelCase name}}.demo.tsx',
+        templateFile: 'plop-templates/hooks/demo.tsx.hbs',
+      },
+      {
+        type: 'add',
+        path: 'src/hooks/{{camelCase name}}/{{camelCase name}}.ts',
+        templateFile: 'plop-templates/hooks/hook.ts.hbs',
       },
     ],
   })
