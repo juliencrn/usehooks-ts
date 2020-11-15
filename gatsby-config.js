@@ -24,6 +24,7 @@ module.exports = {
         allExtensions: true,
       },
     },
+    `gatsby-plugin-typescript-checker`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
