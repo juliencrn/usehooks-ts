@@ -35,6 +35,11 @@ module.exports = function (plop) {
         path: 'src/hooks/{{camelCase name}}/{{camelCase name}}.ts',
         templateFile: 'plop-templates/hooks/hook.ts.hbs',
       },
+      {
+        type: 'append',
+        path: 'src/hooks/index.ts',
+        templateFile: 'plop-templates/hooksIndex.ts.hbs',
+      },
     ],
   })
 }
