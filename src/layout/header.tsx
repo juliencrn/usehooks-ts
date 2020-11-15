@@ -87,7 +87,7 @@ function Header({ siteTitle = '', matches }: HeaderProps) {
 
         <Hidden xsDown>
           <Box mx={2}>
-            <Search />
+            {/* <Search /> */}
           </Box>
         </Hidden>
 
