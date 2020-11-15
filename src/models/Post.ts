@@ -29,8 +29,8 @@ export interface Post extends AnyMdx {
     path: string
   }
   frontmatter: {
-    path: string
     title: string
+    date: string
   }
 }
 
@@ -47,6 +47,7 @@ export const PostQuery = graphql`
     }
     frontmatter {
       title
+      date
     }
     body
   }
