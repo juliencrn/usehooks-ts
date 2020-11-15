@@ -6,7 +6,7 @@ const postQuery = `
         excerpt(pruneLength: 155)
         fields {
           path
-          hookName
+          name
         }
         frontmatter {
           title
@@ -17,7 +17,7 @@ const postQuery = `
       nodes {
         id
         fields {
-          hookName
+          name
         }
       }
     }
@@ -25,7 +25,7 @@ const postQuery = `
       nodes {
         id
         fields {
-          hookName
+          name
         }
       }
     }
@@ -39,12 +39,12 @@ const transformer = ({ data }) => {
 
     // Check if have the corresponding hook
     const hook = data.hooks.nodes.find(
-      ({ fields: { hookName } }) => hookName === fields.hookName,
+      ({ fields: { name } }) => name === fields.name,
     )
 
     // Check if have the corresponding hook demo
     const demo = data.demos.nodes.find(
-      ({ fields: { hookName } }) => hookName === fields.hookName,
+      ({ fields: { name } }) => name === fields.name,
     )
 
     if (hook && demo) {
