@@ -7,7 +7,7 @@ import Link from '@material-ui/core/Link'
 import Container from '@material-ui/core/Container'
 import Hidden from '@material-ui/core/Hidden'
 
-import useSiteMetadata from '../hooks/useSiteMetadata'
+import { useSiteMetadata } from '../hooks'
 
 const useStyles = makeStyles((theme: Theme) => ({
   footer: {
