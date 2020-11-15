@@ -13,17 +13,15 @@ export async function onCreateNode({ node, actions }: CreateNodeArgs) {
 
   if (node.internal.type === 'Mdx') {
     const absolutePath = node.fileAbsolutePath as string
-    const postsRegex = new RegExp(/\/content\/posts\/[a-zA-Z]/)
-    const pagesRegex = new RegExp(/\/content\/pages\/[a-zA-Z]/)
+    const isHookRegex = new RegExp('^use[A-Z][a-zA-Z]*$')
+    const file = absolutePath.split('/').reverse()[0].split('.')
+    const filename = file[0]
+    const type = file.length === 3 ? file[1] : 'post'
 
-    if (absolutePath.match(postsRegex)) {
-      const file = absolutePath.split('/').reverse()[0].split('.')
-      const filename = file[0]
-      const type = file.length === 3 ? file[1] : 'post'
-
+    if (isHookRegex.test(filename)) {
       createNodeField({
         node,
-        name: `hookName`,
+        name: `name`,
         value: filename,
       })
 
@@ -37,14 +35,6 @@ export async function onCreateNode({ node, actions }: CreateNodeArgs) {
         node,
         name: 'path',
         value: `/${camelToKebabCase(filename)}`,
-      })
-    }
-
-    if (absolutePath.match(pagesRegex)) {
-      createNodeField({
-        node,
-        name: `type`,
-        value: 'page',
       })
     }
   }
