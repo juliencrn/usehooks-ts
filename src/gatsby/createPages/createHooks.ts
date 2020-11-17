@@ -64,7 +64,6 @@ export default async function createHooks(args: CreatePagesArgs) {
       }
 
       // Two URLs during the _Redirects
-      actions.createPage({ ...pageData, path: fields.path })
       actions.createPage({ ...pageData, path: `/react-hook${fields.path}` })
     })
   }
