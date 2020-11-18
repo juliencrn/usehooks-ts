@@ -13,7 +13,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "prebuild": "npm run lint",
+    "prebuild": "npm run test",
     "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
     "serve": "gatsby serve",
     "develop": "gatsby develop",
@@ -22,12 +22,12 @@
     "lint": "run-p lint:**",
     "lint:prettier": "prettier --write \"**/*.{js,jsx,json,md,mdx}\"",
     "lint:eslint": "eslint 'src/**/*.{ts,tsx}'",
-    "lint:typescript": "tsc",
+    "typecheck": "tsc",
     "format:content": "prettier --write --loglevel silent \"src/content/**/*.{md,mdx}\"",
     "copy:hooks": "node ./tools/copyHooks.js && npm run format:content",
     "generate": "plop && npm run lint:prettier",
-
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "pretest": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" ",
+    "test": "npm run lint:eslint && npm run typecheck"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.11",
