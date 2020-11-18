@@ -13,21 +13,17 @@
   ],
   "license": "MIT",
   "scripts": {
-    "prebuild": "npm run copy:hooks && npm run lint",
+    "prebuild": "npm run lint",
     "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
     "serve": "gatsby serve",
-
-    "predevelop": "npm run copy:hooks",
     "develop": "gatsby develop",
     "start": "npm run develop",
-
     "clean": "gatsby clean",
     "lint": "run-p lint:**",
     "lint:prettier": "prettier --write \"**/*.{js,jsx,json,md,mdx}\"",
     "lint:eslint": "eslint 'src/**/*.{ts,tsx}'",
     "lint:typescript": "tsc",
     "format:content": "prettier --write --loglevel silent \"src/content/**/*.{md,mdx}\"",
-
     "copy:hooks": "node ./tools/copyHooks.js && npm run format:content",
     "generate": "plop && npm run lint:prettier",
 
