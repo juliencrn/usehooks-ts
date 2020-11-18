@@ -6,7 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # Generated files
-generated
+generated/*
+!generated/.gitkeep
 
 # Runtime data
 pids
