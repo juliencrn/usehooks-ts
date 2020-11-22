@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography'
 import Link from '@material-ui/core/Link'
 import Box from '@material-ui/core/Box'
 
-import { Post } from '../interfaces'
+import { Post } from '../models'
 
 const useStyles = makeStyles((theme: Theme) => ({
   article: {
@@ -21,15 +21,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-const PostCard: FC<Post> = ({ frontmatter, shortDescription }) => {
+const PostCard: FC<Post> = ({ fields, frontmatter, shortDescription }) => {
   const classes = useStyles()
-  const { title, path } = frontmatter
 
   return (
     <article className={classes.article}>
       <Typography variant="h4" component="h3" className={classes.title}>
-        <Link to={path} component={GatsbyLink} color="inherit">
-          {`${title}()`}
+        <Link to={fields.path} component={GatsbyLink} color="inherit">
+          {`${frontmatter.title}()`}
         </Link>
       </Typography>
       <Box py={2} />

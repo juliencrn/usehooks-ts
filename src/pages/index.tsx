@@ -3,7 +3,7 @@ import React from 'react'
 
 import SEO from '../components/seo'
 import Hero from '../components/hero'
-import useSiteMetadata from '../hooks/useSiteMetadata'
+import { useSiteMetadata } from '../hooks'
 
 // const useStyles = makeStyles((theme: Theme) => ({}))
 

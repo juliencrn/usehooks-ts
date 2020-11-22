@@ -4,28 +4,28 @@ import { graphql } from 'gatsby'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 
 import Typography from '@material-ui/core/Typography'
-import Link from '@material-ui/core/Link'
+import Container from '@material-ui/core/Container'
 import Box from '@material-ui/core/Box'
-import Divider from '@material-ui/core/Divider'
 import Grid from '@material-ui/core/Grid'
 
 import SEO from '../components/seo'
 import MdxRenderer from '../components/mdxRenderer'
-import Code from '../components/code'
-import { PageTemplate, Post, Gist } from '../interfaces'
-import { Container } from '@material-ui/core'
+import { PageTemplate, Post } from '../models'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     marginTop: theme.spacing(8),
   },
   title: {
-    fontFamily: 'Fira Code, monospace',
     margin: theme.spacing(3, 0),
     wordBreak: 'break-all',
     [theme.breakpoints.up('md')]: {
       margin: theme.spacing(6, 0, 4),
     },
+  },
+  subtitle: {
+    margin: theme.spacing(4, 0, 2),
+    wordBreak: 'break-all',
   },
   divider: {
     margin: theme.spacing(3, 0),
@@ -42,19 +42,27 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export interface PostTemplateProps extends PageTemplate {
   pageContext: {
-    gist: Gist
+    id: string
+    hookId: string
+    demoId: string
   }
   data: {
     post: Post
+    hook?: {
+      body: string
+    }
+    demo?: {
+      body: string
+    }
   }
 }
 
-function PostTemplate({ pageContext, path, data }: PostTemplateProps) {
+function PostTemplate({ path, data }: PostTemplateProps) {
   const classes = useStyles()
-  const { gist } = pageContext
-  const { body, excerpt, frontmatter } = data.post
+  const { post, hook, demo } = data
+  const { body, excerpt, frontmatter } = post
   const title = `${frontmatter.title}()`
-  const date = formatDistanceToNow(new Date(gist.updated), {
+  const date = formatDistanceToNow(new Date(frontmatter.date), {
     addSuffix: true,
   })
 
@@ -62,31 +70,37 @@ function PostTemplate({ pageContext, path, data }: PostTemplateProps) {
     <Container className={classes.root} maxWidth="md">
       <SEO title={title} description={excerpt} path={path} isPost />
 
-      <Typography variant="h3" component="h1" className={classes.title}>
+      <Typography variant="h2" component="h1" className={classes.title}>
         {title}
       </Typography>
 
       <MdxRenderer>{body}</MdxRenderer>
 
-      <Code code={gist.code} />
+      {hook && (
+        <>
+          <Typography variant="h4" component="h2" className={classes.subtitle}>
+            The Hook
+          </Typography>
+          <MdxRenderer>{hook.body}</MdxRenderer>
+        </>
+      )}
+
+      {demo && (
+        <>
+          <Typography variant="h4" component="h2" className={classes.subtitle}>
+            Usage
+          </Typography>
+          <MdxRenderer>{demo.body}</MdxRenderer>
+        </>
+      )}
 
       <Box className={classes.meta}>
         <Grid container alignItems="center" alignContent="center" spacing={3}>
           <Grid item xs={12} md>
             <Typography variant="body1" align="center">
-              Updated:
+              Created:
               <br />
               {date}
-            </Typography>
-          </Grid>
-          <Divider orientation="vertical" flexItem />
-          <Grid item xs={12} md>
-            <Typography variant="body1" align="center">
-              Would you like to report something?
-              <br />
-              <Link href={gist.url} target="_blank" rel="noreferrer">
-                Leave a comment on github.
-              </Link>
             </Typography>
           </Grid>
         </Grid>
@@ -98,9 +112,15 @@ function PostTemplate({ pageContext, path, data }: PostTemplateProps) {
 export default PostTemplate
 
 export const pageQuery = graphql`
-  query($postId: String!) {
-    post: mdx(id: { eq: $postId }) {
+  query($id: String!, $hookId: String!, $demoId: String!) {
+    post: mdx(id: { eq: $id }) {
       ...Post
+    }
+    hook: mdx(id: { eq: $hookId }) {
+      body
+    }
+    demo: mdx(id: { eq: $demoId }) {
+      body
     }
   }
 `

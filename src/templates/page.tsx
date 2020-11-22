@@ -6,7 +6,7 @@ import Box from '@material-ui/core/Box'
 
 import SEO from '../components/seo'
 import MdxRenderer from '../components/mdxRenderer'
-import { PageTemplate, Page } from '../interfaces'
+import { PageTemplate, Page } from '../models'
 import Hero from '../components/hero'
 
 export interface PageTemplateProps extends PageTemplate {
@@ -35,8 +35,8 @@ function PostTemplate({ path, data }: PageTemplateProps) {
 export default PostTemplate
 
 export const pageQuery = graphql`
-  query($pageId: String!) {
-    page: mdx(id: { eq: $pageId }) {
+  query($id: String!) {
+    page: mdx(id: { eq: $id }) {
       ...Page
     }
   }

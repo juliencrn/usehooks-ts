@@ -7,7 +7,7 @@
 
 import React, { FC } from 'react'
 import { Helmet } from 'react-helmet'
-import useSiteMetadata from '../hooks/useSiteMetadata'
+import { useSiteMetadata } from '../hooks'
 
 interface MetaProperty {
   property: string
@@ -88,7 +88,7 @@ const SEO: FC<SEOProps> = ({
         },
         {
           name: `twitter:creator`,
-          content: siteMetadata.author.name,
+          content: siteMetadata.author,
         },
         {
           name: `twitter:title`,

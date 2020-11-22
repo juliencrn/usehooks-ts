@@ -5,7 +5,7 @@ import { makeStyles, Theme } from '@material-ui/core/styles'
 import { MDXRenderer, MDXRendererProps } from 'gatsby-plugin-mdx'
 
 import Typography, { TypographyProps } from '@material-ui/core/Typography'
-import Link, { LinkProps } from '@material-ui/core/Link'
+import Link from '@material-ui/core/Link'
 import Divider from '@material-ui/core/Divider'
 import Paper from '@material-ui/core/Paper'
 import TableContainer from '@material-ui/core/TableContainer'
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     background:
       theme.palette.type === 'light'
         ? theme.palette.grey[300]
-        : theme.palette.grey[700],
+        : theme.palette.background.paper,
     padding: theme.spacing(0.4),
     borderRadius: 4,
   },
@@ -57,7 +57,7 @@ const MdxRenderer = ({ children }: Readonly<MDXRendererProps>) => {
     <MDXProvider
       components={{
         // Typography
-        h1: (props: any) => (
+        h1: props => (
           <Typography
             gutterBottom
             className={classes.title}
@@ -66,7 +66,7 @@ const MdxRenderer = ({ children }: Readonly<MDXRendererProps>) => {
             {...props}
           />
         ),
-        h2: (props: any) => (
+        h2: props => (
           <Typography
             gutterBottom
             className={classes.title}
@@ -75,7 +75,7 @@ const MdxRenderer = ({ children }: Readonly<MDXRendererProps>) => {
             {...props}
           />
         ),
-        h3: (props: any) => (
+        h3: props => (
           <Typography
             gutterBottom
             className={classes.title}
@@ -84,7 +84,7 @@ const MdxRenderer = ({ children }: Readonly<MDXRendererProps>) => {
             {...props}
           />
         ),
-        h4: (props: any) => (
+        h4: props => (
           <Typography
             gutterBottom
             className={classes.title}
@@ -93,7 +93,7 @@ const MdxRenderer = ({ children }: Readonly<MDXRendererProps>) => {
             {...props}
           />
         ),
-        h5: (props: any) => (
+        h5: props => (
           <Typography
             gutterBottom
             className={classes.title}
@@ -102,7 +102,7 @@ const MdxRenderer = ({ children }: Readonly<MDXRendererProps>) => {
             {...props}
           />
         ),
-        h6: (props: any) => (
+        h6: props => (
           <Typography
             gutterBottom
             className={classes.title}
@@ -111,10 +111,8 @@ const MdxRenderer = ({ children }: Readonly<MDXRendererProps>) => {
             {...props}
           />
         ),
-        a: (props: LinkProps) => <Link {...props} />,
-        p: (props: TypographyProps) => (
-          <Typography gutterBottom variant="body1" {...props} />
-        ),
+        a: props => <Link {...props} />,
+        p: props => <Typography gutterBottom variant="body1" {...props} />,
         blockquote: (props: TypographyProps) => (
           <Typography
             variant="body1"
@@ -125,8 +123,8 @@ const MdxRenderer = ({ children }: Readonly<MDXRendererProps>) => {
         ),
 
         // Code
-        pre: (props: any) => props.children,
-        code: (props: any) => {
+        pre: props => props.children,
+        code: props => {
           // Extract code language
           let lang = undefined
           if (props.className) {
@@ -139,7 +137,7 @@ const MdxRenderer = ({ children }: Readonly<MDXRendererProps>) => {
           }
           return <Code code={props.children.toString()} language={lang} />
         },
-        inlineCode: (props: TypographyProps) => (
+        inlineCode: props => (
           <Typography
             gutterBottom
             variant="body1"
@@ -150,19 +148,17 @@ const MdxRenderer = ({ children }: Readonly<MDXRendererProps>) => {
         ),
 
         // Lists
-        li: (props: any) => (
-          <Typography variant="body1" component="li" {...props} />
-        ),
+        li: props => <Typography variant="body1" component="li" {...props} />,
 
         // Tables
-        table: (props: any) => (
+        table: props => (
           <TableContainer component={Paper} className={classes.tableContainer}>
             <Table {...props} />
           </TableContainer>
         ),
-        tr: (props: any) => <TableRow {...props} />,
-        td: (props: any) => <TableCell>{props.children}</TableCell>,
-        th: (props: any) => <TableCell>{props.children}</TableCell>,
+        tr: props => <TableRow {...props} />,
+        td: props => <TableCell>{props.children}</TableCell>,
+        th: props => <TableCell>{props.children}</TableCell>,
 
         // Mixins
         hr: () => <Divider className={classes.divider} />,

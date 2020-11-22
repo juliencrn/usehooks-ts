@@ -8,9 +8,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   form: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    backgroundColor: fade(theme.palette.common.white, 0.05),
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: fade(theme.palette.common.white, 0.1),
     },
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(0),

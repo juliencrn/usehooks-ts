@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/camelcase */
-const algoliaQueries = require('./gatsby/algolia')
-const queries = require('./gatsby/queries')
+const algoliaQueries = require('./legacy/algolia')
+const feed = require('./legacy/feedSerializer')
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -11,14 +11,7 @@ const siteMetadata = {
   title: `useHooks.ts`,
   description: `Simple React hooks ready to use written in typescript.`,
   siteUrl: `https://usehooks-typescript.com`,
-  author: {
-    name: 'Julien CARON',
-    content: 'I like build some things using Javascript',
-    github: 'https://github.com/Junscuzzy',
-  },
-  social: {
-    github: 'https://github.com/Junscuzzy/usehooks.ts',
-  },
+  author: `Junscuzzy`,
 }
 
 module.exports = {
@@ -31,25 +24,33 @@ module.exports = {
         allExtensions: true,
       },
     },
+    `gatsby-plugin-typescript-checker`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/posts`,
-        name: `posts`,
+        path: `${__dirname}/src/content/pages`,
+        name: `pages`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/pages`,
-        name: `pages`,
+        path: `${__dirname}/generated`,
+        name: `generated`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/hooks`,
+        name: `hooks`,
       },
     },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        extensions: [`.md`],
+        extensions: [`.md`, `.mdx`],
         plugins: [],
       },
     },
@@ -69,26 +70,12 @@ module.exports = {
       options: {
         feeds: [
           {
-            query: `${queries.postQuery}`,
+            query: `${feed.query}`,
             output: '/rss.xml',
             title: `RSS Feed - ${siteMetadata.title}`,
             description: `${siteMetadata.description}`,
-            serialize: ({ query: { posts } }) => {
-              return posts.edges.map(({ node }) => {
-                const { title, path, date } = node.frontmatter
-                return {
-                  title: `${title}`,
-                  description: node.excerpt || '',
-                  author: siteMetadata.author.name,
-                  date,
-                  // date: formatDistanceToNow(new Date(gist.updated), {
-                  //   addSuffix: true,
-                  // }),
-                  url: `${siteMetadata.siteUrl}${path}`,
-                  guid: `${siteMetadata.siteUrl}${path}`,
-                }
-              })
-            },
+            serialize: ({ query }) =>
+              feed.serializer(query.posts, siteMetadata),
           },
         ],
       },
@@ -124,6 +111,7 @@ module.exports = {
         icon: `src/images/typescript.png`, // This path is relative to the root of the site.
       },
     },
+    // TODO Can I remove it ? To Test
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
