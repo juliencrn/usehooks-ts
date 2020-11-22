@@ -12,6 +12,8 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 
 ## Summary
 
+<div id="hook-list">
+
 - [useDebounce](https://usehooks-typescript.com/react-hook/use-debounce)
 - [useElementSize](https://usehooks-typescript.com/react-hook/use-element-size)
 - [useEventListener](https://usehooks-typescript.com/react-hook/use-event-listener)
@@ -28,3 +30,5 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 - [useScript](https://usehooks-typescript.com/react-hook/use-script)
 - [useSiteMetadata](https://usehooks-typescript.com/react-hook/use-site-metadata)
 - [useWindowSize](https://usehooks-typescript.com/react-hook/use-window-size)
+
+</div>

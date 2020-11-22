@@ -24,7 +24,8 @@
     "lint:eslint": "eslint 'src/**/*.{ts,tsx}'",
     "typecheck": "tsc",
     "format:content": "prettier --write --loglevel silent \"src/content/**/*.{md,mdx}\"",
-    "copy:hooks": "node ./tools/copyHooks.js && npm run format:content",
+    "copy:hooks": "node ./tools/copyHooks.js && npm run format:content && npm run update:readme",
+    "update:readme": "node ./tools/updateReadme.js",
     "generate": "plop && npm run lint:prettier",
     "pretest": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" ",
     "test": "npm run lint:eslint && npm run typecheck"
