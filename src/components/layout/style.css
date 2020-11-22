@@ -7,14 +7,15 @@
 /* Track */
 ::-webkit-scrollbar-track {
   background: #44475a;
+  background: #282a36;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #282a36;
+  background: #ff79c6;
+  border-radius: 6px;
 }
 
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #ff79c6;
-}
+/* ::-webkit-scrollbar-thumb:hover { */
+/* } */
