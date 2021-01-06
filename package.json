@@ -39,7 +39,7 @@
     "@mdx-js/react": "^1.5.8",
     "@n8tb1t/use-scroll-position": "^1.0.43",
     "@reduxjs/toolkit": "^1.4.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "date-fns": "^2.14.0",
     "deepmerge": "^4.2.2",
     "gatsby": "^2.24.8",
