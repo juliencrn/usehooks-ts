@@ -1,4 +1,5 @@
-```tsximport React from 'react'
+```tsx
+import React from 'react'
 
 import useWindowSize from './useWindowSize'
 
@@ -12,4 +13,4 @@ export default function Component() {
     </div>
   )
 }
-```
+```

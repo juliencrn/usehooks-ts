@@ -1,4 +1,5 @@
-```tsimport { useScreen } from '../../hooks'
+```ts
+import { useScreen } from '../../hooks'
 
 interface WindowSize {
   width: number
@@ -15,4 +16,4 @@ function useWindowSize(): WindowSize {
 }
 
 export default useWindowSize
-```
+```

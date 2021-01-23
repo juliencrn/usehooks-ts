@@ -1,4 +1,5 @@
-```tsximport React, { useState, ChangeEvent } from 'react'
+```tsx
+import React, { useState, ChangeEvent } from 'react'
 
 import useInterval from './useInterval'
 
@@ -36,4 +37,4 @@ export default function Component() {
     </>
   )
 }
-```
+```

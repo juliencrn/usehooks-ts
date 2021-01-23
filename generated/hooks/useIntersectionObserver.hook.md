@@ -1,4 +1,5 @@
-```tsimport { useRef, useEffect, useState, RefObject } from 'react'
+```ts
+import { useRef, useEffect, useState, RefObject } from 'react'
 
 interface Args<T> extends IntersectionObserverInit {
   elementRef: RefObject<T>
@@ -52,4 +53,4 @@ function useIntersectionObserver<T extends HTMLElement = HTMLDivElement>({
 }
 
 export default useIntersectionObserver
-```
+```

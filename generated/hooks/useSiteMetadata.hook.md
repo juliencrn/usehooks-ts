@@ -1,4 +1,5 @@
-```tsimport { graphql, useStaticQuery } from 'gatsby'
+```ts
+import { graphql, useStaticQuery } from 'gatsby'
 
 export interface SiteMetadata {
   title: string
@@ -26,4 +27,4 @@ function useSiteMetadata(): SiteMetadata {
 }
 
 export default useSiteMetadata
-```
+```

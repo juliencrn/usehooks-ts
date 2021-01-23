@@ -1,4 +1,5 @@
-```tsximport React, { useRef } from 'react'
+```tsx
+import React, { useRef } from 'react'
 
 import useElementSize from './useElementSize'
 
@@ -23,4 +24,4 @@ export default function Component() {
     </>
   )
 }
-```
+```

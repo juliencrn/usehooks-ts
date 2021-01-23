@@ -1,4 +1,5 @@
-```tsximport React from 'react'
+```tsx
+import React from 'react'
 
 import useSiteMetadata from './useSiteMetadata'
 
@@ -11,4 +12,4 @@ export default function Component() {
     </header>
   )
 }
-```
+```

@@ -1,4 +1,5 @@
-```tsximport React, { CSSProperties, useState } from 'react'
+```tsx
+import React, { CSSProperties, useState } from 'react'
 
 import useLockedBody from './useLockedBody'
 
@@ -46,4 +47,4 @@ export function Component2() {
     </>
   )
 }
-```
+```

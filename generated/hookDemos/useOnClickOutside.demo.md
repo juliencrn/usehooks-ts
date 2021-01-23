@@ -1,4 +1,5 @@
-```tsximport React, { useRef } from 'react'
+```tsx
+import React, { useRef } from 'react'
 
 import useOnClickOutside from './useOnClickOutside'
 
@@ -25,4 +26,4 @@ export default function Component() {
     />
   )
 }
-```
+```

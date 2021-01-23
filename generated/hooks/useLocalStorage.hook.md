@@ -1,6 +1,10 @@
-```tsimport { useEffect, useState } from 'react'
+```ts
+import { useEffect, useState } from 'react'
 
-function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => void] {
+function useLocalStorage<T>(
+  key: string,
+  initialValue: T,
+): [T, (value: T) => void] {
   // Get from local storage then
   // parse stored json or return initialValue
   const readValue = () => {
@@ -74,4 +78,4 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => voi
 }
 
 export default useLocalStorage
-```
+```

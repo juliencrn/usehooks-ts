@@ -1,4 +1,5 @@
-```tsimport { useEffect, useLayoutEffect, useState } from 'react'
+```ts
+import { useEffect, useLayoutEffect, useState } from 'react'
 
 type ReturnType = [boolean, (locked: boolean) => void]
 
@@ -40,4 +41,4 @@ function useLockedBody(initialLocked = false, scrollBarWidth = 15): ReturnType {
 }
 
 export default useLockedBody
-```
+```

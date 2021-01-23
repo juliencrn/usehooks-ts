@@ -1,4 +1,5 @@
-```tsimport { CSSProperties, useState } from 'react'
+```ts
+import { CSSProperties, useState } from 'react'
 
 interface ImageStyle {
   thumbnail: CSSProperties
@@ -36,4 +37,4 @@ function useImageOnLoad(): ImageOnLoadType {
 }
 
 export default useImageOnLoad
-```
+```

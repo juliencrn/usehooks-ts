@@ -2,11 +2,11 @@ import { useRef, useEffect, RefObject } from 'react'
 
 function useEventListener<T extends HTMLElement = HTMLDivElement>(
   eventName: string,
-  handler: Function,
+  handler: (event: Event) => void,
   element?: RefObject<T>,
 ) {
   // Create a ref that stores handler
-  const savedHandler = useRef<Function>()
+  const savedHandler = useRef<(event: Event) => void>()
 
   useEffect(() => {
     // Define the listening target

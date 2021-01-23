@@ -1,4 +1,5 @@
-```tsximport React, { FC, useRef } from 'react'
+```tsx
+import React, { FC, useRef } from 'react'
 
 import useIntersectionObserver from './useIntersectionObserver'
 
@@ -36,4 +37,4 @@ export default function Component() {
     </>
   )
 }
-```
+```

@@ -1,4 +1,5 @@
-```tsximport React, { useState, useEffect, ChangeEvent } from 'react'
+```tsx
+import React, { useState, useEffect, ChangeEvent } from 'react'
 
 import useDebounce from './useDebounce'
 
@@ -25,4 +26,4 @@ export default function Component() {
     </div>
   )
 }
-```
+```

@@ -1,4 +1,5 @@
-```tsximport React, { useEffect } from 'react'
+```tsx
+import React, { useEffect } from 'react'
 
 import useScript from './useScript'
 
@@ -24,4 +25,4 @@ export default function Component() {
     </div>
   )
 }
-```
+```

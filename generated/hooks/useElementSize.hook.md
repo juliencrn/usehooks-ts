@@ -1,4 +1,5 @@
-```tsimport { RefObject, useState, useEffect, useCallback } from 'react'
+```ts
+import { RefObject, useState, useEffect, useCallback } from 'react'
 
 // See: https://usehooks-typescript.com/use-event-listener
 import { useEventListener } from '../../hooks'
@@ -39,4 +40,4 @@ function useElementSize<T extends HTMLElement = HTMLDivElement>(
 }
 
 export default useElementSize
-```
+```
