@@ -1,4 +1,4 @@
-const postQuery = `
+const query = `
   {
     algoliaPosts: allMdx(limit: 1000, filter: {fields: {type: {eq: "post"}}}) {
       nodes {
@@ -52,20 +52,24 @@ const transformer = ({ data }) => {
     }
   })
 
-  return matchesPosts.map(({ frontmatter, excerpt, fields }) => ({
-    id: fields.path,
-    path: `/react-hook${fields.path}`,
-    title: frontmatter.title,
-    excerpt,
-  }))
+  return matchesPosts.map(({ frontmatter, excerpt, fields }) => {
+    const id = fields.path.split('/')[1]
+    return {
+      objectID: id,
+      id,
+      path: `/react-hook${fields.path}`,
+      title: frontmatter.title,
+      excerpt,
+    }
+  })
 }
 
-const algoliaQueries = [
+const queries = [
   {
-    query: postQuery,
+    query,
     transformer,
     indexName: `Posts`,
   },
 ]
 
-module.exports = algoliaQueries
+module.exports = queries
