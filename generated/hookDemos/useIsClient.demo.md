@@ -1,5 +1,4 @@
-```tsx
-import React from 'react'
+```tsximport React from 'react'
 
 import useIsClient from './useIsClient'
 
@@ -8,4 +7,4 @@ export default function Component() {
 
   return <div>{isClient ? 'Client' : 'server'}</div>
 }
-```
+```

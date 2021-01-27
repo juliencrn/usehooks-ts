@@ -1,5 +1,4 @@
-```ts
-import { useState, useEffect } from 'react'
+```tsimport { useState, useEffect } from 'react'
 
 function useScreen() {
   const getScreen = () => {
@@ -27,4 +26,4 @@ function useScreen() {
 }
 
 export default useScreen
-```
+```

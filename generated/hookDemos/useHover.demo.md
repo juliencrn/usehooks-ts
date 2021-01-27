@@ -1,5 +1,4 @@
-```tsx
-import React, { useRef } from 'react'
+```tsximport React, { useRef } from 'react'
 
 import useHover from './useHover'
 
@@ -13,4 +12,4 @@ export default function Component() {
     </div>
   )
 }
-```
+```

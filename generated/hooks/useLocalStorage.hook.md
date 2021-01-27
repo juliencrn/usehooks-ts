@@ -1,5 +1,4 @@
-```ts
-import { useEffect, useState } from 'react'
+```tsimport { useEffect, useState } from 'react'
 
 function useLocalStorage<T>(
   key: string,
@@ -55,6 +54,7 @@ function useLocalStorage<T>(
 
   useEffect(() => {
     setStoredValue(readValue())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -72,10 +72,11 @@ function useLocalStorage<T>(
       window.removeEventListener('storage', handleStorageChange)
       window.removeEventListener('local-storage', handleStorageChange)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return [storedValue, setValue]
 }
 
 export default useLocalStorage
-```
+```

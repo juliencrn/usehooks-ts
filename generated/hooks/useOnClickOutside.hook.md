@@ -1,5 +1,4 @@
-```ts
-import { useEffect, RefObject } from 'react'
+```tsimport { useEffect, RefObject } from 'react'
 
 type Event = MouseEvent | TouchEvent
 
@@ -32,4 +31,4 @@ function useOnClickOutside<T extends HTMLElement = HTMLElement>(
 }
 
 export default useOnClickOutside
-```
+```

@@ -1,5 +1,4 @@
-```tsx
-import React from 'react'
+```tsximport React from 'react'
 
 import useFetch from './useFetch'
 
@@ -18,4 +17,4 @@ export default function Component() {
   // your component JSX
   return <div>{status}</div>
 }
-```
+```

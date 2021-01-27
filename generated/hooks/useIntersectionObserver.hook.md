@@ -1,5 +1,4 @@
-```ts
-import { useRef, useEffect, useState, RefObject } from 'react'
+```tsimport { useRef, useEffect, useState, RefObject } from 'react'
 
 interface Args<T> extends IntersectionObserverInit {
   elementRef: RefObject<T>
@@ -47,10 +46,11 @@ function useIntersectionObserver<T extends HTMLElement = HTMLDivElement>({
     return () => {
       currentObserver.disconnect()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [elementRef, threshold, root, rootMargin, noUpdate])
 
   return [!!entry?.isIntersecting, entry]
 }
 
 export default useIntersectionObserver
-```
+```

@@ -1,5 +1,4 @@
-```tsx
-import React from 'react'
+```tsximport React from 'react'
 
 import useScreen from './useScreen'
 
@@ -15,4 +14,4 @@ export default function Component() {
     </div>
   )
 }
-```
+```
