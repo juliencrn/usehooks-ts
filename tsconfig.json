@@ -1,19 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNEXT",
     "module": "commonjs",
-    "lib": ["dom", "esnext"],
-    "noImplicitAny": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "removeComments": true,
-    "noEmit": true,
-    "isolatedModules": true,
+    "baseUrl": ".",
     "strict": true,
-    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "jsx": "preserve",
+    "paths": {
+      "~/*": ["src/*"]
+    },
+    "noEmit": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "public", ".cache"]
+  "include": ["src/**/*"]
 }
