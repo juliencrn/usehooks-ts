@@ -2,38 +2,46 @@ import { useEffect, useLayoutEffect, useState } from 'react'
 
 type ReturnType = [boolean, (locked: boolean) => void]
 
-function useLockedBody(initialLocked = false, scrollBarWidth = 15): ReturnType {
+function useLockedBody(initialLocked = false): ReturnType {
   const [locked, setLocked] = useState(initialLocked)
 
   // Do the side effect before render
   useLayoutEffect(() => {
-    if (typeof window === 'undefined') {
+    if (!locked) {
       return
     }
 
-    if (locked) {
-      const originalOverflowY = document.body.style.overflowY
-      const originalPaddingRight = document.body.style.overflow
+    // Save initial body style
+    const originalOverflow = document.body.style.overflow
+    const originalPaddingRight = document.body.style.paddingRight
 
-      // Lock body scroll
-      document.body.style.overflowY = 'hidden'
+    // Lock body scroll
+    document.body.style.overflow = 'hidden'
 
-      // Avoid width reflow
+    // Get the scrollBar width
+    const root = document.getElementById('___gatsby') // or root
+    const scrollBarWidth = root ? root.offsetWidth - root.scrollWidth : 0
+
+    // Avoid width reflow
+    if (scrollBarWidth) {
       document.body.style.paddingRight = `${scrollBarWidth}px`
+    }
 
-      return () => {
-        // reset
-        document.body.style.overflowY = originalOverflowY
+    return () => {
+      document.body.style.overflow = originalOverflow
+
+      if (scrollBarWidth) {
         document.body.style.paddingRight = originalPaddingRight
       }
     }
-  }, [locked, initialLocked])
+  }, [locked])
 
   // Update state if initialValue changes
   useEffect(() => {
     if (locked !== initialLocked) {
       setLocked(initialLocked)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialLocked])
 
   return [locked, setLocked]

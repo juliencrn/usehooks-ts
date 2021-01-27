@@ -14,7 +14,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import { RootState } from '../../redux/store'
 import { openDrawer, closeDrawer } from '../../redux/appModule'
 import { filterHook } from '../../shared/filterHooks'
-import useHookList from '../../hooks/privateHooks/useHookList'
+import useHookList from '~/hooks/privateHooks/useHookList'
 
 const drawerWidth = 280
 
@@ -72,6 +72,7 @@ function Sidebar({ matches }: SidebarProps) {
   useLayoutEffect(() => {
     if (matches && !drawerOpen) handleOpen()
     if (!matches && drawerOpen) handleClose()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [matches])
 
   return (

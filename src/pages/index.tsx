@@ -1,18 +1,16 @@
 import React from 'react'
-// import { makeStyles, Theme } from '@material-ui/core/styles'
 
-import SEO from '../components/seo'
-import Hero from '../components/hero'
-import { useSiteMetadata } from '../hooks'
+import SEO from '~/components/seo'
+import Hero from '~/components/hero'
+import { useSiteMetadata } from '~/hooks'
+import { PageTemplate } from '~/models'
 
-// const useStyles = makeStyles((theme: Theme) => ({}))
-
-function PostListTemplate() {
+function PostListTemplate({ location }: PageTemplate) {
   const { title, description } = useSiteMetadata()
 
   return (
     <>
-      <SEO title={title} description={description} path="/" />
+      <SEO title={title} description={description} location={location} />
 
       <Hero title={title} description={description} fullHeight />
     </>

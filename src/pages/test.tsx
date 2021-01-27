@@ -3,8 +3,9 @@ import { navigate } from 'gatsby'
 
 import Container from '@material-ui/core/Container'
 
-import SEO from '../components/seo'
-import Hero from '../components/hero'
+import SEO from '~/components/seo'
+import Hero from '~/components/hero'
+import { PageTemplate } from '~/models'
 
 /**
  * I use this page for testing my hooks,
@@ -19,14 +20,14 @@ function Component() {
   return <div>Example</div>
 }
 
-function TestPage() {
+function TestPage({ location }: PageTemplate) {
   if (process.env.NODE_ENV === 'production' && typeof window !== 'undefined') {
     navigate('/')
   }
 
   return (
     <>
-      <SEO title="Tests page" />
+      <SEO title="Tests page" location={location} />
 
       <Hero
         title="Tests page"

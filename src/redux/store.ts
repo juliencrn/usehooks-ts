@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { combineReducers } from 'redux'
 
-import app from '../redux/appModule'
+import app from './appModule'
 import { loadState, saveState } from './persistStore'
 
 const preloadedState = loadState()

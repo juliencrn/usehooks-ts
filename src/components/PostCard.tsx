@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography'
 import Link from '@material-ui/core/Link'
 import Box from '@material-ui/core/Box'
 
-import { Post } from '../models'
+import { Post } from '~/models'
 
 const useStyles = makeStyles((theme: Theme) => ({
   article: {

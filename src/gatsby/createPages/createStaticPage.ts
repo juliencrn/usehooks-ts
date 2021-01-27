@@ -47,7 +47,7 @@ export default async function createStaticPages(args: CreatePagesArgs) {
 
     if (pages.nodes.length > 0) {
       pages.nodes.forEach(page => {
-        if (!page.frontmatter?.path) {
+        if (!page.frontmatter.path) {
           reporter.warn(`"path" is missing in "${page.fileAbsolutePath}"`)
           return
         }

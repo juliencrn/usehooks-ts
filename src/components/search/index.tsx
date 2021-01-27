@@ -14,9 +14,10 @@ import Paper from '@material-ui/core/Paper'
 import Divider from '@material-ui/core/Divider'
 import Box from '@material-ui/core/Box'
 
+import { useOnClickOutside } from '~/hooks'
+
 import Input from './input'
 import { PoweredBy, ConnectedHits } from './hitComps'
-import { useOnClickOutside } from '../../hooks'
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APP_ID || '',

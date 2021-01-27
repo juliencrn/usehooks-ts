@@ -7,7 +7,8 @@
 
 import React, { FC } from 'react'
 import { Helmet } from 'react-helmet'
-import { useSiteMetadata } from '../hooks'
+
+import { useSiteMetadata } from '~/hooks'
 
 interface MetaProperty {
   property: string
@@ -23,24 +24,24 @@ type Meta = MetaName | MetaProperty
 
 export interface SEOProps {
   title: string
+  location: Location
   description?: string
   lang?: string
   meta?: Meta[]
-  path?: string
-  isPost?: boolean
 }
 
 const SEO: FC<SEOProps> = ({
+  title,
+  location,
   description = '',
   lang = 'en',
   meta = [],
-  title,
-  path = '/',
-  isPost = false,
 }) => {
   const siteMetadata = useSiteMetadata()
   const metaDescription = description || siteMetadata.description
-  const url = `${siteMetadata.siteUrl}${path}`
+  const url = `${siteMetadata.siteUrl}${location.pathname}`
+  const hookPageRegExp = new RegExp('/react-hook/')
+  const isHookPage = hookPageRegExp.test(url)
 
   // Build image from title using "Typescript blue" optimized for Facebook banned
   const image = `https://via.placeholder.com/1200x630.png/007ACC/fff/?text=${title}`
@@ -76,7 +77,7 @@ const SEO: FC<SEOProps> = ({
         },
         {
           property: `og:type`,
-          content: isPost ? `article` : `website`,
+          content: isHookPage ? `article` : `website`,
         },
         {
           property: `og:url`,
