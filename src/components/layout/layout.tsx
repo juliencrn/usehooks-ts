@@ -9,13 +9,14 @@ import { useSelector } from 'react-redux'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
+import { RootState } from '~/redux/store'
+import { useSiteMetadata } from '~/hooks'
+import themes from '~/theme'
+
+import BackToTop from '../backToTop'
 import Header from './header'
 import Footer from './footer'
-import themes from '../../theme'
-import { useSiteMetadata } from '../../hooks'
-import BackToTop from '../backToTop'
 import Sidebar from './sidebar'
-import { RootState } from '../../redux/store'
 
 import './style.css'
 

@@ -1,5 +1,4 @@
-```tsx
-import React, { CSSProperties } from 'react'
+```tsximport React, { CSSProperties } from 'react'
 
 import useImageOnLoad from './useImageOnLoad'
 
@@ -37,4 +36,4 @@ export default function Component() {
     </div>
   )
 }
-```
+```

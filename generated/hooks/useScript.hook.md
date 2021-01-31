@@ -1,5 +1,4 @@
-```ts
-import { useEffect, useState } from 'react'
+```tsimport { useEffect, useState } from 'react'
 
 export type Status = 'idle' | 'loading' | 'ready' | 'error'
 export type ScriptElt = HTMLScriptElement | null
@@ -69,4 +68,4 @@ function useScript(src: string): Status {
 }
 
 export default useScript
-```
+```

@@ -4,23 +4,23 @@ import { graphql } from 'gatsby'
 import Container from '@material-ui/core/Container'
 import Box from '@material-ui/core/Box'
 
-import SEO from '../components/seo'
-import MdxRenderer from '../components/mdxRenderer'
-import { PageTemplate, Page } from '../models'
-import Hero from '../components/hero'
+import { PageTemplate, Page } from '~/models'
+import SEO from '~/components/seo'
+import MdxRenderer from '~/components/mdxRenderer'
+import Hero from '~/components/hero'
 
 export interface PageTemplateProps extends PageTemplate {
   pageContext: { pageId: string }
   data: { page: Page }
 }
 
-function PostTemplate({ path, data }: PageTemplateProps) {
+function PostTemplate({ data, location }: PageTemplateProps) {
   const { body, frontmatter } = data.page
   const { title, excerpt } = frontmatter
 
   return (
     <>
-      <SEO title={title} description={excerpt} path={path} />
+      <SEO title={title} description={excerpt} location={location} />
 
       <Hero title={title} description={excerpt} />
 

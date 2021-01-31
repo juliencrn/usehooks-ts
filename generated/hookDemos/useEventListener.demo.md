@@ -1,5 +1,4 @@
-```tsx
-import React, { useRef } from 'react'
+```tsximport React, { useRef } from 'react'
 
 import useEventListener from './useEventListener'
 
@@ -27,4 +26,4 @@ export default function Component() {
     </div>
   )
 }
-```
+```

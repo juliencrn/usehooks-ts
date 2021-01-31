@@ -46,6 +46,7 @@ function useIntersectionObserver<T extends HTMLElement = HTMLDivElement>({
     return () => {
       currentObserver.disconnect()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [elementRef, threshold, root, rootMargin, noUpdate])
 
   return [!!entry?.isIntersecting, entry]

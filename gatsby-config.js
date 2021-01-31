@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable @typescript-eslint/camelcase */
+const path = require('path')
+
 const feed = require('./legacy/feedSerializer')
 
 require('dotenv').config({
@@ -16,15 +17,19 @@ const siteMetadata = {
 module.exports = {
   siteMetadata,
   plugins: [
-    {
-      resolve: `gatsby-plugin-typescript`,
-      options: {
-        isTSX: true,
-        allExtensions: true,
-      },
-    },
+    `gatsby-plugin-typescript`,
     `gatsby-plugin-typescript-checker`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-catch-links`,
+    `gatsby-plugin-material-ui`,
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        '~': path.join(__dirname, 'src'),
+      },
+    },
+    // TODO: merge all gatsby-source-filesystem into only one ?
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -76,8 +81,6 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-catch-links`,
-    `gatsby-plugin-material-ui`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -86,7 +89,6 @@ module.exports = {
         anonymize: true,
       },
     },
-    `gatsby-plugin-sitemap`,
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
@@ -131,7 +133,7 @@ module.exports = {
         // generateMatchPathRewrites: true // boolean to turn off automatic creation of redirect rules for client only paths
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // TODO: enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],

@@ -23,8 +23,7 @@ function useFetch<T = unknown>(
   options?: AxiosRequestConfig,
 ): State<T> {
   const cache = useRef<Cache<T>>({})
-
-  let cancelRequest = false
+  const cancelRequest = useRef<boolean>(false)
 
   const initialState: State<T> = {
     status: 'init',
@@ -63,11 +62,11 @@ function useFetch<T = unknown>(
           const response = await axios(url, options)
           cache.current[url] = response.data
 
-          if (cancelRequest) return
+          if (cancelRequest.current) return
 
           dispatch({ type: 'success', payload: response.data })
         } catch (error) {
-          if (cancelRequest) return
+          if (cancelRequest.current) return
 
           dispatch({ type: 'failure', payload: error.message })
         }
@@ -77,8 +76,9 @@ function useFetch<T = unknown>(
     fetchData()
 
     return () => {
-      cancelRequest = true
+      cancelRequest.current = true
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url])
 
   return state

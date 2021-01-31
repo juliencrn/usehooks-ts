@@ -8,9 +8,9 @@ import Container from '@material-ui/core/Container'
 import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 
-import SEO from '../components/seo'
-import MdxRenderer from '../components/mdxRenderer'
-import { PageTemplate, Post } from '../models'
+import { PageTemplate, Post } from '~/models'
+import SEO from '~/components/seo'
+import MdxRenderer from '~/components/mdxRenderer'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -57,7 +57,7 @@ export interface PostTemplateProps extends PageTemplate {
   }
 }
 
-function PostTemplate({ path, data }: PostTemplateProps) {
+function PostTemplate({ location, data }: PostTemplateProps) {
   const classes = useStyles()
   const { post, hook, demo } = data
   const { body, excerpt, frontmatter } = post
@@ -68,7 +68,7 @@ function PostTemplate({ path, data }: PostTemplateProps) {
 
   return (
     <Container className={classes.root} maxWidth="md">
-      <SEO title={title} description={excerpt} path={path} isPost />
+      <SEO title={title} description={excerpt} location={location} />
 
       <Typography variant="h2" component="h1" className={classes.title}>
         {title}
