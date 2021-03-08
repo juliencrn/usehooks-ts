@@ -3,17 +3,15 @@
 import useIntersectionObserver from './useIntersectionObserver'
 
 const Section: FC = ({ children }) => {
-  const divRef = useRef<HTMLDivElement | null>(null)
+  const ref = useRef<HTMLDivElement | null>(null)
+  const entry = useIntersectionObserver(ref, {})
+  const isVisible = !!entry?.isIntersecting
 
-  const [isVisible /*, entry */] = useIntersectionObserver({
-    elementRef: divRef,
-  })
-
-  console.log(`Render Section ${children?.toString()}`, isVisible)
+  console.log(`Render Section ${children?.toString()}`, { isVisible })
 
   return (
     <div
-      ref={divRef}
+      ref={ref}
       style={{
         minHeight: '100vh',
         display: 'flex',
