@@ -2,7 +2,7 @@ import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { makeStyles, Theme } from '@material-ui/core/styles'
+import { makeStyles, Theme, useTheme } from '@material-ui/core/styles'
 
 import Typography from '@material-ui/core/Typography'
 import Link from '@material-ui/core/Link'
@@ -19,10 +19,11 @@ import GitHubIcon from '@material-ui/icons/GitHub'
 import RssFeedIcon from '@material-ui/icons/RssFeed'
 
 import { useSiteMetadata } from '~/hooks'
-import { openDrawer, toggleTheme } from '~/redux/appModule'
+import { toggleTheme } from '~/redux/appModule'
 import { RootState } from '~/redux/store'
 
 import Search from '../search'
+import { useMediaQuery } from '@material-ui/core'
 
 const useStyles = makeStyles((theme: Theme) => ({
   appBar: {
@@ -45,18 +46,16 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export interface HeaderProps {
   siteTitle?: string
-  matches: boolean
+  onOpenSidebar: () => void
 }
 
-function Header({ siteTitle = '', matches }: HeaderProps) {
+function Header({ siteTitle, onOpenSidebar }: HeaderProps) {
   const classes = useStyles()
   const { author } = useSiteMetadata()
   const dispatch = useDispatch()
   const { theme } = useSelector((state: RootState) => state.app)
-
-  const handleOpenDrawer = () => {
-    dispatch(openDrawer())
-  }
+  const { breakpoints } = useTheme()
+  const isMobile = useMediaQuery(breakpoints.down('md'))
 
   const handleToggleTheme = () => {
     dispatch(toggleTheme())
@@ -65,10 +64,10 @@ function Header({ siteTitle = '', matches }: HeaderProps) {
   return (
     <AppBar component="header" position="fixed" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
-        {!matches && (
+        {isMobile && (
           <IconButton
             aria-label="Open menu"
-            onClick={handleOpenDrawer}
+            onClick={onOpenSidebar}
             color="inherit"
           >
             <MenuIcon />

@@ -1,13 +1,12 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import {
   makeStyles,
-  useTheme,
   ThemeProvider,
   Theme,
+  useTheme,
 } from '@material-ui/core/styles'
 import { useSelector } from 'react-redux'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import { RootState } from '~/redux/store'
 import { useSiteMetadata } from '~/hooks'
@@ -19,6 +18,7 @@ import Footer from './footer'
 import Sidebar from './sidebar'
 
 import './style.css'
+import { useMediaQuery } from '@material-ui/core'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -50,16 +50,34 @@ const Layout: FC = ({ children }) => {
   const classes = useStyles()
   const { title } = useSiteMetadata()
   const { breakpoints } = useTheme()
-  const matches = useMediaQuery(breakpoints.up('md'))
+  const isMobile = useMediaQuery(breakpoints.down('md'))
+  const [openSidebar, setOpenSidebar] = useState(false)
   const { theme } = useSelector((state: RootState) => state.app)
+
+  const handleCloseSidebar = () => setOpenSidebar(false)
+  const handleOpenSidebar = () => setOpenSidebar(true)
+
+  useEffect(() => {
+    // Hide sidebar by default on small screen
+    if (isMobile && openSidebar) {
+      handleCloseSidebar()
+    }
+
+    // Show sidebar by default on large screen
+    if (!isMobile && !openSidebar) {
+      handleOpenSidebar()
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMobile])
 
   return (
     <ThemeProvider theme={themes[theme]}>
       <CssBaseline />
       <div className={classes.root}>
-        <Header siteTitle={title} matches={matches} />
+        <Header siteTitle={title} onOpenSidebar={handleOpenSidebar} />
 
-        <Sidebar matches={matches} />
+        <Sidebar open={openSidebar} onClose={handleCloseSidebar} />
 
         <main className={classes.main}>
           <div className={classes.topGutter} />

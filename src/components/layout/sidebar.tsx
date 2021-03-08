@@ -1,7 +1,6 @@
-import React, { useLayoutEffect } from 'react'
-import { makeStyles, Theme } from '@material-ui/core/styles'
+import React, { useRef } from 'react'
+import { makeStyles, Theme, useTheme } from '@material-ui/core/styles'
 import { Link as GatsbyLink } from 'gatsby'
-import { useSelector, useDispatch } from 'react-redux'
 
 import List from '@material-ui/core/List'
 import Drawer from '@material-ui/core/Drawer'
@@ -11,10 +10,10 @@ import ListItemText from '@material-ui/core/ListItemText'
 import IconButton from '@material-ui/core/IconButton'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 
-import { RootState } from '../../redux/store'
-import { openDrawer, closeDrawer } from '../../redux/appModule'
 import { filterHook } from '../../shared/filterHooks'
 import useHookList from '~/hooks/privateHooks/useHookList'
+import { useOnClickOutside } from '~/hooks'
+import { useMediaQuery } from '@material-ui/core'
 
 const drawerWidth = 280
 
@@ -45,48 +44,34 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-export interface SidebarProps {
-  matches: boolean
+interface SidebarProps {
+  open: boolean
+  onClose: () => void
 }
 
-function Sidebar({ matches }: SidebarProps) {
+function Sidebar({ open, onClose }: SidebarProps) {
   const classes = useStyles()
+  const sidebarRef = useRef<HTMLDivElement | null>(null)
   const { posts, hooks, demos } = useHookList()
   const extendedPosts = filterHook(posts.nodes, hooks.nodes, demos.nodes)
-  const { drawerOpen } = useSelector((state: RootState) => state.app)
-  const dispatch = useDispatch()
+  const { breakpoints } = useTheme()
+  const isMobile = useMediaQuery(breakpoints.down('md'))
 
-  const handleClose = () => {
-    dispatch(closeDrawer())
-  }
-  const handleOpen = () => {
-    dispatch(openDrawer())
-  }
-
-  // Close menu on link click if we are on mobile
-  const onClickLink = () => {
-    if (!matches) handleClose()
-  }
-
-  // On window width change "drawerOpen" if necessary
-  useLayoutEffect(() => {
-    if (matches && !drawerOpen) handleOpen()
-    if (!matches && drawerOpen) handleClose()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [matches])
+  useOnClickOutside(sidebarRef, onClose)
 
   return (
     <>
       <Drawer
+        PaperProps={{ ref: sidebarRef, component: 'aside' }}
         className={classes.drawer}
-        variant={matches ? 'persistent' : 'temporary'}
-        open={drawerOpen}
+        variant={isMobile ? 'temporary' : 'persistent'}
+        open={open}
         classes={{
           paper: classes.drawerPaper,
         }}
       >
         <div className={classes.drawerHeader}>
-          <IconButton onClick={handleClose}>
+          <IconButton onClick={onClose}>
             <ChevronLeftIcon />
           </IconButton>
         </div>
@@ -98,7 +83,7 @@ function Sidebar({ matches }: SidebarProps) {
               button
               to="/about"
               component={GatsbyLink}
-              onClick={onClickLink}
+              onClick={onClose}
               activeClassName={classes.active}
             >
               <ListItemText primary="About" />
@@ -114,7 +99,7 @@ function Sidebar({ matches }: SidebarProps) {
                 to={`/react-hook${fields.path}`}
                 key={fields.path}
                 component={GatsbyLink}
-                onClick={onClickLink}
+                onClick={onClose}
                 activeClassName={classes.active}
               >
                 <ListItemText
