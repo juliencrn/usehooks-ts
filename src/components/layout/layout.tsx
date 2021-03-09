@@ -17,7 +17,6 @@ import Header from './header'
 import Footer from './footer'
 import Sidebar from './sidebar'
 
-import './style.css'
 import { useMediaQuery } from '@material-ui/core'
 
 const useStyles = makeStyles((theme: Theme) => ({
