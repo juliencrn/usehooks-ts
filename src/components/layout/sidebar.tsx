@@ -57,7 +57,9 @@ function Sidebar({ open, onClose }: SidebarProps) {
   const { breakpoints } = useTheme()
   const isMobile = useMediaQuery(breakpoints.down('md'))
 
-  useOnClickOutside(sidebarRef, onClose)
+  useOnClickOutside(sidebarRef, () => {
+    if (isMobile) onClose()
+  })
 
   return (
     <>
