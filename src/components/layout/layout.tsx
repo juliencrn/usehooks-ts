@@ -3,12 +3,11 @@ import {
   makeStyles,
   ThemeProvider,
   Theme,
-  useTheme,
+  useTheme as useMuiTheme,
 } from '@material-ui/core/styles'
-import { useSelector } from 'react-redux'
+import { useMediaQuery } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
-import { RootState } from '~/redux/store'
 import { useSiteMetadata } from '~/hooks'
 import themes from '~/theme'
 
@@ -16,8 +15,7 @@ import BackToTop from '../backToTop'
 import Header from './header'
 import Footer from './footer'
 import Sidebar from './sidebar'
-
-import { useMediaQuery } from '@material-ui/core'
+import useTheme from './useTheme'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -48,12 +46,17 @@ const useStyles = makeStyles((theme: Theme) => ({
 const Layout: FC = ({ children }) => {
   const classes = useStyles()
   const { title } = useSiteMetadata()
-  const { breakpoints } = useTheme()
+  const { breakpoints } = useMuiTheme()
   const isMobile = useMediaQuery(breakpoints.down('md'))
   const [openSidebar, setOpenSidebar] = useState(false)
-  const { theme } = useSelector((state: RootState) => state.app)
+  const [theme] = useTheme()
 
-  const handleCloseSidebar = () => setOpenSidebar(false)
+  const handleCloseSidebar = () => {
+    if (isMobile) {
+      setOpenSidebar(false)
+    }
+  }
+
   const handleOpenSidebar = () => setOpenSidebar(true)
 
   useEffect(() => {

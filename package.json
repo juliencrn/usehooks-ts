@@ -40,7 +40,6 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@n8tb1t/use-scroll-position": "^2.0.3",
-    "@reduxjs/toolkit": "^1.5.0",
     "axios": "^0.21.1",
     "date-fns": "^2.19.0",
     "deepmerge": "^4.2.2",
@@ -65,9 +64,7 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.0.0",
     "react-instantsearch-dom": "^6.10.3",
-    "react-redux": "^7.2.2",
-    "react-scroll": "^1.8.2",
-    "redux": "^4.0.5"
+    "react-scroll": "^1.8.2"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
@@ -79,10 +76,8 @@
     "@types/react-dom": "^17.0.2",
     "@types/react-helmet": "^6.1.0",
     "@types/react-instantsearch-dom": "^6.10.0",
-    "@types/react-redux": "^7.1.16",
     "@types/react-scroll": "^1.8.2",
     "@types/react-test-renderer": "^17.0.1",
-    "@types/redux": "^3.6.0",
     "@typescript-eslint/eslint-plugin": "^4.17.0",
     "@typescript-eslint/parser": "^4.17.0",
     "babel-eslint": "^10.1.0",

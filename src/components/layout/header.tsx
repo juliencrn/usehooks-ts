@@ -1,8 +1,12 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import { useSelector, useDispatch } from 'react-redux'
 
-import { makeStyles, Theme, useTheme } from '@material-ui/core/styles'
+import {
+  makeStyles,
+  Theme as MuiTheme,
+  useTheme as useMuiTheme,
+} from '@material-ui/core/styles'
+import { useMediaQuery } from '@material-ui/core'
 
 import Typography from '@material-ui/core/Typography'
 import Link from '@material-ui/core/Link'
@@ -19,13 +23,11 @@ import GitHubIcon from '@material-ui/icons/GitHub'
 import RssFeedIcon from '@material-ui/icons/RssFeed'
 
 import { useSiteMetadata } from '~/hooks'
-import { toggleTheme } from '~/redux/appModule'
-import { RootState } from '~/redux/store'
 
 import Search from '../search'
-import { useMediaQuery } from '@material-ui/core'
+import useTheme from './useTheme'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles((theme: MuiTheme) => ({
   appBar: {
     background:
       theme.palette.type === 'light'
@@ -52,14 +54,9 @@ export interface HeaderProps {
 function Header({ siteTitle, onOpenSidebar }: HeaderProps) {
   const classes = useStyles()
   const { author } = useSiteMetadata()
-  const dispatch = useDispatch()
-  const { theme } = useSelector((state: RootState) => state.app)
-  const { breakpoints } = useTheme()
+  const { breakpoints } = useMuiTheme()
   const isMobile = useMediaQuery(breakpoints.down('md'))
-
-  const handleToggleTheme = () => {
-    dispatch(toggleTheme())
-  }
+  const [theme, toggleTheme] = useTheme()
 
   return (
     <AppBar component="header" position="fixed" className={classes.appBar}>
@@ -94,7 +91,7 @@ function Header({ siteTitle, onOpenSidebar }: HeaderProps) {
         <IconButton
           aria-label="Switch theme"
           color="inherit"
-          onClick={handleToggleTheme}
+          onClick={toggleTheme}
         >
           {theme === 'light' ? <Brightness3Icon /> : <WbSunnyIcon />}
         </IconButton>
