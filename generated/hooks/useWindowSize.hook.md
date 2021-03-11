@@ -1,4 +1,5 @@
-```tsimport { useScreen } from '../../hooks'
+```ts// See: https://usehooks-typescript.com/react-hook/use-screen
+import { useScreen } from '~/hooks'
 
 interface WindowSize {
   width: number

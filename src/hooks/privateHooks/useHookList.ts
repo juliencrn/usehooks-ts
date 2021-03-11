@@ -1,7 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby'
 
-import { Post } from '../../models'
-import { HookNode } from '../../models'
+import { Post, HookNode } from '~/models'
 
 export interface GroupedHookList {
   posts: { nodes: Post[] }

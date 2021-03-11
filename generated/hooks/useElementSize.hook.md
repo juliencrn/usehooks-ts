@@ -1,7 +1,7 @@
 ```tsimport { RefObject, useState, useEffect, useCallback } from 'react'
 
-// See: https://usehooks-typescript.com/use-event-listener
-import { useEventListener } from '../../hooks'
+// See: https://usehooks-typescript.com/react-hook/use-event-listener
+import { useEventListener } from '~/hooks'
 
 interface Size {
   width: number
