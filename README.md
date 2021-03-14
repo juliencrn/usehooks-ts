@@ -29,6 +29,7 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 - [useScreen](https://usehooks-typescript.com/react-hook/use-screen)
 - [useScript](https://usehooks-typescript.com/react-hook/use-script)
 - [useSiteMetadata](https://usehooks-typescript.com/react-hook/use-site-metadata)
+- [useTimeout](https://usehooks-typescript.com/react-hook/use-timeout)
 - [useWindowSize](https://usehooks-typescript.com/react-hook/use-window-size)
 
 </div>

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Theme, withStyles } from '@material-ui/core/styles'
 
 import Button from '@material-ui/core/Button'
 import Tooltip from '@material-ui/core/Tooltip'
 import FileCopyIcon from '@material-ui/icons/FileCopy'
+import { useTimeout } from '~/hooks'
 
 const ThemedTooltip = withStyles((theme: Theme) => ({
   tooltip: {
@@ -35,12 +36,7 @@ const CopyButton = ({ value, classNames }: PropTypes) => {
   const [open, setOpen] = useState(false)
 
   // Auto close tooltip
-  useEffect(() => {
-    if (open) {
-      const id = setTimeout(() => setOpen(false), 2000)
-      return () => clearTimeout(id)
-    }
-  }, [open])
+  useTimeout(() => setOpen(false), open ? 2000 : null)
 
   const handleCopy = async () => {
     const copied = await copy(value)

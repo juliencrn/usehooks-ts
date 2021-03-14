@@ -27,3 +27,5 @@ export * from './useScreen'
 export * from './useScript'
 
 export * from './useSiteMetadata'
+
+export * from './useTimeout'
