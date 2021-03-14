@@ -30,6 +30,23 @@ const firaCode = {
   `,
 }
 
+const dracula = {
+  background: '#282a36',
+  currentLine: '#44475a',
+  selection: '#44475a',
+  white: '#f8f8f2',
+  comment: '#6272a4',
+  cyan: '#8be9fd',
+  green: '#50fa7b',
+  orange: '#ffb86c',
+  pink: '#ff79c6',
+  purple: '#bd93f9',
+  red: '#ff5555',
+  yellow: '#f1fa8c',
+}
+
+export type Dracula = typeof dracula
+
 const makeTheme = (variant: ThemeOptions): Theme => {
   const common = {
     palette: {
@@ -37,6 +54,7 @@ const makeTheme = (variant: ThemeOptions): Theme => {
         main: red.A400,
       },
     },
+    dracula,
     gradient: {
       primary:
         'linear-gradient(140deg, rgb(57, 45, 209) 0%, rgb(142, 41, 149) 100%);',
@@ -69,7 +87,7 @@ const makeTheme = (variant: ThemeOptions): Theme => {
   return responsiveFontSizes(theme)
 }
 
-const light: ThemeOptions = {
+const light: Partial<ThemeOptions> = {
   palette: {
     type: 'light',
     primary: {
@@ -79,19 +97,19 @@ const light: ThemeOptions = {
 }
 
 // See: https://github.com/dracula/dracula-theme#color-palette
-const dark: ThemeOptions = {
+const dark: Partial<ThemeOptions> = {
   palette: {
     type: 'dark',
     primary: {
-      main: '#ff79c6',
+      main: dracula.pink,
     },
     common: {
-      white: '#f8f8f2',
-      black: '#282a36',
+      white: dracula.white,
+      black: dracula.background,
     },
     background: {
-      default: '#44475a',
-      paper: '#282a36',
+      default: dracula.selection,
+      paper: dracula.background,
     },
   },
 }

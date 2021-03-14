@@ -28,8 +28,8 @@
     }
   },
   "rules": {
-    "prettier/prettier": "error",
-    "react/prop-types": 0,
-    "@typescript-eslint/explicit-module-boundary-types": 0
+    "prettier/prettier": "warn",
+    "react/prop-types": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   }
 }
