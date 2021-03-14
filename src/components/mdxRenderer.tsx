@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-const MdxRenderer = ({ children }: Readonly<MDXRendererProps>) => {
+const MdxRenderer = ({ body }: { body: string }) => {
   const classes = useStyles()
   return (
     <MDXProvider
@@ -165,7 +165,7 @@ const MdxRenderer = ({ children }: Readonly<MDXRendererProps>) => {
         thematicBreak: () => <Divider className={classes.divider} />,
       }}
     >
-      <MDXRenderer>{children}</MDXRenderer>
+      <MDXRenderer>{body}</MDXRenderer>
     </MDXProvider>
   )
 }

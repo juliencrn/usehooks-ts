@@ -25,7 +25,7 @@ function PostTemplate({ data, location }: PageTemplateProps) {
       <Hero title={title} description={excerpt} />
 
       <Container maxWidth="md">
-        <MdxRenderer>{body}</MdxRenderer>
+        <MdxRenderer body={body} />
         <Box py={3} />
       </Container>
     </>

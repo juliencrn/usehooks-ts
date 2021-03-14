@@ -74,14 +74,14 @@ function PostTemplate({ location, data }: PostTemplateProps) {
         {title}
       </Typography>
 
-      <MdxRenderer>{body}</MdxRenderer>
+      <MdxRenderer body={body} />
 
       {hook && (
         <>
           <Typography variant="h4" component="h2" className={classes.subtitle}>
             The Hook
           </Typography>
-          <MdxRenderer>{hook.body}</MdxRenderer>
+          <MdxRenderer body={hook.body} />
         </>
       )}
 
@@ -90,7 +90,7 @@ function PostTemplate({ location, data }: PostTemplateProps) {
           <Typography variant="h4" component="h2" className={classes.subtitle}>
             Usage
           </Typography>
-          <MdxRenderer>{demo.body}</MdxRenderer>
+          <MdxRenderer body={demo.body} />
         </>
       )}
 
