@@ -1,25 +1,23 @@
 ```tsimport { useEffect, useRef } from 'react'
 
 function useTimeout(callback: () => void, delay: number | null) {
-  const savedCallback = useRef<() => void | null>()
+  const savedCallback = useRef(callback)
 
-  // Remember the latest callback.
+  // Remember the latest callback if it changes.
   useEffect(() => {
     savedCallback.current = callback
-  })
+  }, [callback])
 
   // Set up the timeout.
   useEffect(() => {
-    function tick() {
-      if (typeof savedCallback?.current !== 'undefined') {
-        savedCallback?.current()
-      }
+    // Don't schedule if no delay is specified.
+    if (delay === null) {
+      return
     }
 
-    if (delay !== null) {
-      const id = setTimeout(tick, delay)
-      return () => clearTimeout(id)
-    }
+    const id = setTimeout(() => savedCallback.current(), delay)
+
+    return () => clearTimeout(id)
   }, [delay])
 }
 
