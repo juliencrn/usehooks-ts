@@ -5,23 +5,24 @@ function useHover<T extends HTMLElement = HTMLElement>(
 ): boolean {
   const [value, setValue] = useState<boolean>(false)
 
-  const handleMouseOver = () => setValue(true)
-  const handleMouseOut = () => setValue(false)
+  const handleMouseEnter = () => setValue(true)
+  const handleMouseLeave = () => setValue(false)
 
   useEffect(() => {
     const node = elementRef?.current
+
     if (node) {
-      node.addEventListener('mouseover', handleMouseOver)
-      node.addEventListener('mouseout', handleMouseOut)
+      node.addEventListener('mouseenter', handleMouseEnter)
+      node.addEventListener('mouseleave', handleMouseLeave)
 
       return () => {
-        node.removeEventListener('mouseover', handleMouseOver)
-        node.removeEventListener('mouseout', handleMouseOut)
+        node.removeEventListener('mouseenter', handleMouseEnter)
+        node.removeEventListener('mouseleave', handleMouseLeave)
       }
     }
   }, [elementRef])
 
-  return !!value
+  return value
 }
 
 export default useHover
