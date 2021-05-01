@@ -1,6 +1,13 @@
-# Usehooks(🔥) &mdash; [usehooks-typescript.com](https://usehooks-typescript.com/)
+<h1 style="text-align: center;">Welcome to useHooks(🔥).ts</h1>
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f1f0f5a4-8207-499b-b912-d99acb04176e/deploy-status)](https://app.netlify.com/sites/usehooks-ts/deploys)
+[![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/Junscuzzy/usehooks.ts/issues)
+[![Maintained](https://badgen.net/badge/Maintained%20%3F/Yes%21/blue?icon=github)](https://github.com/Junscuzzy/usehooks.ts/issues)
+[![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/Junscuzzy/usehooks.ts/blob/master/LICENSE)
+
+> UseHooks.ts is another React hook snippets library written in Typescript
+
+#### 🏠 Visit the homepage &mdash; [https://usehooks-typescript.com](https://usehooks-typescript.com/)
 
 ## 🤔 About
 
@@ -10,7 +17,7 @@ UseHooks.ts has been strongly inspired by [usehooks.com](https://usehooks.com), 
 
 If you'd like to submit new post ideas, improve existing posts, or change anything about the website feel free to submit an issue or pull-request.
 
-## Summary
+## 📖 Summary
 
 <div id="hook-list">
 
@@ -33,3 +40,31 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 - [useWindowSize](https://usehooks-typescript.com/react-hook/use-window-size)
 
 </div>
+
+## :red_car: Roadmap
+
+- [ ] Add new hooks
+- [ ] Set up automated tests for hooks
+- [ ] Add a live preview system to interact with hooks
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check [issues page](https://github.com/Junscuzzy/usehooks.ts/issues).
+
+## 💚 Support the project
+
+Give a ⭐ if this project helped you!
+
+Thanks! ❤️
+
+## 📝 License
+
+Copyright © 2020 [Julien Caron](https://github.com/Junscuzzy).
+
+This project is [MIT](https://github.com/Junscuzzy/usehooks.ts/blob/master/LICENSE) licensed.
+
+---
+
+Built with ❤️ with [Gatsby](https://www.gatsbyjs.com/) & [Typescript](https://www.typescriptlang.org/)
