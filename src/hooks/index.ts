@@ -29,3 +29,5 @@ export * from './useScript'
 export * from './useSiteMetadata'
 
 export * from './useTimeout'
+
+export * from './useWindowSize'

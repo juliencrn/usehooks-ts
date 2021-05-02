@@ -1,18 +1,28 @@
-// See: https://usehooks-typescript.com/react-hook/use-screen
-import { useScreen } from '~/hooks'
+// See: https://usehooks-typescript.com/react-hook/use-event-listener
+
+import { useState } from 'react'
+import { useEventListener } from '~/hooks'
 
 interface WindowSize {
   width: number
   height: number
 }
 
-function useWindowSize(): WindowSize {
-  const screen = useScreen()
+const isClient = typeof window !== 'undefined'
 
-  return {
-    width: screen?.width || 0,
-    height: screen?.height || 0,
-  }
+function useWindowSize(): WindowSize {
+  const getWindowSize = () => ({
+    width: isClient ? window.innerWidth : 0,
+    height: isClient ? window.innerHeight : 0,
+  })
+
+  const [windowSize, setWindowSize] = useState<WindowSize>(getWindowSize())
+
+  useEventListener('resize', () => {
+    setWindowSize(getWindowSize())
+  })
+
+  return windowSize
 }
 
 export default useWindowSize
