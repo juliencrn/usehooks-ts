@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    border: 'none',
   },
   drawerHeader: {
     display: 'flex',
@@ -53,7 +54,7 @@ function Sidebar({ open, onClose }: SidebarProps) {
   const sidebarRef = useRef<HTMLDivElement | null>(null)
   const { posts, hooks, demos } = useHookList()
   const extendedPosts = filterHook(posts.nodes, hooks.nodes, demos.nodes)
-  const { breakpoints } = useTheme()
+  const { breakpoints, transitions } = useTheme()
   const isMobile = useMediaQuery(breakpoints.down('md'))
 
   useOnClickOutside(sidebarRef, () => {
@@ -67,6 +68,7 @@ function Sidebar({ open, onClose }: SidebarProps) {
         className={classes.drawer}
         variant={isMobile ? 'temporary' : 'persistent'}
         open={open}
+        transitionDuration={transitions.duration.enteringScreen}
         classes={{
           paper: classes.drawerPaper,
         }}

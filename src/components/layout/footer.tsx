@@ -8,17 +8,24 @@ import Container from '@material-ui/core/Container'
 import Hidden from '@material-ui/core/Hidden'
 
 import { useSiteMetadata } from '~/hooks'
+import { reduceLayoutWidth } from './styleUtils'
+
+interface PropTypes {
+  isSidebarOpened: boolean
+}
 
 const useStyles = makeStyles((theme: Theme) => ({
   footer: {
-    padding: theme.spacing(3, 2),
+    padding: theme.spacing(3, 0),
     marginTop: 'auto',
     backgroundColor: theme.palette.background.paper,
+
+    ...reduceLayoutWidth(theme),
   },
 }))
 
-function Footer() {
-  const classes = useStyles()
+function Footer(props: PropTypes) {
+  const classes = useStyles(props)
   const { author } = useSiteMetadata()
 
   return (

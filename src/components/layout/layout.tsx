@@ -16,39 +16,40 @@ import Header from './header'
 import Footer from './footer'
 import Sidebar from './sidebar'
 import useTheme from './useTheme'
+import { reduceLayoutWidth } from './styleUtils'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     display: 'flex',
-  },
-  topGutter: {
-    ...theme.mixins.toolbar,
-  },
-  main: {
-    display: 'flex',
     flexDirection: 'column',
-    flexGrow: 1,
-    maxWidth: '100%',
     minHeight: '100vh',
   },
-  content: {
-    flex: 1,
+  main: {
+    flexGrow: 1,
     display: 'flex',
     flexDirection: 'column',
     '& #gatsby-focus-wrapper': {
       display: 'flex',
       flexDirection: 'column',
-      flex: 1,
+      flexGrow: 1,
+    },
+
+    ...reduceLayoutWidth(theme),
+
+    '&::before': {
+      content: '""',
+      display: 'block',
+      ...theme.mixins.toolbar,
     },
   },
 }))
 
 const Layout: FC = ({ children }) => {
-  const classes = useStyles()
   const { title } = useSiteMetadata()
   const { breakpoints } = useMuiTheme()
   const isMobile = useMediaQuery(breakpoints.down('md'))
-  const [openSidebar, setOpenSidebar] = useState(false)
+  const [isSidebarOpened, setOpenSidebar] = useState(false)
+  const classes = useStyles({ isSidebarOpened })
   const [theme] = useTheme()
 
   const handleCloseSidebar = () => {
@@ -61,12 +62,12 @@ const Layout: FC = ({ children }) => {
 
   useEffect(() => {
     // Hide sidebar by default on small screen
-    if (isMobile && openSidebar) {
+    if (isMobile && isSidebarOpened) {
       handleCloseSidebar()
     }
 
     // Show sidebar by default on large screen
-    if (!isMobile && !openSidebar) {
+    if (!isMobile && !isSidebarOpened) {
       handleOpenSidebar()
     }
 
@@ -79,13 +80,11 @@ const Layout: FC = ({ children }) => {
       <div className={classes.root}>
         <Header siteTitle={title} onOpenSidebar={handleOpenSidebar} />
 
-        <Sidebar open={openSidebar} onClose={handleCloseSidebar} />
+        <Sidebar open={isSidebarOpened} onClose={handleCloseSidebar} />
 
-        <main className={classes.main}>
-          <div className={classes.topGutter} />
-          <div className={classes.content}>{children}</div>
-          <Footer />
-        </main>
+        <main className={classes.main}>{children}</main>
+
+        <Footer isSidebarOpened={isSidebarOpened} />
 
         <BackToTop />
       </div>
