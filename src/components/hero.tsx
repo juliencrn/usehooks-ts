@@ -10,19 +10,20 @@ export interface HeroProps {
   fullHeight?: boolean
 }
 
+interface StyleProps {
+  fullHeight: boolean
+}
+
 const useStyles = makeStyles((theme: Theme) => ({
-  heroContent: {
+  hero: (props: StyleProps) => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(12, 0, 10),
-    marginBottom: theme.spacing(10),
-  },
-  fullHeight: {
-    flex: 1,
-    margin: 0,
+    marginBottom: props.fullHeight ? 0 : theme.spacing(10),
+    flexGrow: props.fullHeight ? 1 : 0,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-  },
+  }),
   title: {
     fontFamily: 'Fira Code, monospace',
   },
@@ -40,11 +41,9 @@ const Hero: FC<HeroProps> = ({
   fullHeight,
   children,
 }) => {
-  const classes = useStyles()
+  const classes = useStyles({ fullHeight: !!fullHeight })
   return (
-    <div
-      className={`${classes.heroContent} ${fullHeight && classes.fullHeight}`}
-    >
+    <div className={classes.hero}>
       <Container maxWidth="md">
         <Typography
           variant="h2"
@@ -59,6 +58,7 @@ const Hero: FC<HeroProps> = ({
         <Typography variant="h5" align="center" color="textSecondary" paragraph>
           {description}
         </Typography>
+
         {children}
       </Container>
     </div>
