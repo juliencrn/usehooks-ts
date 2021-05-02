@@ -9,13 +9,12 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import IconButton from '@material-ui/core/IconButton'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-
-import { filterHook } from '../../shared/filterHooks'
-import useHookList from '~/hooks/privateHooks/useHookList'
-import { useOnClickOutside } from '~/hooks'
 import { useMediaQuery } from '@material-ui/core'
 
-const drawerWidth = 280
+import { filterHook } from '~/shared/filterHooks'
+import useHookList from '~/hooks/privateHooks/useHookList'
+import { useOnClickOutside } from '~/hooks'
+import { drawerWidth } from '~/theme'
 
 const useStyles = makeStyles((theme: Theme) => ({
   drawer: {

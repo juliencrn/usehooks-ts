@@ -47,6 +47,8 @@ const dracula = {
 
 export type Dracula = typeof dracula
 
+export const drawerWidth = 280
+
 const makeTheme = (variant: ThemeOptions): Theme => {
   const common = {
     palette: {
