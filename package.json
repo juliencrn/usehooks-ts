@@ -61,6 +61,7 @@
     "gatsby-source-filesystem": "^3.0.0",
     "prism-react-renderer": "^1.2.0",
     "react": "^17.0.1",
+    "react-confetti": "^6.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.0.0",
     "react-instantsearch-dom": "^6.10.3",

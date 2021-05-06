@@ -17,6 +17,7 @@ import Footer from './footer'
 import Sidebar from './sidebar'
 import useTheme from './useTheme'
 import { reduceLayoutWidth } from './styleUtils'
+import Thanks from './thanks'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -78,6 +79,8 @@ const Layout: FC = ({ children }) => {
     <ThemeProvider theme={themes[theme]}>
       <CssBaseline />
       <div className={classes.root}>
+        <Thanks isSidebarOpened={isSidebarOpened} />
+
         <Header siteTitle={title} onOpenSidebar={handleOpenSidebar} />
 
         <Sidebar open={isSidebarOpened} onClose={handleCloseSidebar} />
