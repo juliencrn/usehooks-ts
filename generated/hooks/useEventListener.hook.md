@@ -1,5 +1,4 @@
-```ts
-import { useRef, useEffect, RefObject } from 'react'
+```tsimport { useRef, useEffect, RefObject } from 'react'
 
 function useEventListener<T extends HTMLElement = HTMLDivElement>(
   eventName: keyof WindowEventMap,
@@ -39,4 +38,4 @@ function useEventListener<T extends HTMLElement = HTMLDivElement>(
 }
 
 export default useEventListener
-```
+```
