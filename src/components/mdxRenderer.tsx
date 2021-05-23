@@ -2,7 +2,7 @@
 import React from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import { makeStyles, Theme } from '@material-ui/core/styles'
-import { MDXRenderer, MDXRendererProps } from 'gatsby-plugin-mdx'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import Typography, { TypographyProps } from '@material-ui/core/Typography'
 import Link from '@material-ui/core/Link'

@@ -31,3 +31,5 @@ export * from './useSiteMetadata'
 export * from './useTimeout'
 
 export * from './useWindowSize'
+
+export * from './useIsMounted'
