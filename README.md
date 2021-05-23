@@ -30,6 +30,7 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 - [useIntersectionObserver](https://usehooks-typescript.com/react-hook/use-intersection-observer)
 - [useInterval](https://usehooks-typescript.com/react-hook/use-interval)
 - [useIsClient](https://usehooks-typescript.com/react-hook/use-is-client)
+- [useIsMounted](https://usehooks-typescript.com/react-hook/use-is-mounted)
 - [useLocalStorage](https://usehooks-typescript.com/react-hook/use-local-storage)
 - [useLockedBody](https://usehooks-typescript.com/react-hook/use-locked-body)
 - [useOnClickOutside](https://usehooks-typescript.com/react-hook/use-on-click-outside)
