@@ -15,6 +15,7 @@
   "plugins": [
     "@typescript-eslint",
     "react",
+    "simple-import-sort",
     "prettier"
   ],
   "env": {
@@ -30,6 +31,24 @@
   "rules": {
     "prettier/prettier": "warn",
     "react/prop-types": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { "argsIgnorePattern": "^_", "ignoreRestSiblings": true }
+    ],
+    "sort-imports": "off",
+    "import/order": "off",
+    "simple-import-sort/exports": "warn",
+    "simple-import-sort/imports": [
+      "warn",
+      {
+        "groups": [
+          ["^\\u0000"], // side effect (E.g.`import 'normalize.css'`)
+          ["^react$"],
+          ["^[^.]"], // Libs
+          ["^../|^~/|^./"]
+        ]
+      }
+    ]
   }
 }
