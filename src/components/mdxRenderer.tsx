@@ -1,17 +1,17 @@
 /* eslint-disable react/display-name */
 import React from 'react'
-import { MDXProvider } from '@mdx-js/react'
-import { makeStyles, Theme } from '@material-ui/core/styles'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
 
-import Typography, { TypographyProps } from '@material-ui/core/Typography'
-import Link from '@material-ui/core/Link'
 import Divider from '@material-ui/core/Divider'
+import Link from '@material-ui/core/Link'
 import Paper from '@material-ui/core/Paper'
-import TableContainer from '@material-ui/core/TableContainer'
+import { makeStyles, Theme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
-import TableRow from '@material-ui/core/TableRow'
 import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableRow from '@material-ui/core/TableRow'
+import Typography, { TypographyProps } from '@material-ui/core/Typography'
+import { MDXProvider } from '@mdx-js/react'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import Code from './code'
 

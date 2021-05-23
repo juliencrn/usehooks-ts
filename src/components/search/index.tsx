@@ -1,23 +1,22 @@
-import React, { useState, useRef, FC, useEffect } from 'react'
-import {
-  InstantSearch,
-  Index,
-  connectStateResults,
-  connectSearchBox,
-  Configure,
-} from 'react-instantsearch-dom'
-import algoliasearch from 'algoliasearch/lite'
-import { Theme, makeStyles } from '@material-ui/core/styles'
+import React, { FC, useEffect, useRef, useState } from 'react'
 
-import Typography from '@material-ui/core/Typography'
-import Paper from '@material-ui/core/Paper'
-import Divider from '@material-ui/core/Divider'
 import Box from '@material-ui/core/Box'
+import Divider from '@material-ui/core/Divider'
+import Paper from '@material-ui/core/Paper'
+import { makeStyles, Theme } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import algoliasearch from 'algoliasearch/lite'
+import {
+  Configure,
+  connectSearchBox,
+  connectStateResults,
+  Index,
+  InstantSearch,
+} from 'react-instantsearch-dom'
 
-import { useOnClickOutside } from '~/hooks'
-
+import { ConnectedHits, PoweredBy } from './hitComps'
 import Input from './input'
-import { PoweredBy, ConnectedHits } from './hitComps'
+import { useOnClickOutside } from '~/hooks'
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APP_ID || '',

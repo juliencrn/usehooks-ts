@@ -1,2 +1,2 @@
-export * from './useScript.demo'
 export { default as useScript } from './useScript'
+export * from './useScript.demo'

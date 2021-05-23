@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Theme, withStyles } from '@material-ui/core/styles'
 
 import Button from '@material-ui/core/Button'
+import { Theme, withStyles } from '@material-ui/core/styles'
 import Tooltip from '@material-ui/core/Tooltip'
 import FileCopyIcon from '@material-ui/icons/FileCopy'
+
 import { useTimeout } from '~/hooks'
 
 const ThemedTooltip = withStyles((theme: Theme) => ({

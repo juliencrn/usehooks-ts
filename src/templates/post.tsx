@@ -1,16 +1,16 @@
 import React from 'react'
+
+import Box from '@material-ui/core/Box'
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid'
+import { makeStyles, Theme } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import { graphql } from 'gatsby'
-import { makeStyles, Theme } from '@material-ui/core/styles'
 
-import Typography from '@material-ui/core/Typography'
-import Container from '@material-ui/core/Container'
-import Box from '@material-ui/core/Box'
-import Grid from '@material-ui/core/Grid'
-
-import { PageTemplate, Post } from '~/models'
-import SEO from '~/components/seo'
 import MdxRenderer from '~/components/mdxRenderer'
+import SEO from '~/components/seo'
+import { PageTemplate, Post } from '~/models'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -112,7 +112,7 @@ function PostTemplate({ location, data }: PostTemplateProps) {
 export default PostTemplate
 
 export const pageQuery = graphql`
-  query($id: String!, $hookId: String!, $demoId: String!) {
+  query ($id: String!, $hookId: String!, $demoId: String!) {
     post: mdx(id: { eq: $id }) {
       ...Post
     }

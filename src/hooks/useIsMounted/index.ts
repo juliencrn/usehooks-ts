@@ -1,2 +1,2 @@
-export * from './useIsMounted.demo'
 export { default as useIsMounted } from './useIsMounted'
+export * from './useIsMounted.demo'

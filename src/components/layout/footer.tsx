@@ -1,14 +1,13 @@
 import React from 'react'
 
-import { makeStyles, Theme } from '@material-ui/core/styles'
-
-import Typography from '@material-ui/core/Typography'
-import Link from '@material-ui/core/Link'
 import Container from '@material-ui/core/Container'
 import Hidden from '@material-ui/core/Hidden'
+import Link from '@material-ui/core/Link'
+import { makeStyles, Theme } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
 
-import { useSiteMetadata } from '~/hooks'
 import { reduceLayoutWidth } from './styleUtils'
+import { useSiteMetadata } from '~/hooks'
 
 interface PropTypes {
   isSidebarOpened: boolean

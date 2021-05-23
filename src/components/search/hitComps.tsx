@@ -1,12 +1,12 @@
 import React from 'react'
-import { Link as GatsbyLink } from 'gatsby'
-import { Highlight, connectHits } from 'react-instantsearch-dom'
-import { Theme, makeStyles, fade } from '@material-ui/core/styles'
 
 import Link from '@material-ui/core/Link'
-import Typography from '@material-ui/core/Typography'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
+import { fade, makeStyles, Theme } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import { Link as GatsbyLink } from 'gatsby'
+import { connectHits, Highlight } from 'react-instantsearch-dom'
 
 const useStyles = makeStyles((theme: Theme) => ({
   list: {

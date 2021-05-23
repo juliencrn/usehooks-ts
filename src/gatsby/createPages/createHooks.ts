@@ -1,8 +1,8 @@
-import path from 'path'
 import { CreatePagesArgs } from 'gatsby'
+import path from 'path'
 
-import { filterHook } from '../../shared/filterHooks'
 import { HookNode } from '../../models'
+import { filterHook } from '../../shared/filterHooks'
 
 interface Query {
   posts: { nodes: HookNode[] }

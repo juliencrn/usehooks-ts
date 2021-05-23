@@ -1,19 +1,19 @@
 import React, { useRef } from 'react'
-import { makeStyles, Theme, useTheme } from '@material-ui/core/styles'
-import { Link as GatsbyLink } from 'gatsby'
 
-import List from '@material-ui/core/List'
-import Drawer from '@material-ui/core/Drawer'
+import { useMediaQuery } from '@material-ui/core'
 import Divider from '@material-ui/core/Divider'
+import Drawer from '@material-ui/core/Drawer'
+import IconButton from '@material-ui/core/IconButton'
+import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import IconButton from '@material-ui/core/IconButton'
+import { makeStyles, Theme, useTheme } from '@material-ui/core/styles'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import { useMediaQuery } from '@material-ui/core'
+import { Link as GatsbyLink } from 'gatsby'
 
-import { filterHook } from '~/shared/filterHooks'
-import useHookList from '~/hooks/privateHooks/useHookList'
 import { useOnClickOutside } from '~/hooks'
+import useHookList from '~/hooks/privateHooks/useHookList'
+import { filterHook } from '~/shared/filterHooks'
 import { drawerWidth } from '~/theme'
 
 const useStyles = makeStyles((theme: Theme) => ({

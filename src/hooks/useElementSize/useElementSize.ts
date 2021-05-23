@@ -1,4 +1,4 @@
-import { RefObject, useState, useEffect, useCallback } from 'react'
+import { RefObject, useCallback, useEffect, useState } from 'react'
 
 // See: https://usehooks-typescript.com/react-hook/use-event-listener
 import { useEventListener } from '~/hooks'

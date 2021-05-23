@@ -1,4 +1,4 @@
-```tsximport React, { useState, ChangeEvent } from 'react'
+```tsximport React, { ChangeEvent, useState } from 'react'
 
 import useInterval from './useInterval'
 

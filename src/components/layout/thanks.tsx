@@ -1,13 +1,14 @@
 import React, { FC, useEffect, useState } from 'react'
-import Confetti from 'react-confetti'
-import { makeStyles, Theme } from '@material-ui/core/styles'
-import Snackbar from '@material-ui/core/Snackbar'
-import IconButton from '@material-ui/core/IconButton'
-import CloseIcon from '@material-ui/icons/Close'
 
+import IconButton from '@material-ui/core/IconButton'
+import Snackbar from '@material-ui/core/Snackbar'
+import { makeStyles, Theme } from '@material-ui/core/styles'
+import CloseIcon from '@material-ui/icons/Close'
+import Confetti from 'react-confetti'
+
+import { reduceLayoutWidth } from './styleUtils'
 import { useLocalStorage } from '~/hooks'
 import { useWindowSize } from '~/hooks/useWindowSize'
-import { reduceLayoutWidth } from './styleUtils'
 
 interface PropTypes {
   isSidebarOpened: boolean

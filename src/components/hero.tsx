@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
-import { makeStyles, Theme } from '@material-ui/core/styles'
 
-import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
+import { makeStyles, Theme } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
 
 export interface HeroProps {
   title: string

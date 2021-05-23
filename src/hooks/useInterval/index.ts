@@ -1,2 +1,2 @@
-export * from './useInterval.demo'
 export { default as useInterval } from './useInterval'
+export * from './useInterval.demo'

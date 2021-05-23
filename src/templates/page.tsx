@@ -1,13 +1,13 @@
 import React from 'react'
+
+import Box from '@material-ui/core/Box'
+import Container from '@material-ui/core/Container'
 import { graphql } from 'gatsby'
 
-import Container from '@material-ui/core/Container'
-import Box from '@material-ui/core/Box'
-
-import { PageTemplate, Page } from '~/models'
-import SEO from '~/components/seo'
-import MdxRenderer from '~/components/mdxRenderer'
 import Hero from '~/components/hero'
+import MdxRenderer from '~/components/mdxRenderer'
+import SEO from '~/components/seo'
+import { Page, PageTemplate } from '~/models'
 
 export interface PageTemplateProps extends PageTemplate {
   pageContext: { pageId: string }
@@ -35,7 +35,7 @@ function PostTemplate({ data, location }: PageTemplateProps) {
 export default PostTemplate
 
 export const pageQuery = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     page: mdx(id: { eq: $id }) {
       ...Page
     }

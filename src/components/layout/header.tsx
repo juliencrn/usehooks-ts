@@ -1,31 +1,28 @@
 import React from 'react'
-import { Link as GatsbyLink } from 'gatsby'
 
+import { useMediaQuery } from '@material-ui/core'
+import AppBar from '@material-ui/core/AppBar'
+import Box from '@material-ui/core/Box'
+import Hidden from '@material-ui/core/Hidden'
+import IconButton from '@material-ui/core/IconButton'
+import Link from '@material-ui/core/Link'
 import {
   makeStyles,
   Theme as MuiTheme,
   useTheme as useMuiTheme,
 } from '@material-ui/core/styles'
-import { useMediaQuery } from '@material-ui/core'
-
-import Typography from '@material-ui/core/Typography'
-import Link from '@material-ui/core/Link'
-import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import IconButton from '@material-ui/core/IconButton'
-import Box from '@material-ui/core/Box'
-import Hidden from '@material-ui/core/Hidden'
-import MenuIcon from '@material-ui/icons/Menu'
-
-import WbSunnyIcon from '@material-ui/icons/WbSunny'
+import Typography from '@material-ui/core/Typography'
 import Brightness3Icon from '@material-ui/icons/Brightness3'
 import GitHubIcon from '@material-ui/icons/GitHub'
+import MenuIcon from '@material-ui/icons/Menu'
 import RssFeedIcon from '@material-ui/icons/RssFeed'
-
-import { useSiteMetadata } from '~/hooks'
+import WbSunnyIcon from '@material-ui/icons/WbSunny'
+import { Link as GatsbyLink } from 'gatsby'
 
 import Search from '../search'
 import useTheme from './useTheme'
+import { useSiteMetadata } from '~/hooks'
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   appBar: {

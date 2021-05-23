@@ -1,4 +1,4 @@
-```tsimport { useState, useEffect } from 'react'
+```tsimport { useEffect, useState } from 'react'
 
 function useScreen() {
   const getScreen = () => {

@@ -1,4 +1,4 @@
-```tsimport { useRef, useEffect, RefObject } from 'react'
+```tsimport { RefObject, useEffect, useRef } from 'react'
 
 function useEventListener<T extends HTMLElement = HTMLDivElement>(
   eventName: keyof WindowEventMap,

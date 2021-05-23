@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react'
-import { ThemeProvider } from '@material-ui/styles'
-import { CssBaseline } from '@material-ui/core'
 
-import themes from '../theme'
+import { CssBaseline } from '@material-ui/core'
+import { ThemeProvider } from '@material-ui/styles'
+
 import Layout from '../components/layout'
+import themes from '../theme'
 
 const wrapPageElement = ({ element }: { element: ReactNode }) => {
   return (

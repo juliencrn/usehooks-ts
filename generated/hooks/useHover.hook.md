@@ -1,4 +1,4 @@
-```tsimport { useState, useEffect, RefObject } from 'react'
+```tsimport { RefObject, useEffect, useState } from 'react'
 
 function useHover<T extends HTMLElement = HTMLElement>(
   elementRef: RefObject<T>,

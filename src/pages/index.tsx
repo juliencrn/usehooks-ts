@@ -1,7 +1,7 @@
 import React from 'react'
 
-import SEO from '~/components/seo'
 import Hero from '~/components/hero'
+import SEO from '~/components/seo'
 import { useSiteMetadata } from '~/hooks'
 import { PageTemplate } from '~/models'
 

@@ -1,10 +1,10 @@
 import React from 'react'
-import { navigate } from 'gatsby'
 
 import Container from '@material-ui/core/Container'
+import { navigate } from 'gatsby'
 
-import SEO from '~/components/seo'
 import Hero from '~/components/hero'
+import SEO from '~/components/seo'
 import { PageTemplate } from '~/models'
 
 /**

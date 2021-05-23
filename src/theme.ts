@@ -1,14 +1,14 @@
-import deepMerge from 'deepmerge'
-import { red, blue } from '@material-ui/core/colors'
+import { blue, red } from '@material-ui/core/colors'
 import {
   createMuiTheme,
   responsiveFontSizes,
-  ThemeOptions,
   Theme,
+  ThemeOptions,
 } from '@material-ui/core/styles'
+import deepMerge from 'deepmerge'
 
-import FiraRegular from './assets/fonts/FiraSans-Regular.ttf'
 import FiraCode from './assets/fonts/FiraMono-Regular.otf'
+import FiraRegular from './assets/fonts/FiraSans-Regular.ttf'
 
 const firaRegular = {
   fontFamily: 'Fira Sans Regular',

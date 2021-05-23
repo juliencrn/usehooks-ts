@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 
 import useInterval from './useInterval'
 

@@ -1,4 +1,4 @@
-```tsimport { useRef, useEffect } from 'react'
+```tsimport { useEffect, useRef } from 'react'
 
 function useIsMounted() {
   const isMounted = useRef(false)

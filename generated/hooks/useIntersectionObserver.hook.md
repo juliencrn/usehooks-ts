@@ -1,4 +1,4 @@
-```tsimport { useEffect, useState, RefObject } from 'react'
+```tsimport { RefObject, useEffect, useState } from 'react'
 
 interface Args extends IntersectionObserverInit {
   freezeOnceVisible?: boolean

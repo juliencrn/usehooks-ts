@@ -1,5 +1,6 @@
 import { Theme } from '@material-ui/core'
 import { CSSProperties } from '@material-ui/styles'
+
 import { drawerWidth } from '~/theme'
 
 interface StyleProps {

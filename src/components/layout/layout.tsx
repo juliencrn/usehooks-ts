@@ -1,23 +1,23 @@
 import React, { FC, useEffect, useState } from 'react'
-import {
-  makeStyles,
-  ThemeProvider,
-  Theme,
-  useTheme as useMuiTheme,
-} from '@material-ui/core/styles'
+
 import { useMediaQuery } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
-
-import { useSiteMetadata } from '~/hooks'
-import themes from '~/theme'
+import {
+  makeStyles,
+  Theme,
+  ThemeProvider,
+  useTheme as useMuiTheme,
+} from '@material-ui/core/styles'
 
 import BackToTop from '../backToTop'
-import Header from './header'
 import Footer from './footer'
+import Header from './header'
 import Sidebar from './sidebar'
-import useTheme from './useTheme'
 import { reduceLayoutWidth } from './styleUtils'
 import Thanks from './thanks'
+import useTheme from './useTheme'
+import { useSiteMetadata } from '~/hooks'
+import themes from '~/theme'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
