@@ -1,4 +1,5 @@
-```tsximport React from 'react'
+```tsx
+import React from 'react'
 
 import useLocalStorage from './useLocalStorage'
 
@@ -7,7 +8,7 @@ export default function Component() {
   const [isDarkTheme, setDarkTheme] = useLocalStorage('darkTheme', true)
 
   const toggleTheme = () => {
-    setDarkTheme(!isDarkTheme)
+    setDarkTheme(state => !state)
   }
 
   return (
@@ -16,4 +17,4 @@ export default function Component() {
     </button>
   )
 }
-```
+```
