@@ -1,24 +1,11 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from "react";
 
-function useTimeout(callback: () => void, delay: number | null) {
-  const savedCallback = useRef(callback)
-
-  // Remember the latest callback if it changes.
+export default function useTimeout(callback: () => void, delay?: number) {
   useEffect(() => {
-    savedCallback.current = callback
-  }, [callback])
+    const id = setTimeout(callback, delay || 0);
 
-  // Set up the timeout.
-  useEffect(() => {
-    // Don't schedule if no delay is specified.
-    if (delay === null) {
-      return
-    }
-
-    const id = setTimeout(() => savedCallback.current(), delay)
-
-    return () => clearTimeout(id)
-  }, [delay])
+    return () => {
+      clearTimeout(id);
+    };
+  }, [delay, callback]);
 }
-
-export default useTimeout
