@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 
 export default function useTimeout(callback: () => void, delay?: number) {
+  const execute = useRef(callback);
+  
   useEffect(() => {
-    const id = setTimeout(callback, delay || 0);
-
-    return () => {
-      clearTimeout(id);
-    };
-  }, [delay, callback]);
+    const id = setTimeout(execute.current, delay);
+    
+    return () => clearTimeout(id);
+  }, [delay]);
 }
