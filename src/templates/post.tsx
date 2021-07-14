@@ -14,18 +14,20 @@ import { PageTemplate, Post } from '~/models'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(6),
   },
   title: {
-    margin: theme.spacing(3, 0),
+    margin: theme.spacing(2, 0),
     wordBreak: 'break-all',
     [theme.breakpoints.up('md')]: {
       margin: theme.spacing(6, 0, 4),
     },
+    fontWeight: 700,
   },
   subtitle: {
     margin: theme.spacing(4, 0, 2),
     wordBreak: 'break-all',
+    fontWeight: 700,
   },
   divider: {
     margin: theme.spacing(3, 0),
@@ -97,7 +99,7 @@ function PostTemplate({ location, data }: PostTemplateProps) {
       <Box className={classes.meta}>
         <Grid container alignItems="center" alignContent="center" spacing={3}>
           <Grid item xs={12} md>
-            <Typography variant="body1" align="center">
+            <Typography variant="body1" align="center" color="textSecondary">
               Created:
               <br />
               {date}

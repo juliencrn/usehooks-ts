@@ -24,13 +24,13 @@ const firaCode = {
   fontDisplay: 'swap',
   fontWeight: 400,
   src: `
+    url(${FiraCode}) format('woOpenTypeff2')
     local('Open Sans Regular'),
     local('OpenSans-Regular'),
-    url(${FiraCode}) format('woOpenTypeff2')
   `,
 }
 
-const dracula = {
+export const dracula = {
   background: '#282a36',
   currentLine: '#44475a',
   selection: '#44475a',
@@ -110,8 +110,8 @@ const dark: Partial<ThemeOptions> = {
       black: dracula.background,
     },
     background: {
-      default: dracula.selection,
-      paper: dracula.background,
+      default: '#1d1e26',
+      paper: '#1d1e26',
     },
   },
 }

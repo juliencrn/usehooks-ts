@@ -1,19 +1,21 @@
+import { dracula as d } from '~/theme'
+
 const theme = {
   plain: {
-    color: '#F8F8F2',
-    backgroundColor: '#282A36',
+    color: d.white,
+    backgroundColor: d.background,
   },
   styles: [
     {
       types: ['arrow', 'operator', 'tag'],
       style: {
-        color: 'rgb(255, 121, 198)',
+        color: d.pink,
       },
     },
     {
       types: ['boolean', 'number'],
       style: {
-        color: 'rgb(189, 147, 249)',
+        color: d.purple,
       },
     },
     {
@@ -25,31 +27,31 @@ const theme = {
         'maybe-class-name',
       ],
       style: {
-        color: 'rgb(139, 233, 253)',
+        color: d.cyan,
       },
     },
     {
       types: ['inserted', 'function', 'attr-name'],
       style: {
-        color: 'rgb(80, 250, 123)',
+        color: d.green,
       },
     },
     {
       types: ['deleted'],
       style: {
-        color: 'rgb(255, 85, 85)',
+        color: d.red,
       },
     },
     {
       types: ['changed', 'parameter'],
       style: {
-        color: 'rgb(255, 184, 108)',
+        color: d.orange,
       },
     },
     {
       types: ['punctuation', 'symbol', 'variable'],
       style: {
-        color: 'rgb(248, 248, 242)',
+        color: d.white,
       },
     },
     {
@@ -61,13 +63,13 @@ const theme = {
         'attr-value punctuation',
       ],
       style: {
-        color: 'rgb(241, 250, 140)',
+        color: d.yellow,
       },
     },
     {
       types: ['comment', 'prolog', 'doctype', 'cdata'],
       style: {
-        color: 'rgb(98, 114, 164)',
+        color: d.comment,
       },
     },
   ],

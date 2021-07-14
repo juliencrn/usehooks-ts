@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 
-import { useMediaQuery } from '@material-ui/core'
+import { Typography, useMediaQuery } from '@material-ui/core'
 import Drawer from '@material-ui/core/Drawer'
 import IconButton from '@material-ui/core/IconButton'
 import List from '@material-ui/core/List'
@@ -23,6 +23,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   drawerPaper: {
     width: drawerWidth,
     border: 'none',
+    // Like as boxShadow(1), but to the right instead bottom
+    boxShadow: `
+      2px 0px 1px -1px rgba(0,0,0,0.2),
+      1px 0px 1px 0px rgba(0,0,0,0.14),
+      1px 0px 3px 0px rgba(0,0,0,0.12)
+    `,
   },
   drawerHeader: {
     display: 'flex',
@@ -33,6 +39,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   canScroll: {
     overflow: 'auto',
+  },
+  title: {
+    margin: theme.spacing(3, 2, 0),
   },
   textMono: {
     fontFamily: 'Fira Code, monospace',
@@ -79,7 +88,11 @@ function Sidebar({ open, onClose }: SidebarProps) {
         </div>
 
         <div className={classes.canScroll}>
-          <List>
+          <Typography variant="h6" className={classes.title}>
+            Summary
+          </Typography>
+
+          <List dense>
             {extendedPosts.map(({ post: { frontmatter, fields } }) => (
               <ListItem
                 button

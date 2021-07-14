@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: 'absolute',
     top: theme.spacing(2),
     right: theme.spacing(2),
+    color: theme.palette.common.white,
   },
   pre: {
     textAlign: 'left',
