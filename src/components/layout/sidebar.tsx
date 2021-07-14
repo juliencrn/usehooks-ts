@@ -1,7 +1,6 @@
 import React, { useRef } from 'react'
 
 import { useMediaQuery } from '@material-ui/core'
-import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
 import IconButton from '@material-ui/core/IconButton'
 import List from '@material-ui/core/List'
@@ -32,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
   },
-  scrollable: {
+  canScroll: {
     overflow: 'auto',
   },
   textMono: {
@@ -79,22 +78,7 @@ function Sidebar({ open, onClose }: SidebarProps) {
           </IconButton>
         </div>
 
-        <div className={classes.scrollable}>
-          <Divider />
-          <List>
-            <ListItem
-              button
-              to="/about"
-              component={GatsbyLink}
-              onClick={onClose}
-              activeClassName={classes.active}
-            >
-              <ListItemText primary="About" />
-            </ListItem>
-          </List>
-          <Divider />
-
-          <Divider />
+        <div className={classes.canScroll}>
           <List>
             {extendedPosts.map(({ post: { frontmatter, fields } }) => (
               <ListItem
