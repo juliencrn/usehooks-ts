@@ -12,7 +12,7 @@ import { Link as GatsbyLink } from 'gatsby'
 
 import { useOnClickOutside } from '~/hooks'
 import useHookList from '~/hooks/privateHooks/useHookList'
-import { filterHook } from '~/shared/filterHooks'
+import { filterHook, sortPosts } from '~/shared/filterHooks'
 import { drawerWidth } from '~/theme'
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -62,6 +62,7 @@ function Sidebar({ open, onClose }: SidebarProps) {
   const sidebarRef = useRef<HTMLDivElement | null>(null)
   const { posts, hooks, demos } = useHookList()
   const extendedPosts = filterHook(posts.nodes, hooks.nodes, demos.nodes)
+  const sortedPosts = sortPosts(extendedPosts)
   const { breakpoints, transitions } = useTheme()
   const isMobile = useMediaQuery(breakpoints.down('md'))
 
@@ -93,7 +94,7 @@ function Sidebar({ open, onClose }: SidebarProps) {
           </Typography>
 
           <List dense>
-            {extendedPosts.map(({ post: { frontmatter, fields } }) => (
+            {sortedPosts.map(({ post: { frontmatter, fields } }) => (
               <ListItem
                 button
                 to={`/react-hook${fields.path}`}

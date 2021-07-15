@@ -18,7 +18,7 @@ export const HookNodeQuery = graphql`
   }
 `
 
-export interface Post {
+export interface Post extends HookNode {
   id: string
   excerpt: string
   shortDescription: string

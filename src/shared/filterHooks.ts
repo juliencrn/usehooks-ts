@@ -5,6 +5,7 @@ export interface ExtendedPost<T extends HookNode = HookNode> {
   demoId: string
 }
 
+// Attach a hook and a demo to a post and ignore alone items
 export function filterHook<T extends HookNode = HookNode>(
   posts: T[],
   hooks: HookNode[],
@@ -26,4 +27,15 @@ export function filterHook<T extends HookNode = HookNode>(
   })
 
   return matchesPosts
+}
+
+// Sort alphabetically
+export function sortPosts<T extends HookNode = HookNode>(
+  posts: ExtendedPost<T>[],
+): ExtendedPost<T>[] {
+  return posts.sort((a, b) => {
+    if (a.post.fields.name < b.post.fields.name) return -1
+    if (a.post.fields.name > b.post.fields.name) return 1
+    return 0
+  })
 }
