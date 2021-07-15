@@ -15,8 +15,7 @@ import Header from './header'
 import Sidebar from './sidebar'
 import { reduceLayoutWidth } from './styleUtils'
 import Thanks from './thanks'
-import useTheme from './useTheme'
-import { useSiteMetadata } from '~/hooks'
+import { useDarkMode, useSiteMetadata } from '~/hooks'
 import themes from '~/theme'
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -51,7 +50,8 @@ const Layout: FC = ({ children }) => {
   const isMobile = useMediaQuery(breakpoints.down('md'))
   const [isSidebarOpened, setOpenSidebar] = useState(false)
   const classes = useStyles({ isSidebarOpened })
-  const [theme] = useTheme()
+  const { isDarkMode } = useDarkMode(true)
+  const theme = themes[isDarkMode ? 'dark' : 'light']
 
   const handleCloseSidebar = () => {
     if (isMobile) {
@@ -76,7 +76,7 @@ const Layout: FC = ({ children }) => {
   }, [isMobile])
 
   return (
-    <ThemeProvider theme={themes[theme]}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <div className={classes.root}>
         <Thanks isSidebarOpened={isSidebarOpened} />

@@ -21,8 +21,7 @@ import WbSunnyIcon from '@material-ui/icons/WbSunny'
 import { Link as GatsbyLink } from 'gatsby'
 
 import Search from '../search'
-import useTheme from './useTheme'
-import { useSiteMetadata } from '~/hooks'
+import { useDarkMode, useSiteMetadata } from '~/hooks'
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   appBar: {
@@ -53,7 +52,7 @@ function Header({ siteTitle, onOpenSidebar }: HeaderProps) {
   const { author } = useSiteMetadata()
   const { breakpoints } = useMuiTheme()
   const isMobile = useMediaQuery(breakpoints.down('md'))
-  const [theme, toggleTheme] = useTheme()
+  const { isDarkMode, toggle } = useDarkMode()
 
   return (
     <AppBar component="header" position="fixed" className={classes.appBar}>
@@ -85,12 +84,8 @@ function Header({ siteTitle, onOpenSidebar }: HeaderProps) {
           </Box>
         </Hidden>
 
-        <IconButton
-          aria-label="Switch theme"
-          color="inherit"
-          onClick={toggleTheme}
-        >
-          {theme === 'light' ? <Brightness3Icon /> : <WbSunnyIcon />}
+        <IconButton aria-label="Switch theme" color="inherit" onClick={toggle}>
+          {isDarkMode ? <WbSunnyIcon /> : <Brightness3Icon />}
         </IconButton>
 
         <Hidden xsDown>
