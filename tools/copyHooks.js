@@ -15,6 +15,12 @@ function getFileName(pathname) {
   return pathname.split('/').reverse()[0]
 }
 
+function createDirIfNeeded(dir) {
+  if (!fs.existsSync(path.resolve(dir))) {
+    fs.mkdirSync(dir)
+  }
+}
+
 function copyHook({ sourceFile, destFile }) {
   // Check source file
   if (!fs.existsSync(sourceFile)) {
@@ -58,6 +64,10 @@ fs.readdir(inputDir, (err, files) => {
   if (err) {
     throw err
   }
+
+  createDirIfNeeded(outputDir)
+  createDirIfNeeded(`${outputDir}/hooks/`)
+  createDirIfNeeded(`${outputDir}/hookDemos/`)
 
   files.forEach(file => {
     const hookRegex = new RegExp('^use[A-Z][a-zA-Z]*$')
