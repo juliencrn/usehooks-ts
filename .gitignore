@@ -58,6 +58,8 @@ typings/
 # gatsby files
 .cache/
 public
+generated
 
 # Mac files
 .DS_Store
+
