@@ -88,10 +88,10 @@ const SEO: FC<SEOProps> = ({
           name: `twitter:card`,
           content: `summary`,
         },
-        {
-          name: `twitter:creator`,
-          content: siteMetadata.author,
-        },
+        // {
+        //   name: `twitter:creator`,
+        //   content: siteMetadata.author,
+        // },
         {
           name: `twitter:title`,
           content: title,

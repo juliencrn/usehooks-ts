@@ -11,7 +11,7 @@ const siteMetadata = {
   title: `useHooks.ts`,
   description: `Simple React hooks, ready to use, written in typescript.`,
   siteUrl: `https://usehooks-typescript.com`,
-  author: `Junscuzzy`,
+  author: `juliencrn`, // Github username
 }
 
 module.exports = {

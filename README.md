@@ -1,9 +1,9 @@
 <h1 style="text-align: center;">Welcome to useHooks(🔥).ts</h1>
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f1f0f5a4-8207-499b-b912-d99acb04176e/deploy-status)](https://app.netlify.com/sites/usehooks-ts/deploys)
-[![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/Junscuzzy/usehooks.ts/issues)
-[![Maintained](https://badgen.net/badge/Maintained%20%3F/Yes%21/blue?icon=github)](https://github.com/Junscuzzy/usehooks.ts/issues)
-[![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/Junscuzzy/usehooks.ts/blob/master/LICENSE)
+[![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/juliencrn/usehooks.ts/issues)
+[![Maintained](https://badgen.net/badge/Maintained%20%3F/Yes%21/blue?icon=github)](https://github.com/juliencrn/usehooks.ts/issues)
+[![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks.ts/blob/master/LICENSE)
 
 > UseHooks.ts is another React hook snippets library written in Typescript
 
@@ -52,7 +52,7 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check [issues page](https://github.com/Junscuzzy/usehooks.ts/issues).
+Feel free to check [issues page](https://github.com/juliencrn/usehooks.ts/issues).
 
 ## 💚 Support the project
 
@@ -62,9 +62,9 @@ Thanks! ❤️
 
 ## 📝 License
 
-Copyright © 2020 [Julien Caron](https://github.com/Junscuzzy).
+Copyright © 2020 [Julien Caron](https://github.com/juliencrn).
 
-This project is [MIT](https://github.com/Junscuzzy/usehooks.ts/blob/master/LICENSE) licensed.
+This project is [MIT](https://github.com/juliencrn/usehooks.ts/blob/master/LICENSE) licensed.
 
 ---
 
