@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 function useLocalStorage<T>(
   key: string,
-  initialValue: T | (() => T),
+  initialValue?: T | (() => T),
 ): [T, Dispatch<SetStateAction<T>>] {
   // Get from local storage then
   // parse stored json or return initialValue
