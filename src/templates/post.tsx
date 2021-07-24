@@ -1,11 +1,10 @@
 import React from 'react'
 
+import { Link } from '@material-ui/core'
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import { graphql } from 'gatsby'
 
 import MdxRenderer from '~/components/mdxRenderer'
@@ -64,9 +63,8 @@ function PostTemplate({ location, data }: PostTemplateProps) {
   const { post, hook, demo } = data
   const { body, excerpt, frontmatter } = post
   const title = `${frontmatter.title}()`
-  const date = formatDistanceToNow(new Date(frontmatter.date), {
-    addSuffix: true,
-  })
+  const repoUrl = 'https://github.com/juliencrn/usehooks.ts'
+  const editLink = `${repoUrl}/tree/develop/src/hooks/${post.fields.name}`
 
   return (
     <Container className={classes.root} maxWidth="md">
@@ -96,16 +94,14 @@ function PostTemplate({ location, data }: PostTemplateProps) {
         </>
       )}
 
-      <Box className={classes.meta}>
-        <Grid container alignItems="center" alignContent="center" spacing={3}>
-          <Grid item xs={12} md>
-            <Typography variant="body1" align="center" color="textSecondary">
-              Created:
-              <br />
-              {date}
-            </Typography>
-          </Grid>
-        </Grid>
+      <Box my={6}>
+        <Typography align="center" color="textSecondary">
+          See a way to make this page better?
+          <br />
+          <Link href={editLink} target="_blank">
+            Edit there »
+          </Link>
+        </Typography>
       </Box>
     </Container>
   )
