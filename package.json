@@ -69,6 +69,7 @@
     "react-scroll": "^1.8.2"
   },
   "devDependencies": {
+    "@testing-library/react-hooks": "^7.0.1",
     "@types/axios": "^0.14.0",
     "@types/date-fns": "^2.6.0",
     "@types/jest": "^26.0.23",
