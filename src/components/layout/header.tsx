@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   appBar: {
     background:
       theme.palette.type === 'light'
-        ? theme.gradient.primary
+        ? theme.palette.gradient.primary
         : theme.palette.background.paper,
     color: theme.palette.common.white,
     zIndex: theme.zIndex.drawer + 1,

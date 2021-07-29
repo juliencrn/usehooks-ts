@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'inline-block',
     width: theme.spacing(4),
     userSelect: 'none',
-    color: theme.dracula.comment,
+    color: theme.palette.dracula.comment,
   },
 }))
 
