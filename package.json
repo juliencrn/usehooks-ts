@@ -21,7 +21,7 @@
     "clean": "gatsby clean",
     "lint-fix": "npm run lint:eslint -- --fix && npm run lint:prettier",
     "lint": "run-p lint:**",
-    "lint:prettier": "prettier --write \"**/*.{js,jsx,json,md,mdx}\"",
+    "lint:prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,mdx}\"",
     "lint:eslint": "eslint 'src/**/*.{ts,tsx}'",
     "typecheck": "tsc",
     "upgrade-interactive": "npm-check --update",
