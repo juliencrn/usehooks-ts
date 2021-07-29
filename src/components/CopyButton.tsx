@@ -10,7 +10,7 @@ import { useTimeout } from '~/hooks'
 const ThemedTooltip = withStyles((theme: Theme) => ({
   tooltip: {
     color: theme.palette.common.white,
-    backgroundColor: theme.dracula.comment,
+    backgroundColor: theme.palette.dracula.comment,
     boxShadow: theme.shadows[1],
   },
 }))(Tooltip)

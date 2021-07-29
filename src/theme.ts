@@ -1,6 +1,6 @@
 import { blue, red } from '@material-ui/core/colors'
 import {
-  createMuiTheme,
+  createTheme,
   responsiveFontSizes,
   Theme,
   ThemeOptions,
@@ -55,11 +55,11 @@ const makeTheme = (variant: ThemeOptions): Theme => {
       error: {
         main: red.A400,
       },
-    },
-    dracula,
-    gradient: {
-      primary:
-        'linear-gradient(140deg, rgb(57, 45, 209) 0%, rgb(142, 41, 149) 100%);',
+      dracula,
+      gradient: {
+        primary:
+          'linear-gradient(140deg, rgb(57, 45, 209) 0%, rgb(142, 41, 149) 100%);',
+      },
     },
     typography: {
       fontFamily: [
@@ -85,7 +85,7 @@ const makeTheme = (variant: ThemeOptions): Theme => {
     },
   }
 
-  const theme = createMuiTheme(deepMerge(common, variant))
+  const theme = createTheme(deepMerge(common, variant))
   return responsiveFontSizes(theme)
 }
 

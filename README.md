@@ -21,6 +21,8 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 
 <div id="hook-list">
 
+- [useBoolean](https://usehooks-typescript.com/react-hook/use-boolean)
+- [useCounter](https://usehooks-typescript.com/react-hook/use-counter)
 - [useDarkMode](https://usehooks-typescript.com/react-hook/use-dark-mode)
 - [useDebounce](https://usehooks-typescript.com/react-hook/use-debounce)
 - [useElementSize](https://usehooks-typescript.com/react-hook/use-element-size)

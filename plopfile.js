@@ -12,11 +12,14 @@ module.exports = function (plop) {
       },
     ],
     actions: [
+      // Create the hook index file (for quick export)
       {
         type: 'add',
         path: 'src/hooks/{{camelCase name}}/index.ts',
         templateFile: 'plop-templates/hooks/index.ts.hbs',
       },
+
+      // Create the markdown file to present the hook
       {
         data: {
           date: format(new Date(), 'yyyy-MM-dd'),
@@ -25,16 +28,29 @@ module.exports = function (plop) {
         path: 'src/hooks/{{camelCase name}}/{{camelCase name}}.mdx',
         templateFile: 'plop-templates/hooks/post.mdx.hbs',
       },
+
+      // Create the demo react component file
       {
         type: 'add',
         path: 'src/hooks/{{camelCase name}}/{{camelCase name}}.demo.tsx',
         templateFile: 'plop-templates/hooks/demo.tsx.hbs',
       },
+
+      // Create the hook file itself
       {
         type: 'add',
         path: 'src/hooks/{{camelCase name}}/{{camelCase name}}.ts',
         templateFile: 'plop-templates/hooks/hook.ts.hbs',
       },
+
+      // Create the test file
+      {
+        type: 'add',
+        path: 'src/hooks/{{camelCase name}}/{{camelCase name}}.test.ts',
+        templateFile: 'plop-templates/hooks/hook.test.ts.hbs',
+      },
+
+      // Update the global hooks index file
       {
         type: 'append',
         path: 'src/hooks/index.ts',
