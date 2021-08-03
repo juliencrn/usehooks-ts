@@ -1,7 +1,7 @@
 {
   "name": "useHooks.ts",
   "private": true,
-  "description": "Simple React hooks ready to use written in typescript.",
+  "description": "React hook library, ready to use, written in Typescript.",
   "version": "0.1.0",
   "author": "Julien CARON <juliencaron@protonmail.com>",
   "keywords": [
@@ -9,7 +9,11 @@
     "typescript",
     "eslint",
     "prettier",
-    "material-ui"
+    "material-ui",
+    "jest",
+    "@testing-library",
+    "prism",
+    "mdx"
   ],
   "license": "MIT",
   "scripts": {

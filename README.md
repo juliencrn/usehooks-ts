@@ -1,13 +1,20 @@
-<h1 style="text-align: center;">Welcome to useHooks(🔥).ts</h1>
+<div align="center">
+<h1>useHooks(🔥).ts</h1>
+
+React hook library, ready to use, written in Typescript.
+
+&mdash; [usehooks-typescript.com](https://usehooks-typescript.com/) &mdash;
+
+**README Sections:** [About](#-about) - [Hook Summary](#-summary) - [Installation](#-installation) - [Made with](#-made-with) - [Contributing](#-contributing) - [License](#-license)
+
+<!-- Badges -->
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f1f0f5a4-8207-499b-b912-d99acb04176e/deploy-status)](https://app.netlify.com/sites/usehooks-ts/deploys)
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/juliencrn/usehooks.ts/issues)
 [![Maintained](https://badgen.net/badge/Maintained%20%3F/Yes%21/blue?icon=github)](https://github.com/juliencrn/usehooks.ts/issues)
 [![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks.ts/blob/master/LICENSE)
 
-> UseHooks.ts is another React hook snippets library written in Typescript
-
-#### 🏠 Visit the homepage &mdash; [https://usehooks-typescript.com](https://usehooks-typescript.com/)
+</div>
 
 ## 🤔 About
 
@@ -45,7 +52,54 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 
 </div>
 
-## :red_car: Roadmap
+## 👉 Installation
+
+**Note**: The project use `Node@14` and `npm@6`.
+
+```bash
+# Clone the repository
+git clone https://github.com/juliencrn/usehooks.ts.git
+cd useHooks.ts
+
+# Install dependencies
+npm i
+
+# Start
+npm start
+```
+
+### Others scripts
+
+```bash
+# Production
+npm run build # Create production bundle
+npm run serve # Run production bundle
+
+# Development
+npm run start # Start and watch app locally
+npm run develop # Same as above
+npm run clean # Remove gatsby cache and previous builds
+npm run lint # Run Eslint checker
+npm run lint-fix # Same as above and do fix automatically
+npm run format # Run Prettier and do fix automatically
+npm run check # Run Typescript types checker
+npm run test # Exec lint, check and run Jest
+npm run test:watch # Same as above in watch mode
+npm run upgrade-interactive # Interactive CLI app to upgrade dependencies
+
+# Content
+npm run plop # Create a hook component with CLI tool
+npm run copy:hooks # Create *.mdx files from hook's source code
+npm run update:readme # Update hooks summary in readme
+```
+
+See more in [package.json](./package.json).
+
+## 🙌 Made with
+
+[React](https://reactjs.org/) - [Typescript](https://www.typescriptlang.org/) - [Gatsby](https://www.gatsbyjs.com/) - [Material-ui](https://material-ui.com/) - [Jest](https://jestjs.io/) - [@testing-library](https://testing-library.com/) - [Mdx](https://mdxjs.com/) - [Prism](https://prismjs.com/) - [Dracula colors](https://draculatheme.com/)
+
+## 🚗 Roadmap
 
 - [ ] Add new hooks
 - [ ] Set up automated tests for hooks
