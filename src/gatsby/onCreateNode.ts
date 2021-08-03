@@ -1,15 +1,7 @@
-import { CreateNodeArgs } from 'gatsby'
+import { GatsbyNode } from 'gatsby'
 
-const camelToKebabCase = (str: string): string =>
-  str
-    .split('')
-    .map(letter =>
-      letter.match('[A-Z]') ? `-${letter.toLowerCase()}` : letter,
-    )
-    .join('')
-
-export async function onCreateNode({ node, actions }: CreateNodeArgs) {
-  const { createNodeField } = actions
+export const onCreateNode: GatsbyNode['onCreateNode'] = async args => {
+  const { node, actions } = args
 
   if (node.internal.type === 'Mdx') {
     const absolutePath = node.fileAbsolutePath as string
@@ -19,19 +11,19 @@ export async function onCreateNode({ node, actions }: CreateNodeArgs) {
     const type = file.length === 3 ? file[1] : 'post'
 
     if (isHookRegex.test(filename)) {
-      createNodeField({
+      actions.createNodeField({
         node,
         name: `name`,
         value: filename,
       })
 
-      createNodeField({
+      actions.createNodeField({
         node,
         name: `type`,
         value: type,
       })
 
-      createNodeField({
+      actions.createNodeField({
         node,
         name: 'path',
         value: `/${camelToKebabCase(filename)}`,
@@ -39,3 +31,11 @@ export async function onCreateNode({ node, actions }: CreateNodeArgs) {
     }
   }
 }
+
+const camelToKebabCase = (str: string): string =>
+  str
+    .split('')
+    .map(letter =>
+      letter.match('[A-Z]') ? `-${letter.toLowerCase()}` : letter,
+    )
+    .join('')
