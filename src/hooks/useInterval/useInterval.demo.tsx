@@ -30,8 +30,13 @@ export default function Component() {
         {isPlaying ? 'pause' : 'play'}
       </button>
       <p>
-        <label>Delay: </label>
-        <input type="number" onChange={handleChange} value={delay} />
+        <label htmlFor="delay">Delay: </label>
+        <input
+          type="number"
+          name="delay"
+          onChange={handleChange}
+          value={delay}
+        />
       </p>
     </>
   )

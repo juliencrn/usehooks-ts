@@ -31,7 +31,11 @@ function Footer(props: PropTypes) {
     <footer className={classes.footer}>
       <Container maxWidth="md">
         <Typography variant="body1" color="textSecondary" align="center">
-          Made with ❤️ by
+          Made with{' '}
+          <span role="img" aria-label="heart">
+            ❤️
+          </span>{' '}
+          by
           {` `}
           <Link
             href={`http://github.com/${author}`}

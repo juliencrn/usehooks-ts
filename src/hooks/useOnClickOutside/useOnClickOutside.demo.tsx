@@ -18,7 +18,7 @@ export default function Component() {
   useOnClickOutside(ref, handleClickOutside)
 
   return (
-    <div
+    <button
       ref={ref}
       onClick={handleClickInside}
       style={{ width: 200, height: 200, background: 'cyan' }}

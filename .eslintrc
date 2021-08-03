@@ -10,13 +10,15 @@
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended"
   ],
   "plugins": [
     "@typescript-eslint",
     "react",
     "simple-import-sort",
-    "prettier"
+    "prettier",
+    "jsx-a11y"
   ],
   "env": {
     "browser": true,
