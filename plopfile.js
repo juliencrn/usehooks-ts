@@ -16,7 +16,7 @@ module.exports = function (plop) {
       {
         type: 'add',
         path: 'src/hooks/{{camelCase name}}/index.ts',
-        templateFile: 'plop-templates/hooks/index.ts.hbs',
+        templateFile: 'generators/hooks/index.ts.hbs',
       },
 
       // Create the markdown file to present the hook
@@ -26,35 +26,35 @@ module.exports = function (plop) {
         },
         type: 'add',
         path: 'src/hooks/{{camelCase name}}/{{camelCase name}}.mdx',
-        templateFile: 'plop-templates/hooks/post.mdx.hbs',
+        templateFile: 'generators/hooks/post.mdx.hbs',
       },
 
       // Create the demo react component file
       {
         type: 'add',
         path: 'src/hooks/{{camelCase name}}/{{camelCase name}}.demo.tsx',
-        templateFile: 'plop-templates/hooks/demo.tsx.hbs',
+        templateFile: 'generators/hooks/demo.tsx.hbs',
       },
 
       // Create the hook file itself
       {
         type: 'add',
         path: 'src/hooks/{{camelCase name}}/{{camelCase name}}.ts',
-        templateFile: 'plop-templates/hooks/hook.ts.hbs',
+        templateFile: 'generators/hooks/hook.ts.hbs',
       },
 
       // Create the test file
       {
         type: 'add',
         path: 'src/hooks/{{camelCase name}}/{{camelCase name}}.test.ts',
-        templateFile: 'plop-templates/hooks/hook.test.ts.hbs',
+        templateFile: 'generators/hooks/hook.test.ts.hbs',
       },
 
       // Update the global hooks index file
       {
         type: 'append',
         path: 'src/hooks/index.ts',
-        templateFile: 'plop-templates/hooksIndex.ts.hbs',
+        templateFile: 'generators/hooksIndex.ts.hbs',
       },
     ],
   })
