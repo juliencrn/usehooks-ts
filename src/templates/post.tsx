@@ -12,15 +12,9 @@ import SEO from '~/components/seo'
 import { PageTemplate, Post } from '~/models'
 
 const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    marginTop: theme.spacing(6),
-  },
   title: {
-    margin: theme.spacing(2, 0),
+    margin: theme.spacing(6, 0, 2),
     wordBreak: 'break-all',
-    [theme.breakpoints.up('md')]: {
-      margin: theme.spacing(6, 0, 4),
-    },
     fontWeight: 700,
   },
   subtitle: {
@@ -67,7 +61,7 @@ function PostTemplate({ location, data }: PostTemplateProps) {
   const editLink = `${repoUrl}/tree/develop/src/hooks/${post.fields.name}`
 
   return (
-    <Container className={classes.root} maxWidth="md">
+    <Container maxWidth="md">
       <SEO title={title} description={excerpt} location={location} />
 
       <Typography variant="h2" component="h1" className={classes.title}>

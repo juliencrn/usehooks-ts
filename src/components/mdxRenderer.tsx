@@ -44,9 +44,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontFamily: 'Fira Code, monospace',
     background:
       theme.palette.type === 'light'
-        ? theme.palette.grey[300]
-        : theme.palette.background.paper,
-    padding: theme.spacing(0.4),
+        ? theme.palette.grey[200]
+        : theme.palette.dracula.background,
+    padding: theme.spacing(0.2, 0.4),
     borderRadius: 4,
   },
 }))
@@ -140,7 +140,7 @@ const MdxRenderer = ({ body }: { body: string }) => {
         inlineCode: props => (
           <Typography
             gutterBottom
-            variant="body1"
+            variant="body2"
             component="code"
             className={classes.inlineCode}
             {...props}
