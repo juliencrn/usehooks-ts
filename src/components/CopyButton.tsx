@@ -5,7 +5,7 @@ import { Theme, withStyles } from '@material-ui/core/styles'
 import Tooltip from '@material-ui/core/Tooltip'
 import FileCopyIcon from '@material-ui/icons/FileCopy'
 
-import { useTimeout } from '~/hooks'
+import { useCopyToClipboard, useTimeout } from '~/hooks'
 
 const ThemedTooltip = withStyles((theme: Theme) => ({
   tooltip: {
@@ -15,33 +15,21 @@ const ThemedTooltip = withStyles((theme: Theme) => ({
   },
 }))(Tooltip)
 
-const copy = async (text: string): Promise<true | undefined> => {
-  if (typeof navigator === 'undefined') return
-  if (!navigator.clipboard) return
-
-  try {
-    await navigator.clipboard.writeText(text)
-    return true
-  } catch (error) {
-    console.error('copy failed', error)
-    return
-  }
-}
-
 interface PropTypes {
   value: string
   classNames?: string
 }
 
 const CopyButton = ({ value, classNames }: PropTypes) => {
+  const [, setCopiedText] = useCopyToClipboard()
   const [open, setOpen] = useState(false)
 
   // Auto close tooltip
   useTimeout(() => setOpen(false), open ? 2000 : null)
 
-  const handleCopy = async () => {
-    const copied = await copy(value)
-    if (copied) setOpen(true)
+  const handleCopy = () => {
+    setCopiedText(value)
+    setOpen(true)
   }
 
   return (
