@@ -3,27 +3,34 @@
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module",
+    "project": "tsconfig.json",
     "ecmaFeatures": {
       "jsx": true
     }
   },
+  "ignorePatterns": ["*.js"],
   "extends": [
     "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:react-hooks/recommended",
     "plugin:react/recommended",
-    "plugin:jsx-a11y/recommended"
+    "plugin:jsx-a11y/recommended",
+    "plugin:jest/recommended"
   ],
   "plugins": [
+    "@typescript-eslint/eslint-plugin",
     "@typescript-eslint",
     "react",
     "simple-import-sort",
     "prettier",
-    "jsx-a11y"
+    "jsx-a11y",
+    "jest"
   ],
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "settings": {
     "react": {
@@ -52,5 +59,16 @@
         ]
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.test.ts"],
+      "plugins": ["jest"],
+      "rules": {
+        // you should turn the original rule off *only* for test files
+        "@typescript-eslint/unbound-method": "off",
+        "jest/unbound-method": "error"
+      }
+    }
+  ]
 }
