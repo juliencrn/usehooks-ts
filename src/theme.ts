@@ -1,10 +1,8 @@
-import { blue, red } from '@material-ui/core/colors'
-import {
-  createTheme,
-  responsiveFontSizes,
-  Theme,
-  ThemeOptions,
-} from '@material-ui/core/styles'
+import blue from '@material-ui/core/colors/blue'
+import red from '@material-ui/core/colors/red'
+import { Theme, ThemeOptions } from '@material-ui/core/styles'
+import createTheme from '@material-ui/core/styles/createTheme'
+import responsiveFontSizes from '@material-ui/core/styles/responsiveFontSizes'
 import deepMerge from 'deepmerge'
 
 import FiraCode from './assets/fonts/FiraMono-Regular.otf'

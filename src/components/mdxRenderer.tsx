@@ -4,7 +4,7 @@ import React from 'react'
 import Divider from '@material-ui/core/Divider'
 import Link from '@material-ui/core/Link'
 import Paper from '@material-ui/core/Paper'
-import { makeStyles, Theme } from '@material-ui/core/styles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import Table from '@material-ui/core/Table'
 import TableCell from '@material-ui/core/TableCell'
 import TableContainer from '@material-ui/core/TableContainer'
@@ -15,7 +15,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import Code from './code'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(theme => ({
   tableContainer: {
     margin: theme.spacing(3, 0),
     '& thead td': {

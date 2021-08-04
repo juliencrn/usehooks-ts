@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 
 import Button from '@material-ui/core/Button'
-import { Theme, withStyles } from '@material-ui/core/styles'
+import withStyles from '@material-ui/core/styles/withStyles'
 import Tooltip from '@material-ui/core/Tooltip'
 import FileCopyIcon from '@material-ui/icons/FileCopy'
 
 import { useCopyToClipboard, useTimeout } from '~/hooks'
 
-const ThemedTooltip = withStyles((theme: Theme) => ({
+const ThemedTooltip = withStyles(theme => ({
   tooltip: {
     color: theme.palette.common.white,
     backgroundColor: theme.palette.dracula.comment,

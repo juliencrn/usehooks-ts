@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { makeStyles, Theme } from '@material-ui/core/styles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import Typography from '@material-ui/core/Typography'
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 
@@ -10,7 +10,7 @@ import CopyButton from './CopyButton'
 import theme from '~/libs/prismjs-theme-dracula'
 // import theme from 'prism-react-renderer/themes/vsDark'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     position: 'relative',
   },

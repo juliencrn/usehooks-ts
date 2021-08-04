@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { Link } from '@material-ui/core'
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
-import { makeStyles, Theme } from '@material-ui/core/styles'
+import Link from '@material-ui/core/Link'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import Typography from '@material-ui/core/Typography'
 import { graphql } from 'gatsby'
 
@@ -11,7 +11,7 @@ import MdxRenderer from '~/components/mdxRenderer'
 import SEO from '~/components/seo'
 import { Post } from '~/models'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(theme => ({
   title: {
     margin: theme.spacing(6, 0, 2),
     wordBreak: 'break-all',

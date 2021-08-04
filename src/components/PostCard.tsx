@@ -2,13 +2,13 @@ import React, { FC } from 'react'
 
 import Box from '@material-ui/core/Box'
 import Link from '@material-ui/core/Link'
-import { makeStyles, Theme } from '@material-ui/core/styles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import Typography from '@material-ui/core/Typography'
 import { Link as GatsbyLink } from 'gatsby'
 
 import { Post } from '~/models'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(theme => ({
   article: {
     marginBottom: theme.spacing(8),
     [theme.breakpoints.up('md')]: {

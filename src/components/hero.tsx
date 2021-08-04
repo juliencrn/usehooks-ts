@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 import Container from '@material-ui/core/Container'
-import { makeStyles, Theme } from '@material-ui/core/styles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import Typography from '@material-ui/core/Typography'
 
 export interface HeroProps {
@@ -14,7 +14,7 @@ interface StyleProps {
   fullHeight: boolean
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(theme => ({
   hero: (props: StyleProps) => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(12, 0, 10),

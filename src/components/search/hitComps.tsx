@@ -3,12 +3,13 @@ import React from 'react'
 import Link from '@material-ui/core/Link'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
-import { fade, makeStyles, Theme } from '@material-ui/core/styles'
+import { alpha } from '@material-ui/core/styles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import Typography from '@material-ui/core/Typography'
 import { Link as GatsbyLink } from 'gatsby'
 import { connectHits, Highlight } from 'react-instantsearch-dom'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(theme => ({
   list: {
     maxHeight: 500,
     overflowY: 'auto',
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: 'start',
     '& em': {
       fontStyle: 'normal',
-      background: fade(theme.palette.primary.main, 0.3),
+      background: alpha(theme.palette.primary.main, 0.3),
     },
   },
   title: {

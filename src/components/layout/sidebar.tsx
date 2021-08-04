@@ -1,12 +1,14 @@
 import React, { useRef } from 'react'
 
-import { Typography, useMediaQuery } from '@material-ui/core'
 import Drawer from '@material-ui/core/Drawer'
 import IconButton from '@material-ui/core/IconButton'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import { makeStyles, Theme, useTheme } from '@material-ui/core/styles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import useTheme from '@material-ui/core/styles/useTheme'
+import Typography from '@material-ui/core/Typography'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import { Link as GatsbyLink } from 'gatsby'
 
@@ -15,7 +17,7 @@ import useHookList from '~/hooks/privateHooks/useHookList'
 import { filterHook, sortPosts } from '~/shared/filterHooks'
 import { drawerWidth } from '~/theme'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(theme => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,

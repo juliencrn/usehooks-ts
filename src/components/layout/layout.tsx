@@ -1,13 +1,10 @@
 import React, { FC, useEffect, useState } from 'react'
 
-import { useMediaQuery } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import {
-  makeStyles,
-  Theme,
-  ThemeProvider,
-  useTheme as useMuiTheme,
-} from '@material-ui/core/styles'
+import { ThemeProvider } from '@material-ui/core/styles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import useTheme from '@material-ui/core/styles/useTheme'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import BackToTop from '../backToTop'
 import Footer from './footer'
@@ -18,7 +15,7 @@ import Thanks from './thanks'
 import { useDarkMode, useSiteMetadata } from '~/hooks'
 import themes from '~/theme'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -46,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Layout: FC = ({ children }) => {
   const { title } = useSiteMetadata()
-  const { breakpoints } = useMuiTheme()
+  const { breakpoints } = useTheme()
   const isMobile = useMediaQuery(breakpoints.down('md'))
   const [isSidebarOpened, setOpenSidebar] = useState(false)
   const classes = useStyles({ isSidebarOpened })

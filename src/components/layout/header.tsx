@@ -1,18 +1,15 @@
 import React from 'react'
 
-import { useMediaQuery } from '@material-ui/core'
 import AppBar from '@material-ui/core/AppBar'
 import Box from '@material-ui/core/Box'
 import Hidden from '@material-ui/core/Hidden'
 import IconButton from '@material-ui/core/IconButton'
 import Link from '@material-ui/core/Link'
-import {
-  makeStyles,
-  Theme as MuiTheme,
-  useTheme as useMuiTheme,
-} from '@material-ui/core/styles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import useTheme from '@material-ui/core/styles/useTheme'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Brightness3Icon from '@material-ui/icons/Brightness3'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import MenuIcon from '@material-ui/icons/Menu'
@@ -23,7 +20,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import Search from '../search'
 import { useDarkMode, useSiteMetadata } from '~/hooks'
 
-const useStyles = makeStyles((theme: MuiTheme) => ({
+const useStyles = makeStyles(theme => ({
   appBar: {
     background:
       theme.palette.type === 'light'
@@ -50,7 +47,7 @@ export interface HeaderProps {
 function Header({ siteTitle, onOpenSidebar }: HeaderProps) {
   const classes = useStyles()
   const { author } = useSiteMetadata()
-  const { breakpoints } = useMuiTheme()
+  const { breakpoints } = useTheme()
   const isMobile = useMediaQuery(breakpoints.down('md'))
   const { isDarkMode, toggle } = useDarkMode()
 

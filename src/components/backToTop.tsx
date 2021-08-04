@@ -1,12 +1,12 @@
 import React, { FC, useState } from 'react'
 
 import Fab from '@material-ui/core/Fab'
-import { makeStyles, Theme } from '@material-ui/core/styles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 import { Link } from 'react-scroll'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     position: 'fixed',
     bottom: theme.spacing(2),

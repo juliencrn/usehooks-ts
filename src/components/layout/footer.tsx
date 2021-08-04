@@ -3,7 +3,7 @@ import React from 'react'
 import Container from '@material-ui/core/Container'
 import Hidden from '@material-ui/core/Hidden'
 import Link from '@material-ui/core/Link'
-import { makeStyles, Theme } from '@material-ui/core/styles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import Typography from '@material-ui/core/Typography'
 
 import { reduceLayoutWidth } from './styleUtils'
@@ -13,7 +13,7 @@ interface PropTypes {
   isSidebarOpened: boolean
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(theme => ({
   footer: {
     padding: theme.spacing(3, 0),
     marginTop: 'auto',

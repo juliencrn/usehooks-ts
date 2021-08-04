@@ -24,7 +24,7 @@
     "start": "npm run develop",
     "clean": "gatsby clean",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
-    "lint-fix": "npm run lint:eslint -- --fix && npm run format",
+    "lint-fix": "npm run lint -- --fix && npm run format",
     "format": "prettier --write --loglevel silent \"**/*.{js,jsx,ts,tsx,json,md,mdx}\"",
     "check": "tsc",
     "copy:hooks": "node ./tools/copyHooks.js && npm run update:readme && npm run format",
@@ -38,8 +38,6 @@
   "dependencies": {
     "@material-ui/core": "^4.12.2",
     "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.57",
-    "@material-ui/styles": "^4.11.4",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@n8tb1t/use-scroll-position": "^2.0.3",

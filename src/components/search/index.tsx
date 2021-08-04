@@ -3,7 +3,7 @@ import React, { FC, useEffect, useRef, useState } from 'react'
 import Box from '@material-ui/core/Box'
 import Divider from '@material-ui/core/Divider'
 import Paper from '@material-ui/core/Paper'
-import { makeStyles, Theme } from '@material-ui/core/styles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import Typography from '@material-ui/core/Typography'
 import algoliasearch from 'algoliasearch/lite'
 import {
@@ -41,7 +41,7 @@ const SearchBar = connectSearchBox(({ currentRefinement, refine }) => (
   <Input value={currentRefinement} refine={refine} />
 ))
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     [theme.breakpoints.up('sm')]: {
       position: 'relative',
