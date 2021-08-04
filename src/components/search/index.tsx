@@ -24,9 +24,9 @@ const searchClient = algoliasearch(
 )
 
 const Results = connectStateResults(
-  ({ searchState: state, searchResults: res, children }: any) => {
+  ({ searchState: state, searchResults: res, children }) => {
     return res && res.nbHits > 0 ? (
-      children
+      <>{children}</>
     ) : (
       <Box p={2}>
         <Typography variant="body1">

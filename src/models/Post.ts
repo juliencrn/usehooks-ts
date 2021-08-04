@@ -31,7 +31,7 @@ export interface Post extends HookNode {
     title: string
     date: string
   }
-  body: any
+  body: string
 }
 
 export const PostQuery = graphql`
