@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
   }),
+  container: {
+    marginTop: theme.spacing(-8),
+  },
   title: {
     fontFamily: 'Fira Code, monospace',
   },
@@ -44,7 +47,7 @@ const Hero: FC<HeroProps> = ({
   const classes = useStyles({ fullHeight: !!fullHeight })
   return (
     <div className={classes.hero}>
-      <Container maxWidth="md">
+      <Container maxWidth="md" className={classes.container}>
         <Typography
           variant="h2"
           component="h1"

@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     textAlign: 'center',
     margin: theme.spacing(6, 0),
   },
-  metaValue: {
+  textMono: {
     fontFamily: 'Fira Code, monospace',
   },
 }))
@@ -51,16 +51,18 @@ function PostTemplate(props: PostTemplateProps) {
   const classes = useStyles()
   const { post, hook, demo } = props.data
   const { body, excerpt, frontmatter } = post
-  const title = `${frontmatter.title}()`
   const repoUrl = 'https://github.com/juliencrn/usehooks.ts'
   const editLink = `${repoUrl}/tree/develop/src/hooks/${post.fields.name}`
 
   return (
     <Container maxWidth="md">
-      <SEO title={title} description={excerpt} />
+      <SEO title={frontmatter.title} description={excerpt} />
 
       <Typography variant="h2" component="h1" className={classes.title}>
-        {title}
+        {frontmatter.title}
+        <Typography variant="h2" component="span" className={classes.textMono}>
+          ()
+        </Typography>
       </Typography>
 
       <MdxRenderer body={body} />
