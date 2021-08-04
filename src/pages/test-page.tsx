@@ -5,7 +5,6 @@ import { navigate } from 'gatsby'
 
 import Hero from '~/components/hero'
 import SEO from '~/components/seo'
-import { PageTemplate } from '~/models'
 
 /**
  * I use this page for testing my hooks,
@@ -20,14 +19,14 @@ function Component() {
   return <div>Example</div>
 }
 
-function TestPage({ location }: PageTemplate) {
+function TestPage() {
   if (process.env.NODE_ENV === 'production' && typeof window !== 'undefined') {
     navigate('/')
   }
 
   return (
     <>
-      <SEO title="Tests page" location={location} />
+      <SEO title="Tests page" />
 
       <Hero
         title="Tests page"

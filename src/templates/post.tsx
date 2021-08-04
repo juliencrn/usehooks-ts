@@ -9,7 +9,7 @@ import { graphql } from 'gatsby'
 
 import MdxRenderer from '~/components/mdxRenderer'
 import SEO from '~/components/seo'
-import { PageTemplate, Post } from '~/models'
+import { Post } from '~/models'
 
 const useStyles = makeStyles((theme: Theme) => ({
   title: {
@@ -35,12 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-export interface PostTemplateProps extends PageTemplate {
-  pageContext: {
-    id: string
-    hookId: string
-    demoId: string
-  }
+export interface PostTemplateProps {
   data: {
     post: Post
     hook?: {
@@ -52,9 +47,9 @@ export interface PostTemplateProps extends PageTemplate {
   }
 }
 
-function PostTemplate({ location, data }: PostTemplateProps) {
+function PostTemplate(props: PostTemplateProps) {
   const classes = useStyles()
-  const { post, hook, demo } = data
+  const { post, hook, demo } = props.data
   const { body, excerpt, frontmatter } = post
   const title = `${frontmatter.title}()`
   const repoUrl = 'https://github.com/juliencrn/usehooks.ts'
@@ -62,7 +57,7 @@ function PostTemplate({ location, data }: PostTemplateProps) {
 
   return (
     <Container maxWidth="md">
-      <SEO title={title} description={excerpt} location={location} />
+      <SEO title={title} description={excerpt} />
 
       <Typography variant="h2" component="h1" className={classes.title}>
         {title}

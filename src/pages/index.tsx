@@ -3,14 +3,13 @@ import React from 'react'
 import Hero from '~/components/hero'
 import SEO from '~/components/seo'
 import { useSiteMetadata } from '~/hooks'
-import { PageTemplate } from '~/models'
 
-function PostListTemplate({ location }: PageTemplate) {
+function PostListTemplate() {
   const { title, description } = useSiteMetadata()
 
   return (
     <>
-      <SEO title={title} description={description} location={location} />
+      <SEO title={title} description={description} />
 
       <Hero title={title} description={description} fullHeight />
     </>

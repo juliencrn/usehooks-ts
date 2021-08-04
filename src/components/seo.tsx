@@ -7,6 +7,7 @@
 
 import React, { FC } from 'react'
 
+import { useLocation } from '@reach/router'
 import { Helmet } from 'react-helmet'
 
 import { useSiteMetadata } from '~/hooks'
@@ -25,7 +26,6 @@ type Meta = MetaName | MetaProperty
 
 export interface SEOProps {
   title: string
-  location: Location
   description?: string
   lang?: string
   meta?: Meta[]
@@ -33,11 +33,11 @@ export interface SEOProps {
 
 const SEO: FC<SEOProps> = ({
   title,
-  location,
   description = '',
   lang = 'en',
   meta = [],
 }) => {
+  const location = useLocation()
   const siteMetadata = useSiteMetadata()
   const metaDescription = description || siteMetadata.description
   const url = `${siteMetadata.siteUrl}${location.pathname}`

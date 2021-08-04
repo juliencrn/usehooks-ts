@@ -4,12 +4,11 @@ import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 
 import SEO from '../components/seo'
-import { PageTemplate } from '~/models'
 
-function NotFoundPage({ location }: PageTemplate) {
+function NotFoundPage() {
   return (
     <Container maxWidth="md">
-      <SEO title="404: Not found" location={location} />
+      <SEO title="404: Not found" />
       <Typography variant="h2" gutterBottom component="h1">
         NOT FOUND
       </Typography>
