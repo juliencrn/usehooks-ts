@@ -10,7 +10,7 @@ function Child() {
 
   // simulate an api call and update state
   useEffect(() => {
-    delay(3000).then(() => {
+    void delay(3000).then(() => {
       if (isMounted()) setData('OK')
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps

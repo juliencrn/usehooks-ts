@@ -1,13 +1,13 @@
-import React, { FC, useRef } from 'react'
+import React, { useRef } from 'react'
 
 import useIntersectionObserver from './useIntersectionObserver'
 
-const Section: FC = ({ children }) => {
+const Section = (props: { title: string }) => {
   const ref = useRef<HTMLDivElement | null>(null)
   const entry = useIntersectionObserver(ref, {})
   const isVisible = !!entry?.isIntersecting
 
-  console.log(`Render Section ${children?.toString()}`, { isVisible })
+  console.log(`Render Section ${props.title}`, { isVisible })
 
   return (
     <div
@@ -18,7 +18,7 @@ const Section: FC = ({ children }) => {
         border: '1px dashed #000',
       }}
     >
-      <div style={{ margin: 'auto' }}>{children}</div>
+      <div style={{ margin: 'auto' }}>{props.title}</div>
     </div>
   )
 }
@@ -26,11 +26,9 @@ const Section: FC = ({ children }) => {
 export default function Component() {
   return (
     <>
-      <Section key="1">div n°1</Section>
-      <Section key="2">div n°2</Section>
-      <Section key="3">div n°3</Section>
-      <Section key="4">div n°4</Section>
-      <Section key="5">div n°5</Section>
+      {Array.from({ length: 5 }).map((_, index) => (
+        <Section key={index + 1} title={`${index + 1}`} />
+      ))}
     </>
   )
 }

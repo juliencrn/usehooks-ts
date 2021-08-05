@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import React from 'react'
+import React, { Fragment, HTMLProps } from 'react'
 
 import Divider from '@material-ui/core/Divider'
 import Link from '@material-ui/core/Link'
@@ -123,11 +123,14 @@ const MdxRenderer = ({ body }: { body: string }) => {
         ),
 
         // Code
-        pre: props => props.children,
-        code: props => {
+        pre: props => <Fragment {...props} />,
+        code: (props: HTMLProps<HTMLElement>) => {
           // Extract code language
           let lang = undefined
-          if (props.className) {
+          if (
+            props.hasOwnProperty('className') &&
+            typeof props.className !== 'undefined'
+          ) {
             const classes = props.className.split(' ')
             classes.forEach((element: string) => {
               if (element.includes('language')) {
@@ -135,7 +138,9 @@ const MdxRenderer = ({ body }: { body: string }) => {
               }
             })
           }
-          return <Code code={props.children.toString()} language={lang} />
+          return (
+            <Code code={childrenToString(props.children)} language={lang} />
+          )
         },
         inlineCode: props => (
           <Typography
@@ -157,8 +162,8 @@ const MdxRenderer = ({ body }: { body: string }) => {
           </TableContainer>
         ),
         tr: props => <TableRow {...props} />,
-        td: props => <TableCell>{props.children}</TableCell>,
-        th: props => <TableCell>{props.children}</TableCell>,
+        td: props => <TableCell {...props} />,
+        th: props => <TableCell {...props} />,
 
         // Mixins
         hr: () => <Divider className={classes.divider} />,
@@ -171,3 +176,17 @@ const MdxRenderer = ({ body }: { body: string }) => {
 }
 
 export default MdxRenderer
+
+const childrenToString = (
+  children: HTMLProps<HTMLElement>['children'],
+): string => {
+  let label = ''
+
+  React.Children.map(children, child => {
+    if (typeof child === 'string') {
+      label += child
+    }
+  })
+
+  return label
+}

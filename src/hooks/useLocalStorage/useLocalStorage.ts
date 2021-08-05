@@ -1,12 +1,11 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
-function useLocalStorage<T>(
-  key: string,
-  initialValue?: T | (() => T),
-): [T, Dispatch<SetStateAction<T>>] {
+type SetValue<T> = Dispatch<SetStateAction<T>>
+
+function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
   // Get from local storage then
   // parse stored json or return initialValue
-  const readValue = () => {
+  const readValue = (): T => {
     // Prevent build error "window is undefined" but keep keep working
     if (typeof window === 'undefined') {
       return initialValue
@@ -14,7 +13,7 @@ function useLocalStorage<T>(
 
     try {
       const item = window.localStorage.getItem(key)
-      return item ? JSON.parse(item) : initialValue
+      return item ? (JSON.parse(item) as T) : initialValue
     } catch (error) {
       console.warn(`Error reading localStorage key “${key}”:`, error)
       return initialValue
@@ -27,7 +26,7 @@ function useLocalStorage<T>(
 
   // Return a wrapped version of useState's setter function that ...
   // ... persists the new value to localStorage.
-  const setValue: Dispatch<SetStateAction<T>> = value => {
+  const setValue: SetValue<T> = value => {
     // Prevent build error "window is undefined" but keeps working
     if (typeof window == 'undefined') {
       console.warn(

@@ -21,9 +21,7 @@ const hookQuery = `
 `
 
 export default async function createHooks(args: CreatePagesArgs) {
-  const { actions, graphql, reporter } = args
-
-  const results = await graphql<Query>(
+  const results = await args.graphql<Query>(
     `
       {
         posts: allMdx(filter: { fileAbsolutePath: { regex: "/src/hooks/" } }) {
@@ -44,7 +42,7 @@ export default async function createHooks(args: CreatePagesArgs) {
   )
 
   if (results.errors) {
-    reporter.panicOnBuild(
+    args.reporter.panicOnBuild(
       `Error while running GraphQL posts query.`,
       results.errors,
     )
@@ -63,9 +61,12 @@ export default async function createHooks(args: CreatePagesArgs) {
         context: { id, hookId, demoId },
       }
 
-      actions.createPage({ ...pageData, path: `/react-hook${fields.path}` })
+      args.actions.createPage({
+        ...pageData,
+        path: `/react-hook${fields.path}`,
+      })
 
-      actions.createRedirect({
+      args.actions.createRedirect({
         fromPath: fields.path,
         toPath: `/react-hook${fields.path}`,
         isPermanent: true,

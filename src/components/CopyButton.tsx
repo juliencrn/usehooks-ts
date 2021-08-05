@@ -27,10 +27,7 @@ const CopyButton = ({ value, classNames }: PropTypes) => {
   // Auto close tooltip
   useTimeout(() => setOpen(false), open ? 2000 : null)
 
-  const handleCopy = () => {
-    setCopiedText(value)
-    setOpen(true)
-  }
+  const handleCopy = () => setCopiedText(value).then(() => setOpen(true))
 
   return (
     <ThemedTooltip

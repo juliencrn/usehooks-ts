@@ -7,8 +7,14 @@ export interface SiteMetadata {
   author: string
 }
 
-function useSiteMetadata(): SiteMetadata {
-  const data = useStaticQuery(graphql`
+interface Query {
+  site: {
+    siteMetadata: SiteMetadata
+  }
+}
+
+function useSiteMetadata() {
+  const data = useStaticQuery<Query>(graphql`
     {
       site {
         siteMetadata {

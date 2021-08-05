@@ -1,6 +1,6 @@
 import { GatsbyNode } from 'gatsby'
 
-export const onCreateNode: GatsbyNode['onCreateNode'] = async args => {
+export const onCreateNode: GatsbyNode['onCreateNode'] = args => {
   const { node, actions } = args
 
   if (node.internal.type === 'Mdx') {
@@ -35,7 +35,5 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async args => {
 const camelToKebabCase = (str: string): string =>
   str
     .split('')
-    .map(letter =>
-      letter.match('[A-Z]') ? `-${letter.toLowerCase()}` : letter,
-    )
+    .map(letter => (/[A-Z]/.exec(letter) ? `-${letter.toLowerCase()}` : letter))
     .join('')

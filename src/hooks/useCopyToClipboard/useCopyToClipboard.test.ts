@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
 import { act, renderHook } from '@testing-library/react-hooks'

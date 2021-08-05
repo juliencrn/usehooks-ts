@@ -21,9 +21,9 @@ function useDarkMode(defaultValue?: boolean): UseDarkModeOutput {
     return !!defaultValue
   }
 
-  const [isDarkMode, setDarkMode] = useLocalStorage(
+  const [isDarkMode, setDarkMode] = useLocalStorage<boolean>(
     'darkMode',
-    getPrefersScheme,
+    getPrefersScheme(),
   )
 
   // Update darkMode if os prefers changes

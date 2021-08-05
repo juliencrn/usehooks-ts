@@ -4,14 +4,14 @@ declare module '@material-ui/core/styles/createPalette' {
   interface Palette {
     dracula: Dracula
     gradient: {
-      primary: CSSProperties['color']
+      primary: string
     }
   }
 
   interface PaletteOptions {
     dracula?: Dracula
     gradient?: {
-      primary?: CSSProperties['color']
+      primary?: string
     }
   }
 }

@@ -30,7 +30,7 @@ const Results = connectStateResults(
     ) : (
       <Box p={2}>
         <Typography variant="body1">
-          {`No results for "${state.query}"`}
+          {`No results for "${state.query ?? ''}"`}
         </Typography>
       </Box>
     )
