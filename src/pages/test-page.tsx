@@ -7,11 +7,12 @@ import Hero from '~/components/hero'
 import SEO from '~/components/seo'
 
 /**
- * I use this page for testing my hooks,
+ * I use this page for developing and testing the hooks
+ * (I know, it would be better to do TDD instead, it comes),
  * it does not appear in production.
  *
- * The hook is implemented in the "Component" comp,
- * and called below in the "TestPage" page.
+ * The hook is implemented in the "Component" component below,
+ * and called in the "TestPage" page.
  */
 
 // Usage
@@ -21,7 +22,7 @@ function Component() {
 
 function TestPage() {
   if (process.env.NODE_ENV === 'production' && typeof window !== 'undefined') {
-    navigate('/')
+    void navigate('/')
   }
 
   return (

@@ -45,9 +45,11 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 - [useLocalStorage](https://usehooks-typescript.com/react-hook/use-local-storage)
 - [useLockedBody](https://usehooks-typescript.com/react-hook/use-locked-body)
 - [useOnClickOutside](https://usehooks-typescript.com/react-hook/use-on-click-outside)
+- [useReadLocalStorage](https://usehooks-typescript.com/react-hook/use-read-local-storage)
 - [useScreen](https://usehooks-typescript.com/react-hook/use-screen)
 - [useScript](https://usehooks-typescript.com/react-hook/use-script)
 - [useSiteMetadata](https://usehooks-typescript.com/react-hook/use-site-metadata)
+- [useSsr](https://usehooks-typescript.com/react-hook/use-ssr)
 - [useTimeout](https://usehooks-typescript.com/react-hook/use-timeout)
 - [useWindowSize](https://usehooks-typescript.com/react-hook/use-window-size)
 

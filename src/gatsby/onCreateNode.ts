@@ -35,5 +35,5 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = args => {
 const camelToKebabCase = (str: string): string =>
   str
     .split('')
-    .map(letter => (/[A-Z]/.exec(letter) ? `-${letter.toLowerCase()}` : letter))
+    .map(letter => (/[A-Z]/.test(letter) ? `-${letter.toLowerCase()}` : letter))
     .join('')

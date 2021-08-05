@@ -15,5 +15,5 @@ module.exports = {
   setupFiles: [`<rootDir>/loadershim.js`],
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.([tj]sx?)$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  testEnvironment: 'jsdom'
+  testEnvironment: 'jsdom',
 }
