@@ -2,6 +2,8 @@ import React from 'react'
 
 import useFetch from './useFetch'
 
+const url = `http://jsonplaceholder.typicode.com/posts`
+
 interface Post {
   userId: number
   id: number
@@ -10,10 +12,9 @@ interface Post {
 }
 
 export default function Component() {
-  const url = `http://jsonplaceholder.typicode.com/posts`
-  const { status, data, error } = useFetch<Post[]>(url)
-  console.log({ status, data, error })
+  const { data, error } = useFetch<Post[]>(url)
 
-  // your component JSX
-  return <div>{status}</div>
+  if (error) return <p>There is an error.</p>
+  if (!data) return <p>Loading...</p>
+  return <p>{data[0].title}</p>
 }

@@ -41,7 +41,6 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@n8tb1t/use-scroll-position": "^2.0.3",
-    "axios": "^0.21.1",
     "date-fns": "^2.23.0",
     "deepmerge": "^4.2.2",
     "gatsby": "^3.10.2",
@@ -70,7 +69,6 @@
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^7.0.1",
-    "@types/axios": "^0.14.0",
     "@types/date-fns": "^2.6.0",
     "@types/jest": "^26.0.24",
     "@types/mdx-js__react": "^1.5.4",

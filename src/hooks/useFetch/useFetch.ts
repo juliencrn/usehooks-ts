@@ -1,33 +1,23 @@
 import { useEffect, useReducer, useRef } from 'react'
 
-import axios, { AxiosRequestConfig } from 'axios'
-
-// State & hook output
 interface State<T> {
-  status: 'init' | 'fetching' | 'error' | 'fetched'
   data?: T
-  error?: string
+  error?: Error
 }
 
-interface Cache<T> {
-  [url: string]: T
-}
+type Cache<T> = { [url: string]: T }
 
 // discriminated union type
 type Action<T> =
-  | { type: 'request' }
-  | { type: 'success'; payload: T }
-  | { type: 'failure'; payload: string }
+  | { type: 'loading' }
+  | { type: 'fetched'; payload: T }
+  | { type: 'error'; payload: Error }
 
-function useFetch<T = unknown>(
-  url?: string,
-  options?: AxiosRequestConfig,
-): State<T> {
+function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
   const cache = useRef<Cache<T>>({})
   const cancelRequest = useRef<boolean>(false)
 
   const initialState: State<T> = {
-    status: 'init',
     error: undefined,
     data: undefined,
   }
@@ -35,12 +25,12 @@ function useFetch<T = unknown>(
   // Keep state logic separated
   const fetchReducer = (state: State<T>, action: Action<T>): State<T> => {
     switch (action.type) {
-      case 'request':
-        return { ...initialState, status: 'fetching' }
-      case 'success':
-        return { ...initialState, status: 'fetched', data: action.payload }
-      case 'failure':
-        return { ...initialState, status: 'error', error: action.payload }
+      case 'loading':
+        return { ...initialState }
+      case 'fetched':
+        return { ...initialState, data: action.payload }
+      case 'error':
+        return { ...initialState, error: action.payload }
       default:
         return state
     }
@@ -49,32 +39,32 @@ function useFetch<T = unknown>(
   const [state, dispatch] = useReducer(fetchReducer, initialState)
 
   useEffect(() => {
-    if (!url) {
-      return
-    }
+    if (!url) return
 
     const fetchData = async () => {
-      dispatch({ type: 'request' })
+      dispatch({ type: 'loading' })
 
       if (cache.current[url]) {
-        dispatch({ type: 'success', payload: cache.current[url] })
-      } else {
-        try {
-          const response = await axios(url, options)
-          cache.current[url] = response.data
+        dispatch({ type: 'fetched', payload: cache.current[url] })
+        return
+      }
 
-          if (cancelRequest.current) return
+      try {
+        const response = await fetch(url, options)
+        if (!response.ok) throw new Error(response.statusText)
+        const data = (await response.json()) as T
+        cache.current[url]
+        if (cancelRequest.current) return
 
-          dispatch({ type: 'success', payload: response.data })
-        } catch (error) {
-          if (cancelRequest.current) return
+        dispatch({ type: 'fetched', payload: data })
+      } catch (error) {
+        if (cancelRequest.current) return
 
-          dispatch({ type: 'failure', payload: error.message })
-        }
+        dispatch({ type: 'error', payload: error as Error })
       }
     }
 
-    fetchData()
+    void fetchData()
 
     return () => {
       cancelRequest.current = true
