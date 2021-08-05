@@ -1,0 +1,11 @@
+---
+title: useReadLocalStorage
+date: '2021-08-04'
+---
+
+This React Hook allows you to accesses to a value from localStorage by its key, and in read-only mode. It can be useful if you just want to read without passing a default value.
+If the window object is not present (as in SSR), or if the value doesn't exist, `useLocalStorage()` will return `null`.
+
+**Note:**
+
+If you want to be able to change the value, look [useLocalStorage()](/react-hook/use-local-storage).
