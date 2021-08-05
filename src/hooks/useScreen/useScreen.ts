@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 function useScreen() {
   const getScreen = () => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && window.screen) {
       return window.screen
     }
     return undefined

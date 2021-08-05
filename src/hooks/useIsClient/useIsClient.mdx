@@ -5,6 +5,4 @@ date: '2020-09-28'
 
 This React Hook can be useful in a SSR environment to wait until be in a browser to execution some functions.
 
-Indeed, when the component is mounted in the browser, its state changes and causes a re-render.
-
-Contrarly, if you only want a boolean, without extra render, see [`useSSR()`](/react-hook/use-ssr).
+Indeed, in a SSR application, when the component with the useIsClient hook is mounted in the browser, its state changes and causes a re-render. It is what we want here, but, if you want a boolean, without extra render, see [`useSSR()`](/react-hook/use-ssr).
