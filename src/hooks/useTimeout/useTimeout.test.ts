@@ -15,10 +15,10 @@ describe('useTimeout()', () => {
 
     act(() => {
       jest.advanceTimersByTime(delay)
-    });
+    })
 
     expect(callback).toHaveBeenCalledTimes(1)
-  });
+  })
 
   test('should not do anything if "dealy" is null', () => {
     jest.useFakeTimers()
@@ -32,8 +32,8 @@ describe('useTimeout()', () => {
 
     act(() => {
       jest.runAllTimers()
-    });
+    })
 
     expect(callback).not.toHaveBeenCalled()
-  });
-});
+  })
+})
