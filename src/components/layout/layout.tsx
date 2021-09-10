@@ -76,7 +76,7 @@ const Layout: FC = ({ children }) => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <div className={classes.root}>
-        <Thanks isSidebarOpened={isSidebarOpened} />
+        {/* <Thanks isSidebarOpened={isSidebarOpened} /> */}
 
         <Header siteTitle={title} onOpenSidebar={handleOpenSidebar} />
 
