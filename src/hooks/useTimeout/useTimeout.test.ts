@@ -1,6 +1,6 @@
-import { renderHook, act } from '@testing-library/react-hooks'
+import { act, renderHook } from '@testing-library/react-hooks'
 
-import { useTimeout } from './useTimeout'
+import useTimeout from './useTimeout'
 
 describe('useTimeout()', () => {
   test('should call the callback after 1 min', () => {
@@ -20,7 +20,7 @@ describe('useTimeout()', () => {
     expect(callback).toHaveBeenCalledTimes(1)
   })
 
-  test('should not do anything if "dealy" is null', () => {
+  test('should not do anything if "delay" is null', () => {
     jest.useFakeTimers()
 
     const delay = null
