@@ -13,8 +13,7 @@ function Child() {
     void delay(3000).then(() => {
       if (isMounted()) setData('OK')
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [isMounted])
 
   return <p>{data}</p>
 }
