@@ -1,0 +1,34 @@
+{
+  "name": "usehooks.ts",
+  "description": "React hook library, ready to use, written in Typescript.",
+  "version": "0.1.0",
+  "author": "Julien CARON <juliencaron@protonmail.com>",
+  "keywords": [
+    "typescript",
+    "react-hooks",
+    "npm"
+  ],
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\"",
+    "build": "tsc",
+    "prepublishOnly": "npm test && npm run build",
+    "preversion": "npm test",
+    "prepare": "npm run build",
+    "publish": "npm publish",
+    "update": "npm update"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juliencrn/usehooks.ts"
+  },
+  "bugs": {
+    "url": "https://github.com/juliencrn/usehooks.ts/issues"
+  }
+}
