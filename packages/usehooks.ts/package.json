@@ -9,12 +9,16 @@
     "npm"
   ],
   "license": "MIT",
+  "main": "dist/index",
+  "types": "dist/index",
   "files": [
     "dist"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\"",
-    "build": "tsc",
+    "build": "npm run clean && npm run compile",
+    "clean": "rm -rf ./dist",
+    "compile": "tsc",
     "prepublishOnly": "npm test && npm run build",
     "preversion": "npm test",
     "prepare": "npm run build",
