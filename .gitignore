@@ -2,6 +2,7 @@ node_modules
 
 lerna-debug.log
 npm-debug.log
+*.tsbuildinfo
 
 packages/*/lib
 packages/*/dist

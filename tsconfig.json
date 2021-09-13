@@ -1,11 +1,12 @@
 {
-  "extends": "./tsconfig.build.json",
+  "extends": "./tsconfig.base.json",
 
   "compilerOptions": {
-    "references": [
-      { "usehooks.ts": "./packages/usehooks.ts" },
-      { "frontend": "./packages/frontend" },
-    ],
+    "baseUrl": ".",
+    "paths": {
+      "usehooks.ts": ["packages/usehooks.ts/src"],
+      "frontend": ["packages/frontend/src"]
+    },
     "noEmit": true
   },
 }
