@@ -16,9 +16,10 @@ import MenuIcon from '@material-ui/icons/Menu'
 import RssFeedIcon from '@material-ui/icons/RssFeed'
 import WbSunnyIcon from '@material-ui/icons/WbSunny'
 import { Link as GatsbyLink } from 'gatsby'
+import { useDarkMode } from 'usehooks.ts'
 
 import Search from '../search'
-import { useDarkMode, useSiteMetadata } from '~/hooks'
+import useSiteMetadata from '~/hooks/useSiteMetadata'
 
 const useStyles = makeStyles(theme => ({
   appBar: {

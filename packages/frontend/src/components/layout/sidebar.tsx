@@ -11,9 +11,9 @@ import Typography from '@material-ui/core/Typography'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import { Link as GatsbyLink } from 'gatsby'
+import { useOnClickOutside } from 'usehooks.ts'
 
-import { useOnClickOutside } from '~/hooks'
-import useHookList from '~/hooks/privateHooks/useHookList'
+import useHookList from '~/hooks/useHookList'
 import { filterHook, sortPosts } from '~/shared/filterHooks'
 import { drawerWidth } from '~/theme'
 

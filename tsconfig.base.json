@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "noEmitOnError": true,
+    "skipLibCheck": true,
+    "removeComments": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "strict": true,
+    "isolatedModules": true,
+    "lib": ["es6", "DOM"],
+  },
+
+  "exclude": ["node_modules", "**/*.test.ts", "dist", "lib"]
+}

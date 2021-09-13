@@ -13,10 +13,10 @@ import {
   Index,
   InstantSearch,
 } from 'react-instantsearch-dom'
+import { useOnClickOutside } from 'usehooks.ts'
 
 import { ConnectedHits, PoweredBy } from './hitComps'
 import Input from './input'
-import { useOnClickOutside } from '~/hooks'
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APP_ID || '',

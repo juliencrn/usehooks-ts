@@ -1,7 +1,7 @@
 {
   "name": "usehooks.ts",
   "description": "React hook library, ready to use, written in Typescript.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Julien CARON <juliencaron@protonmail.com>",
   "keywords": [
     "typescript",
@@ -15,18 +15,31 @@
     "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\"",
-    "build": "npm run clean && npm run compile",
+    "build": "npm run clean && npm run tsc",
     "clean": "rm -rf ./dist",
-    "compile": "tsc",
+    "tsc": "tsc -p tsconfig.build.json",
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
     "prepublishOnly": "npm test && npm run build",
     "preversion": "npm test",
-    "prepare": "npm run build",
+    "prepare-old": "npm run build",
     "publish": "npm publish",
-    "update": "npm update"
+    "update": "npm update",
+    "pretest": "npm run lint && npm run tsc",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
-    "typescript": "^4.4.3"
+    "@junscuzzy/eslint-config-typescript": "^1.0.1",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.9.1",
+    "@types/react": "^17.0.20",
+    "@types/react-dom": "^17.0.9",
+    "eslint": "^7.32.0",
+    "jest": "^27.1.1",
+    "react-dom": "^17.0.2",
+    "react-test-renderer": "^17.0.2",
+    "typescript": "^4.3.5"
   },
   "repository": {
     "type": "git",
@@ -34,5 +47,9 @@
   },
   "bugs": {
     "url": "https://github.com/juliencrn/usehooks.ts/issues"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "typescript": "^4.4.3"
   }
 }

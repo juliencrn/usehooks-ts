@@ -5,14 +5,15 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import useTheme from '@material-ui/core/styles/useTheme'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
+// import Thanks from './thanks'
+import { useDarkMode } from 'usehooks.ts'
 
 import BackToTop from '../backToTop'
 import Footer from './footer'
 import Header from './header'
 import Sidebar from './sidebar'
 import { reduceLayoutWidth } from './styleUtils'
-import Thanks from './thanks'
-import { useDarkMode, useSiteMetadata } from '~/hooks'
+import useSiteMetadata from '~/hooks/useSiteMetadata'
 import themes from '~/theme'
 
 const useStyles = makeStyles(theme => ({

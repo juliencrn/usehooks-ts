@@ -1,11 +1,8 @@
 {
+  "extends": "../../tsconfig.base.json",
+
   "compilerOptions": {
-    "target": "ESNEXT",
-    "module": "commonjs",
     "baseUrl": ".",
-    "strict": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
     "jsx": "preserve",
     "paths": {
       "~/*": ["src/*"]
@@ -14,5 +11,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"]
+
+  "include": ["./src"]
 }

@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.build.json",
+
+  "compilerOptions": {
+    "references": [
+      { "usehooks.ts": "./packages/usehooks.ts" },
+      { "frontend": "./packages/frontend" },
+    ],
+    "noEmit": true
+  },
+}

@@ -7,7 +7,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles'
 import Typography from '@material-ui/core/Typography'
 
 import { reduceLayoutWidth } from './styleUtils'
-import { useSiteMetadata } from '~/hooks'
+import useSiteMetadata from '~/hooks/useSiteMetadata'
 
 interface PropTypes {
   isSidebarOpened: boolean

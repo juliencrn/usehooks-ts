@@ -16,11 +16,23 @@
     "./packages/*"
   ],
   "scripts": {
+    "clean": "lerna clean",
+    "bootstrap": "lerna exec npm install",
+    "tsc": "lerna run tsc",
+    "lint": "lerna run lint",
+    "test": "lerna run test",
     "build-frontend": "lerna run --scope frontend build",
-    "publish-package": "lerna run --scope usehooks.ts publish"
+    "publish-package": "lerna run --scope usehooks.ts publish",
+    "update-readme": "node ./scripts/updateReadme.js",
+    "copy-hooks": "rm -rf ./packages/frontend/generated && node ./scripts/copyHooks.js"
   },
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "@types/node": "^16.9.1",
+    "@types/react": "^17.0.20",
+    "@types/react-dom": "^17.0.9",
+    "chalk": "^4.1.2",
+    "lerna": "^4.0.0",
+    "typescript": "^4.3.5"
   },
   "repository": {
     "type": "git",

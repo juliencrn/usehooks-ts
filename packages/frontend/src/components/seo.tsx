@@ -10,7 +10,7 @@ import React, { FC } from 'react'
 import { useLocation } from '@reach/router'
 import { Helmet } from 'react-helmet'
 
-import { useSiteMetadata } from '~/hooks'
+import useSiteMetadata from '~/hooks/useSiteMetadata'
 
 interface MetaProperty {
   property: string
