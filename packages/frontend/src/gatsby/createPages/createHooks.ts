@@ -24,17 +24,13 @@ export default async function createHooks(args: CreatePagesArgs) {
   const results = await args.graphql<Query>(
     `
       {
-        posts: allMdx(filter: { fileAbsolutePath: { regex: "/src/hooks-doc/" } }) {
+        posts: allMdx(filter: { fields: { type: { eq: "post" } } }) {
           ${hookQuery}
         }
-        hooks: allMdx(
-          filter: { fileAbsolutePath: { regex: "/generated/hooks/" } }
-        ) {
+        hooks: allMdx(filter: { fields: { type: { eq: "hook" } } }) {
           ${hookQuery}
         }
-        demos: allMdx(
-          filter: { fileAbsolutePath: { regex: "/generated/hookDemos/" } }
-        ) {
+        demos: allMdx(filter: { fields: { type: { eq: "demo" } } }) {
           ${hookQuery}
         }
       }

@@ -11,23 +11,17 @@ export interface GroupedHookList {
 function useHookList(): GroupedHookList {
   const data = useStaticQuery<GroupedHookList>(graphql`
     {
-      posts: allMdx(
-        filter: { fileAbsolutePath: { regex: "/src/hooks-doc/" } }
-      ) {
+      posts: allMdx(filter: { fields: { type: { eq: "post" } } }) {
         nodes {
           ...Post
         }
       }
-      hooks: allMdx(
-        filter: { fileAbsolutePath: { regex: "/generated/hooks/" } }
-      ) {
+      hooks: allMdx(filter: { fields: { type: { eq: "hook" } } }) {
         nodes {
           ...HookNode
         }
       }
-      demos: allMdx(
-        filter: { fileAbsolutePath: { regex: "/generated/hookDemos/" } }
-      ) {
+      demos: allMdx(filter: { fields: { type: { eq: "demo" } } }) {
         nodes {
           ...HookNode
         }
