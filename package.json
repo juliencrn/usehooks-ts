@@ -16,23 +16,26 @@
     "./packages/*"
   ],
   "scripts": {
-    "clean": "lerna clean",
-    "bootstrap": "lerna exec npm install",
-    "tsc": "lerna run tsc",
+    "clean": "lerna run clean && lerna clean -y",
+    "bootstrap": "lerna exec npm install && npm run copy-hooks",
+    "reset": "npm run clean && npm run bootstrap",
+    "types-check": "lerna run tsc",
     "lint": "lerna run lint",
+    "lint-fix": "lerna run lint-fix",
+    "format": "lerna run format",
     "test": "lerna run test",
+    "build": "lerna run build",
+    "start-frontend": "cd packages/frontend && npm run start",
     "build-frontend": "lerna run --scope frontend build",
-    "publish-package": "lerna run --scope usehooks.ts publish",
+    "start-usehooks": "cd packages/usehooks.ts && npm run test:watch",
+    "publish": "lerna run publish",
     "update-readme": "node ./scripts/updateReadme.js",
-    "copy-hooks": "rm -rf ./packages/frontend/generated && node ./scripts/copyHooks.js"
+    "copy-hooks": "rimraf -rf ./packages/frontend/generated && node ./scripts/copyHooks.js"
   },
   "devDependencies": {
-    "@types/node": "^16.9.1",
-    "@types/react": "^17.0.20",
-    "@types/react-dom": "^17.0.9",
     "chalk": "^4.1.2",
     "lerna": "^4.0.0",
-    "typescript": "^4.3.5"
+    "rimraf": "^3.0.2"
   },
   "repository": {
     "type": "git",

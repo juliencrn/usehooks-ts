@@ -11,7 +11,9 @@ export interface GroupedHookList {
 function useHookList(): GroupedHookList {
   const data = useStaticQuery<GroupedHookList>(graphql`
     {
-      posts: allMdx(filter: { fileAbsolutePath: { regex: "/src/hooks/" } }) {
+      posts: allMdx(
+        filter: { fileAbsolutePath: { regex: "/src/hooks-doc/" } }
+      ) {
         nodes {
           ...Post
         }

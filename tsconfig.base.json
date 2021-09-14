@@ -16,5 +16,5 @@
     "lib": ["es6", "DOM"],
   },
 
-  "exclude": ["node_modules", "**/*.test.ts", "dist", "lib"]
+  "exclude": ["node_modules", "dist", "lib"]
 }

@@ -24,7 +24,7 @@ export default async function createHooks(args: CreatePagesArgs) {
   const results = await args.graphql<Query>(
     `
       {
-        posts: allMdx(filter: { fileAbsolutePath: { regex: "/src/hooks/" } }) {
+        posts: allMdx(filter: { fileAbsolutePath: { regex: "/src/hooks-doc/" } }) {
           ${hookQuery}
         }
         hooks: allMdx(

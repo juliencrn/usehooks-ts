@@ -40,7 +40,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/hooks`,
+        path: `${__dirname}/src/hooks-doc`,
         name: `hooks`,
       },
     },

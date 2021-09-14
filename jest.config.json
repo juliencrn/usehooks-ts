@@ -1,0 +1,28 @@
+{
+  "verbose": true,
+  "collectCoverage": true,
+  "coverageReporters": [
+    "lcov",
+    "json"
+  ],
+  "collectCoverageFrom": [
+    "packages/usehooks.ts/src/**"
+  ],
+  "transform": {
+    "^.+\\.[jt]sx?$": "ts-jest"
+  },
+  "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.([jt]sx?)$",
+  "testPathIgnorePatterns": [
+    "node_modules",
+    "dist"
+  ],
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js",
+    "jsx",
+    "json",
+    "node"
+  ],
+  "testEnvironment": "jsdom"
+}
