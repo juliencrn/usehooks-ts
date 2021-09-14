@@ -26,7 +26,6 @@
     "lint-fix": "npm run lint -- --fix && npm run format",
     "format": "prettier --write --loglevel silent \"**/*.{js,jsx,ts,tsx,json,md,mdx}\"",
     "types-check": "tsc",
-    "plop": "plop && npm run update:readme && npm run format",
     "test": "npm run lint && npm run types-check",
     "upgrade-interactive": "npm-check --update"
   },
@@ -79,8 +78,6 @@
     "gatsby-plugin-typescript-checker": "^1.1.1",
     "jest": "^27.2.0",
     "npm-check": "^5.9.2",
-    "plop": "^2.7.1",
-    "postcss": "^8.3.6",
     "prettier": "^2.4.0",
     "source-map-support": "^0.5.19",
     "ts-node": "^10.1.0",

@@ -30,7 +30,7 @@
     "start-usehooks": "cd packages/usehooks.ts && npm run test:watch",
     "publish": "lerna run publish",
     "update-readme": "node ./scripts/updateReadme.js",
-    "copy-hooks": "rimraf -rf ./packages/frontend/generated && node ./scripts/copyHooks.js"
+    "plop": "plop && npm run update-readme && npm run format"
   },
   "devDependencies": {
     "chalk": "^4.1.2",
