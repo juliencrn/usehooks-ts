@@ -7,15 +7,14 @@ const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)'
 interface UseDarkModeOutput {
   isDarkMode: boolean
   toggle: () => void
-    enable: () => void
+  enable: () => void
   disable: () => void
 }
 
 function useDarkMode(defaultValue?: boolean): UseDarkModeOutput {
   const getPrefersScheme = (): boolean => {
     // Prevents SSR issues
-    if (typeof window !== 'undefined')
-    {
+    if (typeof window !== 'undefined') {
       return window.matchMedia(COLOR_SCHEME_QUERY).matches
     }
 

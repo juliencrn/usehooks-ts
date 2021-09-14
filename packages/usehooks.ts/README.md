@@ -8,6 +8,7 @@ React hook library, ready to use, written in Typescript.
 **README Sections:** [About](#-about) - [Installation](#installation) - [Contributing](#-contributing) - [License](#-license)
 
 <!-- Badges -->
+
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/juliencrn/usehooks.ts/issues)
 [![Maintained](https://badgen.net/badge/Maintained%20%3F/Yes%21/blue?icon=github)](https://github.com/juliencrn/usehooks.ts/issues)
 [![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks.ts/blob/master/LICENSE)
