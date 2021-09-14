@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 
-const feed = require('./legacy/feedSerializer')
+const feed = require('./feedSerializer')
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -56,7 +56,7 @@ module.exports = {
       options: {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
         apiKey: process.env.GATSBY_ALGOLIA_ADMIN_KEY,
-        queries: require('./legacy/algolia'),
+        queries: require('./algolia'),
       },
     },
     {
