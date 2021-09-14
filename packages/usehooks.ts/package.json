@@ -15,9 +15,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "npm run clean && npm run types-check",
+    "build": "npm run clean && npm run types-check && npm run compile",
     "clean": "rimraf -rf ./dist",
-    "types-check": "tsc -p tsconfig.build.json",
+    "types-check": "tsc -p tsconfig.json",
+    "compile": "tsc -p tsconfig.build.json",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "lint-fix": "npm run lint -- --fix && npm run format",
     "format": "prettier --write --loglevel silent \"**/*.{js,jsx,ts,tsx,json,md,mdx}\"",
