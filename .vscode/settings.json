@@ -6,7 +6,13 @@
   "files.insertFinalNewline": true,
   "search.exclude": {
     "public/**": true,
-    "node_modules/**": true
+    "node_modules/**": true,
+    "coverage/**": true,
+    "dist/**": true,
+    "generated/**": true,
+    ".cache/**": true,
+    ".git/**": true,
+    "**/package-lock.json": true,
   },
   "eslint.validate": [
     "javascript",
@@ -19,7 +25,7 @@
     "source.fixAll.eslint": true,
     "source.fixAll": true
   },
-  "cSpell.words": ["algolia", "fira", "frontmatter", "okaidia", "prismjs"],
+  "cSpell.words": ["algolia", "fira", "frontmatter", "okaidia", "prismjs", "usehooks"],
   "eslint.workingDirectories": [
     { "directory": "packages/usehooks.ts", "changeProcessCWD": true },
     { "directory": "packages/frontend", "changeProcessCWD": true }
