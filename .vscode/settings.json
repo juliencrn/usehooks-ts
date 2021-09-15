@@ -12,7 +12,7 @@
     "generated/**": true,
     ".cache/**": true,
     ".git/**": true,
-    "**/package-lock.json": true,
+    "**/package-lock.json": true
   },
   "eslint.validate": [
     "javascript",
@@ -25,7 +25,14 @@
     "source.fixAll.eslint": true,
     "source.fixAll": true
   },
-  "cSpell.words": ["algolia", "fira", "frontmatter", "okaidia", "prismjs", "usehooks"],
+  "cSpell.words": [
+    "algolia",
+    "fira",
+    "frontmatter",
+    "okaidia",
+    "prismjs",
+    "usehooks"
+  ],
   "eslint.workingDirectories": [
     { "directory": "packages/usehooks.ts", "changeProcessCWD": true },
     { "directory": "packages/frontend", "changeProcessCWD": true }
