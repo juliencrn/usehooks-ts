@@ -16,15 +16,13 @@ npm-debug.log*
 .eslintcache
 
 # Compiled stuff
-packages/*/lib
-packages/*/dist
-packages/*/public
-packages/*/generated
+lib
+dist
+public
+generated
 
 # Coverage
 coverage
-lib-cov
-.nyc_output
 
 # dotenv environment variable files
 .env*
