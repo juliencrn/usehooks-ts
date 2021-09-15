@@ -8,5 +8,5 @@
       "frontend": ["packages/frontend/src"]
     },
     "noEmit": true
-  },
+  }
 }

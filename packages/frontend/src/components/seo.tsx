@@ -94,6 +94,7 @@ const SEO: FC<SEOProps> = ({
         // },
         {
           name: `twitter:title`,
+
           content: title,
         },
         {

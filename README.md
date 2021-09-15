@@ -15,7 +15,6 @@ React hook library, ready to use, written in Typescript.
 [![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks.ts/blob/master/LICENSE)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
-
 </div>
 
 ## 🤔 About

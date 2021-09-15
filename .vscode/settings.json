@@ -21,7 +21,7 @@
   },
   "cSpell.words": ["algolia", "fira", "frontmatter", "okaidia", "prismjs"],
   "eslint.workingDirectories": [
-    {"directory": "packages/usehooks.ts", "changeProcessCWD": true },
-    {"directory": "packages/frontend", "changeProcessCWD": true }
+    { "directory": "packages/usehooks.ts", "changeProcessCWD": true },
+    { "directory": "packages/frontend", "changeProcessCWD": true }
   ]
 }

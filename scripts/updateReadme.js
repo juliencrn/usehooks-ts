@@ -9,8 +9,8 @@ const warn = chalk.yellow('warn')
 const error = chalk.red('error')
 
 const readmePath = path.resolve('./README.md')
-const hooksPath = path.resolve("./packages/usehooks.ts/src")
-const demosPath = path.resolve("./packages/frontend/src/hooks-doc")
+const hooksPath = path.resolve('./packages/usehooks.ts/src')
+const demosPath = path.resolve('./packages/frontend/src/hooks-doc')
 
 ////////////////////////////////////////////////////////////////////////
 // 1. Imperative script that updates the hook list in the README file.
@@ -19,9 +19,7 @@ const demosPath = path.resolve("./packages/frontend/src/hooks-doc")
 const hooks = fs.readdirSync(path.resolve(hooksPath))
 const demos = fs.readdirSync(path.resolve(demosPath))
 
-const hookList = hooks
-  .filter(isHookFile)
-  .map(name => formatHook(name, demos))
+const hookList = hooks.filter(isHookFile).map(name => formatHook(name, demos))
 
 const markdown = createMarkdownList(hookList)
 
@@ -51,16 +49,12 @@ function formatHook(name, demos) {
 
   return {
     name,
-    markdownLine: hasDemo
-      ? `- [${name}](${createUrl(name)})\n`
-      : `- ${name}\n`
+    markdownLine: hasDemo ? `- [${name}](${createUrl(name)})\n` : `- ${name}\n`,
   }
 }
 
 function createMarkdownList(hooks) {
-  return hooks.reduce(
-    (acc, hook) => acc + hook.markdownLine, '',
-  )
+  return hooks.reduce((acc, hook) => acc + hook.markdownLine, '')
 }
 
 function insertInReadme(markdown) {

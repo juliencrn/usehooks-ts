@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-
 import { act, renderHook } from '@testing-library/react-hooks'
 
 import useCopyToClipboard from './useCopyToClipboard'
@@ -12,13 +10,13 @@ describe('useClipboard()', () => {
     const mockClipboard = {
       writeText: jest.fn(),
     }
-    // @ts-ignore
+    // @ts-ignore mock clipboard
     global.navigator.clipboard = mockClipboard
   })
 
   afterEach(() => {
     jest.resetAllMocks()
-    // @ts-ignore
+    // @ts-ignore mock clipboard
     global.navigator.clipboard = originalClipboard
   })
 
