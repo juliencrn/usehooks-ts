@@ -28,6 +28,7 @@
     "format:other": "npm run lint:other -- --write",
     "pretest": "npm run types-check && npm run lint",
     "test": "jest",
+    "test:ssr": "jest --config ./jest.config.node.js",
     "test:watch": "npm run test -- --watch",
     "prebuilt": "npm run format && npm run copy:hooks",
     "build": "lerna run build --stream",
