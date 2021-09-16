@@ -1,4 +1,5 @@
-const glob = require(`glob`)
+import { Config } from '@jest/types'
+import glob from 'glob'
 
 const packages = glob
   .sync(`./packages/*`)
@@ -15,8 +16,7 @@ const ignoreDirs = [
   'generated/',
 ]
 
-/** @type {import('@jest/types').Config.InitialOptions} */
-module.exports = {
+const config: Config.InitialOptions = {
   roots: packages,
   transform: {
     '^.+\\.[jt]sx?$': `<rootDir>/jest-preprocess.js`,
@@ -37,3 +37,5 @@ module.exports = {
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.([tj]sx?)$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 }
+
+export default config
