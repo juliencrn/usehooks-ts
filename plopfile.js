@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const format = require('date-fns/format')
 
 module.exports = function (plop) {
@@ -12,49 +11,65 @@ module.exports = function (plop) {
       },
     ],
     actions: [
-      // Create the hook index file (for quick export)
+      /**
+       * usehooks-ts packages side
+       *
+       * - Create the hook index file (for quick export)
+       * - Create the hook file itself
+       * - Create the test file
+       * - Update the global hooks index file
+       */
       {
         type: 'add',
-        path: 'src/hooks/{{camelCase name}}/index.ts',
-        templateFile: 'generators/hooks/index.ts.hbs',
+        path: 'packages/usehooks-ts/src/{{camelCase name}}/index.ts',
+        templateFile: 'plop-templates/hooks/usehooks-ts/index.ts.hbs',
+      },
+      {
+        type: 'add',
+        path: 'packages/usehooks-ts/src/{{camelCase name}}/{{camelCase name}}.ts',
+        templateFile: 'plop-templates/hooks/usehooks-ts/hook.ts.hbs',
+      },
+      {
+        type: 'add',
+        path: 'packages/usehooks-ts/src/{{camelCase name}}/{{camelCase name}}.test.ts',
+        templateFile: 'plop-templates/hooks/usehooks-ts/hook.test.ts.hbs',
+      },
+      {
+        type: 'append',
+        path: 'packages/usehooks-ts/src/index.ts',
+        templateFile: 'plop-templates/hooks/index.ts.hbs',
       },
 
-      // Create the markdown file to present the hook
+      /**
+       * frontend side
+       *
+       * - Create the hook index file (for quick export)
+       * - Create the markdown file to present the hook
+       * - Create the demo react component file
+       * - Update the global hooks index file
+       */
+      {
+        type: 'add',
+        path: 'packages/frontend/src/hooks-doc/{{camelCase name}}/index.ts',
+        templateFile: 'plop-templates/hooks/frontend/index.ts.hbs',
+      },
       {
         data: {
           date: format(new Date(), 'yyyy-MM-dd'),
         },
         type: 'add',
-        path: 'src/hooks/{{camelCase name}}/{{camelCase name}}.mdx',
-        templateFile: 'generators/hooks/post.mdx.hbs',
+        path: 'packages/frontend/src/hooks-doc/{{camelCase name}}/{{camelCase name}}.mdx',
+        templateFile: 'plop-templates/hooks/frontend/post.mdx.hbs',
       },
-
-      // Create the demo react component file
       {
         type: 'add',
-        path: 'src/hooks/{{camelCase name}}/{{camelCase name}}.demo.tsx',
-        templateFile: 'generators/hooks/demo.tsx.hbs',
+        path: 'packages/frontend/src/hooks-doc/{{camelCase name}}/{{camelCase name}}.demo.tsx',
+        templateFile: 'plop-templates/hooks/frontend/demo.tsx.hbs',
       },
-
-      // Create the hook file itself
-      {
-        type: 'add',
-        path: 'src/hooks/{{camelCase name}}/{{camelCase name}}.ts',
-        templateFile: 'generators/hooks/hook.ts.hbs',
-      },
-
-      // Create the test file
-      {
-        type: 'add',
-        path: 'src/hooks/{{camelCase name}}/{{camelCase name}}.test.ts',
-        templateFile: 'generators/hooks/hook.test.ts.hbs',
-      },
-
-      // Update the global hooks index file
       {
         type: 'append',
-        path: 'src/hooks/index.ts',
-        templateFile: 'generators/hooksIndex.ts.hbs',
+        path: 'packages/frontend/src/hooks-doc/index.ts',
+        templateFile: 'plop-templates/hooks/index.ts.hbs',
       },
     ],
   })

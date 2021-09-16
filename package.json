@@ -29,7 +29,7 @@
     "pretest": "npm run types-check && npm run lint",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
-    "prebuilt": "npm run copy:hooks",
+    "prebuilt": "npm run format && npm run copy:hooks",
     "build": "lerna run build --stream",
     "build:frontend": "lerna run --scope frontend build",
     "prestart": "lerna run --scope usehooks-ts build",
