@@ -9,6 +9,7 @@ package-lock.json
 # ignore built packages
 lib
 dist
+esm
 public
 generated
 *.min.js

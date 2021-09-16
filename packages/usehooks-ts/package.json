@@ -9,16 +9,21 @@
     "npm"
   ],
   "license": "MIT",
-  "main": "dist/index",
-  "types": "dist/index",
+  "main": "dist/index.js",
+  "module": "esm/index.js",
   "files": [
-    "dist"
+    "dist/",
+    "esm/"
   ],
+  "types": "dist/types/index.d.ts",
+  "typing": "dist/types/index.d.ts",
   "scripts": {
-    "build": "npm run clean && npm run compile",
-    "clean": "rimraf -rf ./dist",
+    "prebuild": "npm run clean",
+    "build": "npm run build:cjs && npm run build:es",
+    "build:cjs": "tsc -p tsconfig.build.json",
+    "build:es": "npm run build:cjs -- -m esNext --outDir esm",
+    "clean": "rimraf -rf ./dist ./esm",
     "types-check": "tsc -p tsconfig.json",
-    "compile": "tsc -p tsconfig.build.json --rootDir ./src",
     "prepublishOnly": "npm run build",
     "preversion": "npm test",
     "prepare": "npm run build",
@@ -26,15 +31,15 @@
     "update": "npm update",
     "upgrade-interactive": "npm-check --update"
   },
-  "dependencies": {
-    "react": "^17.0.2"
-  },
   "devDependencies": {
     "@testing-library/react-hooks": "^7.0.2",
     "npm-check": "^5.9.2",
     "react-test-renderer": "^17.0.2",
     "rimraf": "^3.0.2",
     "typescript": "^4.4.3"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2"
   },
   "repository": {
     "type": "git",

@@ -18,6 +18,7 @@ npm-debug.log*
 # Compiled stuff
 lib
 dist
+esm
 public
 generated
 
