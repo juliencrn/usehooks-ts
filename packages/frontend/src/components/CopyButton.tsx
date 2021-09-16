@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Tooltip from '@material-ui/core/Tooltip'
 import FileCopyIcon from '@material-ui/icons/FileCopy'
-import { useCopyToClipboard, useTimeout } from 'usehooks.ts'
+import { useCopyToClipboard, useTimeout } from 'usehooks-ts'
 
 const ThemedTooltip = withStyles(theme => ({
   tooltip: {

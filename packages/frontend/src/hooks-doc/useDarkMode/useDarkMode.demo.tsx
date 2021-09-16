@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useDarkMode } from 'usehooks.ts'
+import { useDarkMode } from 'usehooks-ts'
 
 export default function Component() {
   const { isDarkMode, toggle, enable, disable } = useDarkMode()

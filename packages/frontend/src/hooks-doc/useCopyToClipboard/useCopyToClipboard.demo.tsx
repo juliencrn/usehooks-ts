@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useCopyToClipboard } from 'usehooks.ts'
+import { useCopyToClipboard } from 'usehooks-ts'
 
 export default function Component() {
   const [value, copy] = useCopyToClipboard()

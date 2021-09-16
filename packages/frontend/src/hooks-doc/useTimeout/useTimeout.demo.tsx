@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { useTimeout } from 'usehooks.ts'
+import { useTimeout } from 'usehooks-ts'
 
 export default function Component() {
   const [visible, setVisible] = useState(true)

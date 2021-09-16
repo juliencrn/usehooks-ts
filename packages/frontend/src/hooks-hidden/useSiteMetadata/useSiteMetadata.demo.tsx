@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useSiteMetadata } from 'usehooks.ts'
+import useSiteMetadata from '~/hooks/useSiteMetadata'
 
 export default function Component() {
   const { title } = useSiteMetadata()

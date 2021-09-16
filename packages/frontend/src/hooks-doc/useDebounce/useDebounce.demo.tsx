@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 
-import { useDebounce } from 'usehooks.ts'
+import { useDebounce } from 'usehooks-ts'
 
 export default function Component() {
   const [value, setValue] = useState<string>('')

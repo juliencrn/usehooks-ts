@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useScreen } from 'usehooks.ts'
+import { useScreen } from 'usehooks-ts'
 
 export default function Component() {
   const screen = useScreen()

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useCounter } from 'usehooks.ts'
+import { useCounter } from 'usehooks-ts'
 
 export default function Component() {
   const { count, setCount, increment, decrement, reset } = useCounter(0)

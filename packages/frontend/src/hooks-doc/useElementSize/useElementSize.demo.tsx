@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 
-import { useElementSize } from 'usehooks.ts'
+import { useElementSize } from 'usehooks-ts'
 
 export default function Component() {
   const squareRef = useRef(null)

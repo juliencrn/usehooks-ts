@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 
-import { useEventListener } from 'usehooks.ts'
+import { useEventListener } from 'usehooks-ts'
 
 export default function Component() {
   // Define button ref

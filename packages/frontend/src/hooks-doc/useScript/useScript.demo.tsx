@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { useScript } from 'usehooks.ts'
+import { useScript } from 'usehooks-ts'
 
 // it's an example, use your types instead
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

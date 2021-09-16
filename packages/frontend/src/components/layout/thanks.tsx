@@ -5,7 +5,7 @@ import Snackbar from '@material-ui/core/Snackbar'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 import CloseIcon from '@material-ui/icons/Close'
 import Confetti from 'react-confetti'
-import { useLocalStorage, useWindowSize } from 'usehooks.ts'
+import { useLocalStorage, useWindowSize } from 'usehooks-ts'
 
 import { reduceLayoutWidth } from './styleUtils'
 

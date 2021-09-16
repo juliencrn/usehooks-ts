@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useBoolean } from 'usehooks.ts'
+import { useBoolean } from 'usehooks-ts'
 
 export default function Component() {
   const { value, setValue, setTrue, setFalse, toggle } = useBoolean(false)

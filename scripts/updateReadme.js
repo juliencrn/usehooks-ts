@@ -9,7 +9,7 @@ const warn = chalk.yellow('warn')
 const error = chalk.red('error')
 
 const readmePath = path.resolve('./README.md')
-const hooksPath = path.resolve('./packages/usehooks.ts/src')
+const hooksPath = path.resolve('./packages/usehooks-ts/src')
 const demosPath = path.resolve('./packages/frontend/src/hooks-doc')
 
 ////////////////////////////////////////////////////////////////////////

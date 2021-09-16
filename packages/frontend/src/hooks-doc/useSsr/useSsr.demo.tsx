@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useSsr } from 'usehooks.ts'
+import { useSsr } from 'usehooks-ts'
 
 export default function Component() {
   const { isBrowser } = useSsr()

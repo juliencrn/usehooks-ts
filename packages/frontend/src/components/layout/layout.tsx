@@ -6,7 +6,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles'
 import useTheme from '@material-ui/core/styles/useTheme'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 // import Thanks from './thanks'
-import { useDarkMode } from 'usehooks.ts'
+import { useDarkMode } from 'usehooks-ts'
 
 import BackToTop from '../backToTop'
 import Footer from './footer'

@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react'
 
-import { useImageOnLoad } from 'usehooks.ts'
+import { useImageOnLoad } from 'usehooks-ts'
 
 export default function Component() {
   const { handleImageOnLoad, css } = useImageOnLoad()

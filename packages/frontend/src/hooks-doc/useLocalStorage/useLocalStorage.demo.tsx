@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useLocalStorage } from 'usehooks.ts'
+import { useLocalStorage } from 'usehooks-ts'
 
 // Usage
 export default function Component() {

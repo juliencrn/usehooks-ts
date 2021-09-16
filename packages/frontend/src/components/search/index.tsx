@@ -13,7 +13,7 @@ import {
   Index,
   InstantSearch,
 } from 'react-instantsearch-dom'
-import { useOnClickOutside } from 'usehooks.ts'
+import { useOnClickOutside } from 'usehooks-ts'
 
 import { ConnectedHits, PoweredBy } from './hitComps'
 import Input from './input'

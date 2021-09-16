@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 
-import { useHover } from 'usehooks.ts'
+import { useHover } from 'usehooks-ts'
 
 export default function Component() {
   const hoverRef = useRef(null)

@@ -3,7 +3,7 @@ const fs = require('fs')
 const path = require('path')
 const chalk = require('chalk')
 
-const hooksDir = path.resolve('./packages/usehooks.ts/src')
+const hooksDir = path.resolve('./packages/usehooks-ts/src')
 const demosDir = path.resolve('./packages/frontend/src/hooks-doc')
 const outputDir = path.resolve('./packages/frontend/generated')
 

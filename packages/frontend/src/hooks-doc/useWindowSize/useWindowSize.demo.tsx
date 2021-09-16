@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useWindowSize } from 'usehooks.ts'
+import { useWindowSize } from 'usehooks-ts'
 
 export default function Component() {
   const { width, height } = useWindowSize()

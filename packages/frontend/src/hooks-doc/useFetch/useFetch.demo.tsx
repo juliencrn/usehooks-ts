@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useFetch } from 'usehooks.ts'
+import { useFetch } from 'usehooks-ts'
 
 const url = `http://jsonplaceholder.typicode.com/posts`
 

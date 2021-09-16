@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 
-import { useOnClickOutside } from 'usehooks.ts'
+import { useOnClickOutside } from 'usehooks-ts'
 
 export default function Component() {
   const ref = useRef(null)

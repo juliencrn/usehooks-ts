@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { useIsMounted } from 'usehooks.ts'
+import { useIsMounted } from 'usehooks-ts'
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 

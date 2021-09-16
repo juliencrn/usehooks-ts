@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react'
 
-import { useInterval } from 'usehooks.ts'
+import { useInterval } from 'usehooks-ts'
 
 export default function Component() {
   // The counter
