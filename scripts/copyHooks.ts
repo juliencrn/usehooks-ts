@@ -1,16 +1,11 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const fs = require('fs')
-const path = require('path')
-const chalk = require('chalk')
+import fs from 'fs'
+import path from 'path'
+
+import { error, isHookFile, success, warn } from './utils'
 
 const hooksDir = path.resolve('./packages/usehooks-ts/src')
 const demosDir = path.resolve('./packages/frontend/src/hooks-doc')
 const outputDir = path.resolve('./packages/frontend/generated')
-
-const success = chalk.green('success')
-const info = chalk.blue('info')
-const warn = chalk.yellow('warn')
-const error = chalk.red('error')
 
 ////////////////////////////////////////////////////////////////////////
 // 1. Imperative script that copy hooks from code to markdown files
@@ -49,22 +44,23 @@ fs.readdir(demosDir, (err, files) => {
 // 2. Utility functions
 ////////////////////////////////////////////////////////////////////////
 
-function isHookFile(filename) {
-  const hookRegex = new RegExp('^use[A-Z][a-zA-Z]*$')
-  return hookRegex.test(filename)
-}
-
-function getFileName(pathname) {
+function getFileName(pathname: string): string {
   return pathname.split('/').reverse()[0]
 }
 
-function createDirIfNeeded(dir) {
+function createDirIfNeeded(dir: string): void {
   if (!fs.existsSync(path.resolve(dir))) {
     fs.mkdirSync(dir)
   }
 }
 
-function copyHook({ sourceFile, destFile }) {
+function copyHook({
+  sourceFile,
+  destFile,
+}: {
+  sourceFile: string
+  destFile: string
+}) {
   // Check source file
   if (!fs.existsSync(sourceFile)) {
     console.log(`${warn} ${getFileName(sourceFile)} doesn't exist`)

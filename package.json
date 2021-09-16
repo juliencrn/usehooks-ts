@@ -37,8 +37,8 @@
     "start": "concurrently --kill-others \"npm run start:frontend\" \"npm run test:watch\"",
     "start:frontend": "cd packages/frontend && npm run start",
     "publish": "lerna run publish --stream",
-    "update:readme": "node ./scripts/updateReadme.js",
-    "copy:hooks": "rimraf -rf ./packages/frontend/generated && node ./scripts/copyHooks.js",
+    "update:readme": "ts-node ./scripts/updateReadme.ts",
+    "copy:hooks": "rimraf -rf ./packages/frontend/generated && ts-node ./scripts/copyHooks.ts",
     "plop": "plop && npm run update:readme && npm run format",
     "prepare": "husky install"
   },

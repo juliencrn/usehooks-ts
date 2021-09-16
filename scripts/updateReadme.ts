@@ -1,12 +1,7 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const path = require('path')
-const fs = require('fs')
-const chalk = require('chalk')
+import fs from 'fs'
+import path from 'path'
 
-const success = chalk.green('success')
-const info = chalk.blue('info')
-const warn = chalk.yellow('warn')
-const error = chalk.red('error')
+import { camelToKebabCase, error, isHookFile, success, warn } from './utils'
 
 const readmePath = path.resolve('./README.md')
 const hooksPath = path.resolve('./packages/usehooks-ts/src')
@@ -29,21 +24,17 @@ insertInReadme(markdown)
 // 2. Utility functions
 ////////////////////////////////////////////////////////////////////////
 
-function isHookFile(filename) {
-  const hookRegex = new RegExp('^use[A-Z][a-zA-Z]*$')
-  return hookRegex.test(filename)
-}
-
-function camelToKebabCase(str) {
-  return str.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`)
-}
-
-function createUrl(filename) {
+function createUrl(filename: string): string {
   const pathname = camelToKebabCase(filename)
   return `https://usehooks-typescript.com/react-hook/${pathname}`
 }
 
-function formatHook(name, demos) {
+interface MarkdownLine {
+  name: string
+  markdownLine: string
+}
+
+function formatHook(name: string, demos: string[]): MarkdownLine {
   const hasDemo = demos.includes(name)
   if (!hasDemo) console.log(`${warn} ${name} haven't demo yet!`)
 
@@ -55,11 +46,11 @@ function formatHook(name, demos) {
   }
 }
 
-function createMarkdownList(hooks) {
+function createMarkdownList(hooks: MarkdownLine[]): string {
   return hooks.reduce((acc, hook) => acc + hook.markdownLine, '')
 }
 
-function insertInReadme(markdown) {
+function insertInReadme(markdown: string): void {
   const hookListRegExp = new RegExp(
     '<!-- HOOKS:START -->(.*)<!-- HOOKS:END -->',
     'gms',
