@@ -49,7 +49,9 @@ function formatHook(name, demos) {
 
   return {
     name,
-    markdownLine: hasDemo ? `- [${name}](${createUrl(name)})\n` : `- ${name}\n`,
+    markdownLine: hasDemo
+      ? `- [\`${name}()\`](${createUrl(name)})\n`
+      : `- ${name}\n`,
   }
 }
 
@@ -58,12 +60,18 @@ function createMarkdownList(hooks) {
 }
 
 function insertInReadme(markdown) {
-  const hookListRegExp = new RegExp('<div id="hook-list">(.*)</div>', 'gms')
+  const hookListRegExp = new RegExp(
+    '<!-- HOOKS:START -->(.*)<!-- HOOKS:END -->',
+    'gms',
+  )
 
   try {
     const data = fs
       .readFileSync(readmePath, 'utf-8')
-      .replace(hookListRegExp, `<div id="hook-list">\n\n${markdown}\n</div>`)
+      .replace(
+        hookListRegExp,
+        `<!-- HOOKS:START -->\n${markdown}\n<!-- HOOKS:END -->`,
+      )
 
     fs.writeFileSync(readmePath, data, 'utf-8')
     console.log(`${success} README.md updated!`)

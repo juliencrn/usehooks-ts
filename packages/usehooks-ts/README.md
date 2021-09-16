@@ -1,46 +1,21 @@
-<div align="center">
-<h1>useHooks(🔥).ts</h1>
+# useHooks(🔥).ts
 
-React hook library, ready to use, written in Typescript.
+> React hook library, ready to use, written in Typescript.
 
-&mdash; [usehooks-typescript.com](https://usehooks-typescript.com/) &mdash;
-
-**README Sections:** [About](#-about) - [Installation](#installation) - [Contributing](#-contributing) - [License](#-license)
-
-<!-- Badges -->
-
-[![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/juliencrn/usehooks.ts/issues)
-[![Maintained](https://badgen.net/badge/Maintained%20%3F/Yes%21/blue?icon=github)](https://github.com/juliencrn/usehooks.ts/issues)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
+![npm](https://img.shields.io/npm/v/usehooks-ts)
 [![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks.ts/blob/master/LICENSE)
 
-</div>
-
-## About
-
-Library not ready yet, come back later :)
-
-## Installation
+## Install
 
 ```bash
-npm i usehooks.ts
+npm i usehooks-ts
 ```
 
-## 🤝 Contributing
+## Usage
 
-Contributions, issues and feature requests are welcome!
+See [documentation](https://usehooks-typescript.com/).
 
-Feel free to check [issues page](https://github.com/juliencrn/usehooks.ts/issues).
+## License
 
-## 💚 Support the project
-
-Give a ⭐ if this project helped you!
-
-Thanks! ❤️
-
-## 📝 License
-
-Copyright © 2020 [Julien Caron](https://github.com/juliencrn).
-
-This project is [MIT](https://github.com/juliencrn/usehooks.ts/blob/master/LICENSE) licensed.
-
----
+[MIT](http://vjpr.mit-license.org)
