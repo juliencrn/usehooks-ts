@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+import { IconButton } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Tooltip from '@material-ui/core/Tooltip'
@@ -17,9 +18,10 @@ const ThemedTooltip = withStyles(theme => ({
 interface PropTypes {
   value: string
   classNames?: string
+  hideText?: boolean
 }
 
-const CopyButton = ({ value, classNames }: PropTypes) => {
+const CopyButton = ({ value, classNames, hideText }: PropTypes) => {
   const [, setCopiedText] = useCopyToClipboard()
   const [open, setOpen] = useState(false)
 
@@ -39,14 +41,27 @@ const CopyButton = ({ value, classNames }: PropTypes) => {
       disableTouchListener
       title="Copied!"
     >
-      <Button
-        className={classNames}
-        onClick={handleCopy}
-        size="small"
-        startIcon={<FileCopyIcon />}
-      >
-        Copy
-      </Button>
+      {hideText ? (
+        <IconButton
+          aria-label="Copy"
+          color="inherit"
+          onClick={handleCopy}
+          size="small"
+          className={classNames}
+        >
+          <FileCopyIcon fontSize="small" />
+        </IconButton>
+      ) : (
+        <Button
+          color="inherit"
+          onClick={handleCopy}
+          size="small"
+          startIcon={<FileCopyIcon />}
+          className={classNames}
+        >
+          Copy
+        </Button>
+      )}
     </ThemedTooltip>
   )
 }

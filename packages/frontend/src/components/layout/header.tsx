@@ -18,21 +18,29 @@ import WbSunnyIcon from '@material-ui/icons/WbSunny'
 import { Link as GatsbyLink } from 'gatsby'
 import { useDarkMode } from 'usehooks-ts'
 
+import CopyButton from '../CopyButton'
 import Search from '../search'
 import useSiteMetadata from '~/hooks/useSiteMetadata'
 
 const useStyles = makeStyles(theme => ({
   appBar: {
-    background:
+    background: theme.palette.background.paper,
+    color:
       theme.palette.type === 'light'
-        ? theme.palette.gradient.primary
-        : theme.palette.background.paper,
-    color: theme.palette.common.white,
+        ? theme.palette.common.black
+        : theme.palette.common.white,
     zIndex: theme.zIndex.drawer + 1,
+    borderWidth: '10px 0 0',
+    borderTopStyle: 'solid',
+    borderImage:
+      'linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff) 3;',
   },
-  toolbar: {},
   title: {
     flexGrow: 1,
+    fontFamily: 'Fira Code, monospace',
+  },
+  npm: {
+    padding: theme.spacing(0, 1),
     fontFamily: 'Fira Code, monospace',
   },
   link: {
@@ -51,10 +59,11 @@ function Header({ siteTitle, onOpenSidebar }: HeaderProps) {
   const { breakpoints } = useTheme()
   const isMobile = useMediaQuery(breakpoints.down('md'))
   const { isDarkMode, toggle } = useDarkMode()
+  const npmCmd = 'npm i usehooks-ts'
 
   return (
     <AppBar component="header" position="fixed" className={classes.appBar}>
-      <Toolbar className={classes.toolbar}>
+      <Toolbar>
         {isMobile && (
           <IconButton
             aria-label="Open menu"
@@ -75,6 +84,24 @@ function Header({ siteTitle, onOpenSidebar }: HeaderProps) {
             {siteTitle}
           </Link>
         </Typography>
+
+        <Hidden smDown>
+          <Typography variant="body2" component="div" className={classes.npm}>
+            <Hidden mdDown>
+              <Link
+                href="https://www.npmjs.com/package/usehooks-ts"
+                color="inherit"
+                className={classes.link}
+              >
+                {`Now available on npmjs.com`}
+              </Link>
+              <span>{` --> `}</span>
+            </Hidden>
+            <span>{npmCmd}</span>
+            <span>{` `}</span>
+          </Typography>
+          <CopyButton value={npmCmd} hideText />
+        </Hidden>
 
         <Hidden xsDown>
           <Box mx={2}>
