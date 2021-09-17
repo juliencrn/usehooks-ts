@@ -37,7 +37,7 @@ Initially, useHooks.ts was a [Gatsby](https://www.gatsbyjs.org) powered blog hos
 But now, it's a monorepo containing:
 
 - A static website used as hooks documentation ([Link](https://usehooks-typescript.com/)).
-- A NPM packages containing the hooks library ([Link](https://www.npmjs.com/package/usehooks-ts)).
+- An NPM package containing the hooks library ([Link](https://www.npmjs.com/package/usehooks-ts)).
 
 If you'd like to submit new post ideas, improve existing posts, or change anything about the website feel free to submit an issue or pull-request.
 
@@ -73,7 +73,7 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 
 ## 👉 Installation
 
-**Note**: The project use `Node@14` and `npm@6`.
+**Note**: The project uses `Node@14` and `npm@6`.
 
 Two ways:
 
