@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "paths": {
+      "~/*": ["src/*"]
+    },
+    "noEmit": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+
+  "include": ["./src"]
+}

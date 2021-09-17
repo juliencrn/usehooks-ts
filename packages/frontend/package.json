@@ -1,0 +1,81 @@
+{
+  "name": "frontend",
+  "private": true,
+  "description": "React hook library, ready to use, written in Typescript.",
+  "version": "0.1.0",
+  "author": "Julien CARON <juliencaron@protonmail.com>",
+  "keywords": [
+    "gatsby",
+    "typescript",
+    "eslint",
+    "prettier",
+    "material-ui",
+    "jest",
+    "@testing-library",
+    "prism",
+    "mdx"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
+    "serve": "gatsby serve",
+    "start": "gatsby develop",
+    "clean": "gatsby clean",
+    "types-check": "tsc",
+    "upgrade-interactive": "npm-check --update"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.12.2",
+    "@material-ui/icons": "^4.11.2",
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
+    "@n8tb1t/use-scroll-position": "^2.0.3",
+    "date-fns": "^2.23.0",
+    "deepmerge": "^4.2.2",
+    "gatsby": "^3.10.2",
+    "gatsby-plugin-algolia": "^0.22.0",
+    "gatsby-plugin-catch-links": "^3.10.0",
+    "gatsby-plugin-feed": "^3.10.0",
+    "gatsby-plugin-google-analytics": "^3.10.0",
+    "gatsby-plugin-manifest": "^3.10.0",
+    "gatsby-plugin-material-ui": "^3.0.1",
+    "gatsby-plugin-mdx": "^2.10.1",
+    "gatsby-plugin-netlify": "^3.10.0",
+    "gatsby-plugin-offline": "^4.10.0",
+    "gatsby-plugin-react-helmet": "^4.10.0",
+    "gatsby-plugin-robots-txt": "^1.6.9",
+    "gatsby-plugin-root-import": "^2.0.6",
+    "gatsby-plugin-sitemap": "^4.6.0",
+    "gatsby-plugin-typescript": "^3.10.0",
+    "gatsby-source-filesystem": "^3.10.0",
+    "prism-react-renderer": "^1.2.1",
+    "react": "^17.0.2",
+    "react-confetti": "^6.0.1",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.0.0",
+    "react-instantsearch-dom": "^6.12.0",
+    "react-scroll": "^1.8.3",
+    "usehooks-ts": "file:../usehooks-ts"
+  },
+  "devDependencies": {
+    "@types/date-fns": "^2.6.0",
+    "@types/mdx-js__react": "^1.5.4",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-helmet": "^6.1.2",
+    "@types/react-instantsearch-dom": "^6.12.0",
+    "@types/react-scroll": "^1.8.3",
+    "gatsby-cli": "^3.10.0",
+    "gatsby-plugin-typescript-checker": "^1.1.1",
+    "npm-check": "^5.9.2",
+    "source-map-support": "^0.5.19",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.4.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juliencrn/usehooks.ts"
+  },
+  "bugs": {
+    "url": "https://github.com/juliencrn/usehooks.ts/issues"
+  }
+}

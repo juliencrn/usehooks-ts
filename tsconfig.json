@@ -1,18 +1,12 @@
 {
+  "extends": "./tsconfig.base.json",
+
   "compilerOptions": {
-    "target": "ESNEXT",
-    "module": "commonjs",
     "baseUrl": ".",
-    "strict": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "jsx": "preserve",
     "paths": {
-      "~/*": ["src/*"]
+      "usehooks-ts": ["packages/usehooks-ts/src"],
+      "frontend": ["packages/frontend/src"]
     },
-    "noEmit": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "include": ["src/**/*"]
+    "noEmit": true
+  }
 }

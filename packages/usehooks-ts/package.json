@@ -1,0 +1,52 @@
+{
+  "name": "usehooks-ts",
+  "description": "React hook library, ready to use, written in Typescript.",
+  "version": "1.0.1",
+  "author": "Julien CARON <juliencaron@protonmail.com>",
+  "keywords": [
+    "typescript",
+    "react",
+    "react-hooks",
+    "npm"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "esm/index.js",
+  "files": [
+    "dist/",
+    "esm/"
+  ],
+  "types": "dist/types/index.d.ts",
+  "typing": "dist/types/index.d.ts",
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "npm run build:cjs && npm run build:es",
+    "build:cjs": "tsc -p tsconfig.build.json",
+    "build:es": "npm run build:cjs -- -m esNext --outDir esm",
+    "clean": "rimraf -rf ./dist ./esm",
+    "types-check": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build",
+    "preversion": "npm test",
+    "prepare": "npm run build",
+    "publish": "npm publish",
+    "update": "npm update",
+    "upgrade-interactive": "npm-check --update"
+  },
+  "devDependencies": {
+    "@testing-library/react-hooks": "^7.0.2",
+    "npm-check": "^5.9.2",
+    "react-test-renderer": "^17.0.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.4.3"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juliencrn/usehooks.ts"
+  },
+  "bugs": {
+    "url": "https://github.com/juliencrn/usehooks.ts/issues"
+  }
+}
