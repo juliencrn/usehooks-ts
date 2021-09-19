@@ -36,6 +36,7 @@
     "prestart": "lerna run --scope usehooks-ts build && npm run copy:hooks",
     "start": "concurrently --kill-others \"npm run start:frontend\" \"npm run test:watch\"",
     "start:frontend": "cd packages/frontend && npm run start",
+    "serve:frontend": "cd packages/frontend && npm run serve",
     "publish": "lerna run publish --stream",
     "update:readme": "ts-node ./scripts/updateReadme.ts",
     "copy:hooks": "rimraf -rf ./packages/frontend/generated && ts-node ./scripts/copyHooks.ts",

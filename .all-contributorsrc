@@ -205,6 +205,24 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "lancepollard",
+      "name": "lancepollard",
+      "avatar_url": "https://avatars.githubusercontent.com/u/86631222?v=4",
+      "profile": "https://github.com/lancepollard",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "gmukul01",
+      "name": "Mukul Bansal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3636885?v=4",
+      "profile": "https://github.com/gmukul01",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7
