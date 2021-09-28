@@ -61,6 +61,7 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 - [`useIsMounted()`](https://usehooks-typescript.com/react-hook/use-is-mounted)
 - [`useLocalStorage()`](https://usehooks-typescript.com/react-hook/use-local-storage)
 - [`useLockedBody()`](https://usehooks-typescript.com/react-hook/use-locked-body)
+- [`useMap()`](https://usehooks-typescript.com/react-hook/use-map)
 - [`useOnClickOutside()`](https://usehooks-typescript.com/react-hook/use-on-click-outside)
 - [`useReadLocalStorage()`](https://usehooks-typescript.com/react-hook/use-read-local-storage)
 - [`useScreen()`](https://usehooks-typescript.com/react-hook/use-screen)
