@@ -16,8 +16,8 @@
     "dist/",
     "esm/"
   ],
-  "types": "dist/types/index.d.ts",
-  "typing": "dist/types/index.d.ts",
+  "types": "dist/index.d.ts",
+  "typing": "dist/index.d.ts",
   "scripts": {
     "prebuild": "npm run clean",
     "build": "npm run build:cjs && npm run build:es",

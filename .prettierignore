@@ -26,3 +26,5 @@ coverage
 # Logs
 logs
 *.log
+
+*.hbs
