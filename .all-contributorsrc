@@ -223,6 +223,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "jeanlucmongrain",
+      "name": "Jean-Luc Mongrain sur la Brosse",
+      "avatar_url": "https://avatars.githubusercontent.com/u/474302?v=4",
+      "profile": "http://127.0.0.1:8000/",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7

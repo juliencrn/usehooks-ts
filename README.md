@@ -18,7 +18,7 @@
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-23-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-24-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -148,6 +148,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/lancepollard"><img src="https://avatars.githubusercontent.com/u/86631222?v=4?s=80" width="80px;" alt=""/><br /><sub><b>lancepollard</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks.ts/issues?q=author%3Alancepollard" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/gmukul01"><img src="https://avatars.githubusercontent.com/u/3636885?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Mukul Bansal</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks.ts/issues?q=author%3Agmukul01" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://127.0.0.1:8000/"><img src="https://avatars.githubusercontent.com/u/474302?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Jean-Luc Mongrain sur la Brosse</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks.ts/commits?author=jeanlucmongrain" title="Code">💻</a> <a href="#ideas-jeanlucmongrain" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
