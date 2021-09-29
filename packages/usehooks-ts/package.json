@@ -1,7 +1,7 @@
 {
   "name": "usehooks-ts",
   "description": "React hook library, ready to use, written in Typescript.",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "author": "Julien CARON <juliencaron@protonmail.com>",
   "keywords": [
     "typescript",

@@ -3,22 +3,23 @@ import path from 'path'
 
 import { camelToKebabCase, error, isHookFile, success, warn } from './utils'
 
-const readmePath = path.resolve('./README.md')
-const hooksPath = path.resolve('./packages/usehooks-ts/src')
-const demosPath = path.resolve('./packages/frontend/src/hooks-doc')
-
 ////////////////////////////////////////////////////////////////////////
 // 1. Imperative script that updates the hook list in the README file.
 ////////////////////////////////////////////////////////////////////////
 
-const hooks = fs.readdirSync(path.resolve(hooksPath))
-const demos = fs.readdirSync(path.resolve(demosPath))
+const demos = fs.readdirSync(
+  path.resolve(path.resolve('./packages/frontend/src/hooks-doc')),
+)
 
-const hookList = hooks.filter(isHookFile).map(name => formatHook(name, demos))
+const hooks = fs
+  .readdirSync(path.resolve(path.resolve('./packages/usehooks-ts/src')))
+  .filter(isHookFile)
+  .map(name => formatHook(name, demos))
 
-const markdown = createMarkdownList(hookList)
+const markdown = createMarkdownList(hooks)
 
-insertInReadme(markdown)
+insertIn(markdown, path.resolve('./README.md'))
+insertIn(markdown, path.resolve('./packages/usehooks-ts/README.md'))
 
 ////////////////////////////////////////////////////////////////////////
 // 2. Utility functions
@@ -50,7 +51,7 @@ function createMarkdownList(hooks: MarkdownLine[]): string {
   return hooks.reduce((acc, hook) => acc + hook.markdownLine, '')
 }
 
-function insertInReadme(markdown: string): void {
+function insertIn(markdown: string, file: fs.PathOrFileDescriptor): void {
   const hookListRegExp = new RegExp(
     '<!-- HOOKS:START -->(.*)<!-- HOOKS:END -->',
     'gms',
@@ -58,15 +59,15 @@ function insertInReadme(markdown: string): void {
 
   try {
     const data = fs
-      .readFileSync(readmePath, 'utf-8')
+      .readFileSync(file, 'utf-8')
       .replace(
         hookListRegExp,
-        `<!-- HOOKS:START -->\n${markdown}\n<!-- HOOKS:END -->`,
+        `<!-- HOOKS:START -->\n\n${markdown}\n<!-- HOOKS:END -->`,
       )
 
-    fs.writeFileSync(readmePath, data, 'utf-8')
-    console.log(`${success} README.md updated!`)
+    fs.writeFileSync(file, data, 'utf-8')
+    console.log(`${success} ${file} updated!`)
   } catch (err) {
-    console.log(`${error} Error updating README.md: ${err}`)
+    console.log(`${error} Error updating ${file}: ${err}`)
   }
 }
