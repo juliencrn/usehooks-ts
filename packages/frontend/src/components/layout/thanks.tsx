@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const Thanks: FC<PropTypes> = props => {
   const classes = useStyles(props)
   const [viewedCount, setViewedCount] = useLocalStorage(
-    '100-stars-viewed-count',
+    '500-stars-viewed-count',
     0,
   )
   const [open, setOpen] = useState(viewedCount < 2)
@@ -63,7 +63,7 @@ const Thanks: FC<PropTypes> = props => {
           horizontal: 'center',
         }}
         ContentProps={{
-          message: `200+ Stargazers on useHooks.ts, thanks! 🎉`,
+          message: `500+ Stargazers on useHooks.ts, thanks! 🎉`,
           className: classes.content,
         }}
         action={

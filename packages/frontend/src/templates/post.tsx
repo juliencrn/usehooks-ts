@@ -13,7 +13,7 @@ import { Post } from '~/models'
 
 const useStyles = makeStyles(theme => ({
   title: {
-    margin: theme.spacing(6, 0, 2),
+    margin: theme.spacing(10, 0, 2),
     wordBreak: 'break-all',
     fontWeight: 700,
   },
