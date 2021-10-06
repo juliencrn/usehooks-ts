@@ -13,7 +13,7 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
 
     try {
       const item = window.localStorage.getItem(key)
-      return item ? (JSON.parse(item) as T) : initialValue
+      return item ? (parseJSON(item) as T) : initialValue
     } catch (error) {
       console.warn(`Error reading localStorage key “${key}”:`, error)
       return initialValue
@@ -78,3 +78,13 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
 }
 
 export default useLocalStorage
+
+// A wrapper for "JSON.parse()"" to support "undefined" value
+function parseJSON<T>(value: string | null): T | undefined {
+  try {
+    return value === 'undefined' ? undefined : JSON.parse(value ?? '')
+  } catch (error) {
+    console.log('parsing error on', { value })
+    return undefined
+  }
+}
