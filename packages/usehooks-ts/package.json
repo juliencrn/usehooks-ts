@@ -20,6 +20,7 @@
   "typing": "dist/index.d.ts",
   "scripts": {
     "prebuild": "npm run clean",
+    "start": "chokidar \"src/**/*.ts\" -c \"npm run build\"",
     "build": "npm run build:cjs && npm run build:es",
     "build:cjs": "tsc -p tsconfig.build.json",
     "build:es": "npm run build:cjs -- -m esNext --outDir esm",
@@ -34,6 +35,7 @@
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^7.0.2",
+    "chokidar-cli": "^3.0.0",
     "npm-check": "^5.9.2",
     "react-test-renderer": "^17.0.2",
     "rimraf": "^3.0.2",
