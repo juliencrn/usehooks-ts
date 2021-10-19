@@ -18,7 +18,7 @@
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-27-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-28-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -153,6 +153,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/n1c"><img src="https://avatars.githubusercontent.com/u/284075?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Nic</b></sub></a><br /><a href="#content-n1c" title="Content">🖋</a></td>
     <td align="center"><a href="http://valtism.com/"><img src="https://avatars.githubusercontent.com/u/1286001?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Dan Wood</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks.ts/commits?author=valtism" title="Code">💻</a></td>
     <td align="center"><a href="http://www.sixt.de/"><img src="https://avatars.githubusercontent.com/u/25299148?v=4?s=80" width="80px;" alt=""/><br /><sub><b>jo wendenbuerger</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks.ts/issues?q=author%3AWendenburg" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://nozillium.com/"><img src="https://avatars.githubusercontent.com/u/4774875?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Andrew Nosenko</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks.ts/issues?q=author%3Anoseratio" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
