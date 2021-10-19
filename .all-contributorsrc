@@ -260,6 +260,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "noseratio",
+      "name": "Andrew Nosenko",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4774875?v=4",
+      "profile": "https://nozillium.com/",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7
