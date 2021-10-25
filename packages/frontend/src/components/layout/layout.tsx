@@ -12,7 +12,7 @@ import Footer from './footer'
 import Header from './header'
 import Sidebar from './sidebar'
 import { reduceLayoutWidth } from './styleUtils'
-import Thanks from './thanks'
+// import Thanks from './thanks'
 import useSiteMetadata from '~/hooks/useSiteMetadata'
 import themes from '~/theme'
 
@@ -77,7 +77,7 @@ const Layout: FC = ({ children }) => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <div className={classes.root}>
-        <Thanks isSidebarOpened={isSidebarOpened} />
+        {/* <Thanks isSidebarOpened={isSidebarOpened} /> */}
 
         <Header siteTitle={title} onOpenSidebar={handleOpenSidebar} />
 
