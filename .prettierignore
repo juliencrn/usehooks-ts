@@ -7,7 +7,6 @@ package-lock.json
 .eslintcache
 
 # ignore built packages
-lib
 dist
 esm
 public

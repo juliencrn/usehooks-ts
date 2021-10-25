@@ -55,7 +55,7 @@
     "react-helmet": "^6.0.0",
     "react-instantsearch-dom": "^6.12.0",
     "react-scroll": "^1.8.3",
-    "usehooks-ts": "file:../usehooks-ts"
+    "usehooks-ts": "file:../../lib"
   },
   "devDependencies": {
     "@types/date-fns": "^2.6.0",

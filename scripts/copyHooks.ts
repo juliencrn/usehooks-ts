@@ -3,7 +3,7 @@ import path from 'path'
 
 import { error, isHookFile, success, warn } from './utils'
 
-const hooksDir = path.resolve('./packages/usehooks-ts/src')
+const hooksDir = path.resolve('./lib/src')
 const demosDir = path.resolve('./packages/frontend/src/hooks-doc')
 const outputDir = path.resolve('./packages/frontend/generated')
 

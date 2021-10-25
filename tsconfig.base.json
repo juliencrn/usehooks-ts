@@ -16,5 +16,5 @@
     "lib": ["ESNEXT", "DOM"]
   },
 
-  "exclude": ["node_modules", "dist", "lib", "esm"]
+  "exclude": ["node_modules", "dist", "esm"]
 }

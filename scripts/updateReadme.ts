@@ -12,14 +12,14 @@ const demos = fs.readdirSync(
 )
 
 const hooks = fs
-  .readdirSync(path.resolve(path.resolve('./packages/usehooks-ts/src')))
+  .readdirSync(path.resolve(path.resolve('./lib/src')))
   .filter(isHookFile)
   .map(name => formatHook(name, demos))
 
 const markdown = createMarkdownList(hooks)
 
 insertIn(markdown, path.resolve('./README.md'))
-insertIn(markdown, path.resolve('./packages/usehooks-ts/README.md'))
+insertIn(markdown, path.resolve('./lib/README.md'))
 
 ////////////////////////////////////////////////////////////////////////
 // 2. Utility functions
