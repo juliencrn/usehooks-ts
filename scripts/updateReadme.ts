@@ -27,7 +27,7 @@ insertIn(markdown, path.resolve('./packages/usehooks-ts/README.md'))
 
 function createUrl(filename: string): string {
   const pathname = camelToKebabCase(filename)
-  return `https://usehooks-typescript.com/react-hook/${pathname}`
+  return `https://usehooks-ts.com/react-hook/${pathname}`
 }
 
 interface MarkdownLine {

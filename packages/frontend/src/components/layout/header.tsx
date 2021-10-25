@@ -117,7 +117,7 @@ function Header({ siteTitle, onOpenSidebar }: HeaderProps) {
           <IconButton
             aria-label="Github"
             color="inherit"
-            href={`https://github.com/${author}/useHooks.ts`}
+            href={`https://github.com/${author}/usehooks-ts`}
             target="_blank"
           >
             <GitHubIcon />

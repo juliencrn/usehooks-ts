@@ -73,9 +73,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/juliencrn/usehooks.ts"
+    "url": "https://github.com/juliencrn/usehooks-ts"
   },
   "bugs": {
-    "url": "https://github.com/juliencrn/usehooks.ts/issues"
+    "url": "https://github.com/juliencrn/usehooks-ts/issues"
   }
 }

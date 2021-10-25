@@ -51,7 +51,7 @@ function PostTemplate(props: PostTemplateProps) {
   const classes = useStyles()
   const { post, hook, demo } = props.data
   const { body, excerpt, frontmatter } = post
-  const repoUrl = 'https://github.com/juliencrn/usehooks.ts'
+  const repoUrl = 'https://github.com/juliencrn/usehooks-ts'
   const editLink = `${repoUrl}/tree/develop/src/hooks/${post.fields.name}`
 
   return (

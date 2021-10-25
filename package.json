@@ -1,5 +1,5 @@
 {
-  "name": "usehooks.ts",
+  "name": "usehooks-ts",
   "private": true,
   "description": "React hook library, ready to use, written in Typescript.",
   "version": "0.1.0",
@@ -82,9 +82,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/juliencrn/usehooks.ts"
+    "url": "https://github.com/juliencrn/usehooks-ts"
   },
   "bugs": {
-    "url": "https://github.com/juliencrn/usehooks.ts/issues"
+    "url": "https://github.com/juliencrn/usehooks-ts/issues"
   }
 }

@@ -63,7 +63,7 @@ const Thanks: FC<PropTypes> = props => {
           horizontal: 'center',
         }}
         ContentProps={{
-          message: `500+ Stargazers on useHooks.ts, thanks! 🎉`,
+          message: `500+ Stargazers on usehooks-ts, thanks! 🎉`,
           className: classes.content,
         }}
         action={
