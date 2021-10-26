@@ -13,7 +13,7 @@
   ],
   "license": "MIT",
   "workspaces": [
-    "./packages/*",
+    "./site",
     "./lib"
   ],
   "scripts": {
@@ -33,15 +33,15 @@
     "test:watch": "npm run test -- --watch",
     "prebuilt": "npm run format && npm run copy:hooks",
     "build": "lerna run build --stream",
-    "build:frontend": "lerna run --scope frontend build",
+    "build:site": "lerna run --scope site build",
     "prestart": "lerna run --scope usehooks-ts build && npm run copy:hooks",
-    "start": "concurrently --kill-others \"npm run start:frontend\" \"npm run test:watch\" \"npm run start:lib\"",
-    "start:frontend": "cd packages/frontend && npm run start",
+    "start": "concurrently --kill-others \"npm run start:site\" \"npm run test:watch\" \"npm run start:lib\"",
+    "start:site": "cd site && npm run start",
     "start:lib": "cd lib && npm run start",
-    "serve:frontend": "cd packages/frontend && npm run serve",
-    "publish": "lerna run publish --stream",
+    "serve:site": "cd site && npm run serve",
+    "publish": "lerna run --scope usehooks-ts publish --stream",
     "update:readme": "ts-node ./scripts/updateReadme.ts",
-    "copy:hooks": "rimraf -rf ./packages/frontend/generated && ts-node ./scripts/copyHooks.ts",
+    "copy:hooks": "rimraf -rf ./site/generated && ts-node ./scripts/copyHooks.ts",
     "plop": "plop && npm run update:readme && npm run format",
     "prepare": "husky install"
   },

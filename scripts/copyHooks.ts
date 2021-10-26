@@ -4,8 +4,8 @@ import path from 'path'
 import { error, isHookFile, success, warn } from './utils'
 
 const hooksDir = path.resolve('./lib/src')
-const demosDir = path.resolve('./packages/frontend/src/hooks-doc')
-const outputDir = path.resolve('./packages/frontend/generated')
+const demosDir = path.resolve('./site/src/hooks-doc')
+const outputDir = path.resolve('./site/generated')
 
 ////////////////////////////////////////////////////////////////////////
 // 1. Imperative script that copy hooks from code to markdown files

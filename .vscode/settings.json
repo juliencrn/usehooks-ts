@@ -35,6 +35,6 @@
   ],
   "eslint.workingDirectories": [
     { "directory": "lib", "changeProcessCWD": true },
-    { "directory": "packages/frontend", "changeProcessCWD": true }
+    { "directory": "site", "changeProcessCWD": true }
   ]
 }

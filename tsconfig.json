@@ -5,7 +5,7 @@
     "baseUrl": ".",
     "paths": {
       "lib": ["lib/src"],
-      "frontend": ["packages/frontend/src"]
+      "site": ["site/src"]
     },
     "noEmit": true
   }

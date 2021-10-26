@@ -2,5 +2,5 @@
   "version": "independent",
   "npmClient": "npm",
   "useWorkspaces": true,
-  "packages": ["packages/*", "lib"]
+  "packages": ["site", "lib"]
 }

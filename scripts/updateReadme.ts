@@ -7,9 +7,7 @@ import { camelToKebabCase, error, isHookFile, success, warn } from './utils'
 // 1. Imperative script that updates the hook list in the README file.
 ////////////////////////////////////////////////////////////////////////
 
-const demos = fs.readdirSync(
-  path.resolve(path.resolve('./packages/frontend/src/hooks-doc')),
-)
+const demos = fs.readdirSync(path.resolve(path.resolve('./site/src/hooks-doc')))
 
 const hooks = fs
   .readdirSync(path.resolve(path.resolve('./lib/src')))

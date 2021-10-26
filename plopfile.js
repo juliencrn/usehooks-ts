@@ -50,25 +50,25 @@ module.exports = function (plop) {
        */
       {
         type: 'add',
-        path: 'packages/frontend/src/hooks-doc/{{camelCase name}}/index.ts',
-        templateFile: 'plop-templates/hooks/frontend/index.ts.hbs',
+        path: 'site/src/hooks-doc/{{camelCase name}}/index.ts',
+        templateFile: 'plop-templates/hooks/site/index.ts.hbs',
       },
       {
         data: {
           date: format(new Date(), 'yyyy-MM-dd'),
         },
         type: 'add',
-        path: 'packages/frontend/src/hooks-doc/{{camelCase name}}/{{camelCase name}}.mdx',
-        templateFile: 'plop-templates/hooks/frontend/post.mdx.hbs',
+        path: 'site/src/hooks-doc/{{camelCase name}}/{{camelCase name}}.mdx',
+        templateFile: 'plop-templates/hooks/site/post.mdx.hbs',
       },
       {
         type: 'add',
-        path: 'packages/frontend/src/hooks-doc/{{camelCase name}}/{{camelCase name}}.demo.tsx',
-        templateFile: 'plop-templates/hooks/frontend/demo.tsx.hbs',
+        path: 'site/src/hooks-doc/{{camelCase name}}/{{camelCase name}}.demo.tsx',
+        templateFile: 'plop-templates/hooks/site/demo.tsx.hbs',
       },
       {
         type: 'append',
-        path: 'packages/frontend/src/hooks-doc/index.ts',
+        path: 'site/src/hooks-doc/index.ts',
         templateFile: 'plop-templates/hooks/index.ts.hbs',
       },
     ],
