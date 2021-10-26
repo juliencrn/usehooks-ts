@@ -2,7 +2,7 @@ import { Config } from '@jest/types'
 import glob from 'glob'
 
 const packages = glob
-  .sync(`./packages/*`)
+  .sync(`./{site,lib}`)
   .map(p => p.replace(/^\./, `<rootDir>`))
 
 const ignoreDirs = [

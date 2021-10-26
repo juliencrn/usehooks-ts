@@ -4,8 +4,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "usehooks-ts": ["packages/usehooks-ts/src"],
-      "frontend": ["packages/frontend/src"]
+      "lib": ["lib/src"],
+      "site": ["site/src"]
     },
     "noEmit": true
   }

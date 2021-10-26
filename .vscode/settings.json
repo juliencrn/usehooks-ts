@@ -34,7 +34,7 @@
     "usehooks"
   ],
   "eslint.workingDirectories": [
-    { "directory": "packages/usehooks-ts", "changeProcessCWD": true },
-    { "directory": "packages/frontend", "changeProcessCWD": true }
+    { "directory": "lib", "changeProcessCWD": true },
+    { "directory": "site", "changeProcessCWD": true }
   ]
 }

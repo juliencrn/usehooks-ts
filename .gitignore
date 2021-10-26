@@ -16,7 +16,6 @@ npm-debug.log*
 .eslintcache
 
 # Compiled stuff
-lib
 dist
 esm
 public

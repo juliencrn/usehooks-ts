@@ -7,19 +7,17 @@ import { camelToKebabCase, error, isHookFile, success, warn } from './utils'
 // 1. Imperative script that updates the hook list in the README file.
 ////////////////////////////////////////////////////////////////////////
 
-const demos = fs.readdirSync(
-  path.resolve(path.resolve('./packages/frontend/src/hooks-doc')),
-)
+const demos = fs.readdirSync(path.resolve(path.resolve('./site/src/hooks-doc')))
 
 const hooks = fs
-  .readdirSync(path.resolve(path.resolve('./packages/usehooks-ts/src')))
+  .readdirSync(path.resolve(path.resolve('./lib/src')))
   .filter(isHookFile)
   .map(name => formatHook(name, demos))
 
 const markdown = createMarkdownList(hooks)
 
 insertIn(markdown, path.resolve('./README.md'))
-insertIn(markdown, path.resolve('./packages/usehooks-ts/README.md'))
+insertIn(markdown, path.resolve('./lib/README.md'))
 
 ////////////////////////////////////////////////////////////////////////
 // 2. Utility functions
