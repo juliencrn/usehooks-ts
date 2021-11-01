@@ -38,13 +38,13 @@
     "@testing-library/react-hooks": "^7.0.2",
     "chokidar-cli": "^3.0.0",
     "npm-check": "^5.9.2",
-    "react": "^17.0.2",
-    "react-test-renderer": "^17.0.2",
+    "react": "^16.8.0",
+    "react-test-renderer": "^16.8.0",
     "rimraf": "^3.0.2",
     "typescript": "^4.4.3"
   },
   "peerDependencies": {
-    "react": "^17.0.2"
+    "react": "^16.8.0"
   },
   "repository": {
     "type": "git",
