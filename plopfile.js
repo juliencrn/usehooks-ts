@@ -22,22 +22,22 @@ module.exports = function (plop) {
       {
         type: 'add',
         path: 'lib/src/{{camelCase name}}/index.ts',
-        templateFile: 'plop-templates/hooks/lib/index.ts.hbs',
+        templateFile: 'templates/plop/hooks/lib/index.ts.hbs',
       },
       {
         type: 'add',
         path: 'lib/src/{{camelCase name}}/{{camelCase name}}.ts',
-        templateFile: 'plop-templates/hooks/lib/hook.ts.hbs',
+        templateFile: 'templates/plop/hooks/lib/hook.ts.hbs',
       },
       {
         type: 'add',
         path: 'lib/src/{{camelCase name}}/{{camelCase name}}.test.ts',
-        templateFile: 'plop-templates/hooks/lib/hook.test.ts.hbs',
+        templateFile: 'templates/plop/hooks/lib/hook.test.ts.hbs',
       },
       {
         type: 'append',
         path: 'lib/src/index.ts',
-        templateFile: 'plop-templates/hooks/index.ts.hbs',
+        templateFile: 'templates/plop/hooks/index.ts.hbs',
       },
 
       /**
@@ -51,7 +51,7 @@ module.exports = function (plop) {
       {
         type: 'add',
         path: 'site/src/hooks-doc/{{camelCase name}}/index.ts',
-        templateFile: 'plop-templates/hooks/site/index.ts.hbs',
+        templateFile: 'templates/plop/hooks/site/index.ts.hbs',
       },
       {
         data: {
@@ -59,17 +59,17 @@ module.exports = function (plop) {
         },
         type: 'add',
         path: 'site/src/hooks-doc/{{camelCase name}}/{{camelCase name}}.mdx',
-        templateFile: 'plop-templates/hooks/site/post.mdx.hbs',
+        templateFile: 'templates/plop/hooks/site/post.mdx.hbs',
       },
       {
         type: 'add',
         path: 'site/src/hooks-doc/{{camelCase name}}/{{camelCase name}}.demo.tsx',
-        templateFile: 'plop-templates/hooks/site/demo.tsx.hbs',
+        templateFile: 'templates/plop/hooks/site/demo.tsx.hbs',
       },
       {
         type: 'append',
         path: 'site/src/hooks-doc/index.ts',
-        templateFile: 'plop-templates/hooks/index.ts.hbs',
+        templateFile: 'templates/plop/hooks/index.ts.hbs',
       },
     ],
   })
