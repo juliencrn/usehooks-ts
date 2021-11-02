@@ -13,3 +13,12 @@ export const error = chalk.red('error')
 export function camelToKebabCase(str: string): string {
   return str.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`)
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const toQueryParams = (params: Record<string, any>): string => {
+  const paramsAsString = Object.entries(params)
+    .filter(([_, value]) => !!value)
+    .map(([key, value]) => `${key}=${value}`)
+    .join('&')
+  return `?${paramsAsString}`
+}

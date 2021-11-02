@@ -1,11 +1,12 @@
 import fs from 'fs'
 import path from 'path'
 
-import { error, isHookFile, success, warn } from './utils'
+import { error, isHookFile, success, toQueryParams, warn } from './utils'
 
 const hooksDir = path.resolve('./lib/src')
 const demosDir = path.resolve('./site/src/hooks-doc')
 const outputDir = path.resolve('./site/generated')
+const sandboxTemplatePath = path.resolve('./templates/codesandbox')
 
 ////////////////////////////////////////////////////////////////////////
 // 1. Imperative script that copy hooks from code to markdown files
@@ -35,6 +36,7 @@ fs.readdir(demosDir, (err, files) => {
       copyHook({
         sourceFile: path.resolve(`${demosDir}/${file}/${file}.demo.tsx`),
         destFile: path.resolve(`${outputDir}/hookDemos/${file}.demo.md`),
+        useSandbox: true,
       })
     }
   })
@@ -57,9 +59,11 @@ function createDirIfNeeded(dir: string): void {
 function copyHook({
   sourceFile,
   destFile,
+  useSandbox,
 }: {
   sourceFile: string
   destFile: string
+  useSandbox?: boolean
 }) {
   // Check source file
   if (!fs.existsSync(sourceFile)) {
@@ -85,7 +89,21 @@ function copyHook({
     const extension = sourceFile.split('.').reverse()[0]
 
     const writeStream = fs.createWriteStream(destFile)
-    writeStream.write('```' + `${extension}\r`)
+
+    let preCode = '```' + extension
+
+    // TODO: Theses hooks don't work on CodeSandbox, make it work.
+    const excludedHook = [
+      'useFetch.demo.md',
+      'useCopyToClipboard.demo.md',
+    ].includes(getFileName(destFile))
+
+    if (useSandbox && !excludedHook) {
+      const templateOptions = toQueryParams({ entry: 'src/App.tsx' })
+      preCode += ' codesandbox=file:' + sandboxTemplatePath + templateOptions
+    }
+
+    writeStream.write(preCode + '\r')
     writeStream.write(data)
     writeStream.write('```\r')
     writeStream.end()

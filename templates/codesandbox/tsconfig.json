@@ -1,0 +1,11 @@
+{
+  "include": ["./src/**/*"],
+  "compilerOptions": {
+    "module": "commonjs",
+    "strict": true,
+    "lib": ["ESNEXT", "DOM"],
+    "jsx": "react",
+    "esModuleInterop": true,
+    "isolatedModules": true
+  }
+}

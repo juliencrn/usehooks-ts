@@ -67,6 +67,7 @@
     "gatsby-cli": "^3.10.0",
     "gatsby-plugin-typescript-checker": "^1.1.1",
     "npm-check": "^5.9.2",
+    "remark-codesandbox": "^0.10.0",
     "source-map-support": "^0.5.19",
     "ts-node": "^10.1.0",
     "typescript": "^4.4.3"

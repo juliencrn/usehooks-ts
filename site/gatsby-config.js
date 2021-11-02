@@ -49,6 +49,14 @@ module.exports = {
       options: {
         extensions: [`.md`, `.mdx`],
         plugins: [],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'remark-codesandbox/gatsby',
+            options: {
+              mode: 'button',
+            },
+          },
+        ],
       },
     },
     {

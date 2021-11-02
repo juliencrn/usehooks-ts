@@ -35,7 +35,7 @@
     "prebuilt": "npm run format && npm run copy:hooks",
     "build": "lerna run build --stream",
     "build:site": "lerna run --scope site build",
-    "prestart": "lerna run --scope usehooks-ts build && npm run copy:hooks",
+    "prestart": "npm run format && lerna run --scope usehooks-ts build && npm run copy:hooks",
     "start": "concurrently --kill-others \"npm run start:site\" \"npm run test:watch\" \"npm run start:lib\"",
     "start:site": "cd site && npm run start",
     "start:lib": "cd lib && npm run start",
