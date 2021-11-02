@@ -28,7 +28,7 @@ function useElementSize<T extends HTMLElement = HTMLDivElement>(
   }, [elementRef])
 
   // Initial size on mount
-  useEffect(() => {
+  useLayoutEffect(() => {
     updateSize()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
