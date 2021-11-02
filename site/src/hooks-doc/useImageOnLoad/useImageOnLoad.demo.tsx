@@ -8,11 +8,14 @@ export default function Component() {
   const style: { [key: string]: CSSProperties } = {
     wrap: {
       position: 'relative',
-      width: 600,
-      height: 600,
+      width: 400,
+      height: 400,
+      margin: 'auto',
     },
     image: {
       position: 'absolute',
+      top: 0,
+      left: 0,
       width: `100%`,
       height: `100%`,
     },

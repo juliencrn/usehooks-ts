@@ -16,6 +16,7 @@ const Section = (props: { title: string }) => {
         minHeight: '100vh',
         display: 'flex',
         border: '1px dashed #000',
+        fontSize: '2rem',
       }}
     >
       <div style={{ margin: 'auto' }}>{props.title}</div>

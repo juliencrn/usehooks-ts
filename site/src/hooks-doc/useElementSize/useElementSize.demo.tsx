@@ -20,6 +20,8 @@ export default function Component() {
           margin: 'auto',
         }}
       />
+
+      <p>Try, resize your window</p>
     </>
   )
 }

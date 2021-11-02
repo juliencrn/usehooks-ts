@@ -9,8 +9,13 @@ const fixedCenterStyle: CSSProperties = {
   transform: 'translate(-50%, -50%)',
 }
 
+const fakeScrollableStyle: CSSProperties = {
+  minHeight: '150vh',
+  background: 'linear-gradient(palegreen, palegoldenrod, palevioletred)',
+}
+
 // Example 1: useLockedBody as useState()
-export function Component1() {
+export default function App() {
   const [locked, setLocked] = useLockedBody()
 
   const toggleLocked = () => {
@@ -18,17 +23,16 @@ export function Component1() {
   }
 
   return (
-    <>
-      <div style={{ minHeight: '200vh' }} />
+    <div style={fakeScrollableStyle}>
       <button style={fixedCenterStyle} onClick={toggleLocked}>
         {locked ? 'unlock scroll' : 'lock scroll'}
       </button>
-    </>
+    </div>
   )
 }
 
 // Example 2: useLockedBody with our custom state
-export function Component2() {
+export function App2() {
   const [locked, setLocked] = useState(false)
 
   const toggleLocked = () => {
@@ -38,11 +42,10 @@ export function Component2() {
   useLockedBody(locked)
 
   return (
-    <>
-      <div style={{ minHeight: '200vh' }} />
+    <div style={fakeScrollableStyle}>
       <button style={fixedCenterStyle} onClick={toggleLocked}>
         {locked ? 'unlock scroll' : 'lock scroll'}
       </button>
-    </>
+    </div>
   )
 }
