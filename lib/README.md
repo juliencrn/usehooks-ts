@@ -45,8 +45,8 @@ npm i usehooks-ts
 
 ## Usage
 
-See [documentation](https://usehooks-ts.com/).
+See [documentation](https://usehooks-ts.com).
 
 ## License
 
-[MIT](http://vjpr.mit-license.org)
+[MIT](../../LICENSE)

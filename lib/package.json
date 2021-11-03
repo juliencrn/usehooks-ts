@@ -1,9 +1,10 @@
 {
   "name": "usehooks-ts",
+  "private": false,
   "description": "React hook library, ready to use, written in Typescript.",
-  "version": "1.0.9",
+  "version": "1.0.14",
   "author": "Julien CARON <juliencaron@protonmail.com>",
-  "homepage": "https://usehooks-ts.com/",
+  "homepage": "https://usehooks-ts.com",
   "keywords": [
     "typescript",
     "react",
@@ -27,11 +28,6 @@
     "build:es": "npm run build:cjs -- -m esNext --outDir esm",
     "clean": "rimraf -rf ./dist ./esm",
     "types-check": "tsc -p tsconfig.json",
-    "prepublishOnly": "npm run build",
-    "preversion": "npm test",
-    "prepare": "npm run build",
-    "publish": "npm publish",
-    "update": "npm update",
     "upgrade-interactive": "npm-check --update"
   },
   "devDependencies": {
@@ -52,5 +48,6 @@
   },
   "bugs": {
     "url": "https://github.com/juliencrn/usehooks-ts/issues"
-  }
+  },
+  "gitHead": "05340494dd6e96fa501695936b6fb51c051ffd40"
 }

@@ -2,16 +2,11 @@
   "name": "site",
   "private": true,
   "description": "React hook library, ready to use, written in Typescript.",
-  "version": "0.1.0",
   "author": "Julien CARON <juliencaron@protonmail.com>",
   "keywords": [
     "gatsby",
     "typescript",
-    "eslint",
-    "prettier",
     "material-ui",
-    "jest",
-    "@testing-library",
     "prism",
     "mdx"
   ],
@@ -54,8 +49,7 @@
     "react-dom": "^17.0.2",
     "react-helmet": "^6.0.0",
     "react-instantsearch-dom": "^6.12.0",
-    "react-scroll": "^1.8.3",
-    "usehooks-ts": "file:../lib"
+    "react-scroll": "^1.8.3"
   },
   "devDependencies": {
     "@types/date-fns": "^2.6.0",
