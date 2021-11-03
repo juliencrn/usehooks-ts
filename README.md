@@ -22,6 +22,10 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
+<br />
+  <pre>npm i <a href="https://www.npmjs.com/package/usehooks-ts">usehooks-ts</a></pre>
+  <br />
+
 <div align="center">
   <sub>Created by <a href="https://github.com/juliencrn">Julien Caron</a> and maintained with ❤️ by an amazing <a href="#contributors">team of developers</a>.</sub>
 </div>
