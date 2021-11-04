@@ -1,4 +1,7 @@
-import { RefObject, useEffect, useState } from 'react'
+import { RefObject, useState } from 'react'
+
+// See: https://usehooks-ts.com/react-hook/use-event-listener
+import { useEventListener } from '../useEventListener'
 
 function useHover<T extends HTMLElement = HTMLElement>(
   elementRef: RefObject<T>,
@@ -8,19 +11,8 @@ function useHover<T extends HTMLElement = HTMLElement>(
   const handleMouseEnter = () => setValue(true)
   const handleMouseLeave = () => setValue(false)
 
-  useEffect(() => {
-    const node = elementRef?.current
-
-    if (node) {
-      node.addEventListener('mouseenter', handleMouseEnter)
-      node.addEventListener('mouseleave', handleMouseLeave)
-
-      return () => {
-        node.removeEventListener('mouseenter', handleMouseEnter)
-        node.removeEventListener('mouseleave', handleMouseLeave)
-      }
-    }
-  }, [elementRef])
+  useEventListener('mouseenter', handleMouseEnter, elementRef)
+  useEventListener('mouseleave', handleMouseLeave, elementRef)
 
   return value
 }

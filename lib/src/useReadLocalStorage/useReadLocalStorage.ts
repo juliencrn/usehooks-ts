@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 
+// See: https://usehooks-ts.com/react-hook/use-event-listener
+import { useEventListener } from '../useEventListener'
+
 type Value<T> = T | null
 
 function useReadLocalStorage<T>(key: string): Value<T> {
@@ -30,24 +33,16 @@ function useReadLocalStorage<T>(key: string): Value<T> {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  useEffect(() => {
-    const handleStorageChange = () => {
-      setStoredValue(readValue())
-    }
+  const handleStorageChange = () => {
+    setStoredValue(readValue())
+  }
 
-    // this only works for other documents, not the current one
-    window.addEventListener('storage', handleStorageChange)
+  // this only works for other documents, not the current one
+  useEventListener('storage', handleStorageChange)
 
-    // this is a custom event, triggered in writeValueToLocalStorage
-    // See: useLocalStorage()
-    window.addEventListener('local-storage', handleStorageChange)
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange)
-      window.removeEventListener('local-storage', handleStorageChange)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  // this is a custom event, triggered in writeValueToLocalStorage
+  // See: useLocalStorage()
+  useEventListener('local-storage', handleStorageChange)
 
   return storedValue
 }
