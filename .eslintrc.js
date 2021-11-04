@@ -20,7 +20,7 @@ module.exports = {
   },
   settings: {
     react: {
-      version: '17.0.2',
+      version: '16.8.0',
     },
   },
   rules: {
@@ -42,6 +42,7 @@ module.exports = {
     ],
   },
   overrides: [
+    // Typescript related rules
     {
       files: [`*.ts`, `*.tsx`],
       plugins: [`@typescript-eslint/eslint-plugin`],
@@ -63,6 +64,17 @@ module.exports = {
         ],
       },
     },
+
+    // Track tree-shaking potential error in the lib
+    {
+      files: [`lib/**/!(*.test|*.spec).ts`],
+      plugins: ['tree-shaking'],
+      rules: {
+        'tree-shaking/no-side-effects-in-initialization': 2,
+      },
+    },
+
+    // Specials rules for testing
     {
       extends: ['plugin:jest/recommended'],
       files: ['**/*.test.ts'],
