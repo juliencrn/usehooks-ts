@@ -38,6 +38,7 @@ npm i usehooks-ts
 - [`useScreen()`](https://usehooks-ts.com/react-hook/use-screen)
 - [`useScript()`](https://usehooks-ts.com/react-hook/use-script)
 - [`useSsr()`](https://usehooks-ts.com/react-hook/use-ssr)
+- [`useStep()`](https://usehooks-ts.com/react-hook/use-step)
 - [`useTimeout()`](https://usehooks-ts.com/react-hook/use-timeout)
 - [`useWindowSize()`](https://usehooks-ts.com/react-hook/use-window-size)
 
