@@ -30,6 +30,9 @@ describe('useStep()', () => {
 
     act(() => {
       result.current.setStep(2)
+    })
+
+    act(() => {
       result.current.goToPrevStep()
     })
 

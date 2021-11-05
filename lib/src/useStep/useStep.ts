@@ -14,7 +14,7 @@ function useStep(maxStep: number): ReturnType {
   const [actualStep, setActualStep] = useState(1)
 
   const canGoToNextStep = useMemo(
-    () => actualStep + 1 < maxStep,
+    () => actualStep + 1 <= maxStep,
     [actualStep, maxStep],
   )
 
