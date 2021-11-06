@@ -1,4 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
+
+// See: https://usehooks-ts.com/react-hook/use-event-listener
+import { useEventListener } from '../useEventListener'
 
 interface WindowSize {
   width: number
@@ -11,23 +14,18 @@ function useWindowSize(): WindowSize {
     height: 0,
   })
 
-  useEffect(() => {
-    const handler = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      })
-    }
+  const handleSize = () => {
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    })
+  }
 
-    // Set size at the first client-side load
-    handler()
+  useEventListener('resize', handleSize)
 
-    window.addEventListener('resize', handler)
-
-    // Remove event listener on cleanup
-    return () => {
-      window.removeEventListener('resize', handler)
-    }
+  // Set size at the first client-side load
+  useLayoutEffect(() => {
+    handleSize()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

@@ -1,4 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
+
+// See: https://usehooks-ts.com/react-hook/use-event-listener
+import { useEventListener } from '../useEventListener'
 
 function useScreen() {
   const getScreen = () => {
@@ -10,16 +13,16 @@ function useScreen() {
 
   const [screen, setScreen] = useState<Screen | undefined>(getScreen())
 
-  useEffect(() => {
-    function handleResize() {
-      setScreen(getScreen())
-    }
+  function handleSize() {
+    setScreen(getScreen())
+  }
 
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-    // Empty array ensures that effect is only run on mount and unmount
+  useEventListener('resize', handleSize)
+
+  // Set size at the first client-side load
+  useLayoutEffect(() => {
+    handleSize()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return screen

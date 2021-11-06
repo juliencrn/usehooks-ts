@@ -17,7 +17,7 @@ function useElementSize<T extends HTMLElement = HTMLDivElement>(
   })
 
   // Prevent too many rendering using useCallback
-  const updateSize = useCallback(() => {
+  const handleSize = useCallback(() => {
     const node = elementRef?.current
     if (node) {
       setSize({
@@ -27,13 +27,13 @@ function useElementSize<T extends HTMLElement = HTMLDivElement>(
     }
   }, [elementRef])
 
+  useEventListener('resize', handleSize)
+
   // Initial size on mount
   useLayoutEffect(() => {
-    updateSize()
+    handleSize()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  useEventListener('resize', updateSize)
 
   return size
 }
