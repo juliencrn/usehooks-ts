@@ -305,6 +305,17 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "qlaffont",
+      "name": "Quentin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10044790?v=4",
+      "profile": "http://qlaffont.com/",
+      "contributions": [
+        "code",
+        "ideas",
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7

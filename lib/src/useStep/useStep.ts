@@ -1,62 +1,66 @@
-import { useCallback, useMemo, useState } from 'react'
+import { Dispatch, SetStateAction, useCallback, useMemo, useState } from 'react'
 
-interface ReturnType {
-  actualStep: number
+interface Helpers {
   goToNextStep: () => void
   goToPrevStep: () => void
   reset: () => void
   canGoToNextStep: boolean
   canGoToPrevStep: boolean
-  setStep: (step: number) => void
+  setStep: Dispatch<SetStateAction<number>>
 }
 
-function useStep(maxStep: number): ReturnType {
-  const [actualStep, setActualStep] = useState(1)
+function useStep(maxStep: number): [number, Helpers] {
+  const [currentStep, setCurrentStep] = useState(1)
 
   const canGoToNextStep = useMemo(
-    () => actualStep + 1 <= maxStep,
-    [actualStep, maxStep],
+    () => currentStep + 1 <= maxStep,
+    [currentStep, maxStep],
   )
 
-  const canGoToPrevStep = useMemo(() => actualStep - 1 >= 1, [actualStep])
+  const canGoToPrevStep = useMemo(() => currentStep - 1 >= 1, [currentStep])
 
   const setStep = useCallback(
-    (step: number) => {
-      if (step >= 1 && step <= maxStep) {
-        setActualStep(step)
+    step => {
+      // Allow value to be a function so we have the same API as useState
+      const newStep = step instanceof Function ? step(currentStep) : step
+
+      if (newStep >= 1 && newStep <= maxStep) {
+        setCurrentStep(newStep)
         return
       }
 
-      throw 'Step not valid'
+      throw new Error('Step not valid')
     },
-    [maxStep],
+    [maxStep, currentStep],
   )
 
   const goToNextStep = useCallback(() => {
     if (canGoToNextStep) {
-      setActualStep(step => step + 1)
+      setCurrentStep(step => step + 1)
     }
   }, [canGoToNextStep])
 
   const goToPrevStep = useCallback(() => {
     if (canGoToPrevStep) {
-      setActualStep(step => step - 1)
+      setCurrentStep(step => step - 1)
     }
   }, [canGoToPrevStep])
 
   const reset = useCallback(() => {
-    setActualStep(1)
+    setCurrentStep(1)
   }, [])
 
-  return {
-    actualStep,
-    goToNextStep,
-    goToPrevStep,
-    canGoToNextStep,
-    canGoToPrevStep,
-    setStep,
-    reset,
-  }
+  return [
+    currentStep,
+    {
+      goToNextStep,
+      goToPrevStep,
+      canGoToNextStep,
+      canGoToPrevStep,
+      setStep,
+      reset,
+    },
+  ]
 }
 
 export default useStep

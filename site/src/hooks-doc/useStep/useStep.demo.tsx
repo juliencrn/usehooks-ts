@@ -3,19 +3,20 @@ import React from 'react'
 import { useStep } from 'usehooks-ts'
 
 export default function Component() {
+  const [currentStep, helpers] = useStep(5)
+
   const {
-    actualStep,
     canGoToPrevStep,
     canGoToNextStep,
     goToNextStep,
     goToPrevStep,
     reset,
     setStep,
-  } = useStep(5)
+  } = helpers
 
   return (
     <>
-      <p>Actual step is {actualStep}</p>
+      <p>Current step is {currentStep}</p>
       <p>Can go to previous step {canGoToPrevStep ? 'yes' : 'no'}</p>
       <p>Can go to next step {canGoToNextStep ? 'yes' : 'no'}</p>
       <button onClick={goToNextStep}>Go to next step</button>
