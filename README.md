@@ -67,6 +67,7 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 - [`useScreen()`](https://usehooks-ts.com/react-hook/use-screen)
 - [`useScript()`](https://usehooks-ts.com/react-hook/use-script)
 - [`useSsr()`](https://usehooks-ts.com/react-hook/use-ssr)
+- [`useStep()`](https://usehooks-ts.com/react-hook/use-step)
 - [`useTimeout()`](https://usehooks-ts.com/react-hook/use-timeout)
 - [`useWindowSize()`](https://usehooks-ts.com/react-hook/use-window-size)
 
