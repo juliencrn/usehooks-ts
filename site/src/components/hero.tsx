@@ -1,35 +1,16 @@
 import React, { FC } from 'react'
 
-import Container from '@material-ui/core/Container'
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import Typography from '@material-ui/core/Typography'
+import { styled } from '@mui/material'
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
+import { Box } from '@mui/system'
 
-export interface HeroProps {
-  title: string
-  description?: string
-  fullHeight?: boolean
-}
-
-interface StyleProps {
-  fullHeight: boolean
-}
-
-const useStyles = makeStyles(theme => ({
-  hero: (props: StyleProps) => ({
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(12, 0, 10),
-    marginBottom: props.fullHeight ? 0 : theme.spacing(10),
-    flexGrow: props.fullHeight ? 1 : 0,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-  }),
-  container: {
-    marginTop: theme.spacing(-8),
-  },
-  title: {
-    fontFamily: 'Fira Code, monospace',
-  },
+const Root = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
+  padding: theme.spacing(12, 0, 10),
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
 }))
 
 export interface HeroProps {
@@ -44,16 +25,15 @@ const Hero: FC<HeroProps> = ({
   fullHeight,
   children,
 }) => {
-  const classes = useStyles({ fullHeight: !!fullHeight })
   return (
-    <div className={classes.hero}>
-      <Container maxWidth="md" className={classes.container}>
+    <Root mb={fullHeight ? 0 : 10} flexGrow={fullHeight ? 1 : 0}>
+      <Container maxWidth="md">
         <Typography
           variant="h2"
           component="h1"
           align="center"
           color="textPrimary"
-          className={classes.title}
+          sx={{ fontFamily: 'Fira Code, monospace' }}
           gutterBottom
         >
           {title}
@@ -64,7 +44,7 @@ const Hero: FC<HeroProps> = ({
 
         {children}
       </Container>
-    </div>
+    </Root>
   )
 }
 

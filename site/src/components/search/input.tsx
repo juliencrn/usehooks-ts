@@ -1,50 +1,27 @@
 import React, { FC } from 'react'
 
-import InputBase, { InputBaseProps } from '@material-ui/core/InputBase'
-import { alpha } from '@material-ui/core/styles'
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import SearchIcon from '@material-ui/icons/Search'
+import SearchIcon from '@mui/icons-material/Search'
+import MuiInputBase, { InputBaseProps } from '@mui/material/InputBase'
+import { styled } from '@mui/material/styles'
 
-const useStyles = makeStyles(theme => ({
-  form: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.05),
-    '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.1),
-    },
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(0),
-    [theme.breakpoints.up('sm')]: {
-      width: 'auto',
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    maxWidth: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
-  },
+const Form = styled('form')(({ theme }) => ({
+  display: 'flex',
+  borderRadius: theme.shape.borderRadius,
+  margin: theme.spacing(0),
+}))
+
+const IconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(2),
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}))
+
+const InputBase = styled(MuiInputBase)(({ theme }) => ({
+  width: '100%',
+  padding: theme.spacing(1, 1, 1, 0),
+  color: 'inherit',
 }))
 
 export interface InputProps extends InputBaseProps {
@@ -52,8 +29,6 @@ export interface InputProps extends InputBaseProps {
 }
 
 const Input: FC<InputProps> = ({ refine, ...rest }) => {
-  const classes = useStyles()
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (refine) {
       refine(event.target.value)
@@ -61,21 +36,19 @@ const Input: FC<InputProps> = ({ refine, ...rest }) => {
   }
 
   return (
-    <form className={classes.form}>
-      <div className={classes.searchIcon}>
+    <Form>
+      <IconWrapper>
         <SearchIcon />
-      </div>
+      </IconWrapper>
       <InputBase
         placeholder="Search…"
-        classes={{
-          root: classes.inputRoot,
-          input: classes.inputInput,
-        }}
+        size="medium"
+        sx={{ fontSize: 'subtitle' }}
         inputProps={{ 'aria-label': 'search' }}
         onChange={handleChange}
         {...rest}
       />
-    </form>
+    </Form>
   )
 }
 

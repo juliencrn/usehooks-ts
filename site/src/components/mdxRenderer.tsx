@@ -1,125 +1,90 @@
 /* eslint-disable react/display-name */
 import React, { Fragment, HTMLProps } from 'react'
 
-import Divider from '@material-ui/core/Divider'
-import Link from '@material-ui/core/Link'
-import Paper from '@material-ui/core/Paper'
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import Table from '@material-ui/core/Table'
-import TableCell from '@material-ui/core/TableCell'
-import TableContainer from '@material-ui/core/TableContainer'
-import TableRow from '@material-ui/core/TableRow'
-import Typography, { TypographyProps } from '@material-ui/core/Typography'
 import { MDXProvider } from '@mdx-js/react'
+import MuiDivider from '@mui/material/Divider'
+import Link from '@mui/material/Link'
+import Paper from '@mui/material/Paper'
+import { styled } from '@mui/material/styles'
+import Table from '@mui/material/Table'
+import MuiTableCell from '@mui/material/TableCell'
+import MuiTableContainer from '@mui/material/TableContainer'
+import TableRow from '@mui/material/TableRow'
+import Typography, { TypographyProps } from '@mui/material/Typography'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import Code from './code'
 
-const useStyles = makeStyles(theme => ({
-  tableContainer: {
-    margin: theme.spacing(3, 0),
-    '& thead td': {
-      fontWeight: 700,
-    },
-  },
-  quote: {
-    borderLeft: `4px solid`,
-    borderColor: theme.palette.grey[400],
-    padding: theme.spacing(1, 0),
-    paddingLeft: theme.spacing(3),
-    margin: theme.spacing(3, 0),
-    display: 'block',
-    backgroundColor: theme.palette.background.paper,
-    '& p': {
-      margin: 0,
-    },
-  },
-  title: {
-    marginTop: theme.spacing(4),
-  },
-  divider: {
-    margin: theme.spacing(3, 0),
-  },
-  inlineCode: {
-    fontFamily: 'Fira Code, monospace',
-    background:
-      theme.palette.type === 'light'
-        ? theme.palette.grey[200]
-        : theme.palette.dracula.background,
-    padding: theme.spacing(0.2, 0.4),
-    borderRadius: 4,
+const Divider = styled(MuiDivider)(({ theme }) => ({
+  margin: theme.spacing(3, 0),
+}))
+
+const Title = styled(Typography)(({ theme }) => ({
+  marginTop: theme.spacing(4),
+}))
+
+const TableContainer = styled(MuiTableContainer)(({ theme }) => ({
+  margin: theme.spacing(3, 0),
+  '& thead td': {
+    fontWeight: 700,
   },
 }))
 
+const TableCell = styled(MuiTableCell)(({ theme }) => ({
+  background: theme.palette.background.default,
+}))
+
+const Quote = styled(Typography)(({ theme }) => ({
+  borderLeft: `4px solid`,
+  borderColor: theme.palette.grey[400],
+  padding: theme.spacing(1, 0),
+  paddingLeft: theme.spacing(3),
+  margin: theme.spacing(3, 0),
+  display: 'block',
+  backgroundColor: theme.palette.background.paper,
+  '& p': {
+    margin: 0,
+  },
+}))
+
+const InlineCode = styled(Typography)(({ theme }) => ({
+  fontFamily: 'Fira Code, monospace',
+  display: 'inline',
+  background:
+    theme.palette.mode === 'light'
+      ? theme.palette.grey[200]
+      : theme.palette.dracula.background,
+  padding: theme.spacing(0.2, 0.4),
+  borderRadius: 4,
+}))
+
 const MdxRenderer = ({ body }: { body: string }) => {
-  const classes = useStyles()
   return (
     <MDXProvider
       components={{
         // Typography
         h1: props => (
-          <Typography
-            gutterBottom
-            className={classes.title}
-            variant="h2"
-            component="h1"
-            {...props}
-          />
+          <Title gutterBottom variant="h2" component="h1" {...props} />
         ),
         h2: props => (
-          <Typography
-            gutterBottom
-            className={classes.title}
-            variant="h3"
-            component="h2"
-            {...props}
-          />
+          <Title gutterBottom variant="h3" component="h2" {...props} />
         ),
         h3: props => (
-          <Typography
-            gutterBottom
-            className={classes.title}
-            variant="h4"
-            component="h3"
-            {...props}
-          />
+          <Title gutterBottom variant="h4" component="h3" {...props} />
         ),
         h4: props => (
-          <Typography
-            gutterBottom
-            className={classes.title}
-            variant="h5"
-            component="h4"
-            {...props}
-          />
+          <Title gutterBottom variant="h5" component="h4" {...props} />
         ),
         h5: props => (
-          <Typography
-            gutterBottom
-            className={classes.title}
-            variant="h6"
-            component="h5"
-            {...props}
-          />
+          <Title gutterBottom variant="h6" component="h5" {...props} />
         ),
         h6: props => (
-          <Typography
-            gutterBottom
-            className={classes.title}
-            variant="h6"
-            component="h6"
-            {...props}
-          />
+          <Title gutterBottom variant="h6" component="h6" {...props} />
         ),
-        a: props => <Link {...props} />,
+        a: props => <Link {...props} underline="hover" />,
         p: props => <Typography gutterBottom variant="body1" {...props} />,
         blockquote: (props: TypographyProps) => (
-          <Typography
-            variant="body1"
-            component="span"
-            className={classes.quote}
-            {...props}
-          />
+          <Quote variant="body1" {...props} />
         ),
 
         // Code
@@ -143,11 +108,10 @@ const MdxRenderer = ({ body }: { body: string }) => {
           )
         },
         inlineCode: props => (
-          <Typography
+          <InlineCode
             gutterBottom
             variant="body2"
             component="code"
-            className={classes.inlineCode}
             {...props}
           />
         ),
@@ -157,17 +121,17 @@ const MdxRenderer = ({ body }: { body: string }) => {
 
         // Tables
         table: props => (
-          <TableContainer component={Paper} className={classes.tableContainer}>
+          <TableContainer as={Paper}>
             <Table {...props} />
           </TableContainer>
         ),
         tr: props => <TableRow {...props} />,
-        td: props => <TableCell {...props} />,
-        th: props => <TableCell {...props} />,
+        td: props => <TableCell {...props} align="left" />,
+        th: props => <TableCell {...props} align="left" />,
 
         // Mixins
-        hr: () => <Divider className={classes.divider} />,
-        thematicBreak: () => <Divider className={classes.divider} />,
+        hr: () => <Divider />,
+        thematicBreak: () => <Divider />,
       }}
     >
       <MDXRenderer>{body}</MDXRenderer>
