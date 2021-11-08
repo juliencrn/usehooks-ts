@@ -1,3 +1,12 @@
 {
-  "extends": ["config:base"]
+  "extends": [
+    "config:base",
+    "schedule:monthly",
+    ":preserveSemverRanges",
+    "npm:unpublishSafe",
+    "workarounds:typesNodeVersioning",
+    "group:allNonMajor",
+    "helpers:disableTypesNodeMajor"
+  ],
+  "updateInternalDeps": true
 }
