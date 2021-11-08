@@ -56,7 +56,7 @@
   "devDependencies": {
     "@testing-library/react-hooks": "^7.0.2",
     "@types/glob": "^7.1.4",
-    "@types/jest": "^27.0.1",
+    "@types/jest": "27.0.2",
     "@types/node": "^16.9.1",
     "@types/react": ">=16.8.0",
     "@types/react-dom": ">=16.8.0",
