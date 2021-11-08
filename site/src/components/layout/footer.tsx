@@ -1,34 +1,24 @@
 import React from 'react'
 
-import Container from '@material-ui/core/Container'
-import Hidden from '@material-ui/core/Hidden'
-import Link from '@material-ui/core/Link'
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import Typography from '@material-ui/core/Typography'
+import { styled } from '@mui/material'
+import Container from '@mui/material/Container'
+import Hidden from '@mui/material/Hidden'
+import Link from '@mui/material/Link'
+import Typography from '@mui/material/Typography'
 
-import { reduceLayoutWidth } from './styleUtils'
 import useSiteMetadata from '~/hooks/useSiteMetadata'
 
-interface PropTypes {
-  isSidebarOpened: boolean
-}
-
-const useStyles = makeStyles(theme => ({
-  footer: {
-    padding: theme.spacing(3, 0),
-    marginTop: 'auto',
-    backgroundColor: theme.palette.background.paper,
-
-    ...reduceLayoutWidth(theme),
-  },
+const Root = styled('footer')(({ theme }) => ({
+  padding: theme.spacing(3, 0),
+  marginTop: 'auto',
+  backgroundColor: theme.palette.background.paper,
 }))
 
-function Footer(props: PropTypes) {
-  const classes = useStyles(props)
+function Footer() {
   const { author } = useSiteMetadata()
 
   return (
-    <footer className={classes.footer}>
+    <Root>
       <Container maxWidth="md">
         <Typography variant="body1" color="textSecondary" align="center">
           Made with{' '}
@@ -77,7 +67,7 @@ function Footer(props: PropTypes) {
           </Hidden>
         </Typography>
       </Container>
-    </footer>
+    </Root>
   )
 }
 

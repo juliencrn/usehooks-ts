@@ -1,32 +1,10 @@
-import blue from '@material-ui/core/colors/blue'
-import red from '@material-ui/core/colors/red'
-import { Theme, ThemeOptions } from '@material-ui/core/styles'
-import createTheme from '@material-ui/core/styles/createTheme'
-import responsiveFontSizes from '@material-ui/core/styles/responsiveFontSizes'
+import { responsiveFontSizes, Theme, ThemeOptions } from '@mui/material'
+import { blue, red } from '@mui/material/colors'
+import { createTheme } from '@mui/material/styles'
 import deepMerge from 'deepmerge'
 
 import FiraCode from './assets/fonts/FiraMono-Regular.otf'
 import FiraRegular from './assets/fonts/FiraSans-Regular.ttf'
-
-const firaRegular = {
-  fontFamily: 'Fira Sans Regular',
-  fontStyle: 'normal',
-  fontDisplay: 'swap',
-  fontWeight: 400,
-  src: `url(${FiraRegular}) format('truetype')`,
-}
-
-const firaCode = {
-  fontFamily: 'Fira Code',
-  fontStyle: 'normal',
-  fontDisplay: 'swap',
-  fontWeight: 400,
-  src: `
-    url(${FiraCode}) format('woOpenTypeff2')
-    local('Open Sans Regular'),
-    local('OpenSans-Regular'),
-  `,
-}
 
 export const dracula = {
   background: '#282a36',
@@ -48,7 +26,7 @@ export type Dracula = typeof dracula
 export const drawerWidth = 280
 
 const makeTheme = (variant: ThemeOptions): Theme => {
-  const common = {
+  const common: ThemeOptions = {
     palette: {
       error: {
         main: red.A400,
@@ -58,6 +36,9 @@ const makeTheme = (variant: ThemeOptions): Theme => {
         primary:
           'linear-gradient(140deg, rgb(57, 45, 209) 0%, rgb(142, 41, 149) 100%);',
       },
+    },
+    shape: {
+      borderRadius: 8,
     },
     typography: {
       fontFamily: [
@@ -72,12 +53,33 @@ const makeTheme = (variant: ThemeOptions): Theme => {
         '"Apple Color Emoji"',
         '"Segoe UI Emoji"',
         '"Segoe UI Symbol"',
-      ],
+      ].join(','),
     },
-    overrides: {
+
+    components: {
       MuiCssBaseline: {
-        '@global': {
-          '@font-face': [firaRegular, firaCode],
+        styleOverrides: `
+          @font-face {
+            font-family: Fira Sans Regular;
+            font-style: normal;
+            font-display: swap;
+            font-weight: 400;
+            src: url(${FiraRegular}) format(truetype);
+          }
+          @font-face {
+            font-family: Fira Code;
+            font-style: normal;
+            font-display: swap;
+            font-weight: 400;
+            src: url(${FiraCode}) format('woOpenTypeff2')
+            local('Open Sans Regular'),
+            local('OpenSans-Regular');
+          }
+        `,
+      },
+      MuiLink: {
+        defaultProps: {
+          underline: 'hover',
         },
       },
     },
@@ -89,7 +91,7 @@ const makeTheme = (variant: ThemeOptions): Theme => {
 
 const light: Partial<ThemeOptions> = {
   palette: {
-    type: 'light',
+    mode: 'light',
     primary: {
       main: blue[700],
     },
@@ -99,7 +101,7 @@ const light: Partial<ThemeOptions> = {
 // See: https://github.com/dracula/dracula-theme#color-palette
 const dark: Partial<ThemeOptions> = {
   palette: {
-    type: 'dark',
+    mode: 'dark',
     primary: {
       main: dracula.pink,
     },

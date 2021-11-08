@@ -1,36 +1,38 @@
 import React from 'react'
 
-import Box from '@material-ui/core/Box'
-import Container from '@material-ui/core/Container'
-import Link from '@material-ui/core/Link'
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import Typography from '@material-ui/core/Typography'
+import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
+import Link from '@mui/material/Link'
+import { styled } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
 import { graphql } from 'gatsby'
 
 import MdxRenderer from '~/components/mdxRenderer'
 import SEO from '~/components/seo'
 import { Post } from '~/models'
 
-const useStyles = makeStyles(theme => ({
-  title: {
+const PREFIX = 'PostTemplate'
+
+const classes = {
+  title: `${PREFIX}-title`,
+  subtitle: `${PREFIX}-subtitle`,
+  textMono: `${PREFIX}-textMono`,
+}
+
+const StyledContainer = styled(Container)(({ theme }) => ({
+  [`& .${classes.title}`]: {
     margin: theme.spacing(10, 0, 2),
     wordBreak: 'break-all',
     fontWeight: 700,
   },
-  subtitle: {
+
+  [`& .${classes.subtitle}`]: {
     margin: theme.spacing(4, 0, 2),
     wordBreak: 'break-all',
     fontWeight: 700,
   },
-  divider: {
-    margin: theme.spacing(3, 0),
-  },
-  meta: {
-    flexGrow: 1,
-    textAlign: 'center',
-    margin: theme.spacing(6, 0),
-  },
-  textMono: {
+
+  [`& .${classes.textMono}`]: {
     fontFamily: 'Fira Code, monospace',
   },
 }))
@@ -48,14 +50,13 @@ export interface PostTemplateProps {
 }
 
 function PostTemplate(props: PostTemplateProps) {
-  const classes = useStyles()
   const { post, hook, demo } = props.data
   const { body, excerpt, frontmatter } = post
   const repoUrl = 'https://github.com/juliencrn/usehooks-ts'
   const editLink = `${repoUrl}/tree/develop/src/hooks/${post.fields.name}`
 
   return (
-    <Container maxWidth="md">
+    <StyledContainer maxWidth="md">
       <SEO title={frontmatter.title} description={excerpt} />
 
       <Typography variant="h2" component="h1" className={classes.title}>
@@ -89,12 +90,12 @@ function PostTemplate(props: PostTemplateProps) {
         <Typography align="center" color="textSecondary">
           See a way to make this page better?
           <br />
-          <Link href={editLink} target="_blank">
+          <Link href={editLink} target="_blank" underline="hover">
             Edit there »
           </Link>
         </Typography>
       </Box>
-    </Container>
+    </StyledContainer>
   )
 }
 

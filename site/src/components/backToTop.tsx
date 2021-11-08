@@ -1,23 +1,20 @@
 import React, { FC, useState } from 'react'
 
-import Fab from '@material-ui/core/Fab'
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
+import { styled } from '@mui/material'
+import Fab from '@mui/material/Fab'
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 import { Link } from 'react-scroll'
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    position: 'fixed',
-    bottom: theme.spacing(2),
-    right: theme.spacing(2),
-    zIndex: 1000,
-    transition: `opacity 200ms`,
-  },
+const StyledLink = styled(Link)(({ theme }) => ({
+  position: 'fixed',
+  bottom: theme.spacing(2),
+  right: theme.spacing(2),
+  zIndex: 1000,
+  transition: `opacity 200ms`,
 }))
 
 const BackToTop: FC = () => {
-  const classes = useStyles()
   const [isVisible, setVisible] = useState(false)
 
   useScrollPosition(
@@ -34,17 +31,16 @@ const BackToTop: FC = () => {
   )
 
   return (
-    <Link
+    <StyledLink
       to="___gatsby"
       smooth
       isDynamic
-      className={classes.root}
       style={{ opacity: Number(isVisible) }}
     >
       <Fab color="primary" size="small" aria-label="scroll back to top">
         <KeyboardArrowUpIcon />
       </Fab>
-    </Link>
+    </StyledLink>
   )
 }
 

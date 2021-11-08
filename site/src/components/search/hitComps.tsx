@@ -1,45 +1,116 @@
-import React from 'react'
+import React, { ComponentType } from 'react'
 
-import Link from '@material-ui/core/Link'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import { alpha } from '@material-ui/core/styles'
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import Typography from '@material-ui/core/Typography'
+import { Divider } from '@mui/material'
+import Link from '@mui/material/Link'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import { alpha, styled } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
 import { Link as GatsbyLink } from 'gatsby'
+import { BasicDoc, Hit } from 'react-instantsearch-core'
 import { connectHits, Highlight } from 'react-instantsearch-dom'
 
-const useStyles = makeStyles(theme => ({
-  list: {
-    maxHeight: 500,
-    overflowY: 'auto',
-    padding: 0,
-  },
-  hit: {
-    paddingTop: theme.spacing(2),
+const PREFIX = 'Hits'
+
+const classes = {
+  hit: `${PREFIX}-hit`,
+  title: `${PREFIX}-title`,
+}
+
+const Hits = styled(List)(({ theme }) => ({
+  overflowY: 'auto',
+  padding: theme.spacing(1),
+
+  [`& .${classes.hit}`]: {
+    paddingTop: theme.spacing(1),
     flexDirection: 'column',
     alignItems: 'start',
+    border: '1px solid',
+    borderColor: 'transparent',
     '& em': {
       fontStyle: 'normal',
       background: alpha(theme.palette.primary.main, 0.3),
     },
+    '&:hover, &:focus': {
+      border: '1px solid',
+      borderColor: theme.palette.primary.main,
+      borderRadius: theme.shape.borderRadius,
+      backgroundColor: alpha(theme.palette.primary.main, 0.1),
+    },
   },
-  title: {
+
+  [`& .${classes.title}`]: {
     fontFamily: 'Fira Code, monospace',
     marginBottom: theme.spacing(1),
     display: 'block',
   },
-  powered: {
-    fontSize: '0.9em',
-    textAlign: 'end',
-    padding: theme.spacing(1, 2, 1),
+}))
+
+export const HitElement: ComponentType<{ hit: Hit<BasicDoc> }> = ({ hit }) => (
+  <ListItem
+    button
+    component={GatsbyLink}
+    to={hit.path}
+    className={classes.hit}
+    key={hit.objectID}
+  >
+    <Typography className={classes.title} variant="h6" component="span">
+      <Highlight attribute="title" hit={hit} />
+      ()
+    </Typography>
+    <Typography variant="body2" color="textSecondary" component="span">
+      <Highlight attribute="excerpt" hit={hit} />
+    </Typography>
+    <Divider />
+  </ListItem>
+)
+
+export const ConnectedHits = connectHits(({ hits }) => {
+  return (
+    <Hits>
+      {hits.map(hit => (
+        <HitElement key={hit.objectID} hit={hit} />
+      ))}
+    </Hits>
+  )
+})
+
+const FooterTypo = styled(Typography)(({ theme }) => ({
+  height: 40,
+  display: 'flex',
+  margin: theme.spacing(0, 2),
+  justifyContent: 'right',
+  alignItems: 'center',
+
+  ['& span']: {
+    fontSize: '0.8em',
+  },
+
+  ['& svg']: {
+    margin: theme.spacing(0, 0.5),
+  },
+
+  ['& a']: {
+    fontWeight: 'bold',
   },
 }))
+
+export const PoweredBy = () => {
+  return (
+    <FooterTypo color="textSecondary">
+      <span>Powered by</span>
+      <Algolia />
+      <Link href="https://algolia.com" target="_blank" rel="noreferrer">
+        algolia
+      </Link>
+    </FooterTypo>
+  )
+}
 
 const Algolia = () => (
   <svg
     aria-hidden="true"
-    width="0.88em"
+    width="20"
     preserveAspectRatio="xMidYMid meet"
     viewBox="0 0 448 512"
   >
@@ -50,40 +121,3 @@ const Algolia = () => (
     <rect x="0" y="0" width="448" height="512" fill="rgba(0, 0, 0, 0)" />
   </svg>
 )
-
-export const PoweredBy = () => {
-  const classes = useStyles()
-  return (
-    <Typography variant="body2" className={classes.powered}>
-      Powered by{` `}
-      <Link href="https://algolia.com" target="_blank" rel="noreferrer">
-        <Algolia /> Algolia
-      </Link>
-    </Typography>
-  )
-}
-
-export const ConnectedHits = connectHits(({ hits }) => {
-  const classes = useStyles()
-  return (
-    <List className={classes.list}>
-      {hits.map(hit => (
-        <ListItem
-          button
-          key={hit.objectID}
-          component={GatsbyLink}
-          to={`${hit.path}/`}
-          className={classes.hit}
-        >
-          <Typography className={classes.title} variant="h6" component="span">
-            <Highlight attribute="title" hit={hit} />
-            ()
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="span">
-            <Highlight attribute="excerpt" hit={hit} />
-          </Typography>
-        </ListItem>
-      ))}
-    </List>
-  )
-})

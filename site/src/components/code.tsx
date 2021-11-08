@@ -1,26 +1,35 @@
 import React from 'react'
 
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import Typography from '@material-ui/core/Typography'
+import { styled } from '@mui/material'
+import Typography from '@mui/material/Typography'
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 
 import CopyButton from './CopyButton'
 // TODO: Test that: https://github.com/dracula/highlightjs/tree/b80c704d6b081ec259d8e5b2ddf2925bd06e71bf
 // TODO: Test that: https://draculatheme.com/prism/
 import theme from '~/libs/prismjs-theme-dracula'
-// import theme from 'prism-react-renderer/themes/vsDark'
+const PREFIX = 'Code'
 
-const useStyles = makeStyles(theme => ({
-  root: {
+const classes = {
+  root: `${PREFIX}-root`,
+  copyButton: `${PREFIX}-copyButton`,
+  pre: `${PREFIX}-pre`,
+  line: `${PREFIX}-line`,
+}
+
+const Root = styled('div')(({ theme }) => ({
+  [`&.${classes.root}`]: {
     position: 'relative',
   },
-  copyButton: {
+
+  [`& .${classes.copyButton}`]: {
     position: 'absolute',
     top: theme.spacing(2),
     right: theme.spacing(2),
     color: theme.palette.common.white,
   },
-  pre: {
+
+  [`& .${classes.pre}`]: {
     textAlign: 'left',
     margin: theme.spacing(2, 0),
     padding: theme.spacing(3, 2),
@@ -29,7 +38,8 @@ const useStyles = makeStyles(theme => ({
     overflowX: 'auto',
     boxShadow: theme.shadows[6],
   },
-  line: {
+
+  [`& .${classes.line}`]: {
     display: 'inline-block',
     width: theme.spacing(4),
     userSelect: 'none',
@@ -43,10 +53,8 @@ export interface CodeProps {
 }
 
 const Code = ({ code, language = 'tsx' }: CodeProps) => {
-  const classes = useStyles()
-
   return (
-    <div className={classes.root}>
+    <Root className={classes.root}>
       <CopyButton classNames={classes.copyButton} value={code} />
       <Highlight
         {...defaultProps}
@@ -86,7 +94,7 @@ const Code = ({ code, language = 'tsx' }: CodeProps) => {
           </Typography>
         )}
       </Highlight>
-    </div>
+    </Root>
   )
 }
 

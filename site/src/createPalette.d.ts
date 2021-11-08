@@ -1,6 +1,6 @@
 import { Dracula } from './theme'
 
-declare module '@material-ui/core/styles/createPalette' {
+declare module '@mui/material/styles' {
   interface Palette {
     dracula: Dracula
     gradient: {

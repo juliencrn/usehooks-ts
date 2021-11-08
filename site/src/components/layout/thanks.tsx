@@ -1,38 +1,37 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-import IconButton from '@material-ui/core/IconButton'
-import Snackbar from '@material-ui/core/Snackbar'
-import { makeStyles, Theme } from '@material-ui/core/styles'
-import CloseIcon from '@material-ui/icons/Close'
+import CloseIcon from '@mui/icons-material/Close'
+import IconButton from '@mui/material/IconButton'
+import MuiSnackbar from '@mui/material/Snackbar'
+import { styled } from '@mui/material/styles'
+import { Box } from '@mui/system'
 import Confetti from 'react-confetti'
 import { useLocalStorage, useWindowSize } from 'usehooks-ts'
 
-import { reduceLayoutWidth } from './styleUtils'
+const PREFIX = 'Thanks'
 
-interface PropTypes {
-  isSidebarOpened: boolean
+const classes = {
+  snackbar: `${PREFIX}-snackbar`,
+  content: `${PREFIX}-content`,
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-  snackbar: {
-    flexDirection: 'column',
+const Snackbar = styled(MuiSnackbar)(({ theme }) => ({
+  flexDirection: 'column',
 
-    ...reduceLayoutWidth(theme),
-
-    '&::before': {
-      content: '""',
-      display: 'block',
-      ...theme.mixins.toolbar,
-    },
+  '&::before': {
+    content: '""',
+    display: 'block',
+    ...theme.mixins.toolbar,
   },
-  content: {
+
+  [`& .${classes.content}`]: {
     backgroundColor: theme.palette.background.paper,
+    backgroundImage: 'none',
     color: theme.palette.text.primary,
   },
 }))
 
-const Thanks: FC<PropTypes> = props => {
-  const classes = useStyles(props)
+const Thanks = () => {
   const [viewedCount, setViewedCount] = useLocalStorage(
     '500-stars-viewed-count',
     0,
@@ -53,9 +52,18 @@ const Thanks: FC<PropTypes> = props => {
 
   return (
     <>
-      {open && <Confetti width={width} height={height} />}
+      {open && (
+        <Box
+          position="absolute"
+          left="0"
+          top="0"
+          zIndex={1500}
+          onClick={handleClose}
+        >
+          <Confetti width={width} height={height} />
+        </Box>
+      )}
       <Snackbar
-        className={classes.snackbar}
         open={open}
         onClose={handleClose}
         anchorOrigin={{
