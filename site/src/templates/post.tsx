@@ -53,7 +53,7 @@ function PostTemplate(props: PostTemplateProps) {
   const { post, hook, demo } = props.data
   const { body, excerpt, frontmatter } = post
   const repoUrl = 'https://github.com/juliencrn/usehooks-ts'
-  const editLink = `${repoUrl}/tree/develop/src/hooks/${post.fields.name}`
+  const editLink = `${repoUrl}/tree/master/lib/src/${post.fields.name}`
 
   return (
     <StyledContainer maxWidth="md">
