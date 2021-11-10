@@ -54,6 +54,7 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 - [`useCounter()`](https://usehooks-ts.com/react-hook/use-counter)
 - [`useDarkMode()`](https://usehooks-ts.com/react-hook/use-dark-mode)
 - [`useDebounce()`](https://usehooks-ts.com/react-hook/use-debounce)
+- [`useEffectOnce()`](https://usehooks-ts.com/react-hook/use-effect-once)
 - [`useElementSize()`](https://usehooks-ts.com/react-hook/use-element-size)
 - [`useEventListener()`](https://usehooks-ts.com/react-hook/use-event-listener)
 - [`useFetch()`](https://usehooks-ts.com/react-hook/use-fetch)
@@ -62,6 +63,7 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 - [`useIntersectionObserver()`](https://usehooks-ts.com/react-hook/use-intersection-observer)
 - [`useInterval()`](https://usehooks-ts.com/react-hook/use-interval)
 - [`useIsClient()`](https://usehooks-ts.com/react-hook/use-is-client)
+- [`useIsFirstRender()`](https://usehooks-ts.com/react-hook/use-is-first-render)
 - [`useIsMounted()`](https://usehooks-ts.com/react-hook/use-is-mounted)
 - [`useLocalStorage()`](https://usehooks-ts.com/react-hook/use-local-storage)
 - [`useLockedBody()`](https://usehooks-ts.com/react-hook/use-locked-body)
@@ -73,6 +75,7 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 - [`useSsr()`](https://usehooks-ts.com/react-hook/use-ssr)
 - [`useStep()`](https://usehooks-ts.com/react-hook/use-step)
 - [`useTimeout()`](https://usehooks-ts.com/react-hook/use-timeout)
+- [`useUpdateEffect()`](https://usehooks-ts.com/react-hook/use-update-effect)
 - [`useWindowSize()`](https://usehooks-ts.com/react-hook/use-window-size)
 
 <!-- HOOKS:END -->
