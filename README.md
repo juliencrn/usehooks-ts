@@ -18,7 +18,7 @@
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-33-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-36-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -166,6 +166,11 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/jaslong"><img src="https://avatars.githubusercontent.com/u/797348?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Jason Long</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Ajaslong" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/kxm766"><img src="https://avatars.githubusercontent.com/u/88443148?v=4?s=80" width="80px;" alt=""/><br /><sub><b>kxm766</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Akxm766" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://qlaffont.com/"><img src="https://avatars.githubusercontent.com/u/10044790?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Quentin</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=qlaffont" title="Code">💻</a> <a href="#ideas-qlaffont" title="Ideas, Planning, & Feedback">🤔</a> <a href="#content-qlaffont" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/ducktordanny"><img src="https://avatars.githubusercontent.com/u/38068717?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Daniel Lazar</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=ducktordanny" title="Code">💻</a> <a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Aducktordanny" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/mterrel"><img src="https://avatars.githubusercontent.com/u/17746857?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Mark Terrel</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Amterrel" title="Bug reports">🐛</a> <a href="https://github.com/juliencrn/usehooks-ts/commits?author=mterrel" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/mendrik"><img src="https://avatars.githubusercontent.com/u/160805?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Andreas Herd</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Amendrik" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 

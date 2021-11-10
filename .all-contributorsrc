@@ -316,6 +316,35 @@
         "ideas",
         "content"
       ]
+    },
+    {
+      "login": "ducktordanny",
+      "name": "Daniel Lazar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38068717?v=4",
+      "profile": "https://github.com/ducktordanny",
+      "contributions": [
+        "code",
+        "bug"
+      ]
+    },
+    {
+      "login": "mterrel",
+      "name": "Mark Terrel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17746857?v=4",
+      "profile": "https://github.com/mterrel",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "mendrik",
+      "name": "Andreas Herd",
+      "avatar_url": "https://avatars.githubusercontent.com/u/160805?v=4",
+      "profile": "https://github.com/mendrik",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7
