@@ -1,4 +1,5 @@
 export * from './useBoolean'
+export * from './useClickAnyWhere'
 export * from './useCopyToClipboard'
 export * from './useCounter'
 export * from './useDarkMode'
