@@ -1,33 +1,24 @@
-import { RefObject, useEffect } from 'react'
+import { RefObject } from 'react'
 
-type AnyEvent = MouseEvent | TouchEvent
+import { useEventListener } from '../useEventListener'
+
+type Handler = (event: MouseEvent) => void
 
 function useOnClickOutside<T extends HTMLElement = HTMLElement>(
   ref: RefObject<T>,
-  handler: (event: AnyEvent) => void,
+  handler: Handler,
 ): void {
-  useEffect(() => {
-    const listener = (event: AnyEvent) => {
-      const el = ref?.current
+  useEventListener('click', event => {
+    const el = ref?.current
 
-      // Do nothing if clicking ref's element or descendent elements
-      if (!el || el.contains(event.target as Node)) {
-        return
-      }
-
-      handler(event)
+    // Do nothing if clicking ref's element or descendent elements
+    if (!el || el.contains(event.target as Node)) {
+      return
     }
 
-    document.addEventListener(`mousedown`, listener)
-    document.addEventListener(`touchstart`, listener)
-
-    return () => {
-      document.removeEventListener(`mousedown`, listener)
-      document.removeEventListener(`touchstart`, listener)
-    }
-
-    // Reload only if ref or handler changes
-  }, [ref, handler])
+    // Explicit type for "click" event.
+    handler(event as unknown as MouseEvent)
+  })
 }
 
 export default useOnClickOutside
