@@ -1,27 +1,33 @@
-import React, { useRef } from 'react'
+import React, { useState } from 'react'
 
 import { useElementSize } from 'usehooks-ts'
 
 export default function Component() {
-  const squareRef = useRef(null)
+  const [isVisible, setVisible] = useState(true)
+  const [squareRef, { width, height }] = useElementSize()
 
-  const { width, height } = useElementSize(squareRef)
+  const toggleVisibility = () => setVisible(x => !x)
 
   return (
     <>
-      <p>{`the square width is ${width}px and height ${height}px`}</p>
+      <p>{`The square width is ${width}px and height ${height}px`}</p>
+      <p>Try, resize your window and-or click on the button.</p>
 
-      <div
-        ref={squareRef}
-        style={{
-          width: '50%',
-          paddingTop: '50%',
-          backgroundColor: 'aquamarine',
-          margin: 'auto',
-        }}
-      />
+      <button onClick={toggleVisibility}>
+        {isVisible ? 'Hide' : 'Show'} square
+      </button>
 
-      <p>Try, resize your window</p>
+      {isVisible && (
+        <div
+          ref={squareRef}
+          style={{
+            width: '50%',
+            paddingTop: '50%',
+            backgroundColor: 'aquamarine',
+            margin: 'auto',
+          }}
+        />
+      )}
     </>
   )
 }

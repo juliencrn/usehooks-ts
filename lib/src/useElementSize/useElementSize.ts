@@ -1,4 +1,4 @@
-import { RefObject, useCallback, useLayoutEffect, useState } from 'react'
+import { useCallback, useLayoutEffect, useState } from 'react'
 
 // See: https://usehooks-ts.com/react-hook/use-event-listener
 import { useEventListener } from '../useEventListener'
@@ -8,9 +8,14 @@ interface Size {
   height: number
 }
 
-function useElementSize<T extends HTMLElement = HTMLDivElement>(
-  elementRef: RefObject<T> | null,
-): Size {
+function useElementSize<T extends HTMLElement = HTMLDivElement>(): [
+  (node: T | null) => void,
+  Size,
+] {
+  // Mutable values like 'ref.current' aren't valid dependencies
+  // because mutating them doesn't re-render the component.
+  // Instead, we use a state as a ref to be reactive.
+  const [ref, setRef] = useState<T | null>(null)
   const [size, setSize] = useState<Size>({
     width: 0,
     height: 0,
@@ -18,24 +23,22 @@ function useElementSize<T extends HTMLElement = HTMLDivElement>(
 
   // Prevent too many rendering using useCallback
   const handleSize = useCallback(() => {
-    const node = elementRef?.current
-    if (node) {
-      setSize({
-        width: node.offsetWidth || 0,
-        height: node.offsetHeight || 0,
-      })
-    }
-  }, [elementRef])
+    setSize({
+      width: ref?.offsetWidth || 0,
+      height: ref?.offsetHeight || 0,
+    })
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ref?.offsetHeight, ref?.offsetWidth])
 
   useEventListener('resize', handleSize)
 
-  // Initial size on mount
   useLayoutEffect(() => {
     handleSize()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [ref?.offsetHeight, ref?.offsetWidth])
 
-  return size
+  return [setRef, size]
 }
 
 export default useElementSize

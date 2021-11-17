@@ -43,7 +43,6 @@
     "start:lib": "cd lib && npm run start",
     "serve:site": "cd site && npm run serve",
     "publish": "npm run build:lib && npm run test && lerna publish --no-git-reset",
-    "postpublish": "git push --tags origin",
     "update:readme": "ts-node ./scripts/updateReadme.ts",
     "copy:hooks": "rimraf -rf ./site/generated && ts-node ./scripts/copyHooks.ts",
     "plop": "plop && npm run update:readme && npm run format",
