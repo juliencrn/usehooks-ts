@@ -82,7 +82,7 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 
 ## 👉 Installation
 
-**Note**: The project uses `Node@14` and `npm@6`.
+**Note**: The project uses `Node@^16` and `npm@^8`.
 
 Two ways:
 
