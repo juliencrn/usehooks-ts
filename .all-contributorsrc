@@ -345,6 +345,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "sonjoydatta",
+      "name": "Sonjoy Datta",
+      "avatar_url": "https://avatars.githubusercontent.com/u/49079726?v=4",
+      "profile": "https://sonjoydatta.me/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7

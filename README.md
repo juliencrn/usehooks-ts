@@ -18,7 +18,7 @@
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-36-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-37-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -174,6 +174,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/mendrik"><img src="https://avatars.githubusercontent.com/u/160805?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Andreas Herd</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Amendrik" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://sonjoydatta.me/"><img src="https://avatars.githubusercontent.com/u/49079726?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Sonjoy Datta</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=sonjoydatta" title="Code">💻</a></td>
   </tr>
 </table>
 
