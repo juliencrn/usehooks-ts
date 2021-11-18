@@ -11,7 +11,8 @@ function useInterval(callback: () => void, delay: number | null) {
   // Set up the interval.
   useEffect(() => {
     // Don't schedule if no delay is specified.
-    if (!delay) {
+    // Note: 0 is a valid value for delay.
+    if (!delay && delay !== 0) {
       return
     }
 
