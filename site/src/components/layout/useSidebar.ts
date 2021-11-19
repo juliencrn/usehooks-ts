@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { useMediaQuery, useTheme } from '@mui/material'
+import { useUpdateEffect } from 'usehooks-ts'
 
 type ReturnType = [
   boolean,
@@ -23,7 +24,7 @@ function useSidebar(): ReturnType {
 
   const openSidebar = () => setOpen(true)
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     // Hide sidebar by default on small screen
     if (isMobile && isOpen) {
       closeSidebar()

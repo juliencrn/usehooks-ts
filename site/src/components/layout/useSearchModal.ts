@@ -1,13 +1,11 @@
-import { useEffect } from 'react'
-
 import { useLocation } from '@reach/router'
-import { useBoolean } from 'usehooks-ts'
+import { useBoolean, useUpdateEffect } from 'usehooks-ts'
 
 const useSearchModal = (): [boolean, Record<string, () => void>] => {
   const { value, setTrue: openModal, setFalse: closeModal } = useBoolean(false)
   const location = useLocation()
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     closeModal()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location])
