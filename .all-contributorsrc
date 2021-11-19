@@ -354,6 +354,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "oluckyman",
+      "name": "Ilya Belsky",
+      "avatar_url": "https://avatars.githubusercontent.com/u/642673?v=4",
+      "profile": "https://github.com/oluckyman",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7
