@@ -50,6 +50,7 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 <!-- HOOKS:START -->
 
 - [`useBoolean()`](https://usehooks-ts.com/react-hook/use-boolean)
+- [`useClickAnyWhere()`](https://usehooks-ts.com/react-hook/use-click-any-where)
 - [`useCopyToClipboard()`](https://usehooks-ts.com/react-hook/use-copy-to-clipboard)
 - [`useCounter()`](https://usehooks-ts.com/react-hook/use-counter)
 - [`useDarkMode()`](https://usehooks-ts.com/react-hook/use-dark-mode)
