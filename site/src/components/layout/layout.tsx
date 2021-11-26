@@ -47,11 +47,12 @@ const StyledLayout: FC = ({ children }) => {
   const { title } = useSiteMetadata()
   const [isSidebarOpen, { openSidebar, closeSidebar }] = useSidebar()
   const [isModalOpen, { openModal, closeModal }] = useSearchModal()
-  const { breakpoints } = useTheme()
-  const isLarge = useMediaQuery(breakpoints.up('md'))
+  const theme = useTheme()
+  const isLarge = useMediaQuery(theme.breakpoints.up('md'))
 
   return (
     <Root>
+      <CustomScrollbar theme={theme} />
       <Header
         siteTitle={title}
         openSidebar={openSidebar}
@@ -83,7 +84,7 @@ const Layout: FC = props => {
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <CustomScrollbar theme={theme} />
+
         <StyledLayout>{props.children}</StyledLayout>
       </ThemeProvider>
     </StyledEngineProvider>
