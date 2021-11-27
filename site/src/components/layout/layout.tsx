@@ -3,7 +3,6 @@ import React, { FC } from 'react'
 import { styled, useMediaQuery, useTheme } from '@mui/material'
 import CssBaseline from '@mui/material/CssBaseline'
 import GlobalStyles from '@mui/material/GlobalStyles'
-import { StyledEngineProvider } from '@mui/material/styles'
 import { ThemeProvider } from '@mui/material/styles'
 import { css } from '@mui/styled-engine'
 import { Theme } from '@mui/system'
@@ -18,7 +17,7 @@ import useSearchModal from './useSearchModal'
 import useSidebar from './useSidebar'
 // import Thanks from './thanks'
 import useSiteMetadata from '~/hooks/useSiteMetadata'
-import themes, { drawerWidth } from '~/theme'
+import { drawerWidth, Themes } from '~/theme'
 
 const Root = styled('div')(() => ({
   display: 'flex',
@@ -43,15 +42,16 @@ const Main = styled('main')(({ theme }) => ({
   },
 }))
 
-const StyledLayout: FC = ({ children }) => {
+const Layout: FC = ({ children }) => {
   const { title } = useSiteMetadata()
   const [isSidebarOpen, { openSidebar, closeSidebar }] = useSidebar()
   const [isModalOpen, { openModal, closeModal }] = useSearchModal()
-  const { breakpoints } = useTheme()
-  const isLarge = useMediaQuery(breakpoints.up('md'))
+  const theme = useTheme()
+  const isLarge = useMediaQuery(theme.breakpoints.up('md'))
 
   return (
     <Root>
+      <CustomScrollbar theme={theme} />
       <Header
         siteTitle={title}
         openSidebar={openSidebar}
@@ -75,22 +75,18 @@ const StyledLayout: FC = ({ children }) => {
   )
 }
 
-const Layout: FC = props => {
+const TopLayout: FC<{ themes: Themes }> = ({ children, themes }) => {
   const { isDarkMode } = useDarkMode(true)
   const theme = themes[isDarkMode ? 'dark' : 'light']
-
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <CustomScrollbar theme={theme} />
-        <StyledLayout>{props.children}</StyledLayout>
-      </ThemeProvider>
-    </StyledEngineProvider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Layout>{children}</Layout>
+    </ThemeProvider>
   )
 }
 
-export default Layout
+export default TopLayout
 
 const CustomScrollbar = ({ theme }: { theme: Theme }) => (
   <GlobalStyles
