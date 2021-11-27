@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react'
 
-import Layout from '../components/layout'
+import TopLayout from '~/components/layout/layout'
+import themes from '~/theme'
 
 const wrapPageElement = ({ element }: { element: ReactNode }) => {
-  return <Layout>{element}</Layout>
+  return <TopLayout themes={themes}>{element}</TopLayout>
 }
 
 export default wrapPageElement

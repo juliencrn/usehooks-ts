@@ -116,7 +116,12 @@ const dark: Partial<ThemeOptions> = {
   },
 }
 
-const themes = {
+export interface Themes {
+  dark: Theme
+  light: Theme
+}
+
+const themes: Themes = {
   light: makeTheme(light),
   dark: makeTheme(dark),
 }

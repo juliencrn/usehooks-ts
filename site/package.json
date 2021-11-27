@@ -57,7 +57,6 @@
     "usehooks-ts": "file:../lib"
   },
   "devDependencies": {
-    "@types/date-fns": "^2.6.0",
     "@types/mdx-js__react": "^1.5.4",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.10",
