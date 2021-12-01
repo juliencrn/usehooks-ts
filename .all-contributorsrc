@@ -363,6 +363,24 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "JamesBarrettDev",
+      "name": "James Barrett",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42980207?v=4",
+      "profile": "https://jamesbarrett.io/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "AbbalYouness",
+      "name": "AbbalYouness",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15120524?v=4",
+      "profile": "https://github.com/AbbalYouness",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
