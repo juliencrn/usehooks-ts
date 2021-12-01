@@ -69,6 +69,7 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 - [`useLocalStorage()`](https://usehooks-ts.com/react-hook/use-local-storage)
 - [`useLockedBody()`](https://usehooks-ts.com/react-hook/use-locked-body)
 - [`useMap()`](https://usehooks-ts.com/react-hook/use-map)
+- [`useMediaQuery()`](https://usehooks-ts.com/react-hook/use-media-query)
 - [`useOnClickOutside()`](https://usehooks-ts.com/react-hook/use-on-click-outside)
 - [`useReadLocalStorage()`](https://usehooks-ts.com/react-hook/use-read-local-storage)
 - [`useScreen()`](https://usehooks-ts.com/react-hook/use-screen)
