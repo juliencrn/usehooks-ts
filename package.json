@@ -62,7 +62,7 @@
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.28.5",
     "all-contributors-cli": "^6.20.0",
-    "chalk": "^4.1.2",
+    "chalk": "^5.0.0",
     "concurrently": "^6.2.1",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
