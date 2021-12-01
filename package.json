@@ -64,7 +64,7 @@
     "all-contributors-cli": "^6.20.0",
     "chalk": "^4.1.2",
     "concurrently": "^6.2.1",
-    "eslint": "^7.32.0",
+    "eslint": "^8.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jest": "^24.4.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
