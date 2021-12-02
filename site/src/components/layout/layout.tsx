@@ -6,7 +6,6 @@ import GlobalStyles from '@mui/material/GlobalStyles'
 import { ThemeProvider } from '@mui/material/styles'
 import { css } from '@mui/styled-engine'
 import { Theme } from '@mui/system'
-import { useDarkMode } from 'usehooks-ts'
 
 import BackToTop from '../backToTop'
 import SearchModal from '../search/SearchModal'
@@ -17,7 +16,7 @@ import useSearchModal from './useSearchModal'
 import useSidebar from './useSidebar'
 // import Thanks from './thanks'
 import useSiteMetadata from '~/hooks/useSiteMetadata'
-import { drawerWidth, Themes } from '~/theme'
+import themes, { drawerWidth } from '~/theme'
 
 const Root = styled('div')(() => ({
   display: 'flex',
@@ -75,9 +74,10 @@ const Layout: FC = ({ children }) => {
   )
 }
 
-const TopLayout: FC<{ themes: Themes }> = ({ children, themes }) => {
-  const { isDarkMode } = useDarkMode(true)
-  const theme = themes[isDarkMode ? 'dark' : 'light']
+const TopLayout: FC = ({ children }) => {
+  const matches = useMediaQuery('(prefers-color-scheme: dark)')
+  const theme = themes[matches ? 'dark' : 'light']
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

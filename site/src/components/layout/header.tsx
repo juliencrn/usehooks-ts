@@ -1,11 +1,9 @@
 import React from 'react'
 
-import Brightness3Icon from '@mui/icons-material/Brightness3'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import MenuIcon from '@mui/icons-material/Menu'
 import RssFeedIcon from '@mui/icons-material/RssFeed'
 import SearchIcon from '@mui/icons-material/Search'
-import WbSunnyIcon from '@mui/icons-material/WbSunny'
 import { styled } from '@mui/material'
 import MuiAppBar from '@mui/material/AppBar'
 import Hidden from '@mui/material/Hidden'
@@ -17,7 +15,6 @@ import Typography from '@mui/material/Typography'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { Box } from '@mui/system'
 import { Link as GatsbyLink } from 'gatsby'
-import { useDarkMode } from 'usehooks-ts'
 
 import useSiteMetadata from '~/hooks/useSiteMetadata'
 
@@ -57,7 +54,6 @@ function Header({ siteTitle, openSidebar, openSearch }: HeaderProps) {
   const { author } = useSiteMetadata()
   const { breakpoints } = useTheme()
   const isMobile = useMediaQuery(breakpoints.down('lg'))
-  const { isDarkMode, toggle } = useDarkMode()
 
   return (
     <AppBar position="fixed">
@@ -102,10 +98,6 @@ function Header({ siteTitle, openSidebar, openSearch }: HeaderProps) {
 
         <IconButton aria-label="Search" color="inherit" onClick={openSearch}>
           <SearchIcon />
-        </IconButton>
-
-        <IconButton aria-label="Switch theme" color="inherit" onClick={toggle}>
-          {isDarkMode ? <WbSunnyIcon /> : <Brightness3Icon />}
         </IconButton>
 
         <Hidden xsDown>
