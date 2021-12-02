@@ -1,27 +1,34 @@
-import { useLayoutEffect, useState } from 'react'
-
-// See: https://usehooks-ts.com/react-hook/use-event-listener
-import { useEventListener } from '../useEventListener'
+import { useEffect, useState } from 'react'
 
 function useMediaQuery(query: string): boolean {
   const getMatches = (query: string): boolean => {
-    const mediaQueryList = window.matchMedia(query)
-    return mediaQueryList.matches
+    // Prevents SSR issues
+    if (typeof window !== 'undefined') {
+      return window.matchMedia(query).matches
+    }
+    return false
   }
 
   const [matches, setMatches] = useState<boolean>(getMatches(query))
 
-  function handleSize() {
+  function handleChange() {
     setMatches(getMatches(query))
   }
 
-  useEventListener('resize', handleSize)
+  useEffect(() => {
+    const matchMedia = window.matchMedia(query)
 
-  // Set size at the first client-side load
-  useLayoutEffect(() => {
-    handleSize()
+    // Triggered at the first client-side load and if query changes
+    handleChange()
+
+    // Listen matchMedia
+    matchMedia.addEventListener('change', handleChange)
+
+    return () => {
+      matchMedia.removeEventListener('change', handleChange)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [query])
 
   return matches
 }
