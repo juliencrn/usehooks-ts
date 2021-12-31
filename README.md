@@ -52,6 +52,7 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 - [`useBoolean()`](https://usehooks-ts.com/react-hook/use-boolean)
 - [`useClickAnyWhere()`](https://usehooks-ts.com/react-hook/use-click-any-where)
 - [`useCopyToClipboard()`](https://usehooks-ts.com/react-hook/use-copy-to-clipboard)
+- [`useCountdown()`](https://usehooks-ts.com/react-hook/use-countdown)
 - [`useCounter()`](https://usehooks-ts.com/react-hook/use-counter)
 - [`useDarkMode()`](https://usehooks-ts.com/react-hook/use-dark-mode)
 - [`useDebounce()`](https://usehooks-ts.com/react-hook/use-debounce)
