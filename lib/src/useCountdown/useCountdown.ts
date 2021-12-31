@@ -2,7 +2,7 @@
 import { useBoolean } from '../useBoolean'
 // See: https://usehooks-ts.com/react-hook/use-counter
 import { useCounter } from '../useCounter'
-// See: https://usehooks-ts.com/react-hook/use-counter
+// See: https://usehooks-ts.com/react-hook/use-interval
 import { useInterval } from '../useInterval'
 
 interface UseCountdownType {
@@ -16,6 +16,13 @@ interface CountdownHelpers {
   reset: () => void
 }
 
+/**
+ *
+ * @param seconds the countdown's number, generally time seconds
+ * @param interval the countdown's interval, milliseconds
+ * @param isIncrement determine the countdown is increment, otherwise is decrement
+ * @returns
+ */
 function useCountdown({
   seconds,
   interval,
@@ -27,16 +34,23 @@ function useCountdown({
     decrement,
     reset: resetCounter,
   } = useCounter(seconds)
-  const { value, setTrue, setFalse } = useBoolean(false)
+  /**
+   * Note: used to control the useInterval
+   * running: If true, the interval is running
+   * start: Should set running true to trigger interval
+   * stop: Should set running false to remove interval
+   */
+  const { value: running, setTrue: start, setFalse: stop } = useBoolean(false)
 
-  const start = setTrue
-  const stop = setFalse
+  /**
+   * Will set running false and reset the seconds to initial value
+   */
   const reset = () => {
-    setFalse()
+    stop()
     resetCounter()
   }
 
-  useInterval(isIncrement ? increment : decrement, value ? interval : null)
+  useInterval(isIncrement ? increment : decrement, running ? interval : null)
   return [count, { start, stop, reset }]
 }
 

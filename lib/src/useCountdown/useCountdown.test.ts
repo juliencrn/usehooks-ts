@@ -16,47 +16,65 @@ describe('useCountdown()', () => {
     expect(typeof result.current[1].reset).toBe('function')
   })
 
-  test('should increment count', () => {
-    const { result } = renderHook(() =>
-      useCountdown({ seconds: 60, interval: 500, isIncrement: true }),
-    )
+  describe('start', () => {
+    test('should increment count', () => {
+      const { result } = renderHook(() =>
+        useCountdown({ seconds: 60, interval: 500, isIncrement: true }),
+      )
 
-    act(result.current[1].start)
-    act(() => {
-      jest.advanceTimersByTime(1000)
+      act(result.current[1].start)
+      act(() => {
+        jest.advanceTimersByTime(1000)
+      })
+
+      expect(result.current[0]).toBeGreaterThan(60)
     })
-    act(result.current[1].stop)
 
-    expect(result.current[0]).toBeGreaterThan(60)
+    test('should decrement count', () => {
+      const { result } = renderHook(() =>
+        useCountdown({ seconds: 60, interval: 500 }),
+      )
+
+      act(result.current[1].start)
+      act(() => {
+        jest.advanceTimersByTime(1000)
+      })
+
+      expect(result.current[0]).toBeLessThan(60)
+    })
   })
 
-  test('should decrement count', () => {
-    const { result } = renderHook(() =>
-      useCountdown({ seconds: 60, interval: 500 }),
-    )
+  describe('stop', () => {
+    test('should stop countdown', () => {
+      const { result } = renderHook(() =>
+        useCountdown({ seconds: 60, interval: 500 }),
+      )
 
-    act(result.current[1].start)
-    act(() => {
-      jest.advanceTimersByTime(1000)
+      expect(result.current[0]).toBe(60)
+      act(result.current[1].start)
+      act(() => {
+        jest.advanceTimersByTime(1000)
+      })
+      act(result.current[1].stop)
+      expect(result.current[0]).toBe(58)
     })
-    act(result.current[1].stop)
-
-    expect(result.current[0]).toBeLessThan(60)
   })
 
-  test('should reset count', () => {
-    const { result } = renderHook(() =>
-      useCountdown({ seconds: 60, interval: 500 }),
-    )
+  describe('reset', () => {
+    test('should reset count', () => {
+      const { result } = renderHook(() =>
+        useCountdown({ seconds: 60, interval: 500 }),
+      )
 
-    act(result.current[1].start)
-    act(() => {
-      jest.advanceTimersByTime(1000)
+      act(result.current[1].start)
+      act(() => {
+        jest.advanceTimersByTime(1000)
+      })
+      act(result.current[1].stop)
+      expect(result.current[0]).toBeLessThan(60)
+
+      act(result.current[1].reset)
+      expect(result.current[0]).toBe(60)
     })
-    act(result.current[1].stop)
-    expect(result.current[0]).toBeLessThan(60)
-
-    act(result.current[1].reset)
-    expect(result.current[0]).toBe(60)
   })
 })
