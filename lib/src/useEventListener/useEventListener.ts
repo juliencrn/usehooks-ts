@@ -1,17 +1,17 @@
 import { RefObject, useEffect, useRef } from 'react'
 
-function useEventListener<T extends HTMLElement = HTMLDivElement>(
+function useEventListener<T extends HTMLElement = HTMLDivElement> (
   eventName: keyof WindowEventMap | string, // string to allow custom event
   handler: (event: Event) => void,
-  element?: RefObject<T>,
-) {
+  element?: RefObject<T>
+): void {
   // Create a ref that stores handler
   const savedHandler = useRef<(event: Event) => void>()
 
   useEffect(() => {
     // Define the listening target
-    const targetElement: T | Window = element?.current || window
-    if (!(targetElement && targetElement.addEventListener)) {
+    const targetElement: T | Window = window
+    if ((targetElement?.addEventListener) == null) {
       return
     }
 
@@ -21,9 +21,9 @@ function useEventListener<T extends HTMLElement = HTMLDivElement>(
     }
 
     // Create event listener that calls handler function stored in ref
-    const eventListener = (event: Event) => {
+    const eventListener = (event: Event): void => {
       // eslint-disable-next-line no-extra-boolean-cast
-      if (!!savedHandler?.current) {
+      if (((savedHandler?.current) != null)) {
         savedHandler.current(event)
       }
     }
