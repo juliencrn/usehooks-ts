@@ -381,6 +381,33 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "DidrikLind",
+      "name": "didriklind",
+      "avatar_url": "https://avatars.githubusercontent.com/u/14201715?v=4",
+      "profile": "https://github.com/DidrikLind",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "hexp1989",
+      "name": "hexp1989",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2241985?v=4",
+      "profile": "https://github.com/hexp1989",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "alvaroserrrano",
+      "name": "Alvaro Serrano",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43758471?v=4",
+      "profile": "https://www.linkedin.com/in/alvaro-serrano-rivas/",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7
