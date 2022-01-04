@@ -118,6 +118,9 @@ npm run plop
 
 # Exec types-checking, linters and tests
 npm run test
+
+# Update dependencies (in each packages)
+npx npm-check -u
 ```
 
 See more in [package.json](./package.json).

@@ -16,8 +16,7 @@
     "serve": "gatsby serve",
     "start": "gatsby develop",
     "clean": "gatsby clean",
-    "types-check": "tsc",
-    "upgrade-interactive": "npm-check --update"
+    "types-check": "tsc"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
@@ -39,7 +38,6 @@
     "gatsby-plugin-manifest": "^4.4.0",
     "gatsby-plugin-material-ui": "^4.1.0",
     "gatsby-plugin-mdx": "^3.4.0",
-    "gatsby-plugin-netlify": "^3.10.0",
     "gatsby-plugin-offline": "^5.4.0",
     "gatsby-plugin-react-helmet": "^5.4.0",
     "gatsby-plugin-robots-txt": "^1.6.9",
@@ -65,7 +63,6 @@
     "@types/react-scroll": "^1.8.3",
     "gatsby-cli": "^4.4.0",
     "gatsby-plugin-typescript-checker": "^1.1.1",
-    "npm-check": "^5.9.2",
     "remark-codesandbox": "^0.10.0",
     "source-map-support": "^0.5.21",
     "ts-node": "^10.1.0",

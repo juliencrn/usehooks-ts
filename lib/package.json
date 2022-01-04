@@ -27,13 +27,11 @@
     "build:cjs": "tsc -p tsconfig.build.json",
     "build:es": "npm run build:cjs -- -m esNext --outDir esm",
     "clean": "rimraf -rf ./dist ./esm",
-    "types-check": "tsc -p tsconfig.json",
-    "upgrade-interactive": "npm-check --update"
+    "types-check": "tsc -p tsconfig.json"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^7.0.2",
     "chokidar-cli": "^3.0.0",
-    "npm-check": "^5.9.2",
     "react": ">=16.8.0",
     "react-test-renderer": ">=16.8.0",
     "rimraf": "^3.0.2",
