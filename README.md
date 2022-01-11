@@ -201,9 +201,8 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 ## 🚗 Roadmap
 
-- [ ] Add new hooks
+- [ ] Add new hooks (web3 hooks are welcome!)
 - [ ] Develop automated tests for all hooks
-- [ ] Add a live preview system to interact with hooks
 
 ## 📝 License
 
