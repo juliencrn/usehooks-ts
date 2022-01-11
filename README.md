@@ -77,6 +77,7 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 - [`useScript()`](https://usehooks-ts.com/react-hook/use-script)
 - [`useSsr()`](https://usehooks-ts.com/react-hook/use-ssr)
 - [`useStep()`](https://usehooks-ts.com/react-hook/use-step)
+- [`useTernaryDarkMode()`](https://usehooks-ts.com/react-hook/use-ternary-dark-mode)
 - [`useTimeout()`](https://usehooks-ts.com/react-hook/use-timeout)
 - [`useUpdateEffect()`](https://usehooks-ts.com/react-hook/use-update-effect)
 - [`useWindowSize()`](https://usehooks-ts.com/react-hook/use-window-size)
