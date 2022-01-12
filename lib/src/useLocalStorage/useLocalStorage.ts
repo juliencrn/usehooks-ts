@@ -3,6 +3,12 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 // See: https://usehooks-ts.com/react-hook/use-event-listener
 import { useEventListener } from '../useEventListener'
 
+declare global {
+  interface WindowEventMap {
+    'local-storage': CustomEvent
+  }
+}
+
 type SetValue<T> = Dispatch<SetStateAction<T>>
 
 function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
