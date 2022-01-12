@@ -17,8 +17,7 @@ function useOnClickOutside<T extends HTMLElement = HTMLElement>(
       return
     }
 
-    // Explicit type for "mousedown" event.
-    handler(event as unknown as MouseEvent)
+    handler(event)
   })
 }
 

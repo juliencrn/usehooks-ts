@@ -53,6 +53,7 @@
     "*": "prettier --ignore-unknown --write"
   },
   "devDependencies": {
+    "@testing-library/react": "^12.1.2",
     "@testing-library/react-hooks": "^7.0.2",
     "@types/glob": "^7.1.4",
     "@types/jest": "^27.4.0",
