@@ -4,7 +4,7 @@ type Handler = (event: MouseEvent) => void
 
 function useClickAnyWhere(handler: Handler) {
   useEventListener('click', event => {
-    handler(event as unknown as MouseEvent)
+    handler(event)
   })
 }
 
