@@ -2,8 +2,8 @@
 import { useLocalStorage } from '../useLocalStorage'
 // See: https://usehooks-ts.com/react-hook/use-media-query
 import { useMediaQuery } from '../useMediaQuery'
-
-import { useUpdateEffect } from '..'
+// See: https://usehooks-ts.com/react-hook/use-update-effect
+import { useUpdateEffect } from '../useUpdateEffect'
 
 const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)'
 
@@ -18,8 +18,7 @@ function useDarkMode(defaultValue?: boolean): UseDarkModeOutput {
   const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY)
   const [isDarkMode, setDarkMode] = useLocalStorage<boolean>(
     'darkMode',
-    defaultValue ?? false,
-    // ?? isDarkOS,
+    defaultValue ?? isDarkOS ?? false,
   )
 
   // Update darkMode if os prefers changes
