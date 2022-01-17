@@ -83,16 +83,9 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 
 <!-- HOOKS:END -->
 
-## 👉 Installation
+## Usage
 
-**Note**: The project uses `Node@^16` and `npm@^8`.
-
-Two ways:
-
-1. Install `usehooks-ts` from npm to use it in your project.
-2. Install the current whole repository to contribute to it.
-
-### 1. Install `usehooks-ts`
+# install
 
 ```bash
 npm i usehooks-ts
@@ -100,34 +93,90 @@ npm i usehooks-ts
 
 Then go to the [documentation](https://usehooks-ts.com/).
 
-### 2. Develop `usehooks-ts`
+## 🤝 How to Contribute
+
+Thanks for wanting to contribute! It's more than welcome 🤗
+
+### Content changes
+
+Most content changes (like fixing a typo) can be made without cloning the repository. Simply locate the file you wish to change in the GitHub UI, and click the little edit icon to make your change directly on the GitHub website.
+
+If you need to make any other substantial changes, then follow the project setup steps below.
+
+### Fork to submit a Pull Request (PR)
+
+This project use npm `Lerna` and `npm@8` to manage the different packages.
+Before starting, make sure you have the good system dependencies:
+
+- `node@^16`
+- `npm@^8`
+
+**Note**: To easily switch node version, consider Node Version Manager (nvm).
+
+Then you can fork, download and install the repository:
 
 ```bash
-# Clone the repository
-git clone https://github.com/juliencrn/usehooks-ts.git
+# 1) Fork the repository (button in the Github top-right corner)
+
+# 2) Clone the repository
+git clone https://github.com/{your_username}/usehooks-ts.git
 cd usehooks-ts
 
-# Install dependencies and setup
+# 3) Install dependencies and setup
 npm run bootstrap
-
-# Start (Will start the frontend and the test:watch for the hooks packages)
-npm start
-
-# Generate a new hook
-npm run plop
-
-# Exec types-checking, linters and tests
-npm run test
-
-# Update dependencies (in each packages)
-npx npm-check -u
 ```
 
-See more in [package.json](./package.json).
+### Create a new hook
 
-## Contributors ✨
+```bash
+# This command will regenerate all the hook boilerplate
+npm run plop
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+# Then develop the hook (aka test:watch)
+npm run dev:lib
+
+# Once the hooks is ready
+# Launch the documentation website
+npm run dev:site
+
+# Before commit: exec types-checking, linters and tests
+npm run test
+```
+
+### How is structured a hook ?
+
+The hook itself and its unit tests are in the `/lib/src/` folder. It's the strict
+npm run test
+
+```bash
+📂 lib/src
+├── 📂 useHookName
+│  ├── 📄 index.ts # used for exports
+│  ├── 🧪 useHookName.test.ts # unit tests
+│  └── 📄 useHookName.ts # the hook
+...
+```
+
+The rest is in the documentation website:
+
+```bash
+📂 site/src/hooks-doc
+├── 📂 useHookName
+│  ├── 📄 index.ts # used for exports
+│  ├── 📄 useHookName.demo.tsx # working demo
+│  └── 📝 useHookName.mdx # the documentation content
+...
+```
+
+**Note**: The demo is used different way:
+
+- It's displayed on the website to illustrate how to use the hook.
+- It's displayed as an interactive sandbox in the hook page during the dev.
+- It's deployed as a CodeSandbox on build to let final users play with.
+
+## ✨ Contributors
+
+Big thanks goes to these wonderful people ❤️
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -200,7 +249,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification ([emoji key](https://allcontributors.org/docs/en/emoji-key)). Contributions of any kind welcome!
 
 ## 🚗 Roadmap
 

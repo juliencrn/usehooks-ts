@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
@@ -54,6 +54,9 @@ function PostTemplate(props: PostTemplateProps) {
   const { body, excerpt, frontmatter } = post
   const repoUrl = 'https://github.com/juliencrn/usehooks-ts'
   const editLink = `${repoUrl}/tree/master/lib/src/${post.fields.name}`
+  const DemoComponent = React.lazy(
+    () => import(`~/hooks-doc/${frontmatter.title}/${frontmatter.title}.demo`),
+  )
 
   return (
     <StyledContainer maxWidth="md">
@@ -83,6 +86,19 @@ function PostTemplate(props: PostTemplateProps) {
             Usage
           </Typography>
           <MdxRenderer body={demo.body} />
+        </>
+      )}
+
+      {/* Here the dev can play with an interactive version of the hook */}
+      {/* This section is hidden in production */}
+      {process.env.NODE_ENV !== 'production' && demo && (
+        <>
+          <Typography variant="h4" component="h2" className={classes.subtitle}>
+            Interactive demo (only visible on dev mode)
+          </Typography>
+          <Suspense fallback={<div>Loading...</div>}>
+            <DemoComponent />
+          </Suspense>
         </>
       )}
 
