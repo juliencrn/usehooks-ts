@@ -18,7 +18,7 @@
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-44-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-46-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -190,6 +190,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://www.linkedin.com/in/alvaro-serrano-rivas/"><img src="https://avatars.githubusercontent.com/u/43758471?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Alvaro Serrano</b></sub></a><br /><a href="#content-alvaroserrrano" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/egehandulger"><img src="https://avatars.githubusercontent.com/u/14878259?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Egehan Dülger</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=egehandulger" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/PabloLION"><img src="https://avatars.githubusercontent.com/u/36828324?v=4?s=80" width="80px;" alt=""/><br /><sub><b>PabloLION</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3APabloLION" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://davidsanchez.me/"><img src="https://avatars.githubusercontent.com/u/84061?v=4?s=80" width="80px;" alt=""/><br /><sub><b>David Sanchez</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Aemulienfou" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 

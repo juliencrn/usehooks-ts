@@ -417,6 +417,24 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "PabloLION",
+      "name": "PabloLION",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36828324?v=4",
+      "profile": "https://github.com/PabloLION",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "emulienfou",
+      "name": "David Sanchez",
+      "avatar_url": "https://avatars.githubusercontent.com/u/84061?v=4",
+      "profile": "https://davidsanchez.me/",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7
