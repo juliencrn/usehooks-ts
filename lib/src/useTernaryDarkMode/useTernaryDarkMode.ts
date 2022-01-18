@@ -1,7 +1,3 @@
-/* usage:
- *   const { isDarkMode, ternaryDarkMode, toggleTernaryDarkMode } = usePaletteDarkMode();
- */
-
 import { useEffect, useState } from 'react'
 
 // See: https://usehooks-ts.com/react-hook/use-local-storage
