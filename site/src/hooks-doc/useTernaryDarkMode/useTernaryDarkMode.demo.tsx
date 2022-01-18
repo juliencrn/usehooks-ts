@@ -3,15 +3,15 @@ import React from 'react'
 import { useTernaryDarkMode } from 'usehooks-ts'
 
 export default function Component() {
-  const { isPaletteDarkMode, ternaryModeCode, togglePaletteDarkMode } =
-    usePaletteDarkMode()
+  const { isPaletteDarkMode, ternaryModeCode, toggleTernaryDarkMode } =
+    useTernaryDarkMode()
 
   return (
     <div>
-      <p>Current theme: {isDarkMode ? 'dark' : 'light'}</p>
-      <button onClick={toggle}>Toggle</button>
-      <button onClick={enable}>Enable</button>
-      <button onClick={disable}>Disable</button>
+      <p>Current theme: {isPaletteDarkMode ? 'dark' : 'light'}</p>
+      <button onClick={toggleTernaryDarkMode}>Toggle</button>
+      <span>ternaryModeCode:{ternaryModeCode}</span>
+      <span>isPaletteDarkMode:{isPaletteDarkMode}</span>
     </div>
   )
 }
