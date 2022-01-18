@@ -1,5 +1,5 @@
 /* usage:
- *   const { isPaletteDarkMode, ternaryModeCode, togglePaletteDarkMode } = usePaletteDarkMode();
+ *   const { isDarkMode, ternaryDarkMode, toggleTernaryDarkMode } = usePaletteDarkMode();
  */
 
 import { useEffect, useState } from 'react'
@@ -13,11 +13,14 @@ import { useUpdateEffect } from '..'
 
 const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)'
 
-// TODO: use enum
-type TernaryDarkMode = 'system' | 'dark' | 'light'
+enum TernaryDarkMode {
+  System = 'system',
+  Dark = 'dark',
+  Light = 'light',
+}
 interface UseTernaryDarkModeOutput {
-  isPaletteDarkMode: boolean
-  ternaryModeCode: TernaryDarkMode // change icon
+  isDarkMode: boolean
+  ternaryDarkMode: TernaryDarkMode
   toggleTernaryDarkMode: () => void
 }
 
@@ -35,10 +38,8 @@ function useTernaryDarkMode(): UseTernaryDarkModeOutput {
   }
   /* ======== REACT ======== */
   const [isDarkOS, setDarkOS] = useState<boolean>(useDarkModeOS())
-  const [ternaryMode, setTernaryMode] = useLocalStorage<TernaryDarkMode>(
-    'ternaryDarkMode',
-    'system',
-  )
+  const [ternaryDarkMode, setTernaryDarkMode] =
+    useLocalStorage<TernaryDarkMode>('ternaryDarkMode', TernaryDarkMode.System)
   const [isDarkMode, setDarkMode] = useState<boolean>(true)
 
   // Update darkMode if os prefers changes
@@ -58,27 +59,27 @@ function useTernaryDarkMode(): UseTernaryDarkModeOutput {
 
   useEffect(() => {
     // for setIsPaletteDarkMode
-    if (ternaryMode === 'dark') {
+    if (ternaryDarkMode === 'dark') {
       setDarkMode(true)
-    } else if (ternaryMode === 'system') {
+    } else if (ternaryDarkMode === 'system') {
       setDarkMode(isDarkOS)
-    } else if (ternaryMode === 'light') {
+    } else if (ternaryDarkMode === 'light') {
       setDarkMode(false)
     } else {
       console.error('ERR reading palette mode')
     }
-  }, [ternaryMode, isDarkOS])
+  }, [ternaryDarkMode, isDarkOS])
 
   return {
-    isPaletteDarkMode: isDarkMode,
-    ternaryModeCode: ternaryMode,
+    isDarkMode,
+    ternaryDarkMode,
     toggleTernaryDarkMode: () => {
-      setTernaryMode((currMode: TernaryDarkMode) =>
-        currMode === 'dark'
-          ? 'light'
-          : currMode === 'light'
-          ? 'system'
-          : 'dark',
+      setTernaryDarkMode((currMode: TernaryDarkMode) =>
+        currMode === TernaryDarkMode.Dark
+          ? TernaryDarkMode.Light
+          : currMode === TernaryDarkMode.Light
+          ? TernaryDarkMode.System
+          : TernaryDarkMode.Dark,
       )
     },
   }
