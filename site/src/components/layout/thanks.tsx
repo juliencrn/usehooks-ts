@@ -33,7 +33,7 @@ const Snackbar = styled(MuiSnackbar)(({ theme }) => ({
 
 const Thanks = () => {
   const [viewedCount, setViewedCount] = useLocalStorage(
-    '500-stars-viewed-count',
+    '1k-stars-viewed-count',
     0,
   )
   const [open, setOpen] = useState(viewedCount < 2)
@@ -71,7 +71,7 @@ const Thanks = () => {
           horizontal: 'center',
         }}
         ContentProps={{
-          message: `500+ Stargazers on usehooks-ts, thanks! 🎉`,
+          message: `1k+ Stargazers on usehooks-ts, thanks! 🎉`,
           className: classes.content,
         }}
         action={
