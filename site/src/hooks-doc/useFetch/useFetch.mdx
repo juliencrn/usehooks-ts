@@ -7,7 +7,7 @@ Here is a React Hook which aims to retrieve data on an API using the native Fetc
 
 I used a reducer to separate state logic and simplify testing via functional style.
 
-The received data is saved (cached) in the application via useRef, but you can use LocalStorage (see [`useLocalStorage()`](/react-hooks/use-local-storage)) or a caching solution to persist the data.
+The received data is saved (cached) in the application via useRef, but you can use LocalStorage (see [`useLocalStorage()`](/react-hook/use-local-storage)) or a caching solution to persist the data.
 
 The fetch is executed when the component is mounted and if the url changes. If ever the url is undefined, or if the component is unmounted before the data is recovered, the fetch will not be called.
 
