@@ -424,7 +424,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/36828324?v=4",
       "profile": "https://github.com/PabloLION",
       "contributions": [
-        "bug"
+        "bug",
+        "code"
       ]
     },
     {
@@ -434,6 +435,24 @@
       "profile": "https://davidsanchez.me/",
       "contributions": [
         "bug"
+      ]
+    },
+    {
+      "login": "AjayTheWizard",
+      "name": "Ajay Raja",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92772740?v=4",
+      "profile": "https://github.com/AjayTheWizard",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "docmars",
+      "name": "Andy Merskin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/758090?v=4",
+      "profile": "http://andymerskin.com/",
+      "contributions": [
+        "ideas"
       ]
     }
   ],
