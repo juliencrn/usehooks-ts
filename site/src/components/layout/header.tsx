@@ -13,7 +13,6 @@ import useTheme from '@mui/material/styles/useTheme'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import { Box } from '@mui/system'
 import { Link as GatsbyLink } from 'gatsby'
 
 import useSiteMetadata from '~/hooks/useSiteMetadata'
@@ -72,16 +71,6 @@ function Header({ siteTitle, openSidebar, openSearch }: HeaderProps) {
           <Link component={GatsbyLink} to="/" color="inherit">
             {siteTitle}
           </Link>
-          {process.env.NODE_ENV === 'development' && (
-            <Hidden smDown>
-              <Box component="span" mx={2}>
-                {'-->'}
-              </Box>
-              <Link component={GatsbyLink} to="/test-page" color="inherit">
-                {'Test page'}
-              </Link>
-            </Hidden>
-          )}
         </Title>
 
         <Hidden mdDown>
