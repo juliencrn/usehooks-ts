@@ -12,21 +12,16 @@
     "npm"
   ],
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "esm/index.js",
-  "files": [
-    "dist/",
-    "esm/"
-  ],
-  "types": "dist/index.d.ts",
-  "typing": "dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
   "scripts": {
     "prebuild": "npm run clean",
     "start": "chokidar \"src/**/*.ts\" -c \"npm run build\"",
-    "build": "npm run build:cjs && npm run build:es",
-    "build:cjs": "tsc -p tsconfig.build.json",
-    "build:es": "npm run build:cjs -- -m esNext --outDir esm",
-    "clean": "rimraf -rf ./dist ./esm",
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc -p tsconfig.build.json --module commonjs --outDir dist/cjs",
+    "build:esm": "tsc -p tsconfig.build.json --module esNext --outDir dist/esm",
+    "clean": "rimraf -rf ./dist",
     "types-check": "tsc -p tsconfig.json"
   },
   "devDependencies": {

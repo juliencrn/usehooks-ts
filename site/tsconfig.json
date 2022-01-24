@@ -4,6 +4,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "preserve",
+    "target": "es5",
     "paths": {
       "~/*": ["src/*"]
     },

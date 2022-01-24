@@ -1,8 +1,5 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    // "composite": true,
-    "target": "es5",
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
@@ -16,5 +13,5 @@
     "lib": ["ESNEXT", "DOM"]
   },
 
-  "exclude": ["node_modules", "dist", "esm"]
+  "exclude": ["node_modules", "dist"]
 }

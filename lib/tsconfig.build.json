@@ -4,7 +4,10 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist",
-    "moduleResolution": "node"
+    "target": "esnext",
+    "moduleResolution": "node",
+    // Needed for CommonJS modules
+    "allowSyntheticDefaultImports": true
   },
 
   "include": ["./src/**/*"],
