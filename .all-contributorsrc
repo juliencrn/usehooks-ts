@@ -454,6 +454,16 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "GrayGalaxy",
+      "name": "Avirup Ghosh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/49820575?v=4",
+      "profile": "https://github.com/GrayGalaxy",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7
