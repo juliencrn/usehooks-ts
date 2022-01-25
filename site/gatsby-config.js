@@ -9,7 +9,7 @@ require('dotenv').config({
 
 const siteMetadata = {
   title: `usehooks-ts`,
-  description: `Simple React hooks, ready to use, written in typescript.`,
+  description: `Welcome to the documentation of usehooks-ts, a React hooks library, ready to use, written in typescript.`,
   siteUrl: `https://usehooks-ts.com`,
   author: `juliencrn`, // Github username
 }

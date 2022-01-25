@@ -53,7 +53,7 @@ const SEO: FC<SEOProps> = ({
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${siteMetadata.title}`}
+      titleTemplate={`%s`}
       link={[{ rel: 'canonical', key: url, href: url }]}
       meta={[
         {

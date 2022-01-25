@@ -60,7 +60,10 @@ function PostTemplate(props: PostTemplateProps) {
 
   return (
     <StyledContainer maxWidth="md">
-      <SEO title={frontmatter.title} description={excerpt} />
+      <SEO
+        title={`${frontmatter.title}() react hook - usehooks-ts`}
+        description={excerpt}
+      />
 
       <Typography variant="h2" component="h1" className={classes.title}>
         {frontmatter.title}

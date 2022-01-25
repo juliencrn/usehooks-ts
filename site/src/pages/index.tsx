@@ -9,7 +9,10 @@ function PostListTemplate() {
 
   return (
     <>
-      <SEO title={title} description={description} />
+      <SEO
+        title={'usehooks-ts - React hooks library, written in Typescript'}
+        description={description}
+      />
 
       <Hero title={title} description={description} fullHeight />
     </>
