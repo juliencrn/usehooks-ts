@@ -9,56 +9,63 @@ import { useUpdateEffect } from '../useUpdateEffect'
 
 const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)'
 
-enum TernaryDarkMode {
-  System = 'system',
-  Dark = 'dark',
-  Light = 'light',
-}
+type TernaryDarkMode = 'system' | 'dark' | 'light'
 interface UseTernaryDarkModeOutput {
   isDarkMode: boolean
   ternaryDarkMode: TernaryDarkMode
+  dispatchTernaryDarkMode: (ternaryDarkMode?: TernaryDarkMode) => void
   toggleTernaryDarkMode: () => void
 }
 
 function useTernaryDarkMode(): UseTernaryDarkModeOutput {
   const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY)
   const [ternaryDarkMode, setTernaryDarkMode] =
-    useLocalStorage<TernaryDarkMode>('ternaryDarkMode', TernaryDarkMode.System)
+    useLocalStorage<TernaryDarkMode>('ternaryDarkMode', 'system')
   const [isDarkMode, setDarkMode] = useState<boolean>(isDarkOS)
 
   // Update darkMode if os prefers changes
   useUpdateEffect(() => {
-    if (ternaryDarkMode === TernaryDarkMode.System) {
+    if (ternaryDarkMode === 'system') {
       setDarkMode(isDarkOS)
     }
   }, [isDarkOS])
 
   useEffect(() => {
     switch (ternaryDarkMode) {
-      case TernaryDarkMode.Light:
+      case 'light':
         setDarkMode(false)
         break
-      case TernaryDarkMode.System:
+      case 'system':
         setDarkMode(isDarkOS)
         break
-      case TernaryDarkMode.Dark:
+      case 'dark':
         setDarkMode(true)
         break
     }
   }, [ternaryDarkMode, isDarkOS])
 
+  function toggleTernaryDarkMode() {
+    const toggleDict: Record<TernaryDarkMode, TernaryDarkMode> = {
+      light: 'system',
+      system: 'dark',
+      dark: 'light',
+    }
+    setTernaryDarkMode((prevMode: TernaryDarkMode) => toggleDict[prevMode])
+  }
+
+  function dispatchTernaryDarkMode(newTernaryDarkMode?: TernaryDarkMode) {
+    if (newTernaryDarkMode) {
+      setTernaryDarkMode(newTernaryDarkMode)
+    } else {
+      toggleTernaryDarkMode()
+    }
+  }
+
   return {
     isDarkMode,
     ternaryDarkMode,
-    toggleTernaryDarkMode: () => {
-      setTernaryDarkMode((currMode: TernaryDarkMode) =>
-        currMode === TernaryDarkMode.Dark
-          ? TernaryDarkMode.Light
-          : currMode === TernaryDarkMode.Light
-          ? TernaryDarkMode.System
-          : TernaryDarkMode.Dark,
-      )
-    },
+    dispatchTernaryDarkMode,
+    toggleTernaryDarkMode,
   }
 }
 
