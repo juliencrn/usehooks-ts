@@ -1,4 +1,4 @@
-const useForm = (formRef: React.MutableRefObject<HTMLFormElement>) => {
+const useFormValue = (formRef: React.MutableRefObject<HTMLFormElement>) => {
   interface valueType {
     [key: string]: string;
   }
@@ -26,4 +26,4 @@ const useForm = (formRef: React.MutableRefObject<HTMLFormElement>) => {
   return value;
 };
 
-export default useForm;
+export default useFormValue;
