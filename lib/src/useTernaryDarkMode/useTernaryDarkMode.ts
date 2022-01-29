@@ -13,7 +13,7 @@ type TernaryDarkMode = 'system' | 'dark' | 'light'
 interface UseTernaryDarkModeOutput {
   isDarkMode: boolean
   ternaryDarkMode: TernaryDarkMode
-  dispatchTernaryDarkMode: (ternaryDarkMode?: TernaryDarkMode) => void
+dispatchTernaryDarkMode: Dispatch<SetStateAction<TernaryDarkMode>>
   toggleTernaryDarkMode: () => void
 }
 
