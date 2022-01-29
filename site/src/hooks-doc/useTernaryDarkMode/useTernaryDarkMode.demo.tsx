@@ -6,7 +6,7 @@ export default function Component() {
   const {
     isDarkMode,
     ternaryDarkMode,
-    dispatchTernaryDarkMode,
+    setTernaryDarkMode,
     toggleTernaryDarkMode,
   } = useTernaryDarkMode()
   type TernaryDarkMode = typeof ternaryDarkMode
@@ -27,7 +27,7 @@ export default function Component() {
         <select
           name="select-ternaryDarkMode"
           onChange={ev =>
-            dispatchTernaryDarkMode(ev.target.value as TernaryDarkMode)
+            setTernaryDarkMode(ev.target.value as TernaryDarkMode)
           }
           value={ternaryDarkMode}
         >

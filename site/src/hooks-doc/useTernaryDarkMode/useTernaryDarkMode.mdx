@@ -7,14 +7,14 @@ This React Hook offers you an interface to toggle and read the dark theme mode b
 
 Returned value
 
-- The `isDarkMode` is a boolean to let you be able to use with your logic.
-- The `ternaryModeCode` is a enum of string of type `"dark" | "system" | "light"`.
+- The `isDarkMode` is a boolean for the final outcome, to let you be able to use with your logic.
+- The `ternaryModeCode` is of a literal type `"dark" | "system" | "light"`.
 
-  When `ternaryModeCode` is set to `system`, the `isDarkMode` will use system theme, like in iOS and MacOS.
+  When `ternaryModeCode` is set to `system`, the `isDarkMode` will use system theme, like of iOS and MacOS.
 
   Also, `ternaryModeCode` implicitly exports a type with `type TernaryDarkMode = typeof ternaryDarkMode`
 
 Returned interface
 
-- The `toggleTernaryDarkMode` is a function to toggle `ternaryModeCode` between `dark`, `system` and `light`.
-- The `dispatchTernaryDarkMode` accepts a parameter of type `TernaryDarkMode` and set it as `ternaryModeCode`. If no parameter is passed, it will act as `toggleTernaryDarkMode`.
+- The `toggleTernaryDarkMode` is a function to cycle `ternaryModeCode` between `dark`, `system` and `light`(in this order).
+- The `setTernaryDarkMode` accepts a parameter of type `TernaryDarkMode` and set it as `ternaryModeCode`.

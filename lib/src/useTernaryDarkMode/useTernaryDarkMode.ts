@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 // See: https://usehooks-ts.com/react-hook/use-local-storage
 import { useLocalStorage } from '../useLocalStorage'
@@ -13,7 +13,7 @@ type TernaryDarkMode = 'system' | 'dark' | 'light'
 interface UseTernaryDarkModeOutput {
   isDarkMode: boolean
   ternaryDarkMode: TernaryDarkMode
-dispatchTernaryDarkMode: Dispatch<SetStateAction<TernaryDarkMode>>
+  setTernaryDarkMode: Dispatch<SetStateAction<TernaryDarkMode>>
   toggleTernaryDarkMode: () => void
 }
 
@@ -50,21 +50,13 @@ function useTernaryDarkMode(): UseTernaryDarkModeOutput {
       system: 'dark',
       dark: 'light',
     }
-    setTernaryDarkMode((prevMode: TernaryDarkMode) => toggleDict[prevMode])
-  }
-
-  function dispatchTernaryDarkMode(newTernaryDarkMode?: TernaryDarkMode) {
-    if (newTernaryDarkMode) {
-      setTernaryDarkMode(newTernaryDarkMode)
-    } else {
-      toggleTernaryDarkMode()
-    }
+    setTernaryDarkMode(prevMode => toggleDict[prevMode])
   }
 
   return {
     isDarkMode,
     ternaryDarkMode,
-    dispatchTernaryDarkMode,
+    setTernaryDarkMode,
     toggleTernaryDarkMode,
   }
 }
