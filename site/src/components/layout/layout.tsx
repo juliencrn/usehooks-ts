@@ -12,7 +12,6 @@ import SearchModal from '../search/SearchModal'
 import Footer from './footer'
 import Header from './header'
 import Sidebar from './sidebar'
-import Thanks from './thanks'
 import useSearchModal from './useSearchModal'
 import useSidebar from './useSidebar'
 import useSiteMetadata from '~/hooks/useSiteMetadata'
@@ -62,7 +61,6 @@ const Layout: FC = ({ children }) => {
       <Main
         sx={{ paddingLeft: isLarge && isSidebarOpen ? `${drawerWidth}px` : 0 }}
       >
-        <Thanks />
         {children}
         <Footer />
       </Main>
