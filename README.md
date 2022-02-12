@@ -18,7 +18,7 @@
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-49-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-54-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -245,6 +245,13 @@ Big thanks goes to these wonderful people ❤️
     <td align="center"><a href="https://github.com/AjayTheWizard"><img src="https://avatars.githubusercontent.com/u/92772740?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Ajay Raja</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3AAjayTheWizard" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://andymerskin.com/"><img src="https://avatars.githubusercontent.com/u/758090?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Andy Merskin</b></sub></a><br /><a href="#ideas-docmars" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/GrayGalaxy"><img src="https://avatars.githubusercontent.com/u/49820575?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Avirup Ghosh</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=GrayGalaxy" title="Code">💻</a> <a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3AGrayGalaxy" title="Bug reports">🐛</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/tilnea"><img src="https://avatars.githubusercontent.com/u/3692320?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Sanne Wintrén</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Atilnea" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://lacolonia.studio/"><img src="https://avatars.githubusercontent.com/u/1528468?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Alessandro</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Aa-barbieri" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/atatarenko"><img src="https://avatars.githubusercontent.com/u/9846273?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Andrey Tatarenko</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Aatatarenko" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/arusak"><img src="https://avatars.githubusercontent.com/u/4231915?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Anton Rusak</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Aarusak" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/createdbymahmood"><img src="https://avatars.githubusercontent.com/u/40164360?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Mahmood Bagheri</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=createdbymahmood" title="Code">💻</a></td>
   </tr>
 </table>
 

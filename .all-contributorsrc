@@ -464,6 +464,51 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "tilnea",
+      "name": "Sanne Wintrén",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3692320?v=4",
+      "profile": "https://github.com/tilnea",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "a-barbieri",
+      "name": "Alessandro",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1528468?v=4",
+      "profile": "http://lacolonia.studio/",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "atatarenko",
+      "name": "Andrey Tatarenko",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9846273?v=4",
+      "profile": "https://github.com/atatarenko",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "arusak",
+      "name": "Anton Rusak",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4231915?v=4",
+      "profile": "https://github.com/arusak",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "createdbymahmood",
+      "name": "Mahmood Bagheri",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40164360?v=4",
+      "profile": "https://github.com/createdbymahmood",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
