@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.0](https://www.npmjs.com/package/usehooks-ts/v/2.4.0) - 2022-02-12
+
+### Added
+
+- Add unit tests on useInterval (#104/#106 from @createdbymahmood)
+- Add unit tests on useDarkMode (#105/#106 from @createdbymahmood)
+
+### Updated
+
+- Update local-storage key in useTernaryDarMode (#98 from @PabloLION)
+- Update local-storage key in useDarMode (#98 from @PabloLION)
+- Update Typescript to 4.5.5 (minor)
+
 ## [2.3.0](https://www.npmjs.com/package/usehooks-ts/v/2.3.0) - 2022-01-30
 
 ### Added
