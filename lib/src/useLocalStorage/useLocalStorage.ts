@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState, useCallback } from 'react'
 
 // See: https://usehooks-ts.com/react-hook/use-event-listener
 import { useEventListener } from '../useEventListener'
@@ -14,7 +14,7 @@ type SetValue<T> = Dispatch<SetStateAction<T>>
 function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
   // Get from local storage then
   // parse stored json or return initialValue
-  const readValue = (): T => {
+  const readValue = useCallback((): T => {
     // Prevent build error "window is undefined" but keep keep working
     if (typeof window === 'undefined') {
       return initialValue
@@ -27,7 +27,7 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
       console.warn(`Error reading localStorage key “${key}”:`, error)
       return initialValue
     }
-  }
+  }, [initialValue, key]);
 
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
@@ -65,9 +65,9 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const handleStorageChange = () => {
+  const handleStorageChange = useCallback(() => {
     setStoredValue(readValue())
-  }
+  }, [readValue]);
 
   // this only works for other documents, not the current one
   useEventListener('storage', handleStorageChange)
@@ -85,7 +85,7 @@ export default useLocalStorage
 function parseJSON<T>(value: string | null): T | undefined {
   try {
     return value === 'undefined' ? undefined : JSON.parse(value ?? '')
-  } catch (error) {
+  } catch {
     console.log('parsing error on', { value })
     return undefined
   }
