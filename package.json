@@ -23,7 +23,7 @@
     "bootstrap": "npm ci && lerna exec npm ci && npm run copy:hooks",
     "types-check": "lerna run types-check",
     "lint": "npm-run-all --continue-on-error -p lint:*",
-    "lint:code": "eslint '**/*.{js,jsx,ts,tsx}'",
+    "lint:code": "eslint \"**/*.{js,jsx,ts,tsx}\"",
     "lint:other": "prettier --check \"**/*.{json,md,mdx,css,scss,yaml,yml}\"",
     "format": "run-p format:*",
     "format:code": "npm run lint:code -- --fix",
