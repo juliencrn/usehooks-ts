@@ -43,6 +43,7 @@ npm i usehooks-ts
 - [`useScreen()`](https://usehooks-ts.com/react-hook/use-screen)
 - [`useScript()`](https://usehooks-ts.com/react-hook/use-script)
 - [`useSsr()`](https://usehooks-ts.com/react-hook/use-ssr)
+- [`useStateWithCallback()`](https://usehooks-ts.com/react-hook/use-state-with-callback)
 - [`useStep()`](https://usehooks-ts.com/react-hook/use-step)
 - [`useTernaryDarkMode()`](https://usehooks-ts.com/react-hook/use-ternary-dark-mode)
 - [`useTimeout()`](https://usehooks-ts.com/react-hook/use-timeout)
