@@ -1,4 +1,7 @@
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+
+// See: https://usehooks-ts.com/react-hook/use-isomorphic-layout-effect
+import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
 type ReturnType = [boolean, (locked: boolean) => void]
 
@@ -6,7 +9,7 @@ function useLockedBody(initialLocked = false): ReturnType {
   const [locked, setLocked] = useState(initialLocked)
 
   // Do the side effect before render
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!locked) {
       return
     }

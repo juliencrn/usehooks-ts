@@ -1,7 +1,9 @@
-import { useCallback, useLayoutEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 
 // See: https://usehooks-ts.com/react-hook/use-event-listener
 import { useEventListener } from '../useEventListener'
+// See: https://usehooks-ts.com/react-hook/use-isomorphic-layout-effect
+import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
 interface Size {
   width: number
@@ -33,7 +35,7 @@ function useElementSize<T extends HTMLElement = HTMLDivElement>(): [
 
   useEventListener('resize', handleSize)
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     handleSize()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref?.offsetHeight, ref?.offsetWidth])
