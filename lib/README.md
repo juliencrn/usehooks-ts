@@ -34,6 +34,7 @@ npm i usehooks-ts
 - [`useIsClient()`](https://usehooks-ts.com/react-hook/use-is-client)
 - [`useIsFirstRender()`](https://usehooks-ts.com/react-hook/use-is-first-render)
 - [`useIsMounted()`](https://usehooks-ts.com/react-hook/use-is-mounted)
+- [`useIsomorphicLayoutEffect()`](https://usehooks-ts.com/react-hook/use-isomorphic-layout-effect)
 - [`useLocalStorage()`](https://usehooks-ts.com/react-hook/use-local-storage)
 - [`useLockedBody()`](https://usehooks-ts.com/react-hook/use-locked-body)
 - [`useMap()`](https://usehooks-ts.com/react-hook/use-map)
