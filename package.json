@@ -32,6 +32,7 @@
     "test": "jest",
     "test:ssr": "jest --config ./jest.config.node.ts",
     "test:watch": "npm run test -- --watch --silent",
+    "test:coverage": "ts-node ./scripts/coverage.ts",
     "prebuilt": "npm run format && npm run copy:hooks",
     "build": "lerna run build --stream",
     "build:site": "lerna run --scope site build",
