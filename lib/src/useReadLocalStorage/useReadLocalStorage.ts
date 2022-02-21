@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 // See: https://usehooks-ts.com/react-hook/use-event-listener
 import { useEventListener } from '../useEventListener'
@@ -21,7 +21,7 @@ function useReadLocalStorage<T>(key: string): Value<T> {
       console.warn(`Error reading localStorage key “${key}”:`, error)
       return null
     }
-  }, [key]);
+  }, [key])
 
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
@@ -35,7 +35,7 @@ function useReadLocalStorage<T>(key: string): Value<T> {
 
   const handleStorageChange = useCallback(() => {
     setStoredValue(readValue())
-  }, [readValue]);
+  }, [readValue])
 
   // this only works for other documents, not the current one
   useEventListener('storage', handleStorageChange)
