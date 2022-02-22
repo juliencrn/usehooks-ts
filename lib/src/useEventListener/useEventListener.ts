@@ -25,7 +25,11 @@ function useEventListener<
   element?: RefObject<T>,
 ) {
   // Create a ref that stores handler
-  const savedHandler = useRef<typeof handler>()
+  const savedHandler = useRef(handler)
+  
+  useLayoutEffect(() => {
+    savedHandler.current = handler
+  });
 
   useEffect(() => {
     // Define the listening target
@@ -34,18 +38,8 @@ function useEventListener<
       return
     }
 
-    // Update saved handler if necessary
-    if (savedHandler.current !== handler) {
-      savedHandler.current = handler
-    }
-
     // Create event listener that calls handler function stored in ref
-    const eventListener: typeof handler = event => {
-      // eslint-disable-next-line no-extra-boolean-cast
-      if (!!savedHandler?.current) {
-        savedHandler.current(event)
-      }
-    }
+    const eventListener: typeof handler = event => savedHandler.current(event)
 
     targetElement.addEventListener(eventName, eventListener)
 
@@ -53,7 +47,7 @@ function useEventListener<
     return () => {
       targetElement.removeEventListener(eventName, eventListener)
     }
-  }, [eventName, element, handler])
+  }, [eventName, element])
 }
 
 export default useEventListener
