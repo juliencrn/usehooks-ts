@@ -29,7 +29,7 @@ function useEventListener<
   
   useLayoutEffect(() => {
     savedHandler.current = handler
-  });
+  }, [handler]);
 
   useEffect(() => {
     // Define the listening target
