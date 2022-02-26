@@ -12,17 +12,33 @@
     "npm"
   ],
   "license": "MIT",
+  "type": "module",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
+  "types": "./dist/types/index.d.ts",
+  "typing": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js",
+      "default": "./dist/esm/index.js"
+    },
+    "./dist/": "./dist/"
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
+  ],
   "scripts": {
     "prebuild": "npm run clean",
     "start": "chokidar \"src/**/*.ts\" -c \"npm run build\"",
-    "build": "npm run build:cjs && npm run build:esm",
-    "build:cjs": "tsc -p tsconfig.build.json --module commonjs --outDir dist/cjs",
-    "build:esm": "tsc -p tsconfig.build.json --module esNext --outDir dist/esm",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
+    "build:cjs": "tsc --module commonjs -d --outDir dist/cjs",
+    "build:esm": "tsc --module esNext -d --outDir dist/esm",
+    "build:types": "tsc --declarationMap --declaration --emitDeclarationOnly --outDir dist/types",
     "clean": "rimraf -rf ./dist",
-    "types-check": "tsc -p tsconfig.json"
+    "types-check": "tsc --noEmit"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^7.0.2",
@@ -32,6 +48,9 @@
   },
   "peerDependencies": {
     "react": ">=16.8.0"
+  },
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
   },
   "repository": {
     "type": "git",

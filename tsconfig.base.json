@@ -1,8 +1,5 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
     "noEmitOnError": true,
     "skipLibCheck": true,
     "removeComments": true,
