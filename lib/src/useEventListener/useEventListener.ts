@@ -1,5 +1,8 @@
 import { RefObject, useEffect, useRef } from 'react'
 
+// See: https://usehooks-ts.com/react-hook/use-isomorphic-layout-effect
+import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
+
 function useEventListener<K extends keyof WindowEventMap>(
   eventName: K,
   handler: (event: WindowEventMap[K]) => void,
@@ -26,10 +29,10 @@ function useEventListener<
 ) {
   // Create a ref that stores handler
   const savedHandler = useRef(handler)
-  
-  useLayoutEffect(() => {
+
+  useIsomorphicLayoutEffect(() => {
     savedHandler.current = handler
-  }, [handler]);
+  }, [handler])
 
   useEffect(() => {
     // Define the listening target
