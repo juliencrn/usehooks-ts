@@ -563,7 +563,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/92641762?v=4",
       "profile": "https://github.com/TunA-Kai",
       "contributions": [
-        "bug"
+        "bug",
+        "code"
       ]
     },
     {
@@ -571,6 +572,33 @@
       "name": "Luke Shiels",
       "avatar_url": "https://avatars.githubusercontent.com/u/47612057?v=4",
       "profile": "https://github.com/skve",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "SleLLl",
+      "name": "Sergei Kolyago",
+      "avatar_url": "https://avatars.githubusercontent.com/u/66108429?v=4",
+      "profile": "https://github.com/SleLLl",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "adhamaa",
+      "name": "Adham Akmal Azmi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50027371?v=4",
+      "profile": "https://github.com/adhamaa",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "alex-kowalczyk",
+      "name": "Alek Kowalczyk",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7422175?v=4",
+      "profile": "https://github.com/alex-kowalczyk",
       "contributions": [
         "bug"
       ]
