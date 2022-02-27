@@ -8,35 +8,24 @@
   "keywords": [
     "typescript",
     "react",
-    "react-hooks",
-    "npm"
+    "react-hooks"
   ],
   "license": "MIT",
   "type": "module",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/types/index.d.ts",
-  "typing": "./dist/types/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/types/index.d.ts",
-      "require": "./dist/cjs/index.js",
-      "import": "./dist/esm/index.js",
-      "default": "./dist/esm/index.js"
-    },
-    "./dist/": "./dist/"
-  },
+  "module": "./dist/index.js",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
-    "dist/**/*.js",
-    "dist/**/*.d.ts"
+    "dist"
   ],
   "scripts": {
     "prebuild": "npm run clean",
     "start": "chokidar \"src/**/*.ts\" -c \"npm run build\"",
-    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
-    "build:cjs": "tsc --module commonjs -d --outDir dist/cjs",
-    "build:esm": "tsc --module esNext -d --outDir dist/esm",
-    "build:types": "tsc --declarationMap --declaration --emitDeclarationOnly --outDir dist/types",
+    "build:tsup": "tsup ./src/index.ts --dts --sourcemap --format esm --clean",
+    "build:tsc": "tsc",
+    "build:rollup": "rollup -c",
+    "build:types": "tsc -d --emitDeclarationOnly",
+    "build": "npm run build:types",
     "clean": "rimraf -rf ./dist",
     "types-check": "tsc --noEmit"
   },
