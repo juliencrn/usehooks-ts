@@ -113,4 +113,20 @@ describe('useLocalStorage()', () => {
 
     expect(B.current[0]).toBe('edited')
   })
+
+  test('setValue is referentially stable', () => {
+    const { result } = renderHook(() => useLocalStorage('count', 1))
+
+    // Store a reference to the original setValue
+    const originalCallback = result.current[1]
+
+    // Now invoke a state update, if setValue is not referentially stable then this will cause the originalCallback
+    // reference to not be equal to the new setValue function
+    act(() => {
+      const setState = result.current[1]
+      setState(prev => prev + 1)
+    })
+
+    expect(result.current[1] === originalCallback).toBe(true)
+  })
 })
