@@ -61,7 +61,7 @@
     "@typescript-eslint/eslint-plugin": "^5.11.0",
     "@typescript-eslint/parser": "^5.11.0",
     "all-contributors-cli": "^6.20.0",
-    "chalk": "^4.1.2",
+    "chalk": "^5.0.0",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^7.0.0",
     "eslint": "^8.9.0",
