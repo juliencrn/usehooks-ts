@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.0](https://www.npmjs.com/package/usehooks-ts/v/2.5.0) - 2022-04-11
+
+### Added
+
+- Memoise useBoolean (#122 from @angusd3v)
+- make setter from useLocalStorage referentially stable (#133 from @jbean96)
+- add support for useMediaQuery in older versions (#135 from @brycedorn)
+- update dependencies
+
 ## [2.4.2](https://www.npmjs.com/package/usehooks-ts/v/2.4.2) - 2022-02-27
 
 ### Added
