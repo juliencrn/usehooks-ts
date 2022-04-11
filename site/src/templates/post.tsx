@@ -76,7 +76,12 @@ function PostTemplate(props: PostTemplateProps) {
 
       {hook && (
         <>
-          <Typography variant="h4" component="h2" className={classes.subtitle}>
+          <Typography
+            id="hook"
+            variant="h4"
+            component="h2"
+            className={classes.subtitle}
+          >
             The Hook
           </Typography>
           <MdxRenderer body={hook.body} />
@@ -85,7 +90,12 @@ function PostTemplate(props: PostTemplateProps) {
 
       {demo && (
         <>
-          <Typography variant="h4" component="h2" className={classes.subtitle}>
+          <Typography
+            id="usage"
+            variant="h4"
+            component="h2"
+            className={classes.subtitle}
+          >
             Usage
           </Typography>
           <MdxRenderer body={demo.body} />
@@ -96,7 +106,12 @@ function PostTemplate(props: PostTemplateProps) {
       {/* This section is hidden in production */}
       {process.env.NODE_ENV !== 'production' && demo && (
         <>
-          <Typography variant="h4" component="h2" className={classes.subtitle}>
+          <Typography
+            id="demo"
+            variant="h4"
+            component="h2"
+            className={classes.subtitle}
+          >
             Interactive demo (only visible on dev mode)
           </Typography>
           <Suspense fallback={<div>Loading...</div>}>
