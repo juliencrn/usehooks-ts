@@ -59,6 +59,8 @@ const transformer = ({ data }) => {
       id,
       path: `/react-hook${fields.path}`,
       title: frontmatter.title,
+      // Allow querying by title without the "use" prefix
+      titleWithoutUse: frontmatter.title.substr(3),
       excerpt,
     }
   })
