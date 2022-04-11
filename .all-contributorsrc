@@ -602,6 +602,60 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "Scalahansolo",
+      "name": "Sean Callahan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4317253?v=4",
+      "profile": "https://github.com/Scalahansolo",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "jbean96",
+      "name": "Joshua Bean",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22803097?v=4",
+      "profile": "https://github.com/jbean96",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ZhaoTim",
+      "name": "Tim Zhao",
+      "avatar_url": "https://avatars.githubusercontent.com/u/30540533?v=4",
+      "profile": "https://github.com/ZhaoTim",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "patryk-smc",
+      "name": "Patrick",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37963339?v=4",
+      "profile": "https://github.com/patryk-smc",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "brycedorn",
+      "name": "Bryce Dorn",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3171252?v=4",
+      "profile": "https://bryce.io/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "angusd3v",
+      "name": "angusd3v",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52683145?v=4",
+      "profile": "https://github.com/angusd3v",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7

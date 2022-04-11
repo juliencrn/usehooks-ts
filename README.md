@@ -18,7 +18,7 @@
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-64-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-70-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -267,6 +267,12 @@ Big thanks goes to these wonderful people ❤️
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/alex-kowalczyk"><img src="https://avatars.githubusercontent.com/u/7422175?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Alek Kowalczyk</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Aalex-kowalczyk" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/Scalahansolo"><img src="https://avatars.githubusercontent.com/u/4317253?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Sean Callahan</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3AScalahansolo" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/jbean96"><img src="https://avatars.githubusercontent.com/u/22803097?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Joshua Bean</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=jbean96" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ZhaoTim"><img src="https://avatars.githubusercontent.com/u/30540533?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Tim Zhao</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3AZhaoTim" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/patryk-smc"><img src="https://avatars.githubusercontent.com/u/37963339?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Patrick</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Apatryk-smc" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://bryce.io/"><img src="https://avatars.githubusercontent.com/u/3171252?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Bryce Dorn</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=brycedorn" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/angusd3v"><img src="https://avatars.githubusercontent.com/u/52683145?v=4?s=80" width="80px;" alt=""/><br /><sub><b>angusd3v</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=angusd3v" title="Code">💻</a></td>
   </tr>
 </table>
 
