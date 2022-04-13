@@ -1,8 +1,16 @@
 ---
 title: useEventListener
-date: '2020-06-28'
+date: '2022-04-12'
 ---
 
-Use EventListener with simplicity by React Hook.
-It takes as parameters a `eventName`, a call-back functions (`handler`) and optionally a reference `element`.
-You can see above two examples using `useRef` and `window` based event.
+Add any EventListener with simplicity using this Hook.
+It takes as parameters an `eventName`, a call-back function (`handler`), optionally a reference `element` and an `options` object to configure settings.
+
+The `options` parameter is optional and can be used to configure the behavior and add some additional features.
+
+- `throttle` (time in milliseconds) can be used to throttle the event listener handler by a specified amount of time.
+  This can be useful to improve performance on resize and scroll events for example.
+- `useVisualViewport` can be set to `true` to use the `visualViewport` instead of the `window` object as an event target.
+  For more information refer to the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/Window/visualViewport).
+
+The two examples down below showcase the Hook using `useRef` and an `window` based event.

@@ -117,4 +117,29 @@ describe('useEventListener()', () => {
     expect(clickHandler).toHaveBeenCalledWith(expect.any(MouseEvent))
     expect(keydownHandler).toHaveBeenCalledWith(expect.any(KeyboardEvent))
   })
+
+  it('should throttle the event listener handler by the provided time', async () => {
+    const eventName = 'click'
+    const handler = jest.fn()
+
+    renderHook(() =>
+      useEventListener(eventName, handler, ref, { throttle: 20 }),
+    )
+
+    await new Promise<void>(resolve => {
+      const interval = setInterval(() => {
+        fireEvent.click(ref.current)
+      }, 10)
+
+      const resolver = () => {
+        clearInterval(interval)
+        resolve()
+      }
+      setTimeout(resolver, 100)
+    })
+
+    // Runtime of 100ms with an interval of 10ms = 10 calls
+    // Throttled by 20ms = 5 calls
+    expect(handler).toHaveBeenCalledTimes(5)
+  })
 })

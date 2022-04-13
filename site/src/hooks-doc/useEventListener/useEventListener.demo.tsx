@@ -15,7 +15,7 @@ export default function Component() {
   }
 
   // example with window based event
-  useEventListener('scroll', onScroll)
+  useEventListener('scroll', onScroll, null, { throttle: 500 })
 
   // example with element based event
   useEventListener('click', onClick, buttonRef)
