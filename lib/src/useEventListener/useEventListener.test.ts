@@ -20,6 +20,7 @@ const windowAddEventListenerSpy = jest.spyOn(window, 'addEventListener')
 const windowRemoveEventListenerSpy = jest.spyOn(window, 'removeEventListener')
 
 const ref = { current: document.createElement('div') }
+const nullRef = { current: null }
 const refAddEventListenerSpy = jest.spyOn(ref.current, 'addEventListener')
 const refRemoveEventListenerSpy = jest.spyOn(ref.current, 'removeEventListener')
 
@@ -34,6 +35,17 @@ describe('useEventListener()', () => {
     renderHook(() => useEventListener(eventName, jest.fn()))
 
     expect(windowAddEventListenerSpy).toHaveBeenCalledWith(
+      eventName,
+      expect.anything(),
+    )
+  })
+
+  it('should not bind the event listener to the window when element is null (conditionally rendered)', () => {
+    const eventName = 'test-event'
+
+    renderHook(() => useEventListener(eventName, jest.fn(), nullRef))
+
+    expect(windowAddEventListenerSpy).not.toHaveBeenCalledWith(
       eventName,
       expect.anything(),
     )
