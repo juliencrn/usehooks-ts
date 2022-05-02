@@ -1,32 +1,34 @@
 import { EffectCallback, useEffect, useRef } from 'react'
 
 function useEffectOnce(effect: EffectCallback) {
-  const destroyFunc = useRef<void | any>();
-  const calledOnce = useRef(false);
-  const renderAfterCalled = useRef(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const destroyFunc = useRef<void | any>()
+  const calledOnce = useRef(false)
+  const renderAfterCalled = useRef(false)
 
   if (calledOnce.current) {
-    renderAfterCalled.current = true;
+    renderAfterCalled.current = true
   }
 
   useEffect(() => {
     if (calledOnce.current) {
-      return;
+      return
     }
 
-    calledOnce.current = true;
-    destroyFunc.current = effect();
+    calledOnce.current = true
+    destroyFunc.current = effect()
 
     return () => {
       if (!renderAfterCalled.current) {
-        return;
+        return
       }
 
       if (destroyFunc.current) {
-        destroyFunc.current();
+        destroyFunc.current()
       }
-    };
-  }, []);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 }
 
 export default useEffectOnce
