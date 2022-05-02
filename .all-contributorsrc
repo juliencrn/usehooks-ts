@@ -656,6 +656,33 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "daiky218",
+      "name": "Kevin Dai",
+      "avatar_url": "https://avatars.githubusercontent.com/u/78251524?v=4",
+      "profile": "https://github.com/daiky218",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "3GOMESz",
+      "name": "Gomes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28831375?v=4",
+      "profile": "https://github.com/3GOMESz",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ddisimone",
+      "name": "Davide Di Simone",
+      "avatar_url": "https://avatars.githubusercontent.com/u/78792352?v=4",
+      "profile": "https://github.com/ddisimone",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7
