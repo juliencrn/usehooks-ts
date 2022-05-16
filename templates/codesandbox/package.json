@@ -10,15 +10,15 @@
   ],
   "main": "src/index.tsx",
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "5.0.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-scripts": "^5.0.1",
     "usehooks-ts": "latest"
   },
   "devDependencies": {
-    "@types/react": "^17.0.33",
-    "@types/react-dom": "^17.0.10",
-    "typescript": "^4.4.3"
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
+    "typescript": "^4.6.4"
   },
   "scripts": {
     "start": "react-scripts start",
