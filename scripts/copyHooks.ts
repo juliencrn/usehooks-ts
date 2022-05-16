@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-import { error, isHookFile, success, toQueryParams, warn } from './utils'
+import { isHookFile, toQueryParams } from './utils'
 
 const hooksDir = path.resolve('./lib/src')
 const demosDir = path.resolve('./site/src/hooks-doc')
@@ -67,7 +67,7 @@ function copyHook({
 }) {
   // Check source file
   if (!fs.existsSync(sourceFile)) {
-    console.log(`${warn} ${getFileName(sourceFile)} doesn't exist`)
+    console.warn(`${getFileName(sourceFile)} doesn't exist`)
     return
   }
 
@@ -82,7 +82,7 @@ function copyHook({
   // Read source then create markdown hook file
   fs.readFile(sourceFile, 'utf8', (err, data) => {
     if (err) {
-      console.log(`${error} Cannot read ${sourceFile}`)
+      console.error(`Cannot read ${sourceFile}`)
       return
     }
 
@@ -109,9 +109,7 @@ function copyHook({
     writeStream.end()
 
     console.log(
-      `${success} ${getFileName(destFile)} ${
-        existingFile ? 'updated' : 'created'
-      }`,
+      `${getFileName(destFile)} ${existingFile ? 'updated' : 'created'}`,
     )
   })
 }

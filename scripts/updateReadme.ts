@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-import { camelToKebabCase, error, isHookFile, success, warn } from './utils'
+import { camelToKebabCase, isHookFile } from './utils'
 
 ////////////////////////////////////////////////////////////////////////
 // 1. Imperative script that updates the hook list in the README file.
@@ -35,7 +35,7 @@ interface MarkdownLine {
 
 function formatHook(name: string, demos: string[]): MarkdownLine {
   const hasDemo = demos.includes(name)
-  if (!hasDemo) console.log(`${warn} ${name} haven't demo yet!`)
+  if (!hasDemo) console.warn(`${name} haven't demo yet!`)
 
   return {
     name,
@@ -64,8 +64,8 @@ function insertIn(markdown: string, file: fs.PathOrFileDescriptor): void {
       )
 
     fs.writeFileSync(file, data, 'utf-8')
-    console.log(`${success} ${file} updated!`)
+    console.log(`${file} updated!`)
   } catch (err) {
-    console.log(`${error} Error updating ${file}: ${err}`)
+    console.error(`Error updating ${file}: ${err}`)
   }
 }
