@@ -25,10 +25,10 @@
     "types-check": "tsc -p tsconfig.json"
   },
   "devDependencies": {
-    "@testing-library/react-hooks": "^7.0.2",
+    "@testing-library/react-hooks": "^8.0.0",
     "react": ">=16.8.0",
     "react-test-renderer": ">=16.8.0",
-    "typescript": "^4.5.5"
+    "typescript": "^4.6.4"
   },
   "peerDependencies": {
     "react": ">=16.8.0"
