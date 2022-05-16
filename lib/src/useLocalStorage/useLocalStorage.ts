@@ -79,9 +79,15 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const handleStorageChange = useCallback(() => {
-    setStoredValue(readValue())
-  }, [readValue])
+  const handleStorageChange = useCallback(
+    (event: StorageEvent | CustomEvent) => {
+      if ((event as StorageEvent)?.key && (event as StorageEvent).key !== key) {
+        return
+      }
+      setStoredValue(readValue())
+    },
+    [key, readValue]
+  )
 
   // this only works for other documents, not the current one
   useEventListener('storage', handleStorageChange)
