@@ -86,7 +86,7 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
       }
       setStoredValue(readValue())
     },
-    [key, readValue]
+    [key, readValue],
   )
 
   // this only works for other documents, not the current one

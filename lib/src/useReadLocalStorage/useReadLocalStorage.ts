@@ -40,7 +40,7 @@ function useReadLocalStorage<T>(key: string): Value<T> {
       }
       setStoredValue(readValue())
     },
-    [key, readValue]
+    [key, readValue],
   )
 
   // this only works for other documents, not the current one
