@@ -18,7 +18,7 @@
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-73-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-74-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -254,7 +254,7 @@ Big thanks goes to these wonderful people ❤️
     <td align="center"><a href="https://github.com/arusak"><img src="https://avatars.githubusercontent.com/u/4231915?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Anton Rusak</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Aarusak" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/createdbymahmood"><img src="https://avatars.githubusercontent.com/u/40164360?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Mahmood Bagheri</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=createdbymahmood" title="Code">💻</a></td>
     <td align="center"><a href="https://wpowner.com/"><img src="https://avatars.githubusercontent.com/u/506491?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Anver Sadutt</b></sub></a><br /><a href="#content-anver" title="Content">🖋</a></td>
-    <td align="center"><a href="https://github.com/bogdanailincaipnt"><img src="https://avatars.githubusercontent.com/u/93596663?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Bogdan Ailincai</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Abogdanailincaipnt" title="Bug reports">🐛</a> <a href="https://github.com/juliencrn/usehooks-ts/commits?author=bogdanailincaipnt" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/bogdanailincaipnt"><img src="https://avatars.githubusercontent.com/u/93596663?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Bogdan Ailincai</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=bogdanailincaipnt" title="Code">💻</a></td>
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/SimeonGriggs"><img src="https://avatars.githubusercontent.com/u/9684022?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Simeon Griggs</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3ASimeonGriggs" title="Bug reports">🐛</a></td>
@@ -278,6 +278,7 @@ Big thanks goes to these wonderful people ❤️
     <td align="center"><a href="https://github.com/daiky218"><img src="https://avatars.githubusercontent.com/u/78251524?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Kevin Dai</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=daiky218" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/3GOMESz"><img src="https://avatars.githubusercontent.com/u/28831375?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Gomes</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=3GOMESz" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/ddisimone"><img src="https://avatars.githubusercontent.com/u/78792352?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Davide Di Simone</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Addisimone" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/jherr"><img src="https://avatars.githubusercontent.com/u/22392?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Jack Herrington</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=jherr" title="Code">💻</a> <a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Ajherr" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 

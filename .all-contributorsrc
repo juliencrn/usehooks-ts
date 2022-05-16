@@ -526,7 +526,6 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/93596663?v=4",
       "profile": "https://github.com/bogdanailincaipnt",
       "contributions": [
-        "bug",
         "code"
       ]
     },
@@ -681,6 +680,16 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/78792352?v=4",
       "profile": "https://github.com/ddisimone",
       "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "jherr",
+      "name": "Jack Herrington",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22392?v=4",
+      "profile": "https://github.com/jherr",
+      "contributions": [
+        "code",
         "bug"
       ]
     }
