@@ -1,7 +1,7 @@
 import { fireEvent } from '@testing-library/react'
 import { renderHook } from '@testing-library/react-hooks/native'
 
-import useEventListener from './useEventListener'
+import { useEventListener } from './useEventListener'
 
 declare global {
   interface WindowEventMap {

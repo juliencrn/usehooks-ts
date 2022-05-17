@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 export type Status = 'idle' | 'loading' | 'ready' | 'error'
 export type ScriptElt = HTMLScriptElement | null
 
-function useScript(src: string): Status {
+export function useScript(src: string): Status {
   const [status, setStatus] = useState<Status>(src ? 'loading' : 'idle')
 
   useEffect(
@@ -66,5 +66,3 @@ function useScript(src: string): Status {
 
   return status
 }
-
-export default useScript

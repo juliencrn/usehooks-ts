@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks/native'
 
-import useStep from './useStep'
+import { useStep } from './useStep'
 
 describe('useStep()', () => {
   test('should use step', () => {

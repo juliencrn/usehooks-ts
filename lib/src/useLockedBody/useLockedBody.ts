@@ -5,7 +5,7 @@ import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
 type ReturnType = [boolean, (locked: boolean) => void]
 
-function useLockedBody(initialLocked = false): ReturnType {
+export function useLockedBody(initialLocked = false): ReturnType {
   const [locked, setLocked] = useState(initialLocked)
 
   // Do the side effect before render
@@ -49,5 +49,3 @@ function useLockedBody(initialLocked = false): ReturnType {
 
   return [locked, setLocked]
 }
-
-export default useLockedBody

@@ -8,7 +8,7 @@ interface ReturnType {
   setCount: Dispatch<SetStateAction<number>>
 }
 
-function useCounter(initialValue?: number): ReturnType {
+export function useCounter(initialValue?: number): ReturnType {
   const [count, setCount] = useState(initialValue || 0)
 
   const increment = () => setCount(x => x + 1)
@@ -23,5 +23,3 @@ function useCounter(initialValue?: number): ReturnType {
     setCount,
   }
 }
-
-export default useCounter

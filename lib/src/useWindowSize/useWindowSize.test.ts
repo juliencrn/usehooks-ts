@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 
-import useWindowSize from './useWindowSize'
+import { useWindowSize } from './useWindowSize'
 
 const setupHook = () => renderHook(() => useWindowSize())
 

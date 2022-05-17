@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks/native'
 
-import useCounter from './useCounter'
+import { useCounter } from './useCounter'
 
 describe('useCounter()', () => {
   test('should use counter', () => {

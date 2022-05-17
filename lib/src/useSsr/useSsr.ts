@@ -1,4 +1,4 @@
-function useSsr() {
+export function useSsr() {
   const isDOM =
     typeof window !== 'undefined' &&
     window.document &&
@@ -9,5 +9,3 @@ function useSsr() {
     isServer: !isDOM,
   }
 }
-
-export default useSsr

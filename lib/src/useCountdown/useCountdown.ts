@@ -23,7 +23,7 @@ interface CountdownHelpers {
  * @param isIncrement determine the countdown is increment, otherwise is decrement
  * @returns
  */
-function useCountdown({
+export function useCountdown({
   seconds,
   interval,
   isIncrement,
@@ -53,5 +53,3 @@ function useCountdown({
   useInterval(isIncrement ? increment : decrement, running ? interval : null)
   return [count, { start, stop, reset }]
 }
-
-export default useCountdown

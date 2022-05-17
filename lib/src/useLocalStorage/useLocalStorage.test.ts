@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks/native'
 import { act } from 'react-test-renderer'
 
-import useLocalStorage from './useLocalStorage'
+import { useLocalStorage } from './useLocalStorage'
 
 class LocalStorageMock {
   store: Record<string, unknown> = {}

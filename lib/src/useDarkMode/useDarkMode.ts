@@ -14,7 +14,7 @@ interface UseDarkModeOutput {
   disable: () => void
 }
 
-function useDarkMode(defaultValue?: boolean): UseDarkModeOutput {
+export function useDarkMode(defaultValue?: boolean): UseDarkModeOutput {
   const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY)
   const [isDarkMode, setDarkMode] = useLocalStorage<boolean>(
     'usehooks-ts-dark-mode',
@@ -34,5 +34,3 @@ function useDarkMode(defaultValue?: boolean): UseDarkModeOutput {
     disable: () => setDarkMode(false),
   }
 }
-
-export default useDarkMode

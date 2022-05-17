@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks/native'
 
-import useTimeout from './useTimeout'
+import { useTimeout } from './useTimeout'
 
 describe('useTimeout()', () => {
   test('should call the callback after 1 min', () => {

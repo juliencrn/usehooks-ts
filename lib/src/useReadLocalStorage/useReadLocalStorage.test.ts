@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks/native'
 
-import useReadLocalStorage from './useReadLocalStorage'
+import { useReadLocalStorage } from './useReadLocalStorage'
 
 describe('useReadLocalStorage()', () => {
   test('should use read local storage', () => {

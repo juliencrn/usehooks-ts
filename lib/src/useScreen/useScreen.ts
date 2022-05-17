@@ -5,7 +5,7 @@ import { useEventListener } from '../useEventListener'
 // See: https://usehooks-ts.com/react-hook/use-isomorphic-layout-effect
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
-function useScreen() {
+export function useScreen() {
   const getScreen = () => {
     if (typeof window !== 'undefined' && window.screen) {
       return window.screen
@@ -29,5 +29,3 @@ function useScreen() {
 
   return screen
 }
-
-export default useScreen

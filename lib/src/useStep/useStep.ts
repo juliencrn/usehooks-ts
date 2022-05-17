@@ -9,7 +9,7 @@ interface Helpers {
   setStep: Dispatch<SetStateAction<number>>
 }
 
-function useStep(maxStep: number): [number, Helpers] {
+export function useStep(maxStep: number): [number, Helpers] {
   const [currentStep, setCurrentStep] = useState(1)
 
   const canGoToNextStep = useMemo(
@@ -62,5 +62,3 @@ function useStep(maxStep: number): [number, Helpers] {
     },
   ]
 }
-
-export default useStep

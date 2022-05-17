@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks/native'
 
-import useInterval from './useInterval'
+import { useInterval } from './useInterval'
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
