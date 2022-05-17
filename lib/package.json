@@ -14,18 +14,30 @@
   "license": "MIT",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    }
+  },
   "scripts": {
-    "prebuild": "npm run clean",
     "start": "chokidar \"src/**/*.ts\" -c \"npm run build\"",
-    "build": "npm run build:cjs && npm run build:esm",
-    "build:cjs": "tsc -p tsconfig.build.json --module commonjs --outDir dist/cjs",
-    "build:esm": "tsc -p tsconfig.build.json --module esNext --outDir dist/esm",
+    "build": "npm-run-all -l clean -p build:esm build:cjs declarations",
+    "build:esm": "cross-env BABEL_ENV=esm babel src --extensions '.ts' --out-dir 'dist/esm' --source-maps",
+    "build:cjs": "cross-env BABEL_ENV=cjs babel src --extensions '.ts' --out-dir 'dist/cjs' --source-maps",
+    "declarations": "tsc -p tsconfig.build.json --emitDeclarationOnly --declarationDir 'dist/types'",
     "clean": "rimraf -rf ./dist",
     "types-check": "tsc -p tsconfig.json"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.17.12",
+    "@babel/preset-env": "^7.17.12",
+    "@babel/preset-react": "^7.17.12",
+    "@babel/preset-typescript": "^7.17.12",
     "@testing-library/react-hooks": "^8.0.0",
+    "cross-env": "^7.0.3",
     "react": ">=16.8.0",
     "react-test-renderer": ">=16.8.0",
     "typescript": "^4.6.4"
