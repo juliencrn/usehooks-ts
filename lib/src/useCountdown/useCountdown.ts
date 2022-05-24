@@ -1,3 +1,6 @@
+// TODO: use useRef
+// TODO: example and test
+
 // See: https://usehooks-ts.com/react-hook/use-boolean
 import { useBoolean } from '../useBoolean'
 import { useCallback } from 'react'
