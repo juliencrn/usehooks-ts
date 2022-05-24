@@ -1,11 +1,10 @@
 // See: https://usehooks-ts.com/react-hook/use-boolean
 import { useBoolean } from '../useBoolean'
+import { useCallback } from 'react'
 // See: https://usehooks-ts.com/react-hook/use-counter
 import { useCounter } from '../useCounter'
 // See: https://usehooks-ts.com/react-hook/use-interval
 import { useInterval } from '../useInterval'
-
-import { useCallback } from 'react'
 
 // Old interface IN & OUT
 interface UseCountdownType {
@@ -97,8 +96,17 @@ function useCountdown(countdownOption: UseCountdownType | CountdownOption): [num
     resetCounter()
   }
 
-  useInterval(isIncrement ? increment : decrement, running ? interval : null)
-  return [count, { start, stop, reset }]
+  const countdownCallback = useCallback(
+    () => {
+      isIncrement ? increment() : decrement()
+      if (count <= (countStop ?? 0)) { stopCountdown() }
+    },
+    [],
+  )
+
+
+  useInterval(countdownCallback, running ? intervalMs : null)
+  return isDeprecated ?
     [count, { start: startCountdown, stop: stopCountdown, reset: resetCountdown } as CountdownHelpers] :
     [count, { startCountdown, stopCountdown, resetCountdown } as CountdownControllers]
 }
