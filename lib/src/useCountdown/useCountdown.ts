@@ -1,4 +1,3 @@
-// TODO: use useRef
 // TODO: example and test
 import { useCallback } from 'react'
 
@@ -57,7 +56,7 @@ function useCountdown(
  *
  * @param  {CountdownOption} countdownOption
  * @param  {number} countdownOption.countStart - the countdown's starting number, initial value of the returned number.
- * @param  {?number} countdownOption.countStop -  `0` by default, the countdown's stopping number.
+ * @param  {?number} countdownOption.countStop -  `0` by default, the countdown's stopping number. Pass `-Infinity` to decrease forever.
  * @param  {?number} countdownOption.intervalMs - `1000` by default, the countdown's interval, in milliseconds.
  * @param  {?boolean} countdownOption.isIncrement - `false` by default, true if the countdown is increment.
  * @returns Array of [number, CountdownControllers]
@@ -127,10 +126,22 @@ function useCountdown(
 
   const countdownCallback = useCallback(() => {
     isIncrement ? increment() : decrement()
-    if (count <= (countStop ?? 0)) {
+    if (countStop === undefined) {
+      if (!isDeprecated) {
+        console.error('new call with deprecated value')
+      }
+    } else if (count <= countStop) {
       stopCountdown()
     }
-  }, [count, countStop, decrement, increment, isIncrement, stopCountdown])
+  }, [
+    count,
+    countStop,
+    decrement,
+    increment,
+    isDeprecated,
+    isIncrement,
+    stopCountdown,
+  ])
 
   useInterval(countdownCallback, isCountdownRunning ? intervalMs : null)
   return isDeprecated
