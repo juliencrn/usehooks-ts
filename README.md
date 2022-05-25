@@ -145,6 +145,18 @@ npm run dev:site
 npm run test
 ```
 
+### Tooling
+
+Git hooks with husky will lint the code before commit and run tests before push. So before pushing, running the following command at least once is always needed.
+
+```bash
+# Launch the documentation website
+npm run bootstrap
+
+# before push
+npm run dev:site
+```
+
 ### How is structured a hook ?
 
 The hook itself and its unit tests are in the `/lib/src/` folder. It's the strict
