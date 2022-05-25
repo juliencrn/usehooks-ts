@@ -110,7 +110,7 @@ If you need to make any other substantial changes, then follow the project setup
 This project use npm `Lerna` and `npm@8` to manage the different packages.
 Before starting, make sure you have the good system dependencies:
 
-- `node@^16`
+- `node@16.x`
 - `npm@^8`
 
 **Note**: To easily switch node version, consider Node Version Manager (nvm).
