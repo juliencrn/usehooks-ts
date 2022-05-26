@@ -92,15 +92,45 @@ describe('deprecated useCountdown()', () => {
 })
 
 describe('useCountdown()', () => {
-  test('should return callable functions', () => {
-    const { result } = renderHook(() =>
-      useCountdown({ countStart: 60, intervalMs: 500, isIncrement: false }),
-    )
+  describe('call useCountdown', () => {
+    test('should return callable functions', () => {
+      const { result } = renderHook(() =>
+        useCountdown({ countStart: 60, intervalMs: 500, isIncrement: false }),
+      )
 
-    expect(result.current[0]).toBe(60)
-    expect(typeof result.current[1].startCountdown).toBe('function')
-    expect(typeof result.current[1].stopCountdown).toBe('function')
-    expect(typeof result.current[1].resetCountdown).toBe('function')
+      expect(result.current[0]).toBe(60)
+      expect(typeof result.current[1].startCountdown).toBe('function')
+      expect(typeof result.current[1].stopCountdown).toBe('function')
+      expect(typeof result.current[1].resetCountdown).toBe('function')
+    })
+    test('should accept only countStart', () => {
+      const { result } = renderHook(() => useCountdown({ countStart: 60 }))
+
+      expect(result.current[0]).toBe(60)
+      expect(typeof result.current[1].startCountdown).toBe('function')
+      expect(typeof result.current[1].stopCountdown).toBe('function')
+      expect(typeof result.current[1].resetCountdown).toBe('function')
+    })
+    test('should accept only countStart, intervalMs', () => {
+      const { result } = renderHook(() =>
+        useCountdown({ countStart: 60, intervalMs: 500 }),
+      )
+
+      expect(result.current[0]).toBe(60)
+      expect(typeof result.current[1].startCountdown).toBe('function')
+      expect(typeof result.current[1].stopCountdown).toBe('function')
+      expect(typeof result.current[1].resetCountdown).toBe('function')
+    })
+    test('should accept only countStart, intervalMs, countStop', () => {
+      const { result } = renderHook(() =>
+        useCountdown({ countStart: 60, intervalMs: 500, countStop: 0 }),
+      )
+
+      expect(result.current[0]).toBe(60)
+      expect(typeof result.current[1].startCountdown).toBe('function')
+      expect(typeof result.current[1].stopCountdown).toBe('function')
+      expect(typeof result.current[1].resetCountdown).toBe('function')
+    })
   })
 
   describe('startCountdown', () => {
