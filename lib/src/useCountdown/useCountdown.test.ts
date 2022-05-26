@@ -20,10 +20,10 @@ describe('deprecated useCountdown()', () => {
     console.warn = jest.fn()
     renderHook(() => {
       useCountdown({ seconds: 60, interval: 500, isIncrement: false })
-      // expect(console.warn.mock.calls[0][0]).toBe(DEPRECATED_WARN)
-      // HELP! I cant type this `.mock`
     })
     expect(console.warn).not.toHaveBeenCalledWith('some random string')
+    // expect(console.warn.mock.calls[0][0]).toBe(DEPRECATED_WARN)
+    // HELP! I cant type this `.mock`
     expect(console.warn).toHaveBeenCalledWith(DEPRECATED_WARN)
   })
 
