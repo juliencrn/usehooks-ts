@@ -1,3 +1,6 @@
+// TODO: suppress warnings with mocked console.warn()
+// TODO: check deprecate warning.
+
 import { act, renderHook } from '@testing-library/react-hooks/native'
 
 import useCountdown from './useCountdown'
@@ -89,7 +92,7 @@ describe('deprecated useCountdown()', () => {
 })
 
 describe('useCountdown()', () => {
-  test('should use countdown', () => {
+  test('should return callable functions', () => {
     const { result } = renderHook(() =>
       useCountdown({ countStart: 60, intervalMs: 500, isIncrement: false }),
     )
@@ -100,10 +103,15 @@ describe('useCountdown()', () => {
     expect(typeof result.current[1].resetCountdown).toBe('function')
   })
 
-  describe('start', () => {
+  describe('startCountdown', () => {
     test('should increment count', () => {
       const { result } = renderHook(() =>
-        useCountdown({ countStart: 60, intervalMs: 500, isIncrement: true }),
+        useCountdown({
+          countStart: 60,
+          intervalMs: 1000,
+          isIncrement: true,
+          countStop: 0,
+        }),
       )
 
       act(result.current[1].startCountdown)
@@ -116,7 +124,7 @@ describe('useCountdown()', () => {
 
     test('should decrement count', () => {
       const { result } = renderHook(() =>
-        useCountdown({ countStart: 60, intervalMs: 500 }),
+        useCountdown({ countStart: 60, intervalMs: 1000 }),
       )
 
       act(result.current[1].startCountdown)
@@ -128,26 +136,29 @@ describe('useCountdown()', () => {
     })
   })
 
-  describe('stop', () => {
+  describe('stopCountdown', () => {
     test('should stop countdown', () => {
       const { result } = renderHook(() =>
-        useCountdown({ countStart: 60, intervalMs: 500 }),
+        useCountdown({ countStart: 60, intervalMs: 1000 }),
       )
 
       expect(result.current[0]).toBe(60)
       act(result.current[1].startCountdown)
       act(() => {
-        jest.advanceTimersByTime(1000)
+        jest.advanceTimersByTime(2000)
       })
       act(result.current[1].stopCountdown)
+      act(() => {
+        jest.advanceTimersByTime(3000)
+      })
       expect(result.current[0]).toBe(58)
     })
   })
 
-  describe('reset', () => {
+  describe('resetCountdown', () => {
     test('should reset count', () => {
       const { result } = renderHook(() =>
-        useCountdown({ countStart: 60, intervalMs: 500 }),
+        useCountdown({ countStart: 60, intervalMs: 1000 }),
       )
 
       act(result.current[1].startCountdown)
