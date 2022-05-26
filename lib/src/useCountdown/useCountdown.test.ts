@@ -1,9 +1,8 @@
-// TODO: suppress warnings with mocked console.warn()
 // TODO: check deprecate warning.
 
 import { act, renderHook } from '@testing-library/react-hooks/native'
 
-import useCountdown from './useCountdown'
+import useCountdown, { DEPRECATED_WARN } from './useCountdown'
 
 jest.useFakeTimers()
 
@@ -17,6 +16,17 @@ describe('deprecated useCountdown()', () => {
     )
     return
   }
+  test('should show deprecate warning', () => {
+    console.warn = jest.fn()
+    renderHook(() => {
+      useCountdown({ seconds: 60, interval: 500, isIncrement: false })
+      // expect(console.warn.mock.calls[0][0]).toBe(DEPRECATED_WARN)
+      // HELP! I cant type this `.mock`
+    })
+    expect(console.warn).not.toHaveBeenCalledWith('some random string')
+    expect(console.warn).toHaveBeenCalledWith(DEPRECATED_WARN)
+  })
+
   test('should use countdown', () => {
     const { result } = renderHook(() =>
       useCountdown({ seconds: 60, interval: 500, isIncrement: false }),

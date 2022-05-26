@@ -33,7 +33,8 @@ interface CountdownControllers {
   resetCountdown: () => void
 }
 
-const DEPRECATED_WARN =
+// exported for test
+export const DEPRECATED_WARN =
   '[useCountdown:DEPRECATED] new interface is already available (see @tutorial), the old version will retire on usehooks-ts@3.'
 
 /**
