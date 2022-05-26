@@ -125,13 +125,14 @@ function useCountdown(
   }
 
   const countdownCallback = useCallback(() => {
-    isIncrement ? increment() : decrement()
     if (countStop === undefined) {
       if (!isDeprecated) {
         console.error('new call with deprecated value')
       }
     } else if (count <= countStop) {
       stopCountdown()
+    } else {
+      isIncrement ? increment() : decrement()
     }
   }, [
     count,
