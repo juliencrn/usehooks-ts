@@ -149,20 +149,34 @@ describe('useCountdown()', () => {
         jest.advanceTimersByTime(1000)
       })
 
-      expect(result.current[0]).toBeGreaterThan(60)
+      expect(result.current[0]).toBe(61)
     })
 
     test('should decrement count', () => {
-      const { result } = renderHook(() =>
-        useCountdown({ countStart: 60, intervalMs: 1000 }),
-      )
-
+      const { result } = renderHook(() => useCountdown({ countStart: 60 }))
+      // interval = 1sec by default.
       act(result.current[1].startCountdown)
       act(() => {
         jest.advanceTimersByTime(1000)
       })
 
       expect(result.current[0]).toBeLessThan(60)
+    })
+
+    test('should stop at countStop', () => {
+      const { result } = renderHook(() =>
+        useCountdown({ countStart: 60, intervalMs: 1000, countStop: 0 }),
+      )
+      act(result.current[1].startCountdown)
+      const PASSED_TIME_SEC = 60
+      act(() => {
+        jest.advanceTimersByTime(PASSED_TIME_SEC * 1000)
+      })
+      expect(result.current[0]).toBe(60 - PASSED_TIME_SEC)
+      act(() => {
+        jest.advanceTimersByTime(60_000)
+      })
+      expect(result.current[0]).toBe(0)
     })
   })
 
