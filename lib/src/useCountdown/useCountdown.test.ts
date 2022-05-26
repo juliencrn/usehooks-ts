@@ -4,7 +4,16 @@ import useCountdown from './useCountdown'
 
 jest.useFakeTimers()
 
-describe('useCountdown()', () => {
+describe('deprecated useCountdown()', () => {
+  // deprecating.
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const packageJsonVersion = require('../../package.json').version
+  if (packageJsonVersion.startsWith('3.')) {
+    console.error(
+      'Skipping useCountdown test for version 3.x, please remove this test.',
+    )
+    return
+  }
   test('should use countdown', () => {
     const { result } = renderHook(() =>
       useCountdown({ seconds: 60, interval: 500, isIncrement: false }),
