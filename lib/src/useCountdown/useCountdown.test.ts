@@ -87,3 +87,78 @@ describe('deprecated useCountdown()', () => {
     })
   })
 })
+
+describe('useCountdown()', () => {
+  test('should use countdown', () => {
+    const { result } = renderHook(() =>
+      useCountdown({ countStart: 60, intervalMs: 500, isIncrement: false }),
+    )
+
+    expect(result.current[0]).toBe(60)
+    expect(typeof result.current[1].startCountdown).toBe('function')
+    expect(typeof result.current[1].stopCountdown).toBe('function')
+    expect(typeof result.current[1].resetCountdown).toBe('function')
+  })
+
+  describe('start', () => {
+    test('should increment count', () => {
+      const { result } = renderHook(() =>
+        useCountdown({ countStart: 60, intervalMs: 500, isIncrement: true }),
+      )
+
+      act(result.current[1].startCountdown)
+      act(() => {
+        jest.advanceTimersByTime(1000)
+      })
+
+      expect(result.current[0]).toBeGreaterThan(60)
+    })
+
+    test('should decrement count', () => {
+      const { result } = renderHook(() =>
+        useCountdown({ countStart: 60, intervalMs: 500 }),
+      )
+
+      act(result.current[1].startCountdown)
+      act(() => {
+        jest.advanceTimersByTime(1000)
+      })
+
+      expect(result.current[0]).toBeLessThan(60)
+    })
+  })
+
+  describe('stop', () => {
+    test('should stop countdown', () => {
+      const { result } = renderHook(() =>
+        useCountdown({ countStart: 60, intervalMs: 500 }),
+      )
+
+      expect(result.current[0]).toBe(60)
+      act(result.current[1].startCountdown)
+      act(() => {
+        jest.advanceTimersByTime(1000)
+      })
+      act(result.current[1].stopCountdown)
+      expect(result.current[0]).toBe(58)
+    })
+  })
+
+  describe('reset', () => {
+    test('should reset count', () => {
+      const { result } = renderHook(() =>
+        useCountdown({ countStart: 60, intervalMs: 500 }),
+      )
+
+      act(result.current[1].startCountdown)
+      act(() => {
+        jest.advanceTimersByTime(1000)
+      })
+      act(result.current[1].stopCountdown)
+      expect(result.current[0]).toBeLessThan(60)
+
+      act(result.current[1].resetCountdown)
+      expect(result.current[0]).toBe(60)
+    })
+  })
+})
