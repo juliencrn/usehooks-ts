@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.4](https://www.npmjs.com/package/usehooks-ts/v/2.5.4) - 2022-05-30
+
+### Added
+
+- improve useCountdown interface (#160 by @PabloLION)
+- add SSR unit tests on useIsClient (#161 by @createdbymahmood)
+
 ## [2.5.3](https://www.npmjs.com/package/usehooks-ts/v/2.5.3) - 2022-05-16
 
 ### Added
