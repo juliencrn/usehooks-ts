@@ -1,4 +1,4 @@
-import { renderHook as renderHookCsr } from '@testing-library/react-hooks'
+import { renderHook as renderHookCsr } from '@testing-library/react-hooks/dom'
 import { renderHook as renderHookSsr } from '@testing-library/react-hooks/server'
 
 import useIsClient from './useIsClient'

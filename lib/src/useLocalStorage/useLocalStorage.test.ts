@@ -1,5 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks/native'
-import { act } from 'react-test-renderer'
+import { act, renderHook } from '@testing-library/react-hooks/dom'
 
 import useLocalStorage from './useLocalStorage'
 

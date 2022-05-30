@@ -26,12 +26,12 @@
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^8.0.0",
-    "react": ">=16.8.0",
-    "react-test-renderer": ">=16.8.0",
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0",
     "typescript": "^4.6.4"
   },
   "peerDependencies": {
-    "react": ">=16.8.0"
+    "react": ">=16.9.0"
   },
   "repository": {
     "type": "git",
