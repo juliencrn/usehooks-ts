@@ -3,12 +3,12 @@ import React, { ChangeEvent, useState } from 'react'
 import { useCountdown } from 'usehooks-ts'
 
 export default function Component() {
-  const [intervalValue, setIntervalValue] = useState<number>(500)
-  const [count, { start, stop, reset }] = useCountdown({
-    seconds: 60,
-    interval: 500,
-    isIncrement: false,
-  })
+  const [intervalValue, setIntervalValue] = useState<number>(1000)
+  const [count, { startCountdown, stopCountdown, resetCountdown }] =
+    useCountdown({
+      countStart: 60,
+      intervalMs: intervalValue,
+    })
 
   const handleChangeIntervalValue = (event: ChangeEvent<HTMLInputElement>) => {
     setIntervalValue(Number(event.target.value))
@@ -22,9 +22,9 @@ export default function Component() {
         value={intervalValue}
         onChange={handleChangeIntervalValue}
       />
-      <button onClick={start}>start</button>
-      <button onClick={stop}>stop</button>
-      <button onClick={reset}>reset</button>
+      <button onClick={startCountdown}>start</button>
+      <button onClick={stopCountdown}>stop</button>
+      <button onClick={resetCountdown}>reset</button>
     </div>
   )
 }
