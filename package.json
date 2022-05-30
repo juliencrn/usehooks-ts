@@ -57,7 +57,7 @@
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.17",
     "@types/react": "^17.0.38",
-    "@types/react-dom": ">=16.8.0",
+    "@types/react-dom": ">=16.9.0",
     "@typescript-eslint/eslint-plugin": "^5.11.0",
     "@typescript-eslint/parser": "^5.11.0",
     "all-contributors-cli": "^6.20.0",

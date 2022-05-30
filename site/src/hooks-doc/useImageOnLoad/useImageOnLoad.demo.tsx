@@ -25,14 +25,14 @@ export default function Component() {
     <div style={style.wrap}>
       {/* Small image load fast */}
       <img
-        style={{ ...style.image, ...css.thumbnail }}
+        style={{ ...style.image, ...(css.thumbnail as CSSProperties) }}
         src="https://via.placeholder.com/150"
         alt="thumbnail"
       />
       {/* Full size image */}
       <img
         onLoad={handleImageOnLoad}
-        style={{ ...style.image, ...css.fullSize }}
+        style={{ ...style.image, ...(css.fullSize as CSSProperties) }}
         src="https://via.placeholder.com/600"
         alt="fullImage"
       />
