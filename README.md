@@ -128,10 +128,11 @@ cd usehooks-ts
 npm run bootstrap
 ```
 
-### Create a new hook
+### Create or update a new hook
 
 ```bash
-# This command will regenerate all the hook boilerplate
+# This command generates boilerplate for new hooks.
+# Skip if updating an existed hook.
 npm run plop
 
 # Then develop the hook (aka test:watch)
@@ -143,18 +144,6 @@ npm run dev:site
 
 # Before commit: exec types-checking, linters and tests
 npm run test
-```
-
-### Tooling
-
-Git hooks with husky will lint the code before commit and run tests before push. So before pushing, running the following command at least once is always needed.
-
-```bash
-# Launch the documentation website
-npm run bootstrap
-
-# before push
-npm run dev:site
 ```
 
 ### How is structured a hook ?

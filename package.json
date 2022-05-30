@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "clean": "lerna run clean && lerna clean -y",
-    "bootstrap": "npm ci && lerna exec npm ci && npm run copy:hooks",
+    "bootstrap": "npm ci && lerna exec npm ci && npm run copy:hooks && npm run build:lib",
     "types-check": "lerna run types-check",
     "lint": "npm-run-all --continue-on-error -p lint:*",
     "lint:code": "eslint '**/*.{js,jsx,ts,tsx}'",
