@@ -11,10 +11,11 @@ declare global {
   interface HTMLElementEventMap {
     'test-event': CustomEvent
   }
-}
 
-const addEventListenerToWindow = jest.fn()
-window.addEventListener = addEventListenerToWindow
+  interface DocumentEventMap {
+    'test-event': CustomEvent
+  }
+}
 
 const windowAddEventListenerSpy = jest.spyOn(window, 'addEventListener')
 const windowRemoveEventListenerSpy = jest.spyOn(window, 'removeEventListener')
@@ -23,73 +24,102 @@ const ref = { current: document.createElement('div') }
 const refAddEventListenerSpy = jest.spyOn(ref.current, 'addEventListener')
 const refRemoveEventListenerSpy = jest.spyOn(ref.current, 'removeEventListener')
 
+const docRef = { current: window.document }
+const docAddEventListenerSpy = jest.spyOn(docRef.current, 'addEventListener')
+const docRemoveEventListenerSpy = jest.spyOn(
+  docRef.current,
+  'removeEventListener',
+)
+
 describe('useEventListener()', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
 
-  it('should bind the event listener to the window when element is not provided', () => {
+  it('should bind/unbind the event listener to the window when element is not provided', () => {
     const eventName = 'test-event'
+    const handler = jest.fn()
+    const options = undefined
 
-    renderHook(() => useEventListener(eventName, jest.fn()))
+    const { unmount } = renderHook(() => useEventListener(eventName, handler))
 
     expect(windowAddEventListenerSpy).toHaveBeenCalledWith(
       eventName,
-      expect.anything(),
-    )
-  })
-
-  it('should bind the event listener to the element when element is provided', () => {
-    const eventName = 'test-event'
-
-    renderHook(() => useEventListener(eventName, jest.fn(), ref))
-
-    expect(windowAddEventListenerSpy).not.toHaveBeenCalledWith(
-      eventName,
-      expect.anything(),
-    )
-
-    expect(refAddEventListenerSpy).toHaveBeenCalledWith(
-      eventName,
-      expect.anything(),
-    )
-  })
-
-  it('should unbind the event listener from the window after the hook is unmounted', () => {
-    const eventName = 'test-event'
-
-    const { unmount } = renderHook(() => useEventListener(eventName, jest.fn()))
-
-    expect(windowAddEventListenerSpy).toHaveBeenCalledWith(
-      eventName,
-      expect.anything(),
+      expect.any(Function),
+      options,
     )
 
     unmount()
 
     expect(windowRemoveEventListenerSpy).toHaveBeenCalledWith(
       eventName,
-      expect.anything(),
+      expect.any(Function),
     )
   })
 
-  it('should unbind the event listener from the element after the hook is unmounted', () => {
+  it('should bind/unbind the event listener to the element when element is provided', () => {
     const eventName = 'test-event'
+    const handler = jest.fn()
+    const options = undefined
 
     const { unmount } = renderHook(() =>
-      useEventListener(eventName, jest.fn(), ref),
+      useEventListener(eventName, handler, ref, options),
     )
 
+    expect(refAddEventListenerSpy).toHaveBeenCalledTimes(1)
     expect(refAddEventListenerSpy).toHaveBeenCalledWith(
       eventName,
-      expect.anything(),
+      expect.any(Function),
+      options,
     )
 
     unmount()
 
     expect(refRemoveEventListenerSpy).toHaveBeenCalledWith(
       eventName,
-      expect.anything(),
+      expect.any(Function),
+    )
+  })
+
+  it('should bind/unbind the event listener to the document when document is provided', () => {
+    const eventName = 'test-event'
+    const handler = jest.fn()
+    const options = undefined
+
+    const { unmount } = renderHook(() =>
+      useEventListener(eventName, handler, docRef, options),
+    )
+
+    expect(docAddEventListenerSpy).toHaveBeenCalledTimes(1)
+    expect(docAddEventListenerSpy).toHaveBeenCalledWith(
+      eventName,
+      expect.any(Function),
+      options,
+    )
+
+    unmount()
+
+    expect(docRemoveEventListenerSpy).toHaveBeenCalledWith(
+      eventName,
+      expect.any(Function),
+    )
+  })
+
+  it('should pass the options to the event listener', () => {
+    const eventName = 'test-event'
+    const handler = jest.fn()
+    const options = {
+      passive: true,
+      once: true,
+      capture: true,
+    }
+
+    renderHook(() => useEventListener(eventName, handler, undefined, options))
+
+    expect(windowAddEventListenerSpy).toHaveBeenCalledWith(
+      eventName,
+      expect.any(Function),
+      options,
     )
   })
 
