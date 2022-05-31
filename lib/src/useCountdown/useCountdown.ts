@@ -91,7 +91,7 @@ function useCountdown(
   // default values
   intervalMs = intervalMs ?? 1000
   isIncrement = isIncrement ?? false
-  countStop = (countStop ?? 0) as number
+  countStop = countStop ?? 0
 
   const {
     count,
