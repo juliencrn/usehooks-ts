@@ -104,7 +104,13 @@ export default useLocalStorage
 // A wrapper for "JSON.parse()"" to support "undefined" value
 function parseJSON<T>(value: string | null): T | undefined {
   try {
-    return value === 'undefined' ? undefined : JSON.parse(value ?? '')
+    if ( value === 'undefined' ) {
+      return undefined;
+    } else if ( value === 'null' ) {
+      return null; 
+    } else {
+      return JSON.parse(value);
+    }
   } catch {
     console.log('parsing error on', { value })
     return undefined
