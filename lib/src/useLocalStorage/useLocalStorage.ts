@@ -3,10 +3,10 @@ import {
   SetStateAction,
   useCallback,
   useEffect,
-  useRef,
   useState,
 } from 'react'
 
+import { useEventCallback } from '../useEventCallback'
 // See: https://usehooks-ts.com/react-hook/use-event-listener
 import { useEventListener } from '../useEventListener'
 
@@ -40,9 +40,9 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
   // Pass initial state function to useState so logic is only executed once
   const [storedValue, setStoredValue] = useState<T>(readValue)
 
-  const setValueRef = useRef<SetValue<T>>()
-
-  setValueRef.current = value => {
+  // Return a wrapped version of useState's setter function that ...
+  // ... persists the new value to localStorage.
+  const setValue: SetValue<T> = useEventCallback(value => {
     // Prevent build error "window is undefined" but keeps working
     if (typeof window == 'undefined') {
       console.warn(
@@ -65,14 +65,7 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
     } catch (error) {
       console.warn(`Error setting localStorage key “${key}”:`, error)
     }
-  }
-
-  // Return a wrapped version of useState's setter function that ...
-  // ... persists the new value to localStorage.
-  const setValue: SetValue<T> = useCallback(
-    value => setValueRef.current?.(value),
-    [],
-  )
+  })
 
   useEffect(() => {
     setStoredValue(readValue())
