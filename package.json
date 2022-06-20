@@ -37,6 +37,8 @@
     "build": "lerna run build --stream",
     "build:site": "lerna run --scope site build",
     "build:lib": "lerna run --scope usehooks-ts build && npm run copy:hooks",
+    "predeploy": "npm run build",
+    "deploy": "netlify deploy --dir=site/public --prod",
     "dev:site": "npm run build:lib && cd site && npm run start",
     "dev:lib": "npm run test:watch",
     "serve:site": "cd site && npm run serve",
