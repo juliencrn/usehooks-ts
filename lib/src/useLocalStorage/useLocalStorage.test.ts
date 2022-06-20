@@ -77,7 +77,7 @@ describe('useLocalStorage()', () => {
 
   test('Update the state with undefined', () => {
     const { result } = renderHook(() =>
-      useLocalStorage<string | undefined>('keytest', 'value'),
+      useLocalStorage<string | undefined>('key', 'value'),
     )
 
     act(() => {
@@ -86,6 +86,19 @@ describe('useLocalStorage()', () => {
     })
 
     expect(result.current[0]).toBeUndefined()
+  })
+
+  test('Update the state with null', () => {
+    const { result } = renderHook(() =>
+      useLocalStorage<string | null>('key', 'value'),
+    )
+
+    act(() => {
+      const setState = result.current[1]
+      setState(null)
+    })
+
+    expect(result.current[0]).toBeNull()
   })
 
   test('Update the state with a callback function', () => {
