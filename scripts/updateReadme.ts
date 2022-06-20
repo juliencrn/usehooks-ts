@@ -33,20 +33,26 @@ interface MarkdownLine {
   markdownLine: string
 }
 
-function formatHook(name: string, demos: string[]): MarkdownLine {
+function formatHook(name: string, demos: string[]): MarkdownLine | null {
   const hasDemo = demos.includes(name)
-  if (!hasDemo) console.warn(`${name} haven't demo yet!`)
+  if (!hasDemo) {
+    console.warn(`${name} haven't demo yet!`)
+    return null
+  }
 
   return {
     name,
-    markdownLine: hasDemo
-      ? `- [\`${name}()\`](${createUrl(name)})\n`
-      : `- ${name}\n`,
+    markdownLine: `- [\`${name}()\`](${createUrl(name)})\n`,
   }
 }
 
-function createMarkdownList(hooks: MarkdownLine[]): string {
-  return hooks.reduce((acc, hook) => acc + hook.markdownLine, '')
+function createMarkdownList(hooks: (MarkdownLine | null)[]): string {
+  return hooks.reduce((acc, hook) => {
+    if (hook) {
+      return acc + hook.markdownLine
+    }
+    return acc
+  }, '')
 }
 
 function insertIn(markdown: string, file: fs.PathOrFileDescriptor): void {

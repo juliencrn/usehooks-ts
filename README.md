@@ -76,6 +76,7 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 - [`useReadLocalStorage()`](https://usehooks-ts.com/react-hook/use-read-local-storage)
 - [`useScreen()`](https://usehooks-ts.com/react-hook/use-screen)
 - [`useScript()`](https://usehooks-ts.com/react-hook/use-script)
+- [`useSessionStorage()`](https://usehooks-ts.com/react-hook/use-session-storage)
 - [`useSsr()`](https://usehooks-ts.com/react-hook/use-ssr)
 - [`useStep()`](https://usehooks-ts.com/react-hook/use-step)
 - [`useTernaryDarkMode()`](https://usehooks-ts.com/react-hook/use-ternary-dark-mode)
@@ -292,7 +293,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 ## 🚗 Roadmap
 
-- [ ] Add new hooks (web3 hooks are welcome!)
+- [ ] Add more hooks
 - [ ] Develop automated tests for all hooks
 
 ## 📝 License
