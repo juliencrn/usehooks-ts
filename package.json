@@ -72,7 +72,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-tree-shaking": "^1.10.0",
-    "husky": "^7.0.0",
+    "husky": "^8.0.1",
     "jest": "^27.5.1",
     "jest-preset-gatsby": "^1.0.134",
     "jsdom": "^19.0.0",
