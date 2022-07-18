@@ -1,14 +1,14 @@
 import { useEffect, useReducer, useRef } from 'react'
 
-interface State<T> {
+export interface State<T> {
   data?: T
   error?: Error
 }
 
-type Cache<T> = { [url: string]: T }
+export type Cache<T> = { [url: string]: T }
 
 // discriminated union type
-type Action<T> =
+export type Action<T> =
   | { type: 'loading' }
   | { type: 'fetched'; payload: T }
   | { type: 'error'; payload: Error }

@@ -1,6 +1,6 @@
 import { useEventListener } from '../useEventListener'
 
-type Handler = (event: MouseEvent) => void
+export type Handler = (event: MouseEvent) => void
 
 function useClickAnyWhere(handler: Handler) {
   useEventListener('click', event => {

@@ -9,6 +9,7 @@ import {
 import { useEventCallback } from '../useEventCallback'
 // See: https://usehooks-ts.com/react-hook/use-event-listener
 import { useEventListener } from '../useEventListener'
+import { SetValue } from '../useLocalStorage/useLocalStorage'
 
 declare global {
   interface WindowEventMap {
@@ -16,7 +17,7 @@ declare global {
   }
 }
 
-type SetValue<T> = Dispatch<SetStateAction<T>>
+// export type SetValue<T> = Dispatch<SetStateAction<T>>
 
 function useSessionStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
   // Get from session storage then

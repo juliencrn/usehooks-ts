@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react'
 // See: https://usehooks-ts.com/react-hook/use-event-listener
 import { useEventListener } from '../useEventListener'
 
-type Value<T> = T | null
+export type Value<T> = T | null
 
 function useReadLocalStorage<T>(key: string): Value<T> {
   // Get from local storage then

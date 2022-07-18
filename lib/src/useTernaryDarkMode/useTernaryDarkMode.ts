@@ -9,7 +9,7 @@ import { useUpdateEffect } from '../useUpdateEffect'
 
 const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)'
 
-type TernaryDarkMode = 'system' | 'dark' | 'light'
+export type TernaryDarkMode = 'system' | 'dark' | 'light'
 interface UseTernaryDarkModeOutput {
   isDarkMode: boolean
   ternaryDarkMode: TernaryDarkMode

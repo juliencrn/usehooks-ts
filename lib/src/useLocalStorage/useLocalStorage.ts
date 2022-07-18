@@ -16,7 +16,7 @@ declare global {
   }
 }
 
-type SetValue<T> = Dispatch<SetStateAction<T>>
+export type SetValue<T> = Dispatch<SetStateAction<T>>
 
 function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
   // Get from local storage then

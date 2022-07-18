@@ -7,7 +7,7 @@ import { useUpdateEffect } from '../useUpdateEffect'
 
 const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)'
 
-interface UseDarkModeOutput {
+export interface UseDarkModeOutput {
   isDarkMode: boolean
   toggle: () => void
   enable: () => void

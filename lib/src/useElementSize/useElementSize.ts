@@ -5,7 +5,7 @@ import { useEventListener } from '../useEventListener'
 // See: https://usehooks-ts.com/react-hook/use-isomorphic-layout-effect
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
-interface Size {
+export interface Size {
   width: number
   height: number
 }

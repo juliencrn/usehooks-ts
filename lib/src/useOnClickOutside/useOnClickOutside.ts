@@ -1,8 +1,9 @@
 import { RefObject } from 'react'
 
+import { Handler } from '../useClickAnyWhere/useClickAnyWhere'
 import { useEventListener } from '../useEventListener'
 
-type Handler = (event: MouseEvent) => void
+// export type Handler = (event: MouseEvent) => void
 
 function useOnClickOutside<T extends HTMLElement = HTMLElement>(
   ref: RefObject<T>,

@@ -1,11 +1,11 @@
 import { CSSProperties, useState } from 'react'
 
-interface ImageStyle {
+export interface ImageStyle {
   thumbnail: CSSProperties
   fullSize: CSSProperties
 }
 
-interface ImageOnLoadType {
+export interface ImageOnLoadType {
   handleImageOnLoad: () => void
   css: ImageStyle
 }

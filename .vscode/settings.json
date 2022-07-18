@@ -36,5 +36,25 @@
   "eslint.workingDirectories": [
     { "directory": "lib", "changeProcessCWD": true },
     { "directory": "site", "changeProcessCWD": true }
-  ]
+  ],
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#df2929",
+    "activityBar.activeBorder": "#21de21",
+    "activityBar.background": "#df2929",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#21de21",
+    "activityBarBadge.foreground": "#15202b",
+    "sash.hoverBorder": "#df2929",
+    "statusBar.background": "#b91c1c",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#df2929",
+    "statusBarItem.remoteBackground": "#b91c1c",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#b91c1c",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#b91c1c99",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.remoteColor": "#b91c1c"
 }

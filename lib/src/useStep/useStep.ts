@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useCallback, useMemo, useState } from 'react'
 
-interface Helpers {
+export interface Helpers {
   goToNextStep: () => void
   goToPrevStep: () => void
   reset: () => void

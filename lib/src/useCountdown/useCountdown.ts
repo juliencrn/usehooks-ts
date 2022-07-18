@@ -9,25 +9,25 @@ import { useCounter } from '../useCounter'
 import { useInterval } from '../useInterval'
 
 // Old interface IN & OUT
-interface UseCountdownType {
+export interface UseCountdownType {
   seconds: number
   interval: number
   isIncrement?: boolean
 }
-interface CountdownHelpers {
+export interface CountdownHelpers {
   start: () => void
   stop: () => void
   reset: () => void
 }
 
 // New interface IN & OUT
-interface CountdownOption {
+export interface CountdownOption {
   countStart: number
   intervalMs?: number
   isIncrement?: boolean
   countStop?: number
 }
-interface CountdownControllers {
+export interface CountdownControllers {
   startCountdown: () => void
   stopCountdown: () => void
   resetCountdown: () => void
