@@ -9,7 +9,7 @@ import {
 import { useEventCallback } from '../useEventCallback'
 // See: https://usehooks-ts.com/react-hook/use-event-listener
 import { useEventListener } from '../useEventListener'
-import { SetValue } from '../useLocalStorage/useLocalStorage'
+import { SetValue } from '../useLocalStorage'
 
 declare global {
   interface WindowEventMap {

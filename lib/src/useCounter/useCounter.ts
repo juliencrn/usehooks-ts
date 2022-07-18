@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useState } from 'react'
 
-export interface ReturnTypeUseCounter {
+export interface UseCounterReturn {
   count: number
   increment: () => void
   decrement: () => void
@@ -8,7 +8,7 @@ export interface ReturnTypeUseCounter {
   setCount: Dispatch<SetStateAction<number>>
 }
 
-function useCounter(initialValue?: number): ReturnTypeUseCounter {
+function useCounter(initialValue?: number): UseCounterReturn {
   const [count, setCount] = useState(initialValue || 0)
 
   const increment = () => setCount(x => x + 1)
