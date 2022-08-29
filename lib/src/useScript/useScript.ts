@@ -21,7 +21,6 @@ function getScriptNode(src: string) {
 
 /**
  * Load a script and return its status. If the script is already loaded, it will return it's load status immediately.
- * Modified to have an initial load status.
  */
 export function useScript(src: string): UseScriptStatus {
   const [status, setStatus] = useState<UseScriptStatus>(() => {
@@ -53,9 +52,10 @@ export function useScript(src: string): UseScriptStatus {
         scriptNode.src = src;
         scriptNode.async = true;
         scriptNode.setAttribute('data-status', 'loading');
+
         // Add script to document body
         document.body.appendChild(scriptNode);
-
+        // Set cached status as 'loading'
         cachedScriptStatuses[src] = 'loading';
 
         // Store status in attribute on script
