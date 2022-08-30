@@ -21,6 +21,8 @@ function getScriptNode(src: string) {
 
 /**
  * Load a script and return its status. If the script is already loaded, it will return it's load status immediately.
+ * Source https://usehooks-ts.com/react-hook/use-script
+ * Modified to have an initial load status.
  */
 export function useScript(src: string): UseScriptStatus {
   const [status, setStatus] = useState<UseScriptStatus>(() => {
@@ -35,7 +37,7 @@ export function useScript(src: string): UseScriptStatus {
   useEffect(
     () => {
       const cachedScriptStatus = cachedScriptStatuses[src];
-      if (cachedScriptStatus) {
+      if (cachedScriptStatus === 'ok' || cachedScriptStatus === 'error') {
         // If the script is already cached, set its status immediately
         setStatus(cachedScriptStatus);
         return;
