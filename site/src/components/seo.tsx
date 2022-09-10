@@ -102,7 +102,13 @@ const SEO: FC<SEOProps> = ({
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5817566022458684"
+        crossOrigin="anonymous"
+      ></script>
+    </Helmet>
   )
 }
 
