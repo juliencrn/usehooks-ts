@@ -1,22 +1,33 @@
 {
   "name": "usehooks-ts",
-  "private": true,
+  "private": false,
+  "version": "2.6.0",
   "description": "React hook library, ready to use, written in Typescript.",
   "author": "Julien CARON <juliencaron@protonmail.com>",
   "homepage": "https://usehooks-ts.com",
   "keywords": [
-    "gatsby",
     "typescript",
     "react",
-    "npm",
+    "react-hooks",
     "hooks",
-    "react-hooks"
+    "npm"
   ],
   "license": "MIT",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
   "workspaces": [
     "./site"
   ],
   "scripts": {
+    "prebuild": "npm run clean",
+    "start": "chokidar \"src/**/*.ts\" -c \"npm run build\"",
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc -p tsconfig.build.json --module commonjs --outDir dist/cjs",
+    "build:esm": "tsc -p tsconfig.build.json --module esNext --outDir dist/esm",
+    "test": "jest",
+    "clean": "rimraf -rf ./dist",
+    "types-check": "tsc -p tsconfig.json",
     "legacy-clean": "lerna run clean && lerna clean -y",
     "legacy-bootstrap": "npm ci && lerna exec npm ci && npm run copy:hooks && npm run build:lib",
     "legacy-types-check": "lerna run types-check",
@@ -73,10 +84,14 @@
     "npm-run-all": "^4.1.5",
     "plop": "^3.0.5",
     "prettier": "^2.5.1",
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0",
     "rimraf": "^3.0.2",
     "ts-node": "^10.2.1",
-    "typescript": "^4.5.5",
-    "usehooks-ts": "file:lib"
+    "typescript": "^4.5.5"
+  },
+  "peerDependencies": {
+    "react": "^16.9.0 || ^17.0.0 || ^18.0.0"
   },
   "repository": {
     "type": "git",

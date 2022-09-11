@@ -4,9 +4,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "lib": ["lib/src"],
+      "lib": ["src"],
       "site": ["site/src"]
     },
     "noEmit": true
-  }
+  },
+
+  "include": ["src/**/*"]
 }

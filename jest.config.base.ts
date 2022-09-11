@@ -1,9 +1,7 @@
 import { Config } from '@jest/types'
 import glob from 'glob'
 
-const packages = glob
-  .sync(`./{site,lib}`)
-  .map(p => p.replace(/^\./, `<rootDir>`))
+const packages = glob.sync(`./src`).map(p => p.replace(/^\./, `<rootDir>`))
 
 const ignoreDirs = [
   'build/',
@@ -14,6 +12,7 @@ const ignoreDirs = [
   'public/',
   'generators/',
   'generated/',
+  'site/',
 ]
 
 const config: Config.InitialOptions = {
