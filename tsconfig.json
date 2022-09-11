@@ -1,14 +1,24 @@
 {
-  "extends": "./tsconfig.base.json",
-
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "lib": ["src"],
-      "site": ["site/src"]
-    },
-    "noEmit": true
+    "rootDir": "./src",
+    "target": "esnext",
+    "moduleResolution": "node",
+    // Needed for CommonJS modules
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "noEmitOnError": true,
+    "skipLibCheck": true,
+    "removeComments": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "strict": true,
+    "isolatedModules": true,
+    "lib": ["ESNEXT", "DOM"]
   },
 
-  "include": ["src/**/*"]
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "dist", "./src/**/*.test.ts", "site", "scripts"]
 }
