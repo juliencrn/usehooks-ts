@@ -3,7 +3,7 @@ import path from 'path'
 
 import { isHookFile } from './utils'
 
-const hookDir = path.resolve('./lib/src')
+const hookDir = path.resolve('./src')
 const hooks = fs.readdirSync(hookDir).filter(isHookFile)
 const testFileRegex = new RegExp(`\.test\.ts$`)
 let hasTestCount = 0

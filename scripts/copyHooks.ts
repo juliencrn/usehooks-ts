@@ -3,7 +3,7 @@ import path from 'path'
 
 import { isHookFile, toQueryParams } from './utils'
 
-const hooksDir = path.resolve('./lib/src')
+const hooksDir = path.resolve('./src')
 const demosDir = path.resolve('./site/src/hooks-doc')
 const outputDir = path.resolve('./site/generated')
 const sandboxTemplatePath = path.resolve('./templates/codesandbox')

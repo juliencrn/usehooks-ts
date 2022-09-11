@@ -10,14 +10,13 @@ import { camelToKebabCase, isHookFile } from './utils'
 const demos = fs.readdirSync(path.resolve(path.resolve('./site/src/hooks-doc')))
 
 const hooks = fs
-  .readdirSync(path.resolve(path.resolve('./lib/src')))
+  .readdirSync(path.resolve(path.resolve('./src')))
   .filter(isHookFile)
   .map(name => formatHook(name, demos))
 
 const markdown = createMarkdownList(hooks)
 
 insertIn(markdown, path.resolve('./README.md'))
-insertIn(markdown, path.resolve('./lib/README.md'))
 
 ////////////////////////////////////////////////////////////////////////
 // 2. Utility functions

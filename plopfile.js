@@ -21,22 +21,22 @@ module.exports = function (plop) {
        */
       {
         type: 'add',
-        path: 'lib/src/{{camelCase name}}/index.ts',
+        path: 'src/{{camelCase name}}/index.ts',
         templateFile: 'templates/plop/hooks/lib/index.ts.hbs',
       },
       {
         type: 'add',
-        path: 'lib/src/{{camelCase name}}/{{camelCase name}}.ts',
+        path: 'src/{{camelCase name}}/{{camelCase name}}.ts',
         templateFile: 'templates/plop/hooks/lib/hook.ts.hbs',
       },
       {
         type: 'add',
-        path: 'lib/src/{{camelCase name}}/{{camelCase name}}.test.ts',
+        path: 'src/{{camelCase name}}/{{camelCase name}}.test.ts',
         templateFile: 'templates/plop/hooks/lib/hook.test.ts.hbs',
       },
       {
         type: 'append',
-        path: 'lib/src/index.ts',
+        path: 'src/index.ts',
         templateFile: 'templates/plop/hooks/index.ts.hbs',
       },
 
