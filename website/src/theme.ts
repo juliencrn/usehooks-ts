@@ -3,9 +3,6 @@ import { blue, red } from '@mui/material/colors'
 import { createTheme } from '@mui/material/styles'
 import deepMerge from 'deepmerge'
 
-import FiraCode from './assets/fonts/FiraMono-Regular.otf'
-import FiraRegular from './assets/fonts/FiraSans-Regular.ttf'
-
 export const dracula = {
   background: '#282a36',
   currentLine: '#44475a',
@@ -42,7 +39,7 @@ const makeTheme = (variant: ThemeOptions): Theme => {
     },
     typography: {
       fontFamily: [
-        'Fira Sans Regular',
+        'Fira Sans',
         '-apple-system',
         'BlinkMacSystemFont',
         '"Segoe UI"',
@@ -57,26 +54,6 @@ const makeTheme = (variant: ThemeOptions): Theme => {
     },
 
     components: {
-      MuiCssBaseline: {
-        styleOverrides: `
-          @font-face {
-            font-family: Fira Sans Regular;
-            font-style: normal;
-            font-display: swap;
-            font-weight: 400;
-            src: url(${FiraRegular}) format(truetype);
-          }
-          @font-face {
-            font-family: Fira Code;
-            font-style: normal;
-            font-display: swap;
-            font-weight: 400;
-            src: url(${FiraCode}) format('woOpenTypeff2')
-            local('Open Sans Regular'),
-            local('OpenSans-Regular');
-          }
-        `,
-      },
       MuiLink: {
         defaultProps: {
           underline: 'hover',
