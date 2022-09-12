@@ -1,15 +1,20 @@
+import { HookNode, Nodes, Post } from '~/models'
+
 const query = `
   {
-    algoliaPosts: allMdx(limit: 1000, filter: {fields: {type: {eq: "post"}}}) {
+    posts: allMdx(limit: 1000, filter: {fields: {type: {eq: "post"}}}) {
       nodes {
         id
         excerpt(pruneLength: 155)
+        shortDescription: excerpt(pruneLength: 280)
         fields {
-          path
           name
+          type
+          path
         }
         frontmatter {
           title
+          date
         }
       }
     }
@@ -32,9 +37,15 @@ const query = `
   }
 `
 
-const transformer = ({ data }) => {
-  const matchesPosts = []
-  data.algoliaPosts.nodes.forEach(post => {
+interface Data {
+  posts: Nodes<Omit<Post, 'body'>>
+  hooks: Nodes<Omit<HookNode, 'path'>>
+  demos: Nodes<Omit<HookNode, 'path'>>
+}
+
+const transformer = ({ data }: { data: Data }) => {
+  const matchesPosts: Omit<Post, 'body'>[] = []
+  data.posts.nodes.forEach(post => {
     const { fields } = post
 
     // Check if have the corresponding hook
@@ -60,18 +71,16 @@ const transformer = ({ data }) => {
       path: `/react-hook${fields.path}`,
       title: frontmatter.title,
       // Allow querying by title without the "use" prefix
-      titleWithoutUse: frontmatter.title.substr(3),
+      titleWithoutUse: frontmatter.title.slice(3),
       excerpt,
     }
   })
 }
 
-const queries = [
+export const queries = [
   {
     query,
     transformer,
     indexName: `Posts`,
   },
 ]
-
-module.exports = queries

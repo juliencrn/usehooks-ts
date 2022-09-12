@@ -49,22 +49,24 @@ export interface PostTemplateProps {
   }
 }
 
+export const Head = ({ data }: PostTemplateProps) => (
+  <SEO
+    title={`${data.post.frontmatter.title}() react hook - usehooks-ts`}
+    description={data.post.excerpt}
+  />
+)
+
 function PostTemplate(props: PostTemplateProps) {
   const { post, hook, demo } = props.data
-  const { body, excerpt, frontmatter } = post
+  const { body, frontmatter } = post
   const repoUrl = 'https://github.com/juliencrn/usehooks-ts'
-  const editLink = `${repoUrl}/tree/master/lib/src/${post.fields.name}`
+  const editLink = `${repoUrl}/tree/master/src/${post.fields.name}`
   const DemoComponent = React.lazy(
-    () => import(`~/hooks-doc/${frontmatter.title}/${frontmatter.title}.demo`),
+    () => import(`~/content/${frontmatter.title}/${frontmatter.title}.demo`),
   )
 
   return (
     <StyledContainer maxWidth="md">
-      <SEO
-        title={`${frontmatter.title}() react hook - usehooks-ts`}
-        description={excerpt}
-      />
-
       <Typography variant="h2" component="h1" className={classes.title}>
         {frontmatter.title}
         <Typography variant="h2" component="span" className={classes.textMono}>
