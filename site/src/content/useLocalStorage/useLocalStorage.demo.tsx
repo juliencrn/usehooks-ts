@@ -7,7 +7,7 @@ export default function Component() {
   const [isDarkTheme, setDarkTheme] = useLocalStorage('darkTheme', true)
 
   const toggleTheme = () => {
-    setDarkTheme(prevValue => !prevValue)
+    setDarkTheme((prevValue: boolean) => !prevValue)
   }
 
   return (
