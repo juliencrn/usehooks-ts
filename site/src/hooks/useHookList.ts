@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { HookNode, Post } from '~/models'
 
 export interface GroupedHookList {
-  posts: { nodes: Post[] }
+  posts: { nodes: Omit<Post, 'body'>[] }
   hooks: { nodes: HookNode[] }
   demos: { nodes: HookNode[] }
 }
@@ -13,7 +13,7 @@ function useHookList(): GroupedHookList {
     {
       posts: allMdx(filter: { fields: { type: { eq: "post" } } }) {
         nodes {
-          ...Post
+          ...PostPreview
         }
       }
       hooks: allMdx(filter: { fields: { type: { eq: "hook" } } }) {

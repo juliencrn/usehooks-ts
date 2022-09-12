@@ -8,13 +8,15 @@ const pageData = {
   description: "You just hit a route that doesn't exist... the sadness.",
 }
 
+export const Head = () => (
+  <SEO
+    title={`${pageData.title}() react hook - usehooks-ts`}
+    description={pageData.description}
+  />
+)
+
 function NotFoundPage() {
-  return (
-    <>
-      <SEO {...pageData} />
-      <Hero {...pageData} fullHeight />
-    </>
-  )
+  return <Hero {...pageData} fullHeight />
 }
 
 export default NotFoundPage

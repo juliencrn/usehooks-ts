@@ -8,107 +8,56 @@
 import React, { FC } from 'react'
 
 import { useLocation } from '@reach/router'
-import { Helmet } from 'react-helmet'
 
 import useSiteMetadata from '~/hooks/useSiteMetadata'
 
-interface MetaProperty {
-  property: string
-  content: string
-}
-
-interface MetaName {
-  name: string
-  content: string
-}
-
-type Meta = MetaName | MetaProperty
-
 export interface SEOProps {
-  title: string
+  title?: string
   description?: string
-  lang?: string
-  meta?: Meta[]
 }
 
-const SEO: FC<SEOProps> = ({
-  title,
-  description = '',
-  lang = 'en',
-  meta = [],
-}) => {
+const SEO: FC<SEOProps> = ({ title = '', description = '', children }) => {
   const location = useLocation()
   const siteMetadata = useSiteMetadata()
-  const metaDescription = description || siteMetadata.description
-  const url = `${siteMetadata.siteUrl}${location.pathname}`
-  const hookPageRegExp = new RegExp('/react-hook/')
-  const isHookPage = hookPageRegExp.test(url)
+  const seo = {
+    title: title || siteMetadata.title,
+    description: description || siteMetadata.description,
+    siteName: siteMetadata.title,
+    // Build image from title using "Typescript blue" optimized for Facebook banned
+    image: `https://via.placeholder.com/1200x630.png/007ACC/fff/?text=${title}`,
+    url: `${siteMetadata.siteUrl}${location.pathname}`,
+  }
 
-  // Build image from title using "Typescript blue" optimized for Facebook banned
-  const image = `https://via.placeholder.com/1200x630.png/007ACC/fff/?text=${title}`
+  const isHookPage = new RegExp('/react-hook/').test(seo.url)
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={`%s`}
-      link={[{ rel: 'canonical', key: url, href: url }]}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:image`,
-          content: image,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:site_name`,
-          content: siteMetadata.title,
-        },
-        {
-          property: `og:type`,
-          content: isHookPage ? `article` : `website`,
-        },
-        {
-          property: `og:url`,
-          content: url,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        // {
-        //   name: `twitter:creator`,
-        //   content: siteMetadata.author,
-        // },
-        {
-          name: `twitter:title`,
+    <>
+      <title>{seo.title}</title>
+      <meta name="description" content={seo.description} />
+      <meta name="image" content={seo.image} />
+      <link rel="canonical" key={seo.url} href={seo.url} />
 
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    >
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={seo.title} />
+      <meta name="twitter:url" content={seo.url} />
+      <meta name="twitter:description" content={seo.description} />
+      <meta name="twitter:image" content={seo.image} />
+
+      <meta property="og:title" content={seo.title} />
+      <meta property="og:site_name" content={seo.siteName} />
+      <meta property="og:image" content={seo.image} />
+      <meta property="og:description" content={seo.description} />
+      <meta property="og:type" content={isHookPage ? `article` : `website`} />
+      <meta property="og:url" content={seo.url} />
+
+      {children}
+
       <script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5817566022458684"
         crossOrigin="anonymous"
       ></script>
-    </Helmet>
+    </>
   )
 }
 

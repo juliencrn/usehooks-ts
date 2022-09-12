@@ -34,6 +34,23 @@ export interface Post extends HookNode {
   body: string
 }
 
+export const PostPreviewQuery = graphql`
+  fragment PostPreview on Mdx {
+    id
+    excerpt(pruneLength: 155)
+    shortDescription: excerpt(pruneLength: 280)
+    fields {
+      name
+      type
+      path
+    }
+    frontmatter {
+      title
+      date
+    }
+  }
+`
+
 export const PostQuery = graphql`
   fragment Post on Mdx {
     id

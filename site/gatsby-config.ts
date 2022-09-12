@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const path = require('path')
+import dotenv from 'dotenv'
+import type { GatsbyConfig } from 'gatsby'
+import path from 'path'
 
-const feed = require('./feedSerializer')
+import * as algolia from './src/libs/algolia'
+import * as feed from './src/libs/feedSerializer'
 
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` })
 
 const siteMetadata = {
   title: `usehooks-ts`,
@@ -14,12 +14,10 @@ const siteMetadata = {
   author: `juliencrn`, // Github username
 }
 
-module.exports = {
+const config: GatsbyConfig = {
   siteMetadata,
   plugins: [
     `gatsby-plugin-typescript`,
-    `gatsby-plugin-typescript-checker`,
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-material-ui`,
     `gatsby-plugin-sitemap`,
@@ -29,26 +27,10 @@ module.exports = {
         '~': path.join(__dirname, 'src'),
       },
     },
-    // TODO: merge all gatsby-source-filesystem into only one ?
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/generated`,
-        name: `generated`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/hooks-doc`,
-        name: `hooks`,
-      },
-    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.md`, `.mdx`],
-        plugins: [],
         gatsbyRemarkPlugins: [
           {
             resolve: 'remark-codesandbox/gatsby',
@@ -60,11 +42,25 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/generated`,
+        name: `generated`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/content`,
+        name: `hooks`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-algolia`,
       options: {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
         apiKey: process.env.GATSBY_ALGOLIA_ADMIN_KEY,
-        queries: require('./algolia'),
+        queries: algolia.queries,
       },
     },
     {
@@ -76,8 +72,7 @@ module.exports = {
             output: '/rss.xml',
             title: `RSS Feed - ${siteMetadata.title}`,
             description: `${siteMetadata.description}`,
-            serialize: ({ query }) =>
-              feed.serializer(query.posts, siteMetadata),
+            serialize: ({ query }) => feed.serializer({ query, siteMetadata }),
           },
         ],
       },
@@ -109,8 +104,7 @@ module.exports = {
         icon: `src/images/typescript.png`, // This path is relative to the root of the site.
       },
     },
-    // TODO: enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }
+
+export default config
