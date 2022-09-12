@@ -8,8 +8,8 @@ export default function Component() {
   return (
     <div>
       <p>Count: {value}</p>
-      <button onClick={() => setValue(x => x + 1)}>Increment</button>
-      <button onClick={() => setValue(x => x - 1)}>Decrement</button>
+      <button onClick={() => setValue((x: number) => x + 1)}>Increment</button>
+      <button onClick={() => setValue((x: number) => x - 1)}>Decrement</button>
     </div>
   )
 }

@@ -1,4 +1,3 @@
-export * from '../hooks-hidden/useSiteMetadata'
 export * from './useBoolean'
 export * from './useClickAnyWhere'
 export * from './useCopyToClipboard'

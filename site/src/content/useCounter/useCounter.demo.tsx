@@ -5,7 +5,7 @@ import { useCounter } from 'usehooks-ts'
 export default function Component() {
   const { count, setCount, increment, decrement, reset } = useCounter(0)
 
-  const multiplyBy2 = () => setCount(x => x * 2)
+  const multiplyBy2 = () => setCount((x: number) => x * 2)
 
   return (
     <>
