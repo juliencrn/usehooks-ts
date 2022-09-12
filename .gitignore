@@ -16,9 +16,6 @@ npm-debug.log*
 
 # Compiled stuff
 dist
-esm
-public
-generated
 
 # Coverage
 coverage
