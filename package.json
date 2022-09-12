@@ -1,7 +1,7 @@
 {
-  "name": "@juliencrn/usehooks-ts",
+  "name": "test-2-usehooks-ts",
   "private": false,
-  "version": "2.6.0",
+  "version": "2.6.7",
   "description": "React hook library, ready to use, written in Typescript.",
   "author": "Julien CARON <juliencaron@protonmail.com>",
   "homepage": "https://usehooks-ts.com",
@@ -18,11 +18,12 @@
   "types": "./dist/esm/index.d.ts",
   "scripts": {
     "dev": "npm run test:watch",
-    "prebuild": "npm run clean && npm run types-check",
+    "prebuild": "npm run clean && npm run test",
     "build": "npm run build:cjs && npm run build:esm",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "build:esm": "tsc --module esNext --outDir dist/esm",
     "postbuild": "npm run copy:hooks && npm run update:readme",
+    "pretest": "npm run lint && npm run types-check",
     "test": "jest",
     "test:watch": "npm run test -- --watch --silent",
     "test:coverage": "ts-node ./scripts/coverage.ts",
@@ -30,7 +31,8 @@
     "format": "prettier --check \"**/*.{json,md,mdx,css,scss,yaml,yml}\"",
     "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
     "types-check": "tsc --noEmit",
-    "publish": "np",
+    "preversion": "npm test",
+    "postversion": "npm publish",
     "update:readme": "ts-node ./scripts/updateReadme.ts",
     "copy:hooks": "rimraf -rf ./website/generated && ts-node ./scripts/copyHooks.ts",
     "plop": "plop && npm run update:readme && npm run format"
@@ -64,6 +66,7 @@
     "npm-run-all": "^4.1.5",
     "plop": "^3.0.5",
     "prettier": "^2.5.1",
+    "release-it": "^15.4.1",
     "rimraf": "^3.0.2",
     "ts-node": "^10.2.1",
     "typescript": "^4.5.5"
