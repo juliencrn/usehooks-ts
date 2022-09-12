@@ -20,5 +20,12 @@
   },
 
   "include": ["./src/**/*"],
-  "exclude": ["node_modules", "dist", "./src/**/*.test.ts", "site", "scripts"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "./src/**/*.test.ts",
+    "website",
+    "scripts",
+    "tests"
+  ]
 }
