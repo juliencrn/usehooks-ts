@@ -35,6 +35,8 @@
     "postversion": "npm publish",
     "update:readme": "ts-node ./scripts/updateReadme.ts",
     "copy:hooks": "rimraf -rf ./website/generated && ts-node ./scripts/copyHooks.ts",
+    "build:website": "cd website && npm run build",
+    "deploy:website": "npm run build:website && netlify deploy --prod",
     "plop": "plop && npm run update:readme && npm run format"
   },
   "devDependencies": {
@@ -82,5 +84,8 @@
   },
   "bugs": {
     "url": "https://github.com/juliencrn/usehooks-ts/issues"
+  },
+  "dependencies": {
+    "netlify-cli": "^11.8.0"
   }
 }
