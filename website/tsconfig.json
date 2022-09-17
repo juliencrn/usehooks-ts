@@ -18,6 +18,6 @@
     }
   },
 
-  "include": ["./src/**/*"],
-  "exclude": ["node_modules", "public", ".cache"]
+  "include": ["./src/**/*", "./gatsby-*.ts"],
+  "exclude": ["node_modules", "public", ".cache", "generated"]
 }

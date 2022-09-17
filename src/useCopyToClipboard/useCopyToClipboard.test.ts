@@ -34,7 +34,7 @@ describe('useClipboard()', () => {
       await result.current[1](mockData)
     })
 
-    expect(navigator.clipboard.writeText).toBeCalledTimes(1)
+    expect(navigator.clipboard.writeText).toHaveBeenCalledTimes(1)
     expect(navigator.clipboard.writeText).toHaveBeenCalledWith(mockData)
     expect(result.current[0]).toBe(mockData)
   })

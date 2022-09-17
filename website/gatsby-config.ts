@@ -72,7 +72,8 @@ const config: GatsbyConfig = {
             output: '/rss.xml',
             title: `RSS Feed - ${siteMetadata.title}`,
             description: `${siteMetadata.description}`,
-            serialize: ({ query }) => feed.serializer({ query, siteMetadata }),
+            serialize: ({ query }: feed.SerializeProps) =>
+              feed.serializer({ query, siteMetadata }),
           },
         ],
       },
