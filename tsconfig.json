@@ -1,11 +1,6 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "rootDir": "./src",
-    "target": "esnext",
-    "moduleResolution": "node",
-    // Needed for CommonJS modules
-    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
@@ -19,13 +14,5 @@
     "lib": ["ESNEXT", "DOM"]
   },
 
-  "include": ["./src/**/*"],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "./src/**/*.test.ts",
-    "website",
-    "scripts",
-    "tests"
-  ]
+  "exclude": ["node_modules", "dist", "templates", "website"]
 }

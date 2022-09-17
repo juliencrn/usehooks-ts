@@ -1,6 +1,12 @@
 import { SiteMetadata } from '~/hooks/useSiteMetadata'
 import { Nodes, Post } from '~/models'
 
+export interface SerializeProps {
+  query: {
+    posts: Nodes<Omit<Post, 'body'>>
+  }
+}
+
 export const query = `{
   posts: allMdx(
     sort: { order: DESC, fields: [frontmatter___date] },

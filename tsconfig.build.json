@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+
+  "compilerOptions": {
+    "rootDir": "./src",
+    "target": "esnext",
+    "moduleResolution": "node",
+    // Needed for CommonJS modules
+    "allowSyntheticDefaultImports": true
+  },
+
+  "include": ["./src/**/*"],
+  "exclude": ["./src/**/*.test.ts"]
+}

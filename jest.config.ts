@@ -18,6 +18,9 @@ const ignoreDirs = [
 
 const config: Config.InitialOptions = {
   testEnvironment: 'jsdom',
+  testEnvironmentOptions: {
+    url: `http://localhost`,
+  },
   roots: packages,
   transform: {
     '^.+\\.[jt]sx?$': `<rootDir>/tests/jest-preprocess.js`,
@@ -33,7 +36,6 @@ const config: Config.InitialOptions = {
   globals: {
     __PATH_PREFIX__: ``,
   },
-  testURL: `http://localhost`,
   setupFiles: [`<rootDir>/tests/loadershim.js`],
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.([tj]sx?)$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
