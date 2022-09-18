@@ -1,20 +1,16 @@
 import fs from 'fs'
 import path from 'path'
 
-import { camelToKebabCase, isHookFile } from './utils'
+import { camelToKebabCase, isDemoFile, isHookFile } from './utils'
 
 ////////////////////////////////////////////////////////////////////////
 // 1. Imperative script that updates the hook list in the README file.
 ////////////////////////////////////////////////////////////////////////
 
-const demos = fs.readdirSync(
-  path.resolve(path.resolve('./website/src/content')),
-)
-
 const hooks = fs
   .readdirSync(path.resolve(path.resolve('./src')))
   .filter(isHookFile)
-  .map(name => formatHook(name, demos))
+  .map(formatHook)
 
 const markdown = createMarkdownList(hooks)
 
@@ -34,8 +30,13 @@ interface MarkdownLine {
   markdownLine: string
 }
 
-function formatHook(name: string, demos: string[]): MarkdownLine | null {
-  const hasDemo = demos.includes(name)
+function formatHook(name: string): MarkdownLine | null {
+  // exclude hook from readme if it haven't demo
+  const hasDemo =
+    fs
+      .readdirSync(path.resolve(path.resolve(`./src/${name}`)))
+      .filter(isDemoFile).length === 1
+
   if (!hasDemo) {
     console.warn(`${name} haven't demo yet!`)
     return null

@@ -4,7 +4,6 @@ import path from 'path'
 import { isHookFile, toQueryParams } from './utils'
 
 const hooksDir = path.resolve('./src')
-const demosDir = path.resolve('./website/src/content')
 const outputDir = path.resolve('./website/generated')
 const sandboxTemplatePath = path.resolve('./templates/codesandbox')
 
@@ -14,32 +13,37 @@ const sandboxTemplatePath = path.resolve('./templates/codesandbox')
 
 createDirIfNeeded(outputDir)
 createDirIfNeeded(`${outputDir}/hooks/`)
-createDirIfNeeded(`${outputDir}/hookDemos/`)
+createDirIfNeeded(`${outputDir}/demos/`)
+createDirIfNeeded(`${outputDir}/posts/`)
 
-// Copy hooks as markdown file
+// Copy hooks as a markdown file
 fs.readdir(hooksDir, (err, files) => {
   if (err) throw err
-  files.forEach(file => {
-    if (isHookFile(file))
-      copyHook({
-        sourceFile: path.resolve(`${hooksDir}/${file}/${file}.ts`),
-        destFile: path.resolve(`${outputDir}/hooks/${file}.hook.md`),
-      })
-  })
-})
 
-// Copy hooks's demo as markdown file
-fs.readdir(demosDir, (err, files) => {
-  if (err) throw err
-  files.forEach(file => {
-    if (isHookFile(file)) {
-      copyHook({
-        sourceFile: path.resolve(`${demosDir}/${file}/${file}.demo.tsx`),
-        destFile: path.resolve(`${outputDir}/hookDemos/${file}.demo.md`),
-        useSandbox: true,
-      })
-    }
-  })
+  for (const file of files) {
+    if (!isHookFile(file)) continue
+
+    // Copy hook as a markdown file
+    copyFile({
+      source: path.resolve(`${hooksDir}/${file}/${file}.ts`),
+      dest: path.resolve(`${outputDir}/hooks/${file}.hook.md`),
+      toMarkdown: true,
+    })
+
+    // Copy demo as a markdown file
+    copyFile({
+      source: path.resolve(`${hooksDir}/${file}/${file}.demo.tsx`),
+      dest: path.resolve(`${outputDir}/demos/${file}.demo.md`),
+      toMarkdown: true,
+      useSandbox: true,
+    })
+
+    // Copy documentation file
+    copyFile({
+      source: path.resolve(`${hooksDir}/${file}/${file}.mdx`),
+      dest: path.resolve(`${outputDir}/posts/${file}.post.mdx`),
+    })
+  }
 })
 
 ////////////////////////////////////////////////////////////////////////
@@ -51,65 +55,65 @@ function getFileName(pathname: string): string {
 }
 
 function createDirIfNeeded(dir: string): void {
-  if (!fs.existsSync(path.resolve(dir))) {
-    fs.mkdirSync(dir)
-  }
+  if (!fs.existsSync(path.resolve(dir))) fs.mkdirSync(dir)
 }
 
-function copyHook({
-  sourceFile,
-  destFile,
-  useSandbox,
-}: {
-  sourceFile: string
-  destFile: string
+interface CopyFileProps {
+  source: string
+  dest: string
   useSandbox?: boolean
-}) {
+  toMarkdown?: boolean
+}
+
+function copyFile({ source, dest, useSandbox, toMarkdown }: CopyFileProps) {
   // Check source file
-  if (!fs.existsSync(sourceFile)) {
-    console.warn(`${getFileName(sourceFile)} doesn't exist`)
+  if (!fs.existsSync(source)) {
+    console.warn(`${getFileName(source)} doesn't exist`)
     return
   }
 
   // If destination file exists, remove it
   let existingFile = false
-
-  if (fs.existsSync(destFile)) {
-    fs.unlinkSync(destFile)
+  if (fs.existsSync(dest)) {
+    fs.unlinkSync(dest)
     existingFile = true
   }
 
   // Read source then create markdown hook file
-  fs.readFile(sourceFile, 'utf8', (err, data) => {
+  fs.readFile(source, 'utf8', (err, data) => {
     if (err) {
-      console.error(`Cannot read ${sourceFile}`)
+      console.error(`Cannot read ${source}`)
       return
     }
 
-    const extension = sourceFile.split('.').reverse()[0]
-
-    const writeStream = fs.createWriteStream(destFile)
-
+    const name = getFileName(dest)
+    const extension = source.split('.').reverse()[0]
+    const writeStream = fs.createWriteStream(dest)
+    // TODO: Theses hooks don't work on CodeSandbox, make it work.
+    const excludedHooks = ['useFetch.demo.md', 'useCopyToClipboard.demo.md']
     let preCode = '```' + extension
 
-    // TODO: Theses hooks don't work on CodeSandbox, make it work.
-    const excludedHook = [
-      'useFetch.demo.md',
-      'useCopyToClipboard.demo.md',
-    ].includes(getFileName(destFile))
-
-    if (useSandbox && !excludedHook) {
+    // If CodeSandbox enabled, add needed parameter
+    if (useSandbox && !excludedHooks.includes(name)) {
       const templateOptions = toQueryParams({ entry: 'src/App.tsx' })
       preCode += ' codesandbox=file:' + sandboxTemplatePath + templateOptions
     }
 
-    writeStream.write(preCode + '\r')
+    if (toMarkdown) {
+      // rename import from "from '..'" to "from 'usehooks-ts'"
+      const re = new RegExp("^import { (use[A-Z][a-zA-Z]*..)+ } from '..'$")
+      const transform = (line: string) => {
+        return line.replace(re, match => match.replace('..', 'usehooks-ts'))
+      }
+      data = data.split('\n').map(transform).join('\n')
+
+      // wrap code into markdown code tags
+      data = preCode + '\r' + data + '```\r'
+    }
+
     writeStream.write(data)
-    writeStream.write('```\r')
     writeStream.end()
 
-    console.log(
-      `${getFileName(destFile)} ${existingFile ? 'updated' : 'created'}`,
-    )
+    console.log(`${name} ${existingFile ? 'updated' : 'created'}`)
   })
 }

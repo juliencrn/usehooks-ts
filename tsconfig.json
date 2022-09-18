@@ -10,7 +10,6 @@
     "esModuleInterop": true,
     "jsx": "react",
     "strict": true,
-    "isolatedModules": true,
     "lib": ["ESNEXT", "DOM"]
   },
 

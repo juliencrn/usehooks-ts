@@ -5,10 +5,11 @@
     "rootDir": "./src",
     "target": "esnext",
     "moduleResolution": "node",
+    "isolatedModules": true,
     // Needed for CommonJS modules
     "allowSyntheticDefaultImports": true
   },
 
   "include": ["./src/**/*"],
-  "exclude": ["./src/**/*.test.ts"]
+  "exclude": ["./src/**/*.test.ts", "./src/**/*.mdx", "./src/**/*.demo.tsx"]
 }

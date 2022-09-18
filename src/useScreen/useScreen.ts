@@ -1,9 +1,6 @@
 import { useState } from 'react'
 
-// See: https://usehooks-ts.com/react-hook/use-event-listener
-import { useEventListener } from '../useEventListener'
-// See: https://usehooks-ts.com/react-hook/use-isomorphic-layout-effect
-import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
+import { useEventListener, useIsomorphicLayoutEffect } from '..'
 
 function useScreen() {
   const getScreen = () => {

@@ -3,6 +3,11 @@ export function isHookFile(filename: string): boolean {
   return hookRegex.test(filename)
 }
 
+export function isDemoFile(filename: string): boolean {
+  const hookDemoRegex = new RegExp('^use[A-Z][a-zA-Z]*.demo.tsx$')
+  return hookDemoRegex.test(filename)
+}
+
 export function camelToKebabCase(str: string): string {
   return str.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`)
 }

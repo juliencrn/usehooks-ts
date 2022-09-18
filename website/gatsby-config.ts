@@ -2,8 +2,8 @@ import dotenv from 'dotenv'
 import type { GatsbyConfig } from 'gatsby'
 import path from 'path'
 
-import * as algolia from './src/libs/algolia'
-import * as feed from './src/libs/feedSerializer'
+// import * as algolia from './src/libs/algolia'
+// import * as feed from './src/libs/feedSerializer'
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` })
 
@@ -44,40 +44,47 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/generated`,
-        name: `generated`,
+        path: `${__dirname}/generated/posts`,
+        name: `posts`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/content`,
+        path: `${__dirname}/generated/hooks`,
         name: `hooks`,
       },
     },
     {
-      resolve: `gatsby-plugin-algolia`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.GATSBY_ALGOLIA_ADMIN_KEY,
-        queries: algolia.queries,
+        path: `${__dirname}/generated/demos`,
+        name: `demos`,
       },
     },
-    {
-      resolve: `gatsby-plugin-feed`,
-      options: {
-        feeds: [
-          {
-            query: `${feed.query}`,
-            output: '/rss.xml',
-            title: `RSS Feed - ${siteMetadata.title}`,
-            description: `${siteMetadata.description}`,
-            serialize: ({ query }: feed.SerializeProps) =>
-              feed.serializer({ query, siteMetadata }),
-          },
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-algolia`,
+    //   options: {
+    //     appId: process.env.GATSBY_ALGOLIA_APP_ID,
+    //     apiKey: process.env.GATSBY_ALGOLIA_ADMIN_KEY,
+    //     queries: algolia.queries,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-plugin-feed`,
+    //   options: {
+    //     feeds: [
+    //       {
+    //         query: `${feed.query}`,
+    //         output: '/rss.xml',
+    //         title: `RSS Feed - ${siteMetadata.title}`,
+    //         description: `${siteMetadata.description}`,
+    //         serialize: ({ query }: feed.SerializeProps) =>
+    //           feed.serializer({ query, siteMetadata }),
+    //       },
+    //     ],
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
