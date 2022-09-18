@@ -1,12 +1,7 @@
 // TODO: example and test
 import { useCallback } from 'react'
 
-// See: https://usehooks-ts.com/react-hook/use-boolean
-import { useBoolean } from '../useBoolean'
-// See: https://usehooks-ts.com/react-hook/use-counter
-import { useCounter } from '../useCounter'
-// See: https://usehooks-ts.com/react-hook/use-interval
-import { useInterval } from '../useInterval'
+import { useBoolean, useCounter, useInterval } from '..'
 
 // Old interface IN & OUT
 interface UseCountdownType {

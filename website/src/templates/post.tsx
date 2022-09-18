@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { FC } from 'react'
 
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
@@ -56,14 +56,22 @@ export const Head = ({ data }: PostTemplateProps) => (
   />
 )
 
+const Subtitle: FC = ({ children }) => (
+  <Typography
+    id="hook"
+    variant="h4"
+    component="h2"
+    className={classes.subtitle}
+  >
+    {children}
+  </Typography>
+)
+
 function PostTemplate(props: PostTemplateProps) {
   const { post, hook, demo } = props.data
   const { body, frontmatter } = post
   const repoUrl = 'https://github.com/juliencrn/usehooks-ts'
   const editLink = `${repoUrl}/tree/master/src/${post.fields.name}`
-  const DemoComponent = React.lazy(
-    () => import(`~/content/${frontmatter.title}/${frontmatter.title}.demo`),
-  )
 
   return (
     <StyledContainer maxWidth="md">
@@ -78,47 +86,15 @@ function PostTemplate(props: PostTemplateProps) {
 
       {hook && (
         <>
-          <Typography
-            id="hook"
-            variant="h4"
-            component="h2"
-            className={classes.subtitle}
-          >
-            The Hook
-          </Typography>
+          <Subtitle>The Hook</Subtitle>
           <MdxRenderer body={hook.body} />
         </>
       )}
 
       {demo && (
         <>
-          <Typography
-            id="usage"
-            variant="h4"
-            component="h2"
-            className={classes.subtitle}
-          >
-            Usage
-          </Typography>
+          <Subtitle>Usage</Subtitle>
           <MdxRenderer body={demo.body} />
-        </>
-      )}
-
-      {/* Here the dev can play with an interactive version of the hook */}
-      {/* This section is hidden in production */}
-      {process.env.NODE_ENV !== 'production' && demo && (
-        <>
-          <Typography
-            id="demo"
-            variant="h4"
-            component="h2"
-            className={classes.subtitle}
-          >
-            Interactive demo (only visible on dev mode)
-          </Typography>
-          <Suspense fallback={<div>Loading...</div>}>
-            <DemoComponent />
-          </Suspense>
         </>
       )}
 

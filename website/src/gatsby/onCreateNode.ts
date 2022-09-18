@@ -8,7 +8,7 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = args => {
     const isHookRegex = new RegExp('^use[A-Z][a-zA-Z]*$')
     const file = absolutePath.split('/').reverse()[0].split('.')
     const filename = file[0]
-    const type = file.length === 3 ? file[1] : 'post'
+    const type = file.length === 3 ? file[1] : undefined
 
     if (isHookRegex.test(filename)) {
       actions.createNodeField({
