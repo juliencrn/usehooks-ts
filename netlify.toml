@@ -9,3 +9,9 @@
 
   # Default build command.
   command = "npm run build"
+
+[[redirects]]
+  from = "/react-hook"
+  to = "/"
+  status = 301
+  force = true
