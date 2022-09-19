@@ -14,7 +14,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import { useOnClickOutside } from 'usehooks-ts'
 
 import useHookList from '~/hooks/useHookList'
-import { filterHook, sortPosts } from '~/shared/filterHooks'
+import { filterHook, sortPosts } from '~/libs/filterHooks'
 import { drawerWidth } from '~/theme'
 
 const PREFIX = 'Sidebar'
