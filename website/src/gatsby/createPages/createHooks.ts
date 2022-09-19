@@ -2,7 +2,7 @@ import { CreatePagesArgs } from 'gatsby'
 import path from 'path'
 
 import { HookNode } from '../../models'
-import { filterHook } from '../../shared/filterHooks'
+import { filterHook } from '../../libs/filterHooks'
 
 interface Query {
   posts: { nodes: HookNode[] }
