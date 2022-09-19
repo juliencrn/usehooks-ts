@@ -3,7 +3,6 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
-    tsconfigRootDir: __dirname,
     ecmaFeatures: {
       jsx: true,
     },
@@ -21,7 +20,7 @@ module.exports = {
   },
   settings: {
     react: {
-      version: '16.8.0',
+      version: 'detect',
     },
   },
   rules: {
@@ -67,34 +66,6 @@ module.exports = {
             ignoreRestSiblings: true,
           },
         ],
-      },
-    },
-
-    // Include website project
-    {
-      files: ['./website/*.ts', './website/*.tsx'],
-      parserOptions: {
-        project: ['./website/tsconfig.json'],
-      },
-    },
-
-    // Include CodeSandbox project
-    {
-      files: [
-        './templates/codesandbox/src/**/*.ts',
-        './templates/codesandbox/src/**/*.tsx',
-      ],
-      parserOptions: {
-        project: ['./templates/codesandbox/tsconfig.json'],
-      },
-    },
-
-    // Track tree-shaking potential error in the lib
-    {
-      files: ['./src/**/!(*.test|*.spec).ts'],
-      plugins: ['tree-shaking'],
-      rules: {
-        'tree-shaking/no-side-effects-in-initialization': 2,
       },
     },
 
