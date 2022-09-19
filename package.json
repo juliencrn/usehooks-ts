@@ -32,8 +32,8 @@
     "format": "prettier --check \"**/*.{json,md,mdx,css,scss,yaml,yml}\"",
     "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
     "types-check": "tsc --noEmit",
-    "preversion": "npm test",
-    "postversion": "npm publish",
+    "bump": "bump --tag 'usehooks-ts@%s' --commit 'release: usehooks-ts@%s'",
+    "deploy": "npm run test && npm run bump && npm publish",
     "update:readme": "ts-node ./scripts/updateReadme.ts",
     "copy:hooks": "rimraf -rf ./website/generated && ts-node ./scripts/copyHooks.ts",
     "plop": "plop && npm run update:readme && npm run format"
@@ -59,7 +59,8 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^29.0.1",
     "ts-node": "^10.2.1",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.3",
+    "version-bump-prompt": "^6.1.0"
   },
   "peerDependencies": {
     "react": "^16.9.0 || ^17.0.0"
