@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.7.0](https://www.npmjs.com/package/usehooks-ts/v/2.7.0) - 2022-09-19
+
+### Updated
+
+- Move usehooks-ts to the root
+- Simplify config files (removing some tools)
+- Split the documentation website from the workspace
+- Regroup hooks related files together (test, doc, demo, hook)
+- Upgrade dependencies
+
 ## [2.6.0](https://www.npmjs.com/package/usehooks-ts/v/2.6.0) - 2022-06-20
 
 ### Added
