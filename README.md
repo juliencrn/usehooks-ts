@@ -11,9 +11,6 @@
 
 <!-- Badges -->
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f1f0f5a4-8207-499b-b912-d99acb04176e/deploy-status)](https://app.netlify.com/sites/usehooks-ts/deploys)
-[![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/juliencrn/usehooks-ts/issues)
-[![Maintained](https://badgen.net/badge/Maintained%20%3F/Yes%21/blue?icon=github)](https://github.com/juliencrn/usehooks-ts/issues)
 [![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks-ts/blob/master/LICENSE)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
@@ -32,17 +29,6 @@
 </div>
 
 <br />
-
-## 🤔 About
-
-Initially, `usehooks-ts` was a [Gatsby](https://www.gatsbyjs.org) powered blog hosted with Github & netlify that publishes easy to understand React Hook code snippets.
-
-But now, it's a monorepo containing:
-
-- A static website used as hooks documentation ([Link](https://usehooks-ts.com/)).
-- An NPM package containing the hooks library ([Link](https://www.npmjs.com/package/usehooks-ts)).
-
-If you'd like to submit new post ideas, improve existing posts, or change anything about the website feel free to submit an issue or pull-request.
 
 ## 📖 Summary
 
@@ -85,29 +71,20 @@ If you'd like to submit new post ideas, improve existing posts, or change anythi
 
 <!-- HOOKS:END -->
 
-## Usage
-
-# install
-
-```bash
-npm i usehooks-ts
-```
-
-Then go to the [documentation](https://usehooks-ts.com/).
-
 ## 🤝 How to Contribute
 
 Thanks for wanting to contribute! It's more than welcome 🤗
 
 ### Content changes
 
-Most content changes (like fixing a typo) can be made without cloning the repository. Simply locate the file you wish to change in the GitHub UI, and click the little edit icon to make your change directly on the GitHub website.
+Most content changes (like fixing a typo) can be made without cloning the repository.
+Simply locate the file you wish to change in the GitHub UI,
+and click the little edit icon to make your change directly on the GitHub website.
 
 If you need to make any other substantial changes, then follow the project setup steps below.
 
 ### Fork to submit a Pull Request (PR)
 
-This project use npm `Lerna` and `npm@8` to manage the different packages.
 Before starting, make sure you have the good system dependencies:
 
 - `node@16.x`
@@ -115,17 +92,12 @@ Before starting, make sure you have the good system dependencies:
 
 **Note**: To easily switch node version, consider Node Version Manager (nvm).
 
-Then you can fork, download and install the repository:
+Then fork the repository, clone it and install.
 
 ```bash
-# 1) Fork the repository (button in the Github top-right corner)
-
-# 2) Clone the repository
 git clone https://github.com/{your_username}/usehooks-ts.git
 cd usehooks-ts
-
-# 3) Install dependencies and setup
-npm run bootstrap
+npm install
 ```
 
 ### Create or update a new hook
@@ -136,45 +108,41 @@ npm run bootstrap
 npm run plop
 
 # Then develop the hook (aka test:watch)
-npm run dev:lib
+npm run dev
 
 # Once the hooks is ready
 # Launch the documentation website
-npm run dev:site
+# Note: to build the website, you have to compile the usehooks-ts lib
+# first, which create website content in the `website/generated` folder,
+# used by Gatsby to create pages
+cd website
+npm install
+npm run start
 
 # Before commit: exec types-checking, linters and tests
+cd ..
 npm run test
 ```
 
 ### How is structured a hook ?
 
-The hook itself and its unit tests are in the `/lib/src/` folder. It's the strict
-npm run test
-
 ```bash
-📂 lib/src
+📂 ./src
 ├── 📂 useHookName
 │  ├── 📄 index.ts # used for exports
+│  ├── 📄 useHookName.demo.tsx # working demo
+│  ├── 📝 useHookName.mdx # the documentation content
 │  ├── 🧪 useHookName.test.ts # unit tests
 │  └── 📄 useHookName.ts # the hook
 ...
 ```
 
-The rest is in the documentation website:
-
-```bash
-📂 site/src/hooks-doc
-├── 📂 useHookName
-│  ├── 📄 index.ts # used for exports
-│  ├── 📄 useHookName.demo.tsx # working demo
-│  └── 📝 useHookName.mdx # the documentation content
-...
-```
+When the `usehooks-ts` is compiled, only the necessary files are used.
+The other files are copied in the documentation website.
 
 **Note**: The demo is used different way:
 
 - It's displayed on the website to illustrate how to use the hook.
-- It's displayed as an interactive sandbox in the hook page during the dev.
 - It's deployed as a CodeSandbox on build to let final users play with.
 
 ## ✨ Contributors
@@ -292,8 +260,9 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 ## 🚗 Roadmap
 
-- [ ] Add more hooks
-- [ ] Develop automated tests for all hooks
+- Support React@18
+- Unit-test all hooks
+- Add more hooks
 
 ## 📝 License
 

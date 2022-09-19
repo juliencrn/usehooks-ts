@@ -8,9 +8,7 @@
   "keywords": [
     "typescript",
     "react",
-    "react-hooks",
-    "hooks",
-    "npm"
+    "hooks"
   ],
   "license": "MIT",
   "main": "./dist/cjs/index.js",
@@ -63,6 +61,7 @@
     "jest": "^29.0.3",
     "jest-environment-jsdom": "^29.0.3",
     "jest-preset-gatsby": "^1.0.134",
+    "netlify-cli": "^11.8.0",
     "plop": "^3.0.5",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
@@ -85,8 +84,5 @@
   },
   "bugs": {
     "url": "https://github.com/juliencrn/usehooks-ts/issues"
-  },
-  "dependencies": {
-    "netlify-cli": "^11.8.0"
   }
 }
