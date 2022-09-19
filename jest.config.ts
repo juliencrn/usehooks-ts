@@ -1,44 +1,28 @@
-import type { Config } from '@jest/types'
-import glob from 'glob'
-
-const packages = glob.sync(`./src`).map(p => p.replace(/^\./, `<rootDir>`))
+import type { Config } from 'jest'
 
 const ignoreDirs = [
-  'build/',
   'dist/',
   'node_modules/',
-  `\\.cache`,
   'scripts/',
-  'public/',
-  'generators/',
   'generated/',
   'website/',
   'tests/',
+  'packages/',
 ]
 
-const config: Config.InitialOptions = {
+export default async (): Promise<Config> => ({
+  preset: 'ts-jest',
   testEnvironment: 'jsdom',
-  testEnvironmentOptions: {
-    url: `http://localhost`,
-  },
-  roots: packages,
+  verbose: false,
+  silent: true,
+  roots: ['./src'],
   transform: {
-    '^.+\\.[jt]sx?$': `<rootDir>/tests/jest-preprocess.js`,
+    '^.+\\.[t]sx?$': `ts-jest`,
   },
-  moduleNameMapper: {
-    '.+\\.(css|styl|less|sass|scss)$': `identity-obj-proxy`,
-    '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': `<rootDir>/tests/file-mock.js`,
-  },
+  transformIgnorePatterns: ['<rootDir>/node_modules/'],
   testPathIgnorePatterns: ignoreDirs,
-  transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`],
   coveragePathIgnorePatterns: ignoreDirs,
   coverageDirectory: '<rootDir>/coverage/',
-  globals: {
-    __PATH_PREFIX__: ``,
-  },
-  setupFiles: [`<rootDir>/tests/loadershim.js`],
-  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.([tj]sx?)$',
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.([t]sx?)$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-}
-
-export default config
+})
