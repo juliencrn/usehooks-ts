@@ -44,7 +44,7 @@
     "gatsby-plugin-google-analytics": "^4.23.0",
     "gatsby-plugin-manifest": "^4.23.0",
     "gatsby-plugin-material-ui": "^4.1.0",
-    "gatsby-plugin-mdx": "^3.15.2",
+    "gatsby-plugin-mdx": "^4.2.0",
     "gatsby-plugin-robots-txt": "^1.7.0",
     "gatsby-plugin-root-import": "^2.0.6",
     "gatsby-plugin-sitemap": "^5.23.0",
