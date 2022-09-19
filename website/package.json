@@ -12,7 +12,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "prebuild1": "npm run test",
+    "prebuild": "npm run test",
     "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
     "serve": "gatsby serve",
     "start": "gatsby develop",
