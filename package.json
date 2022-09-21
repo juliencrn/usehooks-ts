@@ -43,8 +43,8 @@
     "@testing-library/react-hooks": "^7.0.2",
     "@types/jest": "^29.0.3",
     "@types/node": "^18.7.18",
-    "@types/react": "^17.0.38",
-    "@types/react-dom": ">=16.9.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
     "all-contributors-cli": "^6.20.0",
@@ -63,7 +63,7 @@
     "version-bump-prompt": "^6.1.0"
   },
   "peerDependencies": {
-    "react": "^16.9.0 || ^17.0.0"
+    "react": "^16.9.0 || ^17.0.0 || ^18.0.0"
   },
   "engines": {
     "node": ">=16.15.0",
