@@ -14,8 +14,7 @@
 [![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks-ts/blob/master/LICENSE)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-78-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-79-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <br />
@@ -254,6 +253,7 @@ Big thanks goes to these wonderful people ❤️
     </tr>
     <tr>
       <td align="center"><a href="https://github.com/herlon214"><img src="https://avatars.githubusercontent.com/u/3419441?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Herlon Aguiar</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Aherlon214" title="Bug reports">🐛</a></td>
+      <td align="center"><a href="https://github.com/alexisoney"><img src="https://avatars.githubusercontent.com/u/28802989?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Alexis Oney</b></sub></a><br /><a href="#content-alexisoney" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
