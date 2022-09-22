@@ -692,6 +692,42 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "sharvit",
+      "name": "Avi Sharvit",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1262502?v=4",
+      "profile": "https://sharvit.github.io/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "nmaties",
+      "name": "Nicolae Maties",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16613184?v=4",
+      "profile": "https://github.com/nmaties",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "secretshardul",
+      "name": "Shardul Aeer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/49580849?v=4",
+      "profile": "https://github.com/secretshardul",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "herlon214",
+      "name": "Herlon Aguiar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3419441?v=4",
+      "profile": "https://github.com/herlon214",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7
