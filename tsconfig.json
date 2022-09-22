@@ -1,10 +1,8 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "sourceMap": true,
     "declaration": true,
-    "declarationMap": true,
-    "noEmitOnError": true,
+    "pretty": true,
     "skipLibCheck": true,
     "removeComments": true,
     "esModuleInterop": true,
