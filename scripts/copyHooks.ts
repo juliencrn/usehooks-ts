@@ -101,10 +101,14 @@ function copyFile({ source, dest, useSandbox, toMarkdown }: CopyFileProps) {
 
     if (toMarkdown) {
       // rename import from "from '..'" to "from 'usehooks-ts'"
-      const re = new RegExp("^import { (use[A-Z][a-zA-Z]*..)+ } from '..'$")
+      const regex = new RegExp("from '..'$")
+
       const transform = (line: string) => {
-        return line.replace(re, match => match.replace('..', 'usehooks-ts'))
+        return regex.test(line)
+          ? line.replace("from '..'", "from 'usehooks-ts'")
+          : line
       }
+
       data = data.split('\n').map(transform).join('\n')
 
       // wrap code into markdown code tags

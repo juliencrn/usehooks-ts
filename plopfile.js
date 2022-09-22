@@ -11,13 +11,6 @@ module.exports = function (plop) {
       },
     ],
     actions: [
-      // Create the hook index file (for quick export)
-      {
-        type: 'add',
-        path: 'src/{{camelCase name}}/index.ts',
-        templateFile: 'templates/plop/hooks/hook/index.ts.hbs',
-      },
-
       // Create the hook file itself
       {
         type: 'add',

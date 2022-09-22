@@ -129,7 +129,6 @@ npm run test
 ```bash
 📂 ./src
 ├── 📂 useHookName
-│  ├── 📄 index.ts # used for exports
 │  ├── 📄 useHookName.demo.tsx # working demo
 │  ├── 📝 useHookName.mdx # the documentation content
 │  ├── 🧪 useHookName.test.ts # unit tests
