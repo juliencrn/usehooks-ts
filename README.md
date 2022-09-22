@@ -15,6 +15,7 @@
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-78-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <br />
@@ -266,7 +267,6 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 ## 🚗 Roadmap
 
-- Support React@18
 - Unit-test all hooks
 - Add more hooks
 
