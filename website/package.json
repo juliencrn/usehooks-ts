@@ -65,7 +65,7 @@
     "@types/react-instantsearch-dom": "^6.12.2",
     "@types/react-scroll": "^1.8.4",
     "eslint": "^8.9.0",
-    "eslint-config-custom": "../packages/eslint-config-custom",
+    "eslint-config-custom": "file:../packages/eslint-config-custom",
     "gatsby-cli": "^4.23.0",
     "netlify-cli": "^11.8.0",
     "prettier": "^2.7.1",
