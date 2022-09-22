@@ -9,6 +9,8 @@ interface Helpers {
   setStep: Dispatch<SetStateAction<number>>
 }
 
+type setStepCallbackType = (step: number | ((step: number) => number)) => void
+
 function useStep(maxStep: number): [number, Helpers] {
   const [currentStep, setCurrentStep] = useState(1)
 
@@ -19,7 +21,7 @@ function useStep(maxStep: number): [number, Helpers] {
 
   const canGoToPrevStep = useMemo(() => currentStep - 1 >= 1, [currentStep])
 
-  const setStep = useCallback(
+  const setStep = useCallback<setStepCallbackType>(
     step => {
       // Allow value to be a function so we have the same API as useState
       const newStep = step instanceof Function ? step(currentStep) : step
