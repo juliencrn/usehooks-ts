@@ -1,4 +1,5 @@
 import { HookNode } from '../models'
+
 export interface ExtendedPost<T extends HookNode = HookNode> {
   post: T
   hookId: string
@@ -12,17 +13,15 @@ export function filterHook<T extends HookNode = HookNode>(
   demos: HookNode[],
 ): ExtendedPost<T>[] {
   const matchesPosts: ExtendedPost<T>[] = []
+
   posts.forEach(post => {
-    const { fields } = post
-
-    // Check if have the corresponding hook
-    const hook = hooks.find(({ fields: { name } }) => name === fields.name)
-
-    // Check if have the corresponding hook demo
-    const demo = demos.find(({ fields: { name } }) => name === fields.name)
+    // Check if have the corresponding hook and demo
+    const hook = hooks.find(({ fields }) => fields.name === post.fields.name)
+    const demo = demos.find(({ fields }) => fields.name === post.fields.name)
 
     if (hook && demo) {
-      matchesPosts.push({ post, hookId: hook.id, demoId: demo.id })
+      const extendedPost = { post, hookId: hook.id, demoId: demo.id }
+      matchesPosts.push(extendedPost)
     }
   })
 

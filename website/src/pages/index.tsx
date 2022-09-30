@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Hero from '~/components/hero'
 import SEO from '~/components/seo'
 import useSiteMetadata from '~/hooks/useSiteMetadata'

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { useMediaQuery } from '..'
 
 export default function Component() {

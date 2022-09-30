@@ -1,5 +1,4 @@
-/* eslint-disable react/display-name */
-import React, { Fragment, HTMLProps } from 'react'
+import { Children, Fragment, HTMLProps } from 'react'
 
 import { MDXProvider } from '@mdx-js/react'
 import MuiDivider from '@mui/material/Divider'
@@ -146,7 +145,7 @@ const childrenToString = (
 ): string => {
   let label = ''
 
-  React.Children.map(children, child => {
+  Children.map(children, child => {
     if (typeof child === 'string') {
       label += child
     }

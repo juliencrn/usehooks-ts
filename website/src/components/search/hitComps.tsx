@@ -1,4 +1,4 @@
-import React, { ComponentType } from 'react'
+import { ComponentType } from 'react'
 
 import { Divider } from '@mui/material'
 import Link from '@mui/material/Link'

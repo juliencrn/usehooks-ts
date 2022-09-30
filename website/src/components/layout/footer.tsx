@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { styled } from '@mui/material'
 import Container from '@mui/material/Container'
 import Hidden from '@mui/material/Hidden'

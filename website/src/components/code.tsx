@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { styled } from '@mui/material'
 import Typography from '@mui/material/Typography'
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'

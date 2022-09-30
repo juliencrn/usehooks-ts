@@ -1,5 +1,3 @@
-import React, { FC } from 'react'
-
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Link from '@mui/material/Link'
@@ -56,16 +54,22 @@ export const Head = ({ data }: PostTemplateProps) => (
   />
 )
 
-const Subtitle: FC = ({ children }) => (
-  <Typography
-    id="hook"
-    variant="h4"
-    component="h2"
-    className={classes.subtitle}
-  >
-    {children}
-  </Typography>
-)
+const SubSection = ({ title, body }: { title: string; body?: string }) => {
+  if (!body) return null
+  return (
+    <>
+      <Typography
+        id="hook"
+        variant="h4"
+        component="h2"
+        className={classes.subtitle}
+      >
+        {title}
+      </Typography>
+      <MdxRenderer body={body} />
+    </>
+  )
+}
 
 function PostTemplate(props: PostTemplateProps) {
   const { post, hook, demo } = props.data
@@ -84,19 +88,8 @@ function PostTemplate(props: PostTemplateProps) {
 
       <MdxRenderer body={body} />
 
-      {hook && (
-        <>
-          <Subtitle>The Hook</Subtitle>
-          <MdxRenderer body={hook.body} />
-        </>
-      )}
-
-      {demo && (
-        <>
-          <Subtitle>Usage</Subtitle>
-          <MdxRenderer body={demo.body} />
-        </>
-      )}
+      <SubSection title="The Hook" body={hook?.body} />
+      <SubSection title="Usage" body={demo?.body} />
 
       <Box my={6}>
         <Typography align="center" color="textSecondary">

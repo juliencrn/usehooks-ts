@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 
 import { styled, useMediaQuery, useTheme } from '@mui/material'
 import CssBaseline from '@mui/material/CssBaseline'

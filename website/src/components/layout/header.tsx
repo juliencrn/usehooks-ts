@@ -1,5 +1,3 @@
-import React from 'react'
-
 import GitHubIcon from '@mui/icons-material/GitHub'
 import MenuIcon from '@mui/icons-material/Menu'
 import RssFeedIcon from '@mui/icons-material/RssFeed'

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import { styled } from '@mui/material'

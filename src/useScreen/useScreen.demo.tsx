@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { useScreen } from '..'
 
 export default function Component() {

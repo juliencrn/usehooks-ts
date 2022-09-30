@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import FileCopyIcon from '@mui/icons-material/FileCopy'
 import { IconButton } from '@mui/material'
