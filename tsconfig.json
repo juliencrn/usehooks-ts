@@ -6,7 +6,7 @@
     "skipLibCheck": true,
     "removeComments": true,
     "esModuleInterop": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "strict": true,
     "lib": ["ESNEXT", "DOM"]
   },

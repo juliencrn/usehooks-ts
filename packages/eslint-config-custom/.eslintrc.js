@@ -26,6 +26,8 @@ module.exports = {
   rules: {
     'prettier/prettier': 'warn',
     'react/prop-types': 'off',
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
     'sort-imports': 'off',
     'import/order': 'off',
     'simple-import-sort/exports': 'warn',
