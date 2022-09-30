@@ -2,6 +2,14 @@ import { RefObject, useEffect, useRef } from 'react'
 
 import { useIsomorphicLayoutEffect } from '..'
 
+// MediaQueryList Event based useEventListener interface
+function useEventListener<K extends keyof MediaQueryListEventMap>(
+  eventName: K,
+  handler: (event: MediaQueryListEventMap[K]) => void,
+  element: RefObject<MediaQueryList>,
+  options?: boolean | AddEventListenerOptions,
+): void
+
 // Window Event based useEventListener interface
 function useEventListener<K extends keyof WindowEventMap>(
   eventName: K,
@@ -32,11 +40,16 @@ function useEventListener<K extends keyof DocumentEventMap>(
 function useEventListener<
   KW extends keyof WindowEventMap,
   KH extends keyof HTMLElementEventMap,
-  T extends HTMLElement | void = void,
+  KM extends keyof MediaQueryListEventMap,
+  T extends HTMLElement | MediaQueryList | void = void,
 >(
-  eventName: KW | KH,
+  eventName: KW | KH | KM,
   handler: (
-    event: WindowEventMap[KW] | HTMLElementEventMap[KH] | Event,
+    event:
+      | WindowEventMap[KW]
+      | HTMLElementEventMap[KH]
+      | MediaQueryListEventMap[KM]
+      | Event,
   ) => void,
   element?: RefObject<T>,
   options?: boolean | AddEventListenerOptions,
@@ -50,19 +63,18 @@ function useEventListener<
 
   useEffect(() => {
     // Define the listening target
-    const targetElement: T | Window = element?.current || window
-    if (!(targetElement && targetElement.addEventListener)) {
-      return
-    }
+    const targetElement: T | Window = element?.current ?? window
+
+    if (!(targetElement && targetElement.addEventListener)) return
 
     // Create event listener that calls handler function stored in ref
-    const eventListener: typeof handler = event => savedHandler.current(event)
+    const listener: typeof handler = event => savedHandler.current(event)
 
-    targetElement.addEventListener(eventName, eventListener, options)
+    targetElement.addEventListener(eventName, listener, options)
 
     // Remove event listener on cleanup
     return () => {
-      targetElement.removeEventListener(eventName, eventListener)
+      targetElement.removeEventListener(eventName, listener)
     }
   }, [eventName, element, options])
 }
