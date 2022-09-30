@@ -8,7 +8,9 @@ declare const jQuery: any
 
 export default function Component() {
   // Load the script asynchronously
-  const status = useScript(`https://code.jquery.com/jquery-3.5.1.min.js`)
+  const status = useScript(`https://code.jquery.com/jquery-3.5.1.min.js`, {
+    removeOnUnmount: false,
+  })
 
   useEffect(() => {
     if (typeof jQuery !== 'undefined') {
@@ -22,7 +24,7 @@ export default function Component() {
     <div>
       <p>{`Current status: ${status}`}</p>
 
-      {status === 'ready' && <p>You can use the script here.</p>}
+      {status === 'ok' && <p>You can use the script here.</p>}
     </div>
   )
 }
