@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.7.2](https://www.npmjs.com/package/usehooks-ts/v/2.7.2) - 2022-09-30
+
+### Added
+
+- Added useDocumentTitle (#218 by @curtvict)
+
+### Updated
+
+- Removed `import React` line (not needed since react 17)
+
+### Fixes
+
+- Fixed misspelling (thanks to @alexisoney and @JoshuaCS94)
+
 ## [2.7.1](https://www.npmjs.com/package/usehooks-ts/v/2.7.1) - 2022-09-22
 
 ### Added
