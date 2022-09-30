@@ -14,7 +14,7 @@
 [![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks-ts/blob/master/LICENSE)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-79-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-83-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <br />
@@ -40,6 +40,7 @@
 - [`useCounter()`](https://usehooks-ts.com/react-hook/use-counter)
 - [`useDarkMode()`](https://usehooks-ts.com/react-hook/use-dark-mode)
 - [`useDebounce()`](https://usehooks-ts.com/react-hook/use-debounce)
+- [`useDocumentTitle()`](https://usehooks-ts.com/react-hook/use-document-title)
 - [`useEffectOnce()`](https://usehooks-ts.com/react-hook/use-effect-once)
 - [`useElementSize()`](https://usehooks-ts.com/react-hook/use-element-size)
 - [`useEventListener()`](https://usehooks-ts.com/react-hook/use-event-listener)
@@ -254,6 +255,10 @@ Big thanks goes to these wonderful people ❤️
     <tr>
       <td align="center"><a href="https://github.com/herlon214"><img src="https://avatars.githubusercontent.com/u/3419441?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Herlon Aguiar</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Aherlon214" title="Bug reports">🐛</a></td>
       <td align="center"><a href="https://github.com/alexisoney"><img src="https://avatars.githubusercontent.com/u/28802989?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Alexis Oney</b></sub></a><br /><a href="#content-alexisoney" title="Content">🖋</a></td>
+      <td align="center"><a href="https://convictional.com/"><img src="https://avatars.githubusercontent.com/u/96080054?v=4?s=80" width="80px;" alt=""/><br /><sub><b>curtvict</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=curtvict" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/JoshuaCS94"><img src="https://avatars.githubusercontent.com/u/23385700?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Josué Cortina</b></sub></a><br /><a href="#content-JoshuaCS94" title="Content">🖋</a></td>
+      <td align="center"><a href="https://katt.dev/"><img src="https://avatars.githubusercontent.com/u/459267?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Alex / KATT</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=KATT" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/modex98"><img src="https://avatars.githubusercontent.com/u/72814784?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Mourad EL CADI</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=modex98" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

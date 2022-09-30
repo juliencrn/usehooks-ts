@@ -737,6 +737,42 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "curtvict",
+      "name": "curtvict",
+      "avatar_url": "https://avatars.githubusercontent.com/u/96080054?v=4",
+      "profile": "https://convictional.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "JoshuaCS94",
+      "name": "Josué Cortina",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23385700?v=4",
+      "profile": "https://github.com/JoshuaCS94",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "KATT",
+      "name": "Alex / KATT",
+      "avatar_url": "https://avatars.githubusercontent.com/u/459267?v=4",
+      "profile": "https://katt.dev/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "modex98",
+      "name": "Mourad EL CADI",
+      "avatar_url": "https://avatars.githubusercontent.com/u/72814784?v=4",
+      "profile": "https://github.com/modex98",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
