@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { useWindowSize } from '..'
 
 export default function Component() {

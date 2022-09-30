@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { useCopyToClipboard } from '..'
 
 export default function Component() {

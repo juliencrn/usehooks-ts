@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { useReadLocalStorage } from '..'
 
 export default function Component() {

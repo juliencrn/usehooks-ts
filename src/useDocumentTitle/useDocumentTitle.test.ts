@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom'
+import { renderHook } from '@testing-library/react-hooks/dom'
 
 import useDocumentTitle from './useDocumentTitle'
 

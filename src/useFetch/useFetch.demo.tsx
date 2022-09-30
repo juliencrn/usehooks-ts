@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { useFetch } from '..'
 
 const url = `http://jsonplaceholder.typicode.com/posts`

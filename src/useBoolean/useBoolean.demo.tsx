@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { useBoolean } from '..'
 
 export default function Component() {

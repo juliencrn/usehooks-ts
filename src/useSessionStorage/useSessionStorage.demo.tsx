@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { useSessionStorage } from '..'
 
 export default function Component() {
