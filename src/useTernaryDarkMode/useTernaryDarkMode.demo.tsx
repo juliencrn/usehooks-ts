@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { useTernaryDarkMode } from '..'
 
 export default function Component() {

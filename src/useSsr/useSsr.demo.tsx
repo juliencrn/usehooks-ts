@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { useSsr } from '..'
 
 export default function Component() {

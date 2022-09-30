@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { useStep } from '..'
 
 export default function Component() {
