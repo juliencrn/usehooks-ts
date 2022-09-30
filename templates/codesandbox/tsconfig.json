@@ -4,7 +4,7 @@
     "module": "commonjs",
     "strict": true,
     "lib": ["ESNEXT", "DOM"],
-    "jsx": "react",
+    "jsx": "react-jsx",
     "esModuleInterop": true,
     "isolatedModules": true
   }
