@@ -3,12 +3,17 @@ import { useEffect, useState } from 'react'
 export type Status = 'idle' | 'loading' | 'ready' | 'error'
 export type ScriptElt = HTMLScriptElement | null
 
-function useScript(src: string): Status {
+interface UseScriptOptions {
+  shouldPreventLoad?: boolean
+  removeOnUnmount?: boolean
+}
+
+function useScript(src: string, options?: UseScriptOptions): Status {
   const [status, setStatus] = useState<Status>(src ? 'loading' : 'idle')
 
   useEffect(
     () => {
-      if (!src) {
+      if (!src || options?.shouldPreventLoad) {
         setStatus('idle')
         return
       }
@@ -59,9 +64,13 @@ function useScript(src: string): Status {
           script.removeEventListener('load', setStateFromEvent)
           script.removeEventListener('error', setStateFromEvent)
         }
+
+        if (script && options?.removeOnUnmount) {
+          script.remove()
+        }
       }
     },
-    [src], // Only re-run effect if script src changes
+    [src, options?.removeOnUnmount, options?.shouldPreventLoad], // Only re-run effect if script src changes
   )
 
   return status
