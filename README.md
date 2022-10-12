@@ -14,7 +14,7 @@
 [![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks-ts/blob/master/LICENSE)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-83-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-85-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <br />
@@ -259,6 +259,10 @@ Big thanks goes to these wonderful people ❤️
       <td align="center"><a href="https://github.com/JoshuaCS94"><img src="https://avatars.githubusercontent.com/u/23385700?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Josué Cortina</b></sub></a><br /><a href="#content-JoshuaCS94" title="Content">🖋</a></td>
       <td align="center"><a href="https://katt.dev/"><img src="https://avatars.githubusercontent.com/u/459267?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Alex / KATT</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=KATT" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/modex98"><img src="https://avatars.githubusercontent.com/u/72814784?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Mourad EL CADI</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=modex98" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/Guesswhoitis"><img src="https://avatars.githubusercontent.com/u/63756285?v=4?s=80" width="80px;" alt=""/><br /><sub><b>James Hulena</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=Guesswhoitis" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center"><a href="http://hailwood.nz/"><img src="https://avatars.githubusercontent.com/u/709773?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Matthew Hailwood</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=hailwood" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
