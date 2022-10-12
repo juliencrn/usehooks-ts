@@ -29,7 +29,7 @@
     "test:watch": "npm run test -- --watch --silent",
     "test:coverage": "ts-node ./scripts/coverage.ts",
     "clean": "rimraf -rf ./dist",
-    "format": "prettier --check \"**/*.{json,md,mdx,css,scss,yaml,yml}\"",
+    "format": "prettier --write \"**/*.{json,md,mdx,css,scss,yaml,yml}\"",
     "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
     "types-check": "tsc --noEmit",
     "bump": "bump --tag 'usehooks-ts@%s' --commit 'release: usehooks-ts@%s'",
