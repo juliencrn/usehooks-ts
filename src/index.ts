@@ -66,6 +66,8 @@ export { default as useTernaryDarkMode } from './useTernaryDarkMode/useTernaryDa
 export * from './useTernaryDarkMode/useTernaryDarkMode'
 export { default as useTimeout } from './useTimeout/useTimeout'
 export * from './useTimeout/useTimeout'
+export { default as useToggle } from './useToggle/useToggle'
+export * from './useToggle/useToggle'
 export { default as useUpdateEffect } from './useUpdateEffect/useUpdateEffect'
 export * from './useUpdateEffect/useUpdateEffect'
 export { default as useWindowSize } from './useWindowSize/useWindowSize'
