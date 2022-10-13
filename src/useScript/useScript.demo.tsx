@@ -24,7 +24,7 @@ export default function Component() {
     <div>
       <p>{`Current status: ${status}`}</p>
 
-      {status === 'ok' && <p>You can use the script here.</p>}
+      {status === 'ready' && <p>You can use the script here.</p>}
     </div>
   )
 }
