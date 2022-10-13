@@ -16,7 +16,7 @@ const fakeScrollableStyle: CSSProperties = {
 
 // Example 1: useLockedBody as useState()
 export default function App() {
-  const [locked, setLocked] = useLockedBody()
+  const [locked, setLocked] = useLockedBody(false, 'root')
 
   const toggleLocked = () => {
     setLocked(!locked)
@@ -39,7 +39,7 @@ export function App2() {
     setLocked(!locked)
   }
 
-  useLockedBody(locked)
+  useLockedBody(locked, 'root')
 
   return (
     <div style={fakeScrollableStyle}>

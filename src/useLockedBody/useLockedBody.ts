@@ -4,7 +4,10 @@ import { useIsomorphicLayoutEffect } from '..'
 
 type UseLockedBodyOutput = [boolean, (locked: boolean) => void]
 
-function useLockedBody(initialLocked = false): UseLockedBodyOutput {
+function useLockedBody(
+  initialLocked = false,
+  rootId = '___gatsby', // Default to `___gatsby` to not introduce breaking change
+): UseLockedBodyOutput {
   const [locked, setLocked] = useState(initialLocked)
 
   // Do the side effect before render
@@ -21,7 +24,7 @@ function useLockedBody(initialLocked = false): UseLockedBodyOutput {
     document.body.style.overflow = 'hidden'
 
     // Get the scrollBar width
-    const root = document.getElementById('___gatsby') // or root
+    const root = document.getElementById(rootId) // or root
     const scrollBarWidth = root ? root.offsetWidth - root.scrollWidth : 0
 
     // Avoid width reflow
