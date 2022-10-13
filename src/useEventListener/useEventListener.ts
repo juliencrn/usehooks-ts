@@ -74,7 +74,7 @@ function useEventListener<
 
     // Remove event listener on cleanup
     return () => {
-      targetElement.removeEventListener(eventName, listener)
+      targetElement.removeEventListener(eventName, listener, options)
     }
   }, [eventName, element, options])
 }
