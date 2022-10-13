@@ -1,14 +1,9 @@
 import { useEffect, useState } from 'react'
 
-export type UseScriptStatus = 'idle' | 'loading' | 'ok' | 'error'
+export type UseScriptStatus = 'idle' | 'loading' | 'ready' | 'error'
 export interface UseScriptOptions {
-  shouldLoad?: boolean
+  shouldPreventLoad?: boolean
   removeOnUnmount?: boolean
-}
-
-const defaultOptions: UseScriptOptions = {
-  shouldLoad: true,
-  removeOnUnmount: true,
 }
 
 // Cached script statuses
@@ -30,11 +25,10 @@ function getScriptNode(src: string) {
 
 function useScript(
   src: string | null,
-  options: UseScriptOptions = defaultOptions,
+  options?: UseScriptOptions,
 ): UseScriptStatus {
-  const { shouldLoad, removeOnUnmount } = options
   const [status, setStatus] = useState<UseScriptStatus>(() => {
-    if (!shouldLoad || !src) {
+    if (!src || options?.shouldPreventLoad) {
       return 'idle'
     }
 
@@ -46,71 +40,72 @@ function useScript(
     return cachedScriptStatuses[src] ?? 'loading'
   })
 
-  useEffect(
-    () => {
-      if (!src || !shouldLoad) {
-        return
+  useEffect(() => {
+    if (!src || options?.shouldPreventLoad) {
+      return
+    }
+
+    const cachedScriptStatus = cachedScriptStatuses[src]
+    if (cachedScriptStatus === 'ready' || cachedScriptStatus === 'error') {
+      // If the script is already cached, set its status immediately
+      setStatus(cachedScriptStatus)
+      return
+    }
+
+    // Fetch existing script element by src
+    // It may have been added by another instance of this hook
+    const script = getScriptNode(src)
+    let scriptNode = script.node
+
+    if (!scriptNode) {
+      // Create script element and add it to document body
+      scriptNode = document.createElement('script')
+      scriptNode.src = src
+      scriptNode.async = true
+      scriptNode.setAttribute('data-status', 'loading')
+      document.body.appendChild(scriptNode)
+
+      // Store status in attribute on script
+      // This can be read by other instances of this hook
+      const setAttributeFromEvent = (event: Event) => {
+        const scriptStatus: UseScriptStatus =
+          event.type === 'load' ? 'ready' : 'error'
+
+        scriptNode?.setAttribute('data-status', scriptStatus)
       }
 
-      const cachedScriptStatus = cachedScriptStatuses[src]
-      if (cachedScriptStatus === 'ok' || cachedScriptStatus === 'error') {
-        // If the script is already cached, set its status immediately
-        setStatus(cachedScriptStatus)
-        return
+      scriptNode.addEventListener('load', setAttributeFromEvent)
+      scriptNode.addEventListener('error', setAttributeFromEvent)
+    } else {
+      // Grab existing script status from attribute and set to state.
+      setStatus(script.status ?? cachedScriptStatus ?? 'loading')
+    }
+
+    // Script event handler to update status in state
+    // Note: Even if the script already exists we still need to add
+    // event handlers to update the state for *this* hook instance.
+    const setStateFromEvent = (event: Event) => {
+      const newStatus = event.type === 'load' ? 'ready' : 'error'
+      setStatus(newStatus)
+      cachedScriptStatuses[src] = newStatus
+    }
+
+    // Add event listeners
+    scriptNode.addEventListener('load', setStateFromEvent)
+    scriptNode.addEventListener('error', setStateFromEvent)
+
+    // Remove event listeners on cleanup
+    return () => {
+      if (scriptNode) {
+        scriptNode.removeEventListener('load', setStateFromEvent)
+        scriptNode.removeEventListener('error', setStateFromEvent)
       }
 
-      // Fetch existing script element by src
-      // It may have been added by another instance of this hook
-      const script = getScriptNode(src)
-      let scriptNode = script.node
-
-      if (!scriptNode) {
-        // Create script element and add it to document body
-        scriptNode = document.createElement('script')
-        scriptNode.src = src
-        scriptNode.async = true
-        scriptNode.setAttribute('data-status', 'loading')
-        document.body.appendChild(scriptNode)
-
-        // Store status in attribute on script
-        // This can be read by other instances of this hook
-        const setAttributeFromEvent = (event: Event) => {
-          const scriptStatus: UseScriptStatus =
-            event.type === 'load' ? 'ok' : 'error'
-
-          scriptNode?.setAttribute('data-status', scriptStatus)
-        }
-
-        scriptNode.addEventListener('load', setAttributeFromEvent)
-        scriptNode.addEventListener('error', setAttributeFromEvent)
-      } else {
-        // Grab existing script status from attribute and set to state.
-        setStatus(script.status ?? cachedScriptStatuses[src] ?? 'loading')
+      if (scriptNode && options?.removeOnUnmount) {
+        scriptNode.remove()
       }
-
-      // Script event handler to update status in state
-      // Note: Even if the script already exists we still need to add
-      // event handlers to update the state for *this* hook instance.
-      const setStateFromEvent = (event: Event) => {
-        const newStatus = event.type === 'load' ? 'ok' : 'error'
-        setStatus(newStatus)
-        cachedScriptStatuses[src] = newStatus
-      }
-
-      // Add event listeners
-      scriptNode.addEventListener('load', setStateFromEvent)
-      scriptNode.addEventListener('error', setStateFromEvent)
-
-      // Remove event listeners on cleanup
-      return () => {
-        if (scriptNode && removeOnUnmount) {
-          scriptNode.removeEventListener('load', setStateFromEvent)
-          scriptNode.removeEventListener('error', setStateFromEvent)
-        }
-      }
-    },
-    [src, shouldLoad, removeOnUnmount], // Only re-run effect if script src changes
-  )
+    }
+  }, [src, options?.shouldPreventLoad, options?.removeOnUnmount])
 
   return status
 }
