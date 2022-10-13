@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { useMediaQuery, useTheme } from '@mui/material'
 
-type ReturnType = [
+type UseSidebarOutput = [
   boolean,
   {
     openSidebar: () => void
@@ -10,7 +10,7 @@ type ReturnType = [
   },
 ]
 
-function useSidebar(): ReturnType {
+function useSidebar(): UseSidebarOutput {
   const { breakpoints } = useTheme()
   const isMobile = useMediaQuery(breakpoints.down('lg'))
   const [isOpen, setOpen] = useState(false)
