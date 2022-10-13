@@ -791,6 +791,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "mike247",
+      "name": "Michael Norrie",
+      "avatar_url": "https://avatars.githubusercontent.com/u/676071?v=4",
+      "profile": "https://github.com/mike247",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7
