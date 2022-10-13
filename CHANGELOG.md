@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.9.1](https://www.npmjs.com/package/usehooks-ts/v/2.9.1) - 2022-10-13
+
+### Fixes
+
+- fix hard-coded useLockedBody anchor id
+- useEventListener passes options to removeEventListener (#235 by @marnusw)
+- rename useBoolean, useCounter, useLockedBody and useSidebar hooks ReturnType to Output (#234 by valentinpolitov)
+
 ## [2.9.0](https://www.npmjs.com/package/usehooks-ts/v/2.9.0) - 2022-10-13
 
 ### Fixes
@@ -17,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added useToggle
 - Added options in useScript (#203, #197 by @curtvict)
-- Added media query support to useEventListener (#194 from @modex98)
+- Added media query support to useEventListener (#194 by @modex98)
 
 ### Updated
 
@@ -26,7 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixes
 
 - docs misspelling (#189 by @JoshuaCS94)
-- useIntersectionObserver deps (#195 from @Guesswhoitis)
+- useIntersectionObserver deps (#195 by @Guesswhoitis)
 
 ## [2.7.2](https://www.npmjs.com/package/usehooks-ts/v/2.7.2) - 2022-09-30
 

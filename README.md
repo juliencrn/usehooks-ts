@@ -14,7 +14,7 @@
 [![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks-ts/blob/master/LICENSE)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-86-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-88-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <br />
@@ -265,6 +265,8 @@ Big thanks goes to these wonderful people ❤️
     <tr>
       <td align="center"><a href="http://hailwood.nz/"><img src="https://avatars.githubusercontent.com/u/709773?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Matthew Hailwood</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=hailwood" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/mike247"><img src="https://avatars.githubusercontent.com/u/676071?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Michael Norrie</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Amike247" title="Bug reports">🐛</a></td>
+      <td align="center"><a href="https://github.com/valentinpolitov"><img src="https://avatars.githubusercontent.com/u/39585375?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Valentin Politov</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=valentinpolitov" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/marnusw"><img src="https://avatars.githubusercontent.com/u/971499?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Marnus Weststrate</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=marnusw" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
