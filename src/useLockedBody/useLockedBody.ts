@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 
 import { useIsomorphicLayoutEffect } from '..'
 
-type ReturnType = [boolean, (locked: boolean) => void]
+type UseLockedBodyOutput = [boolean, (locked: boolean) => void]
 
-function useLockedBody(initialLocked = false): ReturnType {
+function useLockedBody(initialLocked = false): UseLockedBodyOutput {
   const [locked, setLocked] = useState(initialLocked)
 
   // Do the side effect before render
