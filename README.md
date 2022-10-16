@@ -15,6 +15,7 @@
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-88-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <br />
@@ -58,6 +59,7 @@
 - [`useMap()`](https://usehooks-ts.com/react-hook/use-map)
 - [`useMediaQuery()`](https://usehooks-ts.com/react-hook/use-media-query)
 - [`useOnClickOutside()`](https://usehooks-ts.com/react-hook/use-on-click-outside)
+- [`useOnline()`](https://usehooks-ts.com/react-hook/use-online)
 - [`useReadLocalStorage()`](https://usehooks-ts.com/react-hook/use-read-local-storage)
 - [`useScreen()`](https://usehooks-ts.com/react-hook/use-screen)
 - [`useScript()`](https://usehooks-ts.com/react-hook/use-script)

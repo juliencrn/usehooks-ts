@@ -72,3 +72,6 @@ export { default as useUpdateEffect } from './useUpdateEffect/useUpdateEffect'
 export * from './useUpdateEffect/useUpdateEffect'
 export { default as useWindowSize } from './useWindowSize/useWindowSize'
 export * from './useWindowSize/useWindowSize'
+
+export { default as useOnline } from './useOnline/useOnline'
+export * from './useOnline/useOnline'
