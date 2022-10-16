@@ -1,7 +1,11 @@
 import { useOnline } from '..'
 
 export default function Component() {
-const [two] = useOnline()
+  const isOnline = useOnline()
 
-return <div>Hello {two}</div>
+  return (
+    <div>
+      <p>You are currently {isOnline ? 'online' : 'offline'}</p>
+    </div>
+  )
 }
