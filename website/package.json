@@ -17,7 +17,7 @@
     "serve": "gatsby serve",
     "start": "gatsby develop",
     "clean": "gatsby clean",
-    "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
+    "lint": "eslint \"**/*.{js,jsx,ts,tsx}\"",
     "format": "prettier --check \"**/*.{json,md,mdx,css,scss,yaml,yml}\"",
     "types-check": "tsc --noEmit",
     "predeploy": "npm run build",
