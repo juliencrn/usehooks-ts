@@ -1,17 +1,11 @@
-import { useCounter } from '..'
+import { useOnline } from '..'
 
 export default function Component() {
-  const { count, setCount, increment, decrement, reset } = useCounter(0)
-
-  const multiplyBy2 = () => setCount((x: number) => x * 2)
+  const isOnline = useOnline()
 
   return (
-    <>
-      <p>Count is {count}</p>
-      <button onClick={increment}>Increment</button>
-      <button onClick={decrement}>Decrement</button>
-      <button onClick={reset}>Reset</button>
-      <button onClick={multiplyBy2}>Multiply by 2</button>
-    </>
+    <div>
+      <p>You are currently {isOnline ? 'online' : 'offline'}</p>
+    </div>
   )
 }
