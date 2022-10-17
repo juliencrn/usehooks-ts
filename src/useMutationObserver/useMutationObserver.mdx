@@ -1,0 +1,12 @@
+---
+title: useMutationObserver
+date: '2022-10-13'
+---
+
+This is a React hook for listening to changes in the DOM tree using the [`MutationObserver` API](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
+
+You can listen to changes in node attributes or when a node is added or removed from the DOM, like when a modal opens and closes.
+
+It takes a ref element (from `useRef()`) and optionally accepts all arguments from the [native `MutationObserver` API](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/observe#options).
+
+It returns an object with [`MutationRecord`](https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord) list and a `getMutationListByType()` function as properties.
