@@ -800,6 +800,24 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "valentinpolitov",
+      "name": "Valentin Politov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/39585375?v=4",
+      "profile": "https://github.com/valentinpolitov",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "marnusw",
+      "name": "Marnus Weststrate",
+      "avatar_url": "https://avatars.githubusercontent.com/u/971499?v=4",
+      "profile": "https://github.com/marnusw",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
