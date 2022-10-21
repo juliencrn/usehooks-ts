@@ -60,6 +60,6 @@ describe('useClipboard()', () => {
     expect(result.current[0]).toBeNull()
     expect(copyFnReturnValue).toBe(false)
     expect(console.warn).toHaveBeenCalledWith('Copy failed', NotAllowedError)
-    warnSpy.mockRestore();
+    warnSpy.mockRestore()
   })
 })
