@@ -38,4 +38,28 @@ describe('useClipboard()', () => {
     expect(navigator.clipboard.writeText).toHaveBeenCalledWith(mockData)
     expect(result.current[0]).toBe(mockData)
   })
+
+  test('should return null if copy failed', async () => {
+    const NotAllowedError = new DOMException(
+      'Write permission denied',
+      'NotAllowedError'
+    );
+
+    (
+      global.navigator.clipboard.writeText as jest.MockedFunction<
+        Clipboard['writeText']
+      >
+    ).mockRejectedValueOnce(NotAllowedError)
+
+    const warnSpy = jest.spyOn(console, 'warn')
+    const { result } = renderHook(useCopyToClipboard)
+    let copyFnReturnValue
+    await act(async () => {
+      copyFnReturnValue = await result.current[1](mockData)
+    })
+    expect(result.current[0]).toBeNull()
+    expect(copyFnReturnValue).toBe(false)
+    expect(console.warn).toHaveBeenCalledWith('Copy failed', NotAllowedError)
+    warnSpy.mockRestore()
+  })
 })
