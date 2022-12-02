@@ -15,6 +15,7 @@
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-88-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <br />
@@ -50,6 +51,7 @@
 - [`useIntersectionObserver()`](https://usehooks-ts.com/react-hook/use-intersection-observer)
 - [`useInterval()`](https://usehooks-ts.com/react-hook/use-interval)
 - [`useIsClient()`](https://usehooks-ts.com/react-hook/use-is-client)
+- [`useIsDeepEqualEffect()`](https://usehooks-ts.com/react-hook/use-is-deep-equal-effect)
 - [`useIsFirstRender()`](https://usehooks-ts.com/react-hook/use-is-first-render)
 - [`useIsMounted()`](https://usehooks-ts.com/react-hook/use-is-mounted)
 - [`useIsomorphicLayoutEffect()`](https://usehooks-ts.com/react-hook/use-isomorphic-layout-effect)
