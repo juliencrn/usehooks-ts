@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom'
+import { act, cleanup, renderHook } from '@testing-library/react-hooks/dom'
 
 import useStatus, { defaultStatus, Status } from './useStatus'
 
@@ -9,6 +9,8 @@ describe('useStatus()', () => {
     expect(result.current.status).toStrictEqual(defaultStatus)
     expect(typeof result.current.status).toStrictEqual(typeof defaultStatus)
     expect(typeof result.current.updateStatus).toStrictEqual('function')
+
+    cleanup()
   })
   test('should use provided status when provided', () => {
     const initialStatus: Status = {
@@ -22,6 +24,8 @@ describe('useStatus()', () => {
     expect(result.current.status).toStrictEqual(initialStatus)
     expect(typeof result.current.status).toStrictEqual(typeof initialStatus)
     expect(typeof result.current.updateStatus).toStrictEqual('function')
+
+    cleanup()
   })
   test('should be able to update status state', () => {
     const { result } = renderHook(() => useStatus())
@@ -34,6 +38,8 @@ describe('useStatus()', () => {
 
     expect(result.current.status.state).not.toStrictEqual(defaultStatus.state)
     expect(result.current.status.state).toStrictEqual('ready')
+
+    cleanup()
   })
   test('should be able to update status message', () => {
     const { result } = renderHook(() => useStatus())
@@ -48,6 +54,8 @@ describe('useStatus()', () => {
       defaultStatus.message,
     )
     expect(result.current.status.message).toStrictEqual('finished')
+
+    cleanup()
   })
   test('should be able to update status percent', () => {
     const { result } = renderHook(() => useStatus())
@@ -62,6 +70,8 @@ describe('useStatus()', () => {
       defaultStatus.percent,
     )
     expect(result.current.status.percent).toStrictEqual(1.0)
+
+    cleanup()
   })
   test('should persist status after refresh', () => {
     const { result } = renderHook(() => useStatus())
@@ -71,8 +81,6 @@ describe('useStatus()', () => {
       message: 'completed',
       percent: 1.0,
     }
-
-    expect(result.current.status).toStrictEqual(defaultStatus)
 
     act(() => {
       result.current.updateStatus(newStatus)
@@ -87,5 +95,7 @@ describe('useStatus()', () => {
 
     expect(result.current.status).not.toStrictEqual(defaultStatus)
     expect(result.current.status).toStrictEqual(newStatus)
+
+    cleanup()
   })
 })
