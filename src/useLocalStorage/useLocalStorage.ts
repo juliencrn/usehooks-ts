@@ -16,7 +16,7 @@ declare global {
 
 type SetValue<T> = Dispatch<SetStateAction<T>>
 
-function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
+function useLocalStorage<T>(key: string, initialValue: T, reviver?: Reviver): [T, SetValue<T>] {
   // Get from local storage then
   // parse stored json or return initialValue
   const readValue = useCallback((): T => {
@@ -27,7 +27,7 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
 
     try {
       const item = window.localStorage.getItem(key)
-      return item ? (parseJSON(item) as T) : initialValue
+      return item ? (parseJSON(item, reviver) as T) : initialValue
     } catch (error) {
       console.warn(`Error reading localStorage key “${key}”:`, error)
       return initialValue
@@ -93,11 +93,13 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
 export default useLocalStorage
 
 // A wrapper for "JSON.parse()"" to support "undefined" value
-function parseJSON<T>(value: string | null): T | undefined {
+function parseJSON<T>(value: string | null, reviver: Reviver): T | undefined {
   try {
-    return value === 'undefined' ? undefined : JSON.parse(value ?? '')
+    return value === 'undefined' ? undefined : JSON.parse(value ?? '', reviver)
   } catch {
     console.log('parsing error on', { value })
     return undefined
   }
 }
+
+type Reviver = Parameters<typeof JSON.parse>[1]
