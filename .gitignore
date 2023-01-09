@@ -32,3 +32,9 @@ coverage
 
 # Local Netlify folder
 .netlify
+
+# Jetbrains products
+.idea
+
+# asdf package manager
+.tool-versions
