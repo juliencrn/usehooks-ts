@@ -36,13 +36,17 @@ describe('useSessionStorage()', () => {
   })
 
   test('initial state is in the returned state', () => {
-    const { result } = renderHook(() => useSessionStorage('key', 'value'))
+    const { result } = renderHook(() =>
+      useSessionStorage<string>('key', 'value'),
+    )
 
     expect(result.current[0]).toBe('value')
   })
 
   test('Initial state is a callback function', () => {
-    const { result } = renderHook(() => useSessionStorage('key', () => 'value'))
+    const { result } = renderHook(() =>
+      useSessionStorage<string>('key', () => 'value'),
+    )
 
     expect(result.current[0]).toBe('value')
   })

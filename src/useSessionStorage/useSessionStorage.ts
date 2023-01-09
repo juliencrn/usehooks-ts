@@ -16,21 +16,26 @@ declare global {
 
 type SetValue<T> = Dispatch<SetStateAction<T>>
 
-function useSessionStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
+function useSessionStorage<T>(
+  key: string,
+  initialValue: T | (() => T),
+): [T, SetValue<T>] {
   // Get from session storage then
   // parse stored json or return initialValue
   const readValue = useCallback((): T => {
+    const getInitialValue = () =>
+      initialValue instanceof Function ? initialValue() : initialValue
     // Prevent build error "window is undefined" but keep keep working
     if (typeof window === 'undefined') {
-      return initialValue
+      return getInitialValue()
     }
 
     try {
       const item = window.sessionStorage.getItem(key)
-      return item ? (parseJSON(item) as T) : initialValue
+      return item ? (parseJSON(item) as T) : getInitialValue()
     } catch (error) {
       console.warn(`Error reading sessionStorage key “${key}”:`, error)
-      return initialValue
+      return getInitialValue()
     }
   }, [initialValue, key])
 
