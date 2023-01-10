@@ -42,6 +42,8 @@ function useSessionStorage<T>(
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
   const [storedValue, setStoredValue] = useState<T>(readValue)
+  // create a new empty object to keep track of the identity of the hook
+  const [source] = useState({})
 
   // Return a wrapped version of useState's setter function that ...
   // ... persists the new value to sessionStorage.
@@ -65,7 +67,7 @@ function useSessionStorage<T>(
 
       // We dispatch a custom event so every useSessionStorage hook are notified
       const customEvent = new CustomEvent('session-storage', {
-        detail: { key },
+        detail: { key, source },
       })
       window.dispatchEvent(customEvent)
     } catch (error) {
@@ -91,9 +93,11 @@ function useSessionStorage<T>(
   const handleStorageChangeOnSamePage = useCallback(
     (event: CustomEvent) => {
       if (event.detail.key !== key) return
+      // don't reset the value of the hook that emitted the event
+      if (event.detail.source === source) return
       setStoredValue(readValue())
     },
-    [key, readValue],
+    [key, readValue, source],
   )
   // this is a custom event, triggered in writeValueTosessionStorage
   // See: useSessionStorage()

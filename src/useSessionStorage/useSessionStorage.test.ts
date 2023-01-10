@@ -142,6 +142,18 @@ describe('useSessionStorage()', () => {
     expect(renderCount).toBe(2)
   })
 
+  test('for complex values, what you set is exactly what you get', () => {
+    const { result } = renderHook(() => useSessionStorage('count', {}))
+
+    const newValueA = { a: 1 }
+    act(() => {
+      const setState = result.current[1]
+      setState(newValueA)
+    })
+
+    expect(result.current[0]).toBe(newValueA)
+  })
+
   test('setValue is referentially stable', () => {
     const { result } = renderHook(() => useSessionStorage('count', 1))
 
