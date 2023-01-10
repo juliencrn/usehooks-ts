@@ -64,7 +64,10 @@ function useSessionStorage<T>(
       setStoredValue(newValue)
 
       // We dispatch a custom event so every useSessionStorage hook are notified
-      window.dispatchEvent(new Event('session-storage'))
+      const customEvent = new CustomEvent('session-storage', {
+        detail: { key },
+      })
+      window.dispatchEvent(customEvent)
     } catch (error) {
       console.warn(`Error setting sessionStorage key “${key}”:`, error)
     }
@@ -76,21 +79,25 @@ function useSessionStorage<T>(
   }, [])
 
   const handleStorageChange = useCallback(
-    (event: StorageEvent | CustomEvent) => {
-      if ((event as StorageEvent)?.key && (event as StorageEvent).key !== key) {
-        return
-      }
+    (event: StorageEvent) => {
+      if (event.key !== key) return
       setStoredValue(readValue())
     },
     [key, readValue],
   )
-
   // this only works for other documents, not the current one
   useEventListener('storage', handleStorageChange)
 
+  const handleStorageChangeOnSamePage = useCallback(
+    (event: CustomEvent) => {
+      if (event.detail.key !== key) return
+      setStoredValue(readValue())
+    },
+    [key, readValue],
+  )
   // this is a custom event, triggered in writeValueTosessionStorage
   // See: useSessionStorage()
-  useEventListener('session-storage', handleStorageChange)
+  useEventListener('session-storage', handleStorageChangeOnSamePage)
 
   return [storedValue, setValue]
 }
