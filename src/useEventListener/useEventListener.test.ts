@@ -1,153 +1,177 @@
 import { fireEvent } from '@testing-library/react'
 import { renderHook } from '@testing-library/react-hooks/dom'
+import useEventListener, { type Options } from './useEventListener'
 
-import useEventListener from './useEventListener'
+const TEST_EVENT = "test-event";
 
 declare global {
-  interface WindowEventMap {
-    'test-event': CustomEvent
-  }
-
-  interface HTMLElementEventMap {
-    'test-event': CustomEvent
-  }
-
-  interface DocumentEventMap {
-    'test-event': CustomEvent
-  }
-}
-
-const windowAddEventListenerSpy = jest.spyOn(window, 'addEventListener')
-const windowRemoveEventListenerSpy = jest.spyOn(window, 'removeEventListener')
-
-const ref = { current: document.createElement('div') }
-const refAddEventListenerSpy = jest.spyOn(ref.current, 'addEventListener')
-const refRemoveEventListenerSpy = jest.spyOn(ref.current, 'removeEventListener')
-
-const docRef = { current: window.document }
-const docAddEventListenerSpy = jest.spyOn(docRef.current, 'addEventListener')
-const docRemoveEventListenerSpy = jest.spyOn(
-  docRef.current,
-  'removeEventListener',
-)
-
-describe('useEventListener()', () => {
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
-
-  it('should bind/unbind the event listener to the window when element is not provided', () => {
-    const eventName = 'test-event'
-    const handler = jest.fn()
-    const options = undefined
-
-    const { unmount } = renderHook(() => useEventListener(eventName, handler))
-
-    expect(windowAddEventListenerSpy).toHaveBeenCalledWith(
-      eventName,
-      expect.any(Function),
-      options,
-    )
-
-    unmount()
-
-    expect(windowRemoveEventListenerSpy).toHaveBeenCalledWith(
-      eventName,
-      expect.any(Function),
-      options,
-    )
-  })
-
-  it('should bind/unbind the event listener to the element when element is provided', () => {
-    const eventName = 'test-event'
-    const handler = jest.fn()
-    const options = undefined
-
-    const { unmount } = renderHook(() =>
-      useEventListener(eventName, handler, ref, options),
-    )
-
-    expect(refAddEventListenerSpy).toHaveBeenCalledTimes(1)
-    expect(refAddEventListenerSpy).toHaveBeenCalledWith(
-      eventName,
-      expect.any(Function),
-      options,
-    )
-
-    unmount()
-
-    expect(refRemoveEventListenerSpy).toHaveBeenCalledWith(
-      eventName,
-      expect.any(Function),
-      options,
-    )
-  })
-
-  it('should bind/unbind the event listener to the document when document is provided', () => {
-    const eventName = 'test-event'
-    const handler = jest.fn()
-    const options = undefined
-
-    const { unmount } = renderHook(() =>
-      useEventListener(eventName, handler, docRef, options),
-    )
-
-    expect(docAddEventListenerSpy).toHaveBeenCalledTimes(1)
-    expect(docAddEventListenerSpy).toHaveBeenCalledWith(
-      eventName,
-      expect.any(Function),
-      options,
-    )
-
-    unmount()
-
-    expect(docRemoveEventListenerSpy).toHaveBeenCalledWith(
-      eventName,
-      expect.any(Function),
-      options,
-    )
-  })
-
-  it('should pass the options to the event listener', () => {
-    const eventName = 'test-event'
-    const handler = jest.fn()
-    const options = {
-      passive: true,
-      once: true,
-      capture: true,
+    interface WindowEventMap {
+        [TEST_EVENT]: CustomEvent;
     }
 
-    renderHook(() => useEventListener(eventName, handler, undefined, options))
+    interface HTMLElementEventMap {
+        [TEST_EVENT]: CustomEvent;
+    }
 
-    expect(windowAddEventListenerSpy).toHaveBeenCalledWith(
-      eventName,
-      expect.any(Function),
-      options,
-    )
-  })
+    interface DocumentEventMap {
+        [TEST_EVENT]: CustomEvent;
+    }
 
-  it('should call the event listener handler when the event is triggered', () => {
-    const eventName = 'click'
-    const handler = jest.fn()
+    interface MediaQueryListEventMap {
+        [TEST_EVENT]: CustomEvent;
+    }
+}
 
-    renderHook(() => useEventListener(eventName, handler, ref))
+Object.defineProperty(window, "matchMedia", {
+    writable: true,
+    value: jest.fn().mockImplementation((query) => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+    })),
+});
 
-    fireEvent.click(ref.current)
+const TARGETS = {
+    window: {
+        add: jest.spyOn(window, "addEventListener"),
+        remove: jest.spyOn(window, "removeEventListener"),
+    },
 
-    expect(handler).toHaveBeenCalledTimes(1)
-  })
+    element: (() => {
+        const ref = { current: document.createElement("div") };
+        const add = jest.spyOn(ref.current, "addEventListener");
+        const remove = jest.spyOn(ref.current, "removeEventListener");
 
-  it('should have the correct event type', () => {
-    const clickHandler = jest.fn()
-    const keydownHandler = jest.fn()
+        return { ref, add, remove };
+    })(),
 
-    renderHook(() => useEventListener('click', clickHandler, ref))
-    renderHook(() => useEventListener('keydown', keydownHandler, ref))
+    document: (() => {
+        const ref = { current: window.document };
+        const add = jest.spyOn(ref.current, "addEventListener");
+        const remove = jest.spyOn(ref.current, "removeEventListener");
 
-    fireEvent.click(ref.current)
-    fireEvent.keyDown(ref.current)
+        return { ref, add, remove };
+    })(),
 
-    expect(clickHandler).toHaveBeenCalledWith(expect.any(MouseEvent))
-    expect(keydownHandler).toHaveBeenCalledWith(expect.any(KeyboardEvent))
-  })
-})
+    media_query: (() => {
+        const ref = { current: window.matchMedia("(max-width: 600px)") };
+        const add = jest.spyOn(ref.current, "addEventListener");
+        const remove = jest.spyOn(ref.current, "removeEventListener");
+
+        return { ref, add, remove };
+    })(),
+};
+
+describe("useEventListener()", () => {
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
+    it("should bind/unbind the event listener to the window when element is not provided", () => {
+        const handler = jest.fn();
+
+        const { unmount } = renderHook(() => useEventListener(TEST_EVENT, handler));
+
+        expect(TARGETS.window.add).toHaveBeenCalledTimes(1);
+        expect(TARGETS.window.add).toHaveBeenCalledWith(TEST_EVENT, expect.any(Function), undefined);
+
+        unmount();
+
+        expect(TARGETS.window.remove).toHaveBeenCalledWith(TEST_EVENT, expect.any(Function));
+    });
+
+    it("should bind/unbind the event listener to the element when element is provided", () => {
+        const handler = jest.fn();
+
+        const { unmount } = renderHook(() => useEventListener(TEST_EVENT, handler, TARGETS.element.ref));
+
+        expect(TARGETS.element.add).toHaveBeenCalledTimes(1);
+
+        expect(TARGETS.element.add).toHaveBeenCalledWith(TEST_EVENT, expect.any(Function), undefined);
+
+        unmount();
+
+        expect(TARGETS.element.remove).toHaveBeenCalledWith(TEST_EVENT, expect.any(Function));
+    });
+
+    it("should bind/unbind the event listener to the document when document is provided", () => {
+        const handler = jest.fn();
+
+        const { unmount } = renderHook(() => useEventListener(TEST_EVENT, handler, TARGETS.document.ref));
+
+        expect(TARGETS.document.add).toHaveBeenCalledTimes(1);
+        expect(TARGETS.document.add).toHaveBeenCalledWith(TEST_EVENT, expect.any(Function), undefined);
+
+        unmount();
+
+        expect(TARGETS.document.remove).toHaveBeenCalledWith(TEST_EVENT, expect.any(Function));
+    });
+
+    it("should bind/unbind the event listener to the media query list when it is provided", () => {
+        const handler = jest.fn();
+
+        const { unmount } = renderHook(() => useEventListener(TEST_EVENT, handler, TARGETS.media_query.ref));
+
+        expect(TARGETS.media_query.add).toHaveBeenCalledTimes(1);
+
+        expect(TARGETS.media_query.add).toHaveBeenCalledWith(TEST_EVENT, expect.any(Function), undefined);
+
+        unmount();
+
+        expect(TARGETS.media_query.remove).toHaveBeenCalledWith(TEST_EVENT, expect.any(Function));
+    });
+
+    it("should pass the options to the event listener", () => {
+        const condition = Math.random() > 0.5;
+
+        const handler = jest.fn();
+        const options: Options = {
+            condition,
+            raw: {
+                passive: true,
+                once: true,
+                capture: true,
+            },
+        };
+
+        const { unmount } = renderHook(() => useEventListener(TEST_EVENT, handler, undefined, options));
+
+        unmount();
+
+        if (condition) {
+            expect(TARGETS.window.add).toHaveBeenCalledWith(TEST_EVENT, expect.any(Function), options.raw);
+            expect(TARGETS.window.remove).toHaveBeenCalledWith(TEST_EVENT, expect.any(Function));
+        } else {
+            expect(TARGETS.window.add).not.toBeCalled();
+            expect(TARGETS.window.remove).not.toBeCalled();
+        }
+    });
+
+    it("should call the event listener handler when the event is triggered", () => {
+        const handler = jest.fn();
+
+        renderHook(() => useEventListener("click", handler, TARGETS.element.ref));
+
+        fireEvent.click(TARGETS.element.ref.current);
+
+        expect(handler).toHaveBeenCalledTimes(1);
+    });
+
+    it("should have the correct event type", () => {
+        const clickHandler = jest.fn();
+        const keydownHandler = jest.fn();
+
+        renderHook(() => useEventListener("click", clickHandler, TARGETS.element.ref));
+        renderHook(() => useEventListener("keydown", keydownHandler, TARGETS.element.ref));
+
+        fireEvent.click(TARGETS.element.ref.current);
+        fireEvent.keyDown(TARGETS.element.ref.current);
+
+        expect(clickHandler).toHaveBeenCalledWith(expect.any(MouseEvent));
+        expect(keydownHandler).toHaveBeenCalledWith(expect.any(KeyboardEvent));
+    });
+});
+
