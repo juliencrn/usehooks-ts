@@ -13,7 +13,9 @@ function useScreen() {
   const [screen, setScreen] = useState<Screen | undefined>(getScreen())
 
   function handleSize() {
-    setScreen(getScreen())
+    const newScreen = getScreen()
+    if (newScreen === undefined) return
+    setScreen({ ...newScreen })
   }
 
   useEventListener('resize', handleSize)
