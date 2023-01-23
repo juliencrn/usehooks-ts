@@ -45,14 +45,12 @@ describe('useRandomArrayItem()', () => {
       expect(setInterval).toHaveBeenCalledTimes(0)
 
       jest.advanceTimersByTime(20)
+      Promise.resolve().then(() => {
+        expect(result.current).not.toBe(initialValue)
+        expect(setInterval).toHaveBeenCalledTimes(1)
+      })
 
       expect(items.some(item => item === result.current)).toBe(true)
-      /**
-       * FIX: this works in testing but jest.advanceTimersByTime
-       *  doesn't seem to work when test runs after builds
-       * expect(result.current).not.toBe(initialValue)
-       * expect(setInterval).toHaveBeenCalledTimes(1)
-       */
     })
   })
 })
