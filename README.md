@@ -58,6 +58,7 @@
 - [`useMap()`](https://usehooks-ts.com/react-hook/use-map)
 - [`useMediaQuery()`](https://usehooks-ts.com/react-hook/use-media-query)
 - [`useOnClickOutside()`](https://usehooks-ts.com/react-hook/use-on-click-outside)
+- [`useRandomArrayItem()`](https://usehooks-ts.com/react-hook/use-random-array-item)
 - [`useReadLocalStorage()`](https://usehooks-ts.com/react-hook/use-read-local-storage)
 - [`useScreen()`](https://usehooks-ts.com/react-hook/use-screen)
 - [`useScript()`](https://usehooks-ts.com/react-hook/use-script)
