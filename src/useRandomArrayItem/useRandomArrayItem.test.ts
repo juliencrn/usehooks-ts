@@ -1,14 +1,11 @@
-import { act, renderHook, RenderResult } from "@testing-library/react-hooks/dom";
+import { waitFor } from '@testing-library/react'
+import { act, renderHook } from '@testing-library/react-hooks/dom'
 
 import useRandomArrayItem from './useRandomArrayItem'
 
 describe('useRandomArrayItem()', () => {
   afterEach(() => {
     jest.useRealTimers()
-  })
-
-  beforeEach(() => {
-    jest.useFakeTimers()
   })
 
   test('should be okay when initialized with array of any type', () => {
@@ -33,24 +30,31 @@ describe('useRandomArrayItem()', () => {
     })
   })
 
-  test('should randomize value after given interval', () => {
+  test('should randomize value after given interval', async () => {
     let initialValue = -1
-    const items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    act(() => {
+    const items = Array.from(Array(1000).keys())
+    await act(async () => {
       mockSetInterval()
-      const { result } = renderHook(() => useRandomArrayItem(items, 1))
+      const { result } = renderHook(() => useRandomArrayItem(items, 2))
       initialValue = result.current as number
 
       expect(items.some(item => item === result.current)).toBe(true)
       expect(setInterval).toHaveBeenCalledTimes(0)
 
-      jest.advanceTimersByTime(20)
-      Promise.resolve().then(() => {
-        expect(result.current).not.toBe(initialValue)
-        expect(setInterval).toHaveBeenCalledTimes(1)
-      })
-
-      expect(items.some(item => item === result.current)).toBe(true)
+      let err: unknown = null
+      waitFor(() => jest.advanceTimersByTime(100))
+        .then(() => {
+          jest.advanceTimersByTime(100)
+        })
+        .catch(e => {
+          err = e
+        })
+        .finally(() => {
+          expect(err).toBeNull()
+          expect(setInterval).toHaveBeenCalledTimes(1)
+          expect(result.current).not.toBe(initialValue)
+          expect(items.some(item => item === result.current)).toBe(true)
+        })
     })
   })
 })
