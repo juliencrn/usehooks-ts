@@ -10,6 +10,7 @@ export default function Component() {
   // Load the script asynchronously
   const status = useScript(`https://code.jquery.com/jquery-3.5.1.min.js`, {
     removeOnUnmount: false,
+    id: 'jq'
   })
 
   useEffect(() => {
