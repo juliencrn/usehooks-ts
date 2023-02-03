@@ -15,6 +15,7 @@
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-88-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <br />
@@ -63,6 +64,7 @@
 - [`useScript()`](https://usehooks-ts.com/react-hook/use-script)
 - [`useSessionStorage()`](https://usehooks-ts.com/react-hook/use-session-storage)
 - [`useSsr()`](https://usehooks-ts.com/react-hook/use-ssr)
+- [`useStateAsync()`](https://usehooks-ts.com/react-hook/use-state-async)
 - [`useStep()`](https://usehooks-ts.com/react-hook/use-step)
 - [`useTernaryDarkMode()`](https://usehooks-ts.com/react-hook/use-ternary-dark-mode)
 - [`useTimeout()`](https://usehooks-ts.com/react-hook/use-timeout)
