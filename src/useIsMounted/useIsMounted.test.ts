@@ -8,7 +8,7 @@ describe('useIsMounted()', () => {
       result: { current: isMounted },
     } = renderHook(() => useIsMounted())
 
-    expect(isMounted()).toBe(true)
+    expect(isMounted).toBe(true)
   })
 
   test('should return false when component is unmounted', () => {
@@ -19,6 +19,6 @@ describe('useIsMounted()', () => {
 
     unmount()
 
-    expect(isMounted()).toBe(false)
+    expect(isMounted).toBe(false)
   })
 })

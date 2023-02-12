@@ -11,7 +11,7 @@ function Child() {
   // simulate an api call and update state
   useEffect(() => {
     void delay(3000).then(() => {
-      if (isMounted()) setData('OK')
+      if (isMounted) setData('OK')
     })
   }, [isMounted])
 

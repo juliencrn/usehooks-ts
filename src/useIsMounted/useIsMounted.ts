@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 
 function useIsMounted() {
   const isMounted = useRef(false)
@@ -11,7 +11,7 @@ function useIsMounted() {
     }
   }, [])
 
-  return useCallback(() => isMounted.current, [])
+  return useMemo(() => isMounted.current, [])
 }
 
 export default useIsMounted
