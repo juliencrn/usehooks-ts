@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo } from 'react'
 import {
   useLocation,
   useMatch,
@@ -7,31 +7,31 @@ import {
   ParamParseKey,
   PathPattern,
   PathMatch,
-} from "react-router-dom";
+} from 'react-router-dom'
 
 type ParamsType = {
-  [x: string]: string | (string | null)[] | null | undefined;
-};
+  [x: string]: string | (string | null)[] | null | undefined
+}
 
 type UseRouterType = {
-  push: (route: string) => void;
-  replace: (route: string) => void;
-  pathname: string;
-  query: ParamsType;
-  search: ParamsType;
-  params: ParamsType;
+  push: (route: string) => void
+  replace: (route: string) => void
+  pathname: string
+  query: ParamsType
+  search: ParamsType
+  params: ParamsType
   match: <ParamKey extends ParamParseKey<Path>, Path extends string>(
-    pattern: Path | PathPattern<Path>
-  ) => PathMatch<ParamKey> | null;
-  location: Partial<Location>;
-  history: History;
-};
+    pattern: Path | PathPattern<Path>,
+  ) => PathMatch<ParamKey> | null
+  location: Partial<Location>
+  history: History
+}
 
 function useRouter(): UseRouterType {
-  const params = useParams();
-  const location = useLocation();
-  const navigate = useNavigate();
-  const match = useMatch;
+  const params = useParams()
+  const location = useLocation()
+  const navigate = useNavigate()
+  const match = useMatch
   const search = location.search
     ? JSON.parse(
       '{"' +
@@ -39,9 +39,9 @@ function useRouter(): UseRouterType {
         .replace(/"/g, '\\"')
         .replace(/&/g, '","')
         .replace(/=/g, '":"') +
-      '"}'
+      '"}',
     )
-    : undefined;
+    : undefined
   // Return our custom router object
   // Memoize so that a new object is only returned if something changes
   return useMemo(() => {
@@ -63,8 +63,8 @@ function useRouter(): UseRouterType {
       match,
       location,
       history,
-    };
-  }, [params, match, location, history, search]);
+    }
+  }, [params, match, location, history, search])
 }
 
-export default useRouter;
+export default useRouter
