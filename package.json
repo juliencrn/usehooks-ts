@@ -30,7 +30,7 @@
     "test:coverage": "ts-node ./scripts/coverage.ts",
     "clean": "rimraf -rf ./dist",
     "format": "prettier --write \"**/*.{json,md,mdx,css,scss,yaml,yml}\"",
-    "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
+    "lint": "eslint \"**/*.{ts,tsx}\"",
     "types-check": "tsc --noEmit",
     "bump": "bump --tag 'usehooks-ts@%s' --commit 'release: usehooks-ts@%s'",
     "deploy": "npm run test && npm run bump && npm publish",
