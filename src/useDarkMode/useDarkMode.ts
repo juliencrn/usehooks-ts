@@ -7,6 +7,7 @@ interface UseDarkModeOutput {
   toggle: () => void
   enable: () => void
   disable: () => void
+  set: (value: boolean) => void
 }
 
 function useDarkMode(defaultValue?: boolean): UseDarkModeOutput {
@@ -27,6 +28,7 @@ function useDarkMode(defaultValue?: boolean): UseDarkModeOutput {
     toggle: () => setDarkMode(prev => !prev),
     enable: () => setDarkMode(true),
     disable: () => setDarkMode(false),
+    set: value => setDarkMode(value),
   }
 }
 
