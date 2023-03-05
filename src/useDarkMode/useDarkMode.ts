@@ -1,6 +1,7 @@
 import { useLocalStorage, useMediaQuery, useUpdateEffect } from '..'
 
 const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)'
+const LOCAL_STORAGE_KEY = 'usehooks-ts-dark-mode'
 
 interface UseDarkModeOutput {
   isDarkMode: boolean
@@ -9,10 +10,13 @@ interface UseDarkModeOutput {
   disable: () => void
 }
 
-function useDarkMode(defaultValue?: boolean): UseDarkModeOutput {
+function useDarkMode(
+  defaultValue?: boolean,
+  localStorageKey?: string,
+): UseDarkModeOutput {
   const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY)
   const [isDarkMode, setDarkMode] = useLocalStorage<boolean>(
-    'usehooks-ts-dark-mode',
+    localStorageKey ?? LOCAL_STORAGE_KEY,
     defaultValue ?? isDarkOS ?? false,
   )
 
