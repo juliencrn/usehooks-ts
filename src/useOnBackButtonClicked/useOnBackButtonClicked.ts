@@ -1,25 +1,37 @@
 import { useCallback, useEffect } from 'react'
 
-interface useOnBackButtonClickedInterface {
-  callback: () => void
-  text?: string
-}
+const DEFAULT_TEXT = 'Are you sure you want to go back?'
 
-const DEFAULT_TEXT = 'Estas seguro que deseas ir para atras?' // TODO: Poner en ingles
-
-function useOnBackButtonClicked({
-  callback,
-  text = DEFAULT_TEXT,
-}: useOnBackButtonClickedInterface) {
-  const handleBackButtonPressed = useCallback(async () => {
-    const retValue = window.confirm(text)
+function useOnBackButtonClicked(
+  callback: () => void,
+  message: string = DEFAULT_TEXT,
+) {
+  const handleBackButtonPressed = useCallback(() => {
+    const retValue = window.confirm(message)
     if (retValue) {
       callback()
+    } else {
+      // When back button is clicked, a new fakeRoute must be added
+      window.history.pushState(
+        'fakeRoute',
+        document.title,
+        window.location.href,
+      )
     }
-  }, [callback, text])
+  }, [callback, message])
 
   useEffect(() => {
-    // TODO: Add listeners
+    window.history.pushState('fakeRoute', document.title, window.location.href)
+    window.addEventListener('popstate', handleBackButtonPressed)
+
+    return () => {
+      window.removeEventListener('popstate', handleBackButtonPressed)
+
+      // If the user leaves the page without pressing the back button, fakeRoute must be deleted
+      if (window.history.state === 'fakeRoute') {
+        window.history.back()
+      }
+    }
   }, [handleBackButtonPressed])
 }
 
