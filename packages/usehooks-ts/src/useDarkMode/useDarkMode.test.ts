@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks'
+import { act, renderHook } from '@testing-library/react'
 
 import { mockMatchMedia, mockStorage } from '../../mocks'
 import { useDarkMode } from './useDarkMode'
