@@ -32,7 +32,7 @@ function useOnBackButtonClicked(
         window.history.back()
       }
     }
-  }, [handleBackButtonPressed])
+  }, [])
 }
 
 export default useOnBackButtonClicked
