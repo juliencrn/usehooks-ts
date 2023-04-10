@@ -27,7 +27,24 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
 
     try {
       const item = window.localStorage.getItem(key)
-      return item ? (parseJSON(item) as T) : initialValue
+
+      if(!item) {
+        return initialValue
+      }
+
+      const parsed = parseJSON(item) as T
+
+      //considering that the initial value is a Map, convert object to map
+      if(initialValue instanceof Map) {
+        return new Map(Object.entries(parsed as Object)) as T
+      }
+
+      //considering that the initial value is a Set, convert the array to set
+      if(initialValue instanceof Set) {
+        return new Set(parsed as Array<any>) as T
+      }
+
+      return parsed
     } catch (error) {
       console.warn(`Error reading localStorage key “${key}”:`, error)
       return initialValue
@@ -53,7 +70,7 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
       const newValue = value instanceof Function ? value(storedValue) : value
 
       // Save to local storage
-      window.localStorage.setItem(key, JSON.stringify(newValue))
+      window.localStorage.setItem(key, stringify(newValue))
 
       // Save state
       setStoredValue(newValue)
@@ -100,4 +117,16 @@ function parseJSON<T>(value: string | null): T | undefined {
     console.log('parsing error on', { value })
     return undefined
   }
+}
+
+function stringify<T>(value: T): string {
+  if(value instanceof Map) {
+    return JSON.stringify(Object.fromEntries(value))
+  }
+
+  if(value instanceof Set) {
+    return JSON.stringify(Array.from(value))
+  }
+
+  return JSON.stringify(value)
 }
