@@ -104,6 +104,7 @@ describe('useSessionStorage()', () => {
     const initialValues: [string, unknown] = ['key', 'initial']
     const { result: A } = renderHook(() => useSessionStorage(...initialValues))
     const { result: B } = renderHook(() => useSessionStorage(...initialValues))
+    const { result: C } = renderHook(() => useSessionStorage('other-key', 'initial'))
 
     act(() => {
       const setState = A.current[1]
@@ -111,6 +112,7 @@ describe('useSessionStorage()', () => {
     })
 
     expect(B.current[0]).toBe('edited')
+    expect(C.current[0]).toBe('initial')
   })
 
   test('setValue is referentially stable', () => {
