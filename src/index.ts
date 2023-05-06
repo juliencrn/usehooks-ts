@@ -54,6 +54,8 @@ export { default as useReadLocalStorage } from './useReadLocalStorage/useReadLoc
 export * from './useReadLocalStorage/useReadLocalStorage'
 export { default as useScreen } from './useScreen/useScreen'
 export * from './useScreen/useScreen'
+export { default as useScreenOrientation } from './useScreenOrientation/useScreenOrientation'
+export * from './useScreenOrientation/useScreenOrientation'
 export { default as useScript } from './useScript/useScript'
 export * from './useScript/useScript'
 export { default as useSessionStorage } from './useSessionStorage/useSessionStorage'
