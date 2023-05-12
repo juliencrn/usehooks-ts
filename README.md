@@ -122,7 +122,7 @@ pnpm types-check
 pnpm test
 ```
 
-### How is structured a hook ?
+### How is a hook structured?
 
 ```bash
 📂 ./packages/usehooks-ts
