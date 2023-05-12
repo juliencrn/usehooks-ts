@@ -125,7 +125,7 @@ cd ..
 npm run test
 ```
 
-### How is structured a hook ?
+### How is a hook structured?
 
 ```bash
 📂 ./src
