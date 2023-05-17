@@ -60,6 +60,7 @@
 - [`useOnClickOutside()`](https://usehooks-ts.com/react-hook/use-on-click-outside)
 - [`useReadLocalStorage()`](https://usehooks-ts.com/react-hook/use-read-local-storage)
 - [`useScreen()`](https://usehooks-ts.com/react-hook/use-screen)
+- [`useScreenOrientation()`](https://usehooks-ts.com/react-hook/use-screen-orientation)
 - [`useScript()`](https://usehooks-ts.com/react-hook/use-script)
 - [`useSessionStorage()`](https://usehooks-ts.com/react-hook/use-session-storage)
 - [`useSsr()`](https://usehooks-ts.com/react-hook/use-ssr)
