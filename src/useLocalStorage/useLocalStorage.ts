@@ -16,12 +16,17 @@ declare global {
 
 type SetValue<T> = Dispatch<SetStateAction<T>>
 
+const IS_SERVER = typeof window === 'undefined'
+
 function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
+  // State to store our value
+  // Pass initial state function to useState so logic is only executed once
+  const [storedValue, setStoredValue] = useState<T>(initialValue)
   // Get from local storage then
   // parse stored json or return initialValue
   const readValue = useCallback((): T => {
     // Prevent build error "window is undefined" but keeps working
-    if (typeof window === 'undefined') {
+    if (IS_SERVER) {
       return initialValue
     }
 
@@ -34,15 +39,11 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
     }
   }, [initialValue, key])
 
-  // State to store our value
-  // Pass initial state function to useState so logic is only executed once
-  const [storedValue, setStoredValue] = useState<T>(readValue)
-
   // Return a wrapped version of useState's setter function that ...
   // ... persists the new value to localStorage.
   const setValue: SetValue<T> = useEventCallback(value => {
     // Prevent build error "window is undefined" but keeps working
-    if (typeof window === 'undefined') {
+    if (IS_SERVER) {
       console.warn(
         `Tried setting localStorage key “${key}” even though environment is not a client`,
       )
@@ -97,7 +98,7 @@ function parseJSON<T>(value: string | null): T | undefined {
   try {
     return value === 'undefined' ? undefined : JSON.parse(value ?? '')
   } catch {
-    console.log('parsing error on', { value })
+    console.warn('parsing error on', { value })
     return undefined
   }
 }
