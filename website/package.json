@@ -12,7 +12,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "prebuild": "npm run test",
+    "prebuild": "pnpm test",
     "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
     "serve": "gatsby serve",
     "start": "gatsby develop",
@@ -20,9 +20,9 @@
     "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
     "format": "prettier --check \"**/*.{json,md,mdx,css,scss,yaml,yml}\"",
     "types-check": "tsc --noEmit",
-    "predeploy": "npm run build",
+    "predeploy": "pnpm build",
     "deploy": "netlify deploy --prod",
-    "test": "npm run lint && npm run types-check"
+    "test": "pnpm lint && pnpm types-check"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
