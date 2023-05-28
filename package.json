@@ -23,11 +23,11 @@
     "bump": "bump --tag 'usehooks-ts@%s' --commit 'release: usehooks-ts@%s'",
     "test:coverage": "zx ./scripts/coverage.mjs",
     "update-readme": "zx ./scripts/updateReadme.mjs",
-    "generate-docs": "rimraf -rf ./apps/web/generated && zx ./scripts/copyHooks.mjs"
+    "generate-docs": "rimraf -rf ./apps/web/generated && zx ./scripts/copyHooks.mjs",
+    "gen-hook": "turbo gen hook"
   },
   "devDependencies": {
     "all-contributors-cli": "^6.20.0",
-    "plop": "^3.0.5",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
     "turbo": "^1.9.9",
