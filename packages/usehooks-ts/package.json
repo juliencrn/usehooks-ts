@@ -1,0 +1,73 @@
+{
+  "name": "usehooks-ts",
+  "private": false,
+  "version": "2.9.1",
+  "description": "React hook library, ready to use, written in Typescript.",
+  "author": "Julien CARON <juliencaron@protonmail.com>",
+  "homepage": "https://usehooks-ts.com",
+  "keywords": [
+    "typescript",
+    "react",
+    "hooks"
+  ],
+  "license": "MIT",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    }
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "dev": "pnpm test:watch",
+    "build": "pnpm build:cjs && pnpm build:esm",
+    "build:cjs": "tsc -p tsconfig.build.json --module commonjs --outDir dist/cjs --target es5",
+    "build:esm": "tsc -p tsconfig.build.json --module esNext --outDir dist/esm --target es6",
+    "test": "jest",
+    "test:watch": "pnpm test -- --watch --silent",
+    "clean": "rimraf -rf ./dist .turbo",
+    "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
+    "types-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@types/jest": "^29.0.3",
+    "@types/node": "^18.7.18",
+    "@types/react": "17.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.37.0",
+    "@typescript-eslint/parser": "^5.37.0",
+    "date-fns": "^2.29.3",
+    "eslint": "^8.9.0",
+    "eslint-config-custom": "*",
+    "eslint-plugin-tree-shaking": "^1.10.0",
+    "jest": "^29.0.3",
+    "jest-environment-jsdom": "^29.0.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^29.0.1",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.8.3"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0  || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0  || ^17.0.0 || ^18.0.0"
+  },
+  "engines": {
+    "node": ">=16.15.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juliencrn/usehooks-ts"
+  },
+  "bugs": {
+    "url": "https://github.com/juliencrn/usehooks-ts/issues"
+  }
+}
