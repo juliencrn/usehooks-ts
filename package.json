@@ -13,6 +13,7 @@
   "license": "MIT",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "dev": "turbo run dev",
     "build": "turbo run build",
     "test": "turbo run test",
     "clean": "turbo run clean",
@@ -22,7 +23,10 @@
     "test:coverage": "zx ./scripts/coverage.mjs",
     "update-readme": "zx ./scripts/updateReadme.mjs",
     "generate-docs": "rimraf -rf ./apps/web/generated && zx ./scripts/copyHooks.mjs",
-    "gen-hook": "turbo gen hook"
+    "gen-hook": "turbo gen hook && pnpm format",
+    "changeset": "npx changeset",
+    "changeset-version": "npx changeset version",
+    "changeset-publish": "npx changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.1",
