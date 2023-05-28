@@ -1,7 +1,8 @@
-const format = require('date-fns/format')
+import { PlopTypes } from '@turbo/gen'
+import format from 'date-fns/format'
 
-module.exports = function (plop) {
-  plop.setGenerator('component', {
+export default function generator(plop: PlopTypes.NodePlopAPI): void {
+  plop.setGenerator('hook', {
     description: 'Create a post',
     prompts: [
       {
@@ -15,14 +16,14 @@ module.exports = function (plop) {
       {
         type: 'add',
         path: 'src/{{camelCase name}}/{{camelCase name}}.ts',
-        templateFile: 'templates/plop/hooks/hook/hook.ts.hbs',
+        templateFile: 'templates/hook/hook.ts.hbs',
       },
 
       // Create the test file
       {
         type: 'add',
         path: 'src/{{camelCase name}}/{{camelCase name}}.test.ts',
-        templateFile: 'templates/plop/hooks/hook/hook.test.ts.hbs',
+        templateFile: 'templates/hook/hook.test.ts.hbs',
       },
 
       // Create the markdown file to present the hook (doc)
@@ -32,21 +33,21 @@ module.exports = function (plop) {
         },
         type: 'add',
         path: 'src/{{camelCase name}}/{{camelCase name}}.mdx',
-        templateFile: 'templates/plop/hooks/hook/post.mdx.hbs',
+        templateFile: 'templates/hook/hook.mdx.hbs',
       },
 
       // Create the demo react component file
       {
         type: 'add',
         path: 'src/{{camelCase name}}/{{camelCase name}}.demo.tsx',
-        templateFile: 'templates/plop/hooks/hook/demo.tsx.hbs',
+        templateFile: 'templates/hook/hook.demo.tsx.hbs',
       },
 
       // Update the global hooks index file
       {
         type: 'append',
         path: 'src/index.ts',
-        templateFile: 'templates/plop/hooks/index.ts.hbs',
+        templateFile: 'templates/index.ts.hbs',
       },
     ],
   })
