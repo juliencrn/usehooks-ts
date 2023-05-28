@@ -30,6 +30,7 @@
     "plop": "^3.0.5",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
+    "turbo": "^1.9.9",
     "version-bump-prompt": "^6.1.0",
     "zx": "^7.2.2"
   },
