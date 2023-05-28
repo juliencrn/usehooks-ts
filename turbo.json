@@ -12,16 +12,27 @@
       ]
     },
     "lint": {
-      "outputs": []
+      "outputs": [],
+      "cache": false
     },
     "types-check": {
-      "outputs": []
+      "outputs": [],
+      "cache": false
     },
     "test": {
-      "outputs": []
+      "outputs": [],
+      "cache": false
+    },
+    "dev": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [],
+      "cache": false
     },
     "clean": {
-      "outputs": []
+      "outputs": [],
+      "cache": false
     },
     "generate-docs": {
       "dependsOn": [

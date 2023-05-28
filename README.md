@@ -1,4 +1,4 @@
-<img src="./screenshot.png" alt="usehooks-ts banner" align="center" />
+<img src="./.github/screenshot.png" alt="usehooks-ts banner" align="center" />
 
 <br />
 
@@ -89,7 +89,7 @@ If you need to make any other substantial changes, then follow the project setup
 Before starting, make sure you have the good system dependencies:
 
 - `node@16.x`
-- `npm@^8`
+- `pnpm@^8`
 
 **Note**: To easily switch node version, consider Node Version Manager (nvm).
 
@@ -98,7 +98,7 @@ Then fork the repository, clone it and install.
 ```bash
 git clone https://github.com/{your_username}/usehooks-ts.git
 cd usehooks-ts
-npm install
+pnpm install
 ```
 
 ### Create or update a new hook
@@ -106,29 +106,19 @@ npm install
 ```bash
 # This command generates boilerplate for new hooks.
 # Skip if updating an existed hook.
-npm run plop
+pnpm gen-hook
 
-# Then develop the hook (aka test:watch)
-npm run dev
-
-# Once the hooks is ready
-# Launch the documentation website
-# Note: to build the website, you have to compile the usehooks-ts lib
-# first, which create website content in the `website/generated` folder,
-# used by Gatsby to create pages
-cd website
-npm install
-npm run start
-
-# Before commit: exec types-checking, linters and tests
-cd ..
-npm run test
+# Develop
+pnpm build
+pnpm types-check
+pnpm lint
+pnpm test
 ```
 
 ### How is structured a hook ?
 
 ```bash
-📂 ./src
+📂 ./packages/usehooks-ts
 ├── 📂 useHookName
 │  ├── 📄 useHookName.demo.tsx # working demo
 │  ├── 📝 useHookName.mdx # the documentation content
