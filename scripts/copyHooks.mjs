@@ -94,16 +94,19 @@ function copyFile({ source, dest, useSandbox, toMarkdown }) {
     }
 
     if (toMarkdown) {
-      // rename import from "from '..'" to "from 'usehooks-ts'"
-      const regex = new RegExp("from '..'$")
-
-      const transform = line => {
-        return regex.test(line)
-          ? line.replace("from '..'", "from 'usehooks-ts'")
-          : line
-      }
-
-      data = data.split('\n').map(transform).join('\n')
+      data = data
+        .split('\n')
+        .map(line => {
+          return new RegExp("from '..'$").test(line)
+            ? line.replace("from '..'", "from 'usehooks-ts'")
+            : line
+        })
+        .map(line => {
+          return new RegExp(`from './${name}'$`).test(line)
+            ? line.replace(`from './${name}'`, "from 'usehooks-ts'")
+            : line
+        })
+        .join('\n')
 
       // wrap code into markdown code tags
       data = preCode + '\r' + data + '```\r'
