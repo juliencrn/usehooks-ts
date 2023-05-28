@@ -1,6 +1,6 @@
-package-lock.json
 node_modules
 templates
-website
 dist
-packages
+.turbo
+public
+.cache
