@@ -6,7 +6,7 @@ import Modal from '@mui/material/Modal'
 import MuiPaper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import { styled } from '@mui/system'
-import algoliasearch from 'algoliasearch/lite'
+import algoliasearch from 'algoliasearch'
 import {
   Configure,
   connectSearchBox,
