@@ -1,0 +1,18 @@
+---
+title: useStateSync
+date: '2023-05-26'
+---
+
+Simple hook that enhances native `useState` with a callback function.
+
+Example of usage :
+React-query useQuery that we don't want to trigger on mount and relying on a state.
+
+Basically you would:
+
+1. Update the state
+2. trigger useEffect hook with state as dep
+3. trigger useQuery refetch
+
+But what if you want to control when the refetch function is called ( not at each state change )?
+Here's come the useStateSync hook that offer total control on state change callback.
