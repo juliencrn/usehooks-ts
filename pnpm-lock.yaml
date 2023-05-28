@@ -16,6 +16,9 @@ importers:
       rimraf:
         specifier: ^3.0.2
         version: registry.npmjs.org/rimraf@3.0.2
+      turbo:
+        specifier: ^1.9.9
+        version: registry.npmjs.org/turbo@1.9.9
       version-bump-prompt:
         specifier: ^6.1.0
         version: registry.npmjs.org/version-bump-prompt@6.1.0
@@ -6562,6 +6565,81 @@ packages:
     dependencies:
       tslib: registry.npmjs.org/tslib@1.14.1
       typescript: registry.npmjs.org/typescript@4.8.3
+    dev: true
+
+  registry.npmjs.org/turbo-darwin-64@1.9.9:
+    resolution: {integrity: sha512-UDGM9E21eCDzF5t1F4rzrjwWutcup33e7ZjNJcW/mJDPorazZzqXGKEPIy9kXwKhamUUXfC7668r6ZuA1WXF2Q==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/turbo-darwin-64/-/turbo-darwin-64-1.9.9.tgz}
+    name: turbo-darwin-64
+    version: 1.9.9
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmjs.org/turbo-darwin-arm64@1.9.9:
+    resolution: {integrity: sha512-VyfkXzTJpYLTAQ9krq2myyEq7RPObilpS04lgJ4OO1piq76RNmSpX9F/t9JCaY9Pj/4TL7i0d8PM7NGhwEA5Ag==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/turbo-darwin-arm64/-/turbo-darwin-arm64-1.9.9.tgz}
+    name: turbo-darwin-arm64
+    version: 1.9.9
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmjs.org/turbo-linux-64@1.9.9:
+    resolution: {integrity: sha512-Fu1MY29Odg8dHOqXcpIIGC3T63XLOGgnGfbobXMKdrC7JQDvtJv8TUCYciRsyknZYjyyKK1z6zKuYIiDjf3KeQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/turbo-linux-64/-/turbo-linux-64-1.9.9.tgz}
+    name: turbo-linux-64
+    version: 1.9.9
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmjs.org/turbo-linux-arm64@1.9.9:
+    resolution: {integrity: sha512-50LI8NafPuJxdnMCBeDdzgyt1cgjQG7FwkyY336v4e95WJPUVjrHdrKH6jYXhOUyrv9+jCJxwX1Yrg02t5yJ1g==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/turbo-linux-arm64/-/turbo-linux-arm64-1.9.9.tgz}
+    name: turbo-linux-arm64
+    version: 1.9.9
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmjs.org/turbo-windows-64@1.9.9:
+    resolution: {integrity: sha512-9IsTReoLmQl1IRsy3WExe2j2RKWXQyXujfJ4fXF+jp08KxjVF4/tYP2CIRJx/A7UP/7keBta27bZqzAjsmbSTA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/turbo-windows-64/-/turbo-windows-64-1.9.9.tgz}
+    name: turbo-windows-64
+    version: 1.9.9
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmjs.org/turbo-windows-arm64@1.9.9:
+    resolution: {integrity: sha512-CUu4hpeQo68JjDr0V0ygTQRLbS+/sNfdqEVV+Xz9136vpKn2WMQLAuUBVZV0Sp0S/7i+zGnplskT0fED+W46wQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/turbo-windows-arm64/-/turbo-windows-arm64-1.9.9.tgz}
+    name: turbo-windows-arm64
+    version: 1.9.9
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmjs.org/turbo@1.9.9:
+    resolution: {integrity: sha512-+ZS66LOT7ahKHxh6XrIdcmf2Yk9mNpAbPEj4iF2cs0cAeaDU3xLVPZFF0HbSho89Uxwhx7b5HBgPbdcjQTwQkg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/turbo/-/turbo-1.9.9.tgz}
+    name: turbo
+    version: 1.9.9
+    hasBin: true
+    requiresBuild: true
+    optionalDependencies:
+      turbo-darwin-64: registry.npmjs.org/turbo-darwin-64@1.9.9
+      turbo-darwin-arm64: registry.npmjs.org/turbo-darwin-arm64@1.9.9
+      turbo-linux-64: registry.npmjs.org/turbo-linux-64@1.9.9
+      turbo-linux-arm64: registry.npmjs.org/turbo-linux-arm64@1.9.9
+      turbo-windows-64: registry.npmjs.org/turbo-windows-64@1.9.9
+      turbo-windows-arm64: registry.npmjs.org/turbo-windows-arm64@1.9.9
     dev: true
 
   registry.npmjs.org/type-check@0.3.2:
