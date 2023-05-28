@@ -4,9 +4,6 @@
   "version": "1.0.0",
   "description": "Base configuration for Eslint",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Julien CARON <juliencaron@protonmail.com>",
   "license": "MIT",
   "devDependencies": {
@@ -20,10 +17,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "prettier": "^2.5.1",
-    "typescript": "^4.8.3"
-  },
-  "peerDependencies": {
-    "eslint": "^8.9.0",
-    "prettier": "^2.5.1"
+    "typescript": "^4.8.3",
+    "eslint": "^8.9.0"
   }
 }

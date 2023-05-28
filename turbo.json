@@ -1,0 +1,43 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "dist"
+      ]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "types-check": {
+      "outputs": []
+    },
+    "test": {
+      "outputs": []
+    },
+    "clean": {
+      "outputs": []
+    },
+    "generate-docs": {
+      "dependsOn": [
+        "usehooks-ts#build"
+      ],
+      "outputs": [
+        "generated"
+      ]
+    },
+    "update-readme": {
+      "dependsOn": [
+        "usehooks-ts#build"
+      ],
+      "outputs": [
+        "README.md"
+      ]
+    }
+  }
+}

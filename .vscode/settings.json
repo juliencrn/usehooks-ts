@@ -34,8 +34,17 @@
     "usehooks"
   ],
   "eslint.workingDirectories": [
-    { "directory": ".", "changeProcessCWD": true },
-    { "directory": "website", "changeProcessCWD": true },
-    { "directory": "packages/eslint-config-custom", "changeProcessCWD": true }
+    {
+      "directory": "apps/web",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "packages/eslint-config-custom",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "packages/usehooks-ts",
+      "changeProcessCWD": true
+    }
   ]
 }
