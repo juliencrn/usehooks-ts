@@ -13,6 +13,7 @@ npm-debug.log*
 .npm
 .cache
 .eslintcache
+.turbo
 
 # Compiled stuff
 dist

@@ -1,10 +1,11 @@
-import fs from 'fs'
-import path from 'path'
+#!/usr/bin/env zx
 
-import { isHookFile, toQueryParams } from './utils'
+import { path, fs } from 'zx'
 
-const hooksDir = path.resolve('./src')
-const outputDir = path.resolve('./website/generated')
+import { isHookFile, toQueryParams } from './utils.mjs'
+
+const hooksDir = path.resolve('./packages/usehooks-ts/src')
+const outputDir = path.resolve('./apps/web/generated')
 const sandboxTemplatePath = path.resolve('./templates/codesandbox')
 
 ////////////////////////////////////////////////////////////////////////
@@ -50,22 +51,15 @@ fs.readdir(hooksDir, (err, files) => {
 // 2. Utility functions
 ////////////////////////////////////////////////////////////////////////
 
-function getFileName(pathname: string): string {
+function getFileName(pathname) {
   return pathname.split('/').reverse()[0]
 }
 
-function createDirIfNeeded(dir: string): void {
+function createDirIfNeeded(dir) {
   if (!fs.existsSync(path.resolve(dir))) fs.mkdirSync(dir)
 }
 
-interface CopyFileProps {
-  source: string
-  dest: string
-  useSandbox?: boolean
-  toMarkdown?: boolean
-}
-
-function copyFile({ source, dest, useSandbox, toMarkdown }: CopyFileProps) {
+function copyFile({ source, dest, useSandbox, toMarkdown }) {
   // Check source file
   if (!fs.existsSync(source)) {
     console.warn(`${getFileName(source)} doesn't exist`)
@@ -103,7 +97,7 @@ function copyFile({ source, dest, useSandbox, toMarkdown }: CopyFileProps) {
       // rename import from "from '..'" to "from 'usehooks-ts'"
       const regex = new RegExp("from '..'$")
 
-      const transform = (line: string) => {
+      const transform = line => {
         return regex.test(line)
           ? line.replace("from '..'", "from 'usehooks-ts'")
           : line

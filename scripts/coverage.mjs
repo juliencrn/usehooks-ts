@@ -1,9 +1,10 @@
-import fs from 'fs'
-import path from 'path'
+#!/usr/bin/env zx
 
-import { isHookFile } from './utils'
+import { path, fs } from 'zx'
 
-const hookDir = path.resolve('./src')
+import { isHookFile } from './utils.mjs'
+
+const hookDir = path.resolve('./packages/usehooks-ts/src')
 const hooks = fs.readdirSync(hookDir).filter(isHookFile)
 const testFileRegex = new RegExp(`\.test\.ts$`)
 let hasTestCount = 0
