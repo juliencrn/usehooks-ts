@@ -6,8 +6,8 @@
         "^build"
       ],
       "outputs": [
-        ".next/**",
-        "!.next/cache/**",
+        ".cache",
+        "public",
         "dist"
       ]
     },
