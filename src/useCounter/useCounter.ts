@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useCallback, useState } from 'react'
 
 interface UseCounterOutput {
   count: number
@@ -11,9 +11,9 @@ interface UseCounterOutput {
 function useCounter(initialValue?: number): UseCounterOutput {
   const [count, setCount] = useState(initialValue || 0)
 
-  const increment = () => setCount(x => x + 1)
-  const decrement = () => setCount(x => x - 1)
-  const reset = () => setCount(initialValue || 0)
+  const increment = useCallback(() => setCount(x => x + 1), [])
+  const decrement = useCallback(() => setCount(x => x - 1), [])
+  const reset = useCallback(() => setCount(initialValue || 0), [initialValue])
 
   return {
     count,
