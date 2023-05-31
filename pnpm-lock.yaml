@@ -92,7 +92,7 @@ importers:
         specifier: ^1.0.5
         version: registry.npmjs.org/tailwindcss-animate@1.0.5(tailwindcss@3.3.2)
       usehooks-ts:
-        specifier: '*'
+        specifier: workspace:*
         version: link:../../packages/usehooks-ts
       zod:
         specifier: ^3.21.4
@@ -120,7 +120,7 @@ importers:
         specifier: 8.41.0
         version: registry.npmjs.org/eslint@8.41.0
       eslint-config-custom:
-        specifier: '*'
+        specifier: workspace:*
         version: link:../../packages/eslint-config-custom
       eslint-config-next:
         specifier: 13.4.4
@@ -210,7 +210,7 @@ importers:
         specifier: ^8.9.0
         version: registry.npmjs.org/eslint@8.23.1
       eslint-config-custom:
-        specifier: '*'
+        specifier: workspace:*
         version: link:../eslint-config-custom
       eslint-plugin-tree-shaking:
         specifier: ^1.10.0
