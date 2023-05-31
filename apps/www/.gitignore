@@ -8,12 +8,13 @@
 # testing
 /coverage
 
-# next.js
+# generated
 /.next/
 /out/
-
-# production
 /build
+generated
+public/sitemap.xml
+public/robots.txt
 
 # misc
 .DS_Store
@@ -34,5 +35,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.contentlayer
-generated
+
