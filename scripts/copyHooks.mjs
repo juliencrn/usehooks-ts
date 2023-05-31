@@ -2,11 +2,10 @@
 
 import { path, fs } from 'zx'
 
-import { isHookFile, toQueryParams } from './utils.mjs'
+import { isHookFile } from './utils.mjs'
 
 const hooksDir = path.resolve('./packages/usehooks-ts/src')
-const outputDir = path.resolve('./apps/web/generated')
-const sandboxTemplatePath = path.resolve('./templates/codesandbox')
+const outputDir = path.resolve('./apps/www/generated')
 
 ////////////////////////////////////////////////////////////////////////
 // 1. Imperative script that copy hooks from code to markdown files
@@ -27,22 +26,22 @@ fs.readdir(hooksDir, (err, files) => {
     // Copy hook as a markdown file
     copyFile({
       source: path.resolve(`${hooksDir}/${file}/${file}.ts`),
-      dest: path.resolve(`${outputDir}/hooks/${file}.hook.md`),
+      dest: path.resolve(`${outputDir}/hooks/${file}.md`),
       toMarkdown: true,
     })
 
     // Copy demo as a markdown file
     copyFile({
       source: path.resolve(`${hooksDir}/${file}/${file}.demo.tsx`),
-      dest: path.resolve(`${outputDir}/demos/${file}.demo.md`),
+      dest: path.resolve(`${outputDir}/demos/${file}.md`),
       toMarkdown: true,
       useSandbox: true,
     })
 
     // Copy documentation file
     copyFile({
-      source: path.resolve(`${hooksDir}/${file}/${file}.mdx`),
-      dest: path.resolve(`${outputDir}/posts/${file}.post.mdx`),
+      source: path.resolve(`${hooksDir}/${file}/${file}.md`),
+      dest: path.resolve(`${outputDir}/posts/${file}.md`),
     })
   }
 })
@@ -83,29 +82,15 @@ function copyFile({ source, dest, useSandbox, toMarkdown }) {
     const name = getFileName(dest)
     const extension = source.split('.').reverse()[0]
     const writeStream = fs.createWriteStream(dest)
-    // TODO: Theses hooks don't work on CodeSandbox, make it work.
-    const excludedHooks = ['useFetch.demo.md', 'useCopyToClipboard.demo.md']
     let preCode = '```' + extension
-
-    // If CodeSandbox enabled, add needed parameter
-    if (useSandbox && !excludedHooks.includes(name)) {
-      const templateOptions = toQueryParams({ entry: 'src/App.tsx' })
-      preCode += ' codesandbox=file:' + sandboxTemplatePath + templateOptions
-    }
 
     if (toMarkdown) {
       data = data
         .split('\n')
-        .map(line => {
-          return new RegExp("from '..'$").test(line)
-            ? line.replace("from '..'", "from 'usehooks-ts'")
-            : line
-        })
-        .map(line => {
-          return new RegExp(`from './${name}'$`).test(line)
-            ? line.replace(`from './${name}'`, "from 'usehooks-ts'")
-            : line
-        })
+        .map(line => line
+          .replace("from '..'", "from 'usehooks-ts'")
+          .replace(`from './${name}'`, "from 'usehooks-ts'")
+        )
         .join('\n')
 
       // wrap code into markdown code tags

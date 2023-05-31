@@ -6,8 +6,8 @@
         "^build"
       ],
       "outputs": [
-        ".cache",
-        "public",
+        ".next/**",
+        "!.next/cache/**",
         "dist"
       ]
     },
@@ -34,21 +34,7 @@
       "outputs": [],
       "cache": false
     },
-    "generate-docs": {
-      "dependsOn": [
-        "usehooks-ts#build"
-      ],
-      "outputs": [
-        "generated"
-      ]
-    },
-    "update-readme": {
-      "dependsOn": [
-        "usehooks-ts#build"
-      ],
-      "outputs": [
-        "README.md"
-      ]
-    }
+    "generate-docs": {},
+    "update-readme": {}
   }
 }

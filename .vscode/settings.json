@@ -27,15 +27,27 @@
   },
   "cSpell.words": [
     "algolia",
+    "clsx",
+    "contentlayer",
     "fira",
     "frontmatter",
+    "gtag",
+    "juliencrn",
+    "lucide",
+    "nextjs",
     "okaidia",
     "prismjs",
+    "rehype",
+    "tailwindcss",
     "usehooks"
   ],
   "eslint.workingDirectories": [
     {
       "directory": "apps/web",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "apps/www",
       "changeProcessCWD": true
     },
     {
