@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks/dom'
 
-import useEffectOnce from './useEffectOnce'
+import { useEffectOnce } from './useEffectOnce'
 
 describe('use effect once()', () => {
   test('should be triggered only once', () => {

@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom'
 
-import useSessionStorage from './useSessionStorage'
+import { useSessionStorage } from './useSessionStorage'
 
 class SessionStorageMock {
   store: Record<string, unknown> = {}

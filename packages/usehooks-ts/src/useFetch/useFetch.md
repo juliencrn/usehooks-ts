@@ -1,0 +1,16 @@
+Here is a React Hook which aims to retrieve data on an API using the native Fetch API.
+
+I used a reducer to separate state logic and simplify testing via functional style.
+
+The received data is saved (cached) in the application via useRef, but you can use LocalStorage (see [`useLocalStorage()`](/react-hook/use-local-storage)) or a caching solution to persist the data.
+
+The fetch is executed when the component is mounted and if the url changes. If ever the url is undefined, or if the component is unmounted before the data is recovered, the fetch will not be called.
+
+This hook also takes the request config as a second parameter in order to be able to pass the authorization token in the header of the request, for example. Be careful though, the latter does not trigger a re-rendering in case of modification, go through the url params to dynamically change the request.
+
+**Side notes:**
+
+- To understand how is working this hook, you can read [this article](https://www.smashingmagazine.com/2020/07/custom-react-hook-fetch-cache-data/) from "Smashing Magazine" which explains how to build a custom react hook to fetch and cache data
+- For usage in SSR, consider using [window.fetch.polyfill](https://www.npmjs.com/package/whatwg-fetch)
+- It's a very simple fetch hook for basic use cases and learning purposes.
+  For advanced usages and optimisations, see these other hooks more powerfull like [useSWR](https://swr.vercel.app/), [useQuery](https://github.com/tannerlinsley/react-query) or if you're using Redux Toolkit, consider [RTK Query](https://redux-toolkit.js.org/rtk-query/overview).

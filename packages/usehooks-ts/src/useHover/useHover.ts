@@ -2,7 +2,7 @@ import { RefObject, useState } from 'react'
 
 import { useEventListener } from '..'
 
-function useHover<T extends HTMLElement = HTMLElement>(
+export function useHover<T extends HTMLElement = HTMLElement>(
   elementRef: RefObject<T>,
 ): boolean {
   const [value, setValue] = useState<boolean>(false)
@@ -15,5 +15,3 @@ function useHover<T extends HTMLElement = HTMLElement>(
 
   return value
 }
-
-export default useHover

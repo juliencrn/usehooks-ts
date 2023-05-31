@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-function useIsClient() {
+export function useIsClient() {
   const [isClient, setClient] = useState(false)
 
   useEffect(() => {
@@ -9,5 +9,3 @@ function useIsClient() {
 
   return isClient
 }
-
-export default useIsClient

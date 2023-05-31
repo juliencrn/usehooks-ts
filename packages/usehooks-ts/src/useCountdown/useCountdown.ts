@@ -38,7 +38,7 @@ interface CountdownControllers {
  *
  * @deprecated new useCountdown interface is already available (see https://usehooks-ts.com/react-hook/use-countdown), the old version will retire on usehooks-ts@3
  */
-function useCountdown(
+export function useCountdown(
   countdownOption: UseCountdownType,
 ): [number, CountdownHelpers]
 
@@ -52,11 +52,11 @@ function useCountdown(
  * @param  {?boolean} countdownOption.isIncrement - `false` by default, true if the countdown is increment.
  * @returns [counter, CountdownControllers]
  */
-function useCountdown(
+export function useCountdown(
   countdownOption: CountdownOption,
 ): [number, CountdownControllers]
 
-function useCountdown(
+export function useCountdown(
   countdownOption: UseCountdownType | CountdownOption,
 ): [number, CountdownHelpers | CountdownControllers] {
   /**
@@ -148,5 +148,3 @@ function useCountdown(
         } as CountdownControllers,
       ]
 }
-
-export default useCountdown

@@ -16,7 +16,10 @@ declare global {
 
 type SetValue<T> = Dispatch<SetStateAction<T>>
 
-function useSessionStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
+export function useSessionStorage<T>(
+  key: string,
+  initialValue: T,
+): [T, SetValue<T>] {
   // Get from session storage then
   // parse stored json or return initialValue
   const readValue = useCallback((): T => {
@@ -89,8 +92,6 @@ function useSessionStorage<T>(key: string, initialValue: T): [T, SetValue<T>] {
 
   return [storedValue, setValue]
 }
-
-export default useSessionStorage
 
 // A wrapper for "JSON.parse()"" to support "undefined" value
 function parseJSON<T>(value: string | null): T | undefined {

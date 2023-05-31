@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks/dom'
 
-import useUpdateEffect from './useUpdateEffect'
+import { useUpdateEffect } from './useUpdateEffect'
 
 describe('use update effect()', () => {
   test('the callback function should have been called on update', () => {

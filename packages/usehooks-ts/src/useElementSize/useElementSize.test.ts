@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 
-import { useElementSize } from '..'
+import { useElementSize } from './useElementSize'
 
 const setupHook = () => renderHook(() => useElementSize())
 

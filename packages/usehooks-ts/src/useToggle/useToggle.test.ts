@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom'
 
-import useToggle from './useToggle'
+import { useToggle } from './useToggle'
 
 describe('use toggle()', () => {
   test('should use toggle be ok', () => {

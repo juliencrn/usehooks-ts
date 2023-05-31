@@ -79,4 +79,4 @@ function useEventListener<
   }, [eventName, element, options])
 }
 
-export default useEventListener
+export { useEventListener }
