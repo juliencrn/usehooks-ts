@@ -4,7 +4,7 @@ import { z } from 'zod'
 export const env = createEnv({
   server: {},
   client: {
-    NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string(),
+    NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string().optional().default(''),
   },
   runtimeEnv: {
     NEXT_PUBLIC_GA_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,

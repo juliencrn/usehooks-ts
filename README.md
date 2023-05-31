@@ -115,10 +115,10 @@ pnpm dev --filter=usehooks-ts # jest --watch
 pnpm dev --filter=www # next dev
 
 # Develop
+pnpm build
 pnpm lint
 pnpm types-check
 pnpm test
-pnpm build
 ```
 
 ### How is structured a hook ?

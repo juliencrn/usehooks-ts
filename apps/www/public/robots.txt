@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://usehooks-ts.com
-
-# Sitemaps
-Sitemap: https://usehooks-ts.com/sitemap.xml

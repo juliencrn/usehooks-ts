@@ -33,7 +33,7 @@
     "tailwind-merge": "^1.12.0",
     "tailwindcss": "3.3.2",
     "tailwindcss-animate": "^1.0.5",
-    "usehooks-ts": "*",
+    "usehooks-ts": "workspace:*",
     "zod": "^3.21.4"
   },
   "devDependencies": {
@@ -44,7 +44,7 @@
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
     "eslint": "8.41.0",
-    "eslint-config-custom": "*",
+    "eslint-config-custom": "workspace:*",
     "eslint-config-next": "13.4.4",
     "next-sitemap": "^4.0.7",
     "postcss": "8.4.24",
