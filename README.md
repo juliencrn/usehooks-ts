@@ -15,6 +15,7 @@
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-88-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <br />
@@ -59,6 +60,7 @@
 - [`useMediaQuery()`](https://usehooks-ts.com/react-hook/use-media-query)
 - [`useOnClickOutside()`](https://usehooks-ts.com/react-hook/use-on-click-outside)
 - [`useReadLocalStorage()`](https://usehooks-ts.com/react-hook/use-read-local-storage)
+- [`useRouter()`](https://usehooks-ts.com/react-hook/use-router)
 - [`useScreen()`](https://usehooks-ts.com/react-hook/use-screen)
 - [`useScript()`](https://usehooks-ts.com/react-hook/use-script)
 - [`useSessionStorage()`](https://usehooks-ts.com/react-hook/use-session-storage)
@@ -267,6 +269,7 @@ Big thanks goes to these wonderful people ❤️
       <td align="center"><a href="https://github.com/mike247"><img src="https://avatars.githubusercontent.com/u/676071?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Michael Norrie</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Amike247" title="Bug reports">🐛</a></td>
       <td align="center"><a href="https://github.com/valentinpolitov"><img src="https://avatars.githubusercontent.com/u/39585375?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Valentin Politov</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=valentinpolitov" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/marnusw"><img src="https://avatars.githubusercontent.com/u/971499?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Marnus Weststrate</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=marnusw" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/sayad-mallllek"><img src="https://avatars.githubusercontent.com/u/58302539?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Sayad Mallllek</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=sayad-mallllek" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
