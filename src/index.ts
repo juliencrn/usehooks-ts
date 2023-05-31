@@ -60,6 +60,8 @@ export { default as useSessionStorage } from './useSessionStorage/useSessionStor
 export * from './useSessionStorage/useSessionStorage'
 export { default as useSsr } from './useSsr/useSsr'
 export * from './useSsr/useSsr'
+export { default as useStateAsync } from './useStateAsync/useStateAsync'
+export * from './useStateAsync/useStateAsync'
 export { default as useStep } from './useStep/useStep'
 export * from './useStep/useStep'
 export { default as useTernaryDarkMode } from './useTernaryDarkMode/useTernaryDarkMode'
