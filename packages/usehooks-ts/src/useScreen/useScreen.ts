@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { useEventListener, useIsomorphicLayoutEffect } from '..'
 
-function useScreen() {
+export function useScreen() {
   const getScreen = () => {
     if (typeof window !== 'undefined' && window.screen) {
       return window.screen
@@ -26,5 +26,3 @@ function useScreen() {
 
   return screen
 }
-
-export default useScreen

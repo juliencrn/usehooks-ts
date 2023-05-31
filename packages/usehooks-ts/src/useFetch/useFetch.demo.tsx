@@ -1,4 +1,4 @@
-import { useFetch } from '..'
+import { useFetch } from './useFetch'
 
 const url = `http://jsonplaceholder.typicode.com/posts`
 

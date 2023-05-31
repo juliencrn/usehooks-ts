@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom'
 
-import useLocalStorage from './useLocalStorage'
+import { useLocalStorage } from './useLocalStorage'
 
 class LocalStorageMock {
   store: Record<string, unknown> = {}

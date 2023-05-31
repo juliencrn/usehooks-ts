@@ -4,7 +4,7 @@ import { useIsomorphicLayoutEffect } from '..'
 
 type UseLockedBodyOutput = [boolean, (locked: boolean) => void]
 
-function useLockedBody(
+export function useLockedBody(
   initialLocked = false,
   rootId = '___gatsby', // Default to `___gatsby` to not introduce breaking change
 ): UseLockedBodyOutput {

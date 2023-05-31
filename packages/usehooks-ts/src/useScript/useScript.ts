@@ -23,7 +23,7 @@ function getScriptNode(src: string) {
   }
 }
 
-function useScript(
+export function useScript(
   src: string | null,
   options?: UseScriptOptions,
 ): UseScriptStatus {
@@ -109,5 +109,3 @@ function useScript(
 
   return status
 }
-
-export default useScript

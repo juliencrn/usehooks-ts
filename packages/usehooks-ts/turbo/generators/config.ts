@@ -32,7 +32,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
           date: format(new Date(), 'yyyy-MM-dd'),
         },
         type: 'add',
-        path: 'src/{{camelCase name}}/{{camelCase name}}.mdx',
+        path: 'src/{{camelCase name}}/{{camelCase name}}.md',
         templateFile: 'templates/hook/hook.mdx.hbs',
       },
 

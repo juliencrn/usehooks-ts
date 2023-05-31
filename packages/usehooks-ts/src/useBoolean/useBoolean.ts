@@ -8,7 +8,7 @@ interface UseBooleanOutput {
   toggle: () => void
 }
 
-function useBoolean(defaultValue?: boolean): UseBooleanOutput {
+export function useBoolean(defaultValue?: boolean): UseBooleanOutput {
   const [value, setValue] = useState(!!defaultValue)
 
   const setTrue = useCallback(() => setValue(true), [])
@@ -17,5 +17,3 @@ function useBoolean(defaultValue?: boolean): UseBooleanOutput {
 
   return { value, setValue, setTrue, setFalse, toggle }
 }
-
-export default useBoolean

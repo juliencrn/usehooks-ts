@@ -10,7 +10,7 @@ interface ImageOnLoadType {
   css: ImageStyle
 }
 
-function useImageOnLoad(): ImageOnLoadType {
+export function useImageOnLoad(): ImageOnLoadType {
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
   // Triggered when full image will be loaded.
@@ -34,5 +34,3 @@ function useImageOnLoad(): ImageOnLoadType {
 
   return { handleImageOnLoad, css }
 }
-
-export default useImageOnLoad

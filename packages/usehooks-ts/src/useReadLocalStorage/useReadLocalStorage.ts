@@ -4,7 +4,7 @@ import { useEventListener } from '..'
 
 type Value<T> = T | null
 
-function useReadLocalStorage<T>(key: string): Value<T> {
+export function useReadLocalStorage<T>(key: string): Value<T> {
   // Get from local storage then
   // parse stored json or return initialValue
   const readValue = useCallback((): Value<T> => {
@@ -51,5 +51,3 @@ function useReadLocalStorage<T>(key: string): Value<T> {
 
   return storedValue
 }
-
-export default useReadLocalStorage
