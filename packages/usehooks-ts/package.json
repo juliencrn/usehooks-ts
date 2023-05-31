@@ -29,7 +29,7 @@
     "test": "jest",
     "test:watch": "pnpm test -- --watch --silent",
     "clean": "rimraf -rf ./dist .turbo",
-    "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
+    "lint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
     "types-check": "tsc --noEmit"
   },
   "devDependencies": {

@@ -1,5 +1,5 @@
 {
-  "name": "usehooks-ts",
+  "name": "workspace",
   "private": true,
   "description": "React hook library, ready to use, written in Typescript.",
   "author": "Julien CARON <juliencaron@protonmail.com>",
@@ -13,8 +13,8 @@
   "license": "MIT",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "dev": "turbo run dev",
-    "build": "turbo run build",
+    "dev": "pnpm copy-hooks && turbo run dev",
+    "build": "pnpm copy-hooks && turbo run build",
     "test": "turbo run test",
     "clean": "turbo run clean",
     "format": "prettier --write \"**/*.{json,md,mdx,css,scss,yaml,yml}\"",
@@ -22,7 +22,7 @@
     "types-check": "turbo run types-check",
     "test:coverage": "zx ./scripts/coverage.mjs",
     "update-readme": "zx ./scripts/updateReadme.mjs",
-    "generate-docs": "rimraf -rf ./apps/web/generated && zx ./scripts/copyHooks.mjs",
+    "copy-hooks": "rimraf -rf ./apps/www/generated && zx ./scripts/copyHooks.mjs",
     "gen-hook": "turbo gen hook && pnpm format",
     "changeset": "npx changeset",
     "changeset-version": "npx changeset version",

@@ -108,11 +108,17 @@ pnpm install
 # Skip if updating an existed hook.
 pnpm gen-hook
 
+# start working
+pnpm dev
+# or
+pnpm dev --filter=usehooks-ts # jest --watch
+pnpm dev --filter=www # next dev
+
 # Develop
-pnpm build
-pnpm types-check
 pnpm lint
+pnpm types-check
 pnpm test
+pnpm build
 ```
 
 ### How is structured a hook ?
