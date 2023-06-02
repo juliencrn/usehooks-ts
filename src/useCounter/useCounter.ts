@@ -8,11 +8,34 @@ interface UseCounterOutput {
   setCount: Dispatch<SetStateAction<number>>
 }
 
-function useCounter(initialValue?: number): UseCounterOutput {
+function useCounter(
+    initialValue?: number,
+    min?: number,
+    max?: number,
+    step: number = 1,
+): UseCounterOutput {
   const [count, setCount] = useState(initialValue || 0)
 
-  const increment = () => setCount(x => x + 1)
-  const decrement = () => setCount(x => x - 1)
+  const increment = () =>
+      setCount((x) => {
+          if (max !== undefined && x >= max) {
+              return x
+          } else if (max !== undefined && x + step > max) {
+              return max
+          }
+
+          return x + step
+      })
+  const decrement = () =>
+      setCount((x) => {
+          if (min !== undefined && x <= min) {
+              return x
+          } else if (min !== undefined && x - step < min) {
+              return min
+          }
+
+          return x - step
+      })
   const reset = () => setCount(initialValue || 0)
 
   return {
