@@ -32,7 +32,7 @@
     "@changesets/cli": "^2.26.1",
     "all-contributors-cli": "^6.20.0",
     "prettier": "^2.5.1",
-    "rimraf": "^3.0.2",
+    "rimraf": "^5.0.0",
     "turbo": "^1.9.9",
     "zx": "^7.2.2"
   },
