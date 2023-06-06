@@ -3,7 +3,12 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**", "dist"]
+      "outputs": ["dist"]
+    },
+    "www#build": {
+      "dependsOn": ["^build"],
+      "env": ["NEXT_PUBLIC_GA_MEASUREMENT_ID"],
+      "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {
       "outputs": [],
@@ -28,5 +33,6 @@
     },
     "generate-docs": {},
     "update-readme": {}
-  }
+  },
+  "globalDependencies": ["tsconfig.json"]
 }
