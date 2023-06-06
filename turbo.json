@@ -6,7 +6,7 @@
       "outputs": ["dist"]
     },
     "www#build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "generate-docs"],
       "env": ["NEXT_PUBLIC_GA_MEASUREMENT_ID"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
