@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.9.2
+
+### Patch Changes
+
+- 55a1904: added export map, use named exports for hooks and fix useEventListener docs typo
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
