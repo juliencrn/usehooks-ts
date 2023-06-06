@@ -12,7 +12,8 @@
     "generated/**": true,
     ".cache/**": true,
     ".git/**": true,
-    "**/package-lock.json": true
+    "**/package-lock.json": true,
+    "**/pnpm-lock.yaml": true
   },
   "eslint.validate": [
     "javascript",
@@ -25,6 +26,7 @@
     "source.fixAll.eslint": true,
     "source.fixAll": true
   },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "cSpell.words": [
     "algolia",
     "clsx",
@@ -58,5 +60,14 @@
       "directory": "packages/usehooks-ts",
       "changeProcessCWD": true
     }
-  ]
+  ],
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

@@ -4,3 +4,4 @@ dist
 .turbo
 public
 .cache
+pnpm-lock.yaml
