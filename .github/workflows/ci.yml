@@ -1,6 +1,6 @@
 name: Build and test
 
-on: [push, pull_request]
+on: [push]
 
 env:
   NODE_VERSION: 16
