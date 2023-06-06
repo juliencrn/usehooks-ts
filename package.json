@@ -13,8 +13,8 @@
   "license": "MIT",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "dev": "pnpm copy-hooks && turbo run dev",
-    "build": "pnpm copy-hooks && turbo run build",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
     "test": "turbo run test",
     "clean": "turbo run clean",
     "format": "prettier --write \"**/*.{json,md,mdx,css,scss,yaml,yml}\"",

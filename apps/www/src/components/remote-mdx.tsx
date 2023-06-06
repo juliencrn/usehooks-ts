@@ -124,9 +124,9 @@ const components = {
       {...props}
     />
   ),
-  img: ({ className, alt, ...props }: ComponentProps<'img'>) => (
-    <img className={cn('rounded-md border', className)} alt={alt} {...props} />
-  ),
+  // img: ({ className, alt, ...props }: ComponentProps<'img'>) => (
+  //   <img className={cn('rounded-md border', className)} alt={alt} {...props} />
+  // ),
   hr: ({ ...props }: ComponentProps<'hr'>) => (
     <hr className="my-4 md:my-8" {...props} />
   ),

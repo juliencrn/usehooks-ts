@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && pnpm generate-sitemap",
+    "build": "pnpm generate && next build && pnpm generate-sitemap",
     "generate-sitemap": "rimraf public/sitemap.xml public/robots.txt && next-sitemap --config ./next-sitemap.config.mjs",
     "start": "next start",
     "lint": "next lint",
-    "clean": "rimraf .next generated .turbo"
+    "clean": "rimraf .next generated .turbo",
+    "generate": "cd ../.. && pnpm copy-hooks && cd -"
   },
   "dependencies": {
     "@mdx-js/loader": "^2.3.0",
