@@ -6,7 +6,7 @@
       "outputs": ["dist"]
     },
     "www#build": {
-      "dependsOn": ["^build", "generate-docs"],
+      "dependsOn": ["^build", "copy-hooks"],
       "env": ["NEXT_PUBLIC_GA_MEASUREMENT_ID"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
@@ -31,7 +31,7 @@
       "outputs": [],
       "cache": false
     },
-    "generate-docs": {},
+    "copy-hooks": {},
     "update-readme": {}
   },
   "globalDependencies": ["tsconfig.json"]
