@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useCallback, useState } from 'react'
 
-interface UseBooleanOutput {
+export interface UseBooleanOutput {
   value: boolean
   setValue: Dispatch<SetStateAction<boolean>>
   setTrue: () => void
