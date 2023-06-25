@@ -14,28 +14,43 @@ declare global {
   }
 }
 
+type Options<T> = {
+  parseAsJson: boolean
+  parser: (value: string | null) => T
+  serializer: (value: T) => string
+}
+
 type SetValue<T> = Dispatch<SetStateAction<T>>
 
 export function useSessionStorage<T>(
   key: string,
-  initialValue: T,
+  defaultValue: T,
+  {
+    parseAsJson = true,
+    parser = parseAsJson ? parseJSON : castValue,
+    serializer = serializeJSON,
+  }: Partial<Options<T>> = {},
 ): [T, SetValue<T>] {
   // Get from session storage then
   // parse stored json or return initialValue
+
   const readValue = useCallback((): T => {
     // Prevent build error "window is undefined" but keep keep working
     if (typeof window === 'undefined') {
-      return initialValue
+      return defaultValue
     }
 
     try {
       const item = window.sessionStorage.getItem(key)
-      return item ? (parseJSON(item) as T) : initialValue
+
+      if (item) return parser(item) as T
+
+      return defaultValue
     } catch (error) {
       console.warn(`Error reading sessionStorage key “${key}”:`, error)
-      return initialValue
+      return defaultValue
     }
-  }, [initialValue, key])
+  }, [defaultValue, key, parser])
 
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
@@ -56,10 +71,10 @@ export function useSessionStorage<T>(
       const newValue = value instanceof Function ? value(storedValue) : value
 
       // Save to session storage
-      window.sessionStorage.setItem(key, JSON.stringify(newValue))
+      window.sessionStorage.setItem(key, serializer(newValue))
 
       // Save state
-      setStoredValue(newValue)
+      setStoredValue(serializer(newValue) as T)
 
       // We dispatch a custom event so every useSessionStorage hook are notified
       window.dispatchEvent(new Event('session-storage'))
@@ -70,8 +85,7 @@ export function useSessionStorage<T>(
 
   useEffect(() => {
     setStoredValue(readValue())
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [readValue])
 
   const handleStorageChange = useCallback(
     (event: StorageEvent | CustomEvent) => {
@@ -93,12 +107,15 @@ export function useSessionStorage<T>(
   return [storedValue, setValue]
 }
 
-// A wrapper for "JSON.parse()"" to support "undefined" value
-function parseJSON<T>(value: string | null): T | undefined {
-  try {
-    return value === 'undefined' ? undefined : JSON.parse(value ?? '')
-  } catch {
-    console.log('parsing error on', { value })
-    return undefined
-  }
+function parseJSON<T>(value: string | null): T {
+  return JSON.parse(value ?? '')
+}
+
+function serializeJSON<T>(value: T) {
+  return JSON.stringify(value)
+}
+
+// This is used when parseAsJSON === false
+function castValue<T>(value: string | null): T {
+  return value as T
 }

@@ -35,10 +35,59 @@ describe('useSessionStorage()', () => {
     jest.clearAllMocks()
   })
 
-  test('initial state is in the returned state', () => {
-    const { result } = renderHook(() => useSessionStorage('key', 'value'))
+  test('Existing string state is in the returned state when parseAsJson is false', () => {
+    window.sessionStorage.setItem('key', 'value')
+    const { result } = renderHook(() =>
+      useSessionStorage('key', 'value', { parseAsJson: false }),
+    )
 
     expect(result.current[0]).toBe('value')
+  })
+
+  test('Custom parser returns expected value', () => {
+    window.sessionStorage.setItem('key', 'value')
+
+    const { result } = renderHook(() =>
+      useSessionStorage('key', 'value', { parser: doubleLetters }),
+    )
+
+    expect(result.current[0]).toBe('vvaalluuee')
+  })
+
+  test('Custom serializer stores expected value', () => {
+    const { result } = renderHook(() =>
+      useSessionStorage('key', 'value', {
+        parseAsJson: false,
+        serializer: doubleLetters,
+      }),
+    )
+
+    act(() => {
+      const setState = result.current[1]
+      setState('value')
+    })
+
+    expect(result.current[0]).toBe('vvaalluuee')
+  })
+
+  test('Custom parser returns expected value after being serialized', () => {
+    const { result } = renderHook(() =>
+      useSessionStorage('key', 'value', {
+        parseAsJson: false,
+        serializer: doubleLetters,
+        parser: doubleLetters,
+      }),
+    )
+
+    expect(result.current[0]).toBe('value')
+  })
+
+  test('Existing object state is in the returned state', () => {
+    const obj = { value: 'foo' }
+    window.sessionStorage.setItem('key', JSON.stringify(obj))
+    const { result } = renderHook(() => useSessionStorage('key', obj))
+
+    expect(result.current[0]).toStrictEqual(obj)
   })
 
   test('Initial state is a callback function', () => {
@@ -73,19 +122,6 @@ describe('useSessionStorage()', () => {
     })
 
     expect(window.sessionStorage.getItem('key')).toBe(JSON.stringify('edited'))
-  })
-
-  test('Update the state with undefined', () => {
-    const { result } = renderHook(() =>
-      useSessionStorage<string | undefined>('keytest', 'value'),
-    )
-
-    act(() => {
-      const setState = result.current[1]
-      setState(undefined)
-    })
-
-    expect(result.current[0]).toBeUndefined()
   })
 
   test('Update the state with a callback function', () => {
@@ -129,3 +165,14 @@ describe('useSessionStorage()', () => {
     expect(result.current[1] === originalCallback).toBe(true)
   })
 })
+
+function doubleLetters(value: string | null) {
+  if (value === null) {
+    return ''
+  }
+  let result = ''
+  for (let i = 0; i < value.length; i++) {
+    result += value[i] + value[i]
+  }
+  return result
+}
