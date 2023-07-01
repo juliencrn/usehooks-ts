@@ -58,13 +58,15 @@ export const SmartLink = ({
   }
 
   return (
-    // eslint-disable-next-line jsx-a11y/anchor-has-content
     <a
       className={classes}
       target="_blank"
       rel="noopener noreferrer"
+      href={href}
       {...props}
-    />
+    >
+      {children}
+    </a>
   )
 }
 
