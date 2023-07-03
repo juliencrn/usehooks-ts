@@ -3,6 +3,7 @@ import { useEffect, useReducer, useRef } from 'react'
 interface State<T> {
   data?: T
   error?: Error
+  isLoading: boolean
 }
 
 type Cache<T> = { [url: string]: T }
@@ -16,26 +17,30 @@ type Action<T> =
 export function useFetch<T = unknown>(
   url?: string,
   options?: RequestInit,
-): State<T> {
-  const cache = useRef<Cache<T>>({})
+): State<T | string | Blob> {
+  const cache = useRef<Cache<T | string | Blob>>({})
 
   // Used to prevent state update if the component is unmounted
   const cancelRequest = useRef<boolean>(false)
 
-  const initialState: State<T> = {
+  const initialState: State<T | string | Blob> = {
     error: undefined,
     data: undefined,
+    isLoading: false,
   }
 
   // Keep state logic separated
-  const fetchReducer = (state: State<T>, action: Action<T>): State<T> => {
+  const fetchReducer = (
+    state: State<T | string | Blob>,
+    action: Action<T | string | Blob>,
+  ): State<T | string | Blob> => {
     switch (action.type) {
       case 'loading':
-        return { ...initialState }
+        return { ...initialState, isLoading: true }
       case 'fetched':
-        return { ...initialState, data: action.payload }
+        return { ...initialState, data: action.payload, isLoading: false }
       case 'error':
-        return { ...initialState, error: action.payload }
+        return { ...initialState, error: action.payload, isLoading: false }
       default:
         return state
     }
@@ -64,7 +69,15 @@ export function useFetch<T = unknown>(
           throw new Error(response.statusText)
         }
 
-        const data = (await response.json()) as T
+        const contentType = response.headers.get('content-type')
+        let data: T | string | Blob
+        if (contentType?.includes('application/json')) {
+          data = (await response.json()) as T
+        } else if (contentType?.startsWith('image/')) {
+          data = await response.blob()
+        } else {
+          data = await response.text()
+        }
         cache.current[url] = data
         if (cancelRequest.current) return
 
