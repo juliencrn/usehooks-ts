@@ -12,10 +12,15 @@ interface UseTernaryDarkModeOutput {
   toggleTernaryDarkMode: () => void
 }
 
-export function useTernaryDarkMode(): UseTernaryDarkModeOutput {
+export function useTernaryDarkMode(
+  defaultValue: TernaryDarkMode = 'system',
+): UseTernaryDarkModeOutput {
   const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY)
   const [ternaryDarkMode, setTernaryDarkMode] =
-    useLocalStorage<TernaryDarkMode>('usehooks-ts-ternary-dark-mode', 'system')
+    useLocalStorage<TernaryDarkMode>(
+      'usehooks-ts-ternary-dark-mode',
+      defaultValue,
+    )
   const [isDarkMode, setDarkMode] = useState<boolean>(isDarkOS)
 
   // Update darkMode if os prefers changes
