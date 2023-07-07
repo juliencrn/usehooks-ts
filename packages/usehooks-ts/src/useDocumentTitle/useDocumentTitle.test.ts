@@ -7,4 +7,13 @@ describe('useDocumentTitle()', () => {
     renderHook(() => useDocumentTitle('foo'))
     expect(window.document.title).toEqual('foo')
   })
+
+  describe('with prevailOnUnmount = false', () => {
+    test('title should be reset to default on unmount', () => {
+      window.document.title = 'bar'
+      const { unmount } = renderHook(() => useDocumentTitle('foo', false))
+      unmount()
+      expect(window.document.title).toEqual('bar')
+    })
+  })
 })
