@@ -21,5 +21,5 @@ export function useTimeout(callback: () => void, delay: number | null) {
     const id = setTimeout(() => savedCallback.current(), delay)
 
     return () => clearTimeout(id)
-  }, [delay])
+  }, [delay, savedCallback])
 }
