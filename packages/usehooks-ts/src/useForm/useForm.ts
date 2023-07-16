@@ -79,7 +79,7 @@ export function useForm<T extends { [k in keyof T]: string }>(
       }
 
       if (errorMsg) {
-        //@ts-ignore :ts is shouting on the type of k
+        //@ts-ignore :ts is shouting on the type of name
         customErrorRef.current[name] = errorMsg
       }
 
