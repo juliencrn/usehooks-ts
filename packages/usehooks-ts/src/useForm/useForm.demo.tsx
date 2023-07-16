@@ -29,7 +29,7 @@ export default function Component() {
       <div>
         <label>
           Enter username:
-          <input {...register('username', { type: 'text' })} />
+          <input {...register('username', { type: 'text', required: true, isControlled: true })} />
         </label>
       </div>
       {/* radio input with custom error message */}
