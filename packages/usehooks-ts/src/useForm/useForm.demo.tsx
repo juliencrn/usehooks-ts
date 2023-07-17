@@ -12,10 +12,13 @@ const radios = ['email', 'phone', 'whatsapp']
 const options = ['Dog', 'Cat', 'Hamster', 'Parrot']
 
 export default function Component() {
-  const { formState, register, onSubmit } = useForm<FormData>()
+  const { formState, register, onSubmit, reset } = useForm<FormData>()
 
   const handleSubmit = (formdata: FormData) => {
     console.log({ formdata })
+    // do some api request,
+    // then reset the form
+    reset();
   }
 
   console.log({ formState }) //-> {formdata: FormData, errors: FormData /**if any */}
