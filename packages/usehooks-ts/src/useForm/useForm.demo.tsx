@@ -19,9 +19,11 @@ export default function Component() {
   }
 
   console.log({ formState }) //-> {formdata: FormData, errors: FormData /**if any */}
-
+  
+  // remember to pass the `noValidate` attribute to the form; to turn off the browser's error message style.
   return (
     <form
+      noValidate
       style={{ display: 'flex', flexDirection: 'column' }}
       onSubmit={onSubmit(handleSubmit)}
     >
