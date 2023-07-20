@@ -103,6 +103,7 @@ export function useScript(
 
       if (scriptNode && options?.removeOnUnmount) {
         scriptNode.remove()
+        delete cachedScriptStatuses[src]
       }
     }
   }, [src, options?.shouldPreventLoad, options?.removeOnUnmount])
