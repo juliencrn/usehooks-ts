@@ -35,3 +35,5 @@ export * from './useTimeout/useTimeout'
 export * from './useToggle/useToggle'
 export * from './useUpdateEffect/useUpdateEffect'
 export * from './useWindowSize/useWindowSize'
+
+export * from './useCloseAlert/useCloseAlert'
