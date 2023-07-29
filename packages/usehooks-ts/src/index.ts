@@ -1,5 +1,6 @@
 export * from './useBoolean/useBoolean'
 export * from './useClickAnyWhere/useClickAnyWhere'
+export * from './useCloseAlert/useCloseAlert'
 export * from './useCopyToClipboard/useCopyToClipboard'
 export * from './useCountdown/useCountdown'
 export * from './useCounter/useCounter'
@@ -35,5 +36,3 @@ export * from './useTimeout/useTimeout'
 export * from './useToggle/useToggle'
 export * from './useUpdateEffect/useUpdateEffect'
 export * from './useWindowSize/useWindowSize'
-
-export * from './useCloseAlert/useCloseAlert'

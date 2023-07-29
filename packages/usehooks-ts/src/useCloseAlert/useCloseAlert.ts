@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
 export function useCloseAlert() {
   const [canClose, setCanClose] = useState(true)
 
   useEffect(() => {
     if (canClose) {
-      window.onbeforeunload = () => { }
+      // eslint-disable-next-line  @typescript-eslint/no-empty-function
+      window.onbeforeunload = () => {}
     } else {
+      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
       window.onbeforeunload = (e: any) => {
         // just in case
         if (canClose) return

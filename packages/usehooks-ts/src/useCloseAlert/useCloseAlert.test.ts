@@ -1,4 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom'
+
 import { useCloseAlert } from './useCloseAlert'
 
 describe('use close alert()', () => {
@@ -16,7 +17,10 @@ describe('use close alert()', () => {
     })
 
     // if onbeforeunload wasn't attached the above test would fail
-    expect(window.onbeforeunload && window.onbeforeunload({} as any)).toBeUndefined()
+    expect(
+      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+      window.onbeforeunload && window.onbeforeunload({} as any),
+    ).toBeUndefined()
   })
 
   test('should use close alert warn before closing window', () => {
@@ -27,6 +31,9 @@ describe('use close alert()', () => {
     })
 
     // if onbeforeunload wasn't attached the above test would fail
-    expect(window.onbeforeunload && window.onbeforeunload({} as any)).toBe('Changes you made may not be saved.')
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+    expect(window.onbeforeunload && window.onbeforeunload({} as any)).toBe(
+      'Changes you made may not be saved.',
+    )
   })
 })
