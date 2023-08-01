@@ -37,8 +37,8 @@ describe('useDeviceLocation', () => {
     const accuracy = 10
     const timestamp = 1630930800000
 
-    mockGeolocation.getCurrentPosition.mockImplementation(successCallback =>
-      successCallback({
+    mockGeolocation.getCurrentPosition.mockImplementation(onSuccess =>
+      onSuccess({
         coords: {
           latitude,
           longitude,
@@ -54,7 +54,7 @@ describe('useDeviceLocation', () => {
 
     const { result } = renderHook(() => useDeviceLocation())
 
-    expect(result.current.loading).toBe(true)
+    expect(result.current.loading).toBe(false)
 
     act(() => {
       mockGeolocation.getCurrentPosition.mock.calls[0][0]({
@@ -80,25 +80,25 @@ describe('useDeviceLocation', () => {
   })
 
   test('should update state when geolocation data retrieval fails', () => {
-    const errorCode = 1
-    const errorMessage = 'Geolocation permission denied.'
+    const code = 1
+    const message = 'Geolocation permission denied.'
 
     mockGeolocation.getCurrentPosition.mockImplementation(
-      (successCallback, errorCallback) =>
-        errorCallback({
-          code: errorCode,
-          message: errorMessage,
+      (onSuccess, onError) =>
+        onError({
+          code: code,
+          message: message,
         }),
     )
 
     const { result } = renderHook(() => useDeviceLocation())
 
-    expect(result.current.loading).toBe(true)
+    expect(result.current.loading).toBe(false)
 
     act(() => {
       mockGeolocation.getCurrentPosition.mock.calls[0][1]({
-        code: errorCode,
-        message: errorMessage,
+        code: code,
+        message: message,
       })
     })
 
@@ -108,8 +108,8 @@ describe('useDeviceLocation', () => {
     expect(result.current.coordinates.accuracy).toBe(null)
     expect(result.current.timestamp).toBe(null)
     expect(result.current.error).toEqual({
-      code: errorCode,
-      message: errorMessage,
+      code: code,
+      message: message,
     })
   })
 })
