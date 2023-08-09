@@ -1,0 +1,1 @@
+Easily manage an element's `scrollIntoView` property. Defaults to the `smooth` scroll behavior, but [`ScrollIntoViewOptions`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#sect1) may be passed as arguments to the hook to override.
