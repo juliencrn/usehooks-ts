@@ -89,7 +89,7 @@ If you need to make any other substantial changes, then follow the project setup
 
 Before starting, make sure you have the good system dependencies:
 
-- `node@16.x`
+- `node@16.15`
 - `pnpm@^8`
 
 **Note**: To easily switch node version, consider Node Version Manager (nvm).
