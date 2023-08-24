@@ -17,7 +17,7 @@ export default function Counter() {
       <button onClick={() => setCount(count + 1)}>Increment Count</button>
 
       <p>Previous Count: {prevCount !== undefined ? prevCount : ''}</p>
-      <p>Status: {prevCount < count ? "Increased" : prevCount > count ? "Decreased" : ''}</p>
+      <p>Status: {prevCount === undefined ? '' : prevCount < count ? "Increased" : prevCount > count ? "Decreased" : ''}</p>
     </div>
   );
 }
