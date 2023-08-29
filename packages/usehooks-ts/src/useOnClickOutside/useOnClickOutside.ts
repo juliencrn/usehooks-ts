@@ -12,8 +12,10 @@ export function useOnClickOutside<T extends HTMLElement = HTMLElement>(
   useEventListener(mouseEvent, event => {
     const el = ref?.current
 
-    // Do nothing if clicking ref's element or descendent elements
-    if (!el || el.contains(event.target as Node)) {
+    const target = event.target as Node
+
+    // Do nothing if clicking ref's element or descendent elements or not connected element with document
+    if (!el || el.contains(target) || !target.isConnected) {
       return
     }
 
