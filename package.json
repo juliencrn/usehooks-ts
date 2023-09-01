@@ -31,7 +31,7 @@
   "devDependencies": {
     "@changesets/cli": "^2.26.1",
     "all-contributors-cli": "^6.20.0",
-    "prettier": "^2.5.1",
+    "prettier": "^3.0.0",
     "rimraf": "^3.0.2",
     "turbo": "^1.9.9",
     "zx": "^7.2.2"
