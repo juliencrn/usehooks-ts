@@ -818,6 +818,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "utshodebravestone",
+      "name": "Utsho de Bravestone",
+      "avatar_url": "https://avatars.githubusercontent.com/utshodebravestone",
+      "profile": "https://github.com/utshodebravestone",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
