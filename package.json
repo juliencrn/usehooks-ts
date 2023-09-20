@@ -33,7 +33,7 @@
     "all-contributors-cli": "^6.20.0",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
-    "turbo": "^1.9.9",
+    "turbo": "^1.10.14",
     "zx": "^7.2.2"
   },
   "engines": {
