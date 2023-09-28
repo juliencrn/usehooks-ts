@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef } from 'react'
+import { useCallback, useEffect, useReducer, useRef } from 'react'
 
 interface State<T> {
   data?: T
@@ -16,7 +16,7 @@ type Action<T> =
 export function useFetch<T = unknown>(
   url?: string,
   options?: RequestInit,
-): State<T> {
+): State<T> & { post: (postUrl: string, postData: any) => Promise<void> } {
   const cache = useRef<Cache<T>>({})
 
   // Used to prevent state update if the component is unmounted
@@ -27,7 +27,6 @@ export function useFetch<T = unknown>(
     data: undefined,
   }
 
-  // Keep state logic separated
   const fetchReducer = (state: State<T>, action: Action<T>): State<T> => {
     switch (action.type) {
       case 'loading':
@@ -43,6 +42,28 @@ export function useFetch<T = unknown>(
 
   const [state, dispatch] = useReducer(fetchReducer, initialState)
 
+  const post = useCallback(async (postUrl: string, postData: any) => {
+    try {
+      const response = await fetch(postUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(postData),
+      })
+
+      if (!response.ok) {
+        throw new Error(response.statusText)
+      }
+
+      const data = await response.json()
+      return data
+    } catch (error) {
+      dispatch({ type: 'error', payload: error as Error })
+      throw error
+    }
+  }, [])
+
   useEffect(() => {
     // Do nothing if the url is not given
     if (!url) return
@@ -52,7 +73,6 @@ export function useFetch<T = unknown>(
     const fetchData = async () => {
       dispatch({ type: 'loading' })
 
-      // If a cache exists for this url, return it
       if (cache.current[url]) {
         dispatch({ type: 'fetched', payload: cache.current[url] })
         return
@@ -86,5 +106,5 @@ export function useFetch<T = unknown>(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url])
 
-  return state
+  return { ...state, post }
 }
