@@ -13,10 +13,23 @@ type Action<T> =
   | { type: 'fetched'; payload: T }
   | { type: 'error'; payload: Error }
 
+interface CustomFetchOptions {
+  customHeaders?: HeadersInit
+}
+
+interface PostArguments {
+  postUrl?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any
+  options?: CustomFetchOptions
+}
+
 export function useFetch<T = unknown>(
   url?: string,
   options?: RequestInit,
-): State<T> & { post: (postUrl: string, postData: any) => Promise<void> } {
+): State<T> & {
+  post: (args: PostArguments) => Promise<void>
+} {
   const cache = useRef<Cache<T>>({})
 
   // Used to prevent state update if the component is unmounted
@@ -42,27 +55,54 @@ export function useFetch<T = unknown>(
 
   const [state, dispatch] = useReducer(fetchReducer, initialState)
 
-  const post = useCallback(async (postUrl: string, postData: any) => {
-    try {
-      const response = await fetch(postUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(postData),
-      })
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
-      if (!response.ok) {
-        throw new Error(response.statusText)
+  const post = useCallback(
+    async ({ postUrl = url, data, options }: PostArguments) => {
+      // Do nothing if the postUrl is not given
+      if (!postUrl) return
+
+      cancelRequest.current = false
+
+      dispatch({ type: 'loading' })
+
+      try {
+        const opts: RequestInit = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            ...options?.customHeaders, // Merge custom headers
+          },
+          body: JSON.stringify(data),
+        }
+
+        const response = await fetch(postUrl, opts)
+
+        if (!response.ok) {
+          throw new Error(response.statusText)
+        }
+
+        const responseData = (await response.json()) as T
+
+        // Update the cache
+        if (Array.isArray(cache.current[postUrl])) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (cache.current[postUrl] as any[]).push(responseData)
+        } else {
+          cache.current[postUrl] = [responseData] as unknown as T
+        }
+
+        if (cancelRequest.current) return
+
+        dispatch({ type: 'fetched', payload: cache.current[postUrl] })
+      } catch (error) {
+        if (cancelRequest.current) return
+
+        dispatch({ type: 'error', payload: error as Error })
       }
-
-      const data = await response.json()
-      return data
-    } catch (error) {
-      dispatch({ type: 'error', payload: error as Error })
-      throw error
-    }
-  }, [])
+    },
+    [url],
+  )
 
   useEffect(() => {
     // Do nothing if the url is not given
