@@ -19,6 +19,7 @@ type Cache<T> = { [url: string]: T }
 type Action<T> =
   | { type: 'loading' }
   | { type: 'fetched'; payload: T }
+  | { type: 'append'; payload: T } // <-- new action type
   | { type: 'error'; payload: Error }
 
 /**
@@ -76,11 +77,18 @@ export function useFetch<T = unknown>(
   const fetchReducer = (state: State<T>, action: Action<T>): State<T> => {
     switch (action.type) {
       case 'loading':
-        return { ...initialState }
+        return { ...state, error: undefined } // keep data, only reset error
       case 'fetched':
-        return { ...initialState, data: action.payload }
+        return { ...state, data: action.payload, error: undefined } // update data, reset error
+      case 'append':
+        if (Array.isArray(state.data) && action.payload) {
+          return { ...state, data: [...state.data, action.payload] as T }
+        } else if (typeof state.data === 'object' && action.payload) {
+          return { ...state, data: { ...state.data, ...action.payload } as T }
+        }
+        return state
       case 'error':
-        return { ...initialState, error: action.payload }
+        return { ...state, error: action.payload } // keep data, update error
       default:
         return state
     }
@@ -138,7 +146,7 @@ export function useFetch<T = unknown>(
 
         // Update the state immediately with POST response data
         if (updateStateImmediately) {
-          dispatch({ type: 'fetched', payload: responseData })
+          dispatch({ type: 'append', payload: responseData }) // <-- merge new data
         }
 
         if (onSuccess) {
