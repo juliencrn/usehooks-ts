@@ -1,10 +1,18 @@
 import { useCallback, useEffect, useReducer, useRef } from 'react'
 
+/**
+ * Describes the state of the fetch operation.
+ * @template T The type of data being fetched.
+ */
 interface State<T> {
   data?: T
   error?: Error
 }
 
+/**
+ * Defines a cache for storing fetched data.
+ * @template T The type of data being cached.
+ */
 type Cache<T> = { [url: string]: T }
 
 // discriminated union type
@@ -13,17 +21,36 @@ type Action<T> =
   | { type: 'fetched'; payload: T }
   | { type: 'error'; payload: Error }
 
+/**
+ * Options for custom fetch operations.
+ */
 interface CustomFetchOptions {
   customHeaders?: HeadersInit
 }
 
-interface PostArguments {
+/**
+ * Arguments for POST request.
+ * @template TData The type of data being sent in the POST request.
+ */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
+interface PostArguments<TData = any> {
   postUrl?: string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any
   options?: CustomFetchOptions
+  onSuccess?: () => void
+  onFailure?: (error: Error) => void
+  updateStateImmediately?: boolean
+  shouldRefetch?: boolean
 }
 
+/**
+ * Custom hook for fetch operations.
+ * @template T The type of data being fetched.
+ * @param {string} [url] The URL to fetch data from.
+ * @param {RequestInit} [options] Additional fetch options.
+ * @returns {State<T> & { post: (args: PostArguments) => Promise<void> }}
+ */
 export function useFetch<T = unknown>(
   url?: string,
   options?: RequestInit,
@@ -40,6 +67,12 @@ export function useFetch<T = unknown>(
     data: undefined,
   }
 
+  /**
+   * Reducer function for managing fetch state.
+   * @param {State<T>} state Current state.
+   * @param {Action<T>} action Action to dispatch.
+   * @returns {State<T>}
+   */
   const fetchReducer = (state: State<T>, action: Action<T>): State<T> => {
     switch (action.type) {
       case 'loading':
@@ -55,10 +88,27 @@ export function useFetch<T = unknown>(
 
   const [state, dispatch] = useReducer(fetchReducer, initialState)
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-
+  /**
+   * Function for making POST requests.
+   * @template TData The type of data being sent in the POST request.
+   * @param {PostArguments<TData>} args Arguments for the POST request.
+   */
   const post = useCallback(
-    async ({ postUrl = url, data, options }: PostArguments) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async <TData = any>({
+      postUrl = url,
+      data,
+      options: postOptions,
+      onSuccess,
+      onFailure,
+      updateStateImmediately = true,
+      shouldRefetch = true,
+    }: PostArguments<TData>) => {
+      // Invalidate the cache for this URL in a non-mutative way
+      cache.current = Object.fromEntries(
+        Object.entries(cache.current).filter(([key]) => key !== postUrl),
+      )
+
       // Do nothing if the postUrl is not given
       if (!postUrl) return
 
@@ -70,8 +120,8 @@ export function useFetch<T = unknown>(
         const opts: RequestInit = {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
-            ...options?.customHeaders, // Merge custom headers
+            'Content-type': 'application/json; charset=UTF-8',
+            ...postOptions?.customHeaders, // Merge custom headers
           },
           body: JSON.stringify(data),
         }
@@ -84,24 +134,36 @@ export function useFetch<T = unknown>(
 
         const responseData = (await response.json()) as T
 
-        // Update the cache
-        if (Array.isArray(cache.current[postUrl])) {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (cache.current[postUrl] as any[]).push(responseData)
-        } else {
-          cache.current[postUrl] = [responseData] as unknown as T
-        }
-
         if (cancelRequest.current) return
 
-        dispatch({ type: 'fetched', payload: cache.current[postUrl] })
+        // Update the state immediately with POST response data
+        if (updateStateImmediately) {
+          dispatch({ type: 'fetched', payload: responseData })
+        }
+
+        if (onSuccess) {
+          onSuccess()
+        }
+
+        // Refetch the data from the original URL only if shouldRefetch is true
+        if (url && shouldRefetch) {
+          const response = await fetch(url, options)
+          const updatedData = (await response.json()) as T
+          cache.current[url] = updatedData
+          dispatch({ type: 'fetched', payload: updatedData })
+        }
       } catch (error) {
         if (cancelRequest.current) return
 
         dispatch({ type: 'error', payload: error as Error })
+
+        if (onFailure) {
+          onFailure(error as Error)
+        }
       }
     },
-    [url],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [url, options],
   )
 
   useEffect(() => {
