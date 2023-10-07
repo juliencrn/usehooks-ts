@@ -48,7 +48,7 @@
     "eslint-config-custom": "workspace:*",
     "eslint-config-next": "13.4.4",
     "next-sitemap": "^4.0.7",
-    "postcss": "8.4.24",
+    "postcss": "8.4.31",
     "rimraf": "^5.0.1",
     "typescript": "5.0.4"
   }
