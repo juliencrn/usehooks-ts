@@ -12,12 +12,18 @@
   ],
   "license": "MIT",
   "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
+  "module": "./dist/esm/index.mjs",
+  "types": "./dist/cjs/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/cjs/index.js",
-      "import": "./dist/esm/index.js"
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      },
+      "import": {
+        "types": "./dist/esm/index.d.mts",
+        "default": "./dist/esm/index.mjs"
+      }
     }
   },
   "scripts": {
@@ -25,7 +31,7 @@
     "dev": "pnpm test:watch",
     "build": "pnpm build:cjs && pnpm build:esm",
     "build:cjs": "tsc -p tsconfig.build.json --module commonjs --outDir dist/cjs --target es5",
-    "build:esm": "tsc -p tsconfig.build.json --module esNext --outDir dist/esm --target es6",
+    "build:esm": "tsc -p tsconfig.build.json --module esNext --outDir dist/esm --target es6 && mv ./dist/esm/index.js ./dist/esm/index.mjs && mv ./dist/esm/index.d.ts ./dist/esm/index.d.mts",
     "test": "jest",
     "test:watch": "pnpm test -- --watch --silent",
     "clean": "rimraf -rf ./dist .turbo",

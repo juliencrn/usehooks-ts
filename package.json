@@ -4,7 +4,7 @@
   "description": "React hook library, ready to use, written in Typescript.",
   "author": "Julien CARON <juliencaron@protonmail.com>",
   "homepage": "https://usehooks-ts.com",
-  "module": "true",
+  "type": "module",
   "keywords": [
     "typescript",
     "react",
