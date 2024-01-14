@@ -37,7 +37,7 @@
     "@turbo/gen": "^1.9.9",
     "@types/jest": "^29.0.3",
     "@types/node": "^18.7.18",
-    "@types/react": "17.0.0",
+    "@types/react": "17.0.74",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
     "date-fns": "^2.29.3",
