@@ -38,6 +38,7 @@
     "@types/jest": "^29.0.3",
     "@types/node": "^18.7.18",
     "@types/react": "17.0.0",
+    "@types/use-sync-external-store": "^0.0.6",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
     "date-fns": "^2.29.3",
@@ -69,5 +70,8 @@
   },
   "bugs": {
     "url": "https://github.com/juliencrn/usehooks-ts/issues"
+  },
+  "dependencies": {
+    "use-sync-external-store": "^1.2.0"
   }
 }
