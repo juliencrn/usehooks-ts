@@ -20,7 +20,7 @@
     "format": "prettier --write \"**/*.{json,md,mdx,css,scss,yaml,yml}\"",
     "lint": "turbo run lint",
     "types-check": "turbo run types-check",
-    "test:coverage": "zx ./scripts/coverage.mjs",
+    "update-testing-issue": "zx ./scripts/updateTestingIssue.mjs",
     "update-readme": "zx ./scripts/updateReadme.mjs",
     "copy-hooks": "rimraf -rf ./apps/www/generated && zx ./scripts/copyHooks.mjs",
     "gen-hook": "turbo gen hook && pnpm format",
