@@ -13,11 +13,30 @@ export function useReadLocalStorage<T>(key: string): Value<T> {
       return null
     }
 
+    let item: string | null = ""
+
     try {
-      const item = window.localStorage.getItem(key)
-      return item ? (JSON.parse(item) as T) : null
-    } catch (error) {
+      item = window.localStorage.getItem(key)
+    }
+    catch (error) {
       console.warn(`Error reading localStorage key “${key}”:`, error)
+      return null
+    }
+
+    // try parse as JSON
+    try {
+      return item ? (JSON.parse(item) as T) : null
+    }
+    catch (error) {
+      console.warn(`Error parsing JSON key “${key}”, item “${item}”:`, error)
+    }
+
+    // try return as T
+    try {
+      return item ? item as T : null
+    }
+    catch (error) {
+      console.warn(`Error returning Generic item at key “${key}”:`, error)
       return null
     }
   }, [key])
