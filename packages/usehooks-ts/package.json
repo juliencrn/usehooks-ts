@@ -27,7 +27,7 @@
     "build:esm": "tsc -p tsconfig.build.json --module esNext --outDir dist/esm --target es6",
     "test": "jest",
     "test:watch": "pnpm test -- --watch --silent",
-    "clean": "rimraf -rf ./dist .turbo",
+    "clean": "rimraf -rf ./dist .turbo *.tsbuildinfo",
     "lint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
     "types-check": "tsc --noEmit"
   },

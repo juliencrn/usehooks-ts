@@ -8,7 +8,7 @@
     "generate-sitemap": "rimraf public/sitemap.xml public/robots.txt && next-sitemap --config ./next-sitemap.config.mjs",
     "start": "next start",
     "lint": "next lint",
-    "clean": "rimraf .next generated .turbo",
+    "clean": "rimraf *.tsbuildinfo .next generated .turbo",
     "generate": "cd ../.. && pnpm copy-hooks && cd -",
     "types-check": "tsc --noEmit"
   },
