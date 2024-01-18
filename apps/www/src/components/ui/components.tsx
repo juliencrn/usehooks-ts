@@ -45,26 +45,30 @@ const isInternal = (href?: string): href is string => !!href?.startsWith('/')
 export const SmartLink = ({
   className,
   href,
+  ref: _,
   children,
   ...props
 }: ComponentProps<'a'>) => {
   const classes = cn('font-medium underline underline-offset-4', className)
+
   if (isInternal(href)) {
     return (
-      <Link href={href} className={classes}>
+      <Link {...props} href={href} className={classes}>
         {children}
       </Link>
     )
   }
 
   return (
-    // eslint-disable-next-line jsx-a11y/anchor-has-content
     <a
-      className={classes}
-      target="_blank"
       rel="noopener noreferrer"
+      target="_blank"
       {...props}
-    />
+      href={href}
+      className={classes}
+    >
+      {children}
+    </a>
   )
 }
 
