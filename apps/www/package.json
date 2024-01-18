@@ -24,7 +24,7 @@
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.8.0",
     "lucide-react": "^0.223.0",
-    "next": "13.4.4",
+    "next": "13.5.1",
     "next-mdx-remote": "^4.4.1",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
