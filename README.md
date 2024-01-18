@@ -137,7 +137,7 @@ pnpm test
 When the `usehooks-ts` is compiled, only the necessary files are used.
 The other files are copied in the documentation website.
 
-**Note**: The demo is used different way:
+**Note**: The demo is used in a different way:
 
 - It's displayed on the website to illustrate how to use the hook.
 - It's deployed as a CodeSandbox on build to let final users play with.
