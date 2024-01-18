@@ -3,11 +3,12 @@ import { notFound } from 'next/navigation'
 
 import { DocsPageHeader } from '@/components/docs-page-header'
 import { DocsPager } from '@/components/paper'
-import { H2, Mdx } from '@/components/remote-mdx'
+import { Mdx } from '@/components/remote-mdx'
 import {
   DashboardTableOfContents,
   TableOfContents,
 } from '@/components/table-of-content'
+import { H2 } from '@/components/ui/components'
 import { siteConfig } from '@/config/site'
 import { getPost, getPosts } from '@/lib/mdx'
 
