@@ -1,5 +1,6 @@
 import { DocsPageHeader } from '@/components/docs-page-header'
-import { H2, Mdx } from '@/components/remote-mdx'
+import { Mdx } from '@/components/remote-mdx'
+import { H2 } from '@/components/ui/components'
 
 export default async function IntroductionPage() {
   return (

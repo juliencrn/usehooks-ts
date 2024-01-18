@@ -1,5 +1,4 @@
 import {
-  type Icon as LucideIcon,
   AlertTriangle,
   ArrowRight,
   BookOpenCheck,
@@ -32,8 +31,6 @@ import {
   X,
   Zap,
 } from 'lucide-react'
-
-export type Icon = LucideIcon
 
 export const Icons = {
   logo: Flame,
