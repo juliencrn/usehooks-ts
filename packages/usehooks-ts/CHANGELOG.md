@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.9.5
+
+### Patch Changes
+
+- 7141d01: Upgrade internal dependencies
+- Update useCopyToClipboard documentation
+- Fix typo in useEventListener
+
 ## 2.9.4
 
 ### Patch Changes
@@ -16,7 +24,9 @@
 
 ### Patch Changes
 
-- 55a1904: added export map, use named exports for hooks and fix useEventListener docs typo
+- 55a1904: added export map in package.json
+- use named exports instead of default exports
+- fix useEventListener docs typo
 
 All notable changes to this project will be documented in this file.
 
