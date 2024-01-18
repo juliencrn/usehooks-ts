@@ -32,7 +32,7 @@
     "types-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@testing-library/react": "^12.1.2",
+    "@testing-library/react": "^14.0.0",
     "@testing-library/react-hooks": "^7.0.2",
     "@turbo/gen": "^1.11.3",
     "@types/jest": "^29.5.11",
