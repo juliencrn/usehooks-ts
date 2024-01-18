@@ -275,6 +275,11 @@ Big thanks goes to these wonderful people ❤️
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification ([emoji key](https://allcontributors.org/docs/en/emoji-key)). Contributions of any kind welcome!
 
+## 🚗 Roadmap
+
+- Unit-test all hooks
+- Add more hooks
+
 ## 📝 License
 
 This project is [MIT](https://github.com/juliencrn/usehooks-ts/blob/master/LICENSE) licensed.

@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.9.4
+
+### Patch Changes
+
+- hotfix: package files missing
+
+## [2.9.3](https://www.npmjs.com/package/usehooks-ts/v/2.9.3) - 2024-01-13
+
+### Patch Changes
+
+- Fix #420
+
 ## 2.9.2
 
 ### Patch Changes
