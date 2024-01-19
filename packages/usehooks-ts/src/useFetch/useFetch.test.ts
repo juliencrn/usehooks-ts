@@ -13,14 +13,14 @@ describe('useFetch()', () => {
     mockFetch.mockClear()
   })
 
-  it('does nothing when the url is not defined', () => {
+  it('should do nothing when the url is not defined', () => {
     const { result } = renderHook(() => useFetch(undefined))
 
     expect(result.current.data).not.toBeDefined()
     expect(mockFetch).not.toHaveBeenCalled()
   })
 
-  it('calls through to fetch() with URL and options', async () => {
+  it('should call fetch() with the provided URL and options', async () => {
     const mockOptions = {}
     let receivedURL: string | undefined
     let receivedOptions: object | undefined
@@ -39,7 +39,7 @@ describe('useFetch()', () => {
     expect(receivedOptions).toStrictEqual(mockOptions)
   })
 
-  it('returns a JSON version of the fetched data', async () => {
+  it('should return the JSON version of the fetched data', async () => {
     let resolvedJSON = false
     const mockData = {}
     mockFetch.mockImplementation(async () => {
@@ -61,7 +61,7 @@ describe('useFetch()', () => {
     expect(result.current.data).toStrictEqual(mockData)
   })
 
-  it('errors on non-ok responses', async () => {
+  it('should handle non-ok responses by populating the error state', async () => {
     const mockStatusText = 'The status is bad'
     let receivedURL: string | undefined
     mockFetch.mockImplementation(async url => {
@@ -80,7 +80,7 @@ describe('useFetch()', () => {
     expect(result.current.error?.message).toEqual(mockStatusText)
   })
 
-  it('returns cached results without calling fetch()', async () => {
+  it('should return cached results without calling fetch() when data is in the cache', async () => {
     let resolvedJSON = false
     const mockData = {}
     mockFetch.mockImplementation(async () => {
@@ -107,7 +107,7 @@ describe('useFetch()', () => {
     expect(result.current.data).toStrictEqual(mockData)
   })
 
-  it('cancels the request when the hook is unmounted', async () => {
+  it('should cancel the request when the hook is unmounted', async () => {
     let resolvedJSON = false
     mockFetch.mockImplementation(async () => {
       return {
