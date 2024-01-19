@@ -51,5 +51,3 @@ export function useLockedBody(
 
   return [locked, setLocked]
 }
-
-export default useLockedBody
