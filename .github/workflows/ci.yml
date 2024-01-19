@@ -1,9 +1,9 @@
 name: Build and test
 
-on: [push]
+on: [pull_request]
 
 env:
-  NODE_VERSION: 16
+  NODE_VERSION: 20
   PNPM_VERSION: 8
 
 jobs:
@@ -12,7 +12,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 2
 
@@ -31,14 +31,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Build
+        run: pnpm build
+
       - name: Lint
         run: pnpm lint
 
       - name: Types check
         run: pnpm types-check
-
-      - name: Build
-        run: pnpm build
 
       - name: Test
         run: pnpm test

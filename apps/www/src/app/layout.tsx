@@ -1,3 +1,4 @@
+import type { Metadata, Viewport } from 'next'
 import { Inter as FontSans } from 'next/font/google'
 import localFont from 'next/font/local'
 
@@ -21,7 +22,18 @@ interface RootLayoutProps {
   children: React.ReactNode
 }
 
-export const metadata = {
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
+}
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  alternates: {
+    canonical: '/',
+  },
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
@@ -35,10 +47,7 @@ export const metadata = {
     },
   ],
   creator: 'juliencrn',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -46,19 +55,20 @@ export const metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
+    images: [siteConfig.ogImage],
   },
   twitter: {
     card: 'summary_large_image',
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [`${siteConfig.url}/og.jpg`],
+    images: [siteConfig.ogImage],
   },
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',
     apple: '/apple-touch-icon.png',
   },
-  manifest: `${siteConfig.url}/site.webmanifest`,
+  manifest: '/site.webmanifest',
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
