@@ -1,5 +1,5 @@
-import { PlopTypes } from '@turbo/gen'
-import format from 'date-fns/format'
+import type { PlopTypes } from '@turbo/gen'
+import { format } from 'date-fns'
 
 export default function generator(plop: PlopTypes.NodePlopAPI): void {
   plop.setGenerator('hook', {

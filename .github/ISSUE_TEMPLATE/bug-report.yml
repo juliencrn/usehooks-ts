@@ -1,0 +1,36 @@
+name: 'Bug report 🐞'
+description: >-
+  Create a report to help us improve
+title: '[BUG]'
+labels:
+  - bug
+body:
+  - type: textarea
+    id: describe_bug
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is. Include any error messages or unexpected behaviors.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce_steps
+    attributes:
+      label: To Reproduce
+      description: Outline the steps to reproduce the issue. Be specific and include details like browser, OS, or any relevant configurations.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected behavior
+      description: Explain what you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional context
+      description: Include any other relevant information that might help understand the issue.

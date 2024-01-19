@@ -1,27 +1,27 @@
 import { useEffect, useState } from 'react'
 
-export function useMediaQuery(query: string): boolean {
-  const getMatches = (query: string): boolean => {
-    // Prevents SSR issues
-    if (typeof window !== 'undefined') {
-      return window.matchMedia(query).matches
-    }
-    return false
+const getMatches = (query: string): boolean => {
+  // Prevents SSR issues
+  if (typeof window !== 'undefined') {
+    return window.matchMedia(query).matches
   }
+  return false
+}
 
+export function useMediaQuery(query: string): boolean {
   const [matches, setMatches] = useState<boolean>(getMatches(query))
 
-  function handleChange() {
-    setMatches(getMatches(query))
-  }
-
   useEffect(() => {
+    function handleChange() {
+      setMatches(getMatches(query))
+    }
+
     const matchMedia = window.matchMedia(query)
 
     // Triggered at the first client-side load and if query changes
     handleChange()
 
-    // Listen matchMedia
+    // Use deprecated `addListener` and `removeListener` to support Safari < 14 (#135)
     if (matchMedia.addListener) {
       matchMedia.addListener(handleChange)
     } else {
@@ -35,7 +35,6 @@ export function useMediaQuery(query: string): boolean {
         matchMedia.removeEventListener('change', handleChange)
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query])
 
   return matches

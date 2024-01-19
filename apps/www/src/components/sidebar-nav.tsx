@@ -57,7 +57,10 @@ export function DocsSidebarNavItems({
             {item.title}
           </Link>
         ) : (
-          <span className="flex w-full cursor-not-allowed items-center rounded-md p-2 opacity-60">
+          <span
+            key={index}
+            className="flex w-full cursor-not-allowed items-center rounded-md p-2 opacity-60"
+          >
             {item.title}
           </span>
         ),
