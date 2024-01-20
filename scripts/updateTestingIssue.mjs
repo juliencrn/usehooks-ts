@@ -2,11 +2,14 @@
 
 import { path, fs, $ } from 'zx'
 
-import { isHookFile } from './utils.mjs'
+import { isHookFile, isTestFile } from './utils.mjs'
 
 const GITHUB_REPO = `juliencrn/usehooks-ts`
 const GITHUB_ISSUE_PATH = `${GITHUB_REPO}/issues/423`
 const hookDir = path.resolve('./packages/usehooks-ts/src')
+const excludeHooks = [
+  'useSsr' // @deprecated
+]
 
 function generateHookListBody() {
   const initialState = {
@@ -14,13 +17,14 @@ function generateHookListBody() {
     total: 0,
     hasTestCount: 0,
   }
-  const testFileRegex = new RegExp(`\.test\.ts$`)
+
   return fs
     .readdirSync(hookDir)
     .filter(isHookFile)
+    .filter(filename => !excludeHooks.includes(filename))
     .reduce((acc, filename) => {
       const subFiles = fs.readdirSync(path.resolve(hookDir, filename))
-      const hasTest = !!subFiles.find(name => testFileRegex.test(name))
+      const hasTest = !!subFiles.find(isTestFile)
       const url = `https://github.com/${GITHUB_REPO}/tree/master/packages/usehooks-ts/src/${filename}`
       const newLine = `- [${hasTest ? 'x' : ' '}] [\`${filename}\`](${url})\n`
       return {
