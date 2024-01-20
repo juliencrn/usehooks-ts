@@ -63,7 +63,6 @@
 - [`useScreen()`](https://usehooks-ts.com/react-hook/use-screen)
 - [`useScript()`](https://usehooks-ts.com/react-hook/use-script)
 - [`useSessionStorage()`](https://usehooks-ts.com/react-hook/use-session-storage)
-- [`useSsr()`](https://usehooks-ts.com/react-hook/use-ssr)
 - [`useStep()`](https://usehooks-ts.com/react-hook/use-step)
 - [`useTernaryDarkMode()`](https://usehooks-ts.com/react-hook/use-ternary-dark-mode)
 - [`useTimeout()`](https://usehooks-ts.com/react-hook/use-timeout)
