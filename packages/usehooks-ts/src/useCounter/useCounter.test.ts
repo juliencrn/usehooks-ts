@@ -39,7 +39,7 @@ describe('useCounter()', () => {
     expect(result.current.count).toBe(3)
   })
 
-  test('should reset counter', () => {
+  test('should decrement counter with default value', () => {
     const { result } = renderHook(() => useCounter(3))
 
     act(() => {
