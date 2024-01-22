@@ -9,6 +9,8 @@ import { useEffect, useState } from 'react'
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-debounce)
  * @example
  * const debouncedSearchTerm = useDebounce(searchTerm, 300);
+ * @deprecated useDebounce uses a naive setTimeout implementation and will be removed.
+ * For a more robust implementation, use useDebounceCallback for functions and useDebounceValue for primitive values instead. The new implementation uses lodash.debounce under the hood.
  */
 export function useDebounce<T>(value: T, delay?: number): T {
   const [debouncedValue, setDebouncedValue] = useState<T>(value)
