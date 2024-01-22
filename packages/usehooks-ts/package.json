@@ -20,6 +20,7 @@
       "import": "./dist/esm/index.js"
     }
   },
+  "sideEffects": false,
   "scripts": {
     "dev": "pnpm test:watch",
     "build": "pnpm build:cjs && pnpm build:esm",
