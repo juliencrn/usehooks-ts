@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { useLocalStorage, useMediaQuery, useUpdateEffect } from '..'
 
 const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)'
+const LOCAL_STORAGE_KEY = 'usehooks-ts-ternary-dark-mode'
 
 type TernaryDarkMode = 'system' | 'dark' | 'light'
 interface UseTernaryDarkModeOutput {
@@ -12,10 +13,12 @@ interface UseTernaryDarkModeOutput {
   toggleTernaryDarkMode: () => void
 }
 
-export function useTernaryDarkMode(): UseTernaryDarkModeOutput {
+export function useTernaryDarkMode(
+  localStorageKey: string = LOCAL_STORAGE_KEY,
+): UseTernaryDarkModeOutput {
   const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY)
   const [ternaryDarkMode, setTernaryDarkMode] =
-    useLocalStorage<TernaryDarkMode>('usehooks-ts-ternary-dark-mode', 'system')
+    useLocalStorage<TernaryDarkMode>(localStorageKey, 'system')
   const [isDarkMode, setDarkMode] = useState<boolean>(isDarkOS)
 
   // Update darkMode if os prefers changes
