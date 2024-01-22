@@ -8,6 +8,7 @@ interface UseDarkModeOutput {
   toggle: () => void
   enable: () => void
   disable: () => void
+  set: (value: boolean) => void
 }
 
 export function useDarkMode(
@@ -31,5 +32,6 @@ export function useDarkMode(
     toggle: () => setDarkMode(prev => !prev),
     enable: () => setDarkMode(true),
     disable: () => setDarkMode(false),
+    set: value => setDarkMode(value),
   }
 }
