@@ -4,12 +4,14 @@ import { useEventListener } from '..'
 
 type Value<T> = T | null
 
+const IS_SERVER = typeof window === 'undefined'
+
 export function useReadLocalStorage<T>(key: string): Value<T> {
   // Get from local storage then
   // parse stored json or return initialValue
   const readValue = useCallback((): Value<T> => {
     // Prevent build error "window is undefined" but keep keep working
-    if (typeof window === 'undefined') {
+    if (IS_SERVER) {
       return null
     }
 

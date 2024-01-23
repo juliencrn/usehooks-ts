@@ -16,6 +16,8 @@ declare global {
 
 type SetValue<T> = Dispatch<SetStateAction<T>>
 
+const IS_SERVER = typeof window === 'undefined'
+
 export function useLocalStorage<T>(
   key: string,
   initialValue: T,
@@ -24,7 +26,7 @@ export function useLocalStorage<T>(
   // parse stored json or return initialValue
   const readValue = useCallback((): T => {
     // Prevent build error "window is undefined" but keeps working
-    if (typeof window === 'undefined') {
+    if (IS_SERVER) {
       return initialValue
     }
 
@@ -45,7 +47,7 @@ export function useLocalStorage<T>(
   // ... persists the new value to localStorage.
   const setValue: SetValue<T> = useEventCallback(value => {
     // Prevent build error "window is undefined" but keeps working
-    if (typeof window === 'undefined') {
+    if (IS_SERVER) {
       console.warn(
         `Tried setting localStorage key “${key}” even though environment is not a client`,
       )
