@@ -25,7 +25,7 @@ const IS_SERVER = typeof window === 'undefined'
 
 export function useSessionStorage<T>(
   key: string,
-  initialValue: T,
+  initialValue: T | (() => T),
   options: Options<T> = {},
 ): [T, SetValue<T>] {
   // Pass initial value to support hydration server-client
@@ -58,17 +58,20 @@ export function useSessionStorage<T>(
   // Get from session storage then
   // parse stored json or return initialValue
   const readValue = useCallback((): T => {
+    const initialValueToUse =
+      initialValue instanceof Function ? initialValue() : initialValue
+
     // Prevent build error "window is undefined" but keep keep working
     if (IS_SERVER) {
-      return initialValue
+      return initialValueToUse
     }
 
     try {
       const raw = window.sessionStorage.getItem(key)
-      return raw ? deserializer(raw) : initialValue
+      return raw ? deserializer(raw) : initialValueToUse
     } catch (error) {
       console.warn(`Error reading sessionStorage key “${key}”:`, error)
-      return initialValue
+      return initialValueToUse
     }
   }, [initialValue, key, deserializer])
 
