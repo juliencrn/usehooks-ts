@@ -1,5 +1,5 @@
 ---
-"usehooks-ts": patch
+'usehooks-ts': patch
 ---
 
 Set sideEffects to false in package.json
