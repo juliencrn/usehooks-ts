@@ -159,4 +159,54 @@ describe('useLocalStorage()', () => {
 
     expect(result.current[1] === originalCallback).toBe(true)
   })
+
+  test('should use default JSON.stringify and JSON.parse when serializer/deserializer not provided', () => {
+    const { result } = renderHook(() => useLocalStorage('key', 'initialValue'))
+
+    act(() => {
+      result.current[1]('newValue')
+    })
+
+    expect(localStorage.getItem('key')).toBe(JSON.stringify('newValue'))
+  })
+
+  test('should use custom serializer and deserializer when provided', () => {
+    const serializer = (value: string) => value.toUpperCase()
+    const deserializer = (value: string) => value.toLowerCase()
+
+    const { result } = renderHook(() =>
+      useLocalStorage('key', 'initialValue', { serializer, deserializer }),
+    )
+
+    act(() => {
+      result.current[1]('NewValue')
+    })
+
+    expect(localStorage.getItem('key')).toBe('NEWVALUE')
+  })
+
+  test('should handle undefined values with custom deserializer', () => {
+    const serializer = (value: number | undefined) => String(value)
+    const deserializer = (value: string) =>
+      value === 'undefined' ? undefined : Number(value)
+
+    const { result } = renderHook(() =>
+      useLocalStorage<number | undefined>('key', 0, {
+        serializer,
+        deserializer,
+      }),
+    )
+
+    act(() => {
+      result.current[1](undefined)
+    })
+
+    expect(localStorage.getItem('key')).toBe('undefined')
+
+    act(() => {
+      result.current[1](42)
+    })
+
+    expect(localStorage.getItem('key')).toBe('42')
+  })
 })

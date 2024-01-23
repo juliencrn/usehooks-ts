@@ -14,6 +14,11 @@ declare global {
   }
 }
 
+interface Options<T> {
+  serializer?: (value: T) => string
+  deserializer?: (value: string) => T
+}
+
 type SetValue<T> = Dispatch<SetStateAction<T>>
 
 const IS_SERVER = typeof window === 'undefined'
@@ -21,7 +26,35 @@ const IS_SERVER = typeof window === 'undefined'
 export function useLocalStorage<T>(
   key: string,
   initialValue: T,
+  options: Options<T> = {},
 ): [T, SetValue<T>] {
+  // Pass initial value to support hydration server-client
+  const [storedValue, setStoredValue] = useState<T>(initialValue)
+
+  const serializer = useCallback<(value: T) => string>(
+    value => {
+      if (options.serializer) {
+        return options.serializer(value)
+      }
+      return JSON.stringify(value)
+    },
+    [options],
+  )
+
+  const deserializer = useCallback<(value: string) => T>(
+    value => {
+      if (options.deserializer) {
+        return options.deserializer(value)
+      }
+      // Support 'undefined' as a value
+      if (value === 'undefined') {
+        return undefined as unknown as T
+      }
+      return JSON.parse(value)
+    },
+    [options],
+  )
+
   // Get from local storage then
   // parse stored json or return initialValue
   const readValue = useCallback((): T => {
@@ -31,17 +64,13 @@ export function useLocalStorage<T>(
     }
 
     try {
-      const item = window.localStorage.getItem(key)
-      return item ? (parseJSON(item) as T) : initialValue
+      const raw = window.localStorage.getItem(key)
+      return raw ? deserializer(raw) : initialValue
     } catch (error) {
       console.warn(`Error reading localStorage key “${key}”:`, error)
       return initialValue
     }
-  }, [initialValue, key])
-
-  // State to store our value
-  // Pass initial value to support hydration server-client
-  const [storedValue, setStoredValue] = useState<T>(initialValue)
+  }, [initialValue, key, deserializer])
 
   // Return a wrapped version of useState's setter function that ...
   // ... persists the new value to localStorage.
@@ -58,7 +87,7 @@ export function useLocalStorage<T>(
       const newValue = value instanceof Function ? value(readValue()) : value
 
       // Save to local storage
-      window.localStorage.setItem(key, JSON.stringify(newValue))
+      window.localStorage.setItem(key, serializer(newValue))
 
       // Save state
       setStoredValue(newValue)
@@ -93,14 +122,4 @@ export function useLocalStorage<T>(
   useEventListener('local-storage', handleStorageChange)
 
   return [storedValue, setValue]
-}
-
-// A wrapper for "JSON.parse()"" to support "undefined" value
-function parseJSON<T>(value: string | null): T | undefined {
-  try {
-    return value === 'undefined' ? undefined : JSON.parse(value ?? '')
-  } catch {
-    console.warn('parsing error on', { value })
-    return undefined
-  }
 }

@@ -146,4 +146,56 @@ describe('useSessionStorage()', () => {
 
     expect(result.current[1] === originalCallback).toBe(true)
   })
+
+  test('should use default JSON.stringify and JSON.parse when serializer/deserializer not provided', () => {
+    const { result } = renderHook(() =>
+      useSessionStorage('key', 'initialValue'),
+    )
+
+    act(() => {
+      result.current[1]('newValue')
+    })
+
+    expect(sessionStorage.getItem('key')).toBe(JSON.stringify('newValue'))
+  })
+
+  test('should use custom serializer and deserializer when provided', () => {
+    const serializer = (value: string) => value.toUpperCase()
+    const deserializer = (value: string) => value.toLowerCase()
+
+    const { result } = renderHook(() =>
+      useSessionStorage('key', 'initialValue', { serializer, deserializer }),
+    )
+
+    act(() => {
+      result.current[1]('NewValue')
+    })
+
+    expect(sessionStorage.getItem('key')).toBe('NEWVALUE')
+  })
+
+  test('should handle undefined values with custom deserializer', () => {
+    const serializer = (value: number | undefined) => String(value)
+    const deserializer = (value: string) =>
+      value === 'undefined' ? undefined : Number(value)
+
+    const { result } = renderHook(() =>
+      useSessionStorage<number | undefined>('key', 0, {
+        serializer,
+        deserializer,
+      }),
+    )
+
+    act(() => {
+      result.current[1](undefined)
+    })
+
+    expect(sessionStorage.getItem('key')).toBe('undefined')
+
+    act(() => {
+      result.current[1](42)
+    })
+
+    expect(sessionStorage.getItem('key')).toBe('42')
+  })
 })
