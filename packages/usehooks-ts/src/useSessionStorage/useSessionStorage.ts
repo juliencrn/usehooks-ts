@@ -36,6 +36,15 @@ export function useSessionStorage<T>(
       if (options.serializer) {
         return options.serializer(value)
       }
+
+      if (value instanceof Map) {
+        return JSON.stringify(Object.fromEntries(value))
+      }
+
+      if (value instanceof Set) {
+        return JSON.stringify(Array.from(value))
+      }
+
       return JSON.stringify(value)
     },
     [options],
@@ -50,9 +59,24 @@ export function useSessionStorage<T>(
       if (value === 'undefined') {
         return undefined as unknown as T
       }
-      return JSON.parse(value)
+
+      const parsed = JSON.parse(value)
+
+      if (initialValue instanceof Set) {
+        return new Set(parsed)
+      }
+
+      if (initialValue instanceof Map) {
+        return new Map(Object.entries(parsed))
+      }
+
+      if (initialValue instanceof Date) {
+        return new Date(parsed)
+      }
+
+      return parsed
     },
-    [options],
+    [options, initialValue],
   )
 
   // Get from session storage then

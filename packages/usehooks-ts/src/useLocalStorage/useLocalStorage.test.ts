@@ -53,6 +53,28 @@ describe('useLocalStorage()', () => {
     expect(result.current[0]).toEqual([1, 2])
   })
 
+  test('Initial state is a Map', () => {
+    const { result } = renderHook(() =>
+      useLocalStorage('map', new Map([['a', 1]])),
+    )
+
+    expect(result.current[0]).toEqual(new Map([['a', 1]]))
+  })
+
+  test('Initial state is a Set', () => {
+    const { result } = renderHook(() => useLocalStorage('set', new Set([1, 2])))
+
+    expect(result.current[0]).toEqual(new Set([1, 2]))
+  })
+
+  test('Initial state is a Date', () => {
+    const { result } = renderHook(() =>
+      useLocalStorage('date', new Date(2020, 1, 1)),
+    )
+
+    expect(result.current[0]).toEqual(new Date(2020, 1, 1))
+  })
+
   test('Update the state', () => {
     const { result } = renderHook(() => useLocalStorage('key', 'value'))
 
