@@ -25,14 +25,14 @@ export function useReadLocalStorage<T>(key: string): Value<T> {
   }, [key])
 
   // State to store our value
-  // Pass initial state function to useState so logic is only executed once
-  const [storedValue, setStoredValue] = useState<Value<T>>(readValue)
+  // Pass null as initial value to support hydration server-client
+  const [storedValue, setStoredValue] = useState<Value<T>>(null)
 
   // Listen if localStorage changes
   useEffect(() => {
     setStoredValue(readValue())
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [key])
 
   const handleStorageChange = useCallback(
     (event: StorageEvent | CustomEvent) => {
