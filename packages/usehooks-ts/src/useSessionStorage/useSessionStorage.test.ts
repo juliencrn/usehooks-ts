@@ -100,6 +100,20 @@ describe('useSessionStorage()', () => {
     expect(window.sessionStorage.getItem('count')).toEqual('3')
   })
 
+  test('Update the state with a callback function multiple times per render', () => {
+    const { result } = renderHook(() => useSessionStorage('count', 2))
+
+    act(() => {
+      const setState = result.current[1]
+      setState(prev => prev + 1)
+      setState(prev => prev + 1)
+      setState(prev => prev + 1)
+    })
+
+    expect(result.current[0]).toBe(5)
+    expect(window.sessionStorage.getItem('count')).toEqual('5')
+  })
+
   test('[Event] Update one hook updates the others', () => {
     const initialValues: [string, unknown] = ['key', 'initial']
     const { result: A } = renderHook(() => useSessionStorage(...initialValues))

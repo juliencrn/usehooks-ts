@@ -55,7 +55,7 @@ export function useLocalStorage<T>(
 
     try {
       // Allow value to be a function so we have the same API as useState
-      const newValue = value instanceof Function ? value(storedValue) : value
+      const newValue = value instanceof Function ? value(readValue()) : value
 
       // Save to local storage
       window.localStorage.setItem(key, JSON.stringify(newValue))
