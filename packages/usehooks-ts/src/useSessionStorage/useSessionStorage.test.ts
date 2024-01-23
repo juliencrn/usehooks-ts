@@ -131,6 +131,31 @@ describe('useSessionStorage()', () => {
     expect(C.current[0]).toBe('initial')
   })
 
+  test('[Event] Updating one hook does not update others with a different key', () => {
+    let renderCount = 0
+    const { result: A } = renderHook(() => {
+      renderCount++
+      return useSessionStorage('key1', {})
+    })
+    const { result: B } = renderHook(() => useSessionStorage('key2', 'initial'))
+
+    expect(renderCount).toBe(1)
+
+    act(() => {
+      const setStateA = A.current[1]
+      setStateA({ a: 1 })
+    })
+
+    expect(renderCount).toBe(2)
+
+    act(() => {
+      const setStateB = B.current[1]
+      setStateB('edited')
+    })
+
+    expect(renderCount).toBe(2)
+  })
+
   test('setValue is referentially stable', () => {
     const { result } = renderHook(() => useSessionStorage('count', 1))
 
