@@ -4,12 +4,14 @@ import { useEventListener } from '..'
 
 type Value<T> = T | null
 
+const IS_SERVER = typeof window === 'undefined'
+
 export function useReadLocalStorage<T>(key: string): Value<T> {
   // Get from local storage then
   // parse stored json or return initialValue
   const readValue = useCallback((): Value<T> => {
     // Prevent build error "window is undefined" but keep keep working
-    if (typeof window === 'undefined') {
+    if (IS_SERVER) {
       return null
     }
 
@@ -23,14 +25,14 @@ export function useReadLocalStorage<T>(key: string): Value<T> {
   }, [key])
 
   // State to store our value
-  // Pass initial state function to useState so logic is only executed once
-  const [storedValue, setStoredValue] = useState<Value<T>>(readValue)
+  // Pass null as initial value to support hydration server-client
+  const [storedValue, setStoredValue] = useState<Value<T>>(null)
 
   // Listen if localStorage changes
   useEffect(() => {
     setStoredValue(readValue())
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [key])
 
   const handleStorageChange = useCallback(
     (event: StorageEvent | CustomEvent) => {
