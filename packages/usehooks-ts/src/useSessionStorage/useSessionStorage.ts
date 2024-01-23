@@ -63,8 +63,8 @@ export function useSessionStorage<T>(
       // Save state
       setStoredValue(newValue)
 
-      // We dispatch a custom event so every useSessionStorage hook are notified
-      window.dispatchEvent(new Event('session-storage'))
+      // We dispatch a custom event so every similar useSessionStorage hook is notified
+      window.dispatchEvent(new StorageEvent('session-storage', { key }))
     } catch (error) {
       console.warn(`Error setting sessionStorage key “${key}”:`, error)
     }
@@ -88,7 +88,7 @@ export function useSessionStorage<T>(
   // this only works for other documents, not the current one
   useEventListener('storage', handleStorageChange)
 
-  // this is a custom event, triggered in writeValueTosessionStorage
+  // this is a custom event, triggered in writeValueToSessionStorage
   // See: useSessionStorage()
   useEventListener('session-storage', handleStorageChange)
 

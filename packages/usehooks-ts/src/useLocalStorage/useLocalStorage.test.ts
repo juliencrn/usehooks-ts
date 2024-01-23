@@ -131,6 +131,9 @@ describe('useLocalStorage()', () => {
     const initialValues: [string, unknown] = ['key', 'initial']
     const { result: A } = renderHook(() => useLocalStorage(...initialValues))
     const { result: B } = renderHook(() => useLocalStorage(...initialValues))
+    const { result: C } = renderHook(() =>
+      useLocalStorage('other-key', 'initial'),
+    )
 
     act(() => {
       const setState = A.current[1]
@@ -138,6 +141,7 @@ describe('useLocalStorage()', () => {
     })
 
     expect(B.current[0]).toBe('edited')
+    expect(C.current[0]).toBe('initial')
   })
 
   test('setValue is referentially stable', () => {
