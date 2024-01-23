@@ -63,8 +63,8 @@ export function useLocalStorage<T>(
       // Save state
       setStoredValue(newValue)
 
-      // We dispatch a custom event so every useLocalStorage hook are notified
-      window.dispatchEvent(new Event('local-storage'))
+      // We dispatch a custom event so every similar useLocalStorage hook is notified
+      window.dispatchEvent(new StorageEvent('local-storage', { key }))
     } catch (error) {
       console.warn(`Error setting localStorage key “${key}”:`, error)
     }
