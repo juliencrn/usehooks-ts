@@ -55,7 +55,7 @@ export function useSessionStorage<T>(
 
     try {
       // Allow value to be a function so we have the same API as useState
-      const newValue = value instanceof Function ? value(storedValue) : value
+      const newValue = value instanceof Function ? value(readValue()) : value
 
       // Save to session storage
       window.sessionStorage.setItem(key, JSON.stringify(newValue))
