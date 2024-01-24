@@ -7,12 +7,20 @@ module.exports = {
       jsx: true,
     },
   },
+  ignorePatterns: ['dist', '.eslintrc.*'],
   extends: [
     'plugin:react-hooks/recommended',
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
+    'plugin:import/typescript',
   ],
-  plugins: ['react', 'simple-import-sort', 'prettier', 'jsx-a11y'],
+  plugins: [
+    'react',
+    'simple-import-sort',
+    'prettier',
+    'jsx-a11y',
+    'eslint-plugin-import',
+  ],
   env: {
     browser: true,
     es6: true,
@@ -42,6 +50,7 @@ module.exports = {
         ],
       },
     ],
+    'import/no-cycle': 'error',
   },
   overrides: [
     // Typescript related rules
