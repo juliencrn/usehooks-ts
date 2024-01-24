@@ -34,6 +34,7 @@
 
 <!-- HOOKS:START -->
 
+- [`useAutoSyncedState()`](https://usehooks-ts.com/react-hook/use-auto-synced-state)
 - [`useBoolean()`](https://usehooks-ts.com/react-hook/use-boolean)
 - [`useClickAnyWhere()`](https://usehooks-ts.com/react-hook/use-click-any-where)
 - [`useCopyToClipboard()`](https://usehooks-ts.com/react-hook/use-copy-to-clipboard)

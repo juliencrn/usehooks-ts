@@ -1,3 +1,4 @@
+export * from './useAutoSyncedState/useAutoSyncedState'
 export * from './useBoolean/useBoolean'
 export * from './useClickAnyWhere/useClickAnyWhere'
 export * from './useCopyToClipboard/useCopyToClipboard'
