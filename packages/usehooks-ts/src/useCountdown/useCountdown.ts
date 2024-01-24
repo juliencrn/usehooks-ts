@@ -1,6 +1,8 @@
 import { useCallback } from 'react'
 
-import { useBoolean, useCounter, useInterval } from '..'
+import { useBoolean } from '../useBoolean'
+import { useCounter } from '../useCounter'
+import { useInterval } from '../useInterval'
 
 // Old interface IN & OUT
 interface UseCountdownType {

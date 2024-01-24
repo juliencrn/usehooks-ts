@@ -1,4 +1,4 @@
-import { useEventListener } from '..'
+import { useEventListener } from '../useEventListener'
 
 type Handler = (event: MouseEvent) => void
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { useIsomorphicLayoutEffect } from '..'
+import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
 type UseLockedBodyOutput = [boolean, (locked: boolean) => void]
 

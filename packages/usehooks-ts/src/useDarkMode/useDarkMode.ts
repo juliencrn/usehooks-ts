@@ -1,4 +1,6 @@
-import { useLocalStorage, useMediaQuery, useUpdateEffect } from '..'
+import { useLocalStorage } from '../useLocalStorage'
+import { useMediaQuery } from '../useMediaQuery'
+import { useUpdateEffect } from '../useUpdateEffect'
 
 const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)'
 const LOCAL_STORAGE_KEY = 'usehooks-ts-dark-mode'
