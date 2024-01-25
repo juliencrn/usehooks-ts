@@ -1,4 +1,4 @@
-import { useIsomorphicLayoutEffect } from '..'
+import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
 export function useDocumentTitle(title: string): void {
   useIsomorphicLayoutEffect(() => {

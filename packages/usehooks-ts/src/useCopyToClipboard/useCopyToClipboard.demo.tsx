@@ -1,4 +1,4 @@
-import { useCopyToClipboard } from '..'
+import { useCopyToClipboard } from './useCopyToClipboard'
 
 export default function Component() {
   const [copiedText, copy] = useCopyToClipboard()

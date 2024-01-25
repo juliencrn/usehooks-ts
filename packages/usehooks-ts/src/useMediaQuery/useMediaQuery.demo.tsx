@@ -1,4 +1,4 @@
-import { useMediaQuery } from '..'
+import { useMediaQuery } from './useMediaQuery'
 
 export default function Component() {
   const matches = useMediaQuery('(min-width: 768px)')

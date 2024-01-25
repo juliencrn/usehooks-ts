@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 
-import { useDebounce } from '..'
+import { useDebounce } from './useDebounce'
 
 export default function Component() {
   const [value, setValue] = useState<string>('')

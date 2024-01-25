@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { useEventListener } from '..'
+import { useEventListener } from '../useEventListener'
 
 type Value<T> = T | null
 

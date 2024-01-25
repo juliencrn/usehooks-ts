@@ -1,4 +1,4 @@
-import { useTernaryDarkMode } from '..'
+import { useTernaryDarkMode } from './useTernaryDarkMode'
 
 export default function Component() {
   const {

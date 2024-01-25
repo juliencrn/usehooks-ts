@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { useEffectOnce } from '..'
+import { useEffectOnce } from './useEffectOnce'
 
 export default function Component() {
   const [data, setData] = useState<number>(0)

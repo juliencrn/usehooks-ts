@@ -1,4 +1,4 @@
-import { useLocalStorage } from '..'
+import { useLocalStorage } from './useLocalStorage'
 
 // Usage
 export default function Component() {

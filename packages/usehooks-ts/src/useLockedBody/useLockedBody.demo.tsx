@@ -1,6 +1,6 @@
 import { CSSProperties, useState } from 'react'
 
-import { useLockedBody } from '..'
+import { useLockedBody } from './useLockedBody'
 
 const fixedCenterStyle: CSSProperties = {
   position: 'fixed',
