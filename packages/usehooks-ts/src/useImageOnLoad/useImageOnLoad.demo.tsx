@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react'
 
-import { useImageOnLoad } from '..'
+import { useImageOnLoad } from './useImageOnLoad'
 
 export default function Component() {
   const { handleImageOnLoad, css } = useImageOnLoad()

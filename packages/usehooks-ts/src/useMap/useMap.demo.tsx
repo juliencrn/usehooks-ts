@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 
-import { MapOrEntries, useMap } from '..'
+import { MapOrEntries, useMap } from './useMap'
 
 const initialValues: MapOrEntries<string, string> = [['key', '🆕']]
 const otherValues: MapOrEntries<string, string> = [

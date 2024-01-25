@@ -1,4 +1,4 @@
-import { useWindowSize } from '..'
+import { useWindowSize } from './useWindowSize'
 
 export default function Component() {
   const { width, height } = useWindowSize()
