@@ -93,6 +93,7 @@ function copyFile({ source, dest, useSandbox, toMarkdown }) {
     writeStream.write(data)
     writeStream.end()
 
+    // TODO: Print a one-line message like: "43 hooks have been updated" instead
     console.log(`${name} ${existingFile ? 'updated' : 'created'}`)
   })
 }
@@ -104,12 +105,17 @@ function copyFile({ source, dest, useSandbox, toMarkdown }) {
  * import { useCounter } from '../useCounter'
  * import { useInterval } from '../useInterval'
  *
+ * Or this:
+ *
+ * import { useBoolean } from './useBoolean'
+ *
  * Into this:
  *
  * import { useBoolean, useCounter, useInterval } from 'usehooks-ts'
  */
 function transformImports(data) {
-  const importRegex = /import { ([^}]+) } from ['"]\.\.\/use([^'"]+)['"]/g
+  // const importRegex = /import { ([^}]+) } from ['"]\.\.\/use([^'"]+)['"]/g
+  const importRegex = /import { ([^}]+) } from ['"]\.\.?(\/[^'"]+)['"]/g
 
   const imports = Array.from(data.matchAll(importRegex)).map(match => ({
     importName: match[1],
