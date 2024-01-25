@@ -6,7 +6,31 @@ type Value<T> = T | null
 
 const IS_SERVER = typeof window === 'undefined'
 
-export function useReadLocalStorage<T>(key: string): Value<T> {
+interface Options<T> {
+  deserializer?: (value: string) => T
+}
+
+export function useReadLocalStorage<T>(
+  key: string,
+  options: Options<T> = {},
+): Value<T> {
+  // Pass null as initial value to support hydration server-client
+  const [storedValue, setStoredValue] = useState<Value<T>>(null)
+
+  const deserializer = useCallback<(value: string) => T>(
+    value => {
+      if (options.deserializer) {
+        return options.deserializer(value)
+      }
+      // Support 'undefined' as a value
+      if (value === 'undefined') {
+        return undefined as unknown as T
+      }
+      return JSON.parse(value)
+    },
+    [options],
+  )
+
   // Get from local storage then
   // parse stored json or return initialValue
   const readValue = useCallback((): Value<T> => {
@@ -16,17 +40,13 @@ export function useReadLocalStorage<T>(key: string): Value<T> {
     }
 
     try {
-      const item = window.localStorage.getItem(key)
-      return item ? (JSON.parse(item) as T) : null
+      const raw = window.localStorage.getItem(key)
+      return raw ? deserializer(raw) : null
     } catch (error) {
       console.warn(`Error reading localStorage key “${key}”:`, error)
       return null
     }
-  }, [key])
-
-  // State to store our value
-  // Pass null as initial value to support hydration server-client
-  const [storedValue, setStoredValue] = useState<Value<T>>(null)
+  }, [key, deserializer])
 
   // Listen if localStorage changes
   useEffect(() => {
