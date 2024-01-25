@@ -2,6 +2,8 @@ Persist the state with local storage so that it remains after a page refresh. Th
 This hook is used in the same way as useState except that you must pass the storage key in the 1st parameter.
 If the window object is not present (as in SSR), `useLocalStorage()` will return the default value.
 
+You can also pass an optional third parameter to use a custom serializer/deserializer.
+
 **Side notes:**
 
 - If you really want to create a dark theme switch, see [useDarkMode()](/react-hook/use-dark-mode).
