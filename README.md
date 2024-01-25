@@ -117,7 +117,6 @@ pnpm dev --filter=www # next dev
 # Develop
 pnpm build
 pnpm lint
-pnpm types-check
 pnpm test
 ```
 
@@ -129,7 +128,8 @@ pnpm test
 │  ├── 📄 useHookName.demo.tsx # working demo
 │  ├── 📝 useHookName.mdx # the documentation content
 │  ├── 🧪 useHookName.test.ts # unit tests
-│  └── 📄 useHookName.ts # the hook
+│  ├── 📄 useHookName.ts # the hook
+│  └── 📄 index.ts
 ...
 ```
 

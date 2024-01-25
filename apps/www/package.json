@@ -7,10 +7,9 @@
     "build": "pnpm generate && next build && pnpm generate-sitemap",
     "generate-sitemap": "rimraf public/sitemap.xml public/robots.txt && next-sitemap --config ./next-sitemap.config.mjs",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint && tsc --noEmit",
     "clean": "rimraf *.tsbuildinfo .next generated .turbo",
-    "generate": "cd ../.. && pnpm copy-hooks && cd -",
-    "types-check": "tsc --noEmit"
+    "generate": "cd ../.. && pnpm copy-hooks && cd -"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.0.6",

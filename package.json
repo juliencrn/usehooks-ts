@@ -19,7 +19,6 @@
     "clean": "rimraf .turbo && turbo run clean",
     "format": "prettier --write \"**/*.{json,md,mdx,css,scss,yaml,yml}\"",
     "lint": "turbo run lint",
-    "types-check": "turbo run types-check",
     "update-testing-issue": "zx ./scripts/updateTestingIssue.mjs",
     "update-readme": "zx ./scripts/updateReadme.mjs",
     "copy-hooks": "rimraf -rf ./apps/www/generated && zx ./scripts/copyHooks.mjs",
