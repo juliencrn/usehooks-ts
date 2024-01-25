@@ -43,6 +43,13 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         templateFile: 'templates/hook/hook.demo.tsx.hbs',
       },
 
+      // Create the hook's index file
+      {
+        type: 'add',
+        path: 'src/{{camelCase name}}/index.ts',
+        templateFile: 'templates/hook/index.ts.hbs',
+      },
+
       // Update the global hooks index file
       {
         type: 'append',
