@@ -13,6 +13,15 @@ interface UseDarkModeOutput {
   set: (value: boolean) => void
 }
 
+/**
+ * Custom hook that returns the current state of the dark mode.
+ * @param  {?boolean} [defaultValue] the initial value of the dark mode, default `false`.
+ * @param  {?string} [localStorageKey] the key to use in the local storage, default `'usehooks-ts-dark-mode'`.
+ * @returns {UseDarkModeOutput} An object containing the dark mode's state and its controllers.
+ * @see [Documentation](https://usehooks-ts.com/react-hook/use-dark-mode)
+ * @example
+ * const { isDarkMode, toggle, enable, disable, set } = useDarkMode();
+ */
 export function useDarkMode(
   defaultValue?: boolean,
   localStorageKey: string = LOCAL_STORAGE_KEY,
