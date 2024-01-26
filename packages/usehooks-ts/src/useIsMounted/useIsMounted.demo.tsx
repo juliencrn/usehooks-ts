@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { useIsMounted } from '..'
+import { useIsMounted } from './useIsMounted'
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 

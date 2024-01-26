@@ -1,8 +1,8 @@
-name: "Bug report 🐞"
+name: 'Bug report 🐞'
 description: >-
   Create a report to help us improve
-title: "[BUG]"
-labels: 
+title: '[BUG]'
+labels:
   - bug
 body:
   - type: textarea
@@ -12,7 +12,7 @@ body:
       description: A clear and concise description of what the bug is. Include any error messages or unexpected behaviors.
     validations:
       required: true
-      
+
   - type: textarea
     id: reproduce_steps
     attributes:

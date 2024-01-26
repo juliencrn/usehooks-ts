@@ -28,6 +28,7 @@ describe('useDarkMode()', () => {
     expect(typeof result.current.disable).toBe('function')
     expect(typeof result.current.toggle).toBe('function')
     expect(typeof result.current.enable).toBe('function')
+    expect(typeof result.current.set).toBe('function')
   })
 
   test('should have a default value(1)', () => {
@@ -88,6 +89,38 @@ describe('useDarkMode()', () => {
     const { result } = renderHook(() => useDarkMode(false))
     act(() => {
       result.current.disable()
+    })
+    expect(result.current.isDarkMode).toBe(false)
+  })
+
+  test('should set dark mode (1)', () => {
+    const { result } = renderHook(() => useDarkMode(true))
+    act(() => {
+      result.current.set(false)
+    })
+    expect(result.current.isDarkMode).toBe(false)
+  })
+
+  test('should set dark mode (2)', () => {
+    const { result } = renderHook(() => useDarkMode(false))
+    act(() => {
+      result.current.set(true)
+    })
+    expect(result.current.isDarkMode).toBe(true)
+  })
+
+  test('should set dark mode (3)', () => {
+    const { result } = renderHook(() => useDarkMode(true))
+    act(() => {
+      result.current.set(true)
+    })
+    expect(result.current.isDarkMode).toBe(true)
+  })
+
+  test('should set dark mode (4)', () => {
+    const { result } = renderHook(() => useDarkMode(false))
+    act(() => {
+      result.current.set(false)
     })
     expect(result.current.isDarkMode).toBe(false)
   })

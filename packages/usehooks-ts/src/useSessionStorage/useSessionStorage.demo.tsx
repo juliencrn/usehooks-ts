@@ -1,4 +1,4 @@
-import { useSessionStorage } from '..'
+import { useSessionStorage } from './useSessionStorage'
 
 export default function Component() {
   const [value, setValue] = useSessionStorage('test-key', 0)

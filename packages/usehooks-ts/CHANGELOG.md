@@ -1,5 +1,35 @@
 # Changelog
 
+## 2.10.0
+
+### Minor Changes
+
+- 8f3c90f: Enable setting localStorage key for useDarkTheme & useTernaryDarkMode (#298 by @ubarbaxor)
+- ae47c9a: Expose setting dark mode value directly (#299 by ubarbaxor)
+- 771afa5: Add serialization support for use-\*-storage hooks
+
+### Patch Changes
+
+- a816d6b: Depreciated useSsr [#258](https://github.com/juliencrn/usehooks-ts/issues/258)
+- 42f3a3a: Remove the need of commenting out useEffect deps in useMediaQuery (#383 by @lisandro52)
+- 9bc05f4: Fix hydration mismatch on use\*\*\*Storage (fixes #176, #369 with #320 & #251)
+- 771afa5: Add Date, Set & Map support to use\*Storage (#309 by @AlecsFarias)
+- 4b3ed4e: Fix circular dependencies (#310)
+- a3588b8: Added unit tests for useFetch hook
+- c326dd3: Prevent unrelated storage keys from being updated unexpectedly in useLocalStorage and useSessionStorage (#313 by @stevenvachon fixes #384)
+- e8aa777: make useLocalStorage and useSessionStorage compliant with useState (fixes #204 with #242 by @valyrie97)
+- c5ad2b9: Recalculate useLocalStorage & useSessionStorage default value on dynamic key change (#355 by @amirking59)
+- 7406e3c: fix(useCopyToClipboard): added useCallback to 'copy' to avoid rerendering (by @nmacianx)
+- ffe0f32: Set sideEffects to false in package.json
+
+## 2.9.5
+
+### Patch Changes
+
+- 7141d01: Upgrade internal dependencies
+- Update useCopyToClipboard documentation
+- Fix typo in useEventListener
+
 ## 2.9.4
 
 ### Patch Changes
@@ -16,7 +46,9 @@
 
 ### Patch Changes
 
-- 55a1904: added export map, use named exports for hooks and fix useEventListener docs typo
+- 55a1904: added export map in package.json
+- use named exports instead of default exports
+- fix useEventListener docs typo
 
 All notable changes to this project will be documented in this file.
 

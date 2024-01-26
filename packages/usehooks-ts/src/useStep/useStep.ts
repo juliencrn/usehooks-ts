@@ -9,8 +9,17 @@ interface Helpers {
   setStep: Dispatch<SetStateAction<number>>
 }
 
-type setStepCallbackType = (step: number | ((step: number) => number)) => void
+type SetStepCallbackType = (step: number | ((step: number) => number)) => void
 
+/**
+ * Custom hook for managing and navigating between steps in a multi-step process.
+ * @param {number} maxStep - The maximum step in the process.
+ * @returns {[number, Helpers]} An tuple containing the current step and helper functions for navigating steps.
+ * @see [Documentation](https://usehooks-ts.com/react-hook/use-step)
+ * @example
+ * const [currentStep, { goToNextStep, goToPrevStep, reset, canGoToNextStep, canGoToPrevStep, setStep }] = useStep(3);
+ * // Access and use the current step and provided helper functions.
+ */
 export function useStep(maxStep: number): [number, Helpers] {
   const [currentStep, setCurrentStep] = useState(1)
 
@@ -21,7 +30,7 @@ export function useStep(maxStep: number): [number, Helpers] {
 
   const canGoToPrevStep = useMemo(() => currentStep - 1 >= 1, [currentStep])
 
-  const setStep = useCallback<setStepCallbackType>(
+  const setStep = useCallback<SetStepCallbackType>(
     step => {
       // Allow value to be a function so we have the same API as useState
       const newStep = step instanceof Function ? step(currentStep) : step

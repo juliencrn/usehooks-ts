@@ -1,4 +1,4 @@
-import { useStep } from '..'
+import { useStep } from './useStep'
 
 export default function Component() {
   const [currentStep, helpers] = useStep(5)

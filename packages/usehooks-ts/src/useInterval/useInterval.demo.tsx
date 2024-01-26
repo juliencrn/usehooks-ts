@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react'
 
-import { useInterval } from '..'
+import { useInterval } from './useInterval'
 
 export default function Component() {
   // The counter

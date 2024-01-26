@@ -1,12 +1,24 @@
 import { RefObject } from 'react'
 
-import { useEventListener } from '..'
+import { useEventListener } from '../useEventListener'
 
-type Handler = (event: MouseEvent) => void
-
+/**
+ * Custom hook for handling clicks outside a specified element.
+ * @template T - The type of the element's reference.
+ * @param {RefObject<T>} ref - The React ref object representing the element to watch for outside clicks.
+ * @param {(event: MouseEvent) => void} handler - The callback function to be executed when a click outside the element occurs.
+ * @param {'mousedown' | 'mouseup'} [mouseEvent] - The mouse event type to listen for (optional, default is 'mousedown').
+ * @returns {void}
+ * @see [Documentation](https://usehooks-ts.com/react-hook/use-on-click-outside)
+ * @example
+ * const containerRef = useRef(null);
+ * useOnClickOutside(containerRef, () => {
+ *   // Handle clicks outside the container.
+ * });
+ */
 export function useOnClickOutside<T extends HTMLElement = HTMLElement>(
   ref: RefObject<T>,
-  handler: Handler,
+  handler: (event: MouseEvent) => void,
   mouseEvent: 'mousedown' | 'mouseup' = 'mousedown',
 ): void {
   useEventListener(mouseEvent, event => {

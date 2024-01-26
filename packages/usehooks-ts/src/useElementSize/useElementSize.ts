@@ -1,12 +1,27 @@
 import { useCallback, useState } from 'react'
 
-import { useEventListener, useIsomorphicLayoutEffect } from '..'
+import { useEventListener } from '../useEventListener'
+import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
 interface Size {
   width: number
   height: number
 }
 
+/**
+ * A hook for tracking the size of a DOM element.
+ * @template T - The type of the DOM element. Defaults to `HTMLDivElement`.
+ * @returns {[ (node: T | null) => void, Size ]} A tuple containing a ref-setting function and the size of the element.
+ * @see [Documentation](https://usehooks-ts.com/react-hook/use-element-size)
+ * @example
+ * const [ref, size] = useElementSize();
+ *
+ * return (
+ *   <div ref={ref}>
+ *     My size is {size.width}x{size.height}
+ *   </div>
+ * );
+ */
 export function useElementSize<T extends HTMLElement = HTMLDivElement>(): [
   (node: T | null) => void,
   Size,

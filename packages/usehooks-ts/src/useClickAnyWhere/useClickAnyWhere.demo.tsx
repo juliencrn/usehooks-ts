@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { useClickAnyWhere } from '..'
+import { useClickAnyWhere } from './useClickAnyWhere'
 
 export default function Component() {
   const [count, setCount] = useState(0)

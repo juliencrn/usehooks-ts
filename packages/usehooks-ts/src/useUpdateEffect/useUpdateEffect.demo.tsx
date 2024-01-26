@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { useUpdateEffect } from '..'
+import { useUpdateEffect } from './useUpdateEffect'
 
 export default function Component() {
   const [data, setData] = useState<number>(0)

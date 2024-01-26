@@ -1,4 +1,4 @@
-import { useToggle } from '..'
+import { useToggle } from './useToggle'
 
 export default function Component() {
   const [value, toggle, setValue] = useToggle()

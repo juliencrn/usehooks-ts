@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { useElementSize } from '..'
+import { useElementSize } from './useElementSize'
 
 export default function Component() {
   const [isVisible, setVisible] = useState(true)

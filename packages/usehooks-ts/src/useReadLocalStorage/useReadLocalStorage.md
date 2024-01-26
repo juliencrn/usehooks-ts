@@ -3,4 +3,4 @@ If the window object is not present (as in SSR), or if the value doesn't exist, 
 
 **Note:**
 
-If you want to be able to change the value, look [useLocalStorage()](/react-hook/use-local-storage).
+If you want to be able to change the value, see [useLocalStorage()](/react-hook/use-local-storage).

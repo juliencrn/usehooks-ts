@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { useIsFirstRender } from '..'
+import { useIsFirstRender } from './useIsFirstRender'
 
 export default function Component() {
   const isFirst = useIsFirstRender()

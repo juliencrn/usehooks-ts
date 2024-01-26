@@ -63,7 +63,6 @@
 - [`useScreen()`](https://usehooks-ts.com/react-hook/use-screen)
 - [`useScript()`](https://usehooks-ts.com/react-hook/use-script)
 - [`useSessionStorage()`](https://usehooks-ts.com/react-hook/use-session-storage)
-- [`useSsr()`](https://usehooks-ts.com/react-hook/use-ssr)
 - [`useStep()`](https://usehooks-ts.com/react-hook/use-step)
 - [`useTernaryDarkMode()`](https://usehooks-ts.com/react-hook/use-ternary-dark-mode)
 - [`useTimeout()`](https://usehooks-ts.com/react-hook/use-timeout)
@@ -118,7 +117,6 @@ pnpm dev --filter=www # next dev
 # Develop
 pnpm build
 pnpm lint
-pnpm types-check
 pnpm test
 ```
 
@@ -130,14 +128,15 @@ pnpm test
 │  ├── 📄 useHookName.demo.tsx # working demo
 │  ├── 📝 useHookName.mdx # the documentation content
 │  ├── 🧪 useHookName.test.ts # unit tests
-│  └── 📄 useHookName.ts # the hook
+│  ├── 📄 useHookName.ts # the hook
+│  └── 📄 index.ts
 ...
 ```
 
 When the `usehooks-ts` is compiled, only the necessary files are used.
 The other files are copied in the documentation website.
 
-**Note**: The demo is used different way:
+**Note**: The demo is used in a different way:
 
 - It's displayed on the website to illustrate how to use the hook.
 - It's deployed as a CodeSandbox on build to let final users play with.
@@ -274,11 +273,6 @@ Big thanks goes to these wonderful people ❤️
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification ([emoji key](https://allcontributors.org/docs/en/emoji-key)). Contributions of any kind welcome!
-
-## 🚗 Roadmap
-
-- Unit-test all hooks
-- Add more hooks
 
 ## 📝 License
 
