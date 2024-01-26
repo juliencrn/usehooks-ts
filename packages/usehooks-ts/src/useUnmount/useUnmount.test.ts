@@ -1,23 +1,19 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom'
+
 import { useUnmount } from './useUnmount'
 
-describe('use unmount()', () => {
-test('should use unmount be ok', () => {
-const { result } = renderHook(() => useUnmount())
-const [value, method] = result.current
+describe('useUnmount()', () => {
+  test('should call the cleanup function on unmount', () => {
+    const cleanupMock = jest.fn()
 
-expect(value).toBe(2)
-expect(typeof method).toBe('function')
-})
+    const { unmount } = renderHook(() => useUnmount(cleanupMock))
 
-test('should method returns 2', () => {
-const { result } = renderHook(() => useUnmount())
-const [, method] = result.current
+    expect(cleanupMock).not.toHaveBeenCalled()
 
-let value = 0
+    act(() => {
+      unmount()
+    })
 
-act(() => { value = method() })
-
-expect(value).toBe(2)
-})
+    expect(cleanupMock).toHaveBeenCalled()
+  })
 })

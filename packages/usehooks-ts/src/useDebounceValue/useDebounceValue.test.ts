@@ -1,23 +1,47 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom'
+
 import { useDebounceValue } from './useDebounceValue'
 
-describe('use debounce value()', () => {
-test('should use debounce value be ok', () => {
-const { result } = renderHook(() => useDebounceValue())
-const [value, method] = result.current
+describe('useDebounceValue()', () => {
+  it('should debounce the value', async () => {
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useDebounceValue('initial', 200),
+    )
 
-expect(value).toBe(2)
-expect(typeof method).toBe('function')
-})
+    expect(result.current[0]).toBe('initial')
 
-test('should method returns 2', () => {
-const { result } = renderHook(() => useDebounceValue())
-const [, method] = result.current
+    act(() => {
+      result.current[1]('updated')
+    })
 
-let value = 0
+    // The debounced value should not be updated immediately
+    expect(result.current[0]).toBe('initial')
 
-act(() => { value = method() })
+    // Wait for the debounce interval to elapse
+    await waitForNextUpdate()
 
-expect(value).toBe(2)
-})
+    // The debounced value should be updated after the interval
+    expect(result.current[0]).toBe('updated')
+  })
+
+  it('should handle options', async () => {
+    const { result } = renderHook(() =>
+      useDebounceValue('initial', 200, { leading: true }),
+    )
+
+    expect(result.current[0]).toBe('initial')
+
+    act(() => {
+      result.current[1]('updated')
+    })
+
+    // The debounced value should be updated immediately due to leading option
+    expect(result.current[0]).toBe('updated')
+
+    // Wait for the debounce interval to elapse
+    jest.advanceTimersByTime(500)
+
+    // The debounced value should not be updated again after the interval
+    expect(result.current[0]).toBe('updated')
+  })
 })

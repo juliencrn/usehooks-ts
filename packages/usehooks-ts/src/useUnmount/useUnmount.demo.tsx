@@ -1,7 +1,9 @@
-import { useUnmount } from '..'
+import { useUnmount } from './useUnmount'
 
 export default function Component() {
-const [two] = useUnmount()
+  useUnmount(() => {
+    // Cleanup logic here
+  })
 
-return <div>Hello {two}</div>
+  return <div>Hello world</div>
 }
