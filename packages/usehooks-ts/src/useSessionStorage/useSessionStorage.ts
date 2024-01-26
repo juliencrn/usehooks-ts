@@ -15,6 +15,13 @@ declare global {
   }
 }
 
+/**
+ * Represents the options for customizing the behavior of serialization and deserialization.
+ * @template T - The type of the state to be stored in session storage.
+ * @interface Options
+ * @property {(value: T) => string} [serializer] - A function to serialize the value before storing it.
+ * @property {(value: string) => T} [deserializer] - A function to deserialize the stored value.
+ */
 interface Options<T> {
   serializer?: (value: T) => string
   deserializer?: (value: string) => T
@@ -23,7 +30,19 @@ interface Options<T> {
 type SetValue<T> = Dispatch<SetStateAction<T>>
 
 const IS_SERVER = typeof window === 'undefined'
-
+/**
+ * Custom hook for using session storage to persist state across page reloads.
+ * @template T - The type of the state to be stored in session storage.
+ * @param {string} key - The key under which the value will be stored in session storage.
+ * @param {T | (() => T)} initialValue - The initial value of the state or a function that returns the initial value.
+ * @param {Options<T>} [options] - Options for customizing the behavior of serialization and deserialization (optional).
+ * @returns {[T, Dispatch<SetStateAction<T>>]} A tuple containing the stored value and a function to set the value.
+ * @see [Documentation](https://usehooks-ts.com/react-hook/use-session-storage)
+ * @see [MDN Session Storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
+ * @example
+ * const [count, setCount] = useSessionStorage('count', 0);
+ * // Access the `count` value and the `setCount` function to update it.
+ */
 export function useSessionStorage<T>(
   key: string,
   initialValue: T | (() => T),

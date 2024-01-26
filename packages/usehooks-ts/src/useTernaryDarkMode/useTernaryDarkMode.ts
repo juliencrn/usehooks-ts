@@ -15,6 +15,15 @@ interface UseTernaryDarkModeOutput {
   toggleTernaryDarkMode: () => void
 }
 
+/**
+ * Custom hook for managing ternary (system, dark, light) dark mode with local storage support.
+ * @param {string} [localStorageKey] - The key for storing dark mode preference in local storage.
+ * @returns {UseTernaryDarkModeOutput} An object containing the dark mode state and helper functions.
+ * @see [Documentation](https://usehooks-ts.com/react-hook/use-ternary-dark-mode)
+ * @example
+ * const { isDarkMode, ternaryDarkMode, setTernaryDarkMode, toggleTernaryDarkMode } = useTernaryDarkMode();
+ * // Access and use the dark mode state and provided helper functions.
+ */
 export function useTernaryDarkMode(
   localStorageKey: string = LOCAL_STORAGE_KEY,
 ): UseTernaryDarkModeOutput {
@@ -44,6 +53,9 @@ export function useTernaryDarkMode(
     }
   }, [ternaryDarkMode, isDarkOS])
 
+  /**
+   *
+   */
   function toggleTernaryDarkMode() {
     const toggleDict: Record<TernaryDarkMode, TernaryDarkMode> = {
       light: 'system',

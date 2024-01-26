@@ -2,14 +2,34 @@ import { useCallback, useEffect, useState } from 'react'
 
 import { useEventListener } from '../useEventListener'
 
+/**
+ * Represents the possible values for the stored value in local storage.
+ * @template T - The type of the stored value.
+ */
 type Value<T> = T | null
 
 const IS_SERVER = typeof window === 'undefined'
 
+/**
+ * Represents the type for the options available when reading from local storage.
+ * @template T - The type of the stored value.
+ */
 interface Options<T> {
   deserializer?: (value: string) => T
 }
 
+/**
+ * Custom hook for reading a value from local storage, closely related to useLocalStorage().
+ * @template T - The type of the stored value.
+ * @param {string} key - The key associated with the value in local storage.
+ * @param {Options<T>} [options] - Additional options for reading the value (optional).
+ * @param {(value: string) => T} [options.deserializer] - Custom deserializer function to convert the stored string value to the desired type (optional).
+ * @returns {T | null} The stored value, or null if the key is not present or an error occurs.
+ * @see [Documentation](https://usehooks-ts.com/react-hook/use-read-local-storage)
+ * @example
+ * const storedData = useReadLocalStorage('myKey');
+ * // Access the stored data from local storage.
+ */
 export function useReadLocalStorage<T>(
   key: string,
   options: Options<T> = {},

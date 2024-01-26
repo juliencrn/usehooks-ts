@@ -11,4 +11,11 @@ module.exports = {
     },
   ],
   ignorePatterns: ['./dist', './node_modules', './turbo'],
+  overrides: [
+    {
+      files: ['*.ts'],
+      extends: ['plugin:jsdoc/recommended'],
+      plugins: ['jsdoc'],
+    },
+  ],
 }
