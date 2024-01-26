@@ -17,5 +17,11 @@ module.exports = {
       extends: ['plugin:jsdoc/recommended'],
       plugins: ['jsdoc'],
     },
+    {
+      files: ['*.test.ts'],
+      rules: {
+        'jsdoc/require-jsdoc': 'off',
+      },
+    },
   ],
 }
