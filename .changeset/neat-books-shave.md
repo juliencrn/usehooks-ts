@@ -2,4 +2,4 @@
 'usehooks-ts': minor
 ---
 
-feat: Add `defaultValue` option to `useTernaryDarkMode` hook
+Add `defaultValue` option to `useTernaryDarkMode` and update its signature (using function overload for smooth migration)
