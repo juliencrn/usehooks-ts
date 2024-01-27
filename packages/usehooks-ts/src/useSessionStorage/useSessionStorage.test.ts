@@ -1,30 +1,9 @@
 import { act, renderHook } from '@testing-library/react-hooks/dom'
 
+import { mockStorage } from '../../mocks'
 import { useSessionStorage } from './useSessionStorage'
 
-class SessionStorageMock {
-  store: Record<string, unknown> = {}
-
-  clear() {
-    this.store = {}
-  }
-
-  getItem(key: string) {
-    return this.store[key] || null
-  }
-
-  setItem(key: string, value: unknown) {
-    this.store[key] = value + ''
-  }
-
-  removeItem(key: string) {
-    delete this.store[key]
-  }
-}
-
-Object.defineProperty(window, 'sessionStorage', {
-  value: new SessionStorageMock(),
-})
+mockStorage('sessionStorage')
 
 describe('useSessionStorage()', () => {
   beforeEach(() => {
