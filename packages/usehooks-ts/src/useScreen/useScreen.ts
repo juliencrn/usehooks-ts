@@ -11,27 +11,27 @@ import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
  * const currentScreen = useScreen();
  * // Access properties of the current screen, such as width and height.
  */
-export function useScreen() {
+export function useScreen(): Screen | undefined {
   const getScreen = () => {
-    if (typeof window !== 'undefined' && window.screen) {
+    if (typeof window !== 'undefined') {
       return window.screen
     }
     return undefined
   }
 
-  const [screen, setScreen] = useState<Screen | undefined>(getScreen())
+  const [screen, setScreen] = useState<Screen | undefined>(undefined)
 
   /** Handles the resize event of the window. */
   function handleSize() {
     setScreen(getScreen())
   }
 
+  // TODO: Prefer incoming useResizeObserver hook
   useEventListener('resize', handleSize)
 
   // Set size at the first client-side load
   useIsomorphicLayoutEffect(() => {
     handleSize()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return screen

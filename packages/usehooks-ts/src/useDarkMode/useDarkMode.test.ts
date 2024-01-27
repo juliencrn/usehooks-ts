@@ -1,23 +1,13 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 
+import { mockMatchMedia, mockStorage } from '../../mocks'
 import { useDarkMode } from './useDarkMode'
 
-const mockMatchMedia = (matches: boolean): void => {
-  Object.defineProperty(window, 'matchMedia', {
-    writable: true,
-    value: jest.fn().mockImplementation(query => ({
-      matches,
-      media: query,
-      onchange: null,
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn(),
-    })),
-  })
-}
+mockStorage('localStorage')
 
 describe('useDarkMode()', () => {
-  afterEach(() => {
+  beforeEach(() => {
+    window.localStorage.clear()
     mockMatchMedia(false)
   })
 
