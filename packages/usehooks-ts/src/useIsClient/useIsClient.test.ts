@@ -1,9 +1,9 @@
 import { renderHook } from '@testing-library/react'
 
-import useIsClient from './useIsClient'
+import { useIsClient } from './useIsClient'
 
-// TODO: currently don't know how to simulate hydration of hooks.
 describe('useIsClient()', () => {
+  // TODO: currently don't know how to simulate hydration of hooks. @see https://github.com/testing-library/react-testing-library/issues/1120
   it.skip('should be false when rendering on the server', async () => {
     const { result } = renderHook(() => useIsClient(), { hydrate: false })
     expect(result.current).toBe(false)

@@ -99,7 +99,6 @@ describe('useMap()', () => {
     const { result } = renderHook(() => useMap(initialMap))
     const [, originalActionsRef] = result.current
 
-    console.debug('HNGGGGG', result.current[1], originalActionsRef)
     expect(result.current[1]).toStrictEqual(originalActionsRef)
 
     act(() => originalActionsRef.set(1, 1))
