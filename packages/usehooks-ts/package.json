@@ -22,37 +22,33 @@
   },
   "sideEffects": false,
   "scripts": {
-    "dev": "pnpm test:watch",
     "build": "pnpm build:cjs && pnpm build:esm",
     "build:cjs": "tsc -p tsconfig.build.json --module commonjs --outDir dist/cjs --target es5",
     "build:esm": "tsc -p tsconfig.build.json --module esNext --outDir dist/esm --target es6",
-    "test": "jest",
-    "test:watch": "pnpm test -- --watch --silent",
+    "dev": "vitest",
+    "test": "vitest run",
     "clean": "rimraf -rf ./dist .turbo *.tsbuildinfo",
     "lint": "eslint './src/**/*.{ts,tsx}' && tsc --noEmit"
   },
   "devDependencies": {
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/react-hooks": "^7.0.2",
+    "@testing-library/jest-dom": "^6.3.0",
+    "@testing-library/react": "^14.0.0",
     "@turbo/gen": "^1.11.3",
-    "@types/jest": "^29.5.11",
     "@types/node": "^18.7.18",
-    "@types/react": "17.0.0",
+    "@types/react": "18.2.48",
+    "@vitejs/plugin-react": "^4.2.1",
     "date-fns": "^3.3.1",
     "eslint-config-custom": "workspace:*",
     "eslint-plugin-jsdoc": "^48.0.4",
     "eslint-plugin-tree-shaking": "^1.12.1",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "ts-jest": "^29.1.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "jsdom": "^24.0.0",
+    "react": "18.2.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vitest": "^1.2.2"
   },
   "peerDependencies": {
-    "react": "^16.8.0  || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0  || ^17.0.0 || ^18.0.0"
+    "react": "^16.8.0  || ^17 || ^18"
   },
   "engines": {
     "node": ">=16.15.0"

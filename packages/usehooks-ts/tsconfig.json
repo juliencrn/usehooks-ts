@@ -9,6 +9,8 @@
     "jsx": "react-jsx",
     "strict": true,
     "lib": ["ESNEXT", "DOM"],
+    // use global types for vite's expect, describe, etc.
+    "types": ["vitest/globals"],
   },
   "exclude": ["node_modules", "dist"],
 }

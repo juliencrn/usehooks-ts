@@ -1,9 +1,9 @@
-import { renderHook } from '@testing-library/react-hooks/dom'
+import { renderHook } from '@testing-library/react'
 
 import { {{camelCase name}} } from './{{camelCase name}}'
 
 describe('{{name}}()', () => {
-  test('should {{name}} be ok', () => {
+  it('should {{name}} be ok', () => {
     const { result } = renderHook(() => {{camelCase name}}())
     const [value, setNumber] = result.current
 

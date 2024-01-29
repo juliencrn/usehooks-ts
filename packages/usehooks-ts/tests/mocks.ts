@@ -7,13 +7,13 @@
 export const mockMatchMedia = (matches: boolean): void => {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
-    value: jest.fn().mockImplementation(query => ({
+    value: vitest.fn().mockImplementation(query => ({
       matches,
       media: query,
       onchange: null,
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn(),
+      addEventListener: vitest.fn(),
+      removeEventListener: vitest.fn(),
+      dispatchEvent: vitest.fn(),
     })),
   })
 }

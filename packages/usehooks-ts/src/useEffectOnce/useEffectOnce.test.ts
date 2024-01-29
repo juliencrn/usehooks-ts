@@ -1,10 +1,10 @@
-import { renderHook } from '@testing-library/react-hooks/dom'
+import { renderHook } from '@testing-library/react'
 
 import { useEffectOnce } from './useEffectOnce'
 
 describe('use effect once()', () => {
-  test('should be triggered only once', () => {
-    const effect = jest.fn()
+  it('should be triggered only once', () => {
+    const effect = vitest.fn()
     const { rerender } = renderHook(() => useEffectOnce(effect))
 
     expect(effect).toHaveBeenCalledTimes(1)
