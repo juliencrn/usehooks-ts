@@ -11,7 +11,7 @@ describe('useDarkMode()', () => {
     mockMatchMedia(false)
   })
 
-  test('should initiate correctly', () => {
+  it('should initiate correctly', () => {
     mockMatchMedia(true)
     const { result } = renderHook(() => useDarkMode())
     expect(typeof result.current.isDarkMode).toBe('boolean')
@@ -21,19 +21,19 @@ describe('useDarkMode()', () => {
     expect(typeof result.current.set).toBe('function')
   })
 
-  test('should have a default value(1)', () => {
+  it('should have a default value(1)', () => {
     mockMatchMedia(false)
     const { result } = renderHook(() => useDarkMode(false))
     expect(result.current.isDarkMode).toBe(false)
   })
 
-  test('should have a default value(2)', () => {
+  it('should have a default value(2)', () => {
     mockMatchMedia(true)
     const { result } = renderHook(() => useDarkMode(true))
     expect(result.current.isDarkMode).toBe(true)
   })
 
-  test('should toggle dark mode (1)', () => {
+  it('should toggle dark mode (1)', () => {
     mockMatchMedia(true)
 
     const { result } = renderHook(() => useDarkMode(true))
@@ -43,7 +43,7 @@ describe('useDarkMode()', () => {
     expect(result.current.isDarkMode).toBe(false)
   })
 
-  test('should toggle dark mode (2)', () => {
+  it('should toggle dark mode (2)', () => {
     const { result } = renderHook(() => useDarkMode(false))
     act(() => {
       result.current.toggle()
@@ -51,7 +51,7 @@ describe('useDarkMode()', () => {
     expect(result.current.isDarkMode).toBe(true)
   })
 
-  test('should enable dark mode (1)', () => {
+  it('should enable dark mode (1)', () => {
     const { result } = renderHook(() => useDarkMode(false))
     act(() => {
       result.current.enable()
@@ -59,7 +59,7 @@ describe('useDarkMode()', () => {
     expect(result.current.isDarkMode).toBe(true)
   })
 
-  test('should enable dark mode (2)', () => {
+  it('should enable dark mode (2)', () => {
     const { result } = renderHook(() => useDarkMode(true))
     act(() => {
       result.current.enable()
@@ -67,7 +67,7 @@ describe('useDarkMode()', () => {
     expect(result.current.isDarkMode).toBe(true)
   })
 
-  test('should disable dark mode (1)', () => {
+  it('should disable dark mode (1)', () => {
     const { result } = renderHook(() => useDarkMode(true))
     act(() => {
       result.current.disable()
@@ -75,7 +75,7 @@ describe('useDarkMode()', () => {
     expect(result.current.isDarkMode).toBe(false)
   })
 
-  test('should disable dark mode (2)', () => {
+  it('should disable dark mode (2)', () => {
     const { result } = renderHook(() => useDarkMode(false))
     act(() => {
       result.current.disable()
@@ -83,7 +83,7 @@ describe('useDarkMode()', () => {
     expect(result.current.isDarkMode).toBe(false)
   })
 
-  test('should set dark mode (1)', () => {
+  it('should set dark mode (1)', () => {
     const { result } = renderHook(() => useDarkMode(true))
     act(() => {
       result.current.set(false)
@@ -91,7 +91,7 @@ describe('useDarkMode()', () => {
     expect(result.current.isDarkMode).toBe(false)
   })
 
-  test('should set dark mode (2)', () => {
+  it('should set dark mode (2)', () => {
     const { result } = renderHook(() => useDarkMode(false))
     act(() => {
       result.current.set(true)
@@ -99,7 +99,7 @@ describe('useDarkMode()', () => {
     expect(result.current.isDarkMode).toBe(true)
   })
 
-  test('should set dark mode (3)', () => {
+  it('should set dark mode (3)', () => {
     const { result } = renderHook(() => useDarkMode(true))
     act(() => {
       result.current.set(true)
@@ -107,7 +107,7 @@ describe('useDarkMode()', () => {
     expect(result.current.isDarkMode).toBe(true)
   })
 
-  test('should set dark mode (4)', () => {
+  it('should set dark mode (4)', () => {
     const { result } = renderHook(() => useDarkMode(false))
     act(() => {
       result.current.set(false)

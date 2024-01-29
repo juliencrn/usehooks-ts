@@ -9,7 +9,7 @@ describe('useInterval()', () => {
     jest.clearAllMocks()
   })
 
-  test('should fire the callback function (1)', async () => {
+  it('should fire the callback function (1)', async () => {
     const timeout = 500
     const callback = jest.fn()
     renderHook(() => useInterval(callback, timeout))
@@ -17,7 +17,7 @@ describe('useInterval()', () => {
     expect(callback).toHaveBeenCalledTimes(1)
   })
 
-  test('should fire the callback function (2)', async () => {
+  it('should fire the callback function (2)', async () => {
     const timeout = 500
     const earlyTimeout = 400
     const callback = jest.fn()
@@ -26,7 +26,7 @@ describe('useInterval()', () => {
     expect(callback).not.toHaveBeenCalled()
   })
 
-  test('should call set interval on start', () => {
+  it('should call set interval on start', () => {
     const timeout = 1200
     mockSetInterval()
     const callback = jest.fn()
@@ -35,7 +35,7 @@ describe('useInterval()', () => {
     expect(setInterval).toHaveBeenCalledWith(expect.any(Function), timeout)
   })
 
-  test('should call clearTimeout on unmount', () => {
+  it('should call clearTimeout on unmount', () => {
     mockClearInterval()
     const callback = jest.fn()
     const { unmount } = renderHook(() => useInterval(callback, 1200))

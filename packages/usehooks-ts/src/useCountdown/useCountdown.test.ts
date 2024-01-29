@@ -6,7 +6,7 @@ jest.useFakeTimers()
 
 describe('useCountdown()', () => {
   describe('depreciated useCountdown()', () => {
-    test('should initialize', () => {
+    it('should initialize', () => {
       const { result } = renderHook(() =>
         useCountdown({ seconds: 60, interval: 500, isIncrement: false }),
       )
@@ -17,7 +17,7 @@ describe('useCountdown()', () => {
       expect(typeof result.current[1].reset).toBe('function')
     })
 
-    test('should increment count', () => {
+    it('should increment count', () => {
       const { result } = renderHook(() =>
         useCountdown({ seconds: 60, interval: 500, isIncrement: true }),
       )
@@ -30,7 +30,7 @@ describe('useCountdown()', () => {
       expect(result.current[0]).toBe(62)
     })
 
-    test('should decrement count', () => {
+    it('should decrement count', () => {
       const { result } = renderHook(() =>
         useCountdown({ seconds: 60, interval: 500 }),
       )
@@ -43,7 +43,7 @@ describe('useCountdown()', () => {
       expect(result.current[0]).toBe(58)
     })
 
-    test('should stop countdown', () => {
+    it('should stop countdown', () => {
       const { result } = renderHook(() =>
         useCountdown({ seconds: 60, interval: 500 }),
       )
@@ -63,7 +63,7 @@ describe('useCountdown()', () => {
       expect(result.current[0]).toBe(58)
     })
 
-    test('should reset count', () => {
+    it('should reset count', () => {
       const { result } = renderHook(() =>
         useCountdown({ seconds: 60, interval: 500 }),
       )
@@ -80,7 +80,7 @@ describe('useCountdown()', () => {
     })
   })
 
-  test('should return callable functions', () => {
+  it('should return callable functions', () => {
     const { result } = renderHook(() =>
       useCountdown({ countStart: 60, intervalMs: 500, isIncrement: false }),
     )
@@ -91,7 +91,7 @@ describe('useCountdown()', () => {
     expect(typeof result.current[1].resetCountdown).toBe('function')
   })
 
-  test('should accept countStart', () => {
+  it('should accept countStart', () => {
     const { result } = renderHook(() => useCountdown({ countStart: 30 }))
 
     expect(result.current[0]).toBe(30)
@@ -100,7 +100,7 @@ describe('useCountdown()', () => {
     expect(typeof result.current[1].resetCountdown).toBe('function')
   })
 
-  test('should accept intervalMs', () => {
+  it('should accept intervalMs', () => {
     const { result } = renderHook(() =>
       useCountdown({ countStart: 60, intervalMs: 500 }),
     )
@@ -118,7 +118,7 @@ describe('useCountdown()', () => {
     expect(result.current[0]).toBe(59)
   })
 
-  test('should stop at countStop (default: 0)', () => {
+  it('should stop at countStop (default: 0)', () => {
     const { result } = renderHook(() =>
       useCountdown({ countStart: 60, intervalMs: 1000 }),
     )
@@ -142,7 +142,7 @@ describe('useCountdown()', () => {
     expect(result.current[0]).toBe(0)
   })
 
-  test('should stop at custom countStop', () => {
+  it('should stop at custom countStop', () => {
     const { result } = renderHook(() =>
       useCountdown({ countStart: 60, intervalMs: 1000, countStop: 30 }),
     )
@@ -166,7 +166,7 @@ describe('useCountdown()', () => {
     expect(result.current[0]).toBe(30)
   })
 
-  test('should stop countdown', () => {
+  it('should stop countdown', () => {
     const { result } = renderHook(() =>
       useCountdown({ countStart: 60, intervalMs: 1000 }),
     )
@@ -185,7 +185,7 @@ describe('useCountdown()', () => {
     expect(result.current[0]).toBe(58)
   })
 
-  test('should stop reversed countdown', () => {
+  it('should stop reversed countdown', () => {
     const { result } = renderHook(() =>
       useCountdown({
         countStart: 10,
@@ -215,7 +215,7 @@ describe('useCountdown()', () => {
     expect(result.current[0]).toBe(20)
   })
 
-  test('should reset count', () => {
+  it('should reset count', () => {
     const { result } = renderHook(() =>
       useCountdown({ countStart: 60, intervalMs: 1000 }),
     )

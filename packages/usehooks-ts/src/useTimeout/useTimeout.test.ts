@@ -3,7 +3,7 @@ import { act, renderHook } from '@testing-library/react'
 import { useTimeout } from './useTimeout'
 
 describe('useTimeout()', () => {
-  test('should call the callback after 1 min', () => {
+  it('should call the callback after 1 min', () => {
     jest.useFakeTimers()
 
     const delay = 60000
@@ -20,7 +20,7 @@ describe('useTimeout()', () => {
     expect(callback).toHaveBeenCalledTimes(1)
   })
 
-  test('should not do anything if "delay" is null', () => {
+  it('should not do anything if "delay" is null', () => {
     jest.useFakeTimers()
 
     const delay = null

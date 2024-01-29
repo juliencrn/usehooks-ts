@@ -7,7 +7,7 @@ describe('useDebounce()', () => {
     jest.useRealTimers()
   })
 
-  test('should return debounce value', () => {
+  it('should return debounce value', () => {
     const value = 'value'
     const {
       result: { current: debounceValue },
@@ -16,7 +16,7 @@ describe('useDebounce()', () => {
     expect(value).toBe(debounceValue)
   })
 
-  test('should debounce with default debounce 500 ms', () => {
+  it('should debounce with default debounce 500 ms', () => {
     mockSetTimeout()
     renderHook(() => useDebounce('value'))
 
@@ -24,7 +24,7 @@ describe('useDebounce()', () => {
     expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 500)
   })
 
-  test('should debounce with given debounce', () => {
+  it('should debounce with given debounce', () => {
     mockSetTimeout()
     renderHook(() => useDebounce('value', 1337))
 
@@ -32,7 +32,7 @@ describe('useDebounce()', () => {
     expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1337)
   })
 
-  test('should call clearTimeout on unmount', () => {
+  it('should call clearTimeout on unmount', () => {
     mockClearTimeout()
     const { unmount } = renderHook(() => useDebounce('value'))
     unmount()

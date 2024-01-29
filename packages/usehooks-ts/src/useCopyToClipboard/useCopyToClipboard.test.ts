@@ -20,14 +20,14 @@ describe('useClipboard()', () => {
     global.navigator.clipboard = originalClipboard
   })
 
-  test('should use clipboard', () => {
+  it('should use clipboard', () => {
     const { result } = renderHook(() => useCopyToClipboard())
 
     expect(result.current[0]).toBe(null)
     expect(typeof result.current[1]).toBe('function')
   })
 
-  test('should copy to the clipboard and the state', async () => {
+  it('should copy to the clipboard and the state', async () => {
     const { result } = renderHook(() => useCopyToClipboard())
 
     await act(async () => {

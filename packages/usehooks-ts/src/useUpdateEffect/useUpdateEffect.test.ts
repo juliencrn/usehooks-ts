@@ -3,7 +3,7 @@ import { renderHook } from '@testing-library/react'
 import { useUpdateEffect } from './useUpdateEffect'
 
 describe('use update effect()', () => {
-  test('the callback function should have been called on update', () => {
+  it('the callback function should have been called on update', () => {
     const effect = jest.fn()
     const { rerender } = renderHook(() => useUpdateEffect(effect))
 

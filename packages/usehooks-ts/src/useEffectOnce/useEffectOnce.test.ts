@@ -3,7 +3,7 @@ import { renderHook } from '@testing-library/react'
 import { useEffectOnce } from './useEffectOnce'
 
 describe('use effect once()', () => {
-  test('should be triggered only once', () => {
+  it('should be triggered only once', () => {
     const effect = jest.fn()
     const { rerender } = renderHook(() => useEffectOnce(effect))
 
