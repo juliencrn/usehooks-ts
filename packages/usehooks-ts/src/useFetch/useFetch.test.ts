@@ -2,7 +2,7 @@ import { act, renderHook, waitFor } from '@testing-library/react'
 
 import { useFetch } from './useFetch'
 
-const mockFetch = jest.fn()
+const mockFetch = vitest.fn()
 global.fetch = mockFetch
 
 const TEST_URL = 'https://example.com'

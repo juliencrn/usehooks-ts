@@ -6,12 +6,12 @@ const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 describe('useInterval()', () => {
   afterEach(() => {
-    jest.clearAllMocks()
+    vitest.clearAllMocks()
   })
 
   it('should fire the callback function (1)', async () => {
     const timeout = 500
-    const callback = jest.fn()
+    const callback = vitest.fn()
     renderHook(() => useInterval(callback, timeout))
     await sleep(timeout)
     expect(callback).toHaveBeenCalledTimes(1)
@@ -20,7 +20,7 @@ describe('useInterval()', () => {
   it('should fire the callback function (2)', async () => {
     const timeout = 500
     const earlyTimeout = 400
-    const callback = jest.fn()
+    const callback = vitest.fn()
     renderHook(() => useInterval(callback, timeout))
     await sleep(earlyTimeout)
     expect(callback).not.toHaveBeenCalled()
@@ -29,7 +29,7 @@ describe('useInterval()', () => {
   it('should call set interval on start', () => {
     const timeout = 1200
     mockSetInterval()
-    const callback = jest.fn()
+    const callback = vitest.fn()
     renderHook(() => useInterval(callback, timeout))
     expect(setInterval).toHaveBeenCalledTimes(1)
     expect(setInterval).toHaveBeenCalledWith(expect.any(Function), timeout)
@@ -37,7 +37,7 @@ describe('useInterval()', () => {
 
   it('should call clearTimeout on unmount', () => {
     mockClearInterval()
-    const callback = jest.fn()
+    const callback = vitest.fn()
     const { unmount } = renderHook(() => useInterval(callback, 1200))
     unmount()
     expect(clearInterval).toHaveBeenCalledTimes(1)
@@ -45,11 +45,11 @@ describe('useInterval()', () => {
 })
 
 function mockSetInterval() {
-  jest.useFakeTimers()
-  jest.spyOn(global, 'setInterval')
+  vitest.useFakeTimers()
+  vitest.spyOn(global, 'setInterval')
 }
 
 function mockClearInterval() {
-  jest.useFakeTimers()
-  jest.spyOn(global, 'clearInterval')
+  vitest.useFakeTimers()
+  vitest.spyOn(global, 'clearInterval')
 }

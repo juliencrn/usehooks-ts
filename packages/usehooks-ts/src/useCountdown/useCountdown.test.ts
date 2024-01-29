@@ -2,7 +2,7 @@ import { act, renderHook } from '@testing-library/react'
 
 import { useCountdown } from './useCountdown'
 
-jest.useFakeTimers()
+vitest.useFakeTimers()
 
 describe('useCountdown()', () => {
   describe('depreciated useCountdown()', () => {
@@ -24,7 +24,7 @@ describe('useCountdown()', () => {
 
       act(result.current[1].start)
       act(() => {
-        jest.advanceTimersByTime(1000)
+        vitest.advanceTimersByTime(1000)
       })
 
       expect(result.current[0]).toBe(62)
@@ -37,7 +37,7 @@ describe('useCountdown()', () => {
 
       act(result.current[1].start)
       act(() => {
-        jest.advanceTimersByTime(1000)
+        vitest.advanceTimersByTime(1000)
       })
 
       expect(result.current[0]).toBe(58)
@@ -51,13 +51,13 @@ describe('useCountdown()', () => {
       expect(result.current[0]).toBe(60)
       act(result.current[1].start)
       act(() => {
-        jest.advanceTimersByTime(1000)
+        vitest.advanceTimersByTime(1000)
       })
       act(result.current[1].stop)
       expect(result.current[0]).toBe(58)
 
       act(() => {
-        jest.advanceTimersByTime(1000)
+        vitest.advanceTimersByTime(1000)
       })
 
       expect(result.current[0]).toBe(58)
@@ -70,7 +70,7 @@ describe('useCountdown()', () => {
 
       act(result.current[1].start)
       act(() => {
-        jest.advanceTimersByTime(1000)
+        vitest.advanceTimersByTime(1000)
       })
       act(result.current[1].stop)
       expect(result.current[0]).toBeLessThan(60)
@@ -112,7 +112,7 @@ describe('useCountdown()', () => {
 
     act(result.current[1].startCountdown)
     act(() => {
-      jest.advanceTimersByTime(500)
+      vitest.advanceTimersByTime(500)
     })
 
     expect(result.current[0]).toBe(59)
@@ -130,13 +130,13 @@ describe('useCountdown()', () => {
 
     act(result.current[1].startCountdown)
     act(() => {
-      jest.advanceTimersByTime(60 * 1000)
+      vitest.advanceTimersByTime(60 * 1000)
     })
 
     expect(result.current[0]).toBe(0)
 
     act(() => {
-      jest.advanceTimersByTime(1000)
+      vitest.advanceTimersByTime(1000)
     })
 
     expect(result.current[0]).toBe(0)
@@ -154,13 +154,13 @@ describe('useCountdown()', () => {
 
     act(result.current[1].startCountdown)
     act(() => {
-      jest.advanceTimersByTime(30 * 1000)
+      vitest.advanceTimersByTime(30 * 1000)
     })
 
     expect(result.current[0]).toBe(30)
 
     act(() => {
-      jest.advanceTimersByTime(1000)
+      vitest.advanceTimersByTime(1000)
     })
 
     expect(result.current[0]).toBe(30)
@@ -174,13 +174,13 @@ describe('useCountdown()', () => {
     expect(result.current[0]).toBe(60)
     act(result.current[1].startCountdown)
     act(() => {
-      jest.advanceTimersByTime(2000)
+      vitest.advanceTimersByTime(2000)
     })
 
     expect(result.current[0]).toBe(58)
     act(result.current[1].stopCountdown)
     act(() => {
-      jest.advanceTimersByTime(3000)
+      vitest.advanceTimersByTime(3000)
     })
     expect(result.current[0]).toBe(58)
   })
@@ -198,18 +198,18 @@ describe('useCountdown()', () => {
     expect(result.current[0]).toBe(10)
     act(result.current[1].startCountdown)
     act(() => {
-      jest.advanceTimersByTime(2 * 1000)
+      vitest.advanceTimersByTime(2 * 1000)
     })
 
     expect(result.current[0]).toBe(12)
 
     act(() => {
-      jest.advanceTimersByTime(8 * 1000)
+      vitest.advanceTimersByTime(8 * 1000)
     })
     expect(result.current[0]).toBe(20)
 
     act(() => {
-      jest.advanceTimersByTime(3 * 1000)
+      vitest.advanceTimersByTime(3 * 1000)
     })
 
     expect(result.current[0]).toBe(20)
@@ -222,7 +222,7 @@ describe('useCountdown()', () => {
 
     act(result.current[1].startCountdown)
     act(() => {
-      jest.advanceTimersByTime(1000)
+      vitest.advanceTimersByTime(1000)
     })
     act(result.current[1].stopCountdown)
     expect(result.current[0]).toBeLessThan(60)

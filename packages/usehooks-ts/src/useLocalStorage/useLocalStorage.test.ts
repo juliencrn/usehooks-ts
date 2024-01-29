@@ -11,7 +11,7 @@ describe('useLocalStorage()', () => {
   })
 
   afterEach(() => {
-    jest.clearAllMocks()
+    vitest.clearAllMocks()
   })
 
   it('initial state is in the returned state', () => {

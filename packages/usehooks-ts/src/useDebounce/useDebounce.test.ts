@@ -4,7 +4,7 @@ import { useDebounce } from './useDebounce'
 
 describe('useDebounce()', () => {
   afterEach(() => {
-    jest.useRealTimers()
+    vitest.useRealTimers()
   })
 
   it('should return debounce value', () => {
@@ -42,11 +42,11 @@ describe('useDebounce()', () => {
 })
 
 function mockSetTimeout() {
-  jest.useFakeTimers()
-  jest.spyOn(global, 'setTimeout')
+  vitest.useFakeTimers()
+  vitest.spyOn(global, 'setTimeout')
 }
 
 function mockClearTimeout() {
-  jest.useFakeTimers()
-  jest.spyOn(global, 'clearTimeout')
+  vitest.useFakeTimers()
+  vitest.spyOn(global, 'clearTimeout')
 }

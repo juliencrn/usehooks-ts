@@ -8,14 +8,14 @@ describe('useClipboard()', () => {
 
   beforeEach(() => {
     const mockClipboard = {
-      writeText: jest.fn(),
+      writeText: vitest.fn(),
     }
     // @ts-ignore mock clipboard
     global.navigator.clipboard = mockClipboard
   })
 
   afterEach(() => {
-    jest.resetAllMocks()
+    vitest.resetAllMocks()
     // @ts-ignore mock clipboard
     global.navigator.clipboard = originalClipboard
   })

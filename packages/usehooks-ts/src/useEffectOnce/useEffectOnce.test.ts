@@ -4,7 +4,7 @@ import { useEffectOnce } from './useEffectOnce'
 
 describe('use effect once()', () => {
   it('should be triggered only once', () => {
-    const effect = jest.fn()
+    const effect = vitest.fn()
     const { rerender } = renderHook(() => useEffectOnce(effect))
 
     expect(effect).toHaveBeenCalledTimes(1)
