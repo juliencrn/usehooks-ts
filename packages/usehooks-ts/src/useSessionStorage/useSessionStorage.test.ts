@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react'
 
-import { mockStorage } from '../../mocks'
+import { mockStorage } from '../../tests/mocks'
 import { useSessionStorage } from './useSessionStorage'
 
 mockStorage('sessionStorage')
