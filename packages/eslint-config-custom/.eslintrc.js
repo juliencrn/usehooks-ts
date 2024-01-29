@@ -82,16 +82,12 @@ module.exports = {
 
     // Specials rules for testing
     {
-      extends: ['plugin:jest/recommended'],
+      extends: ['plugin:vitest/recommended'],
       files: ['**/*.test.ts'],
-      plugins: ['jest'],
-      env: {
-        jest: true,
-      },
+      plugins: ['vitest'],
       rules: {
         // you should turn the original rule off *only* for test files
         '@typescript-eslint/unbound-method': 'off',
-        'jest/unbound-method': 'error',
       },
     },
   ],
