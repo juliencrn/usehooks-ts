@@ -5,81 +5,6 @@ import { useCountdown } from './useCountdown'
 vitest.useFakeTimers()
 
 describe('useCountdown()', () => {
-  describe('depreciated useCountdown()', () => {
-    it('should initialize', () => {
-      const { result } = renderHook(() =>
-        useCountdown({ seconds: 60, interval: 500, isIncrement: false }),
-      )
-
-      expect(result.current[0]).toBe(60)
-      expect(typeof result.current[1].start).toBe('function')
-      expect(typeof result.current[1].stop).toBe('function')
-      expect(typeof result.current[1].reset).toBe('function')
-    })
-
-    it('should increment count', () => {
-      const { result } = renderHook(() =>
-        useCountdown({ seconds: 60, interval: 500, isIncrement: true }),
-      )
-
-      act(result.current[1].start)
-      act(() => {
-        vitest.advanceTimersByTime(1000)
-      })
-
-      expect(result.current[0]).toBe(62)
-    })
-
-    it('should decrement count', () => {
-      const { result } = renderHook(() =>
-        useCountdown({ seconds: 60, interval: 500 }),
-      )
-
-      act(result.current[1].start)
-      act(() => {
-        vitest.advanceTimersByTime(1000)
-      })
-
-      expect(result.current[0]).toBe(58)
-    })
-
-    it('should stop countdown', () => {
-      const { result } = renderHook(() =>
-        useCountdown({ seconds: 60, interval: 500 }),
-      )
-
-      expect(result.current[0]).toBe(60)
-      act(result.current[1].start)
-      act(() => {
-        vitest.advanceTimersByTime(1000)
-      })
-      act(result.current[1].stop)
-      expect(result.current[0]).toBe(58)
-
-      act(() => {
-        vitest.advanceTimersByTime(1000)
-      })
-
-      expect(result.current[0]).toBe(58)
-    })
-
-    it('should reset count', () => {
-      const { result } = renderHook(() =>
-        useCountdown({ seconds: 60, interval: 500 }),
-      )
-
-      act(result.current[1].start)
-      act(() => {
-        vitest.advanceTimersByTime(1000)
-      })
-      act(result.current[1].stop)
-      expect(result.current[0]).toBeLessThan(60)
-
-      act(result.current[1].reset)
-      expect(result.current[0]).toBe(60)
-    })
-  })
-
   it('should return callable functions', () => {
     const { result } = renderHook(() =>
       useCountdown({ countStart: 60, intervalMs: 500, isIncrement: false }),
@@ -89,6 +14,32 @@ describe('useCountdown()', () => {
     expect(typeof result.current[1].startCountdown).toBe('function')
     expect(typeof result.current[1].stopCountdown).toBe('function')
     expect(typeof result.current[1].resetCountdown).toBe('function')
+  })
+
+  it('should increment count', () => {
+    const { result } = renderHook(() =>
+      useCountdown({ countStart: 60, intervalMs: 500, isIncrement: true }),
+    )
+
+    act(result.current[1].startCountdown)
+    act(() => {
+      vitest.advanceTimersByTime(1000)
+    })
+
+    expect(result.current[0]).toBe(62)
+  })
+
+  it('should decrement count', () => {
+    const { result } = renderHook(() =>
+      useCountdown({ countStart: 60, intervalMs: 500 }),
+    )
+
+    act(result.current[1].startCountdown)
+    act(() => {
+      vitest.advanceTimersByTime(1000)
+    })
+
+    expect(result.current[0]).toBe(58)
   })
 
   it('should accept countStart', () => {

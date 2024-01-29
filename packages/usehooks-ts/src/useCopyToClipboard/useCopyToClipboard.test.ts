@@ -2,7 +2,7 @@ import { act, renderHook } from '@testing-library/react'
 
 import { useCopyToClipboard } from './useCopyToClipboard'
 
-describe('useClipboard()', () => {
+describe('useCopyToClipboard()', () => {
   const originalClipboard = { ...global.navigator.clipboard }
   const mockData = 'Test value'
 
