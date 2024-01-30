@@ -13,3 +13,11 @@ Returns a debounced version of the provided value, along with a function to upda
 ### Returns
 
 An array containing the debounced value and the function to update it.
+
+### Dependency
+
+This hook requires [`lodash.debounce`](https://www.npmjs.com/package/lodash.debounce) to be installed.
+
+### Related hooks
+
+- [`useDebounceCallback`](/react-hook/use-debounce-callback): `useDebounceValue` is built on top of `useDebounceCallback`, it gives more control.

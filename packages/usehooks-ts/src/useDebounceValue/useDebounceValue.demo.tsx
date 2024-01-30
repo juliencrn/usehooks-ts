@@ -1,19 +1,15 @@
-import { useState } from 'react'
-
 import { useDebounceValue } from './useDebounceValue'
 
-export default function Component() {
-  const [value, setValue] = useState('')
-  const debouncedValue = useDebounceValue(value, 500)
+export default function Component({ defaultValue = 'John' }) {
+  const [debouncedValue, setValue] = useDebounceValue(defaultValue, 500)
 
   return (
     <div>
-      <p>Real-time value: {value}</p>
       <p>Debounced value: {debouncedValue}</p>
 
       <input
         type="text"
-        value={value}
+        defaultValue={defaultValue}
         onChange={event => setValue(event.target.value)}
       />
     </div>

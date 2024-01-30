@@ -9,3 +9,11 @@ Creates a debounced version of a callback function.
 ### Returns
 
 A debounced version of the original callback along with control functions.
+
+### Dependency
+
+This hook requires [`lodash.debounce`](https://www.npmjs.com/package/lodash.debounce) to be installed.
+
+### Related hooks
+
+- [`useDebounceValue`](/react-hook/use-debounce-value): Built on top of `useDebounceCallback`, it returns the debounce value instead
