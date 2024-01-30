@@ -99,7 +99,7 @@ export function useDebounceCallback<T extends (...args: any) => ReturnType<T>>(
     }
 
     wrappedFunc.isPending = () => {
-      return debouncedFuncInstance !== undefined
+      return !!debouncedFunc.current
     }
 
     wrappedFunc.flush = () => {
