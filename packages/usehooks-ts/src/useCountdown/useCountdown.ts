@@ -100,7 +100,7 @@ export function useCountdown(
     intervalMs = countdownOptions.interval
     isIncrement = countdownOptions.isIncrement
   } else {
-    // eslint-disable-next-line @typescript-eslint/no-extra-semi
+    // eslint-disable-next-line @typescript-eslint/no-extra-semi, no-extra-semi
     ;({ countStart, intervalMs, isIncrement, countStop } = countdownOptions)
   }
 

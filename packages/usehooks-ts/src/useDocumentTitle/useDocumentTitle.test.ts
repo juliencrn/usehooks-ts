@@ -4,7 +4,9 @@ import { useDocumentTitle } from './useDocumentTitle'
 
 describe('useDocumentTitle()', () => {
   it('title should be in the document', () => {
-    renderHook(() => useDocumentTitle('foo'))
+    renderHook(() => {
+      useDocumentTitle('foo')
+    })
     expect(window.document.title).toEqual('foo')
   })
 })

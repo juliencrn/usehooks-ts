@@ -5,7 +5,7 @@ import { useImageOnLoad } from './useImageOnLoad'
 export default function Component() {
   const { handleImageOnLoad, css } = useImageOnLoad()
 
-  const style: { [key: string]: CSSProperties } = {
+  const style: Record<string, CSSProperties> = {
     wrap: {
       position: 'relative',
       width: 400,
@@ -25,14 +25,14 @@ export default function Component() {
     <div style={style.wrap}>
       {/* Small image load fast */}
       <img
-        style={{ ...style.image, ...(css.thumbnail as CSSProperties) }}
+        style={{ ...style.image, ...css.thumbnail }}
         src="https://via.placeholder.com/150"
         alt="thumbnail"
       />
       {/* Full size image */}
       <img
         onLoad={handleImageOnLoad}
-        style={{ ...style.image, ...(css.fullSize as CSSProperties) }}
+        style={{ ...style.image, ...css.fullSize }}
         src="https://via.placeholder.com/600"
         alt="fullImage"
       />

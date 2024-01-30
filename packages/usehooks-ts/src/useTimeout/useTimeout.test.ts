@@ -9,7 +9,9 @@ describe('useTimeout()', () => {
     const delay = 60000
     const callback = vitest.fn()
 
-    renderHook(() => useTimeout(callback, delay))
+    renderHook(() => {
+      useTimeout(callback, delay)
+    })
 
     expect(callback).not.toHaveBeenCalled()
 
@@ -26,7 +28,9 @@ describe('useTimeout()', () => {
     const delay = null
     const callback = vitest.fn()
 
-    renderHook(() => useTimeout(callback, delay))
+    renderHook(() => {
+      useTimeout(callback, delay)
+    })
 
     expect(callback).not.toHaveBeenCalled()
 

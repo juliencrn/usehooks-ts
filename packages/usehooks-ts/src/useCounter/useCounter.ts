@@ -28,11 +28,17 @@ interface UseCounterOutput {
  * setCount(10); // Sets count to 10
  */
 export function useCounter(initialValue?: number): UseCounterOutput {
-  const [count, setCount] = useState(initialValue || 0)
+  const [count, setCount] = useState(initialValue ?? 0)
 
-  const increment = () => setCount(x => x + 1)
-  const decrement = () => setCount(x => x - 1)
-  const reset = () => setCount(initialValue || 0)
+  const increment = () => {
+    setCount(x => x + 1)
+  }
+  const decrement = () => {
+    setCount(x => x - 1)
+  }
+  const reset = () => {
+    setCount(initialValue ?? 0)
+  }
 
   return {
     count,

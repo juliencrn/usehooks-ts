@@ -27,7 +27,7 @@ export function useDebounceValue<T>(
     equalityFn?: (left: T, right: T) => boolean
   },
 ): [T, DebouncedState<(value: T) => void>] {
-  const eq = options?.equalityFn || ((left: T, right: T) => left === right)
+  const eq = options?.equalityFn ?? ((left: T, right: T) => left === right)
   const unwrappedInitialValue =
     initialValue instanceof Function ? initialValue() : initialValue
   const [debouncedValue, setDebouncedValue] = useState<T>(unwrappedInitialValue)

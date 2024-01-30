@@ -2,12 +2,6 @@ import { useCallback, useEffect, useState } from 'react'
 
 import { useEventListener } from '../useEventListener'
 
-/**
- * Represents the possible values for the stored value in local storage.
- * @template T - The type of the stored value.
- */
-type Value<T> = T | null
-
 const IS_SERVER = typeof window === 'undefined'
 
 /**
@@ -33,11 +27,11 @@ interface Options<T> {
 export function useReadLocalStorage<T>(
   key: string,
   options: Options<T> = {},
-): Value<T> {
+): T | null {
   // Pass null as initial value to support hydration server-client
-  const [storedValue, setStoredValue] = useState<Value<T>>(null)
+  const [storedValue, setStoredValue] = useState<T | null>(null)
 
-  const deserializer = useCallback<(value: string) => T>(
+  const deserializer = useCallback<(value: string) => T | null>(
     value => {
       if (options.deserializer) {
         return options.deserializer(value)
@@ -46,14 +40,23 @@ export function useReadLocalStorage<T>(
       if (value === 'undefined') {
         return undefined as unknown as T
       }
-      return JSON.parse(value)
+
+      let parsed: unknown
+      try {
+        parsed = JSON.parse(value)
+      } catch (error) {
+        console.error('Error parsing JSON:', error)
+        return null
+      }
+
+      return parsed as T
     },
     [options],
   )
 
   // Get from local storage then
   // parse stored json or return initialValue
-  const readValue = useCallback((): Value<T> => {
+  const readValue = useCallback((): T | null => {
     // Prevent build error "window is undefined" but keep keep working
     if (IS_SERVER) {
       return null

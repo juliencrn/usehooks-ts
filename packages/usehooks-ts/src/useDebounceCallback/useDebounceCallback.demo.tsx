@@ -5,9 +5,7 @@ import { useDebounceCallback } from './useDebounceCallback'
 export default function Component() {
   const [value, setValue] = useState('')
 
-  const debounced = useDebounceCallback(value => {
-    setValue(value)
-  }, 500)
+  const debounced = useDebounceCallback(setValue, 500)
 
   return (
     <div>
