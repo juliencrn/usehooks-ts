@@ -34,6 +34,7 @@
     "@testing-library/jest-dom": "^6.3.0",
     "@testing-library/react": "^14.0.0",
     "@turbo/gen": "^1.11.3",
+    "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^18.7.18",
     "@types/react": "18.2.48",
     "@vitejs/plugin-react": "^4.2.1",
@@ -48,7 +49,13 @@
     "vitest": "^1.2.2"
   },
   "peerDependencies": {
+    "lodash.debounce": "^4",
     "react": "^16.8.0  || ^17 || ^18"
+  },
+  "peerDependenciesMeta": {
+    "lodash.debounce": {
+      "optional": true
+    }
   },
   "engines": {
     "node": ">=16.15.0"
