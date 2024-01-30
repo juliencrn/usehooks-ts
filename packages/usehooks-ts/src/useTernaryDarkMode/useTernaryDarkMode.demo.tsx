@@ -24,9 +24,9 @@ export default function Component() {
         <br />
         <select
           name="select-ternaryDarkMode"
-          onChange={ev =>
+          onChange={ev => {
             setTernaryDarkMode(ev.target.value as TernaryDarkMode)
-          }
+          }}
           value={ternaryDarkMode}
         >
           <option value="light">light</option>

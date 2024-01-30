@@ -15,7 +15,13 @@ export default function Component() {
   return (
     <div>
       <p>Open your console</p>
-      <button onClick={() => setData(Date.now())}>Update data</button>
+      <button
+        onClick={() => {
+          setData(Date.now())
+        }}
+      >
+        Update data
+      </button>
     </div>
   )
 }

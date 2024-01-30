@@ -14,7 +14,13 @@ export default function Component() {
     <div>
       <p>Open your console</p>
       <p>Is first render: {isFirst ? 'yes' : 'no'}</p>
-      <button onClick={() => setData(Date.now())}>Update data</button>
+      <button
+        onClick={() => {
+          setData(Date.now())
+        }}
+      >
+        Update data
+      </button>
     </div>
   )
 }

@@ -33,7 +33,7 @@ describe('useDebounceValue()', () => {
     expect(result.current[0]).toBe('update3')
   })
 
-  it('should handle options', async () => {
+  it('should handle options', () => {
     const delay = 500
     const { result } = renderHook(() =>
       useDebounceValue('initial', delay, { leading: true }),
