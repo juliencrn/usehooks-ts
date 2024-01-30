@@ -44,7 +44,9 @@ describe('useEventListener()', () => {
     const handler = vitest.fn()
     const options = undefined
 
-    const { unmount } = renderHook(() => useEventListener(eventName, handler))
+    const { unmount } = renderHook(() => {
+      useEventListener(eventName, handler)
+    })
 
     expect(windowAddEventListenerSpy).toHaveBeenCalledWith(
       eventName,
@@ -66,9 +68,9 @@ describe('useEventListener()', () => {
     const handler = vitest.fn()
     const options = undefined
 
-    const { unmount } = renderHook(() =>
-      useEventListener(eventName, handler, ref, options),
-    )
+    const { unmount } = renderHook(() => {
+      useEventListener(eventName, handler, ref, options)
+    })
 
     expect(refAddEventListenerSpy).toHaveBeenCalledTimes(1)
     expect(refAddEventListenerSpy).toHaveBeenCalledWith(
@@ -91,9 +93,9 @@ describe('useEventListener()', () => {
     const handler = vitest.fn()
     const options = undefined
 
-    const { unmount } = renderHook(() =>
-      useEventListener(eventName, handler, docRef, options),
-    )
+    const { unmount } = renderHook(() => {
+      useEventListener(eventName, handler, docRef, options)
+    })
 
     expect(docAddEventListenerSpy).toHaveBeenCalledTimes(1)
     expect(docAddEventListenerSpy).toHaveBeenCalledWith(
@@ -120,7 +122,9 @@ describe('useEventListener()', () => {
       capture: true,
     }
 
-    renderHook(() => useEventListener(eventName, handler, undefined, options))
+    renderHook(() => {
+      useEventListener(eventName, handler, undefined, options)
+    })
 
     expect(windowAddEventListenerSpy).toHaveBeenCalledWith(
       eventName,
@@ -133,7 +137,9 @@ describe('useEventListener()', () => {
     const eventName = 'click'
     const handler = vitest.fn()
 
-    renderHook(() => useEventListener(eventName, handler, ref))
+    renderHook(() => {
+      useEventListener(eventName, handler, ref)
+    })
 
     fireEvent.click(ref.current)
 
@@ -144,8 +150,12 @@ describe('useEventListener()', () => {
     const clickHandler = vitest.fn()
     const keydownHandler = vitest.fn()
 
-    renderHook(() => useEventListener('click', clickHandler, ref))
-    renderHook(() => useEventListener('keydown', keydownHandler, ref))
+    renderHook(() => {
+      useEventListener('click', clickHandler, ref)
+    })
+    renderHook(() => {
+      useEventListener('keydown', keydownHandler, ref)
+    })
 
     fireEvent.click(ref.current)
     fireEvent.keyDown(ref.current)

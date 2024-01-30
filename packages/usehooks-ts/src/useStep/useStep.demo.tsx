@@ -20,7 +20,13 @@ export default function Component() {
       <button onClick={goToNextStep}>Go to next step</button>
       <button onClick={goToPrevStep}>Go to previous step</button>
       <button onClick={reset}>Reset</button>
-      <button onClick={() => setStep(3)}>Set to step 3</button>
+      <button
+        onClick={() => {
+          setStep(3)
+        }}
+      >
+        Set to step 3
+      </button>
     </>
   )
 }

@@ -6,9 +6,8 @@
  */
 export function useSsr() {
   const isDOM =
-    typeof window !== 'undefined' &&
-    window.document &&
-    window.document.documentElement
+    // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
+    typeof window !== 'undefined' && !!window?.document?.documentElement
 
   return {
     isBrowser: isDOM,

@@ -42,7 +42,7 @@ function useEventListener<K extends keyof DocumentEventMap>(
  * @template KW - The type of event for window events.
  * @template KH - The type of event for HTML element events.
  * @template KM - The type of event for media query list events.
- * @template T - The type of the DOM element (default is `void`).
+ * @template T - The type of the DOM element (default is `HTMLElement`).
  * @param {KW | KH | KM} eventName - The name of the event to listen for.
  * @param {(event: WindowEventMap[KW] | HTMLElementEventMap[KH] | MediaQueryListEventMap[KM] | Event) => void} handler - The event handler function.
  * @param {RefObject<T>} [element] - The DOM element or media query list to attach the event listener to (optional).
@@ -64,7 +64,7 @@ function useEventListener<
   KW extends keyof WindowEventMap,
   KH extends keyof HTMLElementEventMap,
   KM extends keyof MediaQueryListEventMap,
-  T extends HTMLElement | MediaQueryList | void = void,
+  T extends HTMLElement | MediaQueryList = HTMLElement,
 >(
   eventName: KW | KH | KM,
   handler: (
@@ -91,7 +91,9 @@ function useEventListener<
     if (!(targetElement && targetElement.addEventListener)) return
 
     // Create event listener that calls handler function stored in ref
-    const listener: typeof handler = event => savedHandler.current(event)
+    const listener: typeof handler = event => {
+      savedHandler.current(event)
+    }
 
     targetElement.addEventListener(eventName, listener, options)
 

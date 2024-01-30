@@ -5,7 +5,7 @@ import { useHover } from './useHover'
 
 describe('useHover()', () => {
   const el = {
-    current: document.createElement('div') as HTMLDivElement,
+    current: document.createElement('div'),
   }
 
   it('result must be initially false', () => {

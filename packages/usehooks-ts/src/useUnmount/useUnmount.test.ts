@@ -6,7 +6,9 @@ describe('useUnmount()', () => {
   test('should call the cleanup function on unmount', () => {
     const cleanupMock = vitest.fn()
 
-    const { unmount } = renderHook(() => useUnmount(cleanupMock))
+    const { unmount } = renderHook(() => {
+      useUnmount(cleanupMock)
+    })
 
     expect(cleanupMock).not.toHaveBeenCalled()
 

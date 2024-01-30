@@ -4,15 +4,17 @@ import { useElementSize } from './useElementSize'
 
 const setupHook = () => renderHook(() => useElementSize())
 
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const originalOffsetHeight = Object.getOwnPropertyDescriptor(
   HTMLElement.prototype,
   'offsetHeight',
-) as PropertyDescriptor
+)!
 
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const originalOffsetWidth = Object.getOwnPropertyDescriptor(
   HTMLElement.prototype,
   'offsetWidth',
-) as PropertyDescriptor
+)!
 
 const resizeElement = (
   node: HTMLElement,

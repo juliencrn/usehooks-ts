@@ -80,21 +80,18 @@ export function useSessionStorage<T>(
         return undefined as unknown as T
       }
 
-      const parsed = JSON.parse(value)
+      const defaultValue =
+        initialValue instanceof Function ? initialValue() : initialValue
 
-      if (initialValue instanceof Set) {
-        return new Set(parsed)
+      let parsed: unknown
+      try {
+        parsed = JSON.parse(value)
+      } catch (error) {
+        console.error('Error parsing JSON:', error)
+        return defaultValue // Return initialValue if parsing fails
       }
 
-      if (initialValue instanceof Map) {
-        return new Map(Object.entries(parsed))
-      }
-
-      if (initialValue instanceof Date) {
-        return new Date(parsed)
-      }
-
-      return parsed
+      return parsed as T
     },
     [options, initialValue],
   )

@@ -11,10 +11,18 @@ const otherValues: MapOrEntries<string, string> = [
 export default function Component() {
   const [map, actions] = useMap<string, string>(initialValues)
 
-  const set = () => actions.set(String(Date.now()), '📦')
-  const setAll = () => actions.setAll(otherValues)
-  const reset = () => actions.reset()
-  const remove = () => actions.remove('hello')
+  const set = () => {
+    actions.set(String(Date.now()), '📦')
+  }
+  const setAll = () => {
+    actions.setAll(otherValues)
+  }
+  const reset = () => {
+    actions.reset()
+  }
+  const remove = () => {
+    actions.remove('hello')
+  }
 
   return (
     <div>

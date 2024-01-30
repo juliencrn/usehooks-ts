@@ -51,5 +51,5 @@ export const getPosts = (): Post[] => {
 export const getPost = (slug: string): Option<Post> => {
   const allPosts = getPosts()
   const post = allPosts.find(post => post.slug === slug)
-  return post || null
+  return post ?? null
 }

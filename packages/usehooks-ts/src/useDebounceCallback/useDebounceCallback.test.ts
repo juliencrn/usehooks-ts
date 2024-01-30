@@ -47,7 +47,7 @@ describe('useDebounceCallback()', () => {
     expect(debouncedCallback).toHaveBeenCalledTimes(1)
   })
 
-  it('should debounce the callback function', async () => {
+  it('should debounce the callback function', () => {
     const callback = vitest.fn()
     const { result } = renderHook(() => useDebounceCallback(callback, 100))
 
@@ -66,7 +66,7 @@ describe('useDebounceCallback()', () => {
     expect(callback).toBeCalledWith('test3')
   })
 
-  it('should cancel the debounced callback', async () => {
+  it('should cancel the debounced callback', () => {
     const delay = 500
     const debouncedCallback = vitest.fn()
     const { result } = renderHook(() =>

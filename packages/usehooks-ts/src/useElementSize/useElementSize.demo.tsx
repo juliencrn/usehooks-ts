@@ -6,7 +6,9 @@ export default function Component() {
   const [isVisible, setVisible] = useState(true)
   const [squareRef, { width, height }] = useElementSize()
 
-  const toggleVisibility = () => setVisible(x => !x)
+  const toggleVisibility = () => {
+    setVisible(x => !x)
+  }
 
   return (
     <>
