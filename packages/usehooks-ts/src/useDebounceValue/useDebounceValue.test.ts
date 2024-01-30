@@ -1,32 +1,42 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom'
+import { act, renderHook } from '@testing-library/react'
 
 import { useDebounceValue } from './useDebounceValue'
 
 describe('useDebounceValue()', () => {
-  it('should debounce the value', async () => {
-    const { result, waitForNextUpdate } = renderHook(() =>
-      useDebounceValue('initial', 200),
-    )
+  vitest.useFakeTimers()
+
+  it('should debounce the value update', () => {
+    const { result } = renderHook(() => useDebounceValue('initial', 100))
 
     expect(result.current[0]).toBe('initial')
 
     act(() => {
-      result.current[1]('updated')
+      result.current[1]('update1')
+      result.current[1]('update2')
+      result.current[1]('update3')
     })
 
-    // The debounced value should not be updated immediately
     expect(result.current[0]).toBe('initial')
 
-    // Wait for the debounce interval to elapse
-    await waitForNextUpdate()
+    // Advance timers by more than delay
+    act(() => {
+      vitest.advanceTimersByTime(200)
+    })
 
-    // The debounced value should be updated after the interval
-    expect(result.current[0]).toBe('updated')
+    expect(result.current[0]).toBe('update3')
+
+    // Advance timers by more than delay again
+    act(() => {
+      vitest.advanceTimersByTime(200)
+    })
+
+    expect(result.current[0]).toBe('update3')
   })
 
   it('should handle options', async () => {
+    const delay = 500
     const { result } = renderHook(() =>
-      useDebounceValue('initial', 200, { leading: true }),
+      useDebounceValue('initial', delay, { leading: true }),
     )
 
     expect(result.current[0]).toBe('initial')
@@ -39,7 +49,7 @@ describe('useDebounceValue()', () => {
     expect(result.current[0]).toBe('updated')
 
     // Wait for the debounce interval to elapse
-    jest.advanceTimersByTime(500)
+    vitest.advanceTimersByTime(delay)
 
     // The debounced value should not be updated again after the interval
     expect(result.current[0]).toBe('updated')

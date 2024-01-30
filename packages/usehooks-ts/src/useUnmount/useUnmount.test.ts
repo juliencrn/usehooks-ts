@@ -1,10 +1,10 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom'
+import { act, renderHook } from '@testing-library/react'
 
 import { useUnmount } from './useUnmount'
 
 describe('useUnmount()', () => {
   test('should call the cleanup function on unmount', () => {
-    const cleanupMock = jest.fn()
+    const cleanupMock = vitest.fn()
 
     const { unmount } = renderHook(() => useUnmount(cleanupMock))
 

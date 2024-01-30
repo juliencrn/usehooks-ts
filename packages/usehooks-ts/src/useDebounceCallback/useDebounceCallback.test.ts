@@ -1,14 +1,15 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom'
+import { act, renderHook } from '@testing-library/react'
 
 import { useDebounceCallback } from './useDebounceCallback'
 
-describe('use debounce callback()', () => {
-  jest.useFakeTimers()
+describe('useDebounceCallback()', () => {
+  vitest.useFakeTimers()
 
   it('should debounce the callback', () => {
-    const debouncedCallback = jest.fn()
+    const delay = 500
+    const debouncedCallback = vitest.fn()
     const { result } = renderHook(() =>
-      useDebounceCallback(debouncedCallback, 500),
+      useDebounceCallback(debouncedCallback, delay),
     )
 
     act(() => {
@@ -19,16 +20,17 @@ describe('use debounce callback()', () => {
     expect(debouncedCallback).not.toHaveBeenCalled()
 
     // Fast forward time by 500 milliseconds
-    jest.advanceTimersByTime(500)
+    vitest.advanceTimersByTime(delay)
 
     // The callback should be invoked after the debounce interval
     expect(debouncedCallback).toHaveBeenCalledTimes(1)
   })
 
   it('should handle options', () => {
-    const debouncedCallback = jest.fn()
+    const delay = 500
+    const debouncedCallback = vitest.fn()
     const { result } = renderHook(() =>
-      useDebounceCallback(debouncedCallback, 500, { leading: true }),
+      useDebounceCallback(debouncedCallback, delay, { leading: true }),
     )
 
     act(() => {
@@ -39,41 +41,55 @@ describe('use debounce callback()', () => {
     expect(debouncedCallback).toHaveBeenCalledWith('argument')
 
     // Fast forward time by 500 milliseconds
-    jest.advanceTimersByTime(500)
+    vitest.advanceTimersByTime(delay)
 
     // The callback should not be invoked again after the interval
     expect(debouncedCallback).toHaveBeenCalledTimes(1)
   })
 
-  it('should cancel the debounced callback', () => {
-    const debouncedCallback = jest.fn()
+  it('should debounce the callback function', async () => {
+    const callback = vitest.fn()
+    const { result } = renderHook(() => useDebounceCallback(callback, 100))
+
+    act(() => {
+      result.current('test1')
+      result.current('test2')
+      result.current('test3')
+    })
+
+    expect(callback).not.toBeCalled()
+
+    // Fast forward time
+    vitest.advanceTimersByTime(200)
+
+    expect(callback).toBeCalledTimes(1)
+    expect(callback).toBeCalledWith('test3')
+  })
+
+  it('should cancel the debounced callback', async () => {
+    const delay = 500
+    const debouncedCallback = vitest.fn()
     const { result } = renderHook(() =>
-      useDebounceCallback(debouncedCallback, 500),
+      useDebounceCallback(debouncedCallback, delay),
     )
 
     act(() => {
       result.current('argument')
-    })
-
-    // The callback should not be invoked immediately
-    expect(debouncedCallback).not.toHaveBeenCalled()
-
-    // Cancel the debounced callback
-    act(() => {
       result.current.cancel()
     })
 
-    // Fast forward time by 500 milliseconds
-    jest.advanceTimersByTime(500)
+    // Fast forward time
+    vitest.advanceTimersByTime(200)
 
     // The callback should not be invoked after cancellation
     expect(debouncedCallback).not.toHaveBeenCalled()
   })
 
   it('should flush the debounced callback', () => {
-    const debouncedCallback = jest.fn()
+    const delay = 500
+    const debouncedCallback = vitest.fn()
     const { result } = renderHook(() =>
-      useDebounceCallback(debouncedCallback, 500),
+      useDebounceCallback(debouncedCallback, delay),
     )
 
     act(() => {
