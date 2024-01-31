@@ -13,10 +13,7 @@ import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
  * const isSmallScreen = useMediaQuery('(max-width: 600px)');
  * // Use `isSmallScreen` to conditionally apply styles or logic based on the screen size.
  */
-export function useMediaQuery(
-  query: string,
-  defaultValue: boolean = false,
-): boolean {
+export function useMediaQuery(query: string, defaultValue = false): boolean {
   const [matches, setMatches] = useState<boolean>(defaultValue)
 
   const getMatches = (query: string): boolean => {

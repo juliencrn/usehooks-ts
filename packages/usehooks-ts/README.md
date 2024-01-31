@@ -41,6 +41,8 @@
 - [`useCounter()`](https://usehooks-ts.com/react-hook/use-counter)
 - [`useDarkMode()`](https://usehooks-ts.com/react-hook/use-dark-mode)
 - [`useDebounce()`](https://usehooks-ts.com/react-hook/use-debounce)
+- [`useDebounceCallback()`](https://usehooks-ts.com/react-hook/use-debounce-callback)
+- [`useDebounceValue()`](https://usehooks-ts.com/react-hook/use-debounce-value)
 - [`useDocumentTitle()`](https://usehooks-ts.com/react-hook/use-document-title)
 - [`useEffectOnce()`](https://usehooks-ts.com/react-hook/use-effect-once)
 - [`useElementSize()`](https://usehooks-ts.com/react-hook/use-element-size)
@@ -67,6 +69,7 @@
 - [`useTernaryDarkMode()`](https://usehooks-ts.com/react-hook/use-ternary-dark-mode)
 - [`useTimeout()`](https://usehooks-ts.com/react-hook/use-timeout)
 - [`useToggle()`](https://usehooks-ts.com/react-hook/use-toggle)
+- [`useUnmount()`](https://usehooks-ts.com/react-hook/use-unmount)
 - [`useUpdateEffect()`](https://usehooks-ts.com/react-hook/use-update-effect)
 - [`useWindowSize()`](https://usehooks-ts.com/react-hook/use-window-size)
 

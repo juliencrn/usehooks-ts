@@ -83,9 +83,17 @@ export function useDarkMode(
 
   return {
     isDarkMode,
-    toggle: () => setDarkMode(prev => !prev),
-    enable: () => setDarkMode(true),
-    disable: () => setDarkMode(false),
-    set: value => setDarkMode(value),
+    toggle: () => {
+      setDarkMode(prev => !prev)
+    },
+    enable: () => {
+      setDarkMode(true)
+    },
+    disable: () => {
+      setDarkMode(false)
+    },
+    set: value => {
+      setDarkMode(value)
+    },
   }
 }

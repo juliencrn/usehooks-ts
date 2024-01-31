@@ -17,7 +17,7 @@ interface State<T> {
  * @template T - The type of data stored in the cache.
  * @type {object} Cache
  */
-type Cache<T> = { [url: string]: T }
+type Cache<T> = Record<string, T>
 
 /**
  * Represents the possible actions that can be dispatched in the fetchReducer.

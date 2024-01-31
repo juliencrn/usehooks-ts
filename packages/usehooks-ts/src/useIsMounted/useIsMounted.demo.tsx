@@ -21,7 +21,9 @@ function Child() {
 export default function Component() {
   const [isVisible, setVisible] = useState<boolean>(false)
 
-  const toggleVisibility = () => setVisible(state => !state)
+  const toggleVisibility = () => {
+    setVisible(state => !state)
+  }
 
   return (
     <>

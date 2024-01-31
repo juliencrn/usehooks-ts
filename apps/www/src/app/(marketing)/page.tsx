@@ -69,8 +69,10 @@ async function getGitHubStars(): Promise<string | null> {
       return null
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const json = await response.json()
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/dot-notation
     return parseInt(json['stargazers_count']).toLocaleString()
   } catch (error) {
     return null

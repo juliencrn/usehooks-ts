@@ -1,9 +1,9 @@
-import { waitFor } from '@testing-library/react'
-import { act, renderHook } from '@testing-library/react-hooks/dom'
+import { act, renderHook, waitFor } from '@testing-library/react'
 
 import { useFetch } from './useFetch'
 
-const mockFetch = jest.fn()
+// TODO: Improve fetch() mocking and remove `eslint-disable` comments.
+const mockFetch = vitest.fn()
 global.fetch = mockFetch
 
 const TEST_URL = 'https://example.com'
@@ -24,13 +24,15 @@ describe('useFetch()', () => {
     const mockOptions = {}
     let receivedURL: string | undefined
     let receivedOptions: object | undefined
-    mockFetch.mockImplementation(async (url, options) => {
+    mockFetch.mockImplementation((url, options) => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       receivedURL = url
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       receivedOptions = options
     })
 
     const { result } = renderHook(() => useFetch(TEST_URL, mockOptions))
-    await waitFor(async () => {
+    await waitFor(() => {
       expect(receivedURL).toBeDefined()
     })
 
@@ -42,7 +44,7 @@ describe('useFetch()', () => {
   it('should return the JSON version of the fetched data', async () => {
     let resolvedJSON = false
     const mockData = {}
-    mockFetch.mockImplementation(async () => {
+    mockFetch.mockImplementation(() => {
       return {
         ok: true,
         json: () =>
@@ -54,7 +56,7 @@ describe('useFetch()', () => {
     })
 
     const { result } = renderHook(() => useFetch(TEST_URL))
-    await waitFor(async () => {
+    await waitFor(() => {
       expect(resolvedJSON).toBeTruthy()
     })
 
@@ -64,7 +66,8 @@ describe('useFetch()', () => {
   it('should handle non-ok responses by populating the error state', async () => {
     const mockStatusText = 'The status is bad'
     let receivedURL: string | undefined
-    mockFetch.mockImplementation(async url => {
+    mockFetch.mockImplementation(url => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       receivedURL = url
       return {
         ok: false,
@@ -73,7 +76,7 @@ describe('useFetch()', () => {
     })
 
     const { result } = renderHook(() => useFetch(TEST_URL))
-    await waitFor(async () => {
+    await waitFor(() => {
       expect(receivedURL).toBeDefined()
     })
 
@@ -83,7 +86,7 @@ describe('useFetch()', () => {
   it('should return cached results without calling fetch() when data is in the cache', async () => {
     let resolvedJSON = false
     const mockData = {}
-    mockFetch.mockImplementation(async () => {
+    mockFetch.mockImplementation(() => {
       return {
         ok: true,
         json: () =>
@@ -95,7 +98,7 @@ describe('useFetch()', () => {
     })
 
     const { result, rerender } = renderHook(() => useFetch(TEST_URL))
-    await waitFor(async () => {
+    await waitFor(() => {
       expect(resolvedJSON).toBeTruthy()
     })
     act(() => {
@@ -109,7 +112,7 @@ describe('useFetch()', () => {
 
   it('should cancel the request when the hook is unmounted', async () => {
     let resolvedJSON = false
-    mockFetch.mockImplementation(async () => {
+    mockFetch.mockImplementation(() => {
       return {
         ok: false,
         json: () =>
@@ -122,7 +125,7 @@ describe('useFetch()', () => {
 
     const { result, unmount } = renderHook(() => useFetch(TEST_URL))
     unmount()
-    await waitFor(async () => {
+    await waitFor(() => {
       expect(resolvedJSON).toBeDefined()
     })
 
