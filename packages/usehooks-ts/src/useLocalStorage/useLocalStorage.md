@@ -1,14 +1,12 @@
-Persist the state with local storage so that it remains after a page refresh. This can be useful for a dark theme.
+Persist the state with [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) so that it remains after a page refresh. This can be useful for a dark theme.
 This hook is used in the same way as useState except that you must pass the storage key in the 1st parameter.
-If the window object is not present (as in SSR), `useLocalStorage()` will return the default value.
 
 You can also pass an optional third parameter to use a custom serializer/deserializer.
 
-**Side notes:**
+**Note**: If you use this hook in an SSR context, set the `initializeWithValue` option to `false`.
 
-- If you really want to create a dark theme switch, see [useDarkMode()](/react-hook/use-dark-mode).
-- If you just want read value from local storage, see [useReadLocalStorage()](/react-hook/use-read-local-storage).
+### Related hooks
 
-Related hooks:
-
-- [`useSessionStorage()`](/react-hook/use-session-storage)
+- [`useDarkMode()`](/react-hook/use-dark-mode): Helps create a dark theme switch, built on top of `useLocalStorage()`.
+- [`useReadLocalStorage()`](/react-hook/use-read-local-storage): Read values from local storage.
+- [`useSessionStorage()`](/react-hook/use-session-storage): Its implementation is almost the same of `useLocalStorage()`, but on [session storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) instead.

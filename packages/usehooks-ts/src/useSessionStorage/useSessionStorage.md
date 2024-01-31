@@ -2,6 +2,8 @@ Persist the state with session storage so that it remains after a page refresh. 
 
 You can also pass an optional third parameter to use a custom serializer/deserializer.
 
+**Note**: If you use this hook in an SSR context, set the `initializeWithValue` option to `false`.
+
 Related hooks:
 
 - [`useLocalStorage()`](/react-hook/use-local-storage)
