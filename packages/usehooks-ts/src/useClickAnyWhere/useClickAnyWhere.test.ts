@@ -1,12 +1,13 @@
-import { fireEvent } from '@testing-library/react'
-import { act, renderHook } from '@testing-library/react-hooks'
+import { act, fireEvent, renderHook } from '@testing-library/react'
 
 import { useClickAnyWhere } from './useClickAnyWhere'
 
 describe('useClickAnyWhere()', () => {
-  test('should call handler (0)', () => {
-    const mockHandler: (event: MouseEvent) => void = jest.fn()
-    renderHook(() => useClickAnyWhere(mockHandler))
+  it('should call handler (0)', () => {
+    const mockHandler: (event: MouseEvent) => void = vitest.fn()
+    renderHook(() => {
+      useClickAnyWhere(mockHandler)
+    })
 
     act(() => {
       fireEvent.doubleClick(window)
@@ -15,10 +16,12 @@ describe('useClickAnyWhere()', () => {
     expect(mockHandler).toHaveBeenCalledTimes(0)
   })
 
-  test('should call handler (1) with MouseEvent', () => {
-    const mockHandler: (event: MouseEvent) => void = jest.fn()
+  it('should call handler (1) with MouseEvent', () => {
+    const mockHandler: (event: MouseEvent) => void = vitest.fn()
 
-    renderHook(() => useClickAnyWhere(mockHandler))
+    renderHook(() => {
+      useClickAnyWhere(mockHandler)
+    })
 
     act(() => {
       fireEvent.click(window)
@@ -28,9 +31,11 @@ describe('useClickAnyWhere()', () => {
     expect(mockHandler).toHaveBeenCalledWith(expect.any(MouseEvent))
   })
 
-  test('should call handler (2)', () => {
-    const mockHandler: (event: MouseEvent) => void = jest.fn()
-    renderHook(() => useClickAnyWhere(mockHandler))
+  it('should call handler (2)', () => {
+    const mockHandler: (event: MouseEvent) => void = vitest.fn()
+    renderHook(() => {
+      useClickAnyWhere(mockHandler)
+    })
 
     act(() => {
       fireEvent.click(window)
