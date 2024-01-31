@@ -26,6 +26,7 @@ export function useElementSize<T extends HTMLElement = HTMLDivElement>(
  * A hook for tracking the size of a DOM element.
  * @template T - The type of the DOM element. Defaults to `HTMLDivElement`.
  * @param {?UseElementSizeOptions} [options] - The options for customizing the behavior of the hook (optional).
+ * @param {?boolean} [options.initializeWithValue] - If `true` (default), the hook will initialize reading the element's size. In SSR, you should set it to `false`, returning `{ width: 0, height: 0 }` initially.
  * @returns {[ (node: T | null) => void, Size ]} A tuple containing a ref-setting function and the size of the element.
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-element-size)
  * @example

@@ -32,6 +32,7 @@ export function useReadLocalStorage<T>(
  * @param {string} key - The key associated with the value in local storage.
  * @param {Options<T>} [options] - Additional options for reading the value (optional).
  * @param {(value: string) => T} [options.deserializer] - Custom deserializer function to convert the stored string value to the desired type (optional).
+ * @param {?boolean} [options.initializeWithValue] - If `true` (default), the hook will initialize reading the local storage. In SSR, you should set it to `false`, returning `undefined` initially.
  * @returns {Value<T> | undefined} The stored value, or null if the key is not present or an error occurs.
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-read-local-storage)
  * @example

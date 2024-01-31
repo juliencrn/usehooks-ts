@@ -25,6 +25,7 @@ export function useWindowSize(
 /**
  * Custom hook that tracks the size of the window.
  * @param {?UseWindowSizeOptions} [options] - The options for customizing the behavior of the hook (optional).
+ * @param {?boolean} [options.initializeWithValue] - If `true` (default), the hook will initialize reading the window size. In SSR, you should set it to `false`, returning `undefined` initially.
  * @returns {object} An object containing the width and height of the window.
  * @property {number} width - The width of the window.
  * @property {number} height - The height of the window.

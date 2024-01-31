@@ -50,7 +50,10 @@ export function useTernaryDarkMode(
 
 /**
  * Custom hook for managing ternary (system, dark, light) dark mode with local storage support.
- * @param {TernaryDarkModeOptions | string} [options] - Options or the local storage key for the hook.
+ * @param {?TernaryDarkModeOptions | string} [options] - Options or the local storage key for the hook.
+ * @param {?string} [options.localStorageKey] - The key for storing dark mode preference in local storage (default is `'usehooks-ts-ternary-dark-mode'`).
+ * @param {?TernaryDarkMode} [options.defaultValue] - The default value for the dark mode (default is `'system'`).
+ * @param {?boolean} [options.initializeWithValue] - If `true` (default), the hook will initialize reading `localStorage`. In SSR, you should set it to `false`, returning `undefined` initially.
  * @returns {ReturnedMethods & Partial<ReturnedValues>} An object containing the dark mode state and helper functions.
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-ternary-dark-mode)
  * @example

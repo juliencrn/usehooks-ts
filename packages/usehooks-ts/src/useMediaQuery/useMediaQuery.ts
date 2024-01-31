@@ -36,7 +36,9 @@ export function useMediaQuery(
  * Custom hook for tracking the state of a media query.
  * @param {string} query - The media query to track.
  * @param {boolean | ?UseMediaQueryOptions} [options] - The default value to return if the hook is being run on the server (default is `false`).
- * @returns {boolean} The current state of the media query (true if the query matches, false otherwise).
+ * @param {?boolean} [options.defaultValue] - The default value to return if the hook is being run on the server (default is `false`).
+ * @param {?boolean} [options.initializeWithValue] - If `true` (default), the hook will initialize reading the media query. In SSR, you should set it to `false`, returning `undefined`  or `options.defaultValue` initially.
+ * @returns {boolean | undefined} The current state of the media query (true if the query matches, false otherwise).
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-media-query)
  * @see [MDN Match Media](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)
  * @example
@@ -46,7 +48,7 @@ export function useMediaQuery(
 export function useMediaQuery(
   query: string,
   options?: boolean | Partial<UseMediaQueryOptions<boolean>>,
-): boolean {
+): boolean | undefined {
   // TODO: Refactor this code after the deprecated signature has been removed.
   const defaultValue =
     typeof options === 'boolean' ? options : options?.defaultValue ?? false

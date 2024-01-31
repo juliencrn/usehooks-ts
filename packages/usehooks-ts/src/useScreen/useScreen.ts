@@ -16,6 +16,7 @@ export function useScreen(options?: Partial<UseScreenOptions<true>>): Screen
 /**
  * Custom hook for tracking the screen dimensions and properties.
  * @param {?UseScreenOptions} [options] - The options for customizing the behavior of the hook (optional).
+ * @param {?boolean} [options.initializeWithValue] - If `true` (default), the hook will initialize reading the screen dimensions. In SSR, you should set it to `false`, returning `undefined` initially.
  * @returns {Screen | undefined} The current `Screen` object representing the screen dimensions and properties, or `undefined` if not available.
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-screen)
  * @example

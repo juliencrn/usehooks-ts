@@ -46,7 +46,10 @@ export function useDarkMode(
 
 /**
  * Custom hook that returns the current state of the dark mode.
- * @param  {?boolean | ?DarkModeOptions} [options] the initial value of the dark mode, default `false`.
+ * @param  {?boolean | ?DarkModeOptions} [options] - the initial value of the dark mode, default `false`.
+ * @param  {?boolean} [options.defaultValue] - the initial value of the dark mode, default `false`.
+ * @param  {?string} [options.localStorageKey] - the key to use in the local storage, default `'usehooks-ts-dark-mode'`.
+ * @param  {?boolean} [options.initializeWithValue] - if `true` (default), the hook will initialize reading `localStorage`. In SSR, you should set it to `false`, returning `undefined` or the `defaultValue` initially.
  * @param  {?string} [localStorageKeyProps] the key to use in the local storage, default `'usehooks-ts-dark-mode'`.
  * @returns {DarkModeOutput} An object containing the dark mode's state and its controllers.
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-dark-mode)
