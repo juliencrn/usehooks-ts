@@ -5,13 +5,14 @@ import { useUpdateEffect } from '../useUpdateEffect'
 const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)'
 const LOCAL_STORAGE_KEY = 'usehooks-ts-dark-mode'
 
-type DarkModeOptions = {
+type DarkModeOptions<InitializeWithValue extends boolean | undefined> = {
   defaultValue?: boolean
   localStorageKey?: string
+  initializeWithValue: InitializeWithValue
 }
 
-interface DarkModeOutput {
-  isDarkMode: boolean
+interface DarkModeOutput<T extends boolean | undefined> {
+  isDarkMode: T
   toggle: () => void
   enable: () => void
   disable: () => void
@@ -31,22 +32,17 @@ interface DarkModeOutput {
 export function useDarkMode(
   defaultValue: boolean,
   localStorageKey?: string,
-): DarkModeOutput
+): DarkModeOutput<boolean>
 
-/**
- * Custom hook that returns the current state of the dark mode.
- * @param  {?DarkModeOptions} [options] - Options for the hook.
- * @param {?string} [options.localStorageKey] - The key for storing dark mode preference in local storage (default is `'usehooks-ts-ternary-dark-mode'`).
- * @param {?boolean} [options.defaultValue] - Default value if there's nothing set in local storage (default is `false`).
- * @returns {DarkModeOutput} An object containing the dark mode's state and its controllers.
- * @see [Documentation](https://usehooks-ts.com/react-hook/use-dark-mode)
- * @example
- * const { isDarkMode, toggle, enable, disable, set } = useDarkMode({
- *   defaultValue: false,
- *   localStorageKey: 'my-key',
- * });
- */
-export function useDarkMode(options?: DarkModeOptions): DarkModeOutput
+// SSR version of useDarkMode.
+export function useDarkMode(
+  options: DarkModeOptions<false>,
+): DarkModeOutput<boolean | undefined>
+
+// CSR version of useDarkMode.
+export function useDarkMode(
+  options?: Partial<DarkModeOptions<true>>,
+): DarkModeOutput<boolean>
 
 /**
  * Custom hook that returns the current state of the dark mode.
@@ -58,9 +54,9 @@ export function useDarkMode(options?: DarkModeOptions): DarkModeOutput
  * const { isDarkMode, toggle, enable, disable, set } = useDarkMode({ defaultValue: true });
  */
 export function useDarkMode(
-  options?: boolean | DarkModeOptions,
+  options?: boolean | Partial<DarkModeOptions<boolean>>,
   localStorageKeyProps: string = LOCAL_STORAGE_KEY,
-): DarkModeOutput {
+): DarkModeOutput<boolean | undefined> {
   // TODO: Refactor this code after the deprecated signature has been removed.
   const defaultValue =
     typeof options === 'boolean' ? options : options?.defaultValue ?? false
@@ -68,11 +64,16 @@ export function useDarkMode(
     typeof options === 'boolean'
       ? localStorageKeyProps ?? LOCAL_STORAGE_KEY
       : options?.localStorageKey ?? LOCAL_STORAGE_KEY
+  const initializeWithValue =
+    typeof options === 'boolean'
+      ? undefined
+      : options?.initializeWithValue ?? undefined
 
   const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY)
   const [isDarkMode, setDarkMode] = useLocalStorage<boolean>(
     localStorageKey,
     defaultValue ?? isDarkOS ?? false,
+    { initializeWithValue },
   )
 
   // Update darkMode if os prefers changes

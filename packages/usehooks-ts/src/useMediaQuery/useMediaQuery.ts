@@ -2,8 +2,16 @@ import { useState } from 'react'
 
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
+type UseMediaQueryOptions<InitializeWithValue extends boolean | undefined> = {
+  defaultValue?: boolean
+  initializeWithValue: InitializeWithValue
+}
+
+const IS_SERVER = typeof window === 'undefined'
+
 /**
  * Custom hook for tracking the state of a media query.
+ * @deprecated - this useMediaQuery's signature is deprecated, it now accepts an query parameter and an options object.
  * @param {string} query - The media query to track.
  * @param {?boolean} [defaultValue] - The default value to return if the hook is being run on the server (default is `false`).
  * @returns {boolean} The current state of the media query (true if the query matches, false otherwise).
@@ -13,8 +21,50 @@ import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
  * const isSmallScreen = useMediaQuery('(max-width: 600px)');
  * // Use `isSmallScreen` to conditionally apply styles or logic based on the screen size.
  */
-export function useMediaQuery(query: string, defaultValue = false): boolean {
-  const [matches, setMatches] = useState<boolean>(defaultValue)
+export function useMediaQuery(query: string, defaultValue: boolean): boolean // defaultValue should be false by default
+// SSR version of useMediaQuery.
+export function useMediaQuery(
+  query: string,
+  options: UseMediaQueryOptions<false>,
+): boolean | undefined
+// CSR version of useMediaQuery.
+export function useMediaQuery(
+  query: string,
+  options?: Partial<UseMediaQueryOptions<true>>,
+): boolean
+/**
+ * Custom hook for tracking the state of a media query.
+ * @param {string} query - The media query to track.
+ * @param {boolean | ?UseMediaQueryOptions} [options] - The default value to return if the hook is being run on the server (default is `false`).
+ * @returns {boolean} The current state of the media query (true if the query matches, false otherwise).
+ * @see [Documentation](https://usehooks-ts.com/react-hook/use-media-query)
+ * @see [MDN Match Media](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)
+ * @example
+ * const isSmallScreen = useMediaQuery('(max-width: 600px)');
+ * // Use `isSmallScreen` to conditionally apply styles or logic based on the screen size.
+ */
+export function useMediaQuery(
+  query: string,
+  options?: boolean | Partial<UseMediaQueryOptions<boolean>>,
+): boolean {
+  // TODO: Refactor this code after the deprecated signature has been removed.
+  const defaultValue =
+    typeof options === 'boolean' ? options : options?.defaultValue ?? false
+  let initializeWithValue =
+    typeof options === 'boolean'
+      ? undefined
+      : options?.initializeWithValue ?? undefined
+
+  if (IS_SERVER) {
+    initializeWithValue = false
+  }
+
+  const [matches, setMatches] = useState<boolean>(() => {
+    if (initializeWithValue) {
+      return getMatches(query)
+    }
+    return defaultValue
+  })
 
   const getMatches = (query: string): boolean => {
     if (typeof window !== 'undefined') {

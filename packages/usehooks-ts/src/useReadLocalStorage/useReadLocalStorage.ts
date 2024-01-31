@@ -8,17 +8,31 @@ const IS_SERVER = typeof window === 'undefined'
  * Represents the type for the options available when reading from local storage.
  * @template T - The type of the stored value.
  */
-interface Options<T> {
+interface Options<T, InitializeWithValue extends boolean | undefined> {
   deserializer?: (value: string) => T
+  initializeWithValue: InitializeWithValue
 }
 
+/** Value could be null if it does not exist in LocalStorage */
+type Value<T> = T | null
+
+// SSR version
+export function useReadLocalStorage<T>(
+  key: string,
+  options: Options<T, false>,
+): Value<T> | undefined
+// CSR version
+export function useReadLocalStorage<T>(
+  key: string,
+  options?: Partial<Options<T, true>>,
+): Value<T>
 /**
  * Custom hook for reading a value from local storage, closely related to useLocalStorage().
  * @template T - The type of the stored value.
  * @param {string} key - The key associated with the value in local storage.
  * @param {Options<T>} [options] - Additional options for reading the value (optional).
  * @param {(value: string) => T} [options.deserializer] - Custom deserializer function to convert the stored string value to the desired type (optional).
- * @returns {T | null} The stored value, or null if the key is not present or an error occurs.
+ * @returns {Value<T> | undefined} The stored value, or null if the key is not present or an error occurs.
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-read-local-storage)
  * @example
  * const storedData = useReadLocalStorage('myKey');
@@ -26,12 +40,14 @@ interface Options<T> {
  */
 export function useReadLocalStorage<T>(
   key: string,
-  options: Options<T> = {},
-): T | null {
-  // Pass null as initial value to support hydration server-client
-  const [storedValue, setStoredValue] = useState<T | null>(null)
+  options: Partial<Options<T, boolean>> = {},
+): Value<T> | undefined {
+  let { initializeWithValue = true } = options
+  if (IS_SERVER) {
+    initializeWithValue = false
+  }
 
-  const deserializer = useCallback<(value: string) => T | null>(
+  const deserializer = useCallback<(value: string) => Value<T>>(
     value => {
       if (options.deserializer) {
         return options.deserializer(value)
@@ -56,7 +72,7 @@ export function useReadLocalStorage<T>(
 
   // Get from local storage then
   // parse stored json or return initialValue
-  const readValue = useCallback((): T | null => {
+  const readValue = useCallback((): Value<T> => {
     // Prevent build error "window is undefined" but keep keep working
     if (IS_SERVER) {
       return null
@@ -70,6 +86,13 @@ export function useReadLocalStorage<T>(
       return null
     }
   }, [key, deserializer])
+
+  const [storedValue, setStoredValue] = useState(() => {
+    if (initializeWithValue) {
+      return readValue()
+    }
+    return undefined
+  })
 
   // Listen if localStorage changes
   useEffect(() => {
