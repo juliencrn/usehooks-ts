@@ -3,7 +3,7 @@ import { act, renderHook } from '@testing-library/react'
 import { useUnmount } from './useUnmount'
 
 describe('useUnmount()', () => {
-  test('should call the cleanup function on unmount', () => {
+  it('should call the cleanup function on unmount', () => {
     const cleanupMock = vitest.fn()
 
     const { unmount } = renderHook(() => {
