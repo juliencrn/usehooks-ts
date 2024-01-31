@@ -1,5 +1,28 @@
 # www
 
+## 0.1.4
+
+### Patch Changes
+
+- add1431: Upgrade dependencies
+- 0321342: Make Typescript and typescript-eslint stricter
+- Updated dependencies [4a9fc88]
+- Updated dependencies [add1431]
+- Updated dependencies [add1431]
+- Updated dependencies [4a9fc88]
+- Updated dependencies [a192167]
+- Updated dependencies [0321342]
+- Updated dependencies [382161a]
+- Updated dependencies [5c210c1]
+- Updated dependencies [add1431]
+- Updated dependencies [add1431]
+- Updated dependencies [382161a]
+- Updated dependencies [a192167]
+- Updated dependencies [5c210c1]
+- Updated dependencies [0321342]
+- Updated dependencies [fc8a30e]
+  - usehooks-ts@2.11.0
+
 ## 0.1.3
 
 ### Patch Changes

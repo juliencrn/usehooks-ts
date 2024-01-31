@@ -1,5 +1,27 @@
 # Changelog
 
+## 2.11.0
+
+### Minor Changes
+
+- add1431: Created `useUnmount` hook
+- add1431: Created `useDebounceCallback` and `useDebounceValue` hooks
+- add1431: Depreciated `useDebounce` hook (replaced by `useDebounceCallback` or `useDebounceValue`)
+- fc8a30e: Fix hydration issues in both useScreen and useMediaQuery (Fixes #394, thanks to @bryantcodesart)
+- 4a9fc88: Introduce the SSR-friendly new optional `{ initializeWithValue?: boolean }` parameter to useLocalStorage, useReadLocalStorage, useSessionStorage, useDarkMode, useTernaryDarkMode, useMediaQuery, useScreen, useWindowSize and useElementSize, see #451.
+- 5c210c1: Add `defaultValue` option to `useTernaryDarkMode` and update its signature (using function overload for smooth migration)
+- 5c210c1: Update `useDarkMode` signature (using function overload for smooth migration)
+- 0321342,4a9fc88: Drop `Map`, `Set` and `Date` supports in use\*Storage hooks, it isn't compatible with `useReadLocalStorage` making the API un-consistent. Use a custom serializer/deserializer instead.
+
+### Patch Changes
+
+- add1431: Upgrade dependencies
+- a192167: Upgraded `react` and `@testing-library/react` (thanks to @TheHaff)
+- 0321342: Make Typescript and `@typescript-eslint` stricter to catch bugs sooner
+- 382161a: Depreciate `useImageOnLoad`, too opinionated
+- 382161a: Add JSdoc comments to improve DX via in-IDE documentation
+- a192167: Migrate from `jest` to `vitest` (making test-suite execution 2 times faster)
+
 ## 2.10.0
 
 ### Minor Changes
