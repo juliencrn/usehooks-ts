@@ -9,6 +9,11 @@ export interface UseScriptOptions {
 // Cached script statuses
 const cachedScriptStatuses: Record<string, UseScriptStatus | undefined> = {}
 
+/**
+ * Gets the script element with the specified source URL.
+ * @param {string} src - The source URL of the script to get.
+ * @returns {{ node: HTMLScriptElement | null, status: UseScriptStatus | undefined }} The script element and its loading status.
+ */
 function getScriptNode(src: string) {
   const node: HTMLScriptElement | null = document.querySelector(
     `script[src="${src}"]`,
@@ -23,6 +28,18 @@ function getScriptNode(src: string) {
   }
 }
 
+/**
+ * Custom hook for dynamically loading scripts and tracking their loading status.
+ * @param {string | null} src - The source URL of the script to load. Set to `null` or omit to prevent loading (optional).
+ * @param {UseScriptOptions} [options] - Additional options for controlling script loading (optional).
+ * @param {boolean} [options.shouldPreventLoad] - If `true`, prevents the script from being loaded (optional).
+ * @param {boolean} [options.removeOnUnmount] - If `true`, removes the script from the DOM when the component unmounts (optional).
+ * @see [Documentation](https://usehooks-ts.com/react-hook/use-script)
+ * @returns {UseScriptStatus} The status of the script loading, which can be one of 'idle', 'loading', 'ready', or 'error'.
+ * @example
+ * const scriptStatus = useScript('https://example.com/script.js', { removeOnUnmount: true });
+ * // Access the status of the script loading (e.g., 'loading', 'ready', 'error').
+ */
 export function useScript(
   src: string | null,
   options?: UseScriptOptions,

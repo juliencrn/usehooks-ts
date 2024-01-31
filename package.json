@@ -16,11 +16,10 @@
     "dev": "turbo run dev",
     "build": "turbo run build",
     "test": "turbo run test",
-    "clean": "turbo run clean",
+    "clean": "rimraf .turbo && turbo run clean",
     "format": "prettier --write \"**/*.{json,md,mdx,css,scss,yaml,yml}\"",
     "lint": "turbo run lint",
-    "types-check": "turbo run types-check",
-    "test:coverage": "zx ./scripts/coverage.mjs",
+    "update-testing-issue": "zx ./scripts/updateTestingIssue.mjs",
     "update-readme": "zx ./scripts/updateReadme.mjs",
     "copy-hooks": "rimraf -rf ./apps/www/generated && zx ./scripts/copyHooks.mjs",
     "gen-hook": "turbo gen hook && pnpm format",
@@ -28,13 +27,17 @@
     "changeset-version": "npx changeset version",
     "changeset-publish": "npx changeset publish"
   },
+  "resolutions": {
+    "typescript": "^5.3.3"
+  },
   "devDependencies": {
-    "@changesets/cli": "^2.26.1",
-    "all-contributors-cli": "^6.20.0",
-    "prettier": "^2.5.1",
-    "rimraf": "^3.0.2",
-    "turbo": "^1.9.9",
-    "zx": "^7.2.2"
+    "@changesets/cli": "^2.27.1",
+    "all-contributors-cli": "^6.26.1",
+    "eslint": "^8.42.0",
+    "prettier": "^3.2.3",
+    "rimraf": "^5.0.5",
+    "turbo": "^1.11.3",
+    "zx": "^7.2.3"
   },
   "engines": {
     "node": ">=16.15.0"

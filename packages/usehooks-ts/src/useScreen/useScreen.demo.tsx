@@ -1,4 +1,4 @@
-import { useScreen } from '..'
+import { useScreen } from './useScreen'
 
 export default function Component() {
   const screen = useScreen()

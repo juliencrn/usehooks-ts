@@ -1,4 +1,4 @@
-import { useDarkMode } from '..'
+import { useDarkMode } from './useDarkMode'
 
 export default function Component() {
   const { isDarkMode, toggle, enable, disable } = useDarkMode()

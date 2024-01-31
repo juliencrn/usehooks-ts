@@ -23,8 +23,8 @@
   ],
   "eslint.format.enable": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll": true
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll": "explicit"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "cSpell.words": [

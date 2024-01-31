@@ -1,10 +1,12 @@
-import { useBoolean } from '..'
+import { useBoolean } from './useBoolean'
 
 export default function Component() {
   const { value, setValue, setTrue, setFalse, toggle } = useBoolean(false)
 
   // Just an example to use "setValue"
-  const customToggle = () => setValue((x: boolean) => !x)
+  const customToggle = () => {
+    setValue((x: boolean) => !x)
+  }
 
   return (
     <>

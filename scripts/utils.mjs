@@ -8,6 +8,11 @@ export function isDemoFile(filename) {
   return hookDemoRegex.test(filename)
 }
 
+export function isTestFile(filename) {
+  const hookTestRegex = new RegExp('^use[A-Z][a-zA-Z]*.test.ts$')
+  return hookTestRegex.test(filename)
+}
+
 export function camelToKebabCase(str) {
   return str.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`)
 }

@@ -82,24 +82,61 @@ function copyFile({ source, dest, useSandbox, toMarkdown }) {
     const name = getFileName(dest)
     const extension = source.split('.').reverse()[0]
     const writeStream = fs.createWriteStream(dest)
-    let preCode = '```' + extension
 
     if (toMarkdown) {
-      data = data
-        .split('\n')
-        .map(line => line
-          .replace("from '..'", "from 'usehooks-ts'")
-          .replace(`from './${name}'`, "from 'usehooks-ts'")
-        )
-        .join('\n')
+      data = transformImports(data)
 
       // wrap code into markdown code tags
-      data = preCode + '\r' + data + '```\r'
+      data = '```' + extension + '\r' + data + '```\r'
     }
 
     writeStream.write(data)
     writeStream.end()
 
+    // TODO: Print a one-line message like: "43 hooks have been updated" instead
     console.log(`${name} ${existingFile ? 'updated' : 'created'}`)
   })
+}
+
+/**
+ * Transform this:
+ *
+ * import { useBoolean } from '../useBoolean'
+ * import { useCounter } from '../useCounter'
+ * import { useInterval } from '../useInterval'
+ *
+ * Or this:
+ *
+ * import { useBoolean } from './useBoolean'
+ *
+ * Into this:
+ *
+ * import { useBoolean, useCounter, useInterval } from 'usehooks-ts'
+ */
+function transformImports(data) {
+  // const importRegex = /import { ([^}]+) } from ['"]\.\.\/use([^'"]+)['"]/g
+  const importRegex = /import { ([^}]+) } from ['"]\.\.?(\/[^'"]+)['"]/g
+
+  const imports = Array.from(data.matchAll(importRegex)).map(match => ({
+    importName: match[1],
+    startIndex: match.index,
+    endIndex: match.index + match[0].length,
+  }))
+
+  // If there are imports to transform
+  if (imports.length > 0) {
+    // Concatenate import names and create the new import statement
+    const importNames = imports.map(({ importName }) => importName).join(', ')
+    const newImportStatement = `import { ${importNames} } from 'usehooks-ts'`
+
+    // Replace existing import statements with the new one
+    if (data.indexOf(imports[0].importName) !== -1) {
+      const startIndex = imports[0].startIndex
+      const endIndex = imports[imports.length - 1].endIndex
+
+      data = `${data.slice(0, startIndex)}${newImportStatement}${data.slice(endIndex)}`
+    }
+  }
+
+  return data
 }

@@ -1,4 +1,4 @@
-import { useIsClient } from '..'
+import { useIsClient } from './useIsClient'
 
 export default function Component() {
   const isClient = useIsClient()

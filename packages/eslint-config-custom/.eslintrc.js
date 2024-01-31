@@ -3,16 +3,30 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
+    project: ['./tsconfig.json'],
     ecmaFeatures: {
       jsx: true,
     },
   },
+  ignorePatterns: ['dist', '.eslintrc.*'],
   extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended-type-checked',
+    'plugin:@typescript-eslint/strict-type-checked',
+    'plugin:@typescript-eslint/stylistic-type-checked',
     'plugin:react-hooks/recommended',
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
+    'plugin:import/typescript',
   ],
-  plugins: ['react', 'simple-import-sort', 'prettier', 'jsx-a11y'],
+  plugins: [
+    '@typescript-eslint',
+    'react',
+    'simple-import-sort',
+    'prettier',
+    'jsx-a11y',
+    'eslint-plugin-import',
+  ],
   env: {
     browser: true,
     es6: true,
@@ -24,12 +38,18 @@ module.exports = {
     },
   },
   rules: {
+    // Format
     'prettier/prettier': 'warn',
+
+    // React
     'react/prop-types': 'off',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
+
+    // Import
     'sort-imports': 'off',
     'import/order': 'off',
+    'import/no-cycle': 'error',
     'simple-import-sort/exports': 'warn',
     'simple-import-sort/imports': [
       'warn',
@@ -42,47 +62,38 @@ module.exports = {
         ],
       },
     ],
+
+    // We should absolutely avoid using ts-ignore, but it"s not always possible.
+    // particular when a dependencies types are incorrect.
+    '@typescript-eslint/ban-ts-comment': [
+      'warn',
+      { 'ts-ignore': 'allow-with-description' },
+    ],
+
+    // Allow unused variables that start with an underscore.
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        argsIgnorePattern: '^_',
+        ignoreRestSiblings: true,
+      },
+    ],
+
+    // Disable some TypeScript rules
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/consistent-type-definitions': 'off',
+    '@typescript-eslint/no-unnecessary-condition': 'off',
+    '@typescript-eslint/prefer-ts-expect-error': 'off',
   },
   overrides: [
-    // Typescript related rules
-    {
-      files: ['*.ts', '*.tsx'],
-      plugins: ['@typescript-eslint/eslint-plugin'],
-      extends: ['plugin:@typescript-eslint/recommended'],
-      parserOptions: {
-        project: ['./tsconfig.json'],
-      },
-
-      rules: {
-        // We should absolutely avoid using ts-ignore, but it"s not always possible.
-        // particular when a dependencies types are incorrect.
-        '@typescript-eslint/ban-ts-comment': [
-          'warn',
-          { 'ts-ignore': 'allow-with-description' },
-        ],
-        '@typescript-eslint/explicit-module-boundary-types': 'off',
-        '@typescript-eslint/no-unused-vars': [
-          'warn',
-          {
-            argsIgnorePattern: '^_',
-            ignoreRestSiblings: true,
-          },
-        ],
-      },
-    },
-
     // Specials rules for testing
     {
-      extends: ['plugin:jest/recommended'],
+      extends: ['plugin:vitest/recommended'],
       files: ['**/*.test.ts'],
-      plugins: ['jest'],
-      env: {
-        jest: true,
-      },
+      plugins: ['vitest'],
       rules: {
         // you should turn the original rule off *only* for test files
         '@typescript-eslint/unbound-method': 'off',
-        'jest/unbound-method': 'error',
       },
     },
   ],

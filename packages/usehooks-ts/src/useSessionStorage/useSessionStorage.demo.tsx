@@ -1,4 +1,4 @@
-import { useSessionStorage } from '..'
+import { useSessionStorage } from './useSessionStorage'
 
 export default function Component() {
   const [value, setValue] = useSessionStorage('test-key', 0)
@@ -6,8 +6,20 @@ export default function Component() {
   return (
     <div>
       <p>Count: {value}</p>
-      <button onClick={() => setValue((x: number) => x + 1)}>Increment</button>
-      <button onClick={() => setValue((x: number) => x - 1)}>Decrement</button>
+      <button
+        onClick={() => {
+          setValue((x: number) => x + 1)
+        }}
+      >
+        Increment
+      </button>
+      <button
+        onClick={() => {
+          setValue((x: number) => x - 1)
+        }}
+      >
+        Decrement
+      </button>
     </div>
   )
 }
