@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.12.0
+
+### Minor Changes
+
+- cb6eb5c: Added an optional option param in `useDocumentTitle()` to reset title on un-mount (#345 by @ladislasdellinger)
+
+### Patch Changes
+
+- b8ee088: move `lodash.debounce` to dependencies from peerDependencies
+
 ## 2.11.0
 
 ### Minor Changes
