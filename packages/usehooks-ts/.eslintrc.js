@@ -4,19 +4,15 @@ module.exports = {
     // Track tree-shaking potential error in the lib
     {
       files: ['./src/**/!(*.test|*.spec).ts'],
-      plugins: ['tree-shaking'],
+      extends: ['plugin:jsdoc/recommended'],
+      plugins: ['tree-shaking', 'jsdoc'],
       rules: {
-        'tree-shaking/no-side-effects-in-initialization': 2,
+        'tree-shaking/no-side-effects-in-initialization': 'error',
       },
     },
   ],
   ignorePatterns: ['./dist', './node_modules', './turbo'],
   overrides: [
-    {
-      files: ['*.ts'],
-      extends: ['plugin:jsdoc/recommended'],
-      plugins: ['jsdoc'],
-    },
     {
       files: ['*.test.ts'],
       rules: {

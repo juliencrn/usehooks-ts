@@ -1,13 +1,11 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { DocsPageHeader } from '@/components/docs-page-header'
 import { DocsPager } from '@/components/paper'
 import { Mdx } from '@/components/remote-mdx'
-import {
-  DashboardTableOfContents,
-  TableOfContents,
-} from '@/components/table-of-content'
+import type { TableOfContents } from '@/components/table-of-content'
+import { DashboardTableOfContents } from '@/components/table-of-content'
 import { H2 } from '@/components/ui/components'
 import { siteConfig } from '@/config/site'
 import { getPost, getPosts } from '@/lib/mdx'

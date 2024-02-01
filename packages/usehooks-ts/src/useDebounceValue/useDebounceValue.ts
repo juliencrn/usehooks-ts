@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 
-import { DebouncedState, useDebounceCallback } from '../useDebounceCallback'
+import type { DebouncedState } from '../useDebounceCallback'
+import { useDebounceCallback } from '../useDebounceCallback'
 
 /**
  * Returns a debounced version of the provided value, along with a function to update it.

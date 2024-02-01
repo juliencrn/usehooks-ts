@@ -1,3 +1,4 @@
+import type { LucideProps } from 'lucide-react'
 import {
   AlertTriangle,
   ArrowRight,
@@ -16,7 +17,6 @@ import {
   Laptop,
   Leaf,
   Loader2,
-  LucideProps,
   Moon,
   MoreVertical,
   Pizza,

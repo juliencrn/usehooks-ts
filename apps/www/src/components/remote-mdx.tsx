@@ -2,7 +2,7 @@
 
 import 'highlight.js/styles/github-dark.css'
 
-import { SerializeOptions } from 'next-mdx-remote/dist/types'
+import type { SerializeOptions } from 'next-mdx-remote/dist/types'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import rehypeHighlight from 'rehype-highlight'
 import remarkCodeImport from 'remark-code-import'

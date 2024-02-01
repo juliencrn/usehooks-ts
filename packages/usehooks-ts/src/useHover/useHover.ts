@@ -1,4 +1,6 @@
-import { RefObject, useState } from 'react'
+import { useState } from 'react'
+
+import type { RefObject } from 'react'
 
 import { useEventListener } from '../useEventListener'
 

@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/heading-has-content */
 import 'highlight.js/styles/github-dark.css'
 
-import { ComponentProps } from 'react'
-
 import Link from 'next/link'
+import type { ComponentProps } from 'react'
 
 import { cn } from '@/lib/utils'
 

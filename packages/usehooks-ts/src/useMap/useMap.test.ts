@@ -1,6 +1,7 @@
 import { act, renderHook } from '@testing-library/react'
 
-import { MapOrEntries, useMap } from './useMap'
+import type { MapOrEntries } from './useMap'
+import { useMap } from './useMap'
 
 describe('useMap()', () => {
   it('should be ok when initiated with a map', () => {

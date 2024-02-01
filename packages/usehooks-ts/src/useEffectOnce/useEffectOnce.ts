@@ -1,4 +1,6 @@
-import { EffectCallback, useEffect } from 'react'
+import { useEffect } from 'react'
+
+import type { EffectCallback } from 'react'
 
 /**
  * A hook that runs an effect only once (at mount).

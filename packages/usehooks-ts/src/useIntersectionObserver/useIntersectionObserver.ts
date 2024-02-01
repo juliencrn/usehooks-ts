@@ -1,4 +1,6 @@
-import { RefObject, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+
+import type { RefObject } from 'react'
 
 /**
  * Represents the options for configuring the Intersection Observer.

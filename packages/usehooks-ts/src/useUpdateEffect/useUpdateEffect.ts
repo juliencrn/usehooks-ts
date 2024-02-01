@@ -1,4 +1,6 @@
-import { DependencyList, EffectCallback, useEffect } from 'react'
+import { useEffect } from 'react'
+
+import type { DependencyList, EffectCallback } from 'react'
 
 import { useIsFirstRender } from '../useIsFirstRender'
 
