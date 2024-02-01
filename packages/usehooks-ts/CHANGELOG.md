@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.12.1
+
+### Patch Changes
+
+- Don't remove comments during package build to keep JSdoc comments
+
 ## 2.12.0
 
 ### Minor Changes

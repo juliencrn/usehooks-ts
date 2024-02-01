@@ -4,7 +4,6 @@
     "declaration": true,
     "pretty": true,
     "skipLibCheck": true,
-    "removeComments": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "strict": true,
