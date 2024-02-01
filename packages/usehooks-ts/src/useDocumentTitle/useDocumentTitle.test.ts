@@ -10,12 +10,23 @@ describe('useDocumentTitle()', () => {
     expect(window.document.title).toEqual('foo')
   })
 
-  describe('with prevailOnUnmount = false', () => {
-    test('title should be reset to default on unmount', () => {
-      window.document.title = 'bar'
-      const { unmount } = renderHook(() => useDocumentTitle('foo', false))
-      unmount()
-      expect(window.document.title).toEqual('bar')
+  it('should unset title on unmount with `preserveTitleOnUnmount` options to `false`', () => {
+    window.document.title = 'initial'
+    const { unmount } = renderHook(() => {
+      useDocumentTitle('updated', { preserveTitleOnUnmount: false })
     })
+    expect(window.document.title).toEqual('updated')
+    unmount()
+    expect(window.document.title).toEqual('initial')
+  })
+
+  it("shouldn't unset title on unmount with `preserveTitleOnUnmount` options to `true` (default)", () => {
+    window.document.title = 'initial'
+    const { unmount } = renderHook(() => {
+      useDocumentTitle('updated')
+    })
+    expect(window.document.title).toEqual('updated')
+    unmount()
+    expect(window.document.title).toEqual('updated')
   })
 })
