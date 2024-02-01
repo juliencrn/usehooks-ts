@@ -1,13 +1,22 @@
 import { useEffect, useState } from 'react'
 
-import { useIsomorphicLayoutEffect } from '..'
+import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
-type UseLockedBodyOutput = [boolean, (locked: boolean) => void]
-
+/**
+ * Custom hook for locking and unlocking the body scroll to prevent scrolling.
+ * @param {?boolean} [initialLocked] - The initial state of body scroll lock (default to `false`).
+ * @param {?string} [rootId] - The ID of the root element to calculate scrollbar width (default to `___gatsby` to not introduce breaking change).
+ * @returns {[boolean, (locked: boolean) => void]} A tuple containing the current state of body scroll lock and a function to set the state.
+ * @see [Documentation](https://usehooks-ts.com/react-hook/use-locked-body)
+ * @example
+ * const [isLocked, setLocked] = useLockedBody(true);
+ * // Use isLocked to conditionally apply styles or prevent scrolling.
+ * // Use setLocked to dynamically control the body scroll lock state.
+ */
 export function useLockedBody(
   initialLocked = false,
-  rootId = '___gatsby', // Default to `___gatsby` to not introduce breaking change
-): UseLockedBodyOutput {
+  rootId = '___gatsby',
+): [boolean, (locked: boolean) => void] {
   const [locked, setLocked] = useState(initialLocked)
 
   // Do the side effect before render
@@ -51,5 +60,3 @@ export function useLockedBody(
 
   return [locked, setLocked]
 }
-
-export default useLockedBody

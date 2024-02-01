@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react'
 
-import { useCountdown } from '..'
+import { useCountdown } from './useCountdown'
 
 export default function Component() {
   const [intervalValue, setIntervalValue] = useState<number>(1000)

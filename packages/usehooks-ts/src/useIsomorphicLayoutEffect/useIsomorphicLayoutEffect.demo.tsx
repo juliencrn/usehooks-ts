@@ -1,4 +1,4 @@
-import { useIsomorphicLayoutEffect } from '..'
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect'
 
 export default function Component() {
   useIsomorphicLayoutEffect(() => {

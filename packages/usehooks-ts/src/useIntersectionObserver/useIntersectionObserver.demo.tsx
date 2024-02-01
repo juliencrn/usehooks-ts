@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-import { useIntersectionObserver } from '..'
+import { useIntersectionObserver } from './useIntersectionObserver'
 
 const Section = (props: { title: string }) => {
   const ref = useRef<HTMLDivElement | null>(null)

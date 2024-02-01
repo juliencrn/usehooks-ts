@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react'
 
-import { useInterval } from '..'
+import { useInterval } from './useInterval'
 
 export default function Component() {
   // The counter
@@ -26,7 +26,11 @@ export default function Component() {
   return (
     <>
       <h1>{count}</h1>
-      <button onClick={() => setPlaying(!isPlaying)}>
+      <button
+        onClick={() => {
+          setPlaying(!isPlaying)
+        }}
+      >
         {isPlaying ? 'pause' : 'play'}
       </button>
       <p>
