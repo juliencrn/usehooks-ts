@@ -8,7 +8,9 @@ const GITHUB_REPO = `juliencrn/usehooks-ts`
 const GITHUB_ISSUE_PATH = `${GITHUB_REPO}/issues/423`
 const hookDir = path.resolve('./packages/usehooks-ts/src')
 const excludeHooks = [
-  'useSsr' // @deprecated
+  'useSsr', // @deprecated
+  'useImageOnLoad', // @deprecated
+  'useIsomorphicLayoutEffect', // Combination of useLayoutEffect and useEffect without custom logic
 ]
 
 function generateHookListBody() {
