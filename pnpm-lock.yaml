@@ -172,7 +172,7 @@ importers:
   packages/usehooks-ts:
     dependencies:
       lodash.debounce:
-        specifier: ^4
+        specifier: ^4.0.8
         version: 4.0.8
     devDependencies:
       '@testing-library/jest-dom':

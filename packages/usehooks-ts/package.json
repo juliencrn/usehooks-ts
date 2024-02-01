@@ -48,14 +48,11 @@
     "vite": "^5.0.12",
     "vitest": "^1.2.2"
   },
-  "peerDependencies": {
-    "lodash.debounce": "^4",
-    "react": "^16.8.0  || ^17 || ^18"
+  "dependencies": {
+    "lodash.debounce": "^4.0.8"
   },
-  "peerDependenciesMeta": {
-    "lodash.debounce": {
-      "optional": true
-    }
+  "peerDependencies": {
+    "react": "^16.8.0  || ^17 || ^18"
   },
   "engines": {
     "node": ">=16.15.0"
