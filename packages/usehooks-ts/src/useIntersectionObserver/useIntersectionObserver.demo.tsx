@@ -1,13 +1,13 @@
-import { useRef } from 'react'
-
 import { useIntersectionObserver } from './useIntersectionObserver'
 
 const Section = (props: { title: string }) => {
-  const ref = useRef<HTMLDivElement | null>(null)
-  const entry = useIntersectionObserver(ref, {})
-  const isVisible = !!entry?.isIntersecting
+  const { isIntersecting, ref } = useIntersectionObserver({
+    threshold: 0.5,
+  })
 
-  console.log(`Render Section ${props.title}`, { isVisible })
+  console.log(`Render Section ${props.title}`, {
+    isIntersecting,
+  })
 
   return (
     <div
