@@ -1,6 +1,9 @@
 name: Build and test
 
-on: [push]
+on:
+  push:
+    branches:
+      - '**'
 
 env:
   NODE_VERSION: 20
@@ -29,7 +32,7 @@ jobs:
           cache-dependency-path: '**/pnpm-lock.yaml'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Build
         run: pnpm build
