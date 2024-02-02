@@ -11,21 +11,20 @@
     "hooks"
   ],
   "license": "MIT",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/cjs/index.js",
-      "import": "./dist/esm/index.js"
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
     }
   },
   "sideEffects": false,
   "scripts": {
-    "build": "pnpm build:cjs && pnpm build:esm",
-    "build:cjs": "tsc -p tsconfig.build.json --module commonjs --outDir dist/cjs --target es5",
-    "build:esm": "tsc -p tsconfig.build.json --module esNext --outDir dist/esm --target es6",
-    "dev": "vitest",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "test": "vitest run",
     "clean": "rimraf -rf ./dist .turbo *.tsbuildinfo",
     "lint": "eslint './src/**/*.{ts,tsx}' && tsc --noEmit"
@@ -43,6 +42,7 @@
     "eslint-plugin-tree-shaking": "^1.12.1",
     "jsdom": "^24.0.0",
     "react": "18.2.0",
+    "tsup": "^8.0.1",
     "typescript": "^5.3.3",
     "vitest": "^1.2.2"
   },
