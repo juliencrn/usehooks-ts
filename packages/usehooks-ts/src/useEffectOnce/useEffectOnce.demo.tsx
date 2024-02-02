@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { useEffectOnce } from '..'
+import { useEffectOnce } from './useEffectOnce'
 
 export default function Component() {
   const [data, setData] = useState<number>(0)
@@ -15,7 +15,13 @@ export default function Component() {
   return (
     <div>
       <p>Open your console</p>
-      <button onClick={() => setData(Date.now())}>Update data</button>
+      <button
+        onClick={() => {
+          setData(Date.now())
+        }}
+      >
+        Update data
+      </button>
     </div>
   )
 }

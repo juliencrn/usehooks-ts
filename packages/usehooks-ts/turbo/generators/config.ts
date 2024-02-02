@@ -1,5 +1,5 @@
-import { PlopTypes } from '@turbo/gen'
-import format from 'date-fns/format'
+import type { PlopTypes } from '@turbo/gen'
+import { format } from 'date-fns'
 
 export default function generator(plop: PlopTypes.NodePlopAPI): void {
   plop.setGenerator('hook', {
@@ -41,6 +41,13 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         type: 'add',
         path: 'src/{{camelCase name}}/{{camelCase name}}.demo.tsx',
         templateFile: 'templates/hook/hook.demo.tsx.hbs',
+      },
+
+      // Create the hook's index file
+      {
+        type: 'add',
+        path: 'src/{{camelCase name}}/index.ts',
+        templateFile: 'templates/hook/index.ts.hbs',
       },
 
       // Update the global hooks index file

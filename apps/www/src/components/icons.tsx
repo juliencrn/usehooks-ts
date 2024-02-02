@@ -1,5 +1,5 @@
+import type { LucideProps } from 'lucide-react'
 import {
-  type Icon as LucideIcon,
   AlertTriangle,
   ArrowRight,
   BookOpenCheck,
@@ -17,7 +17,6 @@ import {
   Laptop,
   Leaf,
   Loader2,
-  LucideProps,
   Moon,
   MoreVertical,
   Pizza,
@@ -32,8 +31,6 @@ import {
   X,
   Zap,
 } from 'lucide-react'
-
-export type Icon = LucideIcon
 
 export const Icons = {
   logo: Flame,

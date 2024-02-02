@@ -1,6 +1,19 @@
-export function {{camelCase name}}(): [number, () => number] {
-const value = 2
-const method = () => 2
+import { Dispatch, SetStateAction, useState } from 'react'
 
-return [value, method]
+/**
+ * Custom hook for ...
+ * @param {boolean} [defaultValue] - The initial value for ... (default is `0`).
+ * @returns {[number, Dispatch<SetStateAction<number>>]} A tuple containing ...
+ * @see [Documentation](https://usehooks-ts.com/react-hook/use-test)
+ * @example
+ * const [value, method] = useTest()();
+ *
+ * console.log(value); // 2
+ */
+export function useTest(
+  defaultValue?: number,
+): [number, Dispatch<SetStateAction<number>>] {
+  const [value, setValue] = useState(defaultValue || 0)
+
+  return [value, setValue]
 }

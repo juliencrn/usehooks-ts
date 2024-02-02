@@ -1,10 +1,92 @@
 # Changelog
 
+## 2.12.1
+
+### Patch Changes
+
+- Don't remove comments during package build to keep JSdoc comments
+
+## 2.12.0
+
+### Minor Changes
+
+- cb6eb5c: Added an optional option param in `useDocumentTitle()` to reset title on un-mount (#345 by @ladislasdellinger)
+
+### Patch Changes
+
+- b8ee088: move `lodash.debounce` to dependencies from peerDependencies
+
+## 2.11.0
+
+### Minor Changes
+
+- add1431: Created `useUnmount` hook
+- add1431: Created `useDebounceCallback` and `useDebounceValue` hooks
+- add1431: Depreciated `useDebounce` hook (replaced by `useDebounceCallback` or `useDebounceValue`)
+- fc8a30e: Fix hydration issues in both useScreen and useMediaQuery (Fixes #394, thanks to @bryantcodesart)
+- 4a9fc88: Introduce the SSR-friendly new optional `{ initializeWithValue?: boolean }` parameter to useLocalStorage, useReadLocalStorage, useSessionStorage, useDarkMode, useTernaryDarkMode, useMediaQuery, useScreen, useWindowSize and useElementSize, see #451.
+- 5c210c1: Add `defaultValue` option to `useTernaryDarkMode` and update its signature (using function overload for smooth migration)
+- 5c210c1: Update `useDarkMode` signature (using function overload for smooth migration)
+- 0321342,4a9fc88: Drop `Map`, `Set` and `Date` supports in use\*Storage hooks, it isn't compatible with `useReadLocalStorage` making the API un-consistent. Use a custom serializer/deserializer instead.
+
+### Patch Changes
+
+- add1431: Upgrade dependencies
+- a192167: Upgraded `react` and `@testing-library/react` (thanks to @TheHaff)
+- 0321342: Make Typescript and `@typescript-eslint` stricter to catch bugs sooner
+- 382161a: Depreciate `useImageOnLoad`, too opinionated
+- 382161a: Add JSdoc comments to improve DX via in-IDE documentation
+- a192167: Migrate from `jest` to `vitest` (making test-suite execution 2 times faster)
+
+## 2.10.0
+
+### Minor Changes
+
+- 8f3c90f: Enable setting localStorage key for useDarkTheme & useTernaryDarkMode (#298 by @ubarbaxor)
+- ae47c9a: Expose setting dark mode value directly (#299 by ubarbaxor)
+- 771afa5: Add serialization support for use-\*-storage hooks
+
+### Patch Changes
+
+- a816d6b: Depreciated useSsr [#258](https://github.com/juliencrn/usehooks-ts/issues/258)
+- 42f3a3a: Remove the need of commenting out useEffect deps in useMediaQuery (#383 by @lisandro52)
+- 9bc05f4: Fix hydration mismatch on use\*\*\*Storage (fixes #176, #369 with #320 & #251)
+- 771afa5: Add Date, Set & Map support to use\*Storage (#309 by @AlecsFarias)
+- 4b3ed4e: Fix circular dependencies (#310)
+- a3588b8: Added unit tests for useFetch hook
+- c326dd3: Prevent unrelated storage keys from being updated unexpectedly in useLocalStorage and useSessionStorage (#313 by @stevenvachon fixes #384)
+- e8aa777: make useLocalStorage and useSessionStorage compliant with useState (fixes #204 with #242 by @valyrie97)
+- c5ad2b9: Recalculate useLocalStorage & useSessionStorage default value on dynamic key change (#355 by @amirking59)
+- 7406e3c: fix(useCopyToClipboard): added useCallback to 'copy' to avoid rerendering (by @nmacianx)
+- ffe0f32: Set sideEffects to false in package.json
+
+## 2.9.5
+
+### Patch Changes
+
+- 7141d01: Upgrade internal dependencies
+- Update useCopyToClipboard documentation
+- Fix typo in useEventListener
+
+## 2.9.4
+
+### Patch Changes
+
+- hotfix: package files missing
+
+## [2.9.3](https://www.npmjs.com/package/usehooks-ts/v/2.9.3) - 2024-01-13
+
+### Patch Changes
+
+- Fix #420
+
 ## 2.9.2
 
 ### Patch Changes
 
-- 55a1904: added export map, use named exports for hooks and fix useEventListener docs typo
+- 55a1904: added export map in package.json
+- use named exports instead of default exports
+- fix useEventListener docs typo
 
 All notable changes to this project will be documented in this file.
 

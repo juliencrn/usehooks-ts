@@ -1,9 +1,9 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom'
+import { act, renderHook } from '@testing-library/react'
 
 import { useCounter } from './useCounter'
 
 describe('useCounter()', () => {
-  test('should use counter', () => {
+  it('should use counter', () => {
     const { result } = renderHook(() => useCounter())
 
     expect(result.current.count).toBe(0)
@@ -13,7 +13,7 @@ describe('useCounter()', () => {
     expect(typeof result.current.setCount).toBe('function')
   })
 
-  test('should increment counter', () => {
+  it('should increment counter', () => {
     const { result } = renderHook(() => useCounter())
 
     act(() => {
@@ -23,7 +23,7 @@ describe('useCounter()', () => {
     expect(result.current.count).toBe(1)
   })
 
-  test('should decrement counter', () => {
+  it('should decrement counter', () => {
     const { result } = renderHook(() => useCounter())
 
     act(() => {
@@ -33,13 +33,13 @@ describe('useCounter()', () => {
     expect(result.current.count).toBe(-1)
   })
 
-  test('should default value works', () => {
+  it('should default value works', () => {
     const { result } = renderHook(() => useCounter(3))
 
     expect(result.current.count).toBe(3)
   })
 
-  test('should reset counter', () => {
+  it('should decrement counter with default value', () => {
     const { result } = renderHook(() => useCounter(3))
 
     act(() => {
@@ -49,7 +49,7 @@ describe('useCounter()', () => {
     expect(result.current.count).toBe(2)
   })
 
-  test('should set counter', () => {
+  it('should set counter', () => {
     const { result } = renderHook(() => useCounter())
 
     act(() => {
@@ -59,7 +59,7 @@ describe('useCounter()', () => {
     expect(result.current.count).toBe(5)
   })
 
-  test('should set counter with prev value', () => {
+  it('should set counter with prev value', () => {
     const { result } = renderHook(() => useCounter(5))
 
     act(() => {

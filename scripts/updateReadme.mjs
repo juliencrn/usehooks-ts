@@ -10,6 +10,7 @@ import { camelToKebabCase, isDemoFile, isHookFile } from './utils.mjs'
 
 const srcDir = path.resolve('./packages/usehooks-ts/src')
 const readmeFile = path.resolve('./README.md')
+const readmeUseHook = path.resolve('./packages/usehooks-ts/README.md')
 
 const markdown = fs
   .readdirSync(srcDir)
@@ -31,6 +32,7 @@ try {
     )
 
   fs.writeFileSync(readmeFile, data, 'utf-8')
+  fs.writeFileSync(readmeUseHook, data, 'utf-8')
   console.log(`README.md updated!`)
 } catch (err) {
   console.error(`Error updating README.md: ${err}`)
@@ -46,9 +48,9 @@ function createUrl(filename) {
 }
 
 function hasDemo(name) {
-  return fs
-    .readdirSync(path.resolve(srcDir, name))
-    .filter(isDemoFile).length === 1
+  return (
+    fs.readdirSync(path.resolve(srcDir, name)).filter(isDemoFile).length === 1
+  )
 }
 
 function formatHook(name) {

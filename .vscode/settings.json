@@ -23,8 +23,8 @@
   ],
   "eslint.format.enable": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll": true
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll": "explicit"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "cSpell.words": [
@@ -44,10 +44,6 @@
     "usehooks"
   ],
   "eslint.workingDirectories": [
-    {
-      "directory": "apps/web",
-      "changeProcessCWD": true
-    },
     {
       "directory": "apps/www",
       "changeProcessCWD": true
@@ -69,5 +65,11 @@
   },
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   }
 }

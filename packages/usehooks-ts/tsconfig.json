@@ -4,11 +4,14 @@
     "declaration": true,
     "pretty": true,
     "skipLibCheck": true,
-    "removeComments": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "strict": true,
-    "lib": ["ESNEXT", "DOM"]
+    "lib": ["ESNEXT", "DOM"],
+    // use global types for vite's expect, describe, etc.
+    "types": ["vitest/globals"],
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
   },
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "dist"],
 }
