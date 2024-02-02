@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react'
+import type { Dispatch, SetStateAction } from 'react'
 
 import { useLocalStorage } from '../useLocalStorage'
 import { useMediaQuery } from '../useMediaQuery'
@@ -84,8 +84,9 @@ export function useTernaryDarkMode(
 
   const toggleTernaryDarkMode = () => {
     const modes: TernaryDarkMode[] = ['light', 'system', 'dark']
-    setMode(prevMode => {
-      return modes[(modes.indexOf(prevMode) + 1) % modes.length]
+    setMode((prevMode): TernaryDarkMode => {
+      const nextIndex = (modes.indexOf(prevMode) + 1) % modes.length
+      return modes[nextIndex]
     })
   }
 

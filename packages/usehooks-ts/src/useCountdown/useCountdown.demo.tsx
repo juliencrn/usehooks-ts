@@ -1,4 +1,6 @@
-import { ChangeEvent, useState } from 'react'
+import { useState } from 'react'
+
+import type { ChangeEvent } from 'react'
 
 import { useCountdown } from './useCountdown'
 

@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-import { Option, Post } from '@/types'
+import type { Option, Post } from '@/types'
 
 const GENERATED_PATH = path.resolve(process.cwd(), 'generated')
 

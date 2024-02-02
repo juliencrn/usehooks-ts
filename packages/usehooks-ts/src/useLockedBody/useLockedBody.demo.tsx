@@ -1,4 +1,6 @@
-import { CSSProperties, useState } from 'react'
+import { useState } from 'react'
+
+import type { CSSProperties } from 'react'
 
 import { useLockedBody } from './useLockedBody'
 

@@ -9,7 +9,7 @@ import { Icons } from '@/components/icons'
 import { MobileNav } from '@/components/mobile-nav'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
-import { MainNavItem } from '@/types'
+import type { MainNavItem } from '@/types'
 
 interface MainNavProps {
   items?: MainNavItem[]

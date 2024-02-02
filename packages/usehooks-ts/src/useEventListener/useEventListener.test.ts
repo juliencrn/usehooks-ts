@@ -1,5 +1,4 @@
-import { fireEvent } from '@testing-library/react'
-import { renderHook } from '@testing-library/react'
+import { fireEvent, renderHook } from '@testing-library/react'
 
 import { useEventListener } from './useEventListener'
 

@@ -39,7 +39,7 @@ module.exports = {
   },
   rules: {
     // Format
-    'prettier/prettier': 'warn',
+    'prettier/prettier': 'error',
 
     // React
     'react/prop-types': 'off',
@@ -50,9 +50,14 @@ module.exports = {
     'sort-imports': 'off',
     'import/order': 'off',
     'import/no-cycle': 'error',
-    'simple-import-sort/exports': 'warn',
+    'import/no-duplicates': 'error',
+    'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
+    '@typescript-eslint/consistent-type-exports': 'error',
+    '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/no-import-type-side-effects': 'error',
+    'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': [
-      'warn',
+      'error',
       {
         groups: [
           ['^\\u0000'], // side effect (E.g."import "normalize.css"")
@@ -66,13 +71,13 @@ module.exports = {
     // We should absolutely avoid using ts-ignore, but it"s not always possible.
     // particular when a dependencies types are incorrect.
     '@typescript-eslint/ban-ts-comment': [
-      'warn',
+      'error',
       { 'ts-ignore': 'allow-with-description' },
     ],
 
     // Allow unused variables that start with an underscore.
     '@typescript-eslint/no-unused-vars': [
-      'warn',
+      'error',
       {
         argsIgnorePattern: '^_',
         ignoreRestSiblings: true,
@@ -80,9 +85,9 @@ module.exports = {
     ],
 
     // Disable some TypeScript rules
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/consistent-type-definitions': 'off',
-    '@typescript-eslint/no-unnecessary-condition': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off', // Too noisy
+    '@typescript-eslint/consistent-type-definitions': 'off', // Will come in v3
+    '@typescript-eslint/no-unnecessary-condition': 'off', // TODO: Enable it
     '@typescript-eslint/prefer-ts-expect-error': 'off',
   },
   overrides: [

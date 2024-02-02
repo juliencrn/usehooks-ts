@@ -1,4 +1,5 @@
-import { type TernaryDarkMode, useTernaryDarkMode } from './useTernaryDarkMode'
+import type { TernaryDarkMode } from './useTernaryDarkMode'
+import { useTernaryDarkMode } from './useTernaryDarkMode'
 
 export default function Component() {
   const {

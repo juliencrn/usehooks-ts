@@ -83,8 +83,9 @@ export function useFetch<T = unknown>(
       dispatch({ type: 'loading' })
 
       // If a cache exists for this url, return it
-      if (cache.current[url]) {
-        dispatch({ type: 'fetched', payload: cache.current[url] })
+      const currentCache = cache.current[url]
+      if (currentCache) {
+        dispatch({ type: 'fetched', payload: currentCache })
         return
       }
 
