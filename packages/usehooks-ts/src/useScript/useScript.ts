@@ -7,7 +7,7 @@ export interface UseScriptOptions {
 }
 
 // Cached script statuses
-const cachedScriptStatuses: Record<string, UseScriptStatus | undefined> = {}
+const cachedScriptStatuses = new Map<string, UseScriptStatus | undefined>()
 
 /**
  * Gets the script element with the specified source URL.
@@ -54,7 +54,7 @@ export function useScript(
       return 'loading'
     }
 
-    return cachedScriptStatuses[src] ?? 'loading'
+    return cachedScriptStatuses.get(src) ?? 'loading'
   })
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export function useScript(
       return
     }
 
-    const cachedScriptStatus = cachedScriptStatuses[src]
+    const cachedScriptStatus = cachedScriptStatuses.get(src)
     if (cachedScriptStatus === 'ready' || cachedScriptStatus === 'error') {
       // If the script is already cached, set its status immediately
       setStatus(cachedScriptStatus)
@@ -104,7 +104,7 @@ export function useScript(
     const setStateFromEvent = (event: Event) => {
       const newStatus = event.type === 'load' ? 'ready' : 'error'
       setStatus(newStatus)
-      cachedScriptStatuses[src] = newStatus
+      cachedScriptStatuses.set(src, newStatus)
     }
 
     // Add event listeners
@@ -120,6 +120,7 @@ export function useScript(
 
       if (scriptNode && options?.removeOnUnmount) {
         scriptNode.remove()
+        cachedScriptStatuses.delete(src)
       }
     }
   }, [src, options?.shouldPreventLoad, options?.removeOnUnmount])
