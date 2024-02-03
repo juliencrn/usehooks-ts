@@ -1,24 +1,26 @@
-import { act, cleanup, renderHook } from '@testing-library/react-hooks'
+import { act, cleanup, renderHook } from '@testing-library/react'
 
 import { useScript } from './useScript'
 
 describe('useScript', () => {
-  test('should handle script loading error', () => {
+  it('should handle script loading error', () => {
     const src = 'https://example.com/myscript.js'
 
     const { result } = renderHook(() => useScript(src))
 
     expect(result.current).toBe('loading')
 
-    // Simulate script error
-    document
-      .querySelector(`script[src="${src}"]`)
-      ?.dispatchEvent(new Event('error'))
+    act(() => {
+      // Simulate script error
+      document
+        .querySelector(`script[src="${src}"]`)
+        ?.dispatchEvent(new Event('error'))
+    })
 
     expect(result.current).toBe('error')
   })
 
-  test('should remove script on unmount', () => {
+  it('should remove script on unmount', () => {
     const src = '/'
 
     // First load the script
@@ -29,9 +31,11 @@ describe('useScript', () => {
     expect(result.current).toBe('loading')
 
     // Make sure the document is loaded
-    document
-      .querySelector(`script[src="${src}"]`)
-      ?.dispatchEvent(new Event('load'))
+    act(() => {
+      document
+        .querySelector(`script[src="${src}"]`)
+        ?.dispatchEvent(new Event('load'))
+    })
 
     expect(result.current).toBe('ready')
 
@@ -49,9 +53,11 @@ describe('useScript', () => {
     expect(result2.current).toBe('loading')
 
     // Make sure the document is loaded
-    document
-      .querySelector(`script[src="${src}"]`)
-      ?.dispatchEvent(new Event('load'))
+    act(() => {
+      document
+        .querySelector(`script[src="${src}"]`)
+        ?.dispatchEvent(new Event('load'))
+    })
 
     expect(result2.current).toBe('ready')
   })
