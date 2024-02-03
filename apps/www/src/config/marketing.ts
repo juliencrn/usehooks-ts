@@ -1,4 +1,4 @@
-import { MarketingConfig } from '@/types'
+import type { MarketingConfig } from '@/types'
 
 export const marketingConfig: MarketingConfig = {
   mainNav: [

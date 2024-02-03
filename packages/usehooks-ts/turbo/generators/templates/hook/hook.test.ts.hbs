@@ -1,23 +1,14 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom'
+import { renderHook } from '@testing-library/react'
+
 import { {{camelCase name}} } from './{{camelCase name}}'
 
 describe('{{name}}()', () => {
-test('should {{name}} be ok', () => {
-const { result } = renderHook(() => {{camelCase name}}())
-const [value, method] = result.current
+  it('should {{name}} be ok', () => {
+    const { result } = renderHook(() => {{camelCase name}}())
+    const [value, setNumber] = result.current
 
-expect(value).toBe(2)
-expect(typeof method).toBe('function')
+    expect(value).toBe(2)
+    expect(typeof setNumber).toBe('function')
+  })
 })
 
-test('should method returns 2', () => {
-const { result } = renderHook(() => {{camelCase name}}())
-const [, method] = result.current
-
-let value = 0
-
-act(() => { value = method() })
-
-expect(value).toBe(2)
-})
-})

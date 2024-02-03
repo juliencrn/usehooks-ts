@@ -1,4 +1,6 @@
-import { CSSProperties, useState } from 'react'
+import { useState } from 'react'
+
+import type { CSSProperties } from 'react'
 
 interface ImageStyle {
   thumbnail: CSSProperties
@@ -10,6 +12,16 @@ interface ImageOnLoadType {
   css: ImageStyle
 }
 
+/**
+ * Custom hook for handling image loading events and providing related CSS styles.
+ * @deprecated This hook is deprecated and will be removed in a future release.
+ * @returns {ImageOnLoadType} An object containing a function to handle image load events and related CSS styles.
+ * @see [Documentation](https://usehooks-ts.com/react-hook/use-image-on-load)
+ * @example
+ * const { handleImageOnLoad, css } = useImageOnLoad();
+ * // Use handleImageOnLoad as the onLoad handler for the full-size image.
+ * // Apply the CSS styles from the `css` object to control visibility and transitions.
+ */
 export function useImageOnLoad(): ImageOnLoadType {
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
 

@@ -1,13 +1,12 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { DocsPageHeader } from '@/components/docs-page-header'
 import { DocsPager } from '@/components/paper'
-import { H2, Mdx } from '@/components/remote-mdx'
-import {
-  DashboardTableOfContents,
-  TableOfContents,
-} from '@/components/table-of-content'
+import { Mdx } from '@/components/remote-mdx'
+import type { TableOfContents } from '@/components/table-of-content'
+import { DashboardTableOfContents } from '@/components/table-of-content'
+import { H2 } from '@/components/ui/components'
 import { siteConfig } from '@/config/site'
 import { getPost, getPosts } from '@/lib/mdx'
 
@@ -63,7 +62,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   const toc: TableOfContents = {
     items: [
       { title: 'Introduction', url: '#introduction' },
-      { title: 'Usage', url: '#usage' },
+      { title: 'Example', url: '#example' },
       { title: 'Hook', url: '#hook' },
     ],
   }
@@ -77,7 +76,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
           heading={post.name}
         />
         <Mdx source={post.docs} />
-        <H2 id="usage">Usage</H2>
+        <H2 id="example">Example</H2>
         <Mdx source={post.demo} />
         <H2 id="hook">Hook</H2>
         <Mdx source={post.hook} />

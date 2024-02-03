@@ -1,18 +1,48 @@
 import { useEffect, useReducer, useRef } from 'react'
 
+/**
+ * Represents the state of an HTTP request.
+ * @template T - The type of data expected in the response.
+ * @interface State
+ * @property {T | undefined} data - The data received from the HTTP request.
+ * @property {Error | undefined} error - An error object if the request encounters an error.
+ */
 interface State<T> {
   data?: T
   error?: Error
 }
 
-type Cache<T> = { [url: string]: T }
+/**
+ * Represents a cache of data for different URLs.
+ * @template T - The type of data stored in the cache.
+ * @type {object} Cache
+ */
+type Cache<T> = Record<string, T>
 
-// discriminated union type
+/**
+ * Represents the possible actions that can be dispatched in the fetchReducer.
+ * @template T - The type of data expected in the response.
+ * @type {object} Action
+ */
 type Action<T> =
+  /** Indicates that the request is in progress. */
   | { type: 'loading' }
+  /** Indicates that the request has been successfully fetched. */
   | { type: 'fetched'; payload: T }
+  /** Indicates that an error occurred during the request. */
   | { type: 'error'; payload: Error }
 
+/**
+ * Custom hook for making HTTP requests and managing the state of the request.
+ * @template T - The type of data expected in the response.
+ * @param {string | undefined} url - The URL to make the HTTP request to.
+ * @param {RequestInit} [options] - The [options for the HTTP request]() (optional).
+ * @returns {State<T>} The state object representing the result of the HTTP request.
+ * @see [Documentation](https://usehooks-ts.com/react-hook/use-fetch)
+ * @see [MDN Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+ * @example
+ * const { data, error } = useFetch<User>('https://api.example.com/user');
+ */
 export function useFetch<T = unknown>(
   url?: string,
   options?: RequestInit,
@@ -53,8 +83,9 @@ export function useFetch<T = unknown>(
       dispatch({ type: 'loading' })
 
       // If a cache exists for this url, return it
-      if (cache.current[url]) {
-        dispatch({ type: 'fetched', payload: cache.current[url] })
+      const currentCache = cache.current[url]
+      if (currentCache) {
+        dispatch({ type: 'fetched', payload: currentCache })
         return
       }
 

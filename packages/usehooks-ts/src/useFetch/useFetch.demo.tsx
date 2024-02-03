@@ -14,5 +14,5 @@ export default function Component() {
 
   if (error) return <p>There is an error.</p>
   if (!data) return <p>Loading...</p>
-  return <p>{data[0].title}</p>
+  return <p>{data[0]?.title}</p>
 }
