@@ -175,6 +175,9 @@ importers:
         specifier: ^4.0.8
         version: 4.0.8
     devDependencies:
+      '@juggle/resize-observer':
+        specifier: ^3.4.0
+        version: 3.4.0
       '@testing-library/jest-dom':
         specifier: ^6.3.0
         version: 6.3.0(vitest@1.2.2)
@@ -837,6 +840,10 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.15
+    dev: true
+
+  /@juggle/resize-observer@3.4.0:
+    resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
     dev: true
 
   /@manypkg/find-root@1.1.0:

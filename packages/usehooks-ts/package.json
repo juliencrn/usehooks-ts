@@ -31,6 +31,7 @@
     "lint": "eslint './src/**/*.{ts,tsx}' && tsc --noEmit"
   },
   "devDependencies": {
+    "@juggle/resize-observer": "^3.4.0",
     "@testing-library/jest-dom": "^6.3.0",
     "@testing-library/react": "^14.0.0",
     "@turbo/gen": "^1.11.3",
