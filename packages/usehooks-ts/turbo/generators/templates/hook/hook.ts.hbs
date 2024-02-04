@@ -1,16 +1,18 @@
-import { Dispatch, SetStateAction, useState } from 'react'
+import { useState } from 'react'
+
+import type { Dispatch, SetStateAction } from 'react'
 
 /**
  * Custom hook for ...
  * @param {boolean} [defaultValue] - The initial value for ... (default is `0`).
  * @returns {[number, Dispatch<SetStateAction<number>>]} A tuple containing ...
- * @see [Documentation](https://usehooks-ts.com/react-hook/use-test)
+ * @see [Documentation](https://usehooks-ts.com/react-hook/{{kebabCase name}})
  * @example
- * const [value, method] = useTest()();
+ * const [value, method] = {{camelCase name}}();
  *
  * console.log(value); // 2
  */
-export function useTest(
+export function {{camelCase name}}(
   defaultValue?: number,
 ): [number, Dispatch<SetStateAction<number>>] {
   const [value, setValue] = useState(defaultValue || 0)
