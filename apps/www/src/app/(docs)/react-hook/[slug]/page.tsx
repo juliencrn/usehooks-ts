@@ -25,7 +25,7 @@ export const generateMetadata = (props: {
   const title = post.name
   const description = `Discover how to use ${post.name} from usehooks-ts`
   const url = siteConfig.url + post.href
-  const imageUrl = `https://via.placeholder.com/1200x630.png/007ACC/fff/?text=${title}`
+  const imageUrl = `${siteConfig.url}/api/og/${post.slug}`
   return {
     title,
     description,
