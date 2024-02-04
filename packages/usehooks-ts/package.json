@@ -26,6 +26,7 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "test": "vitest run",
+    "test:watch": "vitest",
     "clean": "rimraf -rf ./dist .turbo *.tsbuildinfo",
     "lint": "eslint './src/**/*.{ts,tsx}' && tsc --noEmit"
   },
