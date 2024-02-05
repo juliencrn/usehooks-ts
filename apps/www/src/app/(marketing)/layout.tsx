@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { Icons } from '@/components/icons'
+import { GitHub } from '@/components/icons'
 import { MainNav } from '@/components/main-nav'
 import { ModeToggle } from '@/components/mode-toggle'
 import { marketingConfig } from '@/config/marketing'
@@ -25,7 +25,7 @@ export default async function MarketingLayout({
               rel="noreferrer"
               className="flex"
             >
-              <Icons.gitHub className="h-6 w-6 my-auto" />
+              <GitHub className="h-6 w-6 my-auto" />
               <span className="sr-only">GitHub</span>
             </Link>
             <ModeToggle />
