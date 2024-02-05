@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'highlight.js/styles/github.css' screen;
+@import 'highlight.js/styles/github-dark.css' screen and
+  (prefers-color-scheme: dark);
+
 @layer base {
   :root {
     --background: 0 0% 100%;
