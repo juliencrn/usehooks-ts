@@ -12,6 +12,8 @@
     "types": ["vitest/globals"],
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
   },
   "exclude": ["node_modules", "dist"],
 }

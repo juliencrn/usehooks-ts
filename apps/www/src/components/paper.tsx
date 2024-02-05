@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { Icons } from '@/components/icons'
+import { ChevronLeft, ChevronRight } from '@/components/icons'
 import { buttonVariants } from '@/components/ui/button'
 import { getPosts } from '@/lib/mdx'
 import { cn } from '@/lib/utils'
@@ -23,7 +23,7 @@ export function DocsPager({ slug }: DocsPagerProps) {
           href={pager.prev.href}
           className={cn(buttonVariants({ variant: 'ghost' }))}
         >
-          <Icons.chevronLeft className="mr-2 h-4 w-4" />
+          <ChevronLeft className="mr-2 h-4 w-4" />
           {pager.prev.name}
         </Link>
       )}
@@ -33,7 +33,7 @@ export function DocsPager({ slug }: DocsPagerProps) {
           className={cn(buttonVariants({ variant: 'ghost' }), 'ml-auto')}
         >
           {pager.next.name}
-          <Icons.chevronRight className="ml-2 h-4 w-4" />
+          <ChevronRight className="ml-2 h-4 w-4" />
         </Link>
       )}
     </div>

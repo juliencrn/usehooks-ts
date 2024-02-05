@@ -1,7 +1,15 @@
 import type { LucideIcon } from 'lucide-react'
 import Link from 'next/link'
 
-import { Icons } from '@/components/icons'
+import {
+  Code,
+  GitHub,
+  Globe,
+  Leaf,
+  Puzzle,
+  Unplug,
+  Zap,
+} from '@/components/icons'
 import { buttonVariants } from '@/components/ui/button'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
@@ -14,37 +22,37 @@ type Feature = {
 
 const features: Feature[] = [
   {
-    icon: Icons.zap,
+    icon: Zap,
     title: 'Lightweight',
     content:
       'usehooks-ts is a tiny library without any dependencies, ensuring a lean and efficient solution.',
   },
   {
-    icon: Icons.unplug,
+    icon: Unplug,
     title: 'Type-Safe',
     content:
       'Catch compile-time errors with ease and unlock strong typing benefits.',
   },
   {
-    icon: Icons.leaf,
+    icon: Leaf,
     title: 'Tree-Shakable',
     content:
       'Eliminating unused code and delivering leaner bundles for lightning-fast load times.',
   },
   {
-    icon: Icons.puzzle,
+    icon: Puzzle,
     title: 'Easy to Use',
     content:
       'Get started in no time! Explore comprehensive documentation and rich examples.',
   },
   {
-    icon: Icons.code,
+    icon: Code,
     title: 'Developer-Friendly',
     content:
       "Simplify development with an intuitive and powerful API. Don't repeat yourself.",
   },
   {
-    icon: Icons.globe,
+    icon: Globe,
     title: 'Open-Source',
     content:
       'Join the vibrant community! Collaborate, contribute, and unlock endless possibilities together.',
@@ -173,7 +181,7 @@ export default async function IndexPage() {
               className="flex"
             >
               <div className="flex h-10 w-10 items-center justify-center space-x-2 rounded-md border border-muted bg-muted">
-                <Icons.gitHub className="h-6 w-6" />
+                <GitHub className="h-6 w-6" />
               </div>
               <div className="flex items-center">
                 <div className="h-4 w-4 border-y-8 border-l-0 border-r-8 border-solid border-muted border-y-transparent"></div>

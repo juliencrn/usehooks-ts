@@ -1,3 +1,5 @@
+import type { IconNode } from 'lucide-react'
+
 export type SiteConfig = {
   name: string
   description: string
@@ -21,7 +23,7 @@ export type SidebarNavItem = {
   title: string
   disabled?: boolean
   external?: boolean
-  icon?: keyof typeof Icons
+  icon?: keyof typeof IconNode
 } & (
   | {
       href: string
