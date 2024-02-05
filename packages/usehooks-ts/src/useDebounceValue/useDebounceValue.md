@@ -16,7 +16,7 @@ An array containing the debounced value and the function to update it.
 
 ### Dependency
 
-This hook requires [`lodash.debounce`](https://www.npmjs.com/package/lodash.debounce) to be installed.
+This hook is built upon [`lodash.debounce`](https://www.npmjs.com/package/lodash.debounce).
 
 ### Related hooks
 
