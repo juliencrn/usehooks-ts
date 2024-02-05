@@ -8,7 +8,7 @@ import { useCallback, useEffect, useRef } from 'react'
  * const isComponentMounted = useIsMounted();
  * // Use isComponentMounted() to check if the component is currently mounted before performing certain actions.
  */
-export function useIsMounted() {
+export function useIsMounted(): () => boolean {
   const isMounted = useRef(false)
 
   useEffect(() => {
