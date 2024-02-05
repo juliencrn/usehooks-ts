@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 
 import type { LucideIcon, LucideProps } from 'lucide-react'
 
-export { Frame as Logo } from 'lucide-react'
+export { Flame as Logo } from 'lucide-react'
 export { X as Close } from 'lucide-react'
 export { Loader2 as Spinner } from 'lucide-react'
 export { ChevronLeft } from 'lucide-react'
