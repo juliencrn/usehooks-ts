@@ -163,10 +163,7 @@ export const components = {
     />
   ),
   pre: ({ className, ...props }: ComponentProps<'pre'>) => (
-    <pre
-      className={cn('mb-4 mt-6 overflow-x-auto grid', className)}
-      {...props}
-    />
+    <pre className={cn('mb-4 mt-6 overflow-x-auto', className)} {...props} />
   ),
   code: ({ className, ...props }: ComponentProps<'code'>) => (
     <code
