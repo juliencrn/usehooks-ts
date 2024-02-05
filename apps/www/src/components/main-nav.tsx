@@ -5,7 +5,7 @@ import * as React from 'react'
 import Link from 'next/link'
 import { useSelectedLayoutSegment } from 'next/navigation'
 
-import { Icons } from '@/components/icons'
+import { Close, Logo } from '@/components/icons'
 import { MobileNav } from '@/components/mobile-nav'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
@@ -23,7 +23,7 @@ export function MainNav({ items, children }: MainNavProps) {
   return (
     <div className="flex gap-6 md:gap-10">
       <Link href="/" className="hidden items-center space-x-2 md:flex">
-        <Icons.logo />
+        <Logo />
         <span className="hidden font-bold sm:inline-block">
           {siteConfig.name}
         </span>
@@ -53,7 +53,7 @@ export function MainNav({ items, children }: MainNavProps) {
           setShowMobileMenu(!showMobileMenu)
         }}
       >
-        {showMobileMenu ? <Icons.close /> : <Icons.logo />}
+        {showMobileMenu ? <Close /> : <Logo />}
         <span className="font-bold">Menu</span>
       </button>
       {showMobileMenu && items && (

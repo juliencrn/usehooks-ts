@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - '**'
+  pull_request:
 
 env:
   NODE_VERSION: 20
