@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/heading-has-content */
-import 'highlight.js/styles/github-dark.css'
 
 import Link from 'next/link'
 import type { ComponentProps } from 'react'
@@ -163,10 +162,7 @@ export const components = {
     />
   ),
   pre: ({ className, ...props }: ComponentProps<'pre'>) => (
-    <pre
-      className={cn('mb-4 mt-6 overflow-x-auto grid', className)}
-      {...props}
-    />
+    <pre className={cn('mb-4 mt-6 overflow-x-auto', className)} {...props} />
   ),
   code: ({ className, ...props }: ComponentProps<'code'>) => (
     <code

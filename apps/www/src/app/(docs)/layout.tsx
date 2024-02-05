@@ -2,9 +2,8 @@ import '../globals.css'
 
 import Link from 'next/link'
 
-import { Icons } from '@/components/icons'
+import { GitHub } from '@/components/icons'
 import { MainNav } from '@/components/main-nav'
-import { ModeToggle } from '@/components/mode-toggle'
 // import { DocsSearch } from "@/components/search"
 import { DocsSidebarNav } from '@/components/sidebar-nav'
 import { docsConfig } from '@/config/docs'
@@ -31,10 +30,9 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
                 rel="noreferrer"
                 className="flex"
               >
-                <Icons.gitHub className="h-6 w-6 my-auto" />
+                <GitHub className="h-6 w-6 my-auto" />
                 <span className="sr-only">GitHub</span>
               </Link>
-              <ModeToggle />
             </nav>
           </div>
         </div>

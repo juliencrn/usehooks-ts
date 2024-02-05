@@ -1,7 +1,3 @@
-'use server'
-
-import 'highlight.js/styles/github-dark.css'
-
 import type { SerializeOptions } from 'next-mdx-remote/dist/types'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import rehypeHighlight from 'rehype-highlight'
