@@ -4,7 +4,6 @@ import { Inter as FontSans } from 'next/font/google'
 import localFont from 'next/font/local'
 
 import './globals.css'
-import { ThemeProvider } from '@/components/theme-provider'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 
@@ -82,12 +81,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
           fontHeading.variable,
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-          {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-            <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
-          )}
-        </ThemeProvider>
+        {children}
+
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        )}
       </body>
     </html>
   )
