@@ -31,16 +31,46 @@ export function useScreen(
     initializeWithValue = false
   }
 
+  const readScreen = () => {
+    if (IS_SERVER) {
+      return undefined
+    }
+    return window.screen
+  }
+
   const [screen, setScreen] = useState<Screen | undefined>(() => {
     if (initializeWithValue) {
-      return window.screen
+      return readScreen()
     }
     return undefined
   })
 
   /** Handles the resize event of the window. */
   function handleSize() {
-    setScreen(window.screen)
+    const newScreen = readScreen()
+
+    if (newScreen) {
+      // Create a shallow clone to trigger a re-render (#280).
+      const {
+        width,
+        height,
+        availHeight,
+        availWidth,
+        colorDepth,
+        orientation,
+        pixelDepth,
+      } = newScreen
+
+      setScreen({
+        width,
+        height,
+        availHeight,
+        availWidth,
+        colorDepth,
+        orientation,
+        pixelDepth,
+      })
+    }
   }
 
   useEventListener('resize', handleSize)
