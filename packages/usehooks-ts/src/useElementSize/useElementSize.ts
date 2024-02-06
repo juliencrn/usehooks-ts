@@ -17,6 +17,7 @@ type UseElementSizeResult = [(node: Element | null) => void, Size] &
   (Size & { ref: (node: Element | null) => void })
 
 /**
+ * @deprecated - Use `useResizeObserver` instead.
  * A hook for tracking the size of a DOM element.
  * @template T - The type of the DOM element. Defaults to `HTMLDivElement`.
  * @param {?UseElementSizeOptions} [options] - The options for customizing the behavior of the hook (optional).

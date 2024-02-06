@@ -37,7 +37,16 @@ export function WithDebounce() {
   })
 
   return (
-    <div ref={ref} style={{ border: '1px solid palevioletred', width: '100%' }}>
+    <div
+      ref={ref}
+      style={{
+        border: '1px solid palevioletred',
+        width: '100%',
+        resize: 'both',
+        overflow: 'auto',
+        maxWidth: '100%',
+      }}
+    >
       debounced: {width} x {height}
     </div>
   )
