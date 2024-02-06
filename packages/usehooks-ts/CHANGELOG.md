@@ -1,5 +1,28 @@
 # Changelog
 
+## 2.13.0
+
+### Minor Changes
+
+- 87a5141: Improve `useOnClickOutside`:
+
+  - Prevent handling callback when clicking on a not connected element (#374 by @hooriza)
+  - Add support to accept multiple references
+  - Add support for touch events in addition to mouse events
+
+- 87ba579: Fix SSR hooks by fallback with default or initial value instead of `undefined`
+- f39078f: Updated `useIntersectionObserver` API and fixed #395, #271 and #182, see #464.
+- a444ba7: Depreciated `useElementSize` replaced by `useResizeObserver`
+- e807ab3: Create `useResizeObserver` hook
+
+### Patch Changes
+
+- b5b9e1f: chore: Updated dependencies
+- 4146c39: fix: `useScript` failed to remove script from cache when passing `removeOnUnmount` prop (#354 by @ShanSenanayake)
+- bdf7bda: Add eslint rules to comply with `verbatimModuleSyntax` to avoid side-effects
+- 6b582de: use `tsup` as bundler instead of transpiling with tsc (@BlankParticle)
+- be8c35b: Fix `useScreen` is not rerendering on screen resize (#280 by @philipgher)
+
 ## 2.12.1
 
 ### Patch Changes
