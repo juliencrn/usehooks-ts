@@ -1,14 +1,12 @@
 import { useScreen } from './useScreen'
 
 export default function Component() {
-  const screen = useScreen()
+  const { width = 0, height = 0 } = useScreen()
 
   return (
     <div>
       The current window dimensions are:{' '}
-      <code>
-        {JSON.stringify({ width: screen?.width, height: screen?.height })}
-      </code>
+      <code>{JSON.stringify({ width, height })}</code>
     </div>
   )
 }
