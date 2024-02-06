@@ -130,7 +130,10 @@ describe('useDarkMode()', () => {
   })
 
   it('should accept a custom default value', () => {
-    const { result } = renderHook(() => useDarkMode({ defaultValue: true }))
+    mockMatchMedia(true)
+    const { result } = renderHook(() =>
+      useDarkMode({ defaultValue: true, initializeWithValue: false }),
+    )
 
     expect(result.current.isDarkMode).toBe(true)
 

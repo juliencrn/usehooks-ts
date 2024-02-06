@@ -3,9 +3,9 @@ import { useState } from 'react'
 import { useEventListener } from '../useEventListener'
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
-interface WindowSize {
-  width: number
-  height: number
+interface WindowSize<T extends number | undefined = number | undefined> {
+  width: T
+  height: T
 }
 
 type UseWindowSizeOptions<InitializeWithValue extends boolean | undefined> = {
@@ -15,13 +15,11 @@ type UseWindowSizeOptions<InitializeWithValue extends boolean | undefined> = {
 const IS_SERVER = typeof window === 'undefined'
 
 // SSR version of useWindowSize.
-export function useWindowSize(
-  options: UseWindowSizeOptions<false>,
-): WindowSize | undefined
+export function useWindowSize(options: UseWindowSizeOptions<false>): WindowSize
 // CSR version of useWindowSize.
 export function useWindowSize(
   options?: Partial<UseWindowSizeOptions<true>>,
-): WindowSize
+): WindowSize<number>
 /**
  * Custom hook that tracks the size of the window.
  * @param {?UseWindowSizeOptions} [options] - The options for customizing the behavior of the hook (optional).
@@ -37,23 +35,26 @@ export function useWindowSize(
  */
 export function useWindowSize(
   options: Partial<UseWindowSizeOptions<boolean>> = {},
-): WindowSize | undefined {
+): WindowSize | WindowSize<number> {
   let { initializeWithValue = true } = options
   if (IS_SERVER) {
     initializeWithValue = false
   }
 
-  const [windowSize, setWindowSize] = useState(() => {
+  const [windowSize, setWindowSize] = useState<WindowSize>(() => {
     if (initializeWithValue) {
       return {
         width: window.innerWidth,
         height: window.innerHeight,
       }
     }
-    return undefined
+    return {
+      width: undefined,
+      height: undefined,
+    }
   })
 
-  const handleSize = () => {
+  function handleSize() {
     setWindowSize({
       width: window.innerWidth,
       height: window.innerHeight,
@@ -66,7 +67,6 @@ export function useWindowSize(
   // Set size at the first client-side load
   useIsomorphicLayoutEffect(() => {
     handleSize()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return windowSize

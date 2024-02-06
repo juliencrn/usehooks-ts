@@ -18,39 +18,23 @@ declare global {
  * @property {(value: T) => string} [serializer] - A function to serialize the value before storing it.
  * @property {(value: string) => T} [deserializer] - A function to deserialize the stored value.
  */
-interface UseSessionStorageOptions<
-  T,
-  InitializeWithValue extends boolean | undefined,
-> {
+interface UseSessionStorageOptions<T> {
   serializer?: (value: T) => string
   deserializer?: (value: string) => T
-  initializeWithValue: InitializeWithValue
+  initializeWithValue?: boolean
 }
 
 // type SetValue<T> = Dispatch<SetStateAction<T>>
 
 const IS_SERVER = typeof window === 'undefined'
 
-// SSR version of useSessionStorage.
-export function useSessionStorage<T>(
-  key: string,
-  initialValue: T | (() => T),
-  options: UseSessionStorageOptions<T, false>,
-): [T | undefined, Dispatch<SetStateAction<T>>]
-
-// CSR version of useSessionStorage.
-export function useSessionStorage<T>(
-  key: string,
-  initialValue: T | (() => T),
-  options?: Partial<UseSessionStorageOptions<T, boolean>>,
-): [T, Dispatch<SetStateAction<T>>]
 /**
  * Custom hook for using session storage to persist state across page reloads.
  * @template T - The type of the state to be stored in session storage.
  * @param {string} key - The key under which the value will be stored in session storage.
  * @param {T | (() => T)} initialValue - The initial value of the state or a function that returns the initial value.
  * @param {?UseSessionStorageOptions<T>} [options] - Options for customizing the behavior of serialization and deserialization (optional).
- * @param {?boolean} [options.initializeWithValue] - If `true` (default), the hook will initialize reading the session storage. In SSR, you should set it to `false`, returning `undefined` initially.
+ * @param {?boolean} [options.initializeWithValue] - If `true` (default), the hook will initialize reading the session storage. In SSR, you should set it to `false`, returning the initial value initially.
  * @param {(value: T) => string} [options.serializer] - A function to serialize the value before storing it.
  * @returns {[T, Dispatch<SetStateAction<T>>]} A tuple containing the stored value and a function to set the value.
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-session-storage)
@@ -62,12 +46,9 @@ export function useSessionStorage<T>(
 export function useSessionStorage<T>(
   key: string,
   initialValue: T | (() => T),
-  options: Partial<UseSessionStorageOptions<T, boolean>> = {},
-): [T | undefined, Dispatch<SetStateAction<T>>] {
-  let { initializeWithValue = true } = options
-  if (IS_SERVER) {
-    initializeWithValue = false
-  }
+  options: UseSessionStorageOptions<T> = {},
+): [T, Dispatch<SetStateAction<T>>] {
+  const { initializeWithValue = true } = options
 
   const serializer = useCallback<(value: T) => string>(
     value => {
@@ -130,7 +111,8 @@ export function useSessionStorage<T>(
     if (initializeWithValue) {
       return readValue()
     }
-    return undefined
+
+    return initialValue instanceof Function ? initialValue() : initialValue
   })
 
   // Return a wrapped version of useState's setter function that ...

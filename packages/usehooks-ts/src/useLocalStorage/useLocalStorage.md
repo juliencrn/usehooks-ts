@@ -3,7 +3,7 @@ This hook is used in the same way as useState except that you must pass the stor
 
 You can also pass an optional third parameter to use a custom serializer/deserializer.
 
-**Note**: If you use this hook in an SSR context, set the `initializeWithValue` option to `false`.
+**Note**: If you use this hook in an SSR context, set the `initializeWithValue` option to `false`, it will initialize in SSR with the initial value.
 
 ### Related hooks
 

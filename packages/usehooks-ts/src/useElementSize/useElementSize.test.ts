@@ -54,11 +54,16 @@ describe('useElementSize()', () => {
 
   it('should initialize', () => {
     const { result } = setupHook()
-    const [setRef, size] = result.current
 
-    expect(typeof size.height).toBe('number')
-    expect(typeof size.width).toBe('number')
-    expect(setRef).toBeInstanceOf(Function)
+    act(() => {
+      result.current.ref(dom)
+      resizeElement(dom, 'width', 1920)
+      resizeElement(dom, 'height', 1080)
+    })
+
+    expect(typeof result.current.height).toBe('number')
+    expect(typeof result.current.width).toBe('number')
+    expect(result.current.ref).toBeInstanceOf(Function)
   })
 
   it('should match the corresponding height', () => {

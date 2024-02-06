@@ -1,18 +1,20 @@
+import { useRef } from 'react'
+
+import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 import { useLocalStorage } from '../useLocalStorage'
 import { useMediaQuery } from '../useMediaQuery'
-import { useUpdateEffect } from '../useUpdateEffect'
 
 const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)'
 const LOCAL_STORAGE_KEY = 'usehooks-ts-dark-mode'
 
-type DarkModeOptions<InitializeWithValue extends boolean | undefined> = {
+type DarkModeOptions = {
   defaultValue?: boolean
   localStorageKey?: string
-  initializeWithValue: InitializeWithValue
+  initializeWithValue?: boolean
 }
 
-interface DarkModeOutput<T extends boolean | undefined> {
-  isDarkMode: T
+interface DarkModeOutput {
+  isDarkMode: boolean
   toggle: () => void
   enable: () => void
   disable: () => void
@@ -32,24 +34,14 @@ interface DarkModeOutput<T extends boolean | undefined> {
 export function useDarkMode(
   defaultValue: boolean,
   localStorageKey?: string,
-): DarkModeOutput<boolean>
-
-// SSR version of useDarkMode.
-export function useDarkMode(
-  options: DarkModeOptions<false>,
-): DarkModeOutput<boolean | undefined>
-
-// CSR version of useDarkMode.
-export function useDarkMode(
-  options?: Partial<DarkModeOptions<true>>,
-): DarkModeOutput<boolean>
-
+): DarkModeOutput
+export function useDarkMode(options?: DarkModeOptions): DarkModeOutput
 /**
  * Custom hook that returns the current state of the dark mode.
  * @param  {?boolean | ?DarkModeOptions} [options] - the initial value of the dark mode, default `false`.
  * @param  {?boolean} [options.defaultValue] - the initial value of the dark mode, default `false`.
  * @param  {?string} [options.localStorageKey] - the key to use in the local storage, default `'usehooks-ts-dark-mode'`.
- * @param  {?boolean} [options.initializeWithValue] - if `true` (default), the hook will initialize reading `localStorage`. In SSR, you should set it to `false`, returning `undefined` or the `defaultValue` initially.
+ * @param  {?boolean} [options.initializeWithValue] - if `true` (default), the hook will initialize reading `localStorage`. In SSR, you should set it to `false`, returning the `defaultValue` or `false` initially.
  * @param  {?string} [localStorageKeyProps] the key to use in the local storage, default `'usehooks-ts-dark-mode'`.
  * @returns {DarkModeOutput} An object containing the dark mode's state and its controllers.
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-dark-mode)
@@ -57,12 +49,14 @@ export function useDarkMode(
  * const { isDarkMode, toggle, enable, disable, set } = useDarkMode({ defaultValue: true });
  */
 export function useDarkMode(
-  options?: boolean | Partial<DarkModeOptions<boolean>>,
+  options?: boolean | DarkModeOptions,
   localStorageKeyProps: string = LOCAL_STORAGE_KEY,
-): DarkModeOutput<boolean | undefined> {
+): DarkModeOutput {
+  const counter = useRef(0)
+  counter.current++
   // TODO: Refactor this code after the deprecated signature has been removed.
   const defaultValue =
-    typeof options === 'boolean' ? options : options?.defaultValue ?? false
+    typeof options === 'boolean' ? options : options?.defaultValue
   const localStorageKey =
     typeof options === 'boolean'
       ? localStorageKeyProps ?? LOCAL_STORAGE_KEY
@@ -72,7 +66,10 @@ export function useDarkMode(
       ? undefined
       : options?.initializeWithValue ?? undefined
 
-  const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY)
+  const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY, {
+    initializeWithValue,
+    defaultValue,
+  })
   const [isDarkMode, setDarkMode] = useLocalStorage<boolean>(
     localStorageKey,
     defaultValue ?? isDarkOS ?? false,
@@ -80,9 +77,10 @@ export function useDarkMode(
   )
 
   // Update darkMode if os prefers changes
-  useUpdateEffect(() => {
-    setDarkMode(isDarkOS)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  useIsomorphicLayoutEffect(() => {
+    if (isDarkOS !== isDarkMode) {
+      setDarkMode(isDarkOS)
+    }
   }, [isDarkOS])
 
   return {

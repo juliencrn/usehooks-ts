@@ -43,7 +43,6 @@ export function useScreen(
     setScreen(window.screen)
   }
 
-  // TODO: Prefer incoming useResizeObserver hook
   useEventListener('resize', handleSize)
 
   // Set size at the first client-side load

@@ -4,7 +4,7 @@ import { useElementSize } from './useElementSize'
 
 export default function Component() {
   const [isVisible, setVisible] = useState(true)
-  const [squareRef, { width, height }] = useElementSize()
+  const [squareRef, { width = 0, height = 0 }] = useElementSize()
 
   const toggleVisibility = () => {
     setVisible(x => !x)
