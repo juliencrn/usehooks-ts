@@ -9,6 +9,10 @@ type UseMediaQueryOptions = {
 
 const IS_SERVER = typeof window === 'undefined'
 
+export function useMediaQuery(
+  query: string,
+  options?: UseMediaQueryOptions,
+): boolean
 /**
  * Custom hook for tracking the state of a media query.
  * @deprecated - this useMediaQuery's signature is deprecated, it now accepts an query parameter and an options object.
@@ -22,10 +26,6 @@ const IS_SERVER = typeof window === 'undefined'
  * // Use `isSmallScreen` to conditionally apply styles or logic based on the screen size.
  */
 export function useMediaQuery(query: string, defaultValue: boolean): boolean // defaultValue should be false by default
-export function useMediaQuery(
-  query: string,
-  options?: UseMediaQueryOptions,
-): boolean
 /**
  * Custom hook for tracking the state of a media query.
  * @param {string} query - The media query to track.

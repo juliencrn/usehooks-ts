@@ -21,6 +21,7 @@ interface DarkModeOutput {
   set: (value: boolean) => void
 }
 
+export function useDarkMode(options?: DarkModeOptions): DarkModeOutput
 /**
  * Custom hook that returns the current state of the dark mode.
  * @deprecated this useDarkMode's signature is deprecated, it now accepts an options object instead of multiple parameters.
@@ -35,7 +36,6 @@ export function useDarkMode(
   defaultValue: boolean,
   localStorageKey?: string,
 ): DarkModeOutput
-export function useDarkMode(options?: DarkModeOptions): DarkModeOutput
 /**
  * Custom hook that returns the current state of the dark mode.
  * @param  {?boolean | ?DarkModeOptions} [options] - the initial value of the dark mode, default `false`.

@@ -21,6 +21,9 @@ type TernaryDarkModeResult = {
   toggleTernaryDarkMode: () => void
 }
 
+export function useTernaryDarkMode(
+  options?: TernaryDarkModeOptions,
+): TernaryDarkModeResult
 /**
  * Custom hook for managing ternary (system, dark, light) dark mode with local storage support.
  * @deprecated this useTernaryDarkMode's signature is deprecated, it now accepts an options object instead of multiple parameters.
@@ -34,11 +37,6 @@ type TernaryDarkModeResult = {
 export function useTernaryDarkMode(
   localStorageKey: string,
 ): TernaryDarkModeResult
-
-export function useTernaryDarkMode(
-  options?: TernaryDarkModeOptions,
-): TernaryDarkModeResult
-
 /**
  * Custom hook for managing ternary (system, dark, light) dark mode with local storage support.
  * @param {?TernaryDarkModeOptions | string} [options] - Options or the local storage key for the hook.
