@@ -11,6 +11,7 @@ const excludeHooks = [
   'useSsr', // @deprecated
   'useImageOnLoad', // @deprecated
   'useElementSize', // @deprecated
+  'useFetch', // @deprecated
   'useIsomorphicLayoutEffect', // Combination of useLayoutEffect and useEffect without custom logic
 ]
 

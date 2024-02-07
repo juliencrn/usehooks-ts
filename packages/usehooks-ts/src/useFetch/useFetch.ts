@@ -33,6 +33,7 @@ type Action<T> =
   | { type: 'error'; payload: Error }
 
 /**
+ * @deprecated - `useFetch` is deprecated and will be removed in the next major version. See the documentation for more information.
  * Custom hook for making HTTP requests and managing the state of the request.
  * @template T - The type of data expected in the response.
  * @param {string | undefined} url - The URL to make the HTTP request to.
