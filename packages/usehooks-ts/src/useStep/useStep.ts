@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import type { Dispatch, SetStateAction } from 'react'
 
@@ -25,12 +25,8 @@ type SetStepCallbackType = (step: number | ((step: number) => number)) => void
 export function useStep(maxStep: number): [number, Helpers] {
   const [currentStep, setCurrentStep] = useState(1)
 
-  const canGoToNextStep = useMemo(
-    () => currentStep + 1 <= maxStep,
-    [currentStep, maxStep],
-  )
-
-  const canGoToPrevStep = useMemo(() => currentStep - 1 >= 1, [currentStep])
+  const canGoToNextStep = currentStep + 1 <= maxStep
+  const canGoToPrevStep = currentStep - 1 > 0
 
   const setStep = useCallback<SetStepCallbackType>(
     step => {
