@@ -17,6 +17,9 @@ const excludeHooks = [
   'useImageOnLoad', // @deprecated
   'useElementSize', // @deprecated
   'useFetch', // @deprecated
+  'useUpdateEffect', // @deprecated
+  'useEffectOnce', // @deprecated
+  'useIsFirstRender', // @deprecated
 ]
 
 const markdown = fs

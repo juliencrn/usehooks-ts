@@ -12,6 +12,9 @@ const excludeHooks = [
   'useImageOnLoad', // @deprecated
   'useElementSize', // @deprecated
   'useFetch', // @deprecated
+  'useUpdateEffect', // @deprecated
+  'useEffectOnce', // @deprecated
+  'useIsFirstRender', // @deprecated
   'useIsomorphicLayoutEffect', // Combination of useLayoutEffect and useEffect without custom logic
 ]
 

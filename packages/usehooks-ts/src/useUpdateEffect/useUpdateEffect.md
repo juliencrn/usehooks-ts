@@ -1,7 +1,1 @@
-Just modified version of `useEffect` that is skipping the first render.
-
-See also:
-
-- [`useEffectOnce()`](/react-hook/use-effect-once): Inverse of `useUpdateEffect()`
-- [`useIsFirstRender()`](/react-hook/use-is-first-render): Return a `boolean`
-- [`useIsMounted()`](/react-hook/use-is-mounted): Callback function to avoid Promise execution after component un-mount
+This hook is **deprecated** and will be dropped in a future major release. `useEffect` is designed for synchronization. React 18 emphasizes this concept by rendering components twice in strict mode to highlight improper usage. Attempting to skip the first render is considered a hack.
