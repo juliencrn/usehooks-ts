@@ -5,6 +5,7 @@ import type { DependencyList, EffectCallback } from 'react'
 import { useIsFirstRender } from '../useIsFirstRender'
 
 /**
+ * @deprecated - Don't use this hook, it's an anti-pattern.
  * Custom hook that runs an effect only on updates (not on the initial render).
  * @param {EffectCallback} effect - The function to run as the effect.
  * @param {DependencyList} [deps] - An optional array of dependencies for the effect.
