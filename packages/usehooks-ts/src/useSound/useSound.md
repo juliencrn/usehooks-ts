@@ -4,9 +4,9 @@ A simple hook to play a sound effect.
 
 - `src`: The URL of the sound file to be played.
 - `options`: An object containing the following optional properties:
-  - `volume`: The volume at which the sound should be played.
-  - `preload`: Whether the sound should be preloaded.
-  - `playbackRate`: The speed at which the sound should be played.
+  - `preload`: Whether the sound should be preloaded. Defaults to `auto`.
+
+**Note**: If you use this hook in an SSR context, set the `initializeWithValue` option to `false`, it will initialize with `undefined`.
 
 ### Returns
 

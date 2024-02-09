@@ -1,16 +1,32 @@
-import { useCallback, useMemo } from 'react'
+import { useEffect, useRef } from 'react'
+
+import type { RefObject } from 'react'
 
 type UseSoundResult = [() => void, () => void] & {
   play: () => void
   pause: () => void
   stop: () => void
+  ref: RefObject<HTMLAudioElement | null>
 }
 
-type UseSoundOptions = {
-  preload?: HTMLMediaElement['preload']
-  volume?: number
-  playbackRate?: number
+interface UseSoundOptions<InitializeWithValue extends boolean | undefined> {
+  preload: HTMLMediaElement['preload']
+  initializeWithValue: InitializeWithValue
 }
+
+const IS_SERVER = typeof window === 'undefined'
+
+// SSR version
+export function useSound(
+  src: string,
+  options: UseSoundOptions<false>,
+): UseSoundResult | undefined
+
+// CSR version
+export function useSound(
+  src: string,
+  options?: Partial<UseSoundOptions<true>>,
+): UseSoundResult
 
 /**
  * Custom hook for playing sound
@@ -25,30 +41,54 @@ type UseSoundOptions = {
  */
 export function useSound(
   src: string,
-  options: UseSoundOptions = {},
+  options: Partial<UseSoundOptions<boolean>> = {},
 ): UseSoundResult {
-  const audio = useMemo(
-    () => Object.assign(new Audio(src), options),
-    [src, options],
-  )
+  let { initializeWithValue = true } = options
+  if (IS_SERVER) {
+    initializeWithValue = false
+  }
 
-  const play = useCallback(() => {
-    void audio.play()
-  }, [audio])
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
-  const pause = useCallback(() => {
-    audio.pause()
-  }, [audio])
+  useEffect(() => {
+    if (initializeWithValue) {
+      audioRef.current = new Audio(src)
+      if (options.preload) {
+        audioRef.current.preload = options.preload
+      }
+    } else {
+      audioRef.current = null
+    }
 
-  const stop = useCallback(() => {
-    audio.pause()
-    audio.currentTime = 0
-  }, [audio])
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause()
+        audioRef.current = null
+      }
+    }
+  }, [src, options.preload, initializeWithValue])
+
+  const play = () => {
+    if (!audioRef.current) return
+    void audioRef.current.play()
+  }
+
+  const pause = () => {
+    if (!audioRef.current) return
+    audioRef.current.pause()
+  }
+
+  const stop = () => {
+    if (!audioRef.current) return
+    audioRef.current.pause()
+    audioRef.current.currentTime = 0
+  }
 
   const result = [play, stop] as UseSoundResult
   result.play = play
   result.stop = stop
   result.pause = pause
+  result.ref = audioRef
 
   return result
 }
