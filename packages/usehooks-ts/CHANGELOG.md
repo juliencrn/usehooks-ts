@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.14.0
+
+### Minor Changes
+
+- d60f1c6: Added debounce option to both `useScreen` and `useWindowSize`
+
+### Patch Changes
+
+- 7d74e09: Release documentation for `useEventCallback`
+- 2660580: Depreciated `useFetch`, see documentation for more information
+- bc3f967: Deprecated `useEffectOnce`, `useIsFirstRender` and `useUpdateEffect`
+
 ## 2.13.0
 
 ### Minor Changes

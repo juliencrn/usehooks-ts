@@ -1,5 +1,15 @@
 # www
 
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies [7d74e09]
+- Updated dependencies [2660580]
+- Updated dependencies [bc3f967]
+- Updated dependencies [d60f1c6]
+  - usehooks-ts@2.14.0
+
 ## 0.2.0
 
 ### Minor Changes
