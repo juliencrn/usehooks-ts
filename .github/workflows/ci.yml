@@ -21,7 +21,7 @@ jobs:
           fetch-depth: 2
 
       - name: Setup Pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v3
         with:
           version: ${{ env.PNPM_VERSION }}
 
