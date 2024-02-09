@@ -1,6 +1,5 @@
 import { useLocalStorage } from './useLocalStorage'
 
-// Usage
 export default function Component() {
   const [value, setValue] = useLocalStorage('test-key', 0)
 
