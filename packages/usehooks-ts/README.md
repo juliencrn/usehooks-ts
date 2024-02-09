@@ -44,13 +44,12 @@
 - [`useDebounceCallback()`](https://usehooks-ts.com/react-hook/use-debounce-callback)
 - [`useDebounceValue()`](https://usehooks-ts.com/react-hook/use-debounce-value)
 - [`useDocumentTitle()`](https://usehooks-ts.com/react-hook/use-document-title)
-- [`useEffectOnce()`](https://usehooks-ts.com/react-hook/use-effect-once)
+- [`useEventCallback()`](https://usehooks-ts.com/react-hook/use-event-callback)
 - [`useEventListener()`](https://usehooks-ts.com/react-hook/use-event-listener)
 - [`useHover()`](https://usehooks-ts.com/react-hook/use-hover)
 - [`useIntersectionObserver()`](https://usehooks-ts.com/react-hook/use-intersection-observer)
 - [`useInterval()`](https://usehooks-ts.com/react-hook/use-interval)
 - [`useIsClient()`](https://usehooks-ts.com/react-hook/use-is-client)
-- [`useIsFirstRender()`](https://usehooks-ts.com/react-hook/use-is-first-render)
 - [`useIsMounted()`](https://usehooks-ts.com/react-hook/use-is-mounted)
 - [`useIsomorphicLayoutEffect()`](https://usehooks-ts.com/react-hook/use-isomorphic-layout-effect)
 - [`useLocalStorage()`](https://usehooks-ts.com/react-hook/use-local-storage)
@@ -68,7 +67,6 @@
 - [`useTimeout()`](https://usehooks-ts.com/react-hook/use-timeout)
 - [`useToggle()`](https://usehooks-ts.com/react-hook/use-toggle)
 - [`useUnmount()`](https://usehooks-ts.com/react-hook/use-unmount)
-- [`useUpdateEffect()`](https://usehooks-ts.com/react-hook/use-update-effect)
 - [`useWindowSize()`](https://usehooks-ts.com/react-hook/use-window-size)
 
 <!-- HOOKS:END -->
