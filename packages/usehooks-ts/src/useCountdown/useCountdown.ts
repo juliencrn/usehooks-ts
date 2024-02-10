@@ -23,6 +23,7 @@ interface CountdownOptions {
   intervalMs?: number
   isIncrement?: boolean
   countStop?: number
+  onStop?: () => void
 }
 
 interface CountdownControllers {
@@ -88,7 +89,8 @@ export function useCountdown(
   let countStart,
     intervalMs,
     isIncrement: boolean | undefined,
-    countStop: number | undefined
+    countStop: number | undefined,
+    onStop: () => void | undefined 
 
   if ('seconds' in countdownOptions) {
     console.warn(
@@ -99,15 +101,17 @@ export function useCountdown(
     countStart = countdownOptions.seconds
     intervalMs = countdownOptions.interval
     isIncrement = countdownOptions.isIncrement
+    onStop = countdownOptions.onStop
   } else {
     // eslint-disable-next-line @typescript-eslint/no-extra-semi, no-extra-semi
-    ;({ countStart, intervalMs, isIncrement, countStop } = countdownOptions)
+    ;({ countStart, intervalMs, isIncrement, countStop, onStop } = countdownOptions)
   }
 
   // default values
   intervalMs = intervalMs ?? 1000
   isIncrement = isIncrement ?? false
   countStop = countStop ?? 0
+  onStop = onStop ?? undefined
 
   const {
     count,
@@ -139,6 +143,7 @@ export function useCountdown(
   const countdownCallback = useCallback(() => {
     if (count === countStop) {
       stopCountdown()
+      if (onStop) onStop();
       return
     }
 
