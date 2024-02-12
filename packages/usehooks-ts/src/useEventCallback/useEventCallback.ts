@@ -8,6 +8,7 @@ import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
  * @template R - The return type of the event callback.
  * @param {(...args: Args) => R} fn - The callback function.
  * @returns {(...args: Args) => R} A memoized event callback function.
+ * @see [Documentation](https://usehooks-ts.com/react-hook/use-event-callback)
  * @example
  * const handleClick = useEventCallback((event) => {
  *   // Handle the event here

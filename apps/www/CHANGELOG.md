@@ -1,5 +1,37 @@
 # www
 
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies [7d74e09]
+- Updated dependencies [2660580]
+- Updated dependencies [bc3f967]
+- Updated dependencies [d60f1c6]
+  - usehooks-ts@2.14.0
+
+## 0.2.0
+
+### Minor Changes
+
+- b5b9e1f: chore: Updated dependencies
+- 4c8c330: various improvements to the site
+
+### Patch Changes
+
+- bdf7bda: Add eslint rules to comply with verbatimModuleSyntax to avoid side-effects
+- Updated dependencies [87a5141]
+- Updated dependencies [b5b9e1f]
+- Updated dependencies [87ba579]
+- Updated dependencies [4146c39]
+- Updated dependencies [bdf7bda]
+- Updated dependencies [6b582de]
+- Updated dependencies [f39078f]
+- Updated dependencies [a444ba7]
+- Updated dependencies [e807ab3]
+- Updated dependencies [be8c35b]
+  - usehooks-ts@2.13.0
+
 ## 0.1.6
 
 ### Patch Changes

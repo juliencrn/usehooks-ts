@@ -12,9 +12,20 @@ const srcDir = path.resolve('./packages/usehooks-ts/src')
 const readmeFile = path.resolve('./README.md')
 const readmeUseHook = path.resolve('./packages/usehooks-ts/README.md')
 
+const excludeHooks = [
+  'useSsr', // @deprecated
+  'useImageOnLoad', // @deprecated
+  'useElementSize', // @deprecated
+  'useFetch', // @deprecated
+  'useUpdateEffect', // @deprecated
+  'useEffectOnce', // @deprecated
+  'useIsFirstRender', // @deprecated
+]
+
 const markdown = fs
   .readdirSync(srcDir)
   .filter(isHookFile)
+  .filter(filename => !excludeHooks.includes(filename))
   .map(formatHook)
   .reduce((acc, line) => acc + line, '')
 

@@ -1,5 +1,11 @@
 # eslint-config-custom
 
+## 1.2.0
+
+### Minor Changes
+
+- b5b9e1f: chore: Updated dependencies
+
 ## 1.1.1
 
 ### Patch Changes

@@ -10,6 +10,11 @@ const hookDir = path.resolve('./packages/usehooks-ts/src')
 const excludeHooks = [
   'useSsr', // @deprecated
   'useImageOnLoad', // @deprecated
+  'useElementSize', // @deprecated
+  'useFetch', // @deprecated
+  'useUpdateEffect', // @deprecated
+  'useEffectOnce', // @deprecated
+  'useIsFirstRender', // @deprecated
   'useIsomorphicLayoutEffect', // Combination of useLayoutEffect and useEffect without custom logic
 ]
 

@@ -11,37 +11,21 @@ declare global {
   }
 }
 
-interface UseLocalStorageOptions<
-  T,
-  InitializeWithValue extends boolean | undefined,
-> {
+interface UseLocalStorageOptions<T> {
   serializer?: (value: T) => string
   deserializer?: (value: string) => T
-  initializeWithValue: InitializeWithValue
+  initializeWithValue?: boolean
 }
 
 const IS_SERVER = typeof window === 'undefined'
 
-// SSR version of useLocalStorage.
-export function useLocalStorage<T>(
-  key: string,
-  initialValue: T | (() => T),
-  options: UseLocalStorageOptions<T, false>,
-): [T | undefined, Dispatch<SetStateAction<T>>]
-
-// CSR version of useLocalStorage.
-export function useLocalStorage<T>(
-  key: string,
-  initialValue: T | (() => T),
-  options?: Partial<UseLocalStorageOptions<T, boolean>>,
-): [T, Dispatch<SetStateAction<T>>]
 /**
  * Custom hook for using local storage to persist state across page reloads.
  * @template T - The type of the state to be stored in local storage.
  * @param {string} key - The key under which the value will be stored in local storage.
  * @param {T | (() => T)} initialValue - The initial value of the state or a function that returns the initial value.
  * @param {UseLocalStorageOptions<T>} [options] - Options for customizing the behavior of serialization and deserialization (optional).
- * @param {?boolean} [options.initializeWithValue] - If `true` (default), the hook will initialize reading the local storage. In SSR, you should set it to `false`, returning `undefined` initially.
+ * @param {?boolean} [options.initializeWithValue] - If `true` (default), the hook will initialize reading the local storage. In SSR, you should set it to `false`, returning the initial value initially.
  * @param {?((value: T) => string)} [options.serializer] - A function to serialize the value before storing it.
  * @param {?((value: string) => T)} [options.deserializer] - A function to deserialize the stored value.
  * @returns {[T, Dispatch<SetStateAction<T>>]} A tuple containing the stored value and a function to set the value.
@@ -54,12 +38,9 @@ export function useLocalStorage<T>(
 export function useLocalStorage<T>(
   key: string,
   initialValue: T | (() => T),
-  options: Partial<UseLocalStorageOptions<T, boolean>> = {},
-): [T | undefined, Dispatch<SetStateAction<T>>] {
-  let { initializeWithValue = true } = options
-  if (IS_SERVER) {
-    initializeWithValue = false
-  }
+  options: UseLocalStorageOptions<T> = {},
+): [T, Dispatch<SetStateAction<T>>] {
+  const { initializeWithValue = true } = options
 
   const serializer = useCallback<(value: T) => string>(
     value => {
@@ -122,7 +103,7 @@ export function useLocalStorage<T>(
     if (initializeWithValue) {
       return readValue()
     }
-    return undefined
+    return initialValue instanceof Function ? initialValue() : initialValue
   })
 
   // Return a wrapped version of useState's setter function that ...
