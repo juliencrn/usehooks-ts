@@ -5,3 +5,7 @@ dist
 public
 .cache
 pnpm-lock.yaml
+.changeset
+.github
+apps/www/.next
+apps/www/generated
