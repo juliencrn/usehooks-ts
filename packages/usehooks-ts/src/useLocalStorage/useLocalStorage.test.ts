@@ -128,6 +128,49 @@ describe('useLocalStorage()', () => {
     expect(window.localStorage.getItem('count')).toEqual('5')
   })
 
+  it('Reset the state with static initial value', () => {
+    const { result } = renderHook(() => useLocalStorage('count', 2))
+
+    act(() => {
+      const setState = result.current[1]
+      const reset = result.current[2]
+      setState(prev => prev + 1)
+      setState(prev => prev + 1)
+      setState(prev => prev + 1)
+      reset()
+    })
+
+    expect(result.current[0]).toBe(2)
+    expect(window.localStorage.getItem('count')).toEqual('2')
+  })
+
+  it('Reset the state with initial value as a function', () => {
+    const { result } = renderHook(() =>
+      useLocalStorage('count', () => ({
+        id: 1,
+        name: 'Joe',
+      })),
+    )
+
+    act(() => {
+      const setState = result.current[1]
+      const reset = result.current[2]
+      setState({
+        id: 2,
+        name: 'Jane',
+      })
+      reset()
+    })
+
+    expect(result.current[0]).toEqual({
+      id: 1,
+      name: 'Joe',
+    })
+    expect(window.localStorage.getItem('count')).toEqual(
+      '{"id":1,"name":"Joe"}',
+    )
+  })
+
   it('[Event] Update one hook updates the others', () => {
     const initialValues: [string, unknown] = ['key', 'initial']
     const { result: A } = renderHook(() => useLocalStorage(...initialValues))
