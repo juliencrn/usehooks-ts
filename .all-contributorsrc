@@ -19,7 +19,8 @@
         "content",
         "code",
         "design",
-        "ideas"
+        "ideas",
+        "review"
       ]
     },
     {
@@ -820,5 +821,6 @@
       ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "commitType": "docs"
 }
