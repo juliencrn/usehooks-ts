@@ -11,10 +11,13 @@
 
 <!-- Badges -->
 
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
+![NPM Downloads](https://img.shields.io/npm/dm/usehooks-ts)
+![NPM Downloads](https://img.shields.io/npm/dt/usehooks-ts)
 [![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks-ts/blob/master/LICENSE)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-232-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-234-orange.svg?style=flat-square)](#✨-contributors)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -30,7 +33,25 @@
 
 <br />
 
-## 📖 Summary
+## 💫 Introduction
+
+useHooks(🔥).ts is a React hooks library, written in Typescript and easy to use. It provides a set of hooks that enables you to build your React applications faster. The hooks are built upon the principles of DRY (Don't Repeat Yourself). There are hooks for most common use cases you might need.
+
+The library is designed to be as minimal as possible. It is fully tree-shakable (using the ESM version), meaning that you only import the hooks you need, and the rest will be removed from your bundle making the cost of using this library negligible. Most hooks are extensively tested and are being used in production environments.
+
+### Usage example
+
+```tsx
+import { useLocalStorage } from 'usehooks-ts'
+
+function Component() {
+  const [value, setValue] = useLocalStorage('my-localStorage-key', 0)
+
+  // ...
+}
+```
+
+## 🪝 Available Hooks
 
 <!-- HOOKS:START -->
 
@@ -71,78 +92,9 @@
 
 <!-- HOOKS:END -->
 
-## 🤝 How to Contribute
-
-Thanks for wanting to contribute! It's more than welcome 🤗
-
-### Content changes
-
-Most content changes (like fixing a typo) can be made without cloning the repository.
-Simply locate the file you wish to change in the GitHub UI,
-and click the little edit icon to make your change directly on the GitHub website.
-
-If you need to make any other substantial changes, then follow the project setup steps below.
-
-### Fork to submit a Pull Request (PR)
-
-Before starting, make sure you have the good system dependencies:
-
-- `node@16.x`
-- `pnpm@^8`
-
-**Note**: To easily switch node version, consider Node Version Manager (nvm).
-
-Then fork the repository, clone it and install.
-
-```bash
-git clone https://github.com/{your_username}/usehooks-ts.git
-cd usehooks-ts
-pnpm install
-```
-
-### Create or update a new hook
-
-```bash
-# This command generates boilerplate for new hooks.
-# Skip if updating an existed hook.
-pnpm gen-hook
-
-# start working
-pnpm dev
-# or
-pnpm dev --filter=usehooks-ts # jest --watch
-pnpm dev --filter=www # next dev
-
-# Develop
-pnpm build
-pnpm lint
-pnpm test
-```
-
-### How is a hook structured?
-
-```bash
-📂 ./packages/usehooks-ts
-├── 📂 useHookName
-│  ├── 📄 useHookName.demo.tsx # working demo
-│  ├── 📝 useHookName.mdx # the documentation content
-│  ├── 🧪 useHookName.test.ts # unit tests
-│  ├── 📄 useHookName.ts # the hook
-│  └── 📄 index.ts
-...
-```
-
-When the `usehooks-ts` is compiled, only the necessary files are used.
-The other files are copied in the documentation website.
-
-**Note**: The demo is used in a different way:
-
-- It's displayed on the website to illustrate how to use the hook.
-- It's deployed as a CodeSandbox on build to let final users play with.
-
 ## 💚 Backers
 
-Big thanks go to all our backers!
+Big thanks go to all our backers! [[Become a backer](https://github.com/sponsors/juliencrn)]
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -161,7 +113,7 @@ Big thanks go to all our backers!
 
 ## ✨ Contributors
 
-Big thanks go to all our contributors!
+Big thanks go to all our contributors! [[Become a contributor](https://github.com/juliencrn/usehooks-ts/blob/master/.github/CONTRIBUTING.md)]
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -292,7 +244,7 @@ Big thanks go to all our contributors!
       <td align="center" valign="top" width="14.28%"><a href="https://svachon.com/"><img src="https://avatars.githubusercontent.com/u/170197?v=4?s=80" width="80px;" alt="Steven Vachon"/><br /><sub><b>Steven Vachon</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=stevenvachon" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/sskirby"><img src="https://avatars.githubusercontent.com/u/25760?v=4?s=80" width="80px;" alt="Sean Kirby"/><br /><sub><b>Sean Kirby</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=sskirby" title="Tests">⚠️</a> <a href="https://github.com/juliencrn/usehooks-ts/commits?author=sskirby" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/AlecsFarias"><img src="https://avatars.githubusercontent.com/u/91743821?v=4?s=80" width="80px;" alt="Alecsander Farias"/><br /><sub><b>Alecsander Farias</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=AlecsFarias" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://blankparticle.in/"><img src="https://avatars.githubusercontent.com/u/130567419?v=4?s=80" width="80px;" alt="Rahul Mishra"/><br /><sub><b>Rahul Mishra</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=BlankParticle" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://blankparticle.in/"><img src="https://avatars.githubusercontent.com/u/130567419?v=4?s=80" width="80px;" alt="Rahul Mishra"/><br /><sub><b>Rahul Mishra</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=BlankParticle" title="Code">💻</a> <a href="https://github.com/juliencrn/usehooks-ts/pulls?q=is%3Apr+reviewed-by%3ABlankParticle" title="Reviewed Pull Requests">👀</a> <a href="#content-BlankParticle" title="Content">🖋</a></td>
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/bryantcodesart"><img src="https://avatars.githubusercontent.com/u/14097078?v=4?s=80" width="80px;" alt="Bryant Smith"/><br /><sub><b>Bryant Smith</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=bryantcodesart" title="Code">💻</a> <a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Abryantcodesart" title="Bug reports">🐛</a></td>
@@ -467,6 +419,8 @@ Big thanks go to all our contributors!
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://abkabioye.me/"><img src="https://avatars.githubusercontent.com/u/18709032?v=4?s=80" width="80px;" alt="wisdomabioye"/><br /><sub><b>wisdomabioye</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Awisdomabioye" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.samtheq.com"><img src="https://avatars.githubusercontent.com/u/51345689?v=4?s=80" width="80px;" alt="Samuel Quiñones"/><br /><sub><b>Samuel Quiñones</b></sub></a><br /><a href="#ideas-SamuelQuinones" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ymc-maha"><img src="https://avatars.githubusercontent.com/u/697307?v=4?s=80" width="80px;" alt="Manuel"/><br /><sub><b>Manuel</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=ymc-maha" title="Code">💻</a> <a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Aymc-maha" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
