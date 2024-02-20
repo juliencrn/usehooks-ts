@@ -51,19 +51,19 @@ export function useMediaQuery(
       ? undefined
       : options?.initializeWithValue ?? undefined
 
-  const [matches, setMatches] = useState<boolean>(() => {
-    if (initializeWithValue) {
-      return getMatches(query)
-    }
-    return defaultValue
-  })
-
   const getMatches = (query: string): boolean => {
     if (IS_SERVER) {
       return defaultValue
     }
     return window.matchMedia(query).matches
   }
+
+  const [matches, setMatches] = useState<boolean>(() => {
+    if (initializeWithValue) {
+      return getMatches(query)
+    }
+    return defaultValue
+  })
 
   /** Handles the change event of the media query. */
   function handleChange() {
