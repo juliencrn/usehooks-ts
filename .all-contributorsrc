@@ -2141,6 +2141,16 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "ymc-maha",
+      "name": "Manuel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/697307?v=4",
+      "profile": "https://github.com/ymc-maha",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
