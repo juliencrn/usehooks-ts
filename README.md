@@ -14,8 +14,7 @@
 [![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks-ts/blob/master/LICENSE)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-232-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-233-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <br />
@@ -431,7 +430,7 @@ Big thanks go to all our contributors!
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/FredericoGauz"><img src="https://avatars.githubusercontent.com/u/18327882?v=4?s=80" width="80px;" alt="FredericoGauz"/><br /><sub><b>FredericoGauz</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3AFredericoGauz" title="Bug reports">🐛</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://www.jonlemofficial.com/"><img src="https://avatars.githubusercontent.com/u/38771842?v=4?s=80" width="80px;" alt="Jonathan &quot;JonLem&quot; Lemos"/><br /><sub><b>Jonathan &quot;JonLem&quot; Lemos</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3AJonLemOfficial" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.jonlemofficial.com/"><img src="https://avatars.githubusercontent.com/u/38771842?v=4?s=80" width="80px;" alt="Jonathan "JonLem" Lemos"/><br /><sub><b>Jonathan "JonLem" Lemos</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3AJonLemOfficial" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/xegulon"><img src="https://avatars.githubusercontent.com/u/74178038?v=4?s=80" width="80px;" alt="Xegulon"/><br /><sub><b>Xegulon</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Axegulon" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/TomSmedley"><img src="https://avatars.githubusercontent.com/u/95056193?v=4?s=80" width="80px;" alt="Tom Smedley"/><br /><sub><b>Tom Smedley</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3ATomSmedley" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/lightbluepoppy"><img src="https://avatars.githubusercontent.com/u/65863981?v=4?s=80" width="80px;" alt="lightbluepoppy"/><br /><sub><b>lightbluepoppy</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Alightbluepoppy" title="Bug reports">🐛</a></td>
@@ -467,6 +466,7 @@ Big thanks go to all our contributors!
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://abkabioye.me/"><img src="https://avatars.githubusercontent.com/u/18709032?v=4?s=80" width="80px;" alt="wisdomabioye"/><br /><sub><b>wisdomabioye</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Awisdomabioye" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.samtheq.com"><img src="https://avatars.githubusercontent.com/u/51345689?v=4?s=80" width="80px;" alt="Samuel Quiñones"/><br /><sub><b>Samuel Quiñones</b></sub></a><br /><a href="#ideas-SamuelQuinones" title="Ideas, Planning, & Feedback">🤔</a></td>
     </tr>
   </tbody>
 </table>
