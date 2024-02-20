@@ -1,117 +1,102 @@
-<img src="./.github/screenshot.png" alt="usehooks-ts banner" align="center" />
+# Contributing to `usehooks-ts`
 
-<br />
+Thanks for wanting to contribute! It's more than welcome 🤗
 
-<div align="center">
-<h1>usehooks-ts</h1>
+As the creators and maintainers of this project, we want to ensure that `usehooks-ts` lives and continues to grow and evolve. We would like to encourage everyone to help and support this library by contributing
 
-<div>React hook library, ready to use, written in Typescript.</div>
+## Ways to contribute
 
-<br />
+1. **Replying and handling open issues or discussions.**
 
-<!-- Badges -->
+   We get some issues and discussions, and some of them may lack necessary information. You can help out by guiding people through the process of filling out the issue template, asking for clarifying information, or pointing them to existing issues that match their description of the problem.
 
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
-![NPM Downloads](https://img.shields.io/npm/dm/usehooks-ts)
-![NPM Downloads](https://img.shields.io/npm/dt/usehooks-ts)
-[![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks-ts/blob/master/LICENSE)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
-![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-234-orange.svg?style=flat-square)](#✨-contributors)
+2. **Reviewing pull requests.**
 
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
+   Pull requests (PRs) are essential for introducing new features, fixing bugs, and improving the overall quality of the codebase. As a reviewer, your role is crucial in ensuring that each PR meets the project's standards and goals. Here are some key aspects to consider when reviewing pull requests:
 
-<br />
-  <pre>npm i <a href="https://www.npmjs.com/package/usehooks-ts">usehooks-ts</a></pre>
-  <br />
+   - **Code Quality**: Examine the changes for readability, maintainability, and adherence to coding standards. Look for any potential code smells, redundant code, or opportunities for optimization.
 
-<div align="center">
-  <sub>Created by <a href="https://github.com/juliencrn">Julien Caron</a> and maintained with ❤️ by an amazing <a href="#contributors">team of developers</a>.</sub>
-</div>
+   - **Functionality**: Test the changes locally if possible to verify that they work as intended. Check if the new feature functions correctly and if the bug fixes address the reported issues.
 
-</div>
+   - **Compatibility**: Ensure that the changes don't introduce breaking changes or compatibility issues with existing functionality. Consider how the changes may impact other parts of the codebase and any dependent projects.
 
-<br />
+   - **Documentation**: Confirm that the PR includes any necessary updates to documentation, including code comments, README files, changesets, or API references.
 
-## 💫 Introduction
+   - **Testing**: Assess whether the PR includes sufficient unit tests to cover the modified code. If necessary, suggest additional test cases or improvements to the testing strategy.
 
-useHooks(🔥).ts is a React hooks library, written in Typescript and easy to use. It provides a set of hooks that enables you to build your React applications faster. The hooks are built upon the principles of DRY (Don't Repeat Yourself). There are hooks for most common use cases you might need.
+   - **Feedback**: Provide constructive feedback to the contributor, highlighting areas for improvement and praising positive aspects of the contribution. Encourage collaboration and discussion to address any concerns or questions.
 
-The library is designed to be as minimal as possible. It is fully tree-shakable (using the ESM version), meaning that you only import the hooks you need, and the rest will be removed from your bundle making the cost of using this library negligible. Most hooks are extensively tested and are being used in production environments.
+   Your thorough review helps maintain the quality and stability of the project. Remember to be respectful and supportive in your feedback, fostering a positive and inclusive community for contributors.
 
-### Usage example
+3. **Help people write unit-tests.**
 
-```tsx
-import { useLocalStorage } from 'usehooks-ts'
+   Some pull requests sent to the main repository may lack a proper test plan. These help reviewers understand how the change was tested, and can speed up the time it takes for a contribution to be accepted.
 
-function Component() {
-  const [value, setValue] = useLocalStorage('my-localStorage-key', 0)
+4. **Improving the documentation.**
 
-  // ...
-}
-```
+   Reviewing documentation updates can be as simple as checking for spelling and grammar. If you encounter situations that can be explained better in the docs, click Edit at the top of most docs pages to get started with your own contribution.
 
-## 🪝 Available Hooks
+5. **Contribute the to code.**
 
-<!-- HOOKS:START -->
+   Code-level contributions to `usehooks-ts` like creating or fixing a hook generally come in the form of pull requests. These are done by forking the repo and making changes locally explained below.
 
-- [`useBoolean()`](https://usehooks-ts.com/react-hook/use-boolean)
-- [`useClickAnyWhere()`](https://usehooks-ts.com/react-hook/use-click-any-where)
-- [`useCopyToClipboard()`](https://usehooks-ts.com/react-hook/use-copy-to-clipboard)
-- [`useCountdown()`](https://usehooks-ts.com/react-hook/use-countdown)
-- [`useCounter()`](https://usehooks-ts.com/react-hook/use-counter)
-- [`useDarkMode()`](https://usehooks-ts.com/react-hook/use-dark-mode)
-- [`useDebounce()`](https://usehooks-ts.com/react-hook/use-debounce)
-- [`useDebounceCallback()`](https://usehooks-ts.com/react-hook/use-debounce-callback)
-- [`useDebounceValue()`](https://usehooks-ts.com/react-hook/use-debounce-value)
-- [`useDocumentTitle()`](https://usehooks-ts.com/react-hook/use-document-title)
-- [`useEventCallback()`](https://usehooks-ts.com/react-hook/use-event-callback)
-- [`useEventListener()`](https://usehooks-ts.com/react-hook/use-event-listener)
-- [`useHover()`](https://usehooks-ts.com/react-hook/use-hover)
-- [`useIntersectionObserver()`](https://usehooks-ts.com/react-hook/use-intersection-observer)
-- [`useInterval()`](https://usehooks-ts.com/react-hook/use-interval)
-- [`useIsClient()`](https://usehooks-ts.com/react-hook/use-is-client)
-- [`useIsMounted()`](https://usehooks-ts.com/react-hook/use-is-mounted)
-- [`useIsomorphicLayoutEffect()`](https://usehooks-ts.com/react-hook/use-isomorphic-layout-effect)
-- [`useLocalStorage()`](https://usehooks-ts.com/react-hook/use-local-storage)
-- [`useLockedBody()`](https://usehooks-ts.com/react-hook/use-locked-body)
-- [`useMap()`](https://usehooks-ts.com/react-hook/use-map)
-- [`useMediaQuery()`](https://usehooks-ts.com/react-hook/use-media-query)
-- [`useOnClickOutside()`](https://usehooks-ts.com/react-hook/use-on-click-outside)
-- [`useReadLocalStorage()`](https://usehooks-ts.com/react-hook/use-read-local-storage)
-- [`useResizeObserver()`](https://usehooks-ts.com/react-hook/use-resize-observer)
-- [`useScreen()`](https://usehooks-ts.com/react-hook/use-screen)
-- [`useScript()`](https://usehooks-ts.com/react-hook/use-script)
-- [`useSessionStorage()`](https://usehooks-ts.com/react-hook/use-session-storage)
-- [`useStep()`](https://usehooks-ts.com/react-hook/use-step)
-- [`useTernaryDarkMode()`](https://usehooks-ts.com/react-hook/use-ternary-dark-mode)
-- [`useTimeout()`](https://usehooks-ts.com/react-hook/use-timeout)
-- [`useToggle()`](https://usehooks-ts.com/react-hook/use-toggle)
-- [`useUnmount()`](https://usehooks-ts.com/react-hook/use-unmount)
-- [`useWindowSize()`](https://usehooks-ts.com/react-hook/use-window-size)
+## Code contributions
 
-<!-- HOOKS:END -->
+Here is a quick guide to doing code contributions to the library.
 
-## 💚 Backers
+1. Make sure to have the right dependencies up-to-date:
 
-Big thanks go to all our backers! [[Become a backer](https://github.com/sponsors/juliencrn)]
+   - `"node": ">=16.15"`
+   - `"pnpm": "^8"`
 
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tbody>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/getsentry"><img src="https://avatars.githubusercontent.com/u/1396951?v=4" width="100px;" alt="Sentry"/><br /><sub><b>Sentry</b></sub></a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/KATT"><img src="https://avatars.githubusercontent.com/u/459267?v=4" width="100px;" alt="KATT"/><br /><sub><b>KATT</b></sub></a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/adhiravishankar"><img src="https://avatars.githubusercontent.com/u/3884741?v=4" width="100px;" alt="Adhi Ravishankar"/><br /><sub><b>Adhi Ravishankar</b></sub></a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/great-work-told-is"><img src="https://avatars.githubusercontent.com/u/113922084?v=4" width="100px;" alt="great-work-told-is"/><br /><sub><b>great-work-told-is</b></sub></a></td>
-    </tr>
-  </tbody>
-</table>
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
+2. Fork and clone the repo to your local machine:
 
-## ✨ Contributors
+   ```shellscript
+   git clone https://github.com/YOUR_GITHUB_USERNAME/usehooks-ts.git
+   ```
+
+3. Create a new branch from `master` with a meaningful name for a new feature or an issue you want to work on:
+
+   ```shellscript
+   git checkout -b your-meaningful-branch-name
+   ```
+
+4. Install packages by running:
+
+   ```shellscript
+   pnpm install
+   pnpm build
+   ```
+
+5. If you want to create a new hook, use the generator:
+
+   ```shellscript
+   pnpm gen-hook
+   ```
+
+6. Ensure your code lints without errors and the test suite still passes.
+
+   ```shellscript
+   pnpm build && pnpm lint && pnpm test
+   ```
+
+7. Try to write some unit tests to cover as much of your code as possible.
+
+8. Push your branch: `git push -u origin your-meaningful-branch-name`
+
+9. Submit a pull request to the upstream `usehooks-ts` repository.
+
+10. Choose a descriptive title and describe your changes briefly.
+
+## Coding style
+
+Please follow the coding style of the project. `usehooks-ts` uses eslint and prettier. If possible, enable their respective plugins in your editor to get real-time feedback. The linting can be run manually with the following command: `pnpm lint` and `pnpm prettier`.
+
+## License
+
+By contributing your code to the `usehooks-ts` GitHub repository, you agree to license your contribution under the [MIT license](https://github.com/juliencrn/usehooks-ts/blob/master/LICENSE).
+
+## Contributors
 
 Big thanks go to all our contributors! [[Become a contributor](https://github.com/juliencrn/usehooks-ts/blob/master/.github/CONTRIBUTING.md)]
 
@@ -431,7 +416,3 @@ Big thanks go to all our contributors! [[Become a contributor](https://github.co
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification ([emoji key](https://allcontributors.org/docs/en/emoji-key)). Contributions of any kind welcome!
-
-## 📝 License
-
-This project is [MIT](https://github.com/juliencrn/usehooks-ts/blob/master/LICENSE) licensed.
