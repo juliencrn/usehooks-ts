@@ -1,5 +1,15 @@
 # www
 
+## 0.2.2
+
+### Patch Changes
+
+- 4456e32: chore: improve introduction page
+- Updated dependencies [649ef39]
+- Updated dependencies [649ef39]
+- Updated dependencies [6514683]
+  - usehooks-ts@2.15.0
+
 ## 0.2.1
 
 ### Patch Changes

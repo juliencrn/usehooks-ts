@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.15.0
+
+### Minor Changes
+
+- 649ef39: ✨ Feature: add `useScrollLock` hook
+
+### Patch Changes
+
+- 649ef39: Deprecated `useLockedBody` replaced by `useScrollLock`
+- 6514683: Fix `useMediaQuery` by defining getMatches before use
+- d8d8e5d: Upgrade dependencies
+
 ## 2.14.0
 
 ### Minor Changes
