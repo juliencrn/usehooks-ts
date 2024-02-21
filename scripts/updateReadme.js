@@ -2,7 +2,7 @@
 
 import { path, fs } from 'zx'
 
-import { camelToKebabCase, isDemoFile, isHookFile } from './utils.mjs'
+import { camelToKebabCase, isDemoFile, isHookFile } from './utils.js'
 
 ////////////////////////////////////////////////////////////////////////
 // 1. Imperative script that updates the hook list in the README file.
