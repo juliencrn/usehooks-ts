@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
 /**
+ * @deprecated - Use `useScrollLock` instead.
  * Custom hook for locking and unlocking the body scroll to prevent scrolling.
  * @param {?boolean} [initialLocked] - The initial state of body scroll lock (default to `false`).
  * @param {?string} [rootId] - The ID of the root element to calculate scrollbar width (default to `___gatsby` to not introduce breaking change).

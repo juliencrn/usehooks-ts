@@ -15,6 +15,7 @@ const excludeHooks = [
   'useUpdateEffect', // @deprecated
   'useEffectOnce', // @deprecated
   'useIsFirstRender', // @deprecated
+  'useLockedBody', // @deprecated
   'useIsomorphicLayoutEffect', // Combination of useLayoutEffect and useEffect without custom logic
 ]
 
