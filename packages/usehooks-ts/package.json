@@ -23,7 +23,7 @@
   },
   "sideEffects": false,
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && rm ./dist/index.d.mts",
     "dev": "tsup --watch",
     "test": "vitest run",
     "test:watch": "vitest",
