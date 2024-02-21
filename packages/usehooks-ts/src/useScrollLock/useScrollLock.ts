@@ -3,6 +3,7 @@ import { useLayoutEffect, useRef } from 'react'
 interface UseScrollLockOptions {
   autoLock: boolean
   lockTarget: HTMLElement | string
+  widthReflow: boolean
 }
 
 interface UseScrollLockResult {
@@ -22,6 +23,7 @@ const IS_SERVER = typeof window === 'undefined'
  * @param {UseScrollLockOptions} [options] - Options to configure the hook, by default it will lock the scroll automatically.
  * @param {boolean} [options.autoLock] - Whether to lock the scroll initially, by default it's true.
  * @param {HTMLElement | string} [options.lockTarget] - The target element to lock the scroll, by default it's the body element.
+ * @param {boolean} [options.widthReflow] - Whether to prevent width reflow when locking the scroll, by default it's true.
  * @returns {UseScrollLockResult} - The result object containing the lock and unlock functions.
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-scroll-lock)
  * @example
@@ -48,7 +50,7 @@ const IS_SERVER = typeof window === 'undefined'
 export function useScrollLock(
   options: Partial<UseScrollLockOptions> = {},
 ): UseScrollLockResult {
-  const { autoLock = true, lockTarget } = options
+  const { autoLock = true, lockTarget, widthReflow = true } = options
   const target = useRef<HTMLElement | null>(null)
   const originalStyle = useRef<OriginalStyle | null>(null)
 
@@ -57,15 +59,19 @@ export function useScrollLock(
       const { overflowY, paddingRight } = window.getComputedStyle(
         target.current,
       )
-      const scrollbarWidth =
-        target.current.offsetWidth - target.current.scrollWidth
 
       // Save the original styles
       originalStyle.current = { overflowY, paddingRight }
 
-      // Lock the scroll and prevent width reflow
+      // Lock the scroll
       target.current.style.overflowY = 'hidden'
-      target.current.style.paddingRight = `${scrollbarWidth}px`
+
+      // prevent width reflow
+      if (widthReflow) {
+        const scrollbarWidth =
+          target.current.offsetWidth - target.current.scrollWidth
+        target.current.style.paddingRight = `${scrollbarWidth}px`
+      }
     }
   }
 
@@ -97,7 +103,8 @@ export function useScrollLock(
     return () => {
       unlock()
     }
-  }, [autoLock, lockTarget])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoLock, lockTarget, widthReflow])
 
   return { lock, unlock }
 }
