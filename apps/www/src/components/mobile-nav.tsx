@@ -1,10 +1,10 @@
 import * as React from 'react'
 
 import Link from 'next/link'
+import { useScrollLock } from 'usehooks-ts'
 
 import { Logo } from '@/components/icons'
 import { siteConfig } from '@/config/site'
-import { useLockBody } from '@/hooks/use-lock-body'
 import { cn } from '@/lib/utils'
 import type { MainNavItem } from '@/types'
 
@@ -14,7 +14,7 @@ interface MobileNavProps {
 }
 
 export function MobileNav({ items, children }: MobileNavProps) {
-  useLockBody()
+  useScrollLock()
 
   return (
     <div
