@@ -20,6 +20,7 @@ const excludeHooks = [
   'useUpdateEffect', // @deprecated
   'useEffectOnce', // @deprecated
   'useIsFirstRender', // @deprecated
+  'useLockedBody', // @deprecated
 ]
 
 const markdown = fs
