@@ -8,14 +8,6 @@ const GITHUB_REPO = `juliencrn/usehooks-ts`
 const GITHUB_ISSUE_PATH = `${GITHUB_REPO}/issues/423`
 const hookDir = path.resolve('./packages/usehooks-ts/src')
 const excludeHooks = [
-  'useSsr', // @deprecated
-  'useImageOnLoad', // @deprecated
-  'useElementSize', // @deprecated
-  'useFetch', // @deprecated
-  'useUpdateEffect', // @deprecated
-  'useEffectOnce', // @deprecated
-  'useIsFirstRender', // @deprecated
-  'useLockedBody', // @deprecated
   'useIsomorphicLayoutEffect', // Combination of useLayoutEffect and useEffect without custom logic
 ]
 
