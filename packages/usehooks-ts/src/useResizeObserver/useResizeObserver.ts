@@ -57,7 +57,7 @@ export function useResizeObserver<T extends HTMLElement = HTMLElement>(
   const { ref, box = 'content-box' } = options
   const [{ width, height }, setSize] = useState<Size>(initialSize)
   const isMounted = useIsMounted()
-  const previousSize = useRef<Size>(initialSize)
+  const previousSize = useRef<Size>({ ...initialSize })
   const onResize = useRef<ResizeHandler | undefined>(undefined)
   onResize.current = options?.onResize
 
