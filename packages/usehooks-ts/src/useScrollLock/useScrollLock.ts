@@ -12,7 +12,7 @@ interface UseScrollLockResult {
 }
 
 type OriginalStyle = {
-  overflowY: CSSStyleDeclaration['overflowY']
+  overflow: CSSStyleDeclaration['overflow']
   paddingRight: CSSStyleDeclaration['paddingRight']
 }
 
@@ -56,15 +56,13 @@ export function useScrollLock(
 
   const lock = () => {
     if (target.current) {
-      const { overflowY, paddingRight } = window.getComputedStyle(
-        target.current,
-      )
+      const { overflow, paddingRight } = window.getComputedStyle(target.current)
 
       // Save the original styles
-      originalStyle.current = { overflowY, paddingRight }
+      originalStyle.current = { overflow, paddingRight }
 
       // Lock the scroll
-      target.current.style.overflowY = 'hidden'
+      target.current.style.overflow = 'hidden'
 
       // prevent width reflow
       if (widthReflow) {
@@ -77,7 +75,7 @@ export function useScrollLock(
 
   const unlock = () => {
     if (target.current && originalStyle.current) {
-      target.current.style.overflowY = originalStyle.current.overflowY
+      target.current.style.overflow = originalStyle.current.overflow
       target.current.style.paddingRight = originalStyle.current.paddingRight
     }
   }

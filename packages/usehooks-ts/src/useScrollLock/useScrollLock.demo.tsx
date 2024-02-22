@@ -15,7 +15,7 @@ export function App() {
 
   return (
     <>
-      <div id="scrollable" style={{ maxHeight: '50vh', overflowY: 'scroll' }}>
+      <div id="scrollable" style={{ maxHeight: '50vh', overflow: 'scroll' }}>
         {['red', 'blue', 'green'].map(color => (
           <div key={color} style={{ backgroundColor: color, height: '30vh' }} />
         ))}
