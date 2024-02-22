@@ -1,1 +1,3 @@
-This hook has been **deprecated**, use [`useResizeObserver()`](/react-hook/use-resize-observer) instead.
+This hook has been **deprecated** in late v2 and be dropped in the v3.
+
+Use [`useResizeObserver()`](/react-hook/use-resize-observer) instead.

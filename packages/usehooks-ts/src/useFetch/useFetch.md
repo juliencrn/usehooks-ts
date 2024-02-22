@@ -1,4 +1,4 @@
-`useFetch` is now **deprecated** and will be removed in the next major release.
+This hook has been **deprecated** in late v2 and be dropped in the v3.
 
 The current implementation is not enterprise-grade and it's a bad example of `useEffect` usage, see this [talk on Youtube](https://www.youtube.com/watch?v=bGzanfKVFeU) for more information.
 
