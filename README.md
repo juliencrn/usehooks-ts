@@ -17,7 +17,7 @@
 [![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks-ts/blob/master/LICENSE)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-234-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-235-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <br />
@@ -420,6 +420,7 @@ Big thanks go to all our contributors! [[Become a contributor](https://github.co
       <td align="center" valign="top" width="14.28%"><a href="https://abkabioye.me/"><img src="https://avatars.githubusercontent.com/u/18709032?v=4?s=80" width="80px;" alt="wisdomabioye"/><br /><sub><b>wisdomabioye</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Awisdomabioye" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://www.samtheq.com"><img src="https://avatars.githubusercontent.com/u/51345689?v=4?s=80" width="80px;" alt="Samuel Quiñones"/><br /><sub><b>Samuel Quiñones</b></sub></a><br /><a href="#ideas-SamuelQuinones" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ymc-maha"><img src="https://avatars.githubusercontent.com/u/697307?v=4?s=80" width="80px;" alt="Manuel"/><br /><sub><b>Manuel</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=ymc-maha" title="Code">💻</a> <a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Aymc-maha" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/iuriiiurevich"><img src="https://avatars.githubusercontent.com/u/15759600?v=4?s=80" width="80px;" alt="Yury Demin"/><br /><sub><b>Yury Demin</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Aiuriiiurevich" title="Bug reports">🐛</a> <a href="https://github.com/juliencrn/usehooks-ts/commits?author=iuriiiurevich" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

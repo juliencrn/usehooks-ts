@@ -2156,6 +2156,16 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "iuriiiurevich",
+      "name": "Yury Demin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15759600?v=4",
+      "profile": "https://github.com/iuriiiurevich",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
