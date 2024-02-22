@@ -406,6 +406,7 @@ Big thanks go to all our contributors! [[Become a contributor](https://github.co
       <td align="center" valign="top" width="14.28%"><a href="https://abkabioye.me/"><img src="https://avatars.githubusercontent.com/u/18709032?v=4?s=80" width="80px;" alt="wisdomabioye"/><br /><sub><b>wisdomabioye</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Awisdomabioye" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://www.samtheq.com"><img src="https://avatars.githubusercontent.com/u/51345689?v=4?s=80" width="80px;" alt="Samuel Quiñones"/><br /><sub><b>Samuel Quiñones</b></sub></a><br /><a href="#ideas-SamuelQuinones" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ymc-maha"><img src="https://avatars.githubusercontent.com/u/697307?v=4?s=80" width="80px;" alt="Manuel"/><br /><sub><b>Manuel</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=ymc-maha" title="Code">💻</a> <a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Aymc-maha" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Yurchishin"><img src="https://avatars.githubusercontent.com/u/36650915?v=4?s=80" width="80px;" alt="Yurii Rybak"/><br /><sub><b>Yurii Rybak</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3AYurchishin" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
