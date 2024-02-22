@@ -2156,6 +2156,15 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "Yurchishin",
+      "name": "Yurii Rybak",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36650915?v=4",
+      "profile": "https://github.com/Yurchishin",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
