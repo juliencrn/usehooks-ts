@@ -1663,6 +1663,13 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/15759600?v=4",
       "profile": "https://github.com/iuriiiurevich",
       "contributions": ["bug", "code"]
+    },
+    {
+      "login": "jontewks",
+      "name": "Jon Tewksbury",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3970573?v=4",
+      "profile": "http://tewks.io/",
+      "contributions": ["code", "bug"]
     }
   ],
   "contributorsPerLine": 7,
