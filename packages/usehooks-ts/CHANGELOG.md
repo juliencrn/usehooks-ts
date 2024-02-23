@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.15.1
+
+### Patch Changes
+
+- b88cc01: fix `useResizeObserver` initialSize mutation (#504 from @iuriiiurevich)
+- 823b62f: Resolve scroll lock issue on ios safari (#509 by @jontewks)
+
 ## 2.15.0
 
 ### Minor Changes
