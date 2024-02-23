@@ -10,9 +10,9 @@ describe('useScrollLock()', () => {
   it('should initially lock and unlock body', () => {
     const { unmount } = renderHook(() => useScrollLock())
 
-    expect(document.body.style.overflowY).toBe('hidden')
+    expect(document.body.style.overflow).toBe('hidden')
     unmount()
-    expect(document.body.style.overflowY).toBe('')
+    expect(document.body.style.overflow).toBe('')
   })
 
   it('should initially lock and unlock the target element', () => {
@@ -22,9 +22,9 @@ describe('useScrollLock()', () => {
 
     const { unmount } = renderHook(() => useScrollLock({ lockTarget: target }))
 
-    expect(target.style.overflowY).toBe('hidden')
+    expect(target.style.overflow).toBe('hidden')
     unmount()
-    expect(target.style.overflowY).toBe('')
+    expect(target.style.overflow).toBe('')
   })
 
   it('should initially lock and unlock the target element by selector', () => {
@@ -37,46 +37,46 @@ describe('useScrollLock()', () => {
       useScrollLock({ lockTarget: '#target' }),
     )
 
-    expect(target.style.overflowY).toBe('hidden')
+    expect(target.style.overflow).toBe('hidden')
     unmount()
-    expect(target.style.overflowY).toBe('')
+    expect(target.style.overflow).toBe('')
   })
 
   it('should not initially lock and unlock', () => {
     const { unmount } = renderHook(() => useScrollLock({ autoLock: false }))
 
-    expect(document.body.style.overflowY).toBe('')
+    expect(document.body.style.overflow).toBe('')
     unmount()
-    expect(document.body.style.overflowY).toBe('')
+    expect(document.body.style.overflow).toBe('')
   })
 
   it('should lock and unlock manually', () => {
     const { result } = renderHook(() => useScrollLock({ autoLock: false }))
 
-    expect(document.body.style.overflowY).toBe('')
+    expect(document.body.style.overflow).toBe('')
     act(() => {
       result.current.lock()
     })
-    expect(document.body.style.overflowY).toBe('hidden')
+    expect(document.body.style.overflow).toBe('hidden')
     act(() => {
       result.current.unlock()
     })
-    expect(document.body.style.overflowY).toBe('')
+    expect(document.body.style.overflow).toBe('')
   })
 
   it("should keep the original style of the target element when it's unlocked", () => {
     const target = document.createElement('div')
 
-    target.style.overflowY = 'auto'
+    target.style.overflow = 'auto'
     document.body.appendChild(target)
 
     const { result } = renderHook(() => useScrollLock({ lockTarget: target }))
 
-    expect(target.style.overflowY).toBe('hidden')
+    expect(target.style.overflow).toBe('hidden')
     act(() => {
       result.current.unlock()
     })
-    expect(target.style.overflowY).toBe('auto')
+    expect(target.style.overflow).toBe('auto')
   })
 
   it('should unlock on unmount even with initial is locked', () => {
@@ -84,13 +84,13 @@ describe('useScrollLock()', () => {
       useScrollLock({ autoLock: false }),
     )
 
-    expect(document.body.style.overflowY).toBe('')
+    expect(document.body.style.overflow).toBe('')
     act(() => {
       result.current.lock()
     })
-    expect(document.body.style.overflowY).toBe('hidden')
+    expect(document.body.style.overflow).toBe('hidden')
     unmount()
-    expect(document.body.style.overflowY).toBe('')
+    expect(document.body.style.overflow).toBe('')
   })
 
   it('should fallback to document.body if the target element is not found', () => {
@@ -98,8 +98,8 @@ describe('useScrollLock()', () => {
       useScrollLock({ lockTarget: '#non-existing' }),
     )
 
-    expect(document.body.style.overflowY).toBe('hidden')
+    expect(document.body.style.overflow).toBe('hidden')
     unmount()
-    expect(document.body.style.overflowY).toBe('')
+    expect(document.body.style.overflow).toBe('')
   })
 })
