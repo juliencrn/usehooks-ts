@@ -24,19 +24,7 @@ type TernaryDarkModeResult = {
 export function useTernaryDarkMode(
   options?: TernaryDarkModeOptions,
 ): TernaryDarkModeResult
-/**
- * Custom hook for managing ternary (system, dark, light) dark mode with local storage support.
- * @deprecated this useTernaryDarkMode's signature is deprecated, it now accepts an options object instead of multiple parameters.
- * @param {string} localStorageKey - The key for storing dark mode preference in local storage (default is `'usehooks-ts-ternary-dark-mode'`).
- * @returns {TernaryDarkModeResult} An object containing the dark mode state and helper functions.
- * @see [Documentation](https://usehooks-ts.com/react-hook/use-ternary-dark-mode)
- * @example
- * const { isDarkMode, ternaryDarkMode, setTernaryDarkMode, toggleTernaryDarkMode } = useTernaryDarkMode('my-key');
- * // Access and use the dark mode state and provided helper functions.
- */
-export function useTernaryDarkMode(
-  localStorageKey: string,
-): TernaryDarkModeResult
+
 /**
  * Custom hook for managing ternary (system, dark, light) dark mode with local storage support.
  * @param {?TernaryDarkModeOptions | string} [options] - Options or the local storage key for the hook.
@@ -49,21 +37,11 @@ export function useTernaryDarkMode(
  * const { isDarkMode, ternaryDarkMode, setTernaryDarkMode, toggleTernaryDarkMode } = useTernaryDarkMode({ defaultValue: 'dark' });
  * // Access and use the dark mode state and provided helper functions.
  */
-export function useTernaryDarkMode(
-  options?: string | TernaryDarkModeOptions,
-): TernaryDarkModeResult {
-  // TODO: Refactor this code after the deprecated signature has been removed.
-  const defaultValue =
-    typeof options === 'string' ? 'system' : options?.defaultValue ?? 'system'
-  const localStorageKey =
-    typeof options === 'string'
-      ? options
-      : options?.localStorageKey ?? LOCAL_STORAGE_KEY
-  const initializeWithValue =
-    typeof options === 'string'
-      ? undefined
-      : options?.initializeWithValue ?? undefined
-
+export function useTernaryDarkMode({
+  defaultValue = 'system',
+  localStorageKey = LOCAL_STORAGE_KEY,
+  initializeWithValue = true,
+}: TernaryDarkModeOptions = {}): TernaryDarkModeResult {
   const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY, { initializeWithValue })
   const [mode, setMode] = useLocalStorage(localStorageKey, defaultValue, {
     initializeWithValue,

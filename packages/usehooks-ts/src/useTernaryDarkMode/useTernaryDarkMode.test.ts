@@ -68,33 +68,6 @@ describe('useTernaryDarkMode()', () => {
     expect(result.current.ternaryDarkMode).toBe('light')
   })
 
-  it('should accept a custom localStorage key (depreciated interface)', () => {
-    const { result } = renderHook(() => useTernaryDarkMode('custom-key'))
-
-    expect(result.current.isDarkMode).toBe(false)
-    expect(result.current.ternaryDarkMode).toBe('system')
-
-    act(() => {
-      result.current.toggleTernaryDarkMode()
-    })
-
-    expect(result.current.isDarkMode).toBe(true)
-    expect(result.current.ternaryDarkMode).toBe('dark')
-    expect(window.localStorage.getItem('custom-key')).toBe(
-      JSON.stringify('dark'),
-    )
-
-    act(() => {
-      result.current.toggleTernaryDarkMode()
-    })
-
-    expect(result.current.isDarkMode).toBe(false)
-    expect(result.current.ternaryDarkMode).toBe('light')
-    expect(window.localStorage.getItem('custom-key')).toBe(
-      JSON.stringify('light'),
-    )
-  })
-
   it('should accept a custom localStorage key', () => {
     const { result } = renderHook(() =>
       useTernaryDarkMode({ localStorageKey: 'custom-key' }),

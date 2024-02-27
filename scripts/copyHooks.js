@@ -35,7 +35,6 @@ fs.readdir(hooksDir, (err, files) => {
       source: path.resolve(`${hooksDir}/${file}/${file}.demo.tsx`),
       dest: path.resolve(`${outputDir}/demos/${file}.md`),
       toMarkdown: true,
-      useSandbox: true,
     })
 
     // Copy documentation file
@@ -58,7 +57,7 @@ function createDirIfNeeded(dir) {
   if (!fs.existsSync(path.resolve(dir))) fs.mkdirSync(dir)
 }
 
-function copyFile({ source, dest, useSandbox, toMarkdown }) {
+function copyFile({ source, dest, toMarkdown }) {
   // Check source file
   if (!fs.existsSync(source)) {
     console.warn(`${getFileName(source)} doesn't exist`)
@@ -79,7 +78,6 @@ function copyFile({ source, dest, useSandbox, toMarkdown }) {
       return
     }
 
-    const name = getFileName(dest)
     const extension = source.split('.').reverse()[0]
     const writeStream = fs.createWriteStream(dest)
 
@@ -92,9 +90,6 @@ function copyFile({ source, dest, useSandbox, toMarkdown }) {
 
     writeStream.write(data)
     writeStream.end()
-
-    // TODO: Print a one-line message like: "43 hooks have been updated" instead
-    console.log(`${name} ${existingFile ? 'updated' : 'created'}`)
   })
 }
 
