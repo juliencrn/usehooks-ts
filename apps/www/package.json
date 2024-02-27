@@ -2,10 +2,11 @@
   "name": "www",
   "version": "0.2.3",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "pnpm generate && next build && pnpm generate-sitemap",
-    "generate-sitemap": "rimraf public/sitemap.xml public/robots.txt && next-sitemap --config ./next-sitemap.config.mjs",
+    "generate-sitemap": "rimraf public/sitemap.xml public/robots.txt && next-sitemap --config ./next-sitemap.config.js",
     "start": "next start",
     "lint": "next lint && tsc --noEmit",
     "clean": "rimraf *.tsbuildinfo .next generated .turbo",
