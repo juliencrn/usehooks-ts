@@ -44,7 +44,7 @@ export type MarketingConfig = {
   mainNav: MainNavItem[]
 }
 
-export interface Post {
+export type Post = {
   name: string // useHook
   slug: string // use-hook
   href: string // /react-hook/use-hook

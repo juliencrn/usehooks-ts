@@ -11,7 +11,7 @@ import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import type { MainNavItem } from '@/types'
 
-interface MainNavProps {
+type MainNavProps = {
   items?: MainNavItem[]
   children?: React.ReactNode
 }

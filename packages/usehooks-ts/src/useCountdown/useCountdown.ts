@@ -4,14 +4,14 @@ import { useBoolean } from '../useBoolean'
 import { useCounter } from '../useCounter'
 import { useInterval } from '../useInterval'
 
-interface CountdownOptions {
+type CountdownOptions = {
   countStart: number
   intervalMs?: number
   isIncrement?: boolean
   countStop?: number
 }
 
-interface CountdownControllers {
+type CountdownControllers = {
   startCountdown: () => void
   stopCountdown: () => void
   resetCountdown: () => void

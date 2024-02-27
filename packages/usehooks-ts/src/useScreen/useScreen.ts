@@ -50,13 +50,13 @@ export function useScreen(
 
   const debouncedSetScreen = useDebounceCallback(
     setScreen,
-    options?.debounceDelay,
+    options.debounceDelay,
   )
 
   /** Handles the resize event of the window. */
   function handleSize() {
     const newScreen = readScreen()
-    const setSize = options?.debounceDelay ? debouncedSetScreen : setScreen
+    const setSize = options.debounceDelay ? debouncedSetScreen : setScreen
 
     if (newScreen) {
       // Create a shallow clone to trigger a re-render (#280).

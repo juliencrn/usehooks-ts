@@ -20,11 +20,11 @@ type ObserverCallback = (
  * @property {ObserverCallback} [onChange] - A callback function to be invoked when the intersection state changes.
  * @property {boolean} [initialIsIntersecting=false] - The initial state of the intersection.
  */
-interface IntersectionObserverOptions extends IntersectionObserverInit {
+type IntersectionObserverOptions = {
   freezeOnceVisible?: boolean
   onChange?: ObserverCallback
   initialIsIntersecting?: boolean
-}
+} & IntersectionObserverInit
 
 /** Supports both array and object destructing */
 type IntersectionResult = [

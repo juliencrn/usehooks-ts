@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react'
 
 import type { Dispatch, SetStateAction } from 'react'
 
-interface Helpers {
+type Helpers = {
   goToNextStep: () => void
   goToPrevStep: () => void
   reset: () => void

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/consistent-type-definitions */
 import { fireEvent, renderHook } from '@testing-library/react'
 
 import { useEventListener } from './useEventListener'

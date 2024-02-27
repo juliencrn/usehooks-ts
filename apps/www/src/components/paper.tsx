@@ -5,7 +5,7 @@ import { buttonVariants } from '@/components/ui/button'
 import { getPosts } from '@/lib/mdx'
 import { cn } from '@/lib/utils'
 
-interface DocsPagerProps {
+type DocsPagerProps = {
   slug: string
 }
 

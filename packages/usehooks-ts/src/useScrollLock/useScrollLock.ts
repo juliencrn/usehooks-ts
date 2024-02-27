@@ -2,13 +2,13 @@ import { useRef, useState } from 'react'
 
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
-interface UseScrollLockOptions {
+type UseScrollLockOptions = {
   autoLock: boolean
   lockTarget: HTMLElement | string
   widthReflow: boolean
 }
 
-interface UseScrollLockResult {
+type UseScrollLockResult = {
   isLocked: boolean
   lock: () => void
   unlock: () => void

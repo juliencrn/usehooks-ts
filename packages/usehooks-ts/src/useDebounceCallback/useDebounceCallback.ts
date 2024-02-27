@@ -7,7 +7,7 @@ import { useUnmount } from '../useUnmount'
 /**
  * Configuration options for controlling the behavior of the debounced function.
  */
-export interface DebounceOptions {
+export type DebounceOptions = {
   /**
    * Determines whether the function should be invoked on the leading edge of the timeout.
    */
@@ -25,7 +25,7 @@ export interface DebounceOptions {
 /**
  * Functions to manage a debounced callback.
  */
-interface ControlFunctions {
+type ControlFunctions = {
   /**
    * Cancels pending function invocations.
    */
@@ -48,10 +48,10 @@ interface ControlFunctions {
  * Ensure proper handling in your code.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface DebouncedState<T extends (...args: any) => ReturnType<T>>
-  extends ControlFunctions {
-  (...args: Parameters<T>): ReturnType<T> | undefined
-}
+export type DebouncedState<T extends (...args: any) => ReturnType<T>> = ((
+  ...args: Parameters<T>
+) => ReturnType<T> | undefined) &
+  ControlFunctions
 
 /**
  * Hook to create a debounced version of a callback function.

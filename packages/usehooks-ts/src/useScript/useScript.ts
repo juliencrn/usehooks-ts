@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 export type UseScriptStatus = 'idle' | 'loading' | 'ready' | 'error'
-export interface UseScriptOptions {
+export type UseScriptOptions = {
   shouldPreventLoad?: boolean
   removeOnUnmount?: boolean
   /** Script's `id` (optional) */
