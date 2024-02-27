@@ -23,7 +23,6 @@ const readFile = (pathname: string): Option<Buffer> => {
   try {
     return fs.readFileSync(pathname)
   } catch (error) {
-    console.warn(`Document not found: ${pathname}`)
     return null
   }
 }
@@ -40,7 +39,7 @@ export const getPosts = (): Post[] => {
       const demo = getDemo(name)
       return { name, slug, href, docs, hook, demo }
     })
-    .filter(post => post.docs && post.hook && post.demo)
+    .filter(post => Boolean(post.docs))
     .sort((a, b) => {
       if (a.name < b.name) return -1
       if (a.name > b.name) return 1

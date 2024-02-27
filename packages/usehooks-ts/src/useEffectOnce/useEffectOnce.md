@@ -1,1 +1,1 @@
-This hook is **deprecated** and will be dropped in the next major release because it can be misleading. It doesn't actually perform its action only once, but rather during mounting. Given its limited logic, it's better to use React's API directly without adding unnecessary abstraction.
+This hook has been **deprecated** in late v2 and be dropped in the v3 because it can be misleading. It doesn't actually perform its action only once, but rather during mounting. Given its limited logic, it's better to use React's API directly without adding unnecessary abstraction.
