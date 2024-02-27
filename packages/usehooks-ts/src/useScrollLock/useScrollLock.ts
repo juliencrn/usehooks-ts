@@ -1,4 +1,6 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useRef } from 'react'
+
+import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
 interface UseScrollLockOptions {
   autoLock: boolean
@@ -80,7 +82,7 @@ export function useScrollLock(
     }
   }
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (IS_SERVER) return
 
     if (lockTarget) {
