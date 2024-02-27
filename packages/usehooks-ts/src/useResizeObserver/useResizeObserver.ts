@@ -59,10 +59,10 @@ export function useResizeObserver<T extends HTMLElement = HTMLElement>(
   const isMounted = useIsMounted()
   const previousSize = useRef<Size>(initialSize)
   const onResize = useRef<ResizeHandler | undefined>(undefined)
-  onResize.current = options?.onResize
+  onResize.current = options.onResize
 
   useEffect(() => {
-    if (!ref?.current) return
+    if (!ref.current) return
 
     if (typeof window === 'undefined' || !('ResizeObserver' in window)) return
 
@@ -86,7 +86,7 @@ export function useResizeObserver<T extends HTMLElement = HTMLElement>(
         previousSize.current.width = newWidth
         previousSize.current.height = newHeight
 
-        if (onResize?.current) {
+        if (onResize.current) {
           onResize.current(newSize)
         } else {
           if (isMounted()) {

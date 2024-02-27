@@ -1,9 +1,9 @@
 import { cn } from '@/lib/utils'
 
-interface DocsPageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+type DocsPageHeaderProps = {
   heading: string
   text?: string
-}
+} & React.HTMLAttributes<HTMLDivElement>
 
 export function DocsPageHeader({
   heading,

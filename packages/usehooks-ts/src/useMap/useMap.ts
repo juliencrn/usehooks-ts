@@ -12,7 +12,7 @@ export type MapOrEntries<K, V> = Map<K, V> | [K, V][]
  * @template K - The type of keys in the map.
  * @template V - The type of values in the map.
  */
-export interface Actions<K, V> {
+export type Actions<K, V> = {
   set: (key: K, value: V) => void
   setAll: (entries: MapOrEntries<K, V>) => void
   remove: (key: K) => void

@@ -8,7 +8,7 @@ const IS_SERVER = typeof window === 'undefined'
  * Represents the type for the options available when reading from local storage.
  * @template T - The type of the stored value.
  */
-interface Options<T, InitializeWithValue extends boolean | undefined> {
+type Options<T, InitializeWithValue extends boolean | undefined> = {
   deserializer?: (value: string) => T
   initializeWithValue: InitializeWithValue
 }
@@ -103,7 +103,7 @@ export function useReadLocalStorage<T>(
 
   const handleStorageChange = useCallback(
     (event: StorageEvent | CustomEvent) => {
-      if ((event as StorageEvent)?.key && (event as StorageEvent).key !== key) {
+      if ((event as StorageEvent).key && (event as StorageEvent).key !== key) {
         return
       }
       setStoredValue(readValue())

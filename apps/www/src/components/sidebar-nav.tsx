@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import type { SidebarNavItem } from '@/types'
 
-export interface DocsSidebarNavProps {
+type DocsSidebarNavProps = {
   items: SidebarNavItem[]
 }
 
@@ -29,7 +29,7 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
   ) : null
 }
 
-interface DocsSidebarNavItemsProps {
+type DocsSidebarNavItemsProps = {
   items: SidebarNavItem[]
   pathname: string | null
 }

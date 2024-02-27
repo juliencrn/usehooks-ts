@@ -9,7 +9,7 @@ import { DocsSidebarNav } from '@/components/sidebar-nav'
 import { docsConfig } from '@/config/docs'
 import { siteConfig } from '@/config/site'
 
-interface DocsLayoutProps {
+type DocsLayoutProps = {
   children: React.ReactNode
 }
 

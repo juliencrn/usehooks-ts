@@ -5,7 +5,7 @@ import { MainNav } from '@/components/main-nav'
 import { marketingConfig } from '@/config/marketing'
 import { siteConfig } from '@/config/site'
 
-interface MarketingLayoutProps {
+type MarketingLayoutProps = {
   children: React.ReactNode
 }
 

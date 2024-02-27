@@ -4,7 +4,7 @@ import { useDebounceCallback } from '../useDebounceCallback'
 import { useEventListener } from '../useEventListener'
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
-interface WindowSize<T extends number | undefined = number | undefined> {
+type WindowSize<T extends number | undefined = number | undefined> = {
   width: T
   height: T
 }
@@ -59,11 +59,11 @@ export function useWindowSize(
 
   const debouncedSetWindowSize = useDebounceCallback(
     setWindowSize,
-    options?.debounceDelay,
+    options.debounceDelay,
   )
 
   function handleSize() {
-    const setSize = options?.debounceDelay
+    const setSize = options.debounceDelay
       ? debouncedSetWindowSize
       : setWindowSize
 

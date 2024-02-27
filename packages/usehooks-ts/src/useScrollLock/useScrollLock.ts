@@ -1,12 +1,12 @@
 import { useLayoutEffect, useRef } from 'react'
 
-interface UseScrollLockOptions {
+type UseScrollLockOptions = {
   autoLock: boolean
   lockTarget: HTMLElement | string
   widthReflow: boolean
 }
 
-interface UseScrollLockResult {
+type UseScrollLockResult = {
   lock: () => void
   unlock: () => void
 }
