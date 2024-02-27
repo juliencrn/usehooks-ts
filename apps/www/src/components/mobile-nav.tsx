@@ -8,7 +8,7 @@ import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import type { MainNavItem } from '@/types'
 
-interface MobileNavProps {
+type MobileNavProps = {
   items: MainNavItem[]
   children?: React.ReactNode
 }

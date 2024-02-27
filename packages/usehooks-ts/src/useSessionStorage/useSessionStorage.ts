@@ -6,6 +6,7 @@ import { useEventCallback } from '../useEventCallback'
 import { useEventListener } from '../useEventListener'
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface WindowEventMap {
     'session-storage': CustomEvent
   }
@@ -18,7 +19,7 @@ declare global {
  * @property {(value: T) => string} [serializer] - A function to serialize the value before storing it.
  * @property {(value: string) => T} [deserializer] - A function to deserialize the stored value.
  */
-interface UseSessionStorageOptions<T> {
+type UseSessionStorageOptions<T> = {
   serializer?: (value: T) => string
   deserializer?: (value: string) => T
   initializeWithValue?: boolean
@@ -149,7 +150,7 @@ export function useSessionStorage<T>(
 
   const handleStorageChange = useCallback(
     (event: StorageEvent | CustomEvent) => {
-      if ((event as StorageEvent)?.key && (event as StorageEvent).key !== key) {
+      if ((event as StorageEvent).key && (event as StorageEvent).key !== key) {
         return
       }
       setStoredValue(readValue())

@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import type { Dispatch, SetStateAction } from 'react'
 
-interface UseCounterOutput {
+type UseCounterOutput = {
   count: number
   increment: () => void
   decrement: () => void

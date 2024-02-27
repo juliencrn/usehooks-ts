@@ -11,7 +11,7 @@ type DarkModeOptions = {
   initializeWithValue?: boolean
 }
 
-interface DarkModeOutput {
+type DarkModeOutput = {
   isDarkMode: boolean
   toggle: () => void
   enable: () => void

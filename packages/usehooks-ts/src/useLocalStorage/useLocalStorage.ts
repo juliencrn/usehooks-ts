@@ -6,12 +6,13 @@ import { useEventCallback } from '../useEventCallback'
 import { useEventListener } from '../useEventListener'
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface WindowEventMap {
     'local-storage': CustomEvent
   }
 }
 
-interface UseLocalStorageOptions<T> {
+type UseLocalStorageOptions<T> = {
   serializer?: (value: T) => string
   deserializer?: (value: string) => T
   initializeWithValue?: boolean
@@ -140,7 +141,7 @@ export function useLocalStorage<T>(
 
   const handleStorageChange = useCallback(
     (event: StorageEvent | CustomEvent) => {
-      if ((event as StorageEvent)?.key && (event as StorageEvent).key !== key) {
+      if ((event as StorageEvent).key && (event as StorageEvent).key !== key) {
         return
       }
       setStoredValue(readValue())

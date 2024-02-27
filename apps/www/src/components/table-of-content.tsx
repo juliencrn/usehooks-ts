@@ -94,7 +94,7 @@ function useActiveItem(itemIds: (string | undefined)[]) {
   return activeId
 }
 
-interface TreeProps {
+type TreeProps = {
   tree: TableOfContents
   level?: number
   activeItem?: string | null
