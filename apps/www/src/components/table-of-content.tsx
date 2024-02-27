@@ -6,19 +6,20 @@ import { useIsMounted } from 'usehooks-ts'
 
 import { cn } from '@/lib/utils'
 
-interface Item {
+type Item = {
   title: string
   url: string
   items?: Item[]
 }
 
-interface Items {
+type Items = {
   items?: Item[]
 }
 
 export type TableOfContents = Items
+export type TocItem = Item
 
-interface TocProps {
+type TocProps = {
   toc: TableOfContents
 }
 
@@ -49,6 +50,7 @@ export function DashboardTableOfContents({ toc }: TocProps) {
   ) : null
 }
 
+// TODO: use useIntersectionObserver from usehooks-ts
 function useActiveItem(itemIds: (string | undefined)[]) {
   const [activeId, setActiveId] = React.useState<string>('')
 

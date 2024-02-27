@@ -4,20 +4,6 @@ import { useBoolean } from '../useBoolean'
 import { useCounter } from '../useCounter'
 import { useInterval } from '../useInterval'
 
-// Old interface IN & OUT
-interface LegacyCountdownOptions {
-  seconds: number
-  interval: number
-  isIncrement?: boolean
-}
-
-interface LegacyCountdownControllers {
-  start: () => void
-  stop: () => void
-  reset: () => void
-}
-
-// New interface IN & OUT
 interface CountdownOptions {
   countStart: number
   intervalMs?: number
@@ -48,67 +34,12 @@ interface CountdownControllers {
  *   isIncrement: false,
  * });
  */
-export function useCountdown(
-  countdownOptions: CountdownOptions,
-): [number, CountdownControllers]
-/**
- * A hook to manage countdown - Legacy interface
- * @overload
- * @param  {LegacyCountdownOptions} countdownOptions the countdown's options.
- * @param  {number} countdownOptions.seconds the countdown's number, generally time seconds.
- * @param  {number} countdownOptions.interval the countdown's interval, milliseconds.
- * @param  {?boolean} [countdownOptions.isIncrement] `false` by default, determine the countdown is increment, otherwise is decrement.
- * @returns {[number, LegacyCountdownControllers]} An array containing the countdown's count and its controllers.
- * @deprecated new useCountdown interface is already available (see [Documentation](https://usehooks-ts.com/react-hook/use-countdown)), the old version will retire on usehooks-ts@3.
- * @see [Documentation](https://usehooks-ts.com/react-hook/use-countdown)
- * @example
- * const [counter, { start, stop, reset }] = useCountdown({
- *   seconds: 10,
- *   interval: 1000,
- *   isIncrement: false,
- * });
- */
-export function useCountdown(
-  countdownOptions: LegacyCountdownOptions,
-): [number, LegacyCountdownControllers]
-/**
- * A hook to manage countdown
- * @param  {CountdownOptions | LegacyCountdownOptions} countdownOptions the countdown's options.
- * @returns {[number, CountdownControllers | LegacyCountdownControllers]} An array containing the countdown's count and its controllers.
- * @see [Documentation](https://usehooks-ts.com/react-hook/use-countdown)
- */
-export function useCountdown(
-  countdownOptions: LegacyCountdownOptions | CountdownOptions,
-): [number, LegacyCountdownControllers | CountdownControllers] {
-  /**
-   * Use to determine the the API call is a deprecated version.
-   */
-  let isDeprecated = false
-
-  let countStart,
-    intervalMs,
-    isIncrement: boolean | undefined,
-    countStop: number | undefined
-
-  if ('seconds' in countdownOptions) {
-    console.warn(
-      '[useCountdown:DEPRECATED] new interface is already available (see https://usehooks-ts.com/react-hook/use-countdown), the old version will retire on usehooks-ts@3.',
-    )
-
-    isDeprecated = true
-    countStart = countdownOptions.seconds
-    intervalMs = countdownOptions.interval
-    isIncrement = countdownOptions.isIncrement
-  } else {
-    // eslint-disable-next-line @typescript-eslint/no-extra-semi, no-extra-semi
-    ;({ countStart, intervalMs, isIncrement, countStop } = countdownOptions)
-  }
-
-  // default values
-  intervalMs = intervalMs ?? 1000
-  isIncrement = isIncrement ?? false
-  countStop = countStop ?? 0
-
+export function useCountdown({
+  countStart,
+  countStop = 0,
+  intervalMs = 1000,
+  isIncrement = false,
+}: CountdownOptions): [number, CountdownControllers] {
   const {
     count,
     increment,
@@ -151,21 +82,5 @@ export function useCountdown(
 
   useInterval(countdownCallback, isCountdownRunning ? intervalMs : null)
 
-  return isDeprecated
-    ? [
-        count,
-        {
-          start: startCountdown,
-          stop: stopCountdown,
-          reset: resetCountdown,
-        } as LegacyCountdownControllers,
-      ]
-    : [
-        count,
-        {
-          startCountdown,
-          stopCountdown,
-          resetCountdown,
-        } as CountdownControllers,
-      ]
+  return [count, { startCountdown, stopCountdown, resetCountdown }]
 }

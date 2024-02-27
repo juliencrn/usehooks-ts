@@ -1,12 +1,3 @@
-This React hook is used to block the scrolling of the page.
+This hook has been **deprecated** in late v2 and be dropped in the v3.
 
-A good example of a use case is when you need to open a modal.
-
-<br />
-
-For flexibility, this hook offers 2 APIs:
-
-- Use it as we would use a useState (example 1)
-- Use it with our own logic, coming from a props or redux for example (example 2)
-
-Finally, you can optionally change the reflow padding if you have another sidebar size than the default (15px)
+Use [`useScrollLock`](/react-hook/use-scroll-lock) instead.

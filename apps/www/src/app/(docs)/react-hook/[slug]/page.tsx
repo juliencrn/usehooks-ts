@@ -5,7 +5,7 @@ import { CarbonAds } from '@/components/carbon-ads'
 import { DocsPageHeader } from '@/components/docs-page-header'
 import { DocsPager } from '@/components/paper'
 import { Mdx } from '@/components/remote-mdx'
-import type { TableOfContents } from '@/components/table-of-content'
+import type { TocItem } from '@/components/table-of-content'
 import { DashboardTableOfContents } from '@/components/table-of-content'
 import { H2 } from '@/components/ui/components'
 import { siteConfig } from '@/config/site'
@@ -60,16 +60,16 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
     notFound()
   }
 
-  const toc: TableOfContents = {
-    items: [
-      { title: 'Introduction', url: '#introduction' },
-      { title: 'Example', url: '#example' },
-      { title: 'Hook', url: '#hook' },
-    ],
+  const tocItems: TocItem[] = [{ title: 'Introduction', url: '#introduction' }]
+  if (post?.demo) {
+    tocItems.push({ title: 'Example', url: '#example' })
+  }
+  if (post?.hook) {
+    tocItems.push({ title: 'Hook', url: '#hook' })
   }
 
   return (
-    <main className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]">
+    <main className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px] xl:grid-rows-[auto_1fr_auto]">
       <div className="mx-auto w-full min-w-0 grid">
         <DocsPageHeader
           id="introduction"
@@ -77,16 +77,26 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
           heading={post.name}
         />
         <Mdx source={post.docs} />
-        <H2 id="example">Example</H2>
-        <Mdx source={post.demo} />
-        <H2 id="hook">Hook</H2>
-        <Mdx source={post.hook} />
+
+        {post?.demo && (
+          <>
+            <H2 id="example">Example</H2>
+            <Mdx source={post.demo} />
+          </>
+        )}
+        {post?.hook && (
+          <>
+            <H2 id="hook">Hook</H2>
+            <Mdx source={post.hook} />
+          </>
+        )}
+
         <hr className="my-4 md:my-6" />
         <DocsPager slug={post.slug} />
       </div>
       <aside className="hidden text-sm xl:block">
         <div className="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10">
-          <DashboardTableOfContents toc={toc} />
+          <DashboardTableOfContents toc={{ items: tocItems }} />
 
           <div className="my-10">
             <CarbonAds />

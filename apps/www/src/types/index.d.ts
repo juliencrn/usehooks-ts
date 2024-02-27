@@ -49,8 +49,8 @@ export interface Post {
   slug: string // use-hook
   href: string // /react-hook/use-hook
   docs: Buffer // markdown raw
-  hook: Buffer // markdown raw
-  demo: Buffer // markdown raw
+  hook?: Buffer // markdown raw
+  demo?: Buffer // markdown raw
 }
 
 export type Option<T> = T | null
