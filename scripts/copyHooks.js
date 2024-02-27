@@ -2,7 +2,7 @@
 
 import { path, fs } from 'zx'
 
-import { isHookFile } from './utils.mjs'
+import { isHookFile } from './utils.js'
 
 const hooksDir = path.resolve('./packages/usehooks-ts/src')
 const outputDir = path.resolve('./apps/www/generated')

@@ -2,7 +2,7 @@
 
 import { path, fs, $ } from 'zx'
 
-import { isHookFile, isTestFile } from './utils.mjs'
+import { isHookFile, isTestFile } from './utils.js'
 
 const GITHUB_REPO = `juliencrn/usehooks-ts`
 const GITHUB_ISSUE_PATH = `${GITHUB_REPO}/issues/423`
