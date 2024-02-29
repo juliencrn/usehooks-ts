@@ -15,17 +15,18 @@ declare global {
 /**
  * Represents the options for customizing the behavior of serialization and deserialization.
  * @template T - The type of the state to be stored in session storage.
- * @interface Options
- * @property {(value: T) => string} [serializer] - A function to serialize the value before storing it.
- * @property {(value: string) => T} [deserializer] - A function to deserialize the stored value.
  */
 type UseSessionStorageOptions<T> = {
+  /** A function to serialize the value before storing it. */
   serializer?: (value: T) => string
+  /** A function to deserialize the stored value. */
   deserializer?: (value: string) => T
+  /**
+   * If `true` (default), the hook will initialize reading the session storage. In SSR, you should set it to `false`, returning the initial value initially.
+   * @default true
+   */
   initializeWithValue?: boolean
 }
-
-// type SetValue<T> = Dispatch<SetStateAction<T>>
 
 const IS_SERVER = typeof window === 'undefined'
 
@@ -35,14 +36,15 @@ const IS_SERVER = typeof window === 'undefined'
  * @param {string} key - The key under which the value will be stored in session storage.
  * @param {T | (() => T)} initialValue - The initial value of the state or a function that returns the initial value.
  * @param {?UseSessionStorageOptions<T>} [options] - Options for customizing the behavior of serialization and deserialization (optional).
- * @param {?boolean} [options.initializeWithValue] - If `true` (default), the hook will initialize reading the session storage. In SSR, you should set it to `false`, returning the initial value initially.
- * @param {(value: T) => string} [options.serializer] - A function to serialize the value before storing it.
  * @returns {[T, Dispatch<SetStateAction<T>>]} A tuple containing the stored value and a function to set the value.
+ * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-session-storage)
  * @see [MDN Session Storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
  * @example
+ * ```tsx
  * const [count, setCount] = useSessionStorage('count', 0);
  * // Access the `count` value and the `setCount` function to update it.
+ * ```
  */
 export function useSessionStorage<T>(
   key: string,

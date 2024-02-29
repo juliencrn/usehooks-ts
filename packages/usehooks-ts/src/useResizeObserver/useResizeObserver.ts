@@ -4,27 +4,29 @@ import type { RefObject } from 'react'
 
 import { useIsMounted } from '../useIsMounted'
 
+/** The size of the observed element. */
 type Size = {
+  /** The width of the observed element. */
   width: number | undefined
+  /** The height of the observed element. */
   height: number | undefined
 }
 
-type BoxSizesKey = keyof Pick<
-  ResizeObserverEntry,
-  'borderBoxSize' | 'contentBoxSize' | 'devicePixelContentBoxSize'
->
-
-type ResizeHandler = (size: Size) => void
-
-type BoxOptions = 'border-box' | 'content-box' | 'device-pixel-content-box'
-
+/** The options for the ResizeObserver. */
 type UseResizeObserverOptions<T extends HTMLElement = HTMLElement> = {
+  /** The ref of the element to observe. */
   ref: RefObject<T>
-  onResize?: ResizeHandler
-  box?: BoxOptions
+  /**
+   * When using `onResize`, the hook doesn't re-render on element size changes; it delegates handling to the provided callback.
+   * @default undefined
+   */
+  onResize?: (size: Size) => void
+  /**
+   * The box model to use for the ResizeObserver.
+   * @default 'content-box'
+   */
+  box?: 'border-box' | 'content-box' | 'device-pixel-content-box'
 }
-
-type UseResizeObserverResult = Size
 
 const initialSize: Size = {
   width: undefined,
@@ -33,16 +35,14 @@ const initialSize: Size = {
 
 /**
  * Custom hook for observing the size of an element using the ResizeObserver API.
- *
  * @template T - The type of the element to observe.
- * @param {UseResizeObserverOptions<T>} options - The options for the ResizeObserver. (default is `{}`).
- * @param {RefObject<T>} options.ref - The ref of the element to observe.
- * @param {ResizeHandler} [options.onResize] - When using `onResize`, the hook doesn't re-render on element size changes; it delegates handling to the provided callback . (default is `undefined`).
- * @param {string} [options.box] - The box model to use for the ResizeObserver. (default is `'content-box'`).
- * @returns {UseResizeObserverResult} - The size of the observed element.
+ * @param {UseResizeObserverOptions<T>} options - The options for the ResizeObserver.
+ * @returns {Size} - The size of the observed element.
+ * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-resize-observer)
  * @see [MDN ResizeObserver API](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver)
  * @example
+ * ```tsx
  * const myRef = useRef(null);
  * const { width = 0, height = 0 } = useResizeObserver({
  *   ref: myRef,
@@ -50,15 +50,16 @@ const initialSize: Size = {
  * });
  *
  * <div ref={myRef}>Hello, world!</div>
+ * ```
  */
 export function useResizeObserver<T extends HTMLElement = HTMLElement>(
   options: UseResizeObserverOptions<T>,
-): UseResizeObserverResult {
+): Size {
   const { ref, box = 'content-box' } = options
   const [{ width, height }, setSize] = useState<Size>(initialSize)
   const isMounted = useIsMounted()
   const previousSize = useRef<Size>({ ...initialSize })
-  const onResize = useRef<ResizeHandler | undefined>(undefined)
+  const onResize = useRef<((size: Size) => void) | undefined>(undefined)
   onResize.current = options.onResize
 
   useEffect(() => {
@@ -105,6 +106,12 @@ export function useResizeObserver<T extends HTMLElement = HTMLElement>(
 
   return { width, height }
 }
+
+/** @private */
+type BoxSizesKey = keyof Pick<
+  ResizeObserverEntry,
+  'borderBoxSize' | 'contentBoxSize' | 'devicePixelContentBoxSize'
+>
 
 function extractSize(
   entry: ResizeObserverEntry,

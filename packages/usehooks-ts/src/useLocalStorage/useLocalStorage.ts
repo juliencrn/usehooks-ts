@@ -12,9 +12,19 @@ declare global {
   }
 }
 
+/**
+ * Options for customizing the behavior of serialization and deserialization.
+ * @template T - The type of the state to be stored in local storage.
+ */
 type UseLocalStorageOptions<T> = {
+  /** A function to serialize the value before storing it. */
   serializer?: (value: T) => string
+  /** A function to deserialize the stored value. */
   deserializer?: (value: string) => T
+  /**
+   * If `true` (default), the hook will initialize reading the local storage. In SSR, you should set it to `false`, returning the initial value initially.
+   * @default true
+   */
   initializeWithValue?: boolean
 }
 
@@ -26,15 +36,15 @@ const IS_SERVER = typeof window === 'undefined'
  * @param {string} key - The key under which the value will be stored in local storage.
  * @param {T | (() => T)} initialValue - The initial value of the state or a function that returns the initial value.
  * @param {UseLocalStorageOptions<T>} [options] - Options for customizing the behavior of serialization and deserialization (optional).
- * @param {?boolean} [options.initializeWithValue] - If `true` (default), the hook will initialize reading the local storage. In SSR, you should set it to `false`, returning the initial value initially.
- * @param {?((value: T) => string)} [options.serializer] - A function to serialize the value before storing it.
- * @param {?((value: string) => T)} [options.deserializer] - A function to deserialize the stored value.
  * @returns {[T, Dispatch<SetStateAction<T>>]} A tuple containing the stored value and a function to set the value.
+ * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-local-storage)
  * @see [MDN Local Storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
  * @example
+ * ```tsx
  * const [count, setCount] = useLocalStorage('count', 0);
  * // Access the `count` value and the `setCount` function to update it.
+ * ```
  */
 export function useLocalStorage<T>(
   key: string,
