@@ -61,7 +61,6 @@ function Component() {
 - [`useCountdown()`](https://usehooks-ts.com/react-hook/use-countdown)
 - [`useCounter()`](https://usehooks-ts.com/react-hook/use-counter)
 - [`useDarkMode()`](https://usehooks-ts.com/react-hook/use-dark-mode)
-- [`useDebounce()`](https://usehooks-ts.com/react-hook/use-debounce)
 - [`useDebounceCallback()`](https://usehooks-ts.com/react-hook/use-debounce-callback)
 - [`useDebounceValue()`](https://usehooks-ts.com/react-hook/use-debounce-value)
 - [`useDocumentTitle()`](https://usehooks-ts.com/react-hook/use-document-title)
@@ -89,7 +88,6 @@ function Component() {
 - [`useToggle()`](https://usehooks-ts.com/react-hook/use-toggle)
 - [`useUnmount()`](https://usehooks-ts.com/react-hook/use-unmount)
 - [`useWindowSize()`](https://usehooks-ts.com/react-hook/use-window-size)
-
 <!-- HOOKS:END -->
 
 ## 💚 Backers

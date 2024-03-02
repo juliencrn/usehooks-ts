@@ -1,12 +1,13 @@
 {
   "$schema": "https://typedoc.org/schema.json",
+
   // Essentials
   "name": "usehooks-ts",
   "tsconfig": "packages/usehooks-ts/tsconfig.json",
   "jsDocCompatibility": true,
   "entryPoints": ["packages/usehooks-ts/src/**/*.ts"],
-  "entryPointStrategy": "resolve", // "expand" | "resolve"
-  "json": "./generated/typedoc.json",
+  "entryPointStrategy": "resolve",
+  "json": "./generated/typedoc/all.json",
   "out": "./generated/typedoc",
   "readme": "none",
 
@@ -22,7 +23,6 @@
   "excludeProtected": true,
   "excludeInternal": true,
   "excludeNotDocumented": true,
-  // "excludeCategories": ["Internal"],
   "excludeReferences": true,
   "excludeTags": [
     "@override",
@@ -38,7 +38,6 @@
   "plugin": [
     "typedoc-plugin-mdn-links",
     "typedoc-plugin-markdown",
-    "typedoc-plugin-external-resolver",
     "typedoc-plugin-missing-exports"
   ],
 
@@ -48,12 +47,11 @@
     "invalidLink": true,
     "notDocumented": false
   },
-
   // Emit warnings for any tags not listed here
   "blockTags": ["@param", "@returns", "@see", "@example", "@template"],
 
   // Markdown and styles
-  // "allReflectionsHaveOwnDocument": true,
+  "allReflectionsHaveOwnDocument": true,
   "hidePageTitle": true,
   "hideInPageTOC": true,
   "hideGenerator": true,
@@ -66,7 +64,5 @@
   },
   "sort": ["alphabetical"],
   "preserveLinkText": true,
-  "pretty": true,
-  "placeInternalsInOwningModule": true,
-  "groupOrder": ["Functions", "*"] // OU kindSortOrder
+  "placeInternalsInOwningModule": true
 }

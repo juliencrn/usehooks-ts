@@ -22,6 +22,10 @@
     "clean": {
       "outputs": [],
       "cache": false
+    },
+    "generate-doc": {
+      "dependsOn": ["usehooks#build"],
+      "outputs": ["generated/**", "README.md", "packages/usehooks-ts/README.md"]
     }
   },
   "globalDependencies": ["tsconfig.json"]
