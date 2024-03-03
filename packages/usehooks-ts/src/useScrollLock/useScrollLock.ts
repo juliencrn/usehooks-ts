@@ -58,27 +58,31 @@ export function useScrollLock(
 
   const lock = () => {
     if (target.current) {
-      const { overflow, paddingRight } = window.getComputedStyle(target.current)
+      const { overflow, paddingRight } = target.current.style
 
       // Save the original styles
       originalStyle.current = { overflow, paddingRight }
 
-      // Lock the scroll
-      target.current.style.overflow = 'hidden'
-
-      // prevent width reflow
+      // Prevent width reflow
       if (widthReflow) {
         const scrollbarWidth =
           target.current.offsetWidth - target.current.scrollWidth
         target.current.style.paddingRight = `${scrollbarWidth}px`
       }
+
+      // Lock the scroll
+      target.current.style.overflow = 'hidden'
     }
   }
 
   const unlock = () => {
     if (target.current && originalStyle.current) {
       target.current.style.overflow = originalStyle.current.overflow
-      target.current.style.paddingRight = originalStyle.current.paddingRight
+
+      // Only reset padding right if we changed it
+      if (widthReflow) {
+        target.current.style.paddingRight = originalStyle.current.paddingRight
+      }
     }
   }
 
