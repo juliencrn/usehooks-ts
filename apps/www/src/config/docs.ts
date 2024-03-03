@@ -17,6 +17,10 @@ export const docsConfig: DocsConfig = {
           title: 'Introduction',
           href: '/introduction',
         },
+        {
+          title: 'Migrate to v3',
+          href: '/migrate-to-v3',
+        },
       ],
     },
     {

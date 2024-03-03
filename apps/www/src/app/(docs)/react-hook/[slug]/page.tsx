@@ -48,7 +48,11 @@ export const generateMetadata = (props: {
   }
 }
 
-const PostLayout = async ({ params }: { params: { slug: string } }) => {
+export default async function HookPage({
+  params,
+}: {
+  params: { slug: string }
+}) {
   const { frontmatter, content } = await getHook(params.slug)
 
   return (
@@ -81,5 +85,3 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
     </main>
   )
 }
-
-export default PostLayout
