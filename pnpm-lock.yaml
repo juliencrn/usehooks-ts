@@ -38,9 +38,6 @@ importers:
       typedoc:
         specifier: ^0.25.9
         version: 0.25.9(typescript@5.3.3)
-      typedoc-plugin-external-resolver:
-        specifier: ^1.0.3
-        version: 1.0.3(typedoc@0.25.9)(typescript@5.3.3)
       typedoc-plugin-markdown:
         specifier: ^3.17.1
         version: 3.17.1(typedoc@0.25.9)
@@ -8310,16 +8307,6 @@ packages:
       call-bind: 1.0.2
       for-each: 0.3.3
       is-typed-array: 1.1.10
-    dev: true
-
-  /typedoc-plugin-external-resolver@1.0.3(typedoc@0.25.9)(typescript@5.3.3):
-    resolution: {integrity: sha512-P73ZjN8fX3xQ2KpggrxhPIBg3ZyljhylHl69+lC0QRnyt4j9ijXFrorKjPPOU0Z63cm0Annd89Aejf4SMNo3kA==}
-    peerDependencies:
-      typedoc: 0.25.x
-      typescript: ^5.3.3
-    dependencies:
-      typedoc: 0.25.9(typescript@5.3.3)
-      typescript: 5.3.3
     dev: true
 
   /typedoc-plugin-markdown@3.17.1(typedoc@0.25.9):
