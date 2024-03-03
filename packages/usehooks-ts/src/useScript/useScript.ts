@@ -39,7 +39,7 @@ function getScriptNode(src: string) {
 }
 
 /**
- * Custom hook for dynamically loading scripts and tracking their loading status.
+ * Custom hook that dynamically loads scripts and tracking their loading status.
  * @param {string | null} src - The source URL of the script to load. Set to `null` or omit to prevent loading (optional).
  * @param {UseScriptOptions} [options] - Additional options for controlling script loading (optional).
  * @returns {UseScriptStatus} The status of the script loading, which can be one of 'idle', 'loading', 'ready', or 'error'.

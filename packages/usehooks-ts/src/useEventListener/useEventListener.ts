@@ -40,7 +40,7 @@ function useEventListener<K extends keyof DocumentEventMap>(
 ): void
 
 /**
- * Custom hook for attaching event listeners to DOM elements, the window, or media query lists.
+ * Custom hook that attaches event listeners to DOM elements, the window, or media query lists.
  * @template KW - The type of event for window events.
  * @template KH - The type of event for HTML element events.
  * @template KM - The type of event for media query list events.

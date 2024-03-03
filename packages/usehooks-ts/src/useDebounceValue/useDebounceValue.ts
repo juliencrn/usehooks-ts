@@ -27,7 +27,7 @@ type UseDebounceValueOptions<T> = {
 }
 
 /**
- * Returns a debounced version of the provided value, along with a function to update it.
+ * Custom hook that returns a debounced version of the provided value, along with a function to update it.
  * @template T - The type of the value.
  * @param {T | (() => T)} initialValue - The value to be debounced.
  * @param {number} delay - The delay in milliseconds before the value is updated (default is 500ms).

@@ -5,7 +5,7 @@ import type { RefObject } from 'react'
 import { useEventListener } from '../useEventListener'
 
 /**
- * Custom hook for tracking whether a DOM element is being hovered over.
+ * Custom hook that tracks whether a DOM element is being hovered over.
  * @template T - The type of the DOM element. Defaults to `HTMLElement`.
  * @param {RefObject<T>} elementRef - The ref object for the DOM element to track.
  * @returns {boolean} A boolean value indicating whether the element is being hovered over.

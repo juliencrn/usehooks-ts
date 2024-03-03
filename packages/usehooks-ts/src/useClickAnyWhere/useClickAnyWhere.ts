@@ -1,7 +1,7 @@
 import { useEventListener } from '../useEventListener'
 
 /**
- * Custom hook for handling click events anywhere on the document.
+ * Custom hook that handles click events anywhere on the document.
  * @param {Function} handler - The function to be called when a click event is detected anywhere on the document.
  * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-click-any-where)

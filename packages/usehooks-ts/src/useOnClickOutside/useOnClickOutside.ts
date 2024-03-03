@@ -6,7 +6,7 @@ import { useEventListener } from '../useEventListener'
 type EventType = 'mousedown' | 'mouseup' | 'touchstart' | 'touchend'
 
 /**
- * Custom hook for handling clicks outside a specified element.
+ * Custom hook that handles clicks outside a specified element.
  * @template T - The type of the element's reference.
  * @param {RefObject<T> | RefObject<T>[]} ref - The React ref object(s) representing the element(s) to watch for outside clicks.
  * @param {(event: MouseEvent | TouchEvent) => void} handler - The callback function to be executed when a click outside the element occurs.

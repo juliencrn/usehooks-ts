@@ -10,7 +10,7 @@ type UseDocumentTitleOptions = {
 }
 
 /**
- * A hook to set the document title.
+ * Custom hook that sets the document title.
  * @param {string} title - The title to set.
  * @param {?UseDocumentTitleOptions} [options] - The options.
  * @public

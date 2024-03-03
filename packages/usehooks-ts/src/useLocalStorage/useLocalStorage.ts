@@ -31,7 +31,7 @@ type UseLocalStorageOptions<T> = {
 const IS_SERVER = typeof window === 'undefined'
 
 /**
- * Custom hook for using local storage to persist state across page reloads.
+ * Custom hook that uses local storage to persist state across page reloads.
  * @template T - The type of the state to be stored in local storage.
  * @param {string} key - The key under which the value will be stored in local storage.
  * @param {T | (() => T)} initialValue - The initial value of the state or a function that returns the initial value.

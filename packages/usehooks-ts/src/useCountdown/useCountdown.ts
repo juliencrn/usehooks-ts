@@ -38,7 +38,7 @@ type CountdownControllers = {
 }
 
 /**
- * A hook to manage countdown - New interface with default value.
+ * Custom hook that manages countdown.
  * @param {CountdownOptions} countdownOptions - The countdown's options.
  * @returns {[number, CountdownControllers]} An array containing the countdown's count and its controllers.
  * @public

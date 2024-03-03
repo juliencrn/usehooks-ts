@@ -3,7 +3,7 @@ import { useCallback, useRef } from 'react'
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
 /**
- * A hook for creating a memoized event callback.
+ * Custom hook that creates a memoized event callback.
  * @template Args - An array of argument types for the event callback.
  * @template R - The return type of the event callback.
  * @param {(...args: Args) => R} fn - The callback function.

@@ -21,7 +21,7 @@ type UseStepActions = {
 type SetStepCallbackType = (step: number | ((step: number) => number)) => void
 
 /**
- * Custom hook for managing and navigating between steps in a multi-step process.
+ * Custom hook that manages and navigates between steps in a multi-step process.
  * @param {number} maxStep - The maximum step in the process.
  * @returns {[number, UseStepActions]} An tuple containing the current step and helper functions for navigating steps.
  * @public

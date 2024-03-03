@@ -26,7 +26,7 @@ export function useReadLocalStorage<T>(
   options?: Partial<Options<T, true>>,
 ): T | null
 /**
- * Custom hook for reading a value from local storage, closely related to useLocalStorage().
+ * Custom hook that reads a value from local storage, closely related to useLocalStorage().
  * @template T - The type of the stored value.
  * @param {string} key - The key associated with the value in local storage.
  * @param {Options<T>} [options] - Additional options for reading the value (optional).

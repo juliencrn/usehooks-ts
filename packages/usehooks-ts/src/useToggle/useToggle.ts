@@ -3,7 +3,7 @@ import { useCallback, useState } from 'react'
 import type { Dispatch, SetStateAction } from 'react'
 
 /**
- * Custom hook for managing a boolean toggle state in React components.
+ * Custom hook that manages a boolean toggle state in React components.
  * @param {boolean} [defaultValue] - The initial value for the toggle state.
  * @returns {[boolean, () => void, Dispatch<SetStateAction<boolean>>]} A tuple containing the current state,
  * a function to toggle the state, and a function to set the state explicitly.

@@ -13,7 +13,7 @@ type CopiedValue = string | null
 type CopyFn = (text: string) => Promise<boolean>
 
 /**
- * Custom hook for copying text to the clipboard.
+ * Custom hook that copies text to the clipboard.
  * @returns {[CopiedValue, CopyFn]} An tuple containing the copied text and a function to copy text to the clipboard.
  * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-copy-to-clipboard)

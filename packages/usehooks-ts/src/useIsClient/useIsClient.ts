@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 /**
- * Custom hook for determining if the code is running on the client side (in the browser).
+ * Custom hook that determines if the code is running on the client side (in the browser).
  * @returns {boolean} A boolean value indicating whether the code is running on the client side.
  * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-is-client)

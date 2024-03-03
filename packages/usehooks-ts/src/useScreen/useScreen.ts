@@ -28,7 +28,7 @@ export function useScreen(options: UseScreenOptions<false>): Screen | undefined
 // CSR version of useScreen.
 export function useScreen(options?: Partial<UseScreenOptions<true>>): Screen
 /**
- * Custom hook for tracking the screen dimensions and properties.
+ * Custom hook that tracks the screen dimensions and properties.
  * @param {?UseScreenOptions} [options] - The options for customizing the behavior of the hook (optional).
  * @returns {Screen | undefined} The current `Screen` object representing the screen dimensions and properties, or `undefined` if not available.
  * @public

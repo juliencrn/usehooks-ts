@@ -17,7 +17,7 @@ type UseBooleanReturn = {
 }
 
 /**
- * Custom hook for handling boolean state with useful utility functions.
+ * Custom hook that handles boolean state with useful utility functions.
  * @param {boolean} [defaultValue] - The initial value for the boolean state (default is `false`).
  * @returns {UseBooleanReturn} An object containing the boolean state value and utility functions to manipulate the state.
  * @public
