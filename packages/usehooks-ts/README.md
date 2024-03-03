@@ -55,39 +55,39 @@ function Component() {
 
 <!-- HOOKS:START -->
 
-- [`useBoolean()`](https://usehooks-ts.com/react-hook/use-boolean)
-- [`useClickAnyWhere()`](https://usehooks-ts.com/react-hook/use-click-any-where)
-- [`useCopyToClipboard()`](https://usehooks-ts.com/react-hook/use-copy-to-clipboard)
-- [`useCountdown()`](https://usehooks-ts.com/react-hook/use-countdown)
-- [`useCounter()`](https://usehooks-ts.com/react-hook/use-counter)
-- [`useDarkMode()`](https://usehooks-ts.com/react-hook/use-dark-mode)
-- [`useDebounceCallback()`](https://usehooks-ts.com/react-hook/use-debounce-callback)
-- [`useDebounceValue()`](https://usehooks-ts.com/react-hook/use-debounce-value)
-- [`useDocumentTitle()`](https://usehooks-ts.com/react-hook/use-document-title)
-- [`useEventCallback()`](https://usehooks-ts.com/react-hook/use-event-callback)
-- [`useEventListener()`](https://usehooks-ts.com/react-hook/use-event-listener)
-- [`useHover()`](https://usehooks-ts.com/react-hook/use-hover)
-- [`useIntersectionObserver()`](https://usehooks-ts.com/react-hook/use-intersection-observer)
-- [`useInterval()`](https://usehooks-ts.com/react-hook/use-interval)
-- [`useIsClient()`](https://usehooks-ts.com/react-hook/use-is-client)
-- [`useIsMounted()`](https://usehooks-ts.com/react-hook/use-is-mounted)
-- [`useIsomorphicLayoutEffect()`](https://usehooks-ts.com/react-hook/use-isomorphic-layout-effect)
-- [`useLocalStorage()`](https://usehooks-ts.com/react-hook/use-local-storage)
-- [`useMap()`](https://usehooks-ts.com/react-hook/use-map)
-- [`useMediaQuery()`](https://usehooks-ts.com/react-hook/use-media-query)
-- [`useOnClickOutside()`](https://usehooks-ts.com/react-hook/use-on-click-outside)
-- [`useReadLocalStorage()`](https://usehooks-ts.com/react-hook/use-read-local-storage)
-- [`useResizeObserver()`](https://usehooks-ts.com/react-hook/use-resize-observer)
-- [`useScreen()`](https://usehooks-ts.com/react-hook/use-screen)
-- [`useScript()`](https://usehooks-ts.com/react-hook/use-script)
-- [`useScrollLock()`](https://usehooks-ts.com/react-hook/use-scroll-lock)
-- [`useSessionStorage()`](https://usehooks-ts.com/react-hook/use-session-storage)
-- [`useStep()`](https://usehooks-ts.com/react-hook/use-step)
-- [`useTernaryDarkMode()`](https://usehooks-ts.com/react-hook/use-ternary-dark-mode)
-- [`useTimeout()`](https://usehooks-ts.com/react-hook/use-timeout)
-- [`useToggle()`](https://usehooks-ts.com/react-hook/use-toggle)
-- [`useUnmount()`](https://usehooks-ts.com/react-hook/use-unmount)
-- [`useWindowSize()`](https://usehooks-ts.com/react-hook/use-window-size)
+- [`useBoolean`](https://usehooks-ts.com/react-hook/use-boolean) — handles boolean state with useful utility functions.
+- [`useClickAnyWhere`](https://usehooks-ts.com/react-hook/use-click-any-where) — handles click events anywhere on the document.
+- [`useCopyToClipboard`](https://usehooks-ts.com/react-hook/use-copy-to-clipboard) — copies text to the clipboard.
+- [`useCountdown`](https://usehooks-ts.com/react-hook/use-countdown) — manages countdown.
+- [`useCounter`](https://usehooks-ts.com/react-hook/use-counter) — manages a counter with increment, decrement, reset, and setCount functionalities.
+- [`useDarkMode`](https://usehooks-ts.com/react-hook/use-dark-mode) — returns the current state of the dark mode.
+- [`useDebounceCallback`](https://usehooks-ts.com/react-hook/use-debounce-callback) — creates a debounced version of a callback function.
+- [`useDebounceValue`](https://usehooks-ts.com/react-hook/use-debounce-value) — returns a debounced version of the provided value, along with a function to update it.
+- [`useDocumentTitle`](https://usehooks-ts.com/react-hook/use-document-title) — sets the document title.
+- [`useEventCallback`](https://usehooks-ts.com/react-hook/use-event-callback) — creates a memoized event callback.
+- [`useEventListener`](https://usehooks-ts.com/react-hook/use-event-listener) — attaches event listeners to DOM elements, the window, or media query lists.
+- [`useHover`](https://usehooks-ts.com/react-hook/use-hover) — tracks whether a DOM element is being hovered over.
+- [`useIntersectionObserver`](https://usehooks-ts.com/react-hook/use-intersection-observer) — tracks the intersection of a DOM element with its containing element or the viewport.
+- [`useInterval`](https://usehooks-ts.com/react-hook/use-interval) — creates an interval that invokes a callback function at a specified delay.
+- [`useIsClient`](https://usehooks-ts.com/react-hook/use-is-client) — determines if the code is running on the client side (in the browser).
+- [`useIsMounted`](https://usehooks-ts.com/react-hook/use-is-mounted) — determines if the component is currently mounted.
+- [`useIsomorphicLayoutEffect`](https://usehooks-ts.com/react-hook/use-isomorphic-layout-effect) — uses either
+- [`useLocalStorage`](https://usehooks-ts.com/react-hook/use-local-storage) — uses local storage to persist state across page reloads.
+- [`useMap`](https://usehooks-ts.com/react-hook/use-map) — manages a key-value map state with setter actions.
+- [`useMediaQuery`](https://usehooks-ts.com/react-hook/use-media-query) — tracks the state of a media query.
+- [`useOnClickOutside`](https://usehooks-ts.com/react-hook/use-on-click-outside) — handles clicks outside a specified element.
+- [`useReadLocalStorage`](https://usehooks-ts.com/react-hook/use-read-local-storage) — reads a value from local storage, closely related to useLocalStorage().
+- [`useResizeObserver`](https://usehooks-ts.com/react-hook/use-resize-observer) — observes the size of an element using the ResizeObserver API.
+- [`useScreen`](https://usehooks-ts.com/react-hook/use-screen) — tracks the screen dimensions and properties.
+- [`useScript`](https://usehooks-ts.com/react-hook/use-script) — dynamically loads scripts and tracking their loading status.
+- [`useScrollLock`](https://usehooks-ts.com/react-hook/use-scroll-lock) — A custom hook that locks and unlocks scroll.
+- [`useSessionStorage`](https://usehooks-ts.com/react-hook/use-session-storage) — uses session storage to persist state across page reloads.
+- [`useStep`](https://usehooks-ts.com/react-hook/use-step) — manages and navigates between steps in a multi-step process.
+- [`useTernaryDarkMode`](https://usehooks-ts.com/react-hook/use-ternary-dark-mode) — manages ternary (system, dark, light) dark mode with local storage support.
+- [`useTimeout`](https://usehooks-ts.com/react-hook/use-timeout) — handles timeouts in React components.
+- [`useToggle`](https://usehooks-ts.com/react-hook/use-toggle) — manages a boolean toggle state in React components.
+- [`useUnmount`](https://usehooks-ts.com/react-hook/use-unmount) — runs a cleanup function when the component is unmounted.
+- [`useWindowSize`](https://usehooks-ts.com/react-hook/use-window-size) — tracks the size of the window.
 <!-- HOOKS:END -->
 
 ## 💚 Backers
