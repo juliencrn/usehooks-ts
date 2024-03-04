@@ -108,7 +108,7 @@ export function useDebounceCallback<T extends (...args: any) => ReturnType<T>>(
       debounceOptions,
     )
 
-    const wrappedFunc: DebouncedState<T> = (...args) => {
+    const wrappedFunc: DebouncedState<T> = (...args: unknown[]) => {
       pending.current = true
       return debouncedFuncInstance(...args)
     }
