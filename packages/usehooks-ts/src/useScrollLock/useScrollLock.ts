@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
@@ -9,6 +9,7 @@ interface UseScrollLockOptions {
 }
 
 interface UseScrollLockResult {
+  isLocked: boolean
   lock: () => void
   unlock: () => void
 }
@@ -53,33 +54,51 @@ export function useScrollLock(
   options: Partial<UseScrollLockOptions> = {},
 ): UseScrollLockResult {
   const { autoLock = true, lockTarget, widthReflow = true } = options
+  const [isLocked, setIsLocked] = useState(false)
   const target = useRef<HTMLElement | null>(null)
   const originalStyle = useRef<OriginalStyle | null>(null)
 
   const lock = () => {
     if (target.current) {
-      const { overflow, paddingRight } = window.getComputedStyle(target.current)
+      const { overflow, paddingRight } = target.current.style
 
       // Save the original styles
       originalStyle.current = { overflow, paddingRight }
 
+      // Prevent width reflow
+      if (widthReflow) {
+        // Use window inner width if body is the target as global scrollbar isn't part of the document
+        const offsetWidth =
+          target.current === document.body
+            ? window.innerWidth
+            : target.current.offsetWidth
+        // Get current computed padding right in pixels
+        const currentPaddingRight =
+          parseInt(window.getComputedStyle(target.current).paddingRight, 10) ||
+          0
+
+        const scrollbarWidth = offsetWidth - target.current.scrollWidth
+        target.current.style.paddingRight = `${scrollbarWidth + currentPaddingRight}px`
+      }
+
       // Lock the scroll
       target.current.style.overflow = 'hidden'
 
-      // prevent width reflow
-      if (widthReflow) {
-        const scrollbarWidth =
-          target.current.offsetWidth - target.current.scrollWidth
-        target.current.style.paddingRight = `${scrollbarWidth}px`
-      }
+      setIsLocked(true)
     }
   }
 
   const unlock = () => {
     if (target.current && originalStyle.current) {
       target.current.style.overflow = originalStyle.current.overflow
-      target.current.style.paddingRight = originalStyle.current.paddingRight
+
+      // Only reset padding right if we changed it
+      if (widthReflow) {
+        target.current.style.paddingRight = originalStyle.current.paddingRight
+      }
     }
+
+    setIsLocked(false)
   }
 
   useIsomorphicLayoutEffect(() => {
@@ -106,5 +125,5 @@ export function useScrollLock(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoLock, lockTarget, widthReflow])
 
-  return { lock, unlock }
+  return { isLocked, lock, unlock }
 }
