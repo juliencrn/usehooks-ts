@@ -37,7 +37,7 @@
     "@turbo/gen": "^1.12.4",
     "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20.11.19",
-    "@types/react": "18.2.57",
+    "@types/react": "18.2.61",
     "date-fns": "^3.3.1",
     "eslint-config-custom": "workspace:*",
     "eslint-plugin-jsdoc": "^48.1.0",
