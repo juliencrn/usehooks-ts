@@ -1,8 +1,13 @@
 import { useEffect, useState } from 'react'
 
-export type UseScriptStatus = 'idle' | 'loading' | 'ready' | 'error'
-export type UseScriptOptions = {
+/** Script loading status. */
+type UseScriptStatus = 'idle' | 'loading' | 'ready' | 'error'
+
+/** Hook options. */
+type UseScriptOptions = {
+  /** If `true`, prevents the script from being loaded (optional). */
   shouldPreventLoad?: boolean
+  /** If `true`, removes the script from the DOM when the component unmounts (optional). */
   removeOnUnmount?: boolean
   /** Script's `id` (optional) */
   id?: string
@@ -15,6 +20,11 @@ const cachedScriptStatuses = new Map<string, UseScriptStatus | undefined>()
  * Gets the script element with the specified source URL.
  * @param {string} src - The source URL of the script to get.
  * @returns {{ node: HTMLScriptElement | null, status: UseScriptStatus | undefined }} The script element and its loading status.
+ * @public
+ * @example
+ * ```tsx
+ * const script = getScriptNode(src);
+ * ```
  */
 function getScriptNode(src: string) {
   const node: HTMLScriptElement | null = document.querySelector(
@@ -31,13 +41,11 @@ function getScriptNode(src: string) {
 }
 
 /**
- * Custom hook for dynamically loading scripts and tracking their loading status.
+ * Custom hook that dynamically loads scripts and tracking their loading status.
  * @param {string | null} src - The source URL of the script to load. Set to `null` or omit to prevent loading (optional).
  * @param {UseScriptOptions} [options] - Additional options for controlling script loading (optional).
- * @param {boolean} [options.shouldPreventLoad] - If `true`, prevents the script from being loaded (optional).
- * @param {boolean} [options.removeOnUnmount] - If `true`, removes the script from the DOM when the component unmounts (optional).
- * @see [Documentation](https://usehooks-ts.com/react-hook/use-script)
  * @returns {UseScriptStatus} The status of the script loading, which can be one of 'idle', 'loading', 'ready', or 'error'.
+ * @see [Documentation](https://usehooks-ts.com/react-hook/use-script)
  * @example
  * const scriptStatus = useScript('https://example.com/script.js', { removeOnUnmount: true });
  * // Access the status of the script loading (e.g., 'loading', 'ready', 'error').

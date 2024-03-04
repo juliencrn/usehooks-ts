@@ -1,33 +1,58 @@
 import { useEffect, useRef, useState } from 'react'
 
+/** The hook internal state. */
 type State = {
+  /** A boolean indicating if the element is intersecting. */
   isIntersecting: boolean
+  /** The intersection observer entry. */
   entry?: IntersectionObserverEntry
 }
 
-type ObserverCallback = (
-  isIntersecting: boolean,
-  entry: IntersectionObserverEntry,
-) => void
+/** Represents the options for configuring the Intersection Observer. */
+type UseIntersectionObserverOptions = {
+  /**
+   * The element that is used as the viewport for checking visibility of the target.
+   * @default null
+   */
+  root?: Element | Document | null
+  /**
+   * A margin around the root.
+   * @default '0%'
+   */
+  rootMargin?: string
+  /**
+   * A threshold indicating the percentage of the target's visibility needed to trigger the callback.
+   * @default 0
+   */
+  threshold?: number | number[]
+  /**
+   * If true, freezes the intersection state once the element becomes visible.
+   * @default false
+   */
+  freezeOnceVisible?: boolean
+  /**
+   * A callback function to be invoked when the intersection state changes.
+   * @param {boolean} isIntersecting - A boolean indicating if the element is intersecting.
+   * @param {IntersectionObserverEntry} entry - The intersection observer Entry.
+   * @default undefined
+   */
+  onChange?: (isIntersecting: boolean, entry: IntersectionObserverEntry) => void
+  /**
+   * The initial state of the intersection.
+   * @default false
+   */
+  initialIsIntersecting?: boolean
+}
 
 /**
- * Represents the options for configuring the Intersection Observer.
- * @interface IntersectionObserverOptions
- * @property {number | number[]} [threshold=0] - A threshold indicating the percentage of the target's visibility needed to trigger the callback.
- * @property {Element | Document | null} [root=null] - The element that is used as the viewport for checking visibility of the target.
- * @property {string} [rootMargin='0%'] - A margin around the root.
- * @property {boolean} [freezeOnceVisible=false] - If true, freezes the intersection state once the element becomes visible.
- * @property {ObserverCallback} [onChange] - A callback function to be invoked when the intersection state changes.
- * @property {boolean} [initialIsIntersecting=false] - The initial state of the intersection.
+ * The return type of the useIntersectionObserver hook.
+ *
+ * Supports both tuple and object destructing.
+ * @param {(node: Element | null) => void} ref - The ref callback function.
+ * @param {boolean} isIntersecting - A boolean indicating if the element is intersecting.
+ * @param {IntersectionObserverEntry | undefined} entry - The intersection observer Entry.
  */
-type IntersectionObserverOptions = {
-  freezeOnceVisible?: boolean
-  onChange?: ObserverCallback
-  initialIsIntersecting?: boolean
-} & IntersectionObserverInit
-
-/** Supports both array and object destructing */
-type IntersectionResult = [
+type IntersectionReturn = [
   (node?: Element | null) => void,
   boolean,
   IntersectionObserverEntry | undefined,
@@ -38,17 +63,22 @@ type IntersectionResult = [
 }
 
 /**
- * Custom hook for tracking the intersection of a DOM element with its containing element or the viewport.
- * @param {IntersectionObserverOptions} options - The options for the Intersection Observer.
- * @returns {NewIntersectionResult | IntersectionObserverEntry | undefined} The ref callback, a boolean indicating if the element is intersecting, and the intersection observer entry.
+ * Custom hook that tracks the intersection of a DOM element with its containing element or the viewport.
+ * @param {UseIntersectionObserverOptions} options - The options for the Intersection Observer.
+ * @returns {IntersectionReturn} The ref callback, a boolean indicating if the element is intersecting, and the intersection observer entry.
+ * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-intersection-observer)
  * @see [MDN Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
  * @example
+ * ```tsx
  * // Example 1
  * const [ref, isIntersecting, entry] = useIntersectionObserver({ threshold: 0.5 });
+ * ```
  *
+ * ```tsx
  * // Example 2
  * const { ref, isIntersecting, entry } = useIntersectionObserver({ threshold: 0.5 });
+ * ```
  */
 export function useIntersectionObserver({
   threshold = 0,
@@ -57,7 +87,7 @@ export function useIntersectionObserver({
   freezeOnceVisible = false,
   initialIsIntersecting = false,
   onChange,
-}: IntersectionObserverOptions = {}): IntersectionResult {
+}: UseIntersectionObserverOptions = {}): IntersectionReturn {
   const [ref, setRef] = useState<Element | null>(null)
 
   const [state, setState] = useState<State>(() => ({
@@ -65,7 +95,7 @@ export function useIntersectionObserver({
     entry: undefined,
   }))
 
-  const callbackRef = useRef<ObserverCallback>()
+  const callbackRef = useRef<UseIntersectionObserverOptions['onChange']>()
 
   callbackRef.current = onChange
 
@@ -146,7 +176,7 @@ export function useIntersectionObserver({
     setRef,
     !!state.isIntersecting,
     state.entry,
-  ] as IntersectionResult
+  ] as IntersectionReturn
 
   // Support object destructuring, by adding the specific values.
   result.ref = result[0]

@@ -1,5 +1,6 @@
-import type { TernaryDarkMode } from './useTernaryDarkMode'
 import { useTernaryDarkMode } from './useTernaryDarkMode'
+
+type TernaryDarkMode = ReturnType<typeof useTernaryDarkMode>['ternaryDarkMode']
 
 export default function Component() {
   const {

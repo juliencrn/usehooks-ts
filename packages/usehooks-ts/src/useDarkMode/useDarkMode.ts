@@ -5,35 +5,52 @@ import { useMediaQuery } from '../useMediaQuery'
 const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)'
 const LOCAL_STORAGE_KEY = 'usehooks-ts-dark-mode'
 
+/** The hook options. */
 type DarkModeOptions = {
+  /**
+   * The initial value of the dark mode.
+   * @default false
+   */
   defaultValue?: boolean
+  /**
+   * The key to use in the local storage.
+   * @default 'usehooks-ts-dark-mode'
+   */
   localStorageKey?: string
+  /**
+   * If `true` (default), the hook will initialize reading `localStorage`.
+   * In SSR, you should set it to `false`, returning the `defaultValue` or `false` initially.
+   * @default true
+   */
   initializeWithValue?: boolean
 }
 
-type DarkModeOutput = {
+/** The hook return type. */
+type DarkModeReturn = {
+  /** The current state of the dark mode. */
   isDarkMode: boolean
+  /** Function to toggle the dark mode. */
   toggle: () => void
+  /** Function to enable the dark mode. */
   enable: () => void
+  /** Function to disable the dark mode. */
   disable: () => void
+  /** Function to set a specific value to the dark mode. */
   set: (value: boolean) => void
 }
 
-export function useDarkMode(options?: DarkModeOptions): DarkModeOutput
-
 /**
  * Custom hook that returns the current state of the dark mode.
- * @param  {?boolean | ?DarkModeOptions} [options] - the initial value of the dark mode, default `false`.
- * @param  {?boolean} [options.defaultValue] - the initial value of the dark mode, default `false`.
- * @param  {?string} [options.localStorageKey] - the key to use in the local storage, default `'usehooks-ts-dark-mode'`.
- * @param  {?boolean} [options.initializeWithValue] - if `true` (default), the hook will initialize reading `localStorage`. In SSR, you should set it to `false`, returning the `defaultValue` or `false` initially.
- * @param  {?string} [localStorageKeyProps] the key to use in the local storage, default `'usehooks-ts-dark-mode'`.
- * @returns {DarkModeOutput} An object containing the dark mode's state and its controllers.
+ * @param {?DarkModeOptions} [options] - The initial value of the dark mode, default `false`.
+ * @returns {DarkModeReturn} An object containing the dark mode's state and its controllers.
+ * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-dark-mode)
  * @example
+ * ```tsx
  * const { isDarkMode, toggle, enable, disable, set } = useDarkMode({ defaultValue: true });
+ * ```
  */
-export function useDarkMode(options: DarkModeOptions = {}): DarkModeOutput {
+export function useDarkMode(options: DarkModeOptions = {}): DarkModeReturn {
   const {
     defaultValue,
     localStorageKey = LOCAL_STORAGE_KEY,

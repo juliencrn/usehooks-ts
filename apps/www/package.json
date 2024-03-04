@@ -5,12 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "pnpm generate && next build && pnpm generate-sitemap",
+    "build": "pnpm generate-doc && next build && pnpm generate-sitemap",
     "generate-sitemap": "rimraf public/sitemap.xml public/robots.txt && next-sitemap --config ./next-sitemap.config.js",
     "start": "next start",
     "lint": "next lint && tsc --noEmit",
-    "clean": "rimraf *.tsbuildinfo .next generated .turbo",
-    "generate": "cd ../.. && pnpm copy-hooks && cd -"
+    "clean": "rimraf *.tsbuildinfo .next .turbo",
+    "generate-doc": "cd ../.. && pnpm generate-doc && cd -"
   },
   "dependencies": {
     "@next/third-parties": "^14.1.0",
@@ -29,6 +29,7 @@
     "react-dom": "18.2.0",
     "rehype-highlight": "^7.0.0",
     "remark-code-import": "^1.2.0",
+    "remark-gfm": "^3.0.1",
     "tailwind-merge": "^2.2.1",
     "tailwindcss": "3.4.1",
     "tailwindcss-animate": "^1.0.7",

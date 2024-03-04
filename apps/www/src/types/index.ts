@@ -11,6 +11,13 @@ export type SiteConfig = {
   }
 }
 
+export type BaseHook = {
+  name: string
+  slug: string
+  summary: string
+  path: string
+}
+
 export type NavItem = {
   title: string
   href: string
@@ -23,7 +30,7 @@ export type SidebarNavItem = {
   title: string
   disabled?: boolean
   external?: boolean
-  icon?: keyof typeof IconNode
+  icon?: keyof IconNode
 } & (
   | {
       href: string
@@ -31,7 +38,7 @@ export type SidebarNavItem = {
     }
   | {
       href?: string
-      items: NavLink[]
+      items: NavItem[]
     }
 )
 
@@ -43,14 +50,3 @@ export type DocsConfig = {
 export type MarketingConfig = {
   mainNav: MainNavItem[]
 }
-
-export type Post = {
-  name: string // useHook
-  slug: string // use-hook
-  href: string // /react-hook/use-hook
-  docs: Buffer // markdown raw
-  hook?: Buffer // markdown raw
-  demo?: Buffer // markdown raw
-}
-
-export type Option<T> = T | null

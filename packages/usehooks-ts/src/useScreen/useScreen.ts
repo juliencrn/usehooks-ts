@@ -4,8 +4,20 @@ import { useDebounceCallback } from '../useDebounceCallback'
 import { useEventListener } from '../useEventListener'
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
+/**
+ * The hooks options.
+ * @template InitializeWithValue - If `true` (default), the hook will initialize reading the screen dimensions. In SSR, you should set it to `false`, returning `undefined` initially.
+ */
 type UseScreenOptions<InitializeWithValue extends boolean | undefined> = {
+  /**
+   * If `true` (default), the hook will initialize reading the screen dimensions. In SSR, you should set it to `false`, returning `undefined` initially.
+   * @default true
+   */
   initializeWithValue: InitializeWithValue
+  /**
+   * The delay in milliseconds before the state is updated (disabled by default for retro-compatibility).
+   * @default undefined
+   */
   debounceDelay?: number
 }
 
@@ -16,15 +28,16 @@ export function useScreen(options: UseScreenOptions<false>): Screen | undefined
 // CSR version of useScreen.
 export function useScreen(options?: Partial<UseScreenOptions<true>>): Screen
 /**
- * Custom hook for tracking the screen dimensions and properties.
+ * Custom hook that tracks the screen dimensions and properties.
  * @param {?UseScreenOptions} [options] - The options for customizing the behavior of the hook (optional).
- * @param {?boolean} [options.initializeWithValue] - If `true` (default), the hook will initialize reading the screen dimensions. In SSR, you should set it to `false`, returning `undefined` initially.
- * @param {?number} [options.debounceDelay] - The delay in milliseconds before the state is updated (disabled by default for retro-compatibility).
  * @returns {Screen | undefined} The current `Screen` object representing the screen dimensions and properties, or `undefined` if not available.
+ * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-screen)
  * @example
+ * ```tsx
  * const currentScreen = useScreen();
  * // Access properties of the current screen, such as width and height.
+ * ```
  */
 export function useScreen(
   options: Partial<UseScreenOptions<boolean>> = {},
@@ -53,7 +66,7 @@ export function useScreen(
     options.debounceDelay,
   )
 
-  /** Handles the resize event of the window. */
+  // Handles the resize event of the window.
   function handleSize() {
     const newScreen = readScreen()
     const setSize = options.debounceDelay ? debouncedSetScreen : setScreen

@@ -2,25 +2,35 @@ import { useState } from 'react'
 
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
+/** Hook options. */
 type UseMediaQueryOptions = {
+  /**
+   * The default value to return if the hook is being run on the server.
+   * @default false
+   */
   defaultValue?: boolean
+  /**
+   * If `true` (default), the hook will initialize reading the media query. In SSR, you should set it to `false`, returning `options.defaultValue` or `false` initially.
+   * @default true
+   */
   initializeWithValue?: boolean
 }
 
 const IS_SERVER = typeof window === 'undefined'
 
 /**
- * Custom hook for tracking the state of a media query.
+ * Custom hook that tracks the state of a media query.
  * @param {string} query - The media query to track.
- * @param {boolean | ?UseMediaQueryOptions} [options] - The default value to return if the hook is being run on the server (default is `false`).
- * @param {?boolean} [options.defaultValue] - The default value to return if the hook is being run on the server (default is `false`).
- * @param {?boolean} [options.initializeWithValue] - If `true` (default), the hook will initialize reading the media query. In SSR, you should set it to `false`, returning `options.defaultValue` or `false` initially.
+ * @param {?UseMediaQueryOptions} [options] - The options for customizing the behavior of the hook (optional).
  * @returns {boolean} The current state of the media query (true if the query matches, false otherwise).
+ * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-media-query)
  * @see [MDN Match Media](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)
  * @example
+ * ```tsx
  * const isSmallScreen = useMediaQuery('(max-width: 600px)');
  * // Use `isSmallScreen` to conditionally apply styles or logic based on the screen size.
+ * ```
  */
 export function useMediaQuery(
   query: string,
@@ -43,7 +53,7 @@ export function useMediaQuery(
     return defaultValue
   })
 
-  /** Handles the change event of the media query. */
+  // Handles the change event of the media query.
   function handleChange() {
     setMatches(getMatches(query))
   }

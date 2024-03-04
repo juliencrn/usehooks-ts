@@ -1,31 +1,27 @@
 import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
 
 import { CarbonAds } from '@/components/carbon-ads'
 import { DocsPageHeader } from '@/components/docs-page-header'
 import { DocsPager } from '@/components/paper'
-import { Mdx } from '@/components/remote-mdx'
-import type { TocItem } from '@/components/table-of-content'
 import { DashboardTableOfContents } from '@/components/table-of-content'
-import { H2 } from '@/components/ui/components'
 import { siteConfig } from '@/config/site'
-import { getPost, getPosts } from '@/lib/mdx'
+import { getHook, getHookList } from '@/lib/api'
 
 export const generateStaticParams = async () => {
-  return getPosts().map(post => ({ slug: post.slug }))
+  return getHookList().map(hook => ({ slug: hook.slug }))
 }
 
 export const generateMetadata = (props: {
   params: { slug: string }
 }): Metadata => {
-  const post = getPost(props.params.slug)
-  if (!post) {
+  const hook = getHookList().find(hook => hook.slug === props.params.slug)
+  if (!hook) {
     return {}
   }
 
-  const title = post.name
-  const description = `Discover how to use ${post.name} from usehooks-ts`
-  const url = siteConfig.url + post.href
+  const title = hook.name
+  const description = hook.summary
+  const url = siteConfig.url + hook.path
   const imageUrl = `https://via.placeholder.com/1200x630.png/007ACC/fff/?text=${title}`
   return {
     title,
@@ -53,20 +49,12 @@ export const generateMetadata = (props: {
   }
 }
 
-const PostLayout = ({ params }: { params: { slug: string } }) => {
-  const post = getPost(params.slug)
-
-  if (!post) {
-    notFound()
-  }
-
-  const tocItems: TocItem[] = [{ title: 'Introduction', url: '#introduction' }]
-  if (post?.demo) {
-    tocItems.push({ title: 'Example', url: '#example' })
-  }
-  if (post?.hook) {
-    tocItems.push({ title: 'Hook', url: '#hook' })
-  }
+export default async function HookPage({
+  params,
+}: {
+  params: { slug: string }
+}) {
+  const { frontmatter, content } = await getHook(params.slug)
 
   return (
     <main className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px] xl:grid-rows-[auto_1fr_auto]">
@@ -74,29 +62,25 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
         <DocsPageHeader
           id="introduction"
           className="scroll-m-20"
-          heading={post.name}
+          heading={frontmatter.name}
         />
-        <Mdx source={post.docs} />
 
-        {post?.demo && (
-          <>
-            <H2 id="example">Example</H2>
-            <Mdx source={post.demo} />
-          </>
-        )}
-        {post?.hook && (
-          <>
-            <H2 id="hook">Hook</H2>
-            <Mdx source={post.hook} />
-          </>
-        )}
+        {content}
 
         <hr className="my-4 md:my-6" />
-        <DocsPager slug={post.slug} />
+        <DocsPager slug={frontmatter.slug} />
       </div>
       <aside className="hidden text-sm xl:block">
         <div className="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10">
-          <DashboardTableOfContents toc={{ items: tocItems }} />
+          <DashboardTableOfContents
+            toc={{
+              items: [
+                { title: 'Documentation', url: '#documentation' },
+                { title: 'Usage', url: '#usage' },
+                { title: 'Hook', url: '#hook' },
+              ],
+            }}
+          />
 
           <div className="my-10">
             <CarbonAds />
@@ -106,5 +90,3 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
     </main>
   )
 }
-
-export default PostLayout
