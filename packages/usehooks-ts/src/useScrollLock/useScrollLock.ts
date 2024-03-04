@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
@@ -9,6 +9,7 @@ interface UseScrollLockOptions {
 }
 
 interface UseScrollLockResult {
+  isLocked: boolean
   lock: () => void
   unlock: () => void
 }
@@ -53,6 +54,7 @@ export function useScrollLock(
   options: Partial<UseScrollLockOptions> = {},
 ): UseScrollLockResult {
   const { autoLock = true, lockTarget, widthReflow = true } = options
+  const [isLocked, setIsLocked] = useState(false)
   const target = useRef<HTMLElement | null>(null)
   const originalStyle = useRef<OriginalStyle | null>(null)
 
@@ -81,6 +83,8 @@ export function useScrollLock(
 
       // Lock the scroll
       target.current.style.overflow = 'hidden'
+
+      setIsLocked(true)
     }
   }
 
@@ -93,6 +97,8 @@ export function useScrollLock(
         target.current.style.paddingRight = originalStyle.current.paddingRight
       }
     }
+
+    setIsLocked(false)
   }
 
   useIsomorphicLayoutEffect(() => {
@@ -119,5 +125,5 @@ export function useScrollLock(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoLock, lockTarget, widthReflow])
 
-  return { lock, unlock }
+  return { isLocked, lock, unlock }
 }
