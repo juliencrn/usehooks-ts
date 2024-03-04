@@ -102,4 +102,14 @@ describe('useScrollLock()', () => {
     unmount()
     expect(document.body.style.overflow).toBe('')
   })
+
+  it('should add padding-right to prevent width reflow', () => {
+    const { unmount } = renderHook(() => useScrollLock())
+
+    const scrollbarWidth = window.innerWidth - document.body.scrollWidth
+
+    expect(document.body.style.paddingRight).toBe(`${scrollbarWidth}px`)
+    unmount()
+    expect(document.body.style.paddingRight).toBe('')
+  })
 })
