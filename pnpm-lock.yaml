@@ -16,7 +16,7 @@ importers:
         version: 2.27.1
       '@turbo/gen':
         specifier: ^1.12.4
-        version: 1.12.4(@types/node@20.11.19)(typescript@5.3.3)
+        version: 1.12.4(@types/node@20.11.24)(typescript@5.3.3)
       all-contributors-cli:
         specifier: ^6.26.1
         version: 6.26.1
@@ -214,9 +214,6 @@ importers:
       '@types/react':
         specifier: 18.2.61
         version: 18.2.61
-      date-fns:
-        specifier: ^3.3.1
-        version: 3.3.1
       eslint-config-custom:
         specifier: workspace:*
         version: link:../eslint-config-custom
@@ -1732,7 +1729,7 @@ packages:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
     dev: true
 
-  /@turbo/gen@1.12.4(@types/node@20.11.19)(typescript@5.3.3):
+  /@turbo/gen@1.12.4(@types/node@20.11.24)(typescript@5.3.3):
     resolution: {integrity: sha512-3Z8KZ6Vnc2x6rr8sNJ4QNYpkAttLBfb91uPzDlFDY7vgJg+vfXT8YWyZznVL+19ZixF2C/F4Ucp4/YjG2e1drg==}
     hasBin: true
     dependencies:
@@ -1744,7 +1741,7 @@ packages:
       minimatch: 9.0.3
       node-plop: 0.26.3
       proxy-agent: 6.3.1
-      ts-node: 10.9.2(@types/node@20.11.19)(typescript@5.3.3)
+      ts-node: 10.9.2(@types/node@20.11.24)(typescript@5.3.3)
       update-check: 1.5.4
       validate-npm-package-name: 5.0.0
     transitivePeerDependencies:
@@ -7843,7 +7840,7 @@ packages:
   /ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
-  /ts-node@10.9.2(@types/node@20.11.19)(typescript@5.3.3):
+  /ts-node@10.9.2(@types/node@20.11.24)(typescript@5.3.3):
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
     hasBin: true
     peerDependencies:
@@ -7862,7 +7859,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.11.19
+      '@types/node': 20.11.24
       acorn: 8.11.3
       acorn-walk: 8.3.2
       arg: 4.1.3

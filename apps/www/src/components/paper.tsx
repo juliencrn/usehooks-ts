@@ -2,37 +2,38 @@ import Link from 'next/link'
 
 import { ChevronLeft, ChevronRight } from '@/components/icons'
 import { buttonVariants } from '@/components/ui/button'
-import { getHookList } from '@/lib/api'
 import { cn, mapHookToNavLink } from '@/lib/utils'
+import type { BaseHook } from '@/types'
 
 type DocsPagerProps = {
   slug: string
+  hooks: BaseHook[]
 }
 
-export function DocsPager({ slug }: DocsPagerProps) {
-  const pager = getPagerForDoc(slug)
+export function DocsPager({ slug, hooks }: DocsPagerProps) {
+  const { prev, next } = getPaperElements({ slug, hooks })
 
-  if (!pager) {
+  if (!prev && !next) {
     return null
   }
 
   return (
     <div className="flex flex-row items-center justify-between">
-      {pager?.prev && (
+      {prev && (
         <Link
-          href={pager.prev.href}
+          href={prev.href}
           className={cn(buttonVariants({ variant: 'ghost' }))}
         >
           <ChevronLeft className="mr-2 h-4 w-4" />
-          {pager.prev.title}
+          {prev.title}
         </Link>
       )}
-      {pager?.next && (
+      {next && (
         <Link
-          href={pager.next.href}
+          href={next.href}
           className={cn(buttonVariants({ variant: 'ghost' }), 'ml-auto')}
         >
-          {pager.next.title}
+          {next.title}
           <ChevronRight className="ml-2 h-4 w-4" />
         </Link>
       )}
@@ -40,8 +41,7 @@ export function DocsPager({ slug }: DocsPagerProps) {
   )
 }
 
-export function getPagerForDoc(slug: string) {
-  const hooks = getHookList()
+function getPaperElements({ slug, hooks }: DocsPagerProps) {
   const activeIndex = hooks.findIndex(h => h.slug === slug)
   const links = hooks.map(mapHookToNavLink)
   const prev = activeIndex !== 0 ? links[activeIndex - 1] : null

@@ -2,8 +2,6 @@
 
 import * as React from 'react'
 
-import { useIsMounted } from 'usehooks-ts'
-
 import { cn } from '@/lib/utils'
 
 type Item = {
@@ -36,18 +34,17 @@ export function DashboardTableOfContents({ toc }: TocProps) {
     [toc],
   )
   const activeHeading = useActiveItem(itemIds)
-  const isMounted = useIsMounted()
 
   if (!toc?.items) {
     return null
   }
 
-  return isMounted() ? (
+  return (
     <div className="space-y-2">
       <p className="font-medium">On This Page</p>
       <Tree tree={toc} activeItem={activeHeading} />
     </div>
-  ) : null
+  )
 }
 
 // TODO: use useIntersectionObserver from usehooks-ts

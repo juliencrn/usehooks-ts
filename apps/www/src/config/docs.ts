@@ -1,5 +1,3 @@
-import { getHookList } from '@/lib/api'
-import { mapHookToNavLink } from '@/lib/utils'
 import type { DocsConfig } from '@/types'
 
 export const docsConfig: DocsConfig = {
@@ -23,9 +21,6 @@ export const docsConfig: DocsConfig = {
         },
       ],
     },
-    {
-      title: 'Hooks',
-      items: getHookList().map(mapHookToNavLink),
-    },
+    // Note: Hooks are added here dynamically
   ],
 }

@@ -2,7 +2,7 @@ import { DocsPageHeader } from '@/components/docs-page-header'
 import { DashboardTableOfContents } from '@/components/table-of-content'
 import { components } from '@/components/ui/components'
 
-export default async function IntroductionPage() {
+export default async function MigrateToV3Page() {
   return (
     <main className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">

@@ -8,13 +8,15 @@ import { siteConfig } from '@/config/site'
 import { getHook, getHookList } from '@/lib/api'
 
 export const generateStaticParams = async () => {
-  return getHookList().map(hook => ({ slug: hook.slug }))
+  const hooks = await getHookList()
+  return hooks.map(hook => ({ slug: hook.slug }))
 }
 
-export const generateMetadata = (props: {
+export const generateMetadata = async (props: {
   params: { slug: string }
-}): Metadata => {
-  const hook = getHookList().find(hook => hook.slug === props.params.slug)
+}): Promise<Metadata> => {
+  const hooks = await getHookList()
+  const hook = hooks.find(hook => hook.slug === props.params.slug)
   if (!hook) {
     return {}
   }
@@ -54,7 +56,10 @@ export default async function HookPage({
 }: {
   params: { slug: string }
 }) {
-  const { frontmatter, content } = await getHook(params.slug)
+  const [{ frontmatter, content }, hookList] = await Promise.all([
+    getHook(params.slug),
+    getHookList(),
+  ])
 
   return (
     <main className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px] xl:grid-rows-[auto_1fr_auto]">
@@ -68,7 +73,7 @@ export default async function HookPage({
         {content}
 
         <hr className="my-4 md:my-6" />
-        <DocsPager slug={frontmatter.slug} />
+        <DocsPager slug={frontmatter.slug} hooks={hookList} />
       </div>
       <aside className="hidden text-sm xl:block">
         <div className="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10">
