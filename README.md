@@ -17,7 +17,7 @@
 [![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks-ts/blob/master/LICENSE)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-239-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-240-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <br />
@@ -427,6 +427,7 @@ Big thanks go to all our contributors! [[Become a contributor](https://github.co
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/kyrylo-soulandwolf"><img src="https://avatars.githubusercontent.com/u/54762253?v=4?s=64" width="64px;" alt="kyrylo-soulandwolf"/><br /><sub><b>kyrylo-soulandwolf</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=kyrylo-soulandwolf" title="Code">💻</a> <a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Akyrylo-soulandwolf" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/misidoro"><img src="https://avatars.githubusercontent.com/u/3635023?v=4?s=64" width="64px;" alt="Miguel Isidoro"/><br /><sub><b>Miguel Isidoro</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=misidoro" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

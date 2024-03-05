@@ -4,6 +4,8 @@ export type UseScriptStatus = 'idle' | 'loading' | 'ready' | 'error'
 export interface UseScriptOptions {
   shouldPreventLoad?: boolean
   removeOnUnmount?: boolean
+  /** Script's `id` (optional) */
+  id?: string
 }
 
 // Cached script statuses
@@ -79,6 +81,9 @@ export function useScript(
       scriptNode = document.createElement('script')
       scriptNode.src = src
       scriptNode.async = true
+      if (options?.id) {
+        scriptNode.id = options.id
+      }
       scriptNode.setAttribute('data-status', 'loading')
       document.body.appendChild(scriptNode)
 
