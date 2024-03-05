@@ -95,4 +95,18 @@
       'rlig' 1,
       'calt' 1;
   }
+
+  /* Override the default styles for the Carbon Ads block */
+  .carbon-wrap * {
+    --carbon-bg-primary: hsl(var(--background));
+    --carbon-bg-secondary: hsl(var(--border));
+    --carbon-text-color: hsl(var(--foreground));
+
+    .carbon-responsive-wrap {
+      @apply !rounded-md;
+    }
+    .carbon-poweredby {
+      @apply !opacity-100 !text-muted-foreground;
+    }
+  }
 }

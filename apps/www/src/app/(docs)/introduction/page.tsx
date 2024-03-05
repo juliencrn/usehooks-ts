@@ -1,3 +1,4 @@
+import { CarbonAds } from '@/components/carbon-ads'
 import { CommandCopy } from '@/components/command-copy'
 import { DocsPageHeader } from '@/components/docs-page-header'
 import { components } from '@/components/ui/components'
@@ -46,6 +47,13 @@ export default async function IntroductionPage() {
           }}
         />
       </div>
+      <aside className="hidden text-sm xl:block">
+        <div className="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10">
+          <div className="my-10">
+            <CarbonAds />
+          </div>
+        </div>
+      </aside>
     </main>
   )
 }
