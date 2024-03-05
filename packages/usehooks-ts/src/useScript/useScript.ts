@@ -128,7 +128,7 @@ export function useScript(
         cachedScriptStatuses.delete(src)
       }
     }
-  }, [src, options?.shouldPreventLoad, options?.removeOnUnmount])
+  }, [src, options?.shouldPreventLoad, options?.removeOnUnmount, options?.id])
 
   return status
 }
