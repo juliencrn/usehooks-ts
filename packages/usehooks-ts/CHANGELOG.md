@@ -1,5 +1,21 @@
 # Changelog
 
+## 2.16.0
+
+### Minor Changes
+
+- 9b65ce8: Add `id` param to `useScript` hook (from #285 by @misidoro)
+
+### Patch Changes
+
+- d881f08: Add `isLocked` state to the `useScrollLock` return (#521 by @kyrylo-soulandwolf)
+- fc25779: Resolve warning when using `useScrollLock` in an SSR environment (#521 by @kyrylo-soulandwolf)
+- d42741f: Wrap `useCountdown` methods with `useCallback` (from #326 by @gromchen)
+- d42741f: Wrap `useCounter` methods with `useCallback` (from #326 by @gromchen)
+- d881f08: Fixed `useScrollLock` leaving inline styles (#516 from @novacdenis)
+- 0d99db9: chore(deps): update all non-major dependencies
+- d881f08: Fixed reflow not considering the padding before the lock (#521 by @kyrylo-soulandwolf)
+
 ## 2.15.1
 
 ### Patch Changes

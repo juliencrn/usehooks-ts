@@ -1,5 +1,20 @@
 # www
 
+## 0.2.4
+
+### Patch Changes
+
+- 0d99db9: chore(deps): update all non-major dependencies
+- Updated dependencies [d881f08]
+- Updated dependencies [fc25779]
+- Updated dependencies [9b65ce8]
+- Updated dependencies [d42741f]
+- Updated dependencies [d42741f]
+- Updated dependencies [d881f08]
+- Updated dependencies [0d99db9]
+- Updated dependencies [d881f08]
+  - usehooks-ts@2.16.0
+
 ## 0.2.3
 
 ### Patch Changes
