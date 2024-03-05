@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
+import { CarbonAds } from '@/components/carbon-ads'
 import { DocsPageHeader } from '@/components/docs-page-header'
 import { DocsPager } from '@/components/paper'
 import { Mdx } from '@/components/remote-mdx'
@@ -83,11 +84,15 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
         <hr className="my-4 md:my-6" />
         <DocsPager slug={post.slug} />
       </div>
-      <div className="hidden text-sm xl:block">
+      <aside className="hidden text-sm xl:block">
         <div className="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10">
           <DashboardTableOfContents toc={toc} />
+
+          <div className="my-10">
+            <CarbonAds />
+          </div>
         </div>
-      </div>
+      </aside>
     </main>
   )
 }
