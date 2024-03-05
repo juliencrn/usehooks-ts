@@ -131,10 +131,10 @@ export function useCountdown(
   /**
    * Will set running false and reset the seconds to initial value
    */
-  const resetCountdown = () => {
+  const resetCountdown = useCallback(() => {
     stopCountdown()
     resetCounter()
-  }
+  }, [stopCountdown, resetCounter])
 
   const countdownCallback = useCallback(() => {
     if (count === countStop) {

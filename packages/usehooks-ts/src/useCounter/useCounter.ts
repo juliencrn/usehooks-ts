@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import type { Dispatch, SetStateAction } from 'react'
 
@@ -32,15 +32,17 @@ interface UseCounterOutput {
 export function useCounter(initialValue?: number): UseCounterOutput {
   const [count, setCount] = useState(initialValue ?? 0)
 
-  const increment = () => {
+  const increment = useCallback(() => {
     setCount(x => x + 1)
-  }
-  const decrement = () => {
+  }, [])
+
+  const decrement = useCallback(() => {
     setCount(x => x - 1)
-  }
-  const reset = () => {
+  }, [])
+
+  const reset = useCallback(() => {
     setCount(initialValue ?? 0)
-  }
+  }, [initialValue])
 
   return {
     count,
