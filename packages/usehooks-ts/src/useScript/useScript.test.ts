@@ -61,4 +61,23 @@ describe('useScript', () => {
 
     expect(result2.current).toBe('ready')
   })
+
+  it('should have a `id` attribute when given', () => {
+    const src = '/'
+    const id = 'my-script'
+
+    const { result } = renderHook(() => useScript(src, { id }))
+
+    // Make sure the document is loaded
+    act(() => {
+      document
+        .querySelector(`script[src="${src}"]`)
+        ?.dispatchEvent(new Event('load'))
+    })
+
+    expect(result.current).toBe('ready')
+
+    expect(document.querySelector(`script[id="${id}"]`)).not.toBeNull()
+    expect(document.querySelector(`script[src="${src}"]`)?.id).toBe(id)
+  })
 })
