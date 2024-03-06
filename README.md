@@ -82,6 +82,7 @@ function Component() {
 - [`useScript()`](https://usehooks-ts.com/react-hook/use-script)
 - [`useScrollLock()`](https://usehooks-ts.com/react-hook/use-scroll-lock)
 - [`useSessionStorage()`](https://usehooks-ts.com/react-hook/use-session-storage)
+- [`useSound()`](https://usehooks-ts.com/react-hook/use-sound)
 - [`useStep()`](https://usehooks-ts.com/react-hook/use-step)
 - [`useTernaryDarkMode()`](https://usehooks-ts.com/react-hook/use-ternary-dark-mode)
 - [`useTimeout()`](https://usehooks-ts.com/react-hook/use-timeout)
