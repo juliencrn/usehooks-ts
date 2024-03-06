@@ -28,7 +28,7 @@ const IS_SERVER = typeof window === 'undefined'
  * @param {?boolean} [options.initializeWithValue] - If `true` (default), the hook will initialize reading the local storage. In SSR, you should set it to `false`, returning the initial value initially.
  * @param {?((value: T) => string)} [options.serializer] - A function to serialize the value before storing it.
  * @param {?((value: string) => T)} [options.deserializer] - A function to deserialize the stored value.
- * @returns {[T, Dispatch<SetStateAction<T>>]} A tuple containing the stored value and a function to set the value.
+ * @returns {[T, Dispatch<SetStateAction<T>>, () => void]} A tuple containing the stored value and a function to set the value.
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-local-storage)
  * @see [MDN Local Storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
  * @example
@@ -39,7 +39,7 @@ export function useLocalStorage<T>(
   key: string,
   initialValue: T | (() => T),
   options: UseLocalStorageOptions<T> = {},
-): [T, Dispatch<SetStateAction<T>>] {
+): [T, Dispatch<SetStateAction<T>>, () => void] {
   const { initializeWithValue = true } = options
 
   const serializer = useCallback<(value: T) => string>(
@@ -133,6 +133,17 @@ export function useLocalStorage<T>(
     }
   })
 
+  const resetValue = useCallback(() => {
+    try {
+      const initialValueToUse =
+        initialValue instanceof Function ? initialValue() : initialValue
+
+      setValue(initialValueToUse)
+    } catch (error) {
+      console.warn(`Error resetting localStorage key “${key}”:`, error)
+    }
+  }, [initialValue, setValue, key])
+
   useEffect(() => {
     setStoredValue(readValue())
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -155,5 +166,5 @@ export function useLocalStorage<T>(
   // See: useLocalStorage()
   useEventListener('local-storage', handleStorageChange)
 
-  return [storedValue, setValue]
+  return [storedValue, setValue, resetValue]
 }
