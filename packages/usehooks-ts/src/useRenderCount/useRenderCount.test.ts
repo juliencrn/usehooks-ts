@@ -3,8 +3,14 @@ import { renderHook } from '@testing-library/react'
 import { useRenderCount } from './useRenderCount'
 
 describe('useRenderCount()', () => {
-  it('should use the default name', () => {
+  beforeEach(() => {
     vi.spyOn(console, 'log')
+  })
+  afterAll(() => {
+    vi.resetAllMocks()
+  })
+
+  it('should use the default name', () => {
     const { result } = renderHook(() => useRenderCount())
     const value = result.current
 
@@ -15,7 +21,6 @@ describe('useRenderCount()', () => {
   })
 
   it('should use the given name', () => {
-    vi.spyOn(console, 'log')
     const { result } = renderHook(() => useRenderCount('CustomComponent'))
     const value = result.current
 
@@ -26,7 +31,6 @@ describe('useRenderCount()', () => {
   })
 
   it('should increment the render count', () => {
-    vi.spyOn(console, 'log')
     const { result, rerender } = renderHook(() => useRenderCount())
     const value = result.current
 
@@ -43,12 +47,13 @@ describe('useRenderCount()', () => {
   })
 
   it('should not log in production', () => {
-    vi.spyOn(console, 'log')
-    process.env.NODE_ENV = 'production'
+    vi.stubEnv('NODE_ENV', 'production')
     const { result } = renderHook(() => useRenderCount())
     const value = result.current
 
     expect(value).toBe(1)
     expect(console.log).not.toHaveBeenCalled()
+
+    vi.unstubAllEnvs()
   })
 })
