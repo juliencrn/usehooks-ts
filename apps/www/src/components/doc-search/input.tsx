@@ -46,8 +46,11 @@ export function SearchInput() {
         placeholder="Search for hooks…"
         spellCheck={false}
         maxLength={512}
+        type="search"
         value={inputValue}
-        onValueChange={setQuery}
+        onChange={event => {
+          setQuery(event.target.value)
+        }}
       />
     </form>
   )

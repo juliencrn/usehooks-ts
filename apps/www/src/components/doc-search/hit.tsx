@@ -2,26 +2,10 @@ import { useRouter } from 'next/navigation'
 
 import { CommandItem } from '../ui/command'
 import { useCommandMenuContext } from './modal.context'
-
-type Highlight = {
-  value: string
-  matchLevel: string
-  matchedWords: string[]
-}
-
-type Fields<T> = {
-  id: T
-  title: T
-  excerpt: T
-  path: T
-  titleWithoutUse: T
-}
+import type { Hit } from './types'
 
 type HitProps = {
-  hit: Fields<string> & {
-    __position: number
-    _highlightResult: Fields<Highlight>
-  }
+  hit: Hit
 }
 
 export function Hit({ hit }: HitProps) {
@@ -30,14 +14,25 @@ export function Hit({ hit }: HitProps) {
 
   return (
     <CommandItem
+      className="flex flex-col [&_mark]:bg-accent [&_mark]:text-accent-foreground"
       onSelect={() => {
         handleClose()
-        router.push(hit.path)
+        router.push(`/react-hook/${hit.objectID}`)
       }}
     >
       <div
+        className="font-mono"
         dangerouslySetInnerHTML={{
-          __html: hit._highlightResult.title?.value || hit.title,
+          __html: (hit._highlightResult.name?.value || hit.name) + '()',
+        }}
+      />
+      <div
+        className="text-sm text-muted-foreground"
+        dangerouslySetInnerHTML={{
+          __html: (hit._highlightResult.summary?.value || hit.summary).replace(
+            'Custom hook that ',
+            '',
+          ),
         }}
       />
     </CommandItem>

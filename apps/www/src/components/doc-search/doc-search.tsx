@@ -16,7 +16,7 @@ export const DocSearch = () => {
   return (
     <CommandMenuProvider>
       <OpenButton />
-      <InstantSearch searchClient={searchClient} indexName="Posts">
+      <InstantSearch searchClient={searchClient} indexName="hooks">
         <CommandMenu />
       </InstantSearch>
     </CommandMenuProvider>
