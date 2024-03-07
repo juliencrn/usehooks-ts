@@ -38,6 +38,7 @@ interface CountdownControllers {
  * @param  {CountdownOptions} countdownOptions the countdown's options.
  * @param  {number} countdownOptions.countStart the countdown's starting number, initial value of the returned number.
  * @param  {?number} [countdownOptions.countStop] `0` by default, the countdown's stopping number. Pass `-Infinity` to decrease forever.
+ * @param {?Function} [countdownOptions.onStop] A callback function that will be called when the countdown stops (reaches `countStop`).
  * @param  {?number} [countdownOptions.intervalMs] `1000` by default, the countdown's interval, in milliseconds.
  * @param  {?boolean} [countdownOptions.isIncrement] `false` by default, true if the countdown is increment.
  * @returns {[number, CountdownControllers]} An array containing the countdown's count and its controllers.
@@ -90,7 +91,7 @@ export function useCountdown(
     intervalMs,
     isIncrement: boolean | undefined,
     countStop: number | undefined,
-    onStop: () => void | undefined 
+    onStop: (() => void) | undefined
 
   if ('seconds' in countdownOptions) {
     console.warn(
@@ -101,10 +102,10 @@ export function useCountdown(
     countStart = countdownOptions.seconds
     intervalMs = countdownOptions.interval
     isIncrement = countdownOptions.isIncrement
-    onStop = countdownOptions.onStop
   } else {
     // eslint-disable-next-line @typescript-eslint/no-extra-semi, no-extra-semi
-    ;({ countStart, intervalMs, isIncrement, countStop, onStop } = countdownOptions)
+    ;({ countStart, intervalMs, isIncrement, countStop, onStop } =
+      countdownOptions)
   }
 
   // default values
@@ -129,8 +130,16 @@ export function useCountdown(
   const {
     value: isCountdownRunning,
     setTrue: startCountdown,
-    setFalse: stopCountdown,
+    setFalse: stopCounter,
   } = useBoolean(false)
+
+  /**
+   * Will set running false and stop the countdown
+   */
+  const stopCountdown = () => {
+    stopCounter()
+    if (onStop) onStop()
+  }
 
   /**
    * Will set running false and reset the seconds to initial value
@@ -143,7 +152,6 @@ export function useCountdown(
   const countdownCallback = useCallback(() => {
     if (count === countStop) {
       stopCountdown()
-      if (onStop) onStop();
       return
     }
 
