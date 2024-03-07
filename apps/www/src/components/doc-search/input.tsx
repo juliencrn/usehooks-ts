@@ -47,9 +47,7 @@ export function SearchInput() {
         spellCheck={false}
         maxLength={512}
         value={inputValue}
-        onChange={event => {
-          setQuery(event.target.value)
-        }}
+        onValueChange={setQuery}
       />
     </form>
   )

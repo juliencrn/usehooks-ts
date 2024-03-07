@@ -40,7 +40,7 @@ const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
 
 const CommandInput = React.forwardRef<
   HTMLInputElement,
-  React.ComponentPropsWithoutRef<'input'> & {
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input> & {
     isLoading?: boolean
   }
 >(({ isLoading, className, ...props }, ref) => (
@@ -50,7 +50,7 @@ const CommandInput = React.forwardRef<
     ) : (
       <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
     )}
-    <input
+    <CommandPrimitive.Input
       ref={ref}
       className={cn(
         'flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50',
