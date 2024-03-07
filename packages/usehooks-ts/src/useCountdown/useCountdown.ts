@@ -23,6 +23,7 @@ interface CountdownOptions {
   intervalMs?: number
   isIncrement?: boolean
   countStop?: number
+  onStop?: () => void
 }
 
 interface CountdownControllers {
@@ -37,6 +38,7 @@ interface CountdownControllers {
  * @param  {CountdownOptions} countdownOptions the countdown's options.
  * @param  {number} countdownOptions.countStart the countdown's starting number, initial value of the returned number.
  * @param  {?number} [countdownOptions.countStop] `0` by default, the countdown's stopping number. Pass `-Infinity` to decrease forever.
+ * @param {?Function} [countdownOptions.onStop] A callback function that will be called when the countdown stops (reaches `countStop`).
  * @param  {?number} [countdownOptions.intervalMs] `1000` by default, the countdown's interval, in milliseconds.
  * @param  {?boolean} [countdownOptions.isIncrement] `false` by default, true if the countdown is increment.
  * @returns {[number, CountdownControllers]} An array containing the countdown's count and its controllers.
@@ -88,7 +90,8 @@ export function useCountdown(
   let countStart,
     intervalMs,
     isIncrement: boolean | undefined,
-    countStop: number | undefined
+    countStop: number | undefined,
+    onStop: (() => void) | undefined
 
   if ('seconds' in countdownOptions) {
     console.warn(
@@ -101,13 +104,15 @@ export function useCountdown(
     isIncrement = countdownOptions.isIncrement
   } else {
     // eslint-disable-next-line @typescript-eslint/no-extra-semi, no-extra-semi
-    ;({ countStart, intervalMs, isIncrement, countStop } = countdownOptions)
+    ;({ countStart, intervalMs, isIncrement, countStop, onStop } =
+      countdownOptions)
   }
 
   // default values
   intervalMs = intervalMs ?? 1000
   isIncrement = isIncrement ?? false
   countStop = countStop ?? 0
+  onStop = onStop ?? undefined
 
   const {
     count,
@@ -125,8 +130,16 @@ export function useCountdown(
   const {
     value: isCountdownRunning,
     setTrue: startCountdown,
-    setFalse: stopCountdown,
+    setFalse: stopCounter,
   } = useBoolean(false)
+
+  /**
+   * Will set running false and stop the countdown
+   */
+  const stopCountdown = () => {
+    stopCounter()
+    if (onStop) onStop()
+  }
 
   /**
    * Will set running false and reset the seconds to initial value
