@@ -2,23 +2,22 @@
 
 import * as React from 'react'
 
-import { useIsMounted } from 'usehooks-ts'
-
 import { cn } from '@/lib/utils'
 
-interface Item {
+type Item = {
   title: string
   url: string
   items?: Item[]
 }
 
-interface Items {
+type Items = {
   items?: Item[]
 }
 
 export type TableOfContents = Items
+export type TocItem = Item
 
-interface TocProps {
+type TocProps = {
   toc: TableOfContents
 }
 
@@ -35,20 +34,20 @@ export function DashboardTableOfContents({ toc }: TocProps) {
     [toc],
   )
   const activeHeading = useActiveItem(itemIds)
-  const isMounted = useIsMounted()
 
   if (!toc?.items) {
     return null
   }
 
-  return isMounted() ? (
+  return (
     <div className="space-y-2">
       <p className="font-medium">On This Page</p>
       <Tree tree={toc} activeItem={activeHeading} />
     </div>
-  ) : null
+  )
 }
 
+// TODO: use useIntersectionObserver from usehooks-ts
 function useActiveItem(itemIds: (string | undefined)[]) {
   const [activeId, setActiveId] = React.useState<string>('')
 
@@ -92,7 +91,7 @@ function useActiveItem(itemIds: (string | undefined)[]) {
   return activeId
 }
 
-interface TreeProps {
+type TreeProps = {
   tree: TableOfContents
   level?: number
   activeItem?: string | null

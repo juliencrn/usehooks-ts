@@ -17,6 +17,7 @@ npm-debug.log*
 
 # Compiled stuff
 dist
+generated
 
 # Coverage
 coverage

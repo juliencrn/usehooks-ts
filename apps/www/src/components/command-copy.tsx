@@ -15,10 +15,10 @@ import {
 } from './ui/dropdown-menu'
 import { cn } from '@/lib/utils'
 
-interface CommandCopyProps extends ComponentProps<'code'> {
+type CommandCopyProps = {
   command: Record<string, string> | string
   defaultCommand?: string
-}
+} & ComponentProps<'code'>
 
 export function CommandCopy({
   className,

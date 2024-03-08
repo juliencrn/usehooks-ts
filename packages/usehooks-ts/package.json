@@ -11,34 +11,33 @@
     "hooks"
   ],
   "license": "MIT",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     }
   },
   "sideEffects": false,
   "scripts": {
-    "build": "tsup && rm ./dist/index.d.mts",
+    "build": "tsup && rimraf ./dist/index.d.cts",
     "dev": "tsup --watch",
     "test": "vitest run",
     "test:watch": "vitest",
-    "clean": "rimraf -rf ./dist .turbo *.tsbuildinfo",
+    "clean": "rimraf dist .turbo *.tsbuildinfo",
     "lint": "eslint './src/**/*.{ts,tsx}' && tsc --noEmit"
   },
   "devDependencies": {
     "@juggle/resize-observer": "^3.4.0",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
-    "@turbo/gen": "^1.12.4",
     "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20.11.19",
     "@types/react": "18.2.61",
-    "date-fns": "^3.3.1",
     "eslint-config-custom": "workspace:*",
     "eslint-plugin-jsdoc": "^48.1.0",
     "eslint-plugin-tree-shaking": "^1.12.1",

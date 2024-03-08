@@ -1,6 +1,5 @@
 import { act, renderHook } from '@testing-library/react'
 
-import type { MapOrEntries } from './useMap'
 import { useMap } from './useMap'
 
 describe('useMap()', () => {
@@ -12,8 +11,7 @@ describe('useMap()', () => {
   })
 
   it('should be ok when initiated with an array', () => {
-    const initialArray: MapOrEntries<number, string> = [[1, 'initial']]
-    const { result } = renderHook(() => useMap(initialArray))
+    const { result } = renderHook(() => useMap([[1, 'initial']]))
 
     expect(result.current[0].get(1)).toBe('initial')
   })

@@ -1,35 +1,58 @@
 import { useEffect, useRef, useState } from 'react'
 
-import type { RefObject } from 'react'
-
+/** The hook internal state. */
 type State = {
+  /** A boolean indicating if the element is intersecting. */
   isIntersecting: boolean
+  /** The intersection observer entry. */
   entry?: IntersectionObserverEntry
 }
 
-type ObserverCallback = (
-  isIntersecting: boolean,
-  entry: IntersectionObserverEntry,
-) => void
-
-/**
- * Represents the options for configuring the Intersection Observer.
- * @interface IntersectionObserverOptions
- * @property {number | number[]} [threshold=0] - A threshold indicating the percentage of the target's visibility needed to trigger the callback.
- * @property {Element | Document | null} [root=null] - The element that is used as the viewport for checking visibility of the target.
- * @property {string} [rootMargin='0%'] - A margin around the root.
- * @property {boolean} [freezeOnceVisible=false] - If true, freezes the intersection state once the element becomes visible.
- * @property {ObserverCallback} [onChange] - A callback function to be invoked when the intersection state changes.
- * @property {boolean} [initialIsIntersecting=false] - The initial state of the intersection.
- */
-interface IntersectionObserverOptions extends IntersectionObserverInit {
+/** Represents the options for configuring the Intersection Observer. */
+type UseIntersectionObserverOptions = {
+  /**
+   * The element that is used as the viewport for checking visibility of the target.
+   * @default null
+   */
+  root?: Element | Document | null
+  /**
+   * A margin around the root.
+   * @default '0%'
+   */
+  rootMargin?: string
+  /**
+   * A threshold indicating the percentage of the target's visibility needed to trigger the callback.
+   * @default 0
+   */
+  threshold?: number | number[]
+  /**
+   * If true, freezes the intersection state once the element becomes visible.
+   * @default false
+   */
   freezeOnceVisible?: boolean
-  onChange?: ObserverCallback
+  /**
+   * A callback function to be invoked when the intersection state changes.
+   * @param {boolean} isIntersecting - A boolean indicating if the element is intersecting.
+   * @param {IntersectionObserverEntry} entry - The intersection observer Entry.
+   * @default undefined
+   */
+  onChange?: (isIntersecting: boolean, entry: IntersectionObserverEntry) => void
+  /**
+   * The initial state of the intersection.
+   * @default false
+   */
   initialIsIntersecting?: boolean
 }
 
-/** Supports both array and object destructing */
-type IntersectionResult = [
+/**
+ * The return type of the useIntersectionObserver hook.
+ *
+ * Supports both tuple and object destructing.
+ * @param {(node: Element | null) => void} ref - The ref callback function.
+ * @param {boolean} isIntersecting - A boolean indicating if the element is intersecting.
+ * @param {IntersectionObserverEntry | undefined} entry - The intersection observer Entry.
+ */
+type IntersectionReturn = [
   (node?: Element | null) => void,
   boolean,
   IntersectionObserverEntry | undefined,
@@ -40,79 +63,41 @@ type IntersectionResult = [
 }
 
 /**
- * Custom hook for tracking the intersection of a DOM element with its containing element or the viewport.
- * @param {IntersectionObserverOptions} options - The options for the Intersection Observer.
- * @returns {IntersectionResult} The ref callback, a boolean indicating if the element is intersecting, and the intersection observer entry.
+ * Custom hook that tracks the intersection of a DOM element with its containing element or the viewport.
+ * @param {UseIntersectionObserverOptions} options - The options for the Intersection Observer.
+ * @returns {IntersectionReturn} The ref callback, a boolean indicating if the element is intersecting, and the intersection observer entry.
+ * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-intersection-observer)
  * @see [MDN Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
  * @example
+ * ```tsx
  * // Example 1
  * const [ref, isIntersecting, entry] = useIntersectionObserver({ threshold: 0.5 });
+ * ```
  *
+ * ```tsx
  * // Example 2
  * const { ref, isIntersecting, entry } = useIntersectionObserver({ threshold: 0.5 });
+ * ```
  */
-export function useIntersectionObserver(
-  options: IntersectionObserverOptions,
-): IntersectionResult
-/**
- * @deprecated Use the new signature with an unique option object instead.
- * Custom hook for tracking the intersection of a DOM element with its containing element or the viewport.
- * @param {RefObject<Element>} elementRef - The ref object for the DOM element to observe.
- * @param {IntersectionObserverOptions} [options] - The options for the Intersection Observer (optional).
- * @returns {IntersectionObserverEntry | undefined} The intersection observer entry representing the state of the intersection.
- * @see [Documentation](https://usehooks-ts.com/react-hook/use-intersection-observer)
- * @see [MDN Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
- * @example
- * const targetRef = useRef<HTMLDivElement>(null);
- * const options = { threshold: 0.5 };
- * const entry = useIntersectionObserver(targetRef, options);
- * // Access the intersection details from the entry variable.
- */
-export function useIntersectionObserver(
-  elementRef: RefObject<Element>,
-  legacyOptions: IntersectionObserverOptions,
-): IntersectionObserverEntry | undefined
-/**
- * Custom hook for tracking the intersection of a DOM element with its containing element or the viewport.
- * @param {IntersectionObserverOptions | RefObject<Element>} optionsOrLegacyRef - The options for the Intersection Observer.
- * @param {?IntersectionObserverOptions} [legacyOptions] - The options for the Intersection Observer (optional, legacy).
- * @returns {NewIntersectionResult | IntersectionObserverEntry | undefined} The ref callback, a boolean indicating if the element is intersecting, and the intersection observer entry.
- * @see [Documentation](https://usehooks-ts.com/react-hook/use-intersection-observer)
- * @see [MDN Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
- * @example
- * // Example 1
- * const [ref, isIntersecting, entry] = useIntersectionObserver({ threshold: 0.5 });
- *
- * // Example 2
- * const { ref, isIntersecting, entry } = useIntersectionObserver({ threshold: 0.5 });
- */
-export function useIntersectionObserver(
-  optionsOrLegacyRef: IntersectionObserverOptions | RefObject<Element>,
-  legacyOptions?: IntersectionObserverOptions,
-): IntersectionResult | IntersectionObserverEntry | undefined {
-  // TODO: Remove this mess when the old signature is removed.
-  const isLegacySignature = 'current' in optionsOrLegacyRef
-  const options = isLegacySignature ? legacyOptions : optionsOrLegacyRef
-  const {
-    threshold = 0,
-    root = null,
-    rootMargin = '0%',
-    freezeOnceVisible = false,
-    initialIsIntersecting = false,
-  } = options ?? {}
-
-  const [newRef, setNewRef] = useState<Element | null>(null)
-  const ref = isLegacySignature ? optionsOrLegacyRef.current : newRef
+export function useIntersectionObserver({
+  threshold = 0,
+  root = null,
+  rootMargin = '0%',
+  freezeOnceVisible = false,
+  initialIsIntersecting = false,
+  onChange,
+}: UseIntersectionObserverOptions = {}): IntersectionReturn {
+  const [ref, setRef] = useState<Element | null>(null)
 
   const [state, setState] = useState<State>(() => ({
     isIntersecting: initialIsIntersecting,
     entry: undefined,
   }))
 
-  const callbackRef = useRef<ObserverCallback>()
+  const callbackRef = useRef<UseIntersectionObserverOptions['onChange']>()
 
-  callbackRef.current = options?.onChange
+  callbackRef.current = onChange
 
   const frozen = state.entry?.isIntersecting && freezeOnceVisible
 
@@ -187,15 +172,11 @@ export function useIntersectionObserver(
     }
   }, [ref, state.entry, freezeOnceVisible, frozen, initialIsIntersecting])
 
-  if (isLegacySignature) {
-    return state.entry
-  }
-
   const result = [
-    setNewRef,
+    setRef,
     !!state.isIntersecting,
     state.entry,
-  ] as IntersectionResult
+  ] as IntersectionReturn
 
   // Support object destructuring, by adding the specific values.
   result.ref = result[0]
