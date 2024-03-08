@@ -9,7 +9,7 @@ type UseScriptOptions = {
   shouldPreventLoad?: boolean
   /** If `true`, removes the script from the DOM when the component unmounts (optional). */
   removeOnUnmount?: boolean
-  /** Script's `id` (optional) */
+  /** Script's `id` (optional). */
   id?: string
 }
 

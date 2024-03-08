@@ -1,16 +1,21 @@
 /* eslint-disable jsx-a11y/heading-has-content */
 
 import Link from 'next/link'
-import type { ComponentProps } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
+import voca from 'voca'
 
 import { cn } from '@/lib/utils'
 
 // This file was created to be used in src/components/remote-mdx.tsx
 // TODO: It can be simplified, refactored, and/or removed.
 
+const slugify = (children?: ReactNode, id?: string): string => {
+  return voca.slugify(children?.toString() ?? id)
+}
+
 export const H1 = ({ id, className, ...props }: ComponentProps<'h1'>) => (
   <h1
-    id={props.children?.toString()?.toLowerCase() ?? id}
+    id={slugify(props.children, id)}
     className={cn(
       'mt-2 scroll-m-20 text-4xl font-bold tracking-tight',
       className,
@@ -21,7 +26,7 @@ export const H1 = ({ id, className, ...props }: ComponentProps<'h1'>) => (
 
 export const H2 = ({ id, className, ...props }: ComponentProps<'h2'>) => (
   <h2
-    id={props.children?.toString()?.toLowerCase() ?? id}
+    id={slugify(props.children, id)}
     className={cn(
       'mt-10 scroll-m-20 pb-1 text-3xl font-semibold tracking-tight first:mt-0',
       className,
@@ -32,7 +37,7 @@ export const H2 = ({ id, className, ...props }: ComponentProps<'h2'>) => (
 
 export const H3 = ({ id, className, ...props }: ComponentProps<'h3'>) => (
   <h3
-    id={props.children?.toString()?.toLowerCase() ?? id}
+    id={slugify(props.children, id)}
     className={cn(
       'mt-8 scroll-m-20 text-2xl font-semibold tracking-tight',
       className,

@@ -34,4 +34,4 @@ fs.writeFileSync(
 updateReadme(hooks)
 
 // Format with Prettier
-await $`pnpm format`
+await $`pnpm format --log-level error`
