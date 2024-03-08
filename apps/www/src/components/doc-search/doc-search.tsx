@@ -16,7 +16,11 @@ export const DocSearch = () => {
   return (
     <CommandMenuProvider>
       <OpenButton />
-      <InstantSearch searchClient={searchClient} indexName="hooks">
+      <InstantSearch
+        searchClient={searchClient}
+        indexName="hooks"
+        future={{ preserveSharedStateOnUnmount: true }}
+      >
         <CommandMenu />
       </InstantSearch>
     </CommandMenuProvider>

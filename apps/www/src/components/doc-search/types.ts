@@ -7,7 +7,7 @@ type Highlight = {
 type Fields<T> = {
   objectID: T
   name: T
-  summary: T
+  summary?: T
 }
 
 export type Hit = Fields<string> & {

@@ -33,3 +33,34 @@ index
     console.error(err)
     process.exit(1)
   })
+
+// Include removed hooks
+const removedHooks = [
+  { objectID: 'use-debounce', name: 'useDebounce' },
+  { objectID: 'use-fetch', name: 'useFetch' },
+  { objectID: 'use-element-size', name: 'useElementSize' },
+  { objectID: 'use-locked-body', name: 'useLockedBody' },
+  { objectID: 'use-is-first-render', name: 'useIsFirstRender' },
+  { objectID: 'use-ssr', name: 'useSsr' },
+  { objectID: 'use-effect-once', name: 'useEffectOnce' },
+  { objectID: 'use-update-effect', name: 'useUpdateEffect' },
+  { objectID: 'use-image-on-load', name: 'useImageOnLoad' },
+]
+
+const removedIndex = client.initIndex('removed-hooks')
+
+removedIndex.setSettings({
+  camelCaseAttributes: ['name'],
+  searchableAttributes: ['name', 'objectID'],
+  hitsPerPage: 1000,
+})
+
+removedIndex
+  .saveObjects(removedHooks)
+  .then(({ objectIDs }) => {
+    console.log({ count: objectIDs.length, objectIDs })
+  })
+  .catch(err => {
+    console.error(err)
+    process.exit(1)
+  })

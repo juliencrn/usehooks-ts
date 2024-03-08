@@ -1,9 +1,8 @@
-import { useHits } from 'react-instantsearch'
+import { Index } from 'react-instantsearch'
 
-import { Hit } from './hit'
+import { RenderHits } from './hits'
 import { SearchInput } from './input'
 import { useCommandMenuContext } from './modal.context'
-import type { Hit as HitType } from './types'
 import {
   CommandDialog,
   CommandEmpty,
@@ -13,21 +12,22 @@ import {
 
 export function CommandMenu() {
   const { open, setOpen } = useCommandMenuContext()
-  const { hits } = useHits<HitType>()
 
   return (
     <CommandDialog open={open} onOpenChange={setOpen}>
       <SearchInput />
       <CommandList>
-        {hits.length ? (
+        <Index indexName="hooks">
           <CommandGroup heading="Hooks">
-            {hits.map(hit => (
-              <Hit key={hit.objectID} hit={hit} />
-            ))}
+            <RenderHits />
           </CommandGroup>
-        ) : (
-          <CommandEmpty>No results found.</CommandEmpty>
-        )}
+        </Index>
+        <Index indexName="removed-hooks">
+          <CommandGroup heading="Removed hooks">
+            <RenderHits />
+          </CommandGroup>
+        </Index>
+        <CommandEmpty>No results found.</CommandEmpty>
       </CommandList>
     </CommandDialog>
   )

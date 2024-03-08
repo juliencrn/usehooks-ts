@@ -80,6 +80,9 @@ importers:
       '@t3-oss/env-nextjs':
         specifier: ^0.9.2
         version: 0.9.2(typescript@5.3.3)(zod@3.22.4)
+      '@types/voca':
+        specifier: ^1.4.1
+        version: 1.4.5
       algoliasearch:
         specifier: ^4.22.1
         version: 4.22.1
@@ -140,6 +143,9 @@ importers:
       usehooks-ts:
         specifier: workspace:*
         version: link:../../packages/usehooks-ts
+      voca:
+        specifier: ^1.4.1
+        version: 1.4.1
       zod:
         specifier: ^3.22.4
         version: 3.22.4
@@ -2293,6 +2299,10 @@ packages:
 
   /@types/unist@3.0.2:
     resolution: {integrity: sha512-dqId9J8K/vGi5Zr7oo212BGii5m3q5Hxlkwy3WpYuKPklmBEvsbMYYyLxAQpSffdLl/gdW0XUpKWFvYmyoWCoQ==}
+    dev: false
+
+  /@types/voca@1.4.5:
+    resolution: {integrity: sha512-GaPq2U8tWosTT+gBTXIPSWrW3q2ok2ohWpq3xF8mREFJ1gZrfjZUrkbt34GKbN8KGfM2NSCZzYzX/1IEcOvE9w==}
     dev: false
 
   /@types/which@3.0.3:
@@ -9038,6 +9048,10 @@ packages:
       - supports-color
       - terser
     dev: true
+
+  /voca@1.4.1:
+    resolution: {integrity: sha512-NJC/BzESaHT1p4B5k4JykxedeltmNbau4cummStd4RjFojgq/kLew5TzYge9N2geeWyI2w8T30wUET5v+F7ZHA==}
+    dev: false
 
   /vscode-oniguruma@1.7.0:
     resolution: {integrity: sha512-L9WMGRfrjOhgHSdOYgCt/yRMsXzLDJSL7BPrOZt73gU0iWO4mpqzqQzOz5srxqTvMBaR0XZTSrVWo4j55Rc6cA==}

@@ -13,11 +13,13 @@ export default async function MigrateToV3Page() {
         />
         <components.h2>Introduction</components.h2>
         <components.p>
-          <span className="font-bold">useHooks(🔥).ts </span>
-          {`bumped to version
-          3.0.0 and it's a major release. This version includes a lot of changes
+          <components.code>usehooks-ts</components.code>
+          {` bumped to version
+          3 and it's a major release with a lot of changes
           and improvements.`}
         </components.p>
+
+        <components.p></components.p>
 
         <components.h2>Changes</components.h2>
         <components.h3>Removed hooks</components.h3>
@@ -126,10 +128,10 @@ export default async function MigrateToV3Page() {
                   title: 'Changes',
                   url: '#changes',
                   items: [
-                    { title: 'Removed hooks', url: '#removed hooks' },
+                    { title: 'Removed hooks', url: '#removed-hooks' },
                     {
                       title: 'Updated hook signatures',
-                      url: '#updated hook signature',
+                      url: '#updated-hook-signatures',
                     },
                   ],
                 },
