@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.1
+
+### Patch Changes
+
+- Fix: Update exported files
+
 ## 3.0.0
 
 ### Major Changes
