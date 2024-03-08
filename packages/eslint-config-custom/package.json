@@ -1,7 +1,7 @@
 {
   "name": "eslint-config-custom",
   "private": true,
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "Base configuration for Eslint",
   "main": "index.cjs",
   "author": "Julien CARON <juliencaron@protonmail.com>",

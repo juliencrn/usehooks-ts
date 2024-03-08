@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.0.0
+
+### Major Changes
+
+- a8e8968: Remove previously deprecated hooks and hooks' signatures (#503)
+- a8e8968: Improve JSDoc comments and rename or make private some type aliases
+- a8e8968: Prefer type over interface (#515)
+- a8e8968: Move the full workspace into ES Module
+
 ## 2.16.0
 
 ### Minor Changes

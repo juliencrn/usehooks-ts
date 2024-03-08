@@ -1,5 +1,15 @@
 # eslint-config-custom
 
+## 2.0.0
+
+### Major Changes
+
+- a8e8968: Move the full workspace into ES Module
+
+### Minor Changes
+
+- a8e8968: Prefer type over interface (#515)
+
 ## 1.2.0
 
 ### Minor Changes
