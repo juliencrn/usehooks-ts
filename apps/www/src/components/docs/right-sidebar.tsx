@@ -12,7 +12,7 @@ export function RightSidebar({ toc }: Props) {
       <div className="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10 flex flex-col gap-10">
         <TableOfContent toc={toc} />
 
-        <CarbonAds />
+        <CarbonAds variant="docs" />
       </div>
     </aside>
   )

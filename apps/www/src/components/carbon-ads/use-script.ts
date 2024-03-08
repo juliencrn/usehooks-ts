@@ -1,9 +1,7 @@
-'use client'
-
 import { useEffect, useRef } from 'react'
 
 // TODO: We can't use usehooks-ts's useScript because it mounts the script in the document.body, maybe provide a way to specify the mount point
-const useScript = (scriptUrl: string, scriptId: string) => {
+export const useScript = (scriptUrl: string, scriptId: string) => {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -27,20 +25,5 @@ const useScript = (scriptUrl: string, scriptId: string) => {
     }
   }, [scriptUrl, scriptId])
 
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.style.setProperty('--carbon-bg-primary', 'red', 'important')
-    }
-  }, [])
-
   return ref
-}
-
-export function CarbonAds() {
-  const ref = useScript(
-    '//cdn.carbonads.com/carbon.js?serve=CWYIEKJU&placement=usehooks-tscom&format=cover',
-    '_carbonads_js',
-  )
-
-  return <div className="carbon-wrap" ref={ref} />
 }
