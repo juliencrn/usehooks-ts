@@ -5,7 +5,7 @@ type DocsPageHeaderProps = {
   text?: string
 } & React.HTMLAttributes<HTMLDivElement>
 
-export function DocsPageHeader({
+export function PageHeader({
   heading,
   text,
   className,

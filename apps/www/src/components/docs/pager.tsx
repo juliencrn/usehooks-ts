@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
-import { ChevronLeft, ChevronRight } from '@/components/icons'
 import { buttonVariants } from '@/components/ui/button'
+import { ChevronLeft, ChevronRight } from '@/components/ui/icons'
 import { cn, mapHookToNavLink } from '@/lib/utils'
 import type { BaseHook } from '@/types'
 
@@ -10,7 +10,7 @@ type DocsPagerProps = {
   hooks: BaseHook[]
 }
 
-export function DocsPager({ slug, hooks }: DocsPagerProps) {
+export function Pager({ slug, hooks }: DocsPagerProps) {
   const { prev, next } = getPaperElements({ slug, hooks })
 
   if (!prev && !next) {

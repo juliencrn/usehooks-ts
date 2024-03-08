@@ -1,6 +1,7 @@
 import type { LucideIcon } from 'lucide-react'
 import Link from 'next/link'
 
+import { buttonVariants } from '@/components/ui/button'
 import {
   Code,
   GitHub,
@@ -9,8 +10,7 @@ import {
   Puzzle,
   Unplug,
   Zap,
-} from '@/components/icons'
-import { buttonVariants } from '@/components/ui/button'
+} from '@/components/ui/icons'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 
