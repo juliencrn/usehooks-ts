@@ -21,6 +21,7 @@
     "format": "prettier --write \"**/*.{json,md,mdx,css,scss,yaml,yml}\" --ignore-path .prettierignore",
     "lint": "turbo run lint",
     "update-testing-issue": "zx ./scripts/update-testing-issue.js",
+    "update-algolia-index": "zx ./scripts/update-algolia-index.js",
     "gen-hook": "turbo gen hook --config \"turbo/generators/config.cts\" && pnpm format",
     "changeset": "npx changeset",
     "changeset-version": "npx changeset version",
