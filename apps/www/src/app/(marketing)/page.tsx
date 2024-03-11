@@ -1,6 +1,7 @@
 import type { LucideIcon } from 'lucide-react'
 import Link from 'next/link'
 
+import { buttonVariants } from '@/components/ui/button'
 import {
   Code,
   GitHub,
@@ -9,8 +10,7 @@ import {
   Puzzle,
   Unplug,
   Zap,
-} from '@/components/icons'
-import { buttonVariants } from '@/components/ui/button'
+} from '@/components/ui/icons'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 
@@ -100,20 +100,12 @@ export default async function IndexPage() {
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
             {siteConfig.description}
           </p>
-          <div className="space-x-4">
+          <div className="my-2">
             <Link
               href="/introduction"
               className={cn(buttonVariants({ size: 'lg' }))}
             >
-              Get Started
-            </Link>
-            <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-              className={cn(buttonVariants({ variant: 'outline', size: 'lg' }))}
-            >
-              GitHub
+              Read the docs
             </Link>
           </div>
         </div>

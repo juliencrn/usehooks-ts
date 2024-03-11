@@ -11,35 +11,39 @@ type DocsSidebarNavProps = {
   hooks: BaseHook[]
 }
 
-export function DocsSidebarNav(props: DocsSidebarNavProps) {
+export function LeftSidebar(props: DocsSidebarNavProps) {
   const pathname = usePathname()
   const items = [
     ...props.items,
     { title: 'Hooks', items: props.hooks.map(mapHookToNavLink) },
   ]
 
-  return items.length ? (
-    <div className="w-full">
+  if (!items.length) {
+    return null
+  }
+
+  return (
+    <aside className="fixed top-16 z-30 hidden h-[calc(100vh-4rem-1px)] w-full shrink-0 overflow-y-auto border-r py-6 pr-2 md:sticky md:block lg:py-10">
       {items.map((item, index) => (
         <div key={index} className={'pb-8'}>
           <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-medium">
             {item.title}
           </h4>
           {item.items ? (
-            <DocsSidebarNavItems items={item.items} pathname={pathname} />
+            <NavItems items={item.items} pathname={pathname} />
           ) : null}
         </div>
       ))}
-    </div>
-  ) : null
+    </aside>
+  )
 }
 
-type DocsSidebarNavItemsProps = {
+type NavItemsProps = {
   items: SidebarNavItem[]
   pathname: string | null
 }
 
-function DocsSidebarNavItems({ items, pathname }: DocsSidebarNavItemsProps) {
+function NavItems({ items, pathname }: NavItemsProps) {
   return items?.length ? (
     <div className="grid grid-flow-row auto-rows-max text-sm">
       {items.map((item, index) =>

@@ -1,12 +1,12 @@
-import { DocsPageHeader } from '@/components/docs-page-header'
-import { DashboardTableOfContents } from '@/components/table-of-content'
+import { PageHeader } from '@/components/docs/page-header'
+import { RightSidebar } from '@/components/docs/right-sidebar'
 import { components } from '@/components/ui/components'
 
 export default async function MigrateToV3Page() {
   return (
     <main className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
-        <DocsPageHeader
+        <PageHeader
           id="migrate-to-v3"
           className="scroll-m-20"
           heading={'Migrate to v3'}
@@ -118,28 +118,25 @@ export default async function MigrateToV3Page() {
           </components.li>
         </components.ul>
       </div>
-      <div className="hidden text-sm xl:block">
-        <div className="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10">
-          <DashboardTableOfContents
-            toc={{
+
+      <RightSidebar
+        toc={{
+          items: [
+            { title: 'Introduction', url: '#introduction' },
+            {
+              title: 'Changes',
+              url: '#changes',
               items: [
-                { title: 'Introduction', url: '#introduction' },
+                { title: 'Removed hooks', url: '#removed-hooks' },
                 {
-                  title: 'Changes',
-                  url: '#changes',
-                  items: [
-                    { title: 'Removed hooks', url: '#removed-hooks' },
-                    {
-                      title: 'Updated hook signatures',
-                      url: '#updated-hook-signatures',
-                    },
-                  ],
+                  title: 'Updated hook signatures',
+                  url: '#updated-hook-signatures',
                 },
               ],
-            }}
-          />
-        </div>
-      </div>
+            },
+          ],
+        }}
+      />
     </main>
   )
 }

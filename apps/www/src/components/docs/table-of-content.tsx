@@ -21,7 +21,7 @@ type TocProps = {
   toc: TableOfContents
 }
 
-export function DashboardTableOfContents({ toc }: TocProps) {
+export function TableOfContent({ toc }: TocProps) {
   const itemIds = React.useMemo(
     () =>
       toc.items
