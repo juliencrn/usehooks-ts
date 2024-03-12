@@ -40,7 +40,7 @@ function useEventListener<K extends keyof DocumentEventMap>(
 ): void
 
 /**
- * Custom hook for attaching event listeners to DOM elements, the window, or media query lists.
+ * Custom hook that attaches event listeners to DOM elements, the window, or media query lists.
  * @template KW - The type of event for window events.
  * @template KH - The type of event for HTML element events.
  * @template KM - The type of event for media query list events.
@@ -49,18 +49,25 @@ function useEventListener<K extends keyof DocumentEventMap>(
  * @param {(event: WindowEventMap[KW] | HTMLElementEventMap[KH] | MediaQueryListEventMap[KM] | Event) => void} handler - The event handler function.
  * @param {RefObject<T>} [element] - The DOM element or media query list to attach the event listener to (optional).
  * @param {boolean | AddEventListenerOptions} [options] - An options object that specifies characteristics about the event listener (optional).
+ * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-event-listener)
  * @example
+ * ```tsx
  * // Example 1: Attach a window event listener
  * useEventListener('resize', handleResize);
+ * ```
  * @example
+ * ```tsx
  * // Example 2: Attach a document event listener with options
  * const elementRef = useRef(document);
  * useEventListener('click', handleClick, elementRef, { capture: true });
+ * ```
  * @example
+ * ```tsx
  * // Example 3: Attach an element event listener
  * const buttonRef = useRef<HTMLButtonElement>(null);
  * useEventListener('click', handleButtonClick, buttonRef);
+ * ```
  */
 function useEventListener<
   KW extends keyof WindowEventMap,

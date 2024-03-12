@@ -1,5 +1,55 @@
 # Changelog
 
+## 3.0.1
+
+### Patch Changes
+
+- Fix: Update exported files
+
+## 3.0.0
+
+### Major Changes
+
+- a8e8968: Remove previously deprecated hooks and hooks' signatures (#503)
+- a8e8968: Improve JSDoc comments and rename or make private some type aliases
+- a8e8968: Prefer type over interface (#515)
+- a8e8968: Move the full workspace into ES Module
+
+## 2.16.0
+
+### Minor Changes
+
+- 9b65ce8: Add `id` param to `useScript` hook (from #285 by @misidoro)
+
+### Patch Changes
+
+- d881f08: Add `isLocked` state to the `useScrollLock` return (#521 by @kyrylo-soulandwolf)
+- fc25779: Resolve warning when using `useScrollLock` in an SSR environment (#521 by @kyrylo-soulandwolf)
+- d42741f: Wrap `useCountdown` methods with `useCallback` (from #326 by @gromchen)
+- d42741f: Wrap `useCounter` methods with `useCallback` (from #326 by @gromchen)
+- d881f08: Fixed `useScrollLock` leaving inline styles (#516 from @novacdenis)
+- 0d99db9: chore(deps): update all non-major dependencies
+- d881f08: Fixed reflow not considering the padding before the lock (#521 by @kyrylo-soulandwolf)
+
+## 2.15.1
+
+### Patch Changes
+
+- b88cc01: fix `useResizeObserver` initialSize mutation (#504 from @iuriiiurevich)
+- 823b62f: Resolve scroll lock issue on ios safari (#509 by @jontewks)
+
+## 2.15.0
+
+### Minor Changes
+
+- 649ef39: ✨ Feature: add `useScrollLock` hook
+
+### Patch Changes
+
+- 649ef39: Deprecated `useLockedBody` replaced by `useScrollLock`
+- 6514683: Fix `useMediaQuery` by defining getMatches before use
+- d8d8e5d: Upgrade dependencies
+
 ## 2.14.0
 
 ### Minor Changes

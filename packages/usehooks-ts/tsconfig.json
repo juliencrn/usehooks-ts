@@ -7,13 +7,13 @@
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "strict": true,
-    "lib": ["ESNEXT", "DOM"],
+    "lib": ["ESNEXT", "DOM", "DOM.Iterable"],
     // use global types for vite's expect, describe, etc.
     "types": ["vitest/globals"],
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "Bundler"
   },
-  "exclude": ["node_modules", "dist"],
+  "exclude": ["node_modules", "dist"]
 }

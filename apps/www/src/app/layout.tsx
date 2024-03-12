@@ -17,7 +17,7 @@ const fontHeading = localFont({
   variable: '--font-heading',
 })
 
-interface RootLayoutProps {
+type RootLayoutProps = {
   children: React.ReactNode
 }
 
@@ -76,7 +76,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         suppressHydrationWarning
         className={cn(
-          'min-h-screen bg-background font-sans antialiased',
+          'min-h-screen bg-background font-sans antialiased flex flex-col',
           fontSans.variable,
           fontHeading.variable,
         )}

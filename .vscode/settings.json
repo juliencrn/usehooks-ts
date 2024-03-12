@@ -71,5 +71,6 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  }
+  },
+  "files.associations": { "*.json": "jsonc" }
 }

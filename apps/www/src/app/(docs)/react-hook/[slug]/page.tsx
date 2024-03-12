@@ -1,30 +1,28 @@
 import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
 
-import { DocsPageHeader } from '@/components/docs-page-header'
-import { DocsPager } from '@/components/paper'
-import { Mdx } from '@/components/remote-mdx'
-import type { TableOfContents } from '@/components/table-of-content'
-import { DashboardTableOfContents } from '@/components/table-of-content'
-import { H2 } from '@/components/ui/components'
+import { PageHeader } from '@/components/docs/page-header'
+import { Pager } from '@/components/docs/pager'
+import { RightSidebar } from '@/components/docs/right-sidebar'
 import { siteConfig } from '@/config/site'
-import { getPost, getPosts } from '@/lib/mdx'
+import { getHook, getHookList } from '@/lib/api'
 
 export const generateStaticParams = async () => {
-  return getPosts().map(post => ({ slug: post.slug }))
+  const hooks = await getHookList()
+  return hooks.map(hook => ({ slug: hook.slug }))
 }
 
-export const generateMetadata = (props: {
+export const generateMetadata = async (props: {
   params: { slug: string }
-}): Metadata => {
-  const post = getPost(props.params.slug)
-  if (!post) {
+}): Promise<Metadata> => {
+  const hooks = await getHookList()
+  const hook = hooks.find(hook => hook.slug === props.params.slug)
+  if (!hook) {
     return {}
   }
 
-  const title = post.name
-  const description = `Discover how to use ${post.name} from usehooks-ts`
-  const url = siteConfig.url + post.href
+  const title = hook.name
+  const description = hook.summary
+  const url = siteConfig.url + hook.path
   const imageUrl = `https://via.placeholder.com/1200x630.png/007ACC/fff/?text=${title}`
   return {
     title,
@@ -52,44 +50,40 @@ export const generateMetadata = (props: {
   }
 }
 
-const PostLayout = ({ params }: { params: { slug: string } }) => {
-  const post = getPost(params.slug)
-
-  if (!post) {
-    notFound()
-  }
-
-  const toc: TableOfContents = {
-    items: [
-      { title: 'Introduction', url: '#introduction' },
-      { title: 'Example', url: '#example' },
-      { title: 'Hook', url: '#hook' },
-    ],
-  }
+export default async function HookPage({
+  params,
+}: {
+  params: { slug: string }
+}) {
+  const [{ frontmatter, content }, hookList] = await Promise.all([
+    getHook(params.slug),
+    getHookList(),
+  ])
 
   return (
-    <main className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]">
+    <main className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px] xl:grid-rows-[auto_1fr_auto]">
       <div className="mx-auto w-full min-w-0 grid">
-        <DocsPageHeader
+        <PageHeader
           id="introduction"
           className="scroll-m-20"
-          heading={post.name}
+          heading={frontmatter.name}
         />
-        <Mdx source={post.docs} />
-        <H2 id="example">Example</H2>
-        <Mdx source={post.demo} />
-        <H2 id="hook">Hook</H2>
-        <Mdx source={post.hook} />
+
+        {content}
+
         <hr className="my-4 md:my-6" />
-        <DocsPager slug={post.slug} />
+        <Pager slug={frontmatter.slug} hooks={hookList} />
       </div>
-      <div className="hidden text-sm xl:block">
-        <div className="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10">
-          <DashboardTableOfContents toc={toc} />
-        </div>
-      </div>
+
+      <RightSidebar
+        toc={{
+          items: [
+            { title: 'Documentation', url: '#documentation' },
+            { title: 'Usage', url: '#usage' },
+            { title: 'Hook', url: '#hook' },
+          ],
+        }}
+      />
     </main>
   )
 }
-
-export default PostLayout

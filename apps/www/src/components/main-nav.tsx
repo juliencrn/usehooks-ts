@@ -5,13 +5,13 @@ import * as React from 'react'
 import Link from 'next/link'
 import { useSelectedLayoutSegment } from 'next/navigation'
 
-import { Close, Logo } from '@/components/icons'
 import { MobileNav } from '@/components/mobile-nav'
+import { Close, Logo } from '@/components/ui/icons'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import type { MainNavItem } from '@/types'
 
-interface MainNavProps {
+type MainNavProps = {
   items?: MainNavItem[]
   children?: React.ReactNode
 }
