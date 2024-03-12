@@ -439,6 +439,18 @@ Big thanks go to all our contributors! [[Become a contributor](https://github.co
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification ([emoji key](https://allcontributors.org/docs/en/emoji-key)). Contributions of any kind welcome!
 
+## 💞 Donate
+
+If you find this piece of software helpful, please consider a donation. Any amount is greatly appreciated.
+
+[![GitHub Sponsors](https://badgen.net/badge/GitHub%20Sponsors/Donate/blue)](https://github.com/sponsors/juliencrn)
+[![Paypal](https://badgen.net/badge/Paypal/Donate/blue)](https://www.paypal.com/paypalme/juliencrn)
+[![Stripe](https://badgen.net/badge/Stripe/Donate/blue)](https://buy.stripe.com/fZefZY8Bv32cg9O3cc)
+
+BTC: `bc1qwys40tnd0lxf9lr9l0t6xc63dpxyucj4x4nay0`
+
+ETH: `0x36a85155a8300754C56395D5af24553FB18915D6`
+
 ## 📝 License
 
 This project is [MIT](https://github.com/juliencrn/usehooks-ts/blob/master/LICENSE) licensed.
