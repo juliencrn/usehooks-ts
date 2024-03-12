@@ -1,4 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
+import { Blocks, ChevronRight, Gift, Star } from 'lucide-react'
 import Link from 'next/link'
 
 import { buttonVariants } from '@/components/ui/button'
@@ -92,7 +93,7 @@ export default async function IndexPage() {
 
   return (
     <>
-      <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
+      <section className="space-y-6 pb-12 pt-10 lg:py-32">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
           <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
             {siteConfig.name}
@@ -105,14 +106,16 @@ export default async function IndexPage() {
               href="/introduction"
               className={cn(buttonVariants({ size: 'lg' }))}
             >
-              Read the docs
+              Explore the docs{` `}
+              <ChevronRight className="ml-3 h-5 w-5" />
             </Link>
           </div>
         </div>
       </section>
+
       <section
         id="features"
-        className="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24"
+        className="container space-y-6 bg-slate-50 dark:bg-transparent py-16 lg:py-32"
       >
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
@@ -140,14 +143,83 @@ export default async function IndexPage() {
             </div>
           ))}
         </div>
-        {/* <div className="mx-auto text-center md:max-w-[58rem]">
-          <p className="leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            Taxonomy also includes a blog and a full-featured documentation site
-            built using Contentlayer and MDX.
-          </p>
-        </div> */}
       </section>
-      <section id="open-source" className="container py-8 md:py-12 lg:py-24">
+
+      <section id="pricing" className="container  py-16 lg:py-32">
+        <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-8 lg:mb-12">
+          <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
+            Pricing
+          </h2>
+          <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+            Just kidding! usehooks-ts is free and open-source.
+            <br />
+            You can still make your contribution!
+          </p>
+        </div>
+
+        <div className="mx-auto flex max-w-[40rem] divide-x divide-solid">
+          <div className="flex-1 p-4 md:px-8 flex flex-col justify-end gap-3">
+            <Link
+              className={cn(
+                buttonVariants({ variant: 'secondary' }),
+                'justify-start',
+              )}
+              href={siteConfig.links.github}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Star fill="white" className="h-6 w-6 mr-2" />
+              Give us a star
+            </Link>
+            <Link
+              className={cn(
+                buttonVariants({ variant: 'secondary' }),
+                'justify-start',
+              )}
+              href={`${siteConfig.links.github}/blob/master/.github/CONTRIBUTING.md`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Blocks fill="white" className="h-6 w-6 mr-2" />
+              Contribute
+            </Link>
+          </div>
+
+          <div className="flex-1 p-4 md:px-8 flex flex-col justify-end gap-3">
+            <Link
+              href={`https://github.com/sponsors/juliencrn`}
+              className={cn(
+                buttonVariants({ variant: 'secondary' }),
+                'justify-start',
+              )}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Gift className="h-6 w-6 mr-2" />
+              Become a sponsor
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section id="get-started" className="container py-16 lg:py-32">
+        <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
+          <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
+            Ready to get started?
+          </h2>
+          <div className="my-4">
+            <Link
+              href="/introduction"
+              className={cn(buttonVariants({ size: 'lg' }))}
+            >
+              Explore the docs{` `}
+              <ChevronRight className="ml-3 h-5 w-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section id="open-source" className="container py-16 lg:py-32">
         <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
             Proudly Open Source
