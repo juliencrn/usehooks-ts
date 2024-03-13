@@ -112,7 +112,7 @@ export default async function MigrateToV3Page() {
             </components.a>
           </components.li>
           <components.li>
-            <components.a href="/react-hook/use-dark-mode">
+            <components.a href="/react-hook/use-ternary-dark-mode">
               <components.code>useTernaryDarkMode</components.code>
             </components.a>
           </components.li>
