@@ -17,7 +17,7 @@
 [![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks-ts/blob/master/LICENSE)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-242-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-243-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <br />
@@ -428,6 +428,7 @@ Big thanks go to all our contributors! [[Become a contributor](https://github.co
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/misidoro"><img src="https://avatars.githubusercontent.com/u/3635023?v=4?s=64" width="64px;" alt="Miguel Isidoro"/><br /><sub><b>Miguel Isidoro</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=misidoro" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://crowds.space/"><img src="https://avatars.githubusercontent.com/u/828918?v=4?s=64" width="64px;" alt="Yuriy Gromchenko"/><br /><sub><b>Yuriy Gromchenko</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=gromchen" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://jcbhmr.me"><img src="https://avatars.githubusercontent.com/u/61068799?v=4?s=64" width="64px;" alt="Jacob Hummer"/><br /><sub><b>Jacob Hummer</b></sub></a><br /><a href="#ideas-jcbhmr" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/k-melnychuk"><img src="https://avatars.githubusercontent.com/u/22131019?v=4?s=64" width="64px;" alt="Kyrylo Melnychuk"/><br /><sub><b>Kyrylo Melnychuk</b></sub></a><br /><a href="#content-k-melnychuk" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
