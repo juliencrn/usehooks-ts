@@ -2232,6 +2232,15 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "k-melnychuk",
+      "name": "Kyrylo Melnychuk",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22131019?v=4",
+      "profile": "https://github.com/k-melnychuk",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
