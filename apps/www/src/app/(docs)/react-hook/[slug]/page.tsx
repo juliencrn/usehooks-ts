@@ -78,8 +78,8 @@ export default async function HookPage({
       <RightSidebar
         toc={{
           items: [
-            { title: 'Documentation', url: '#documentation' },
             { title: 'Usage', url: '#usage' },
+            { title: 'API', url: '#api' },
             { title: 'Hook', url: '#hook' },
           ],
         }}
