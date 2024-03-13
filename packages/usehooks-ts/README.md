@@ -1,4 +1,4 @@
-<img src="./.github/screenshot.png" alt="usehooks-ts banner" align="center" />
+<img src="https://github.com/juliencrn/usehooks-ts/blob/master/.github/screenshot.png" alt="usehooks-ts banner" align="center" />
 
 <br />
 

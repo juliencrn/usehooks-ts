@@ -2,8 +2,7 @@
 
 import { compileMDX } from 'next-mdx-remote/rsc'
 import path from 'path'
-import rehypeHighlight from 'rehype-highlight'
-import remarkCodeImport from 'remark-code-import'
+import rehypePrism from 'rehype-prism-plus'
 import remarkGfm from 'remark-gfm'
 
 import { components } from '@/components/ui/components'
@@ -26,9 +25,9 @@ export const getHook = async (slug: string) => {
       options: {
         parseFrontmatter: true,
         mdxOptions: {
-          // @ts-ignore TODO: fix types for rehype plugins
-          rehypePlugins: [rehypeHighlight],
-          remarkPlugins: [remarkCodeImport, remarkGfm],
+          // @ts-ignore any
+          rehypePlugins: [[rehypePrism]],
+          remarkPlugins: [remarkGfm],
         },
       },
       components,
