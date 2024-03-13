@@ -5,6 +5,7 @@
   "author": "Julien CARON <juliencaron@protonmail.com>",
   "homepage": "https://usehooks-ts.com",
   "module": "true",
+  "type": "module",
   "keywords": [
     "typescript",
     "react",
@@ -16,27 +17,37 @@
     "dev": "turbo run dev",
     "build": "turbo run build",
     "test": "turbo run test",
-    "clean": "rimraf .turbo && turbo run clean",
-    "format": "prettier --write \"**/*.{json,md,mdx,css,scss,yaml,yml}\"",
+    "clean": "rimraf .turbo generated && turbo run clean",
+    "format": "prettier --write \"**/*.{json,md,mdx,css,scss,yaml,yml}\" --ignore-path .prettierignore",
     "lint": "turbo run lint",
-    "update-testing-issue": "zx ./scripts/updateTestingIssue.mjs",
-    "update-readme": "zx ./scripts/updateReadme.mjs",
-    "copy-hooks": "rimraf -rf ./apps/www/generated && zx ./scripts/copyHooks.mjs",
-    "gen-hook": "turbo gen hook && pnpm format",
+    "update-testing-issue": "zx ./scripts/update-testing-issue.js",
+    "update-algolia-index": "zx ./scripts/update-algolia-index.js",
+    "gen-hook": "turbo gen hook --config \"turbo/generators/config.cts\" && pnpm format",
     "changeset": "npx changeset",
     "changeset-version": "npx changeset version",
-    "changeset-publish": "npx changeset publish"
+    "changeset-publish": "npx changeset publish",
+    "generate-doc": "zx ./scripts/generate-doc.js"
   },
   "resolutions": {
     "typescript": "^5.3.3"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
+    "@turbo/gen": "^1.12.4",
+    "@t3-oss/env-core": "^0.9.2",
     "all-contributors-cli": "^6.26.1",
+    "algoliasearch": "^4.22.1",
+    "date-fns": "^3.3.1",
+    "dotenv": "16.4.5",
     "eslint": "^8.56.0",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
     "turbo": "^1.12.4",
+    "typedoc": "^0.25.9",
+    "typedoc-plugin-markdown": "^3.17.1",
+    "typedoc-plugin-mdn-links": "^3.1.17",
+    "typedoc-plugin-missing-exports": "^2.2.0",
+    "zod": "3.22.4",
     "zx": "^7.2.3"
   },
   "engines": {

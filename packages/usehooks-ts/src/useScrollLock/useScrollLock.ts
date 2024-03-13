@@ -2,15 +2,32 @@ import { useRef, useState } from 'react'
 
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
-interface UseScrollLockOptions {
-  autoLock: boolean
-  lockTarget: HTMLElement | string
-  widthReflow: boolean
+/** Hook options. */
+type UseScrollLockOptions = {
+  /**
+   * Whether to lock the scroll initially.
+   * @default true
+   */
+  autoLock?: boolean
+  /**
+   * The target element to lock the scroll (default is the body element).
+   * @default document.body
+   */
+  lockTarget?: HTMLElement | string
+  /**
+   * Whether to prevent width reflow when locking the scroll.
+   * @default true
+   */
+  widthReflow?: boolean
 }
 
-interface UseScrollLockResult {
+/** Hook return type. */
+type UseScrollLockReturn = {
+  /** Whether the scroll is locked. */
   isLocked: boolean
+  /** Lock the scroll. */
   lock: () => void
+  /** Unlock the scroll. */
   unlock: () => void
 }
 
@@ -22,37 +39,32 @@ type OriginalStyle = {
 const IS_SERVER = typeof window === 'undefined'
 
 /**
- * A custom hook for auto/manual locking and unlocking scroll.
+ * A custom hook that locks and unlocks scroll.
  * @param {UseScrollLockOptions} [options] - Options to configure the hook, by default it will lock the scroll automatically.
- * @param {boolean} [options.autoLock] - Whether to lock the scroll initially, by default it's true.
- * @param {HTMLElement | string} [options.lockTarget] - The target element to lock the scroll, by default it's the body element.
- * @param {boolean} [options.widthReflow] - Whether to prevent width reflow when locking the scroll, by default it's true.
- * @returns {UseScrollLockResult} - The result object containing the lock and unlock functions.
+ * @returns {UseScrollLockReturn} - An object containing the lock and unlock functions.
+ * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-scroll-lock)
  * @example
- * export default function Modal() {
- *    // Lock the scroll when the modal is mounted, and unlock it when it's unmounted
- *    useScrollLock()
- *    // ...
- * }
- *
+ * ```tsx
+ * // Lock the scroll when the modal is mounted, and unlock it when it's unmounted
+ * useScrollLock()
+ * ```
  * @example
- * export default function App() {
- *  // Manually lock and unlock the scroll
- *  const { lock, unlock } = useScrollLock({ autoLock: false })
+ * ```tsx
+ * // Manually lock and unlock the scroll
+ * const { lock, unlock } = useScrollLock({ autoLock: false })
  *
- *  return (
- *   <div>
- *    <button onClick={lock}>Lock</button>
- *    <button onClick={unlock}>Unlock</button>
- *    <p>is Body Locked: {isLocked ? 'Yes' : 'No'}</p>
- *   </div>
- *  )
- * }
+ * return (
+ *  <div>
+ *   <button onClick={lock}>Lock</button>
+ *   <button onClick={unlock}>Unlock</button>
+ *  </div>
+ * )
+ * ```
  */
 export function useScrollLock(
-  options: Partial<UseScrollLockOptions> = {},
-): UseScrollLockResult {
+  options: UseScrollLockOptions = {},
+): UseScrollLockReturn {
   const { autoLock = true, lockTarget, widthReflow = true } = options
   const [isLocked, setIsLocked] = useState(false)
   const target = useRef<HTMLElement | null>(null)

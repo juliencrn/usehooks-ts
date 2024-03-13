@@ -413,6 +413,8 @@ Big thanks go to all our contributors! [[Become a contributor](https://github.co
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/kyrylo-soulandwolf"><img src="https://avatars.githubusercontent.com/u/54762253?v=4?s=64" width="64px;" alt="kyrylo-soulandwolf"/><br /><sub><b>kyrylo-soulandwolf</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=kyrylo-soulandwolf" title="Code">💻</a> <a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Akyrylo-soulandwolf" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/misidoro"><img src="https://avatars.githubusercontent.com/u/3635023?v=4?s=64" width="64px;" alt="Miguel Isidoro"/><br /><sub><b>Miguel Isidoro</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=misidoro" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://crowds.space/"><img src="https://avatars.githubusercontent.com/u/828918?v=4?s=64" width="64px;" alt="Yuriy Gromchenko"/><br /><sub><b>Yuriy Gromchenko</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=gromchen" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

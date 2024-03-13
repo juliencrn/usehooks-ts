@@ -1,1 +1,0 @@
-This hook is **deprecated** and will be dropped in a future major release. `useEffect` is designed for synchronization. React 18 emphasizes this concept by rendering components twice in strict mode to highlight improper usage. Attempting to skip the first render is considered a hack.

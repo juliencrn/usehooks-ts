@@ -3,20 +3,27 @@ import { useRef } from 'react'
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 import { useUnmount } from '../useUnmount'
 
-type Options = {
+/** Hook options. */
+type UseDocumentTitleOptions = {
+  /** Whether to keep the title after unmounting the component (default is `true`). */
   preserveTitleOnUnmount?: boolean
 }
 
 /**
- * A hook to set the document title.
+ * Custom hook that sets the document title.
  * @param {string} title - The title to set.
- * @param {?Options} [options] - The options.
- * @param {?boolean} [options.preserveTitleOnUnmount] - Whether to keep the title after unmounting the component (default is `true`).
+ * @param {?UseDocumentTitleOptions} [options] - The options.
+ * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-document-title)
  * @example
+ * ```tsx
  * useDocumentTitle('My new title');
+ * ```
  */
-export function useDocumentTitle(title: string, options: Options = {}): void {
+export function useDocumentTitle(
+  title: string,
+  options: UseDocumentTitleOptions = {},
+): void {
   const { preserveTitleOnUnmount = true } = options
   const defaultTitle = useRef<string | null>(null)
 

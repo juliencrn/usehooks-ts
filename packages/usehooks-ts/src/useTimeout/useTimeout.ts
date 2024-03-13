@@ -3,17 +3,20 @@ import { useEffect, useRef } from 'react'
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 
 /**
- * Custom hook for handling timeouts in React components.
+ * Custom hook that handles timeouts in React components.
  * @param {() => void} callback - The function to be executed when the timeout elapses.
  * @param {number | null} delay - The duration (in milliseconds) for the timeout. Set to `null` to clear the timeout.
  * @returns {void} This hook does not return anything.
+ * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-timeout)
  * @see [MDN setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout)
  * @example
+ * ```tsx
  * // Usage of useTimeout hook
  * useTimeout(() => {
  *   // Code to be executed after the specified delay
  * }, 1000); // Set a timeout of 1000 milliseconds (1 second)
+ * ```
  */
 export function useTimeout(callback: () => void, delay: number | null): void {
   const savedCallback = useRef(callback)

@@ -1684,8 +1684,23 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/54762253?v=4",
       "profile": "https://github.com/kyrylo-soulandwolf",
       "contributions": ["code", "bug"]
+    },
+    {
+      "login": "misidoro",
+      "name": "Miguel Isidoro",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3635023?v=4",
+      "profile": "https://github.com/misidoro",
+      "contributions": ["code"]
+    },
+    {
+      "login": "gromchen",
+      "name": "Yuriy Gromchenko",
+      "avatar_url": "https://avatars.githubusercontent.com/u/828918?v=4",
+      "profile": "https://crowds.space/",
+      "contributions": ["code"]
     }
   ],
   "contributorsPerLine": 7,
   "commitType": "docs"
 }
+

@@ -1,5 +1,46 @@
 # www
 
+## 1.0.1
+
+### Patch Changes
+
+- Updated dependencies
+  - usehooks-ts@3.0.1
+
+## 1.0.0
+
+### Major Changes
+
+- a8e8968: Remove previously deprecated hooks and hooks' signatures (#503)
+- a8e8968: Move the full workspace into ES Module
+
+### Minor Changes
+
+- a8e8968: Prefer type over interface (#515)
+
+### Patch Changes
+
+- Updated dependencies [a8e8968]
+- Updated dependencies [a8e8968]
+- Updated dependencies [a8e8968]
+- Updated dependencies [a8e8968]
+  - usehooks-ts@3.0.0
+
+## 0.2.4
+
+### Patch Changes
+
+- 0d99db9: chore(deps): update all non-major dependencies
+- Updated dependencies [d881f08]
+- Updated dependencies [fc25779]
+- Updated dependencies [9b65ce8]
+- Updated dependencies [d42741f]
+- Updated dependencies [d42741f]
+- Updated dependencies [d881f08]
+- Updated dependencies [0d99db9]
+- Updated dependencies [d881f08]
+  - usehooks-ts@2.16.0
+
 ## 0.2.3
 
 ### Patch Changes

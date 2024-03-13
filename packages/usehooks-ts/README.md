@@ -17,7 +17,8 @@
 [![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks-ts/blob/master/LICENSE)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-239-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-241-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <br />
@@ -54,41 +55,39 @@ function Component() {
 
 <!-- HOOKS:START -->
 
-- [`useBoolean()`](https://usehooks-ts.com/react-hook/use-boolean)
-- [`useClickAnyWhere()`](https://usehooks-ts.com/react-hook/use-click-any-where)
-- [`useCopyToClipboard()`](https://usehooks-ts.com/react-hook/use-copy-to-clipboard)
-- [`useCountdown()`](https://usehooks-ts.com/react-hook/use-countdown)
-- [`useCounter()`](https://usehooks-ts.com/react-hook/use-counter)
-- [`useDarkMode()`](https://usehooks-ts.com/react-hook/use-dark-mode)
-- [`useDebounce()`](https://usehooks-ts.com/react-hook/use-debounce)
-- [`useDebounceCallback()`](https://usehooks-ts.com/react-hook/use-debounce-callback)
-- [`useDebounceValue()`](https://usehooks-ts.com/react-hook/use-debounce-value)
-- [`useDocumentTitle()`](https://usehooks-ts.com/react-hook/use-document-title)
-- [`useEventCallback()`](https://usehooks-ts.com/react-hook/use-event-callback)
-- [`useEventListener()`](https://usehooks-ts.com/react-hook/use-event-listener)
-- [`useHover()`](https://usehooks-ts.com/react-hook/use-hover)
-- [`useIntersectionObserver()`](https://usehooks-ts.com/react-hook/use-intersection-observer)
-- [`useInterval()`](https://usehooks-ts.com/react-hook/use-interval)
-- [`useIsClient()`](https://usehooks-ts.com/react-hook/use-is-client)
-- [`useIsMounted()`](https://usehooks-ts.com/react-hook/use-is-mounted)
-- [`useIsomorphicLayoutEffect()`](https://usehooks-ts.com/react-hook/use-isomorphic-layout-effect)
-- [`useLocalStorage()`](https://usehooks-ts.com/react-hook/use-local-storage)
-- [`useMap()`](https://usehooks-ts.com/react-hook/use-map)
-- [`useMediaQuery()`](https://usehooks-ts.com/react-hook/use-media-query)
-- [`useOnClickOutside()`](https://usehooks-ts.com/react-hook/use-on-click-outside)
-- [`useReadLocalStorage()`](https://usehooks-ts.com/react-hook/use-read-local-storage)
-- [`useResizeObserver()`](https://usehooks-ts.com/react-hook/use-resize-observer)
-- [`useScreen()`](https://usehooks-ts.com/react-hook/use-screen)
-- [`useScript()`](https://usehooks-ts.com/react-hook/use-script)
-- [`useScrollLock()`](https://usehooks-ts.com/react-hook/use-scroll-lock)
-- [`useSessionStorage()`](https://usehooks-ts.com/react-hook/use-session-storage)
-- [`useStep()`](https://usehooks-ts.com/react-hook/use-step)
-- [`useTernaryDarkMode()`](https://usehooks-ts.com/react-hook/use-ternary-dark-mode)
-- [`useTimeout()`](https://usehooks-ts.com/react-hook/use-timeout)
-- [`useToggle()`](https://usehooks-ts.com/react-hook/use-toggle)
-- [`useUnmount()`](https://usehooks-ts.com/react-hook/use-unmount)
-- [`useWindowSize()`](https://usehooks-ts.com/react-hook/use-window-size)
-
+- [`useBoolean`](https://usehooks-ts.com/react-hook/use-boolean) — handles boolean state with useful utility functions.
+- [`useClickAnyWhere`](https://usehooks-ts.com/react-hook/use-click-any-where) — handles click events anywhere on the document.
+- [`useCopyToClipboard`](https://usehooks-ts.com/react-hook/use-copy-to-clipboard) — copies text to the clipboard.
+- [`useCountdown`](https://usehooks-ts.com/react-hook/use-countdown) — manages countdown.
+- [`useCounter`](https://usehooks-ts.com/react-hook/use-counter) — manages a counter with increment, decrement, reset, and setCount functionalities.
+- [`useDarkMode`](https://usehooks-ts.com/react-hook/use-dark-mode) — returns the current state of the dark mode.
+- [`useDebounceCallback`](https://usehooks-ts.com/react-hook/use-debounce-callback) — creates a debounced version of a callback function.
+- [`useDebounceValue`](https://usehooks-ts.com/react-hook/use-debounce-value) — returns a debounced version of the provided value, along with a function to update it.
+- [`useDocumentTitle`](https://usehooks-ts.com/react-hook/use-document-title) — sets the document title.
+- [`useEventCallback`](https://usehooks-ts.com/react-hook/use-event-callback) — creates a memoized event callback.
+- [`useEventListener`](https://usehooks-ts.com/react-hook/use-event-listener) — attaches event listeners to DOM elements, the window, or media query lists.
+- [`useHover`](https://usehooks-ts.com/react-hook/use-hover) — tracks whether a DOM element is being hovered over.
+- [`useIntersectionObserver`](https://usehooks-ts.com/react-hook/use-intersection-observer) — tracks the intersection of a DOM element with its containing element or the viewport.
+- [`useInterval`](https://usehooks-ts.com/react-hook/use-interval) — creates an interval that invokes a callback function at a specified delay.
+- [`useIsClient`](https://usehooks-ts.com/react-hook/use-is-client) — determines if the code is running on the client side (in the browser).
+- [`useIsMounted`](https://usehooks-ts.com/react-hook/use-is-mounted) — determines if the component is currently mounted.
+- [`useIsomorphicLayoutEffect`](https://usehooks-ts.com/react-hook/use-isomorphic-layout-effect) — uses either
+- [`useLocalStorage`](https://usehooks-ts.com/react-hook/use-local-storage) — uses local storage to persist state across page reloads.
+- [`useMap`](https://usehooks-ts.com/react-hook/use-map) — manages a key-value map state with setter actions.
+- [`useMediaQuery`](https://usehooks-ts.com/react-hook/use-media-query) — tracks the state of a media query.
+- [`useOnClickOutside`](https://usehooks-ts.com/react-hook/use-on-click-outside) — handles clicks outside a specified element.
+- [`useReadLocalStorage`](https://usehooks-ts.com/react-hook/use-read-local-storage) — reads a value from local storage, closely related to useLocalStorage().
+- [`useResizeObserver`](https://usehooks-ts.com/react-hook/use-resize-observer) — observes the size of an element using the ResizeObserver API.
+- [`useScreen`](https://usehooks-ts.com/react-hook/use-screen) — tracks the screen dimensions and properties.
+- [`useScript`](https://usehooks-ts.com/react-hook/use-script) — dynamically loads scripts and tracking their loading status.
+- [`useScrollLock`](https://usehooks-ts.com/react-hook/use-scroll-lock) — A custom hook that locks and unlocks scroll.
+- [`useSessionStorage`](https://usehooks-ts.com/react-hook/use-session-storage) — uses session storage to persist state across page reloads.
+- [`useStep`](https://usehooks-ts.com/react-hook/use-step) — manages and navigates between steps in a multi-step process.
+- [`useTernaryDarkMode`](https://usehooks-ts.com/react-hook/use-ternary-dark-mode) — manages ternary (system, dark, light) dark mode with local storage support.
+- [`useTimeout`](https://usehooks-ts.com/react-hook/use-timeout) — handles timeouts in React components.
+- [`useToggle`](https://usehooks-ts.com/react-hook/use-toggle) — manages a boolean toggle state in React components.
+- [`useUnmount`](https://usehooks-ts.com/react-hook/use-unmount) — runs a cleanup function when the component is unmounted.
+- [`useWindowSize`](https://usehooks-ts.com/react-hook/use-window-size) — tracks the size of the window.
 <!-- HOOKS:END -->
 
 ## 💚 Backers
@@ -427,6 +426,8 @@ Big thanks go to all our contributors! [[Become a contributor](https://github.co
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/kyrylo-soulandwolf"><img src="https://avatars.githubusercontent.com/u/54762253?v=4?s=64" width="64px;" alt="kyrylo-soulandwolf"/><br /><sub><b>kyrylo-soulandwolf</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=kyrylo-soulandwolf" title="Code">💻</a> <a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Akyrylo-soulandwolf" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/misidoro"><img src="https://avatars.githubusercontent.com/u/3635023?v=4?s=64" width="64px;" alt="Miguel Isidoro"/><br /><sub><b>Miguel Isidoro</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=misidoro" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://crowds.space/"><img src="https://avatars.githubusercontent.com/u/828918?v=4?s=64" width="64px;" alt="Yuriy Gromchenko"/><br /><sub><b>Yuriy Gromchenko</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=gromchen" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
@@ -437,6 +438,18 @@ Big thanks go to all our contributors! [[Become a contributor](https://github.co
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification ([emoji key](https://allcontributors.org/docs/en/emoji-key)). Contributions of any kind welcome!
+
+## 💞 Donate
+
+If you find this piece of software helpful, please consider a donation. Any amount is greatly appreciated.
+
+[![GitHub Sponsors](https://badgen.net/badge/GitHub%20Sponsors/Donate/blue)](https://github.com/sponsors/juliencrn)
+[![Paypal](https://badgen.net/badge/Paypal/Donate/blue)](https://www.paypal.com/paypalme/juliencrn)
+[![Stripe](https://badgen.net/badge/Stripe/Donate/blue)](https://buy.stripe.com/fZefZY8Bv32cg9O3cc)
+
+BTC: `bc1qwys40tnd0lxf9lr9l0t6xc63dpxyucj4x4nay0`
+
+ETH: `0x36a85155a8300754C56395D5af24553FB18915D6`
 
 ## 📝 License
 

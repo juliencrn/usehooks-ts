@@ -3,12 +3,12 @@ import * as React from 'react'
 import Link from 'next/link'
 import { useScrollLock } from 'usehooks-ts'
 
-import { Logo } from '@/components/icons'
+import { Logo } from '@/components/ui/icons'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import type { MainNavItem } from '@/types'
 
-interface MobileNavProps {
+type MobileNavProps = {
   items: MainNavItem[]
   children?: React.ReactNode
 }
