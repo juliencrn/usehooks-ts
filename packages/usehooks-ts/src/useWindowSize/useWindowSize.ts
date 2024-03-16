@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { useDebounceCallback } from '../useDebounceCallback'
 import { useEventListener } from '../useEventListener'
@@ -60,6 +60,10 @@ export function useWindowSize(
     initializeWithValue = false
   }
 
+  const screenOrientationRef = useRef(
+    !IS_SERVER ? window.screen.orientation : null,
+  )
+
   const [windowSize, setWindowSize] = useState<WindowSize>(() => {
     if (initializeWithValue) {
       return {
@@ -83,18 +87,19 @@ export function useWindowSize(
 
     // Only update the state if width or height actually changed
     if (innerWidth !== windowSize.width || innerHeight !== windowSize.height) {
-    const setSize = options.debounceDelay
-      ? debouncedSetWindowSize
-      : setWindowSize
+      const setSize = options.debounceDelay
+        ? debouncedSetWindowSize
+        : setWindowSize
 
-    setSize({
+      setSize({
         width: innerWidth,
         height: innerHeight,
-    })
+      })
     }
   }
 
   useEventListener('resize', handleSize)
+  useEventListener('change', handleSize, screenOrientationRef)
 
   // Set size at the first client-side load
   useIsomorphicLayoutEffect(() => {
