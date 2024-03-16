@@ -79,14 +79,19 @@ export function useWindowSize(
   )
 
   function handleSize() {
+    const { innerWidth, innerHeight } = window
+
+    // Only update the state if width or height actually changed
+    if (innerWidth !== windowSize.width || innerHeight !== windowSize.height) {
     const setSize = options.debounceDelay
       ? debouncedSetWindowSize
       : setWindowSize
 
     setSize({
-      width: window.innerWidth,
-      height: window.innerHeight,
+        width: innerWidth,
+        height: innerHeight,
     })
+    }
   }
 
   useEventListener('resize', handleSize)
