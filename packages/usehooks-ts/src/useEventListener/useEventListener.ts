@@ -31,6 +31,17 @@ function useEventListener<
   options?: boolean | AddEventListenerOptions,
 ): void
 
+// SVG Element Event based useEventListener interface
+function useEventListener<
+  K extends keyof SVGElementEventMap,
+  T extends SVGElement,
+>(
+  eventName: K,
+  handler: (event: SVGElementEventMap[K]) => void,
+  element: RefObject<T>,
+  options?: boolean | AddEventListenerOptions,
+): void
+
 // Document Event based useEventListener interface
 function useEventListener<K extends keyof DocumentEventMap>(
   eventName: K,
