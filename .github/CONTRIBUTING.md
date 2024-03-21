@@ -418,6 +418,7 @@ Big thanks go to all our contributors! [[Become a contributor](https://github.co
       <td align="center" valign="top" width="14.28%"><a href="http://jcbhmr.me"><img src="https://avatars.githubusercontent.com/u/61068799?v=4?s=64" width="64px;" alt="Jacob Hummer"/><br /><sub><b>Jacob Hummer</b></sub></a><br /><a href="#ideas-jcbhmr" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/k-melnychuk"><img src="https://avatars.githubusercontent.com/u/22131019?v=4?s=64" width="64px;" alt="Kyrylo Melnychuk"/><br /><sub><b>Kyrylo Melnychuk</b></sub></a><br /><a href="#content-k-melnychuk" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/LumaKernel"><img src="https://avatars.githubusercontent.com/u/29811106?v=4?s=64" width="64px;" alt="Luma"/><br /><sub><b>Luma</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=LumaKernel" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Newbie012"><img src="https://avatars.githubusercontent.com/u/10504365?v=4?s=64" width="64px;" alt="Eliya Cohen"/><br /><sub><b>Eliya Cohen</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=Newbie012" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
