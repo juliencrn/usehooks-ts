@@ -1733,8 +1733,16 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/16747416?v=4",
       "profile": "https://github.com/isumix",
       "contributions": ["bug"]
+    },
+    {
+      "login": "pookmish",
+      "name": "pookmish",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7185045?v=4",
+      "profile": "https://github.com/pookmish",
+      "contributions": ["ideas"]
     }
   ],
   "contributorsPerLine": 7,
   "commitType": "docs"
 }
+

@@ -17,7 +17,7 @@
 [![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks-ts/blob/master/LICENSE)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-246-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-247-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <br />
@@ -434,6 +434,7 @@ Big thanks go to all our contributors! [[Become a contributor](https://github.co
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/isumix"><img src="https://avatars.githubusercontent.com/u/16747416?v=4?s=64" width="64px;" alt="Igor Sukharev"/><br /><sub><b>Igor Sukharev</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Aisumix" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/pookmish"><img src="https://avatars.githubusercontent.com/u/7185045?v=4?s=64" width="64px;" alt="pookmish"/><br /><sub><b>pookmish</b></sub></a><br /><a href="#ideas-pookmish" title="Ideas, Planning, & Feedback">🤔</a></td>
     </tr>
   </tbody>
 </table>
