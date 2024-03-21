@@ -12,6 +12,10 @@ declare global {
     'test-event': CustomEvent
   }
 
+  interface SVGElementEventMap {
+    'test-event': CustomEvent
+  }
+
   interface DocumentEventMap {
     'test-event': CustomEvent
   }
