@@ -22,11 +22,15 @@ function useEventListener<K extends keyof WindowEventMap>(
 
 // Element Event based useEventListener interface
 function useEventListener<
-  K extends keyof HTMLElementEventMap,
-  T extends HTMLElement = HTMLDivElement,
+  K extends keyof HTMLElementEventMap & keyof SVGElementEventMap,
+  T extends Element = K extends keyof HTMLElementEventMap
+    ? HTMLDivElement
+    : SVGElement,
 >(
   eventName: K,
-  handler: (event: HTMLElementEventMap[K]) => void,
+  handler:
+    | ((event: HTMLElementEventMap[K]) => void)
+    | ((event: SVGElementEventMap[K]) => void),
   element: RefObject<T>,
   options?: boolean | AddEventListenerOptions,
 ): void
@@ -42,11 +46,11 @@ function useEventListener<K extends keyof DocumentEventMap>(
 /**
  * Custom hook that attaches event listeners to DOM elements, the window, or media query lists.
  * @template KW - The type of event for window events.
- * @template KH - The type of event for HTML element events.
+ * @template KH - The type of event for HTML or SVG element events.
  * @template KM - The type of event for media query list events.
  * @template T - The type of the DOM element (default is `HTMLElement`).
  * @param {KW | KH | KM} eventName - The name of the event to listen for.
- * @param {(event: WindowEventMap[KW] | HTMLElementEventMap[KH] | MediaQueryListEventMap[KM] | Event) => void} handler - The event handler function.
+ * @param {(event: WindowEventMap[KW] | HTMLElementEventMap[KH] | SVGElementEventMap[KH] | MediaQueryListEventMap[KM] | Event) => void} handler - The event handler function.
  * @param {RefObject<T>} [element] - The DOM element or media query list to attach the event listener to (optional).
  * @param {boolean | AddEventListenerOptions} [options] - An options object that specifies characteristics about the event listener (optional).
  * @public
@@ -71,15 +75,16 @@ function useEventListener<K extends keyof DocumentEventMap>(
  */
 function useEventListener<
   KW extends keyof WindowEventMap,
-  KH extends keyof HTMLElementEventMap,
+  KH extends keyof HTMLElementEventMap & keyof SVGElementEventMap,
   KM extends keyof MediaQueryListEventMap,
-  T extends HTMLElement | MediaQueryList = HTMLElement,
+  T extends HTMLElement | SVGAElement | MediaQueryList = HTMLElement,
 >(
   eventName: KW | KH | KM,
   handler: (
     event:
       | WindowEventMap[KW]
       | HTMLElementEventMap[KH]
+      | SVGElementEventMap[KH]
       | MediaQueryListEventMap[KM]
       | Event,
   ) => void,
