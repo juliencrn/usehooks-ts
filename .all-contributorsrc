@@ -1726,6 +1726,13 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/10504365?v=4",
       "profile": "https://github.com/Newbie012",
       "contributions": ["code"]
+    },
+    {
+      "login": "isumix",
+      "name": "Igor Sukharev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16747416?v=4",
+      "profile": "https://github.com/isumix",
+      "contributions": ["bug"]
     }
   ],
   "contributorsPerLine": 7,

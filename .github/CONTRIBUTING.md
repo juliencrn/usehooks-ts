@@ -420,6 +420,9 @@ Big thanks go to all our contributors! [[Become a contributor](https://github.co
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/LumaKernel"><img src="https://avatars.githubusercontent.com/u/29811106?v=4?s=64" width="64px;" alt="Luma"/><br /><sub><b>Luma</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=LumaKernel" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Newbie012"><img src="https://avatars.githubusercontent.com/u/10504365?v=4?s=64" width="64px;" alt="Eliya Cohen"/><br /><sub><b>Eliya Cohen</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=Newbie012" title="Code">💻</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/isumix"><img src="https://avatars.githubusercontent.com/u/16747416?v=4?s=64" width="64px;" alt="Igor Sukharev"/><br /><sub><b>Igor Sukharev</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Aisumix" title="Bug reports">🐛</a></td>
+    </tr>
   </tbody>
 </table>
 

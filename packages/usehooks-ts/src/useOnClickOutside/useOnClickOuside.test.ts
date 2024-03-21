@@ -40,6 +40,25 @@ describe('useOnClickOutside(', () => {
     expect(handler).toHaveBeenCalledTimes(1)
   })
 
+  it('should call the handler when a clicking outside the element (multiple refs with a null)', () => {
+    const containerRef1 = { current: document.createElement('div') }
+    const containerRef2 = { current: null }
+    const handler = vitest.fn()
+
+    renderHook(() => {
+      useOnClickOutside([containerRef1, containerRef2], handler)
+    })
+
+    expect(handler).toHaveBeenCalledTimes(0)
+
+    // Simulate click outside the containers
+    act(() => {
+      fireEvent.mouseDown(document)
+    })
+
+    expect(handler).toHaveBeenCalledTimes(1)
+  })
+
   it('should NOT call the handler when a clicking inside the element', () => {
     const containerRef = { current: document.createElement('div') }
     const handler = vitest.fn()
