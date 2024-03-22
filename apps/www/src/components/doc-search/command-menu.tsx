@@ -1,5 +1,6 @@
 import { Index } from 'react-instantsearch'
 
+import { Footer } from './footer'
 import { RenderHits } from './hits'
 import { SearchInput } from './input'
 import { useCommandMenuContext } from './modal.context'
@@ -29,6 +30,7 @@ export function CommandMenu() {
         </Index>
         <CommandEmpty>No results found.</CommandEmpty>
       </CommandList>
+      <Footer />
     </CommandDialog>
   )
 }
