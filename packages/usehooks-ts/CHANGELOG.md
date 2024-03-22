@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.0.2
+
+### Patch Changes
+
+- b14db5b: Add support for focus event to `useOnClickOutside` (Fixes: #522)
+- 59c0b93: Add SVG element support to `useEventListener` (#546 by @LumaKernel)
+- b14db5b: Expose `AddEventListenerOptions` in `useOnClickOutside` (Fixes #554 from @metav-drimz)
+- b14db5b: Support missing refs in `useOnClickOutside` (Fixes: #531)
+- 09341a3: feat(useEventCallback): allow optional callback (#550 by @Newbie012)
+
 ## 3.0.1
 
 ### Patch Changes

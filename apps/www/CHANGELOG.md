@@ -1,5 +1,17 @@
 # www
 
+## 1.0.2
+
+### Patch Changes
+
+- 4f40e02: Fix a link in migration docs
+- Updated dependencies [b14db5b]
+- Updated dependencies [59c0b93]
+- Updated dependencies [b14db5b]
+- Updated dependencies [b14db5b]
+- Updated dependencies [09341a3]
+  - usehooks-ts@3.0.2
+
 ## 1.0.1
 
 ### Patch Changes
