@@ -86,4 +86,11 @@ describe('useBoolean()', () => {
 
     expect(result.current.value).toBe(false)
   })
+
+  it('should throw an error', () => {
+    const nonBoolean = '' as never
+    expect(() => {
+      renderHook(() => useBoolean(nonBoolean))
+    }).toThrow('defaultValue must be `true` or `false`')
+  })
 })
