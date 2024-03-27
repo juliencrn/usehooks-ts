@@ -51,7 +51,7 @@
     "zx": "^7.2.3"
   },
   "engines": {
-    "node": ">=16.15.0"
+    "node": ">=18.17.0"
   },
   "repository": {
     "type": "git",
