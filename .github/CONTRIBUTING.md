@@ -46,7 +46,7 @@ Here is a quick guide to doing code contributions to the library.
 
 1. Make sure to have the right dependencies up-to-date:
 
-   - `"node": ">=16.15"`
+   - `"node": ">=18.17.0"`
    - `"pnpm": "^8"`
 
 2. Fork and clone the repo to your local machine:
