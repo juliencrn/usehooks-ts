@@ -20,6 +20,7 @@ type UseBooleanReturn = {
  * Custom hook that handles boolean state with useful utility functions.
  * @param {boolean} [defaultValue] - The initial value for the boolean state (default is `false`).
  * @returns {UseBooleanReturn} An object containing the boolean state value and utility functions to manipulate the state.
+ * @throws Will throw an error if `defaultValue` is an invalid boolean value.
  * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-boolean)
  * @example
@@ -27,8 +28,11 @@ type UseBooleanReturn = {
  * const { value, setTrue, setFalse, toggle } = useBoolean(true);
  * ```
  */
-export function useBoolean(defaultValue?: boolean): UseBooleanReturn {
-  const [value, setValue] = useState(!!defaultValue)
+export function useBoolean(defaultValue = false): UseBooleanReturn {
+  if (typeof defaultValue !== 'boolean') {
+    throw new Error('defaultValue must be `true` or `false`')
+  }
+  const [value, setValue] = useState(defaultValue)
 
   const setTrue = useCallback(() => {
     setValue(true)
