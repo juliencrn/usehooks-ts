@@ -3,7 +3,7 @@ export function Footer() {
     <footer className="flex flex-row-reverse items-center justify-between relative px-4 py-2.5 select-none w-full text-xs border-t text-muted-foreground">
       <div>
         <a
-          href="https://www.algolia.com/ref/docsearch/?utm_source=usehooks-ts.com&amp;utm_medium=referral&amp;utm_content=powered_by&amp;utm_campaign=docsearch"
+          href="https://www.algolia.com/?utm_medium=AOS-referral"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1"
