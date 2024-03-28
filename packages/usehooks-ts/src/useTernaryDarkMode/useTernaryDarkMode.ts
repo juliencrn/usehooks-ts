@@ -7,10 +7,10 @@ const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)'
 const LOCAL_STORAGE_KEY = 'usehooks-ts-ternary-dark-mode'
 
 /** Ternary dark mode options. */
-type TernaryDarkMode = 'system' | 'dark' | 'light'
+export type TernaryDarkMode = 'system' | 'dark' | 'light'
 
 /** Options for the `useTernaryDarkMode` hook. */
-type TernaryDarkModeOptions = {
+export type TernaryDarkModeOptions = {
   /**
    * The default value for the dark mode.
    * @default 'system'
@@ -29,7 +29,7 @@ type TernaryDarkModeOptions = {
 }
 
 /** Represents the return type of the `useTernaryDarkMode` hook. */
-type TernaryDarkModeReturn = {
+export type TernaryDarkModeReturn = {
   /** The current state of the dark mode. */
   isDarkMode: boolean
   /** The current state of the dark mode. */
