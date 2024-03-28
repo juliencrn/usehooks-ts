@@ -17,8 +17,7 @@
 [![License](https://badgen.net/badge/License/MIT/blue)](https://github.com/juliencrn/usehooks-ts/blob/master/LICENSE)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/usehooks-ts)
 ![npm](https://img.shields.io/npm/v/usehooks-ts)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-248-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-249-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <br />
@@ -381,7 +380,7 @@ Big thanks go to all our contributors! [[Become a contributor](https://github.co
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/FredericoGauz"><img src="https://avatars.githubusercontent.com/u/18327882?v=4?s=64" width="64px;" alt="FredericoGauz"/><br /><sub><b>FredericoGauz</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3AFredericoGauz" title="Bug reports">🐛</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://www.jonlemofficial.com/"><img src="https://avatars.githubusercontent.com/u/38771842?v=4?s=64" width="64px;" alt="Jonathan &quot;JonLem&quot; Lemos"/><br /><sub><b>Jonathan &quot;JonLem&quot; Lemos</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3AJonLemOfficial" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.jonlemofficial.com/"><img src="https://avatars.githubusercontent.com/u/38771842?v=4?s=64" width="64px;" alt="Jonathan "JonLem" Lemos"/><br /><sub><b>Jonathan "JonLem" Lemos</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3AJonLemOfficial" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/xegulon"><img src="https://avatars.githubusercontent.com/u/74178038?v=4?s=64" width="64px;" alt="Xegulon"/><br /><sub><b>Xegulon</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Axegulon" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/TomSmedley"><img src="https://avatars.githubusercontent.com/u/95056193?v=4?s=64" width="64px;" alt="Tom Smedley"/><br /><sub><b>Tom Smedley</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3ATomSmedley" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/lightbluepoppy"><img src="https://avatars.githubusercontent.com/u/65863981?v=4?s=64" width="64px;" alt="lightbluepoppy"/><br /><sub><b>lightbluepoppy</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Alightbluepoppy" title="Bug reports">🐛</a></td>
@@ -437,6 +436,7 @@ Big thanks go to all our contributors! [[Become a contributor](https://github.co
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/isumix"><img src="https://avatars.githubusercontent.com/u/16747416?v=4?s=64" width="64px;" alt="Igor Sukharev"/><br /><sub><b>Igor Sukharev</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/issues?q=author%3Aisumix" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/pookmish"><img src="https://avatars.githubusercontent.com/u/7185045?v=4?s=64" width="64px;" alt="pookmish"/><br /><sub><b>pookmish</b></sub></a><br /><a href="#ideas-pookmish" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/metav-drimz"><img src="https://avatars.githubusercontent.com/u/113976282?v=4?s=64" width="64px;" alt="metav-drimz"/><br /><sub><b>metav-drimz</b></sub></a><br /><a href="#ideas-metav-drimz" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/LonelyFellas"><img src="https://avatars.githubusercontent.com/u/38754760?v=4?s=64" width="64px;" alt="Darwish"/><br /><sub><b>Darwish</b></sub></a><br /><a href="https://github.com/juliencrn/usehooks-ts/commits?author=LonelyFellas" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
