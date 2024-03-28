@@ -22,6 +22,8 @@ export const generateMetadata = async (props: {
 
   const title = hook.name
   const description = hook.summary
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/`/g, '')
   const url = siteConfig.url + hook.path
   const imageUrl = `https://via.placeholder.com/1200x630.png/007ACC/fff/?text=${title}`
   return {

@@ -34,13 +34,12 @@ const initialSize: Size = {
 }
 
 /**
- * Custom hook that observes the size of an element using the ResizeObserver API.
+ * Custom hook that observes the size of an element using the [`ResizeObserver API`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver).
  * @template T - The type of the element to observe.
  * @param {UseResizeObserverOptions<T>} options - The options for the ResizeObserver.
  * @returns {Size} - The size of the observed element.
  * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-resize-observer)
- * @see [MDN ResizeObserver API](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver)
  * @example
  * ```tsx
  * const myRef = useRef(null);

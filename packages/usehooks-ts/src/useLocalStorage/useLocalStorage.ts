@@ -31,7 +31,7 @@ type UseLocalStorageOptions<T> = {
 const IS_SERVER = typeof window === 'undefined'
 
 /**
- * Custom hook that uses local storage to persist state across page reloads.
+ * Custom hook that uses the [`localStorage API`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) to persist state across page reloads.
  * @template T - The type of the state to be stored in local storage.
  * @param {string} key - The key under which the value will be stored in local storage.
  * @param {T | (() => T)} initialValue - The initial value of the state or a function that returns the initial value.
@@ -39,7 +39,6 @@ const IS_SERVER = typeof window === 'undefined'
  * @returns {[T, Dispatch<SetStateAction<T>>]} A tuple containing the stored value and a function to set the value.
  * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-local-storage)
- * @see [MDN Local Storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
  * @example
  * ```tsx
  * const [count, setCount] = useLocalStorage('count', 0);
