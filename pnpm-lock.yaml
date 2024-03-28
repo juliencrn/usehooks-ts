@@ -125,6 +125,9 @@ importers:
       remark-gfm:
         specifier: ^3.0.1
         version: 3.0.1
+      schema-dts:
+        specifier: ^1.1.2
+        version: 1.1.2(typescript@5.3.3)
       tailwind-merge:
         specifier: ^2.2.1
         version: 2.2.1
@@ -7717,6 +7720,14 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
+
+  /schema-dts@1.1.2(typescript@5.3.3):
+    resolution: {integrity: sha512-MpNwH0dZJHinVxk9bT8XUdjKTxMYrA5bLtrrGmFA6PTLwlOKnhi67XoRd6/ty+Djt6ZC0slR57qFhZDNMI6DhQ==}
+    peerDependencies:
+      typescript: ^5.3.3
+    dependencies:
+      typescript: 5.3.3
+    dev: false
 
   /search-insights@2.13.0:
     resolution: {integrity: sha512-Orrsjf9trHHxFRuo9/rzm0KIWmgzE8RMlZMzuhZOJ01Rnz3D0YBAe+V6473t6/H6c7irs6Lt48brULAiRWb3Vw==}

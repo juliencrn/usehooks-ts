@@ -1,6 +1,7 @@
 import type { LucideIcon } from 'lucide-react'
 import { Blocks, ChevronRight, Gift, Star } from 'lucide-react'
 import Link from 'next/link'
+import type { BreadcrumbList, WithContext } from 'schema-dts'
 
 import { buttonVariants } from '@/components/ui/button'
 import {
@@ -13,6 +14,7 @@ import {
   Zap,
 } from '@/components/ui/icons'
 import { siteConfig } from '@/config/site'
+import { getHookList } from '@/lib/api'
 import { cn } from '@/lib/utils'
 
 type Feature = {
@@ -90,9 +92,31 @@ async function getGitHubStars(): Promise<string | null> {
 
 export default async function IndexPage() {
   const stars = await getGitHubStars()
+  const hooks = await getHookList()
+
+  const ldJson: WithContext<BreadcrumbList> = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    name: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    itemListElement: (hooks || []).map((hook, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: hook.name,
+      item: `${siteConfig.url}/react-hook/${hook.slug}`,
+    })),
+  }
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(ldJson),
+        }}
+      />
+
       <section className="space-y-6 pb-12 pt-10 lg:py-32">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
           <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">

@@ -16,13 +16,26 @@ export function getHooks() {
     const typesGroup = child.groups?.filter(g => g.title === 'Type Aliases')
     const hookFunc = child.children?.find(c => c.id === funcGroup.children[0])
     const types = typesGroup?.length ? typesGroup[0].children || [] : []
+    const summary = (hookFunc.signatures[0].comment?.summary || [])
+      .map(s => s.text || '')
+      .join('')
+
+    // .reduce(
+    //   (acc, item) => {
+    //     if (item.text) {
+    //       acc += item.text
+    //     }
+    //     return acc
+    //   },
+    //   '',
+    // )
 
     return {
       id: child.id,
       name,
       slug,
       path: `/react-hook/${slug}`,
-      summary: hookFunc.signatures[0].comment?.summary[0].text,
+      summary,
       flags: hookFunc.flags,
       links: {
         doc: `https://usehooks-ts.com/react-hook/${slug}`,

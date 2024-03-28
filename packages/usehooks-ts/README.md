@@ -57,7 +57,7 @@ function Component() {
 
 - [`useBoolean`](https://usehooks-ts.com/react-hook/use-boolean) — handles boolean state with useful utility functions.
 - [`useClickAnyWhere`](https://usehooks-ts.com/react-hook/use-click-any-where) — handles click events anywhere on the document.
-- [`useCopyToClipboard`](https://usehooks-ts.com/react-hook/use-copy-to-clipboard) — copies text to the clipboard.
+- [`useCopyToClipboard`](https://usehooks-ts.com/react-hook/use-copy-to-clipboard) — copies text to the clipboard using the [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API).
 - [`useCountdown`](https://usehooks-ts.com/react-hook/use-countdown) — manages countdown.
 - [`useCounter`](https://usehooks-ts.com/react-hook/use-counter) — manages a counter with increment, decrement, reset, and setCount functionalities.
 - [`useDarkMode`](https://usehooks-ts.com/react-hook/use-dark-mode) — returns the current state of the dark mode.
@@ -67,24 +67,24 @@ function Component() {
 - [`useEventCallback`](https://usehooks-ts.com/react-hook/use-event-callback) — creates a memoized event callback.
 - [`useEventListener`](https://usehooks-ts.com/react-hook/use-event-listener) — attaches event listeners to DOM elements, the window, or media query lists.
 - [`useHover`](https://usehooks-ts.com/react-hook/use-hover) — tracks whether a DOM element is being hovered over.
-- [`useIntersectionObserver`](https://usehooks-ts.com/react-hook/use-intersection-observer) — tracks the intersection of a DOM element with its containing element or the viewport.
-- [`useInterval`](https://usehooks-ts.com/react-hook/use-interval) — creates an interval that invokes a callback function at a specified delay.
+- [`useIntersectionObserver`](https://usehooks-ts.com/react-hook/use-intersection-observer) — tracks the intersection of a DOM element with its containing element or the viewport using the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
+- [`useInterval`](https://usehooks-ts.com/react-hook/use-interval) — creates an interval that invokes a callback function at a specified delay using the [setInterval API](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval).
 - [`useIsClient`](https://usehooks-ts.com/react-hook/use-is-client) — determines if the code is running on the client side (in the browser).
 - [`useIsMounted`](https://usehooks-ts.com/react-hook/use-is-mounted) — determines if the component is currently mounted.
-- [`useIsomorphicLayoutEffect`](https://usehooks-ts.com/react-hook/use-isomorphic-layout-effect) — uses either
-- [`useLocalStorage`](https://usehooks-ts.com/react-hook/use-local-storage) — uses local storage to persist state across page reloads.
-- [`useMap`](https://usehooks-ts.com/react-hook/use-map) — manages a key-value map state with setter actions.
-- [`useMediaQuery`](https://usehooks-ts.com/react-hook/use-media-query) — tracks the state of a media query.
+- [`useIsomorphicLayoutEffect`](https://usehooks-ts.com/react-hook/use-isomorphic-layout-effect) — uses either useLayoutEffect or useEffect based on the environment (client-side or server-side).
+- [`useLocalStorage`](https://usehooks-ts.com/react-hook/use-local-storage) — uses the [localStorage API](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) to persist state across page reloads.
+- [`useMap`](https://usehooks-ts.com/react-hook/use-map) — manages a key-value [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) state with setter actions.
+- [`useMediaQuery`](https://usehooks-ts.com/react-hook/use-media-query) — tracks the state of a media query using the [Match Media API](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia).
 - [`useOnClickOutside`](https://usehooks-ts.com/react-hook/use-on-click-outside) — handles clicks outside a specified element.
-- [`useReadLocalStorage`](https://usehooks-ts.com/react-hook/use-read-local-storage) — reads a value from local storage, closely related to useLocalStorage().
-- [`useResizeObserver`](https://usehooks-ts.com/react-hook/use-resize-observer) — observes the size of an element using the ResizeObserver API.
-- [`useScreen`](https://usehooks-ts.com/react-hook/use-screen) — tracks the screen dimensions and properties.
+- [`useReadLocalStorage`](https://usehooks-ts.com/react-hook/use-read-local-storage) — reads a value from [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), closely related to [useLocalStorage()](https://usehooks-ts.com/react-hook/use-local-storage).
+- [`useResizeObserver`](https://usehooks-ts.com/react-hook/use-resize-observer) — observes the size of an element using the [ResizeObserver API](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver).
+- [`useScreen`](https://usehooks-ts.com/react-hook/use-screen) — tracks the [screen](https://developer.mozilla.org/en-US/docs/Web/API/Window/screen) dimensions and properties.
 - [`useScript`](https://usehooks-ts.com/react-hook/use-script) — dynamically loads scripts and tracking their loading status.
 - [`useScrollLock`](https://usehooks-ts.com/react-hook/use-scroll-lock) — A custom hook that locks and unlocks scroll.
-- [`useSessionStorage`](https://usehooks-ts.com/react-hook/use-session-storage) — uses session storage to persist state across page reloads.
+- [`useSessionStorage`](https://usehooks-ts.com/react-hook/use-session-storage) — uses the [sessionStorage API](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) to persist state across page reloads.
 - [`useStep`](https://usehooks-ts.com/react-hook/use-step) — manages and navigates between steps in a multi-step process.
 - [`useTernaryDarkMode`](https://usehooks-ts.com/react-hook/use-ternary-dark-mode) — manages ternary (system, dark, light) dark mode with local storage support.
-- [`useTimeout`](https://usehooks-ts.com/react-hook/use-timeout) — handles timeouts in React components.
+- [`useTimeout`](https://usehooks-ts.com/react-hook/use-timeout) — handles timeouts in React components using the [setTimeout API](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout).
 - [`useToggle`](https://usehooks-ts.com/react-hook/use-toggle) — manages a boolean toggle state in React components.
 - [`useUnmount`](https://usehooks-ts.com/react-hook/use-unmount) — runs a cleanup function when the component is unmounted.
 - [`useWindowSize`](https://usehooks-ts.com/react-hook/use-window-size) — tracks the size of the window.

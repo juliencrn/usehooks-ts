@@ -35,7 +35,7 @@ type UseMapReturn<K, V> = [
 ]
 
 /**
- * Custom hook that manages a key-value map state with setter actions.
+ * Custom hook that manages a key-value [`Map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) state with setter actions.
  * @template K - The type of keys in the map.
  * @template V - The type of values in the map.
  * @param {MapOrEntries<K, V>} [initialState] - The initial state of the map as a Map or an array of key-value pairs (optional).

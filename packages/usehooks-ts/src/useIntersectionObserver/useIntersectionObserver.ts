@@ -63,12 +63,11 @@ type IntersectionReturn = [
 }
 
 /**
- * Custom hook that tracks the intersection of a DOM element with its containing element or the viewport.
+ * Custom hook that tracks the intersection of a DOM element with its containing element or the viewport using the [`Intersection Observer API`](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
  * @param {UseIntersectionObserverOptions} options - The options for the Intersection Observer.
  * @returns {IntersectionReturn} The ref callback, a boolean indicating if the element is intersecting, and the intersection observer entry.
  * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-intersection-observer)
- * @see [MDN Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
  * @example
  * ```tsx
  * // Example 1

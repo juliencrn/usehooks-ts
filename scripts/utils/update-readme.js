@@ -18,6 +18,8 @@ export function updateReadme(hooks) {
 // Utils
 
 function formatHook(hook) {
-  const trimmedSummary = hook.summary.replace(/^Custom hook that /, '')
+  const trimmedSummary = hook.summary
+    .replace(/^Custom hook that /, '')
+    .replace(/`/g, '')
   return `- [\`${hook.name}\`](${hook.links.doc}) — ${trimmedSummary}`
 }
