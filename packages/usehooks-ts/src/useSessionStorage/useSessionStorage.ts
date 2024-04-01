@@ -36,20 +36,20 @@ const IS_SERVER = typeof window === 'undefined'
  * @param {string} key - The key under which the value will be stored in session storage.
  * @param {T | (() => T)} initialValue - The initial value of the state or a function that returns the initial value.
  * @param {?UseSessionStorageOptions<T>} [options] - Options for customizing the behavior of serialization and deserialization (optional).
- * @returns {[T, Dispatch<SetStateAction<T>>]} A tuple containing the stored value and a function to set the value.
+ * @returns {[T, Dispatch<SetStateAction<T>>, () => void]} A tuple containing the stored value, a function to set the value and a function to remove the key from storage.
  * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-session-storage)
  * @example
  * ```tsx
- * const [count, setCount] = useSessionStorage('count', 0);
- * // Access the `count` value and the `setCount` function to update it.
+ * const [count, setCount, removeCount] = useSessionStorage('count', 0);
+ * // Access the `count` value, the `setCount` function to update it and `removeCount` function to remove the key from storage.
  * ```
  */
 export function useSessionStorage<T>(
   key: string,
   initialValue: T | (() => T),
   options: UseSessionStorageOptions<T> = {},
-): [T, Dispatch<SetStateAction<T>>] {
+): [T, Dispatch<SetStateAction<T>>, () => void] {
   const { initializeWithValue = true } = options
 
   const serializer = useCallback<(value: T) => string>(
@@ -95,7 +95,7 @@ export function useSessionStorage<T>(
     const initialValueToUse =
       initialValue instanceof Function ? initialValue() : initialValue
 
-    // Prevent build error "window is undefined" but keep keep working
+    // Prevent build error "window is undefined" but keep working
     if (IS_SERVER) {
       return initialValueToUse
     }
@@ -144,6 +144,27 @@ export function useSessionStorage<T>(
     }
   })
 
+  const removeValue = useEventCallback(() => {
+    // Prevent build error "window is undefined" but keeps working
+    if (IS_SERVER) {
+      console.warn(
+        `Tried removing sessionStorage key “${key}” even though environment is not a client`,
+      )
+    }
+
+    const defaultValue =
+      initialValue instanceof Function ? initialValue() : initialValue
+
+    // Remove the key from session storage
+    window.sessionStorage.removeItem(key)
+
+    // Save state with default value
+    setStoredValue(defaultValue)
+
+    // We dispatch a custom event so every similar useSessionStorage hook is notified
+    window.dispatchEvent(new StorageEvent('session-storage', { key }))
+  })
+
   useEffect(() => {
     setStoredValue(readValue())
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -166,5 +187,5 @@ export function useSessionStorage<T>(
   // See: useSessionStorage()
   useEventListener('session-storage', handleStorageChange)
 
-  return [storedValue, setValue]
+  return [storedValue, setValue, removeValue]
 }

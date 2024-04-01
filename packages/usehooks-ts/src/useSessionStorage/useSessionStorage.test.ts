@@ -78,6 +78,28 @@ describe('useSessionStorage()', () => {
     expect(window.sessionStorage.getItem('key')).toBe(JSON.stringify('edited'))
   })
 
+  it('Remove the state removes sessionStorage key', () => {
+    const { result } = renderHook(() => useSessionStorage('key', 'value'))
+
+    act(() => {
+      const setState = result.current[1]
+      setState('updated')
+    })
+
+    expect(result.current[0]).toBe('updated')
+    expect(window.sessionStorage.getItem('key')).toBe(JSON.stringify('updated'))
+
+    act(() => {
+      const removeValue = result.current[2]
+      removeValue()
+    })
+
+    // Expect null as it's a default return if storage key doesn't exist
+    expect(window.sessionStorage.getItem('key')).toBeNull()
+    // Expect the state to match the default value
+    expect(result.current[0]).toBe('value')
+  })
+
   it('Update the state with undefined', () => {
     const { result } = renderHook(() =>
       useSessionStorage<string | undefined>('keytest', 'value'),
