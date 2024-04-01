@@ -1,7 +1,7 @@
 import { useLocalStorage } from './useLocalStorage'
 
 export default function Component() {
-  const [value, setValue] = useLocalStorage('test-key', 0)
+  const [value, setValue, removeValue] = useLocalStorage('test-key', 0)
 
   return (
     <div>
@@ -19,6 +19,13 @@ export default function Component() {
         }}
       >
         Decrement
+      </button>
+      <button
+        onClick={() => {
+          removeValue()
+        }}
+      >
+        Reset
       </button>
     </div>
   )

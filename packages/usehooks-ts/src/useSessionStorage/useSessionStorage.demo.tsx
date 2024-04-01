@@ -1,7 +1,7 @@
 import { useSessionStorage } from './useSessionStorage'
 
 export default function Component() {
-  const [value, setValue] = useSessionStorage('test-key', 0)
+  const [value, setValue, removeValue] = useSessionStorage('test-key', 0)
 
   return (
     <div>
@@ -19,6 +19,13 @@ export default function Component() {
         }}
       >
         Decrement
+      </button>
+      <button
+        onClick={() => {
+          removeValue()
+        }}
+      >
+        Reset
       </button>
     </div>
   )
