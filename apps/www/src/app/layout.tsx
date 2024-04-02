@@ -2,7 +2,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import type { Metadata, Viewport } from 'next'
 import { Inter as FontSans } from 'next/font/google'
 import localFont from 'next/font/local'
-import Head from 'next/head'
+import Script from 'next/script'
 
 import './globals.css'
 import { siteConfig } from '@/config/site'
@@ -88,14 +88,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         )}
 
-        {process.env.NODE_ENV === 'production' && (
-          <Head>
-            <script
-              defer
-              src="https://analytics.eu.umami.is/script.js"
-              data-website-id="9eb54f54-131e-433f-8e49-445325071824"
-            />
-          </Head>
+        {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+          <Script
+            src="https://analytics.eu.umami.is/script.js"
+            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+            strategy="lazyOnload"
+          />
         )}
       </body>
     </html>

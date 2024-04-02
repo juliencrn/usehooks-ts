@@ -41,6 +41,7 @@
     "prismjs",
     "rehype",
     "tailwindcss",
+    "UMAMI",
     "usehooks"
   ],
   "eslint.workingDirectories": [
