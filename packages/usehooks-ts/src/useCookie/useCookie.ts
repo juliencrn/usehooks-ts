@@ -22,7 +22,7 @@ export type UseCookieOuput = [
  * Custom hook that manages cookie state in React components.
  * @param {State} cookieKey - The key under which the value will be stored in Cookie.
  * @param {Option?} options - Options of `js-cookie`.
- * @returns {UseCookieOuput} - A tuple containing the state value of Cookie, the `updateCookie` function and the `deleteCoole` function.
+ * @returns {UseCookieOuput} - A tuple containing the state value of Cookie, the `updateCookie` function and the `deleteCookie` function.
  * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-cookie)
  * @example

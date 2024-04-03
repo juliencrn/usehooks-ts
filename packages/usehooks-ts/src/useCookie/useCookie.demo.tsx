@@ -6,7 +6,7 @@ export default function Component() {
     <div>
       <input
         value={message}
-        placeholder="Please enter some words for testing..."
+        placeholder="Please enter some words to update cookie..."
         onChange={e => {
           setMessage(e.target.value)
         }}
