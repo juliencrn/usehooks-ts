@@ -3,8 +3,10 @@ import type { Metadata, Viewport } from 'next'
 import { Inter as FontSans } from 'next/font/google'
 import localFont from 'next/font/local'
 import Script from 'next/script'
+import type { CSSProperties } from 'react'
 
 import './globals.css'
+import { BuyMeACoffee } from '@/components/buy-me-a-coffee'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 
@@ -77,25 +79,27 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         suppressHydrationWarning
         className={cn(
-          'min-h-screen bg-background font-sans antialiased flex flex-col',
+          'min-h-screen bg-background font-sans antialiased flex flex-col relative',
           fontSans.variable,
           fontHeading.variable,
         )}
       >
         {children}
 
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
-        )}
-
-        {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
-          <Script
-            src="https://analytics.eu.umami.is/script.js"
-            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-            strategy="lazyOnload"
-          />
-        )}
+        <BuyMeACoffee />
       </body>
+
+      {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+      )}
+
+      {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+        <Script
+          src="https://analytics.eu.umami.is/script.js"
+          data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+          strategy="lazyOnload"
+        />
+      )}
     </html>
   )
 }

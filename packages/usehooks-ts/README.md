@@ -455,6 +455,7 @@ If you find this piece of software helpful, please consider a donation. Any amou
 [![GitHub Sponsors](https://badgen.net/badge/GitHub%20Sponsors/Donate/blue)](https://github.com/sponsors/juliencrn)
 [![Paypal](https://badgen.net/badge/Paypal/Donate/blue)](https://www.paypal.com/paypalme/juliencrn)
 [![Stripe](https://badgen.net/badge/Stripe/Donate/blue)](https://buy.stripe.com/fZefZY8Bv32cg9O3cc)
+[![Buy me a coffee](https://badgen.net/badge/Buy%20me%20a%20coffee/Donate/blue)](https://www.buymeacoffee.com/juliencrn)
 
 BTC: `bc1qwys40tnd0lxf9lr9l0t6xc63dpxyucj4x4nay0`
 
