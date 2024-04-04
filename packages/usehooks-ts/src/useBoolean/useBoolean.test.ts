@@ -89,8 +89,10 @@ describe('useBoolean()', () => {
 
   it('should throw an error', () => {
     const nonBoolean = '' as never
+    vi.spyOn(console, 'error').mockImplementation(() => vi.fn())
     expect(() => {
       renderHook(() => useBoolean(nonBoolean))
-    }).toThrow('defaultValue must be `true` or `false`')
+    }).toThrowError(/defaultValue must be `true` or `false`/)
+    vi.resetAllMocks()
   })
 })

@@ -3,7 +3,6 @@ import type { Metadata, Viewport } from 'next'
 import { Inter as FontSans } from 'next/font/google'
 import localFont from 'next/font/local'
 import Script from 'next/script'
-import type { CSSProperties } from 'react'
 
 import './globals.css'
 import { BuyMeACoffee } from '@/components/buy-me-a-coffee'
