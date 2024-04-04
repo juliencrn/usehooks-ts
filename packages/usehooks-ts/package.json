@@ -42,7 +42,7 @@
     "@testing-library/react": "^14.2.1",
     "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20.11.19",
-    "@types/react": "18.2.61",
+    "@types/react": "18.2.73",
     "eslint-config-custom": "workspace:*",
     "eslint-plugin-jsdoc": "^48.1.0",
     "eslint-plugin-tree-shaking": "^1.12.1",
