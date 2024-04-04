@@ -36,20 +36,20 @@ const IS_SERVER = typeof window === 'undefined'
  * @param {string} key - The key under which the value will be stored in local storage.
  * @param {T | (() => T)} initialValue - The initial value of the state or a function that returns the initial value.
  * @param {UseLocalStorageOptions<T>} [options] - Options for customizing the behavior of serialization and deserialization (optional).
- * @returns {[T, Dispatch<SetStateAction<T>>]} A tuple containing the stored value and a function to set the value.
+ * @returns {[T, Dispatch<SetStateAction<T>>, () => void]} A tuple containing the stored value, a function to set the value and a function to remove the key from storage.
  * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-local-storage)
  * @example
  * ```tsx
- * const [count, setCount] = useLocalStorage('count', 0);
- * // Access the `count` value and the `setCount` function to update it.
+ * const [count, setCount, removeCount] = useLocalStorage('count', 0);
+ * // Access the `count` value, the `setCount` function to update it and `removeCount` function to remove the key from storage.
  * ```
  */
 export function useLocalStorage<T>(
   key: string,
   initialValue: T | (() => T),
   options: UseLocalStorageOptions<T> = {},
-): [T, Dispatch<SetStateAction<T>>] {
+): [T, Dispatch<SetStateAction<T>>, () => void] {
   const { initializeWithValue = true } = options
 
   const serializer = useCallback<(value: T) => string>(
@@ -95,7 +95,7 @@ export function useLocalStorage<T>(
     const initialValueToUse =
       initialValue instanceof Function ? initialValue() : initialValue
 
-    // Prevent build error "window is undefined" but keeps working
+    // Prevent build error "window is undefined" but keep working
     if (IS_SERVER) {
       return initialValueToUse
     }
@@ -113,6 +113,7 @@ export function useLocalStorage<T>(
     if (initializeWithValue) {
       return readValue()
     }
+
     return initialValue instanceof Function ? initialValue() : initialValue
   })
 
@@ -143,6 +144,27 @@ export function useLocalStorage<T>(
     }
   })
 
+  const removeValue = useEventCallback(() => {
+    // Prevent build error "window is undefined" but keeps working
+    if (IS_SERVER) {
+      console.warn(
+        `Tried removing localStorage key “${key}” even though environment is not a client`,
+      )
+    }
+
+    const defaultValue =
+      initialValue instanceof Function ? initialValue() : initialValue
+
+    // Remove the key from local storage
+    window.localStorage.removeItem(key)
+
+    // Save state with default value
+    setStoredValue(defaultValue)
+
+    // We dispatch a custom event so every similar useLocalStorage hook is notified
+    window.dispatchEvent(new StorageEvent('local-storage', { key }))
+  })
+
   useEffect(() => {
     setStoredValue(readValue())
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -165,5 +187,5 @@ export function useLocalStorage<T>(
   // See: useLocalStorage()
   useEventListener('local-storage', handleStorageChange)
 
-  return [storedValue, setValue]
+  return [storedValue, setValue, removeValue]
 }

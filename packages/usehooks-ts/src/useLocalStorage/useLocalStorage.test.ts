@@ -76,6 +76,28 @@ describe('useLocalStorage()', () => {
     expect(window.localStorage.getItem('key')).toBe(JSON.stringify('edited'))
   })
 
+  it('Remove the state removes localStorage key', () => {
+    const { result } = renderHook(() => useLocalStorage('key', 'value'))
+
+    act(() => {
+      const setState = result.current[1]
+      setState('updated')
+    })
+
+    expect(result.current[0]).toBe('updated')
+    expect(window.localStorage.getItem('key')).toBe(JSON.stringify('updated'))
+
+    act(() => {
+      const removeValue = result.current[2]
+      removeValue()
+    })
+
+    // Expect null as it's a default return if storage key doesn't exist
+    expect(window.localStorage.getItem('key')).toBeNull()
+    // Expect the state to match the default value
+    expect(result.current[0]).toBe('value')
+  })
+
   it('Update the state with undefined', () => {
     const { result } = renderHook(() =>
       useLocalStorage<string | undefined>('key', 'value'),
