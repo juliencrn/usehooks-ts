@@ -1,5 +1,17 @@
 # Changelog
 
+## 3.1.0
+
+### Minor Changes
+
+- 06dfd5e: Add `remove` function to `useLocalStorage` and `useSessionStorage` (@k-melnychuk & @RubyHuntsman)
+
+### Patch Changes
+
+- e62c41f: Restoration of the `useTernaryDarkMode` related types (@soullivaneuh)
+- 90a33f5: fix: reject non-boolean value as a `defaultValue` for `useBoolean` (@luckrnx09)
+- 7ba7e3a: test reset for `useCounter` (#570 by @luckrnx09)
+
 ## 3.0.2
 
 ### Patch Changes
