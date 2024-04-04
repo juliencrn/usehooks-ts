@@ -220,7 +220,7 @@
       "name": "Sullivan SENECHAL",
       "avatar_url": "https://avatars.githubusercontent.com/u/1698357?v=4",
       "profile": "https://keybase.io/soullivaneuh",
-      "contributions": ["ideas", "bug"]
+      "contributions": ["ideas", "bug", "code"]
     },
     {
       "login": "jaslong",
@@ -1711,7 +1711,7 @@
       "name": "Kyrylo Melnychuk",
       "avatar_url": "https://avatars.githubusercontent.com/u/22131019?v=4",
       "profile": "https://github.com/k-melnychuk",
-      "contributions": ["content"]
+      "contributions": ["content", "code"]
     },
     {
       "login": "LumaKernel",
@@ -1747,6 +1747,41 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/113976282?v=4",
       "profile": "https://github.com/metav-drimz",
       "contributions": ["ideas"]
+    },
+    {
+      "login": "luckrnx09",
+      "name": "luckrnx09",
+      "avatar_url": "https://avatars.githubusercontent.com/u/113882203?v=4",
+      "profile": "https://luckrnx09.com/",
+      "contributions": ["code"]
+    },
+    {
+      "login": "RubyHuntsman",
+      "name": "Hubert Kuczmierczyk",
+      "avatar_url": "https://avatars.githubusercontent.com/u/24682602?v=4",
+      "profile": "https://github.com/RubyHuntsman",
+      "contributions": ["ideas", "review"]
+    },
+    {
+      "login": "dandubya",
+      "name": "dandubya",
+      "avatar_url": "https://avatars.githubusercontent.com/u/67660308?v=4",
+      "profile": "https://github.com/dandubya",
+      "contributions": ["doc"]
+    },
+    {
+      "login": "LonelyFellas",
+      "name": "Darwish",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38754760?v=4",
+      "profile": "https://github.com/LonelyFellas",
+      "contributions": ["code"]
+    },
+    {
+      "login": "jraoult",
+      "name": "Jonathan Raoult",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2046871?v=4",
+      "profile": "http://www.jesuisjo.com/",
+      "contributions": ["bug", "review"]
     }
   ],
   "contributorsPerLine": 7,
