@@ -68,4 +68,15 @@ describe('useCounter()', () => {
 
     expect(result.current.count).toBe(7)
   })
+
+  it('should reset counter', () => {
+    const { result } = renderHook(() => useCounter(0))
+
+    act(() => {
+      result.current.increment()
+      result.current.reset()
+    })
+
+    expect(result.current.count).toBe(0)
+  })
 })
