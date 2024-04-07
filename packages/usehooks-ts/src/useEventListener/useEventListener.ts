@@ -4,7 +4,7 @@ import type { RefObject } from 'react'
 
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect/useIsomorphicLayoutEffect'
 
-// Event based useEventListener interface
+// EventTarget-based useEventListener interface
 function useEventListener<K extends string>(
   eventName: K,
   handler: (event: Event) => void,
