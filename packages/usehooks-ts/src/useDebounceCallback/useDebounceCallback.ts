@@ -77,26 +77,39 @@ export function useDebounceCallback<T extends (...args: any) => ReturnType<T>>(
   options?: DebounceOptions,
 ): DebouncedState<T> {
   const debouncedFunc = useRef<ReturnType<typeof debounce>>()
+  const isPendingRef = useRef(false)
 
+  const parsedFunc = useCallback(
+    (...args: Parameters<T>) => {
+      const result = func(...args)
+      isPendingRef.current = false
+      return result
+    },
+    [func]
+  )
+  
   useUnmount(() => {
     if (debouncedFunc.current) {
       debouncedFunc.current.cancel()
+      isPendingRef.current = false
     }
   })
 
   const debounced = useMemo(() => {
-    const debouncedFuncInstance = debounce(func, delay, options)
+    const debouncedFuncInstance = debounce(parsedFunc, delay, options)
 
     const wrappedFunc: DebouncedState<T> = (...args: Parameters<T>) => {
+      isPendingRef.current = true
       return debouncedFuncInstance(...args)
     }
 
     wrappedFunc.cancel = () => {
       debouncedFuncInstance.cancel()
+      isPendingRef.current = false
     }
 
     wrappedFunc.isPending = () => {
-      return !!debouncedFunc.current
+      return isPendingRef.current
     }
 
     wrappedFunc.flush = () => {
@@ -104,12 +117,12 @@ export function useDebounceCallback<T extends (...args: any) => ReturnType<T>>(
     }
 
     return wrappedFunc
-  }, [func, delay, options])
+  }, [parsedFunc, delay, options])
 
   // Update the debounced function ref whenever func, wait, or options change
   useEffect(() => {
-    debouncedFunc.current = debounce(func, delay, options)
-  }, [func, delay, options])
+    debouncedFunc.current = debounce(parsedFunc, delay, options)
+  }, [parsedFunc, delay, options])
 
   return debounced
 }
