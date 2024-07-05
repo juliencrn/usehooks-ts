@@ -96,12 +96,18 @@ export function useDebounceCallback<T extends (...args: any) => ReturnType<T>>(
   })
 
   const wrappedDebouncedFunc = useMemo(() => {
-   const wrappedFunc: DebouncedState<T> = (...args: Parameters<T>) => {
+    const wrappedFunc: DebouncedState<T> = (...args: Parameters<T>) => {
+      if (!debouncedFunc.current) {
+        return
+      }
       isPendingRef.current = true
       return debouncedFunc.current(...args)
     }
 
     wrappedFunc.cancel = () => {
+      if (!debouncedFunc.current) {
+        return
+      }
       debouncedFunc.current.cancel()
       isPendingRef.current = false
     }
@@ -111,6 +117,9 @@ export function useDebounceCallback<T extends (...args: any) => ReturnType<T>>(
     }
 
     wrappedFunc.flush = () => {
+      if (!debouncedFunc.current) {
+        return
+      }
       return debouncedFunc.current.flush()
     }
 
