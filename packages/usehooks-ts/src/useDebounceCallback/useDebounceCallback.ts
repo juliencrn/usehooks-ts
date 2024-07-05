@@ -115,7 +115,7 @@ export function useDebounceCallback<T extends (...args: any) => ReturnType<T>>(
     }
 
     return wrappedFunc
-  }, [parsedFunc, delay, options])
+  }, [])
 
   // Update the debounced function ref whenever func, wait, or options change
   useEffect(() => {
