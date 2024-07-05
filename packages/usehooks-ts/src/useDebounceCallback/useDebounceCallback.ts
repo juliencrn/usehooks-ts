@@ -95,16 +95,14 @@ export function useDebounceCallback<T extends (...args: any) => ReturnType<T>>(
     }
   })
 
-  const debounced = useMemo(() => {
-    const debouncedFuncInstance = debounce(parsedFunc, delay, options)
-
-    const wrappedFunc: DebouncedState<T> = (...args: Parameters<T>) => {
+  const wrappedDebouncedFunc = useMemo(() => {
+   const wrappedFunc: DebouncedState<T> = (...args: Parameters<T>) => {
       isPendingRef.current = true
-      return debouncedFuncInstance(...args)
+      return debouncedFunc.current(...args)
     }
 
     wrappedFunc.cancel = () => {
-      debouncedFuncInstance.cancel()
+      debouncedFunc.current.cancel()
       isPendingRef.current = false
     }
 
@@ -113,7 +111,7 @@ export function useDebounceCallback<T extends (...args: any) => ReturnType<T>>(
     }
 
     wrappedFunc.flush = () => {
-      return debouncedFuncInstance.flush()
+      return debouncedFunc.current.flush()
     }
 
     return wrappedFunc
@@ -124,5 +122,5 @@ export function useDebounceCallback<T extends (...args: any) => ReturnType<T>>(
     debouncedFunc.current = debounce(parsedFunc, delay, options)
   }, [parsedFunc, delay, options])
 
-  return debounced
+  return wrappedDebouncedFunc
 }
