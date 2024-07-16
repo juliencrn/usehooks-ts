@@ -9,7 +9,7 @@ type State = {
 }
 
 /** Represents the options for configuring the Intersection Observer. */
-type UseIntersectionObserverOptions = {
+type UseIntersectionObserverOptions<T> = {
   /**
    * The element that is used as the viewport for checking visibility of the target.
    * @default null
@@ -36,7 +36,11 @@ type UseIntersectionObserverOptions = {
    * @param {IntersectionObserverEntry} entry - The intersection observer Entry.
    * @default undefined
    */
-  onChange?: (isIntersecting: boolean, entry: IntersectionObserverEntry) => void
+  onChange?: (
+    isIntersecting: boolean,
+    entry: IntersectionObserverEntry,
+    node: T | null,
+  ) => void
   /**
    * The initial state of the intersection.
    * @default false
@@ -52,12 +56,12 @@ type UseIntersectionObserverOptions = {
  * @param {boolean} isIntersecting - A boolean indicating if the element is intersecting.
  * @param {IntersectionObserverEntry | undefined} entry - The intersection observer Entry.
  */
-type IntersectionReturn = [
-  (node?: Element | null) => void,
+type IntersectionReturn<T> = [
+  (node?: T | null) => void,
   boolean,
   IntersectionObserverEntry | undefined,
 ] & {
-  ref: (node?: Element | null) => void
+  ref: (node?: T | null) => void
   isIntersecting: boolean
   entry?: IntersectionObserverEntry
 }
@@ -79,22 +83,22 @@ type IntersectionReturn = [
  * const { ref, isIntersecting, entry } = useIntersectionObserver({ threshold: 0.5 });
  * ```
  */
-export function useIntersectionObserver({
+export const useIntersectionObserver = <T extends Element>({
   threshold = 0,
   root = null,
   rootMargin = '0%',
   freezeOnceVisible = false,
   initialIsIntersecting = false,
   onChange,
-}: UseIntersectionObserverOptions = {}): IntersectionReturn {
-  const [ref, setRef] = useState<Element | null>(null)
+}: UseIntersectionObserverOptions<T> = {}): IntersectionReturn<T> => {
+  const [ref, setRef] = useState<T | null>(null)
 
   const [state, setState] = useState<State>(() => ({
     isIntersecting: initialIsIntersecting,
     entry: undefined,
   }))
 
-  const callbackRef = useRef<UseIntersectionObserverOptions['onChange']>()
+  const callbackRef = useRef<UseIntersectionObserverOptions<T>['onChange']>()
 
   callbackRef.current = onChange
 
@@ -126,7 +130,7 @@ export function useIntersectionObserver({
           setState({ isIntersecting, entry })
 
           if (callbackRef.current) {
-            callbackRef.current(isIntersecting, entry)
+            callbackRef.current(isIntersecting, entry, ref)
           }
 
           if (isIntersecting && freezeOnceVisible && unobserve) {
@@ -175,7 +179,7 @@ export function useIntersectionObserver({
     setRef,
     !!state.isIntersecting,
     state.entry,
-  ] as IntersectionReturn
+  ] as IntersectionReturn<T>
 
   // Support object destructuring, by adding the specific values.
   result.ref = result[0]
