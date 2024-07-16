@@ -34,6 +34,7 @@ type UseIntersectionObserverOptions<T> = {
    * A callback function to be invoked when the intersection state changes.
    * @param {boolean} isIntersecting - A boolean indicating if the element is intersecting.
    * @param {IntersectionObserverEntry} entry - The intersection observer Entry.
+   * @param {T | null} node - The DOM node being observed.
    * @default undefined
    */
   onChange?: (
@@ -68,6 +69,7 @@ type IntersectionReturn<T> = [
 
 /**
  * Custom hook that tracks the intersection of a DOM element with its containing element or the viewport using the [`Intersection Observer API`](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
+ * @template T - The type of the element's reference.
  * @param {UseIntersectionObserverOptions} options - The options for the Intersection Observer.
  * @returns {IntersectionReturn} The ref callback, a boolean indicating if the element is intersecting, and the intersection observer entry.
  * @public
@@ -83,14 +85,14 @@ type IntersectionReturn<T> = [
  * const { ref, isIntersecting, entry } = useIntersectionObserver({ threshold: 0.5 });
  * ```
  */
-export const useIntersectionObserver = <T extends Element>({
+export function useIntersectionObserver<T extends Element>({
   threshold = 0,
   root = null,
   rootMargin = '0%',
   freezeOnceVisible = false,
   initialIsIntersecting = false,
   onChange,
-}: UseIntersectionObserverOptions<T> = {}): IntersectionReturn<T> => {
+}: UseIntersectionObserverOptions<T> = {}): IntersectionReturn<T> {
   const [ref, setRef] = useState<T | null>(null)
 
   const [state, setState] = useState<State>(() => ({
