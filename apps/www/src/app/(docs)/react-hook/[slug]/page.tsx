@@ -1,32 +1,42 @@
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
+import type { Article, WithContext } from 'schema-dts'
 
-import { DocsPageHeader } from '@/components/docs-page-header'
-import { DocsPager } from '@/components/paper'
-import { H2, Mdx } from '@/components/remote-mdx'
-import {
-  DashboardTableOfContents,
-  TableOfContents,
-} from '@/components/table-of-content'
+import { PageHeader } from '@/components/docs/page-header'
+import { Pager } from '@/components/docs/pager'
+import { RightSidebar } from '@/components/docs/right-sidebar'
 import { siteConfig } from '@/config/site'
-import { getPost, getPosts } from '@/lib/mdx'
+import { getHook, getHookList } from '@/lib/api'
 
 export const generateStaticParams = async () => {
-  return getPosts().map(post => ({ slug: post.slug }))
+  const hooks = await getHookList()
+  return hooks.map(hook => ({ slug: hook.slug }))
 }
 
-export const generateMetadata = (props: {
+function stringifyDescription(description: string) {
+  return description.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/`/g, '')
+}
+
+function getPostUrl(slug: string) {
+  return `${siteConfig.url}/react-hook/${slug}`
+}
+
+function getImageUrl(name: string) {
+  return `https://via.placeholder.com/1200x630.png/007ACC/fff/?text=${name}`
+}
+
+export const generateMetadata = async (props: {
   params: { slug: string }
-}): Metadata => {
-  const post = getPost(props.params.slug)
-  if (!post) {
+}): Promise<Metadata> => {
+  const hooks = await getHookList()
+  const hook = hooks.find(hook => hook.slug === props.params.slug)
+  if (!hook) {
     return {}
   }
 
-  const title = post.name
-  const description = `Discover how to use ${post.name} from usehooks-ts`
-  const url = siteConfig.url + post.href
-  const imageUrl = `https://via.placeholder.com/1200x630.png/007ACC/fff/?text=${title}`
+  const title = hook.name
+  const description = stringifyDescription(hook.summary)
+  const url = getPostUrl(hook.slug)
+  const imageUrl = getImageUrl(title)
   return {
     title,
     description,
@@ -53,44 +63,66 @@ export const generateMetadata = (props: {
   }
 }
 
-const PostLayout = ({ params }: { params: { slug: string } }) => {
-  const post = getPost(params.slug)
+export default async function HookPage({
+  params,
+}: {
+  params: { slug: string }
+}) {
+  const [{ frontmatter, content }, hookList] = await Promise.all([
+    getHook(params.slug),
+    getHookList(),
+  ])
 
-  if (!post) {
-    notFound()
-  }
-
-  const toc: TableOfContents = {
-    items: [
-      { title: 'Introduction', url: '#introduction' },
-      { title: 'Usage', url: '#usage' },
-      { title: 'Hook', url: '#hook' },
+  const ldJson: WithContext<Article> = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: frontmatter.name,
+    description: stringifyDescription(frontmatter.summary),
+    url: getPostUrl(frontmatter.slug),
+    image: [getImageUrl(frontmatter.name)],
+    author: [
+      {
+        '@type': 'Organization',
+        name: 'usehooks-ts',
+        url: siteConfig.url,
+      },
     ],
   }
 
   return (
-    <main className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]">
-      <div className="mx-auto w-full min-w-0">
-        <DocsPageHeader
-          id="introduction"
-          className="scroll-m-20"
-          heading={post.name}
-        />
-        <Mdx source={post.docs} />
-        <H2 id="usage">Usage</H2>
-        <Mdx source={post.demo} />
-        <H2 id="hook">Hook</H2>
-        <Mdx source={post.hook} />
-        <hr className="my-4 md:my-6" />
-        <DocsPager slug={post.slug} />
-      </div>
-      <div className="hidden text-sm xl:block">
-        <div className="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10">
-          <DashboardTableOfContents toc={toc} />
+    <>
+      <script
+        id="ld-json"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(ldJson),
+        }}
+      />
+
+      <main className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px] xl:grid-rows-[auto_1fr_auto]">
+        <div className="mx-auto w-full min-w-0 grid">
+          <PageHeader
+            id="introduction"
+            className="scroll-m-20"
+            heading={frontmatter.name}
+          />
+
+          {content}
+
+          <hr className="my-4 md:my-6" />
+          <Pager slug={frontmatter.slug} hooks={hookList} />
         </div>
-      </div>
-    </main>
+
+        <RightSidebar
+          toc={{
+            items: [
+              { title: 'Usage', url: '#usage' },
+              { title: 'API', url: '#api' },
+              { title: 'Hook', url: '#hook' },
+            ],
+          }}
+        />
+      </main>
+    </>
   )
 }
-
-export default PostLayout

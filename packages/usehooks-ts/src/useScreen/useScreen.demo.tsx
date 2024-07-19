@@ -1,4 +1,4 @@
-import { useScreen } from '..'
+import { useScreen } from './useScreen'
 
 export default function Component() {
   const screen = useScreen()
@@ -6,9 +6,7 @@ export default function Component() {
   return (
     <div>
       The current window dimensions are:{' '}
-      <code>
-        {JSON.stringify({ width: screen?.width, height: screen?.height })}
-      </code>
+      <code>{JSON.stringify(screen, null, 2)}</code>
     </div>
   )
 }

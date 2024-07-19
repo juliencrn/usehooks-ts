@@ -1,4 +1,6 @@
-import { useTernaryDarkMode } from '..'
+import { useTernaryDarkMode } from './useTernaryDarkMode'
+
+type TernaryDarkMode = ReturnType<typeof useTernaryDarkMode>['ternaryDarkMode']
 
 export default function Component() {
   const {
@@ -7,7 +9,6 @@ export default function Component() {
     setTernaryDarkMode,
     toggleTernaryDarkMode,
   } = useTernaryDarkMode()
-  type TernaryDarkMode = typeof ternaryDarkMode
 
   return (
     <div>
@@ -24,9 +25,10 @@ export default function Component() {
         <br />
         <select
           name="select-ternaryDarkMode"
-          onChange={ev =>
+          onChange={ev => {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
             setTernaryDarkMode(ev.target.value as TernaryDarkMode)
-          }
+          }}
           value={ternaryDarkMode}
         >
           <option value="light">light</option>

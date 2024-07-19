@@ -1,10 +1,4 @@
-import { getPosts } from '@/lib/mdx'
-import { DocsConfig, NavItem } from '@/types'
-
-export const hookNavItems: NavItem[] = getPosts().map(post => ({
-  title: post.name,
-  href: post.href,
-}))
+import type { DocsConfig } from '@/types'
 
 export const docsConfig: DocsConfig = {
   mainNav: [
@@ -21,11 +15,12 @@ export const docsConfig: DocsConfig = {
           title: 'Introduction',
           href: '/introduction',
         },
+        {
+          title: 'Migrate to v3',
+          href: '/migrate-to-v3',
+        },
       ],
     },
-    {
-      title: 'Hooks',
-      items: hookNavItems,
-    },
+    // Note: Hooks are added here dynamically
   ],
 }

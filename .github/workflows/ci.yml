@@ -1,9 +1,13 @@
 name: Build and test
 
-on: [push]
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
 
 env:
-  NODE_VERSION: 16
+  NODE_VERSION: 20
   PNPM_VERSION: 8
 
 jobs:
@@ -12,33 +16,30 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 2
 
       - name: Setup Pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v3
         with:
           version: ${{ env.PNPM_VERSION }}
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
 
       - name: Install dependencies
-        run: pnpm install
-
-      - name: Lint
-        run: pnpm lint
-
-      - name: Types check
-        run: pnpm types-check
+        run: pnpm install --frozen-lockfile
 
       - name: Build
         run: pnpm build
+
+      - name: Lint
+        run: pnpm lint
 
       - name: Test
         run: pnpm test

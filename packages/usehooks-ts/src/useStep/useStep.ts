@@ -1,27 +1,44 @@
-import { Dispatch, SetStateAction, useCallback, useMemo, useState } from 'react'
+import { useCallback, useState } from 'react'
 
-interface Helpers {
+import type { Dispatch, SetStateAction } from 'react'
+
+/** Represents the second element of the output of the `useStep` hook. */
+type UseStepActions = {
+  /** Go to the next step in the process. */
   goToNextStep: () => void
+  /** Go to the previous step in the process. */
   goToPrevStep: () => void
+  /** Reset the step to the initial step. */
   reset: () => void
+  /** Check if the next step is available. */
   canGoToNextStep: boolean
+  /** Check if the previous step is available. */
   canGoToPrevStep: boolean
+  /** Set the current step to a specific value. */
   setStep: Dispatch<SetStateAction<number>>
 }
 
-type setStepCallbackType = (step: number | ((step: number) => number)) => void
+type SetStepCallbackType = (step: number | ((step: number) => number)) => void
 
-export function useStep(maxStep: number): [number, Helpers] {
+/**
+ * Custom hook that manages and navigates between steps in a multi-step process.
+ * @param {number} maxStep - The maximum step in the process.
+ * @returns {[number, UseStepActions]} An tuple containing the current step and helper functions for navigating steps.
+ * @public
+ * @see [Documentation](https://usehooks-ts.com/react-hook/use-step)
+ * @example
+ * ```tsx
+ * const [currentStep, { goToNextStep, goToPrevStep, reset, canGoToNextStep, canGoToPrevStep, setStep }] = useStep(3);
+ * // Access and use the current step and provided helper functions.
+ * ```
+ */
+export function useStep(maxStep: number): [number, UseStepActions] {
   const [currentStep, setCurrentStep] = useState(1)
 
-  const canGoToNextStep = useMemo(
-    () => currentStep + 1 <= maxStep,
-    [currentStep, maxStep],
-  )
+  const canGoToNextStep = currentStep + 1 <= maxStep
+  const canGoToPrevStep = currentStep - 1 > 0
 
-  const canGoToPrevStep = useMemo(() => currentStep - 1 >= 1, [currentStep])
-
-  const setStep = useCallback<setStepCallbackType>(
+  const setStep = useCallback<SetStepCallbackType>(
     step => {
       // Allow value to be a function so we have the same API as useState
       const newStep = step instanceof Function ? step(currentStep) : step

@@ -1,11 +1,10 @@
-import { fireEvent } from '@testing-library/react'
-import { act, renderHook } from '@testing-library/react-hooks'
+import { act, fireEvent, renderHook } from '@testing-library/react'
 
 import { useHover } from './useHover'
 
 describe('useHover()', () => {
   const el = {
-    current: document.createElement('div') as HTMLDivElement,
+    current: document.createElement('div'),
   }
 
   it('result must be initially false', () => {

@@ -1,20 +1,25 @@
 import { Fragment } from 'react'
 
-import { MapOrEntries, useMap } from '..'
-
-const initialValues: MapOrEntries<string, string> = [['key', '🆕']]
-const otherValues: MapOrEntries<string, string> = [
-  ['hello', '👋'],
-  ['data', '📦'],
-]
+import { useMap } from './useMap'
 
 export default function Component() {
-  const [map, actions] = useMap<string, string>(initialValues)
+  const [map, actions] = useMap<string, string>([['key', '🆕']])
 
-  const set = () => actions.set(String(Date.now()), '📦')
-  const setAll = () => actions.setAll(otherValues)
-  const reset = () => actions.reset()
-  const remove = () => actions.remove('hello')
+  const set = () => {
+    actions.set(String(Date.now()), '📦')
+  }
+  const setAll = () => {
+    actions.setAll([
+      ['hello', '👋'],
+      ['data', '📦'],
+    ])
+  }
+  const reset = () => {
+    actions.reset()
+  }
+  const remove = () => {
+    actions.remove('hello')
+  }
 
   return (
     <div>

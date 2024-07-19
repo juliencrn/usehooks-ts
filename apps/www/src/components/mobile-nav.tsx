@@ -1,20 +1,20 @@
 import * as React from 'react'
 
 import Link from 'next/link'
+import { useScrollLock } from 'usehooks-ts'
 
-import { Icons } from '@/components/icons'
+import { Logo } from '@/components/ui/icons'
 import { siteConfig } from '@/config/site'
-import { useLockBody } from '@/hooks/use-lock-body'
 import { cn } from '@/lib/utils'
-import { MainNavItem } from '@/types'
+import type { MainNavItem } from '@/types'
 
-interface MobileNavProps {
+type MobileNavProps = {
   items: MainNavItem[]
   children?: React.ReactNode
 }
 
 export function MobileNav({ items, children }: MobileNavProps) {
-  useLockBody()
+  useScrollLock()
 
   return (
     <div
@@ -24,7 +24,7 @@ export function MobileNav({ items, children }: MobileNavProps) {
     >
       <div className="relative z-20 grid gap-6 rounded-md bg-popover p-4 text-popover-foreground shadow-md">
         <Link href="/" className="flex items-center space-x-2">
-          <Icons.logo />
+          <Logo />
           <span className="font-bold">{siteConfig.name}</span>
         </Link>
         <nav className="grid grid-flow-row auto-rows-max text-sm">

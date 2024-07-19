@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import { useScript } from '..'
+import { useScript } from './useScript'
 
 // it's an example, use your types instead
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -10,6 +10,7 @@ export default function Component() {
   // Load the script asynchronously
   const status = useScript(`https://code.jquery.com/jquery-3.5.1.min.js`, {
     removeOnUnmount: false,
+    id: 'jquery',
   })
 
   useEffect(() => {

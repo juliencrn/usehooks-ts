@@ -1,10 +1,199 @@
 # Changelog
 
+## 3.1.0
+
+### Minor Changes
+
+- 06dfd5e: Add `remove` function to `useLocalStorage` and `useSessionStorage` (@k-melnychuk & @RubyHuntsman)
+
+### Patch Changes
+
+- e62c41f: Restoration of the `useTernaryDarkMode` related types (@soullivaneuh)
+- 90a33f5: fix: reject non-boolean value as a `defaultValue` for `useBoolean` (@luckrnx09)
+- 7ba7e3a: test reset for `useCounter` (#570 by @luckrnx09)
+
+## 3.0.2
+
+### Patch Changes
+
+- b14db5b: Add support for focus event to `useOnClickOutside` (Fixes: #522)
+- 59c0b93: Add SVG element support to `useEventListener` (#546 by @LumaKernel)
+- b14db5b: Expose `AddEventListenerOptions` in `useOnClickOutside` (Fixes #554 from @metav-drimz)
+- b14db5b: Support missing refs in `useOnClickOutside` (Fixes: #531)
+- 09341a3: feat(useEventCallback): allow optional callback (#550 by @Newbie012)
+
+## 3.0.1
+
+### Patch Changes
+
+- Fix: Update exported files
+
+## 3.0.0
+
+### Major Changes
+
+- a8e8968: Remove previously deprecated hooks and hooks' signatures (#503)
+- a8e8968: Improve JSDoc comments and rename or make private some type aliases
+- a8e8968: Prefer type over interface (#515)
+- a8e8968: Move the full workspace into ES Module
+
+## 2.16.0
+
+### Minor Changes
+
+- 9b65ce8: Add `id` param to `useScript` hook (from #285 by @misidoro)
+
+### Patch Changes
+
+- d881f08: Add `isLocked` state to the `useScrollLock` return (#521 by @kyrylo-soulandwolf)
+- fc25779: Resolve warning when using `useScrollLock` in an SSR environment (#521 by @kyrylo-soulandwolf)
+- d42741f: Wrap `useCountdown` methods with `useCallback` (from #326 by @gromchen)
+- d42741f: Wrap `useCounter` methods with `useCallback` (from #326 by @gromchen)
+- d881f08: Fixed `useScrollLock` leaving inline styles (#516 from @novacdenis)
+- 0d99db9: chore(deps): update all non-major dependencies
+- d881f08: Fixed reflow not considering the padding before the lock (#521 by @kyrylo-soulandwolf)
+
+## 2.15.1
+
+### Patch Changes
+
+- b88cc01: fix `useResizeObserver` initialSize mutation (#504 from @iuriiiurevich)
+- 823b62f: Resolve scroll lock issue on ios safari (#509 by @jontewks)
+
+## 2.15.0
+
+### Minor Changes
+
+- 649ef39: ✨ Feature: add `useScrollLock` hook
+
+### Patch Changes
+
+- 649ef39: Deprecated `useLockedBody` replaced by `useScrollLock`
+- 6514683: Fix `useMediaQuery` by defining getMatches before use
+- d8d8e5d: Upgrade dependencies
+
+## 2.14.0
+
+### Minor Changes
+
+- d60f1c6: Added debounce option to both `useScreen` and `useWindowSize`
+
+### Patch Changes
+
+- 7d74e09: Release documentation for `useEventCallback`
+- 2660580: Depreciated `useFetch`, see documentation for more information
+- bc3f967: Deprecated `useEffectOnce`, `useIsFirstRender` and `useUpdateEffect`
+
+## 2.13.0
+
+### Minor Changes
+
+- 87a5141: Improve `useOnClickOutside`:
+
+  - Prevent handling callback when clicking on a not connected element (#374 by @hooriza)
+  - Add support to accept multiple references
+  - Add support for touch events in addition to mouse events
+
+- 87ba579: Fix SSR hooks by fallback with default or initial value instead of `undefined`
+- f39078f: Updated `useIntersectionObserver` API and fixed #395, #271 and #182, see #464.
+- a444ba7: Depreciated `useElementSize` replaced by `useResizeObserver`
+- e807ab3: Create `useResizeObserver` hook
+
+### Patch Changes
+
+- b5b9e1f: chore: Updated dependencies
+- 4146c39: fix: `useScript` failed to remove script from cache when passing `removeOnUnmount` prop (#354 by @ShanSenanayake)
+- bdf7bda: Add eslint rules to comply with `verbatimModuleSyntax` to avoid side-effects
+- 6b582de: use `tsup` as bundler instead of transpiling with tsc (@BlankParticle)
+- be8c35b: Fix `useScreen` is not rerendering on screen resize (#280 by @philipgher)
+
+## 2.12.1
+
+### Patch Changes
+
+- Don't remove comments during package build to keep JSdoc comments
+
+## 2.12.0
+
+### Minor Changes
+
+- cb6eb5c: Added an optional option param in `useDocumentTitle()` to reset title on un-mount (#345 by @ladislasdellinger)
+
+### Patch Changes
+
+- b8ee088: move `lodash.debounce` to dependencies from peerDependencies
+
+## 2.11.0
+
+### Minor Changes
+
+- add1431: Created `useUnmount` hook
+- add1431: Created `useDebounceCallback` and `useDebounceValue` hooks
+- add1431: Depreciated `useDebounce` hook (replaced by `useDebounceCallback` or `useDebounceValue`)
+- fc8a30e: Fix hydration issues in both useScreen and useMediaQuery (Fixes #394, thanks to @bryantcodesart)
+- 4a9fc88: Introduce the SSR-friendly new optional `{ initializeWithValue?: boolean }` parameter to useLocalStorage, useReadLocalStorage, useSessionStorage, useDarkMode, useTernaryDarkMode, useMediaQuery, useScreen, useWindowSize and useElementSize, see #451.
+- 5c210c1: Add `defaultValue` option to `useTernaryDarkMode` and update its signature (using function overload for smooth migration)
+- 5c210c1: Update `useDarkMode` signature (using function overload for smooth migration)
+- 0321342,4a9fc88: Drop `Map`, `Set` and `Date` supports in use\*Storage hooks, it isn't compatible with `useReadLocalStorage` making the API un-consistent. Use a custom serializer/deserializer instead.
+
+### Patch Changes
+
+- add1431: Upgrade dependencies
+- a192167: Upgraded `react` and `@testing-library/react` (thanks to @TheHaff)
+- 0321342: Make Typescript and `@typescript-eslint` stricter to catch bugs sooner
+- 382161a: Depreciate `useImageOnLoad`, too opinionated
+- 382161a: Add JSdoc comments to improve DX via in-IDE documentation
+- a192167: Migrate from `jest` to `vitest` (making test-suite execution 2 times faster)
+
+## 2.10.0
+
+### Minor Changes
+
+- 8f3c90f: Enable setting localStorage key for useDarkTheme & useTernaryDarkMode (#298 by @ubarbaxor)
+- ae47c9a: Expose setting dark mode value directly (#299 by ubarbaxor)
+- 771afa5: Add serialization support for use-\*-storage hooks
+
+### Patch Changes
+
+- a816d6b: Depreciated useSsr [#258](https://github.com/juliencrn/usehooks-ts/issues/258)
+- 42f3a3a: Remove the need of commenting out useEffect deps in useMediaQuery (#383 by @lisandro52)
+- 9bc05f4: Fix hydration mismatch on use\*\*\*Storage (fixes #176, #369 with #320 & #251)
+- 771afa5: Add Date, Set & Map support to use\*Storage (#309 by @AlecsFarias)
+- 4b3ed4e: Fix circular dependencies (#310)
+- a3588b8: Added unit tests for useFetch hook
+- c326dd3: Prevent unrelated storage keys from being updated unexpectedly in useLocalStorage and useSessionStorage (#313 by @stevenvachon fixes #384)
+- e8aa777: make useLocalStorage and useSessionStorage compliant with useState (fixes #204 with #242 by @valyrie97)
+- c5ad2b9: Recalculate useLocalStorage & useSessionStorage default value on dynamic key change (#355 by @amirking59)
+- 7406e3c: fix(useCopyToClipboard): added useCallback to 'copy' to avoid rerendering (by @nmacianx)
+- ffe0f32: Set sideEffects to false in package.json
+
+## 2.9.5
+
+### Patch Changes
+
+- 7141d01: Upgrade internal dependencies
+- Update useCopyToClipboard documentation
+- Fix typo in useEventListener
+
+## 2.9.4
+
+### Patch Changes
+
+- hotfix: package files missing
+
+## [2.9.3](https://www.npmjs.com/package/usehooks-ts/v/2.9.3) - 2024-01-13
+
+### Patch Changes
+
+- Fix #420
+
 ## 2.9.2
 
 ### Patch Changes
 
-- 55a1904: added export map, use named exports for hooks and fix useEventListener docs typo
+- 55a1904: added export map in package.json
+- use named exports instead of default exports
+- fix useEventListener docs typo
 
 All notable changes to this project will be documented in this file.
 

@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-import { useHover } from '..'
+import { useHover } from './useHover'
 
 export default function Component() {
   const hoverRef = useRef(null)

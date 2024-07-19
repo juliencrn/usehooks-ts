@@ -1,14 +1,31 @@
 import { useEffect, useState } from 'react'
 
-export type UseScriptStatus = 'idle' | 'loading' | 'ready' | 'error'
-export interface UseScriptOptions {
+/** Script loading status. */
+type UseScriptStatus = 'idle' | 'loading' | 'ready' | 'error'
+
+/** Hook options. */
+type UseScriptOptions = {
+  /** If `true`, prevents the script from being loaded (optional). */
   shouldPreventLoad?: boolean
+  /** If `true`, removes the script from the DOM when the component unmounts (optional). */
   removeOnUnmount?: boolean
+  /** Script's `id` (optional). */
+  id?: string
 }
 
 // Cached script statuses
-const cachedScriptStatuses: Record<string, UseScriptStatus | undefined> = {}
+const cachedScriptStatuses = new Map<string, UseScriptStatus | undefined>()
 
+/**
+ * Gets the script element with the specified source URL.
+ * @param {string} src - The source URL of the script to get.
+ * @returns {{ node: HTMLScriptElement | null, status: UseScriptStatus | undefined }} The script element and its loading status.
+ * @public
+ * @example
+ * ```tsx
+ * const script = getScriptNode(src);
+ * ```
+ */
 function getScriptNode(src: string) {
   const node: HTMLScriptElement | null = document.querySelector(
     `script[src="${src}"]`,
@@ -23,6 +40,16 @@ function getScriptNode(src: string) {
   }
 }
 
+/**
+ * Custom hook that dynamically loads scripts and tracking their loading status.
+ * @param {string | null} src - The source URL of the script to load. Set to `null` or omit to prevent loading (optional).
+ * @param {UseScriptOptions} [options] - Additional options for controlling script loading (optional).
+ * @returns {UseScriptStatus} The status of the script loading, which can be one of 'idle', 'loading', 'ready', or 'error'.
+ * @see [Documentation](https://usehooks-ts.com/react-hook/use-script)
+ * @example
+ * const scriptStatus = useScript('https://example.com/script.js', { removeOnUnmount: true });
+ * // Access the status of the script loading (e.g., 'loading', 'ready', 'error').
+ */
 export function useScript(
   src: string | null,
   options?: UseScriptOptions,
@@ -37,7 +64,7 @@ export function useScript(
       return 'loading'
     }
 
-    return cachedScriptStatuses[src] ?? 'loading'
+    return cachedScriptStatuses.get(src) ?? 'loading'
   })
 
   useEffect(() => {
@@ -45,7 +72,7 @@ export function useScript(
       return
     }
 
-    const cachedScriptStatus = cachedScriptStatuses[src]
+    const cachedScriptStatus = cachedScriptStatuses.get(src)
     if (cachedScriptStatus === 'ready' || cachedScriptStatus === 'error') {
       // If the script is already cached, set its status immediately
       setStatus(cachedScriptStatus)
@@ -62,6 +89,9 @@ export function useScript(
       scriptNode = document.createElement('script')
       scriptNode.src = src
       scriptNode.async = true
+      if (options?.id) {
+        scriptNode.id = options.id
+      }
       scriptNode.setAttribute('data-status', 'loading')
       document.body.appendChild(scriptNode)
 
@@ -87,7 +117,7 @@ export function useScript(
     const setStateFromEvent = (event: Event) => {
       const newStatus = event.type === 'load' ? 'ready' : 'error'
       setStatus(newStatus)
-      cachedScriptStatuses[src] = newStatus
+      cachedScriptStatuses.set(src, newStatus)
     }
 
     // Add event listeners
@@ -103,9 +133,10 @@ export function useScript(
 
       if (scriptNode && options?.removeOnUnmount) {
         scriptNode.remove()
+        cachedScriptStatuses.delete(src)
       }
     }
-  }, [src, options?.shouldPreventLoad, options?.removeOnUnmount])
+  }, [src, options?.shouldPreventLoad, options?.removeOnUnmount, options?.id])
 
   return status
 }

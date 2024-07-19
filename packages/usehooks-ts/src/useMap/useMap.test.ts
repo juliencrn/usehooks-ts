@@ -1,6 +1,6 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom'
+import { act, renderHook } from '@testing-library/react'
 
-import { MapOrEntries, useMap } from './useMap'
+import { useMap } from './useMap'
 
 describe('useMap()', () => {
   it('should be ok when initiated with a map', () => {
@@ -11,8 +11,7 @@ describe('useMap()', () => {
   })
 
   it('should be ok when initiated with an array', () => {
-    const initialArray: MapOrEntries<number, string> = [[1, 'initial']]
-    const { result } = renderHook(() => useMap(initialArray))
+    const { result } = renderHook(() => useMap([[1, 'initial']]))
 
     expect(result.current[0].get(1)).toBe('initial')
   })
@@ -29,7 +28,9 @@ describe('useMap()', () => {
 
     expect(result.current[0].get(1)).toBeUndefined()
 
-    act(() => actions.set(1, 'added'))
+    act(() => {
+      actions.set(1, 'added')
+    })
 
     expect(result.current[0].get(1)).toBe('added')
   })
@@ -39,7 +40,9 @@ describe('useMap()', () => {
     const { result } = renderHook(() => useMap(initialMap))
     const [, actions] = result.current
 
-    act(() => actions.set(1, 'edited'))
+    act(() => {
+      actions.set(1, 'edited')
+    })
 
     expect(result.current[0].get(1)).toBe('edited')
   })
@@ -56,7 +59,9 @@ describe('useMap()', () => {
     expect(result.current[0].get(2)).toBe('example')
     expect(result.current[0].size).toBe(2)
 
-    act(() => actions.setAll([[1, 'edited']]))
+    act(() => {
+      actions.setAll([[1, 'edited']])
+    })
 
     expect(result.current[0].get(1)).toBe('edited')
     expect(result.current[0].size).toBe(1)
@@ -67,7 +72,9 @@ describe('useMap()', () => {
     const { result } = renderHook(() => useMap(initialMap))
     const [, actions] = result.current
 
-    act(() => actions.remove(1))
+    act(() => {
+      actions.remove(1)
+    })
 
     expect(result.current[0].get(1)).toBeUndefined()
   })
@@ -77,7 +84,9 @@ describe('useMap()', () => {
     const { result } = renderHook(() => useMap(initialMap))
     const [, actions] = result.current
 
-    act(() => actions.reset())
+    act(() => {
+      actions.reset()
+    })
 
     expect(result.current[0].get(1)).toBeUndefined()
     expect(result.current[0].size).toBe(0)
@@ -88,7 +97,9 @@ describe('useMap()', () => {
     const { result } = renderHook(() => useMap(initialMap))
     const [originalMapRef, actions] = result.current
 
-    act(() => actions.set(1, 1))
+    act(() => {
+      actions.set(1, 1)
+    })
 
     expect(originalMapRef).not.toStrictEqual(result.current[0])
     expect(originalMapRef.get(1)).toBeUndefined()
@@ -101,7 +112,9 @@ describe('useMap()', () => {
 
     expect(result.current[1]).toStrictEqual(originalActionsRef)
 
-    act(() => originalActionsRef.set(1, 1))
+    act(() => {
+      originalActionsRef.set(1, 1)
+    })
 
     expect(originalActionsRef).toStrictEqual(result.current[1])
   })

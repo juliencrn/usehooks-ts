@@ -1,94 +1,127 @@
-import { act, renderHook } from '@testing-library/react-hooks'
+import { act, renderHook } from '@testing-library/react'
 
+import { mockMatchMedia, mockStorage } from '../../tests/mocks'
 import { useDarkMode } from './useDarkMode'
 
-const mockMatchMedia = (matches: boolean): void => {
-  Object.defineProperty(window, 'matchMedia', {
-    writable: true,
-    value: jest.fn().mockImplementation(query => ({
-      matches,
-      media: query,
-      onchange: null,
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn(),
-    })),
-  })
-}
+mockStorage('localStorage')
 
 describe('useDarkMode()', () => {
-  afterEach(() => {
-    mockMatchMedia(false)
+  beforeEach(() => {
+    window.localStorage.clear()
   })
 
-  test('should initiate correctly', () => {
-    mockMatchMedia(true)
+  it('should initiate correctly', () => {
+    mockMatchMedia(false)
     const { result } = renderHook(() => useDarkMode())
     expect(typeof result.current.isDarkMode).toBe('boolean')
     expect(typeof result.current.disable).toBe('function')
     expect(typeof result.current.toggle).toBe('function')
     expect(typeof result.current.enable).toBe('function')
+    expect(typeof result.current.set).toBe('function')
+    expect(result.current.isDarkMode).toBe(false)
   })
 
-  test('should have a default value(1)', () => {
+  it('should have a default value', () => {
+    mockMatchMedia(true)
+    const { result } = renderHook(() => useDarkMode())
+    expect(result.current.isDarkMode).toBe(true)
+  })
+
+  it('should toggle dark mode', () => {
+    mockMatchMedia(true)
+    const { result } = renderHook(() => useDarkMode())
+    expect(result.current.isDarkMode).toBe(true)
+    act(() => {
+      result.current.toggle()
+    })
+    expect(result.current.isDarkMode).toBe(false)
+    act(() => {
+      result.current.toggle()
+    })
+    expect(result.current.isDarkMode).toBe(true)
+  })
+
+  it('should enable dark mode (1)', () => {
+    mockMatchMedia(true)
+    const { result } = renderHook(() => useDarkMode())
+    expect(result.current.isDarkMode).toBe(true)
+    act(() => {
+      result.current.enable()
+    })
+    expect(result.current.isDarkMode).toBe(true)
+  })
+
+  it('should enable dark mode (2)', () => {
     mockMatchMedia(false)
-    const { result } = renderHook(() => useDarkMode(false))
+    const { result } = renderHook(() => useDarkMode())
     expect(result.current.isDarkMode).toBe(false)
-  })
-
-  test('should have a default value(2)', () => {
-    mockMatchMedia(true)
-    const { result } = renderHook(() => useDarkMode(true))
-    expect(result.current.isDarkMode).toBe(true)
-  })
-
-  test('should toggle dark mode (1)', () => {
-    mockMatchMedia(true)
-
-    const { result } = renderHook(() => useDarkMode(true))
-    act(() => {
-      result.current.toggle()
-    })
-    expect(result.current.isDarkMode).toBe(false)
-  })
-
-  test('should toggle dark mode (2)', () => {
-    const { result } = renderHook(() => useDarkMode(false))
-    act(() => {
-      result.current.toggle()
-    })
-    expect(result.current.isDarkMode).toBe(true)
-  })
-
-  test('should enable dark mode (1)', () => {
-    const { result } = renderHook(() => useDarkMode(false))
     act(() => {
       result.current.enable()
     })
     expect(result.current.isDarkMode).toBe(true)
   })
 
-  test('should enable dark mode (2)', () => {
-    const { result } = renderHook(() => useDarkMode(true))
-    act(() => {
-      result.current.enable()
-    })
+  it('should disable dark mode (1)', () => {
+    mockMatchMedia(true)
+    const { result } = renderHook(() => useDarkMode())
     expect(result.current.isDarkMode).toBe(true)
-  })
-
-  test('should disable dark mode (1)', () => {
-    const { result } = renderHook(() => useDarkMode(true))
     act(() => {
       result.current.disable()
     })
     expect(result.current.isDarkMode).toBe(false)
   })
 
-  test('should disable dark mode (2)', () => {
-    const { result } = renderHook(() => useDarkMode(false))
+  it('should disable dark mode (2)', () => {
+    mockMatchMedia(false)
+    const { result } = renderHook(() => useDarkMode())
+    expect(result.current.isDarkMode).toBe(false)
     act(() => {
       result.current.disable()
     })
+    expect(result.current.isDarkMode).toBe(false)
+  })
+
+  it('should set dark mode', () => {
+    mockMatchMedia(true)
+    const { result } = renderHook(() => useDarkMode())
+    act(() => {
+      result.current.set(false)
+    })
+    expect(result.current.isDarkMode).toBe(false)
+    act(() => {
+      result.current.set(true)
+    })
+    expect(result.current.isDarkMode).toBe(true)
+  })
+
+  it('should accept a custom localStorage key', () => {
+    mockMatchMedia(false)
+    const { result } = renderHook(() =>
+      useDarkMode({ localStorageKey: 'custom-key' }),
+    )
+
+    expect(result.current.isDarkMode).toBe(false)
+
+    act(() => {
+      result.current.toggle()
+    })
+
+    expect(result.current.isDarkMode).toBe(true)
+    expect(window.localStorage.getItem('custom-key')).toBe(JSON.stringify(true))
+  })
+
+  it('should accept a custom default value', () => {
+    mockMatchMedia(true)
+    const { result } = renderHook(() =>
+      useDarkMode({ defaultValue: true, initializeWithValue: false }),
+    )
+
+    expect(result.current.isDarkMode).toBe(true)
+
+    act(() => {
+      result.current.toggle()
+    })
+
     expect(result.current.isDarkMode).toBe(false)
   })
 })

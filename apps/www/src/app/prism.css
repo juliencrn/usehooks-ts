@@ -1,0 +1,150 @@
+@tailwind base;
+
+@layer base {
+  :root {
+    --github-background: #ffffff;
+    --github-color: #24292e;
+    --github-comment: #6a737d;
+    --github-tag: #22863a;
+    --github-boolean: #005cc5;
+    --github-string: #032f62;
+    --github-function: #6f42c1;
+    --github-keyword: #d73a49;
+    --github-regex: #e36209;
+    --github-highlight-background: hsl(var(--muted));
+    --github-highlight-border: #fbbf24;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --github-background: #0d1117;
+      --github-color: #c9d1d9;
+      --github-comment: #8b949e;
+      --github-tag: #7ee787;
+      --github-boolean: #79c0ff;
+      --github-string: #a5d6ff;
+      --github-function: #d2a8ff;
+      --github-keyword: #ff7b72;
+      --github-regex: #ffa657;
+      --github-highlight-background: #27272a;
+      --github-highlight-border: #fbbf24;
+    }
+  }
+}
+
+pre[class*='language-'] {
+  background: var(--github-background);
+  color: var(--github-color);
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  padding: 8px 0px;
+}
+
+pre[class*='language-'] > code[class*='language-'] {
+  border: none;
+  padding: 0;
+  margin-left: 2.8rem;
+  min-width: calc(100% - 2.8rem);
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: var(--github-comment);
+}
+
+.token.punctuation {
+  color: var(--github-color);
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: var(--github-tag);
+}
+
+.token.boolean,
+.token.number {
+  color: var(--github-boolean);
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: var(--github-string);
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: var(--github-color);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: var(--github-function);
+}
+
+.token.keyword {
+  color: var(--github-keyword);
+}
+
+.token.regex,
+.token.important {
+  color: var(--github-regex);
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.code-highlight {
+  float: left;
+  min-width: 100%;
+}
+
+.code-line {
+  display: block;
+  border-left: 4px solid transparent;
+}
+
+.highlight-line {
+  background-color: var(--github-highlight-background);
+  border-left: 4px solid var(--github-highlight-border);
+  margin-left: -2.8rem;
+  padding-left: 2.8rem;
+}
+
+.line-number::before {
+  display: inline-block;
+  width: 2rem;
+  text-align: right;
+  color: var(--github-comment);
+  opacity: 0.25;
+  content: attr(line);
+  position: absolute;
+  left: -3rem;
+}
