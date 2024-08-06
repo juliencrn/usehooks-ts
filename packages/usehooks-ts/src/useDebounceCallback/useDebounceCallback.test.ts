@@ -107,4 +107,109 @@ describe('useDebounceCallback()', () => {
     // The callback should be invoked immediately after flushing
     expect(debouncedCallback).toHaveBeenCalled()
   })
+
+  it('should flush pending invocations on unmount if configured to do so', () => {
+    const delay = 500
+    const debouncedCallback = vitest.fn()
+    const { result, unmount } = renderHook(() =>
+      useDebounceCallback(debouncedCallback, delay, {
+        // This option is being tested.
+        flushOnUnmount: true,
+      }),
+    )
+
+    act(() => {
+      result.current('argument')
+    })
+
+    // The callback should not be invoked immediately
+    expect(debouncedCallback).not.toHaveBeenCalled()
+    expect(result.current.isPending()).toBeTruthy()
+
+    // Unmount component
+    act(() => {
+      unmount()
+    })
+
+    // The hook is configured to flush pending callbacks as soon as the component unmounts.
+    expect(debouncedCallback).toHaveBeenCalled()
+    expect(result.current.isPending()).toBeFalsy()
+  })
+
+  it('should cancel pending invocations on unmount if configured to to so', () => {
+    const delay = 100
+    const debouncedCallback = vitest.fn()
+    const { result, unmount } = renderHook(() =>
+      useDebounceCallback(debouncedCallback, delay, {
+        // This option is being tested.
+        flushOnUnmount: false,
+      }),
+    )
+
+    act(() => {
+      result.current('argument')
+    })
+
+    // The callback should not be invoked immediately
+    expect(debouncedCallback).not.toHaveBeenCalled()
+    expect(result.current.isPending()).toBeTruthy()
+
+    // Unmount component
+    act(() => {
+      unmount()
+    })
+
+    expect(debouncedCallback).not.toHaveBeenCalled()
+
+    // As the debounced functions should have been cancelled on unmount,
+    // it should not be pending anymore.
+    expect(result.current.isPending()).toBeFalsy()
+
+    // The timer advance should not change anything as the invocation should have already been cancelled due to unmounting.
+    vitest.advanceTimersByTime(200)
+
+    expect(debouncedCallback).not.toHaveBeenCalled()
+    expect(result.current.isPending()).toBeFalsy()
+  })
+
+  it('should update isPending on invocations', () => {
+    const delay = 100
+    const callback = vitest.fn()
+    const { result } = renderHook(() => useDebounceCallback(callback, delay))
+
+    act(() => {
+      result.current('test1')
+      result.current('test2')
+    })
+
+    expect(result.current.isPending()).toBeTruthy()
+
+    // Fast-forward time
+    vitest.advanceTimersByTime(200)
+
+    expect(result.current.isPending()).toBeFalsy()
+  })
+
+  it('should update isPending on invocations even if callback errors out', () => {
+    const delay = 100
+    const errorMessage =
+      'Mock implementation throws error for testing purposes.'
+    const callback = vitest.fn().mockImplementation(() => {
+      throw new Error(errorMessage)
+    })
+    const { result } = renderHook(() => useDebounceCallback(callback, delay))
+
+    act(() => {
+      result.current('test1')
+      result.current('test2')
+    })
+
+    expect(result.current.isPending()).toBeTruthy()
+
+    // Forwarding time will invoke the debounced mock function which throws an error.
+    expect(() => vitest.advanceTimersByTime(200)).toThrowError(errorMessage)
+
+    // Even though the mock implementation threw an error, isPending should still be updated to false.
+    expect(result.current.isPending()).toBeFalsy()
+  })
 })

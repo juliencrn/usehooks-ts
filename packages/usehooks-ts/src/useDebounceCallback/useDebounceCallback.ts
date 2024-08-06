@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { useMemo, useRef } from 'react'
 
 import debounce from 'lodash.debounce'
 
@@ -20,6 +20,12 @@ type DebounceOptions = {
    * The maximum time the specified function is allowed to be delayed before it is invoked.
    */
   maxWait?: number
+
+  /**
+   * If set to true, a pending invocation of the debounced function will be immediately invoked when the component unmounts.
+   * If not set or set to false, a pending invocation will be cancelled and therefore not invoked when the component unmounts.
+   */
+  flushOnUnmount?: boolean
 }
 
 /** Functions to manage a debounced callback. */
@@ -71,45 +77,59 @@ export type DebouncedState<T extends (...args: any) => ReturnType<T>> = ((
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function useDebounceCallback<T extends (...args: any) => ReturnType<T>>(
-  func: T,
-  delay = 500,
-  options?: DebounceOptions,
-): DebouncedState<T> {
-  const debouncedFunc = useRef<ReturnType<typeof debounce>>()
-
-  useUnmount(() => {
-    if (debouncedFunc.current) {
-      debouncedFunc.current.cancel()
-    }
-  })
+export function useDebounceCallback<
+  T extends (...args: Parameters<T>) => ReturnType<T>,
+>(func: T, delay = 500, options?: DebounceOptions): DebouncedState<T> {
+  const isPending = useRef(false)
 
   const debounced = useMemo(() => {
-    const debouncedFuncInstance = debounce(func, delay, options)
+    const debouncedFuncInstance = debounce(
+      (...args: Parameters<T>) => {
+        try {
+          return func(...args)
+        } finally {
+          // Whenever execution of the debounced function has finished, it's execution is not pending anymore,
+          // even in case of errors.
+          isPending.current = false
+        }
+      },
+      delay,
+      options,
+    )
 
     const wrappedFunc: DebouncedState<T> = (...args: Parameters<T>) => {
+      // This code will be executed whenever the client/caller invokes the debounced method,
+      // so now is the right time to set isPending to true.
+      isPending.current = true
       return debouncedFuncInstance(...args)
     }
 
     wrappedFunc.cancel = () => {
+      isPending.current = false
       debouncedFuncInstance.cancel()
     }
 
     wrappedFunc.isPending = () => {
-      return !!debouncedFunc.current
+      return isPending.current
     }
 
     wrappedFunc.flush = () => {
+      isPending.current = false
       return debouncedFuncInstance.flush()
     }
 
     return wrappedFunc
   }, [func, delay, options])
 
-  // Update the debounced function ref whenever func, wait, or options change
-  useEffect(() => {
-    debouncedFunc.current = debounce(func, delay, options)
-  }, [func, delay, options])
+  useUnmount(() => {
+    // Pending invocations should either be flushed (invoked immediately) or cancelled
+    // depending on the configuration.
+    if (options?.flushOnUnmount) {
+      debounced.flush()
+    } else {
+      debounced.cancel()
+    }
+  })
 
   return debounced
 }
