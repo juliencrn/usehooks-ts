@@ -81,13 +81,15 @@ export function useDebounceCallback<T extends (...args: any) => ReturnType<T>>(
 
   const parsedFunc = useCallback(
     (...args: Parameters<T>) => {
-      const result = func(...args)
-      isPendingRef.current = false
-      return result
+      try {
+        return func(...args)
+      } finally {
+        isPendingRef.current = false
+      }
     },
     [func]
   )
-  
+
   useUnmount(() => {
     if (debouncedFunc.current) {
       debouncedFunc.current.cancel()
