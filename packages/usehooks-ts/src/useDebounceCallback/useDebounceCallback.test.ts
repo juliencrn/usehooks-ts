@@ -148,4 +148,28 @@ describe('useDebounceCallback()', () => {
     // Even though the mock implementation threw an error, isPending should still be updated to false.
     expect(result.current.isPending()).toBeFalsy()
   })
+
+  it('should invoke debounced callback even after unmount', () => {
+    const delay = 100
+    const debouncedCallback = vitest.fn()
+    const { result, unmount } = renderHook(() =>
+      useDebounceCallback(debouncedCallback, delay),
+    )
+
+    act(() => {
+      result.current('argument')
+      unmount()
+    })
+
+    // We expect our invocation to still be pending even though the component has already been unmounted.
+    expect(result.current.isPending()).toBeTruthy()
+    expect(debouncedCallback).not.toHaveBeenCalled()
+
+    // Fast-forward time
+    vitest.advanceTimersByTime(200)
+
+    // Now, long after the component was unmounted, we expect the debounced callback to eventually been called.
+    expect(result.current.isPending()).toBe(false)
+    expect(debouncedCallback).toHaveBeenCalled()
+  })
 })
