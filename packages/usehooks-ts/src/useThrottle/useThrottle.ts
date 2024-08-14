@@ -19,7 +19,7 @@ import { useRef } from 'react'
 export function useThrottle(
   defaultInterval = 1000,
 ): (callback: () => void, interval?: number) => void {
-  const ref = useRef<NodeJS.Timeout>()
+  const ref = useRef<ReturnType<typeof setTimeout>>()
 
   const throttle = (callback: () => void, interval?: number) => {
     if (ref.current !== undefined) {
