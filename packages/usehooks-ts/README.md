@@ -77,6 +77,7 @@ function Component() {
 - [`useMediaQuery`](https://usehooks-ts.com/react-hook/use-media-query) — tracks the state of a media query using the [Match Media API](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia).
 - [`useOnClickOutside`](https://usehooks-ts.com/react-hook/use-on-click-outside) — handles clicks outside a specified element.
 - [`useReadLocalStorage`](https://usehooks-ts.com/react-hook/use-read-local-storage) — reads a value from [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), closely related to [useLocalStorage()](https://usehooks-ts.com/react-hook/use-local-storage).
+- [`useResettableState`](https://usehooks-ts.com/react-hook/use-resettable-state) — provides a state value, a function to update the state, and a function to reset the state to its initial value.
 - [`useResizeObserver`](https://usehooks-ts.com/react-hook/use-resize-observer) — observes the size of an element using the [ResizeObserver API](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver).
 - [`useScreen`](https://usehooks-ts.com/react-hook/use-screen) — tracks the [screen](https://developer.mozilla.org/en-US/docs/Web/API/Window/screen) dimensions and properties.
 - [`useScript`](https://usehooks-ts.com/react-hook/use-script) — dynamically loads scripts and tracking their loading status.
