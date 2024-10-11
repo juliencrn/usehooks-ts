@@ -2,4 +2,4 @@
 "usehooks-ts": patch
 ---
 
-fix(dark-mode): avoid localStorage overwrite by system dark mode status
+Fix `useDarkMode` to avoid localStorage being overwritten by system status
