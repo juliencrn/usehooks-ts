@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useState } from "react"
 
-import type { RefObject } from 'react'
+import type { Ref, RefObject } from "react"
 
-import { useEventListener } from '../useEventListener'
+import { useEventListener } from "../useEventListener"
 
 /**
  * Custom hook that tracks whether a DOM element is being hovered over.
@@ -18,20 +18,18 @@ import { useEventListener } from '../useEventListener'
  * // Access the isHovered variable to determine if the button is being hovered over.
  * ```
  */
-export function useHover<T extends HTMLElement = HTMLElement>(
-  elementRef: RefObject<T>,
-): boolean {
-  const [value, setValue] = useState<boolean>(false)
+export function useHover<T extends HTMLElement = HTMLElement>(elementRef: RefObject<T>): boolean {
+   const [value, setValue] = useState<boolean>(false)
 
-  const handleMouseEnter = () => {
-    setValue(true)
-  }
-  const handleMouseLeave = () => {
-    setValue(false)
-  }
+   const handleMouseEnter = () => {
+      setValue(true)
+   }
+   const handleMouseLeave = () => {
+      setValue(false)
+   }
 
-  useEventListener('mouseenter', handleMouseEnter, elementRef)
-  useEventListener('mouseleave', handleMouseLeave, elementRef)
+   useEventListener("mouseenter", handleMouseEnter, { ref: elementRef as RefObject<HTMLElement> })
+   useEventListener("mouseleave", handleMouseLeave, { ref: elementRef as RefObject<HTMLElement> })
 
-  return value
+   return value
 }
