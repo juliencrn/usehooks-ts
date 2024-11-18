@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react"
 type ElementToEventMap = {
    Window: [Window, WindowEventMap]
    HTMLElement: [HTMLElement, HTMLElementEventMap]
-   Document: [Document, DocumentEventMap]
+   Document: [Document, DocumentEventMap & DocumentEventMap]
    MediaQueryList: [MediaQueryList, MediaQueryListEventMap]
    RTCDataChannel: [RTCDataChannel, RTCDataChannelEventMap]
    RTCPeerConnection: [RTCPeerConnection, RTCPeerConnectionEventMap]
