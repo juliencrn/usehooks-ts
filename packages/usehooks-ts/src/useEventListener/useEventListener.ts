@@ -1,6 +1,6 @@
-import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect/useIsomorphicLayoutEffect"
-import type { RefObject } from "react"
 import { useEffect, useRef } from "react"
+import type { RefObject } from "react"
+import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect/useIsomorphicLayoutEffect"
 
 // use of CustomEventsMap at app global declaration
 /** Element as string to Matching EventMap */
