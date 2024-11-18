@@ -2,12 +2,17 @@ import { useEffect, useRef } from "react"
 import type { RefObject } from "react"
 import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect/useIsomorphicLayoutEffect"
 
-// use of CustomEventsMap at app global declaration
+// Recommended usage: move CustomEventMap to global declaration
+/** Extends EventMap declarations for all DOM Elements (intersection)*/
+interface CustomEventMap {
+   "your-custom-event": CustomEvent<{ isCustom: boolean }>
+}
+
 /** Element as string to Matching EventMap */
 type ElementToEventMap = {
    Window: [Window, WindowEventMap]
    HTMLElement: [HTMLElement, HTMLElementEventMap]
-   Document: [Document, DocumentEventMap & DocumentEventMap]
+   Document: [Document, DocumentEventMap]
    MediaQueryList: [MediaQueryList, MediaQueryListEventMap]
    RTCDataChannel: [RTCDataChannel, RTCDataChannelEventMap]
    RTCPeerConnection: [RTCPeerConnection, RTCPeerConnectionEventMap]
@@ -19,9 +24,9 @@ type ElementToEventMap = {
 type Fallback<M, T> = M extends undefined ? T : M
 
 /** Return `EventMap` type of matching element ref (from config argument)
- *  Intersected with `CustomEventsMap` (from global declaration) */
+ *  Intersected with `CustomEventMap` (from global declaration) */
 type EventMapOf<E> = {
-   [K in keyof ElementToEventMap]: E extends ElementToEventMap[K][0] ? ElementToEventMap[K][1] & CustomEventsMap : never
+   [K in keyof ElementToEventMap]: E extends ElementToEventMap[K][0] ? ElementToEventMap[K][1] & CustomEventMap : never
 }[keyof ElementToEventMap]
 
 /**
