@@ -24,6 +24,35 @@ type EventMapOf<E> = {
    [K in keyof ElementToEventMap]: E extends ElementToEventMap[K][0] ? ElementToEventMap[K][1] & CustomEventsMap : never
 }[keyof ElementToEventMap]
 
+/**
+ * Custom hook that attaches event listeners to DOM elements, the window, or media query lists.
+ * @template M - The type of custom Event Map (optional generic), overrides any other element to events mapping.
+ * @template E - The type of the DOM element (default is `Window`).
+ * @template K - The type of event name, Key of an EventMap (match for DOM element).
+ * @param {K} eventName - The name of the event to listen for.
+ * @param {(event: Fallback<M, EventMapOf<E>>[K]) => void} handler - The event handler function.
+ * @param {RefObject<T>} config.ref - A reference that specifies the DOM element to attach the event listener to.
+ * @param {boolean | AddEventListenerOptions} config.options - Event listener Options.
+ * @public
+ * @see [Documentation](https://usehooks-ts.com/react-hook/use-event-listener)
+ * @example
+ * ```tsx
+ * // Example 1: Attach a window event listener
+ * useEventListener('resize', handleResize);
+ * ```
+ * @example
+ * ```tsx
+ * // Example 2: Attach a document event listener with options
+ * const ref = useRef(document);
+ * useEventListener('click', handleClick, { ref, options: { capture: true } });
+ * ```
+ * @example
+ * ```tsx
+ * // Example 3: Attach an element event listener
+ * const ref = useRef<HTMLButtonElement>(null);
+ * useEventListener('click', handleButtonClick, { ref });
+ * ```
+ */
 function useEventListener<
    /** Custom Event Map (optional generic)*/
    M extends Record<string, unknown> | undefined = undefined,
