@@ -104,5 +104,3 @@ function useEventListener<
 }
 
 export { useEventListener }
-
-useEventListener("your-custom-event", (event) => {console.log(event.detail.isCustom)})
