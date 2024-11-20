@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react"
-import type { MutableRefObject, Ref, RefObject } from "react"
+import type { RefObject } from "react"
 import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect/useIsomorphicLayoutEffect"
 
 // Recommended usage: move CustomEventMap to global declaration
