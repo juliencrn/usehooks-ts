@@ -90,13 +90,13 @@ function useEventListener<
       if (!targetElement) return
 
       // Create event listener that calls handler function stored in ref
-      const eventListener: EventListener = (event) => savedHandler.current(event as Parameters<typeof handler>[0])
+      const listener: EventListener = (event) => savedHandler.current(event as Parameters<typeof handler>[0])
 
-      targetElement.addEventListener(eventName, eventListener, config.options)
+      targetElement.addEventListener(eventName, listener, config.options)
 
       // Remove event listener on cleanup
       return () => {
-         targetElement.removeEventListener(eventName, eventListener)
+         targetElement.removeEventListener(eventName, listener)
       }
    }, [eventName, config])
 }
