@@ -11,4 +11,4 @@
 To use this hook, simply copy the `useContextMenu` code into your project.
 
 ```typescript
-import { useContextMenu } from './useContextMenu';
+import { useContextMenu } from 'usehooks-ts';
