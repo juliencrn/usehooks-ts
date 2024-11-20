@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react"
-import type { RefObject } from "react"
+import type { MutableRefObject, Ref, RefObject } from "react"
 import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect/useIsomorphicLayoutEffect"
 
 // Recommended usage: move CustomEventMap to global declaration
@@ -33,6 +33,8 @@ type EventMapOf<E> = Fallback<
    HTMLElement
 >
 
+type validElements = ElementToEventMap[keyof ElementToEventMap][0]
+
 /**
  * Custom hook that attaches event listeners to DOM elements, the window, or media query lists.
  * @template M - The type of custom Event Map (optional generic), overrides any other element to events mapping.
@@ -40,7 +42,7 @@ type EventMapOf<E> = Fallback<
  * @template K - The type of event name, Key of an EventMap (match for DOM element).
  * @param {K} eventName - The name of the event to listen for.
  * @param {(event: Fallback<M, EventMapOf<E>>[K]) => void} handler - The event handler function.
- * @param {RefObject<T>} config.ref - A reference that specifies the DOM element to attach the event listener to.
+ * @param {RefObject<T>} config.element - A reference that specifies the DOM element to attach the event listener to.
  * @param {boolean | AddEventListenerOptions} config.options - Event listener Options.
  * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-event-listener)
@@ -73,8 +75,9 @@ function useEventListener<
    eventName: K & string,
    handler: (event: Fallback<M, EventMapOf<E>>[K]) => void,
    config: {
-      /** Litening Target (defaults to window) */
-      ref?: RefObject<E>
+      /** Litening Target (defaults to window) (supports, ref or plain Element) */
+      element?: RefObject<E> | E
+      /** eventListener Options */
       options?: boolean | AddEventListenerOptions
    } = {},
 ) {
@@ -86,7 +89,8 @@ function useEventListener<
 
    useEffect(() => {
       // Define the listening target
-      const targetElement: E | Window = config.ref?.current ?? window
+      const targetElement: E | Window = config.element ? ("current" in config.element ? (config.element.current ?? window) : config.element ) : window
+
       if (!targetElement) return
 
       // Create event listener that calls handler function stored in ref

@@ -74,7 +74,7 @@ describe('useEventListener()', () => {
     const options = undefined
 
     const { unmount } = renderHook(() => {
-      useEventListener(eventName, handler, {ref, options})
+      useEventListener(eventName, handler, {element: ref, options})
     })
 
     expect(refAddEventListenerSpy).toHaveBeenCalledTimes(1)
@@ -99,7 +99,7 @@ describe('useEventListener()', () => {
     const options = undefined
 
     const { unmount } = renderHook(() => {
-      useEventListener(eventName, listener, {ref: docRef, options})
+      useEventListener(eventName, listener, {element: docRef, options})
     })
 
     expect(docAddEventListenerSpy).toHaveBeenCalledTimes(1)
@@ -144,7 +144,7 @@ describe('useEventListener()', () => {
     const handler = vitest.fn()
 
     renderHook(() => {
-      useEventListener(eventName, handler, {ref})
+      useEventListener(eventName, handler, {element: ref})
     })
 
     fireEvent.click(ref.current)
@@ -157,10 +157,10 @@ describe('useEventListener()', () => {
     const keydownHandler = vitest.fn()
 
     renderHook(() => {
-      useEventListener('click', clickHandler, {ref})
+      useEventListener('click', clickHandler, {element: ref})
     })
     renderHook(() => {
-      useEventListener('keydown', keydownHandler, {ref})
+      useEventListener('keydown', keydownHandler, {element: ref})
     })
 
     fireEvent.click(ref.current)
