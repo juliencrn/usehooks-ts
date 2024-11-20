@@ -33,8 +33,6 @@ type EventMapOf<E> = Fallback<
    HTMLElement
 >
 
-type validElements = ElementToEventMap[keyof ElementToEventMap][0]
-
 /**
  * Custom hook that attaches event listeners to DOM elements, the window, or media query lists.
  * @template M - The type of custom Event Map (optional generic), overrides any other element to events mapping.
@@ -54,14 +52,14 @@ type validElements = ElementToEventMap[keyof ElementToEventMap][0]
  * @example
  * ```tsx
  * // Example 2: Attach a document event listener with options
- * const ref = useRef(document);
- * useEventListener('click', handleClick, { ref, options: { capture: true } });
+ * const element = useRef(document);
+ * useEventListener('click', handleClick, { element, options: { capture: true } });
  * ```
  * @example
  * ```tsx
  * // Example 3: Attach an element event listener
- * const ref = useRef<HTMLButtonElement>(null);
- * useEventListener('click', handleButtonClick, { ref });
+ * const element = useRef<HTMLButtonElement>(null);
+ * useEventListener('click', handleButtonClick, { element });
  * ```
  */
 function useEventListener<
@@ -106,3 +104,5 @@ function useEventListener<
 }
 
 export { useEventListener }
+
+useEventListener("your-custom-event", (event) => {console.log(event.detail.isCustom)})

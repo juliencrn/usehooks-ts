@@ -28,8 +28,8 @@ export function useHover<T extends HTMLElement = HTMLElement>(elementRef: RefObj
       setValue(false)
    }
 
-   useEventListener("mouseenter", handleMouseEnter, { ref: elementRef as RefObject<HTMLElement> })
-   useEventListener("mouseleave", handleMouseLeave, { ref: elementRef as RefObject<HTMLElement> })
+   useEventListener("mouseenter", handleMouseEnter, { element: elementRef as RefObject<HTMLElement> })
+   useEventListener("mouseleave", handleMouseLeave, { element: elementRef as RefObject<HTMLElement> })
 
    return value
 }
