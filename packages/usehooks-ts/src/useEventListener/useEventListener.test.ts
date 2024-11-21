@@ -65,6 +65,7 @@ describe('useEventListener()', () => {
     expect(windowRemoveEventListenerSpy).toHaveBeenCalledWith(
       eventName,
       expect.any(Function),
+      options,
     )
   })
 
@@ -90,16 +91,17 @@ describe('useEventListener()', () => {
     expect(refRemoveEventListenerSpy).toHaveBeenCalledWith(
       eventName,
       expect.any(Function),
+      options,
     )
   })
 
   it('should bind/unbind the event listener to the document when document is provided', () => {
     const eventName = 'test-event'
-    const listener = vitest.fn()
+    const handler = vitest.fn()
     const options = undefined
 
     const { unmount } = renderHook(() => {
-      useEventListener(eventName, listener, { element: docRef, options })
+      useEventListener(eventName, handler, { element: docRef, options })
     })
 
     expect(docAddEventListenerSpy).toHaveBeenCalledTimes(1)
@@ -115,6 +117,7 @@ describe('useEventListener()', () => {
     expect(docRemoveEventListenerSpy).toHaveBeenCalledWith(
       eventName,
       expect.any(Function),
+      options,
     )
   })
 

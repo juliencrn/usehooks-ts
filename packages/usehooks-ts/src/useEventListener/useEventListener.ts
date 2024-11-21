@@ -92,11 +92,7 @@ function useEventListener<
 
   useEffect(() => {
     // Define the listening target
-    const targetElement: E | Window = config.element
-      ? 'current' in config.element
-        ? config.element.current ?? window
-        : config.element
-      : window
+    const targetElement: E | Window = config.element ? 'current' in config.element ? config.element.current ?? window : config.element : window
 
     if (!targetElement) return
 
