@@ -5,47 +5,24 @@ import { useEventListener } from './useEventListener'
 export default function Component() {
   // Define button ref
   const buttonRef = useRef<HTMLButtonElement>(null)
-  const documentRef = useRef<Document>(document)
+  const documentRef = useRef(document)
   const speechSynthesis = new SpeechSynthesis()
-  const speechSynthesisRef = useRef<SpeechSynthesis>(speechSynthesis)
-
-  const onScroll = (event: Event) => {
-    console.log('window scrolled!', event)
-  }
-
-  const onClick = (event: Event) => {
-    console.log('button clicked!', event)
-  }
-
-  const onEventTarget = (event: Event) => {
-    console.log('speechSynthesis!', event)
-  }
-
-  const onVisibilityChange = (event: Event) => {
-    console.log('doc visibility changed!', {
-      isVisible: !document.hidden,
-      event,
-    })
-  }
+  const speechSynthesisRef = useRef(speechSynthesis)
 
   // example with window based event
-  useEventListener('scroll', onScroll)
+  useEventListener('scroll', ev => console.log('scrolled!', ev))
 
   // example with document based event
-  useEventListener('visibilitychange', onVisibilityChange, {
-    element: documentRef,
-  })
+  useEventListener('visibilitychange', ev => console.log('visibility!', ev), {element: documentRef })
 
   // example with element based event
-  useEventListener('click', onClick, { element: buttonRef })
+  useEventListener('click', ev => console.log('clicked!', ev.pageX), { element: buttonRef })
 
   // example with EventTarget element based event
-  useEventListener('voiceschanged', onEventTarget, {
-    element: speechSynthesisRef,
-  })
+  useEventListener('voiceschanged', ev => console.log('speech!', ev), { element: speechSynthesisRef })
 
   // Example without ref
-  useEventListener('voiceschanged', onEventTarget, { element: speechSynthesis })
+  useEventListener('voiceschanged', ev => console.log('speech!', ev), { element: speechSynthesis })
 
   return (
     <div style={{ minHeight: '200vh' }}>

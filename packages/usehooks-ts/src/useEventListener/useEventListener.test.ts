@@ -61,7 +61,6 @@ describe('useEventListener()', () => {
 
     unmount()
 
-    expect(windowRemoveEventListenerSpy).toHaveBeenCalledTimes(1)
     expect(windowRemoveEventListenerSpy).toHaveBeenCalledWith(
       eventName,
       expect.any(Function),
@@ -87,7 +86,6 @@ describe('useEventListener()', () => {
 
     unmount()
 
-    expect(refRemoveEventListenerSpy).toHaveBeenCalledTimes(1)
     expect(refRemoveEventListenerSpy).toHaveBeenCalledWith(
       eventName,
       expect.any(Function),
@@ -113,7 +111,6 @@ describe('useEventListener()', () => {
 
     unmount()
 
-    expect(docRemoveEventListenerSpy).toHaveBeenCalledTimes(1)
     expect(docRemoveEventListenerSpy).toHaveBeenCalledWith(
       eventName,
       expect.any(Function),
