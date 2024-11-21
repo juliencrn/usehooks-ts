@@ -94,7 +94,7 @@ function useEventListener<
     // Define the listening target
     const targetElement: E | Window = config.element ? 'current' in config.element ? config.element.current ?? window : config.element : window
 
-    if (!targetElement) return
+    if (!(targetElement && targetElement.addEventListener)) return
 
     // Create event listener that calls handler function stored in ref
     const listener: EventListener = event =>
