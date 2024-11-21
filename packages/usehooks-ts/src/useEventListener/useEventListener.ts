@@ -1,23 +1,26 @@
-import { useEffect, useRef } from "react"
-import type { RefObject } from "react"
-import { useIsomorphicLayoutEffect } from "../useIsomorphicLayoutEffect/useIsomorphicLayoutEffect"
+import { useEffect, useRef } from 'react'
+import type { RefObject } from 'react'
+import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect/useIsomorphicLayoutEffect'
 
 // Recommended usage: move CustomEventMap to global declaration
 /** Extends EventMap declarations for all DOM Elements (intersection)*/
 interface CustomEventMap {
-   "your-custom-event": CustomEvent<{ isCustom: boolean }>
+  'your-custom-event': CustomEvent<{ isCustom: boolean }>
 }
 
 /** Element as string to Matching EventMap */
 type ElementToEventMap = {
-   Window: [Window, WindowEventMap]
-   HTMLElement: [HTMLElement, HTMLElementEventMap]
-   Document: [Document, DocumentEventMap]
-   MediaQueryList: [MediaQueryList, MediaQueryListEventMap]
-   RTCDataChannel: [RTCDataChannel, RTCDataChannelEventMap]
-   RTCPeerConnection: [RTCPeerConnection, RTCPeerConnectionEventMap]
-   SpeechSynthesis: [SpeechSynthesis, SpeechSynthesisEventMap]
-   SpeechSynthesisUtterance: [SpeechSynthesisUtterance, SpeechSynthesisUtteranceEventMap]
+  Window: [Window, WindowEventMap]
+  HTMLElement: [HTMLElement, HTMLElementEventMap]
+  Document: [Document, DocumentEventMap]
+  MediaQueryList: [MediaQueryList, MediaQueryListEventMap]
+  RTCDataChannel: [RTCDataChannel, RTCDataChannelEventMap]
+  RTCPeerConnection: [RTCPeerConnection, RTCPeerConnectionEventMap]
+  SpeechSynthesis: [SpeechSynthesis, SpeechSynthesisEventMap]
+  SpeechSynthesisUtterance: [
+    SpeechSynthesisUtterance,
+    SpeechSynthesisUtteranceEventMap,
+  ]
 }
 
 /** Return `T` if `M` undefined or never */
@@ -27,10 +30,12 @@ type Fallback<M, T> = [M] extends [undefined | never] ? T : M
  *  Intersected with `CustomEventMap` (from global declaration)
  *  Fallback to HTMLElement (if generic never or undefined) */
 type EventMapOf<E> = Fallback<
-   {
-      [K in keyof ElementToEventMap]: E extends ElementToEventMap[K][0] ? ElementToEventMap[K][1] & CustomEventMap : never
-   }[keyof ElementToEventMap],
-   HTMLElement
+  {
+    [K in keyof ElementToEventMap]: E extends ElementToEventMap[K][0]
+      ? ElementToEventMap[K][1] & CustomEventMap
+      : never
+  }[keyof ElementToEventMap],
+  HTMLElement
 >
 
 /**
@@ -63,44 +68,49 @@ type EventMapOf<E> = Fallback<
  * ```
  */
 function useEventListener<
-   /** Custom Event Map (optional generic)*/
-   M extends Record<string, unknown> | undefined = undefined,
-   /** Element Type of Optional refObject (defaults to Window) */
-   E extends ElementToEventMap[keyof ElementToEventMap][0] = Window,
-   /** eventName Key of type custom EventMap if present */
-   K extends keyof Fallback<M, EventMapOf<E>> = keyof Fallback<M, EventMapOf<E>>,
+  /** Custom Event Map (optional generic)*/
+  M extends Record<string, unknown> | undefined = undefined,
+  /** Element Type of Optional refObject (defaults to Window) */
+  E extends ElementToEventMap[keyof ElementToEventMap][0] = Window,
+  /** eventName Key of type custom EventMap if present */
+  K extends keyof Fallback<M, EventMapOf<E>> = keyof Fallback<M, EventMapOf<E>>,
 >(
-   eventName: K & string,
-   handler: (event: Fallback<M, EventMapOf<E>>[K]) => void,
-   config: {
-      /** Litening Target (defaults to window) (supports, ref or plain Element) */
-      element?: RefObject<E> | E
-      /** eventListener Options */
-      options?: boolean | AddEventListenerOptions
-   } = {},
+  eventName: K & string,
+  handler: (event: Fallback<M, EventMapOf<E>>[K]) => void,
+  config: {
+    /** Litening Target (defaults to window) (supports, ref or plain Element) */
+    element?: RefObject<E> | E
+    /** eventListener Options */
+    options?: boolean | AddEventListenerOptions
+  } = {},
 ) {
-   // Create a ref that stores handler
-   const savedHandler = useRef(handler)
-   useIsomorphicLayoutEffect(() => {
-      savedHandler.current = handler
-   }, [handler])
+  // Create a ref that stores handler
+  const savedHandler = useRef(handler)
+  useIsomorphicLayoutEffect(() => {
+    savedHandler.current = handler
+  }, [handler])
 
-   useEffect(() => {
-      // Define the listening target
-      const targetElement: E | Window = config.element ? ("current" in config.element ? (config.element.current ?? window) : config.element ) : window
+  useEffect(() => {
+    // Define the listening target
+    const targetElement: E | Window = config.element
+      ? 'current' in config.element
+        ? config.element.current ?? window
+        : config.element
+      : window
 
-      if (!targetElement) return
+    if (!targetElement) return
 
-      // Create event listener that calls handler function stored in ref
-      const listener: EventListener = (event) => savedHandler.current(event as Parameters<typeof handler>[0])
+    // Create event listener that calls handler function stored in ref
+    const listener: EventListener = event =>
+      savedHandler.current(event as Parameters<typeof handler>[0])
 
-      targetElement.addEventListener(eventName, listener, config.options)
+    targetElement.addEventListener(eventName, listener, config.options)
 
-      // Remove event listener on cleanup
-      return () => {
-         targetElement.removeEventListener(eventName, listener)
-      }
-   }, [eventName, config])
+    // Remove event listener on cleanup
+    return () => {
+      targetElement.removeEventListener(eventName, listener, config.options)
+    }
+  }, [eventName, config])
 }
 
 export { useEventListener }

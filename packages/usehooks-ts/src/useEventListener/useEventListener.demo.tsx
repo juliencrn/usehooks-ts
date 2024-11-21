@@ -32,16 +32,20 @@ export default function Component() {
   useEventListener('scroll', onScroll)
 
   // example with document based event
-  useEventListener('visibilitychange', onVisibilityChange, {element: documentRef})
+  useEventListener('visibilitychange', onVisibilityChange, {
+    element: documentRef,
+  })
 
   // example with element based event
-  useEventListener('click', onClick, {element: buttonRef})
+  useEventListener('click', onClick, { element: buttonRef })
 
   // example with EventTarget element based event
-  useEventListener('voiceschanged', onEventTarget, {element: speechSynthesisRef})
+  useEventListener('voiceschanged', onEventTarget, {
+    element: speechSynthesisRef,
+  })
 
   // Example without ref
-  useEventListener('voiceschanged', onEventTarget, {element: speechSynthesis})
+  useEventListener('voiceschanged', onEventTarget, { element: speechSynthesis })
 
   return (
     <div style={{ minHeight: '200vh' }}>
