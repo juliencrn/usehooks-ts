@@ -45,8 +45,8 @@ useEventListener<OrderEventMap>('order', ({ orderId }) => {
 ```ts
 // global.d.ts
 declare global {
-  /** Intersects EventMap declarations for DOM Document Element (default DOM target for hook listener) */
-  interface DocumentEventMap {
+  /** Intersects EventMap declarations for DOM Window Element (default DOM target for hook listener) */
+  interface WindowEventMap {
     'my-custom-event': CustomEvent<{ exampleArg: string }>
   }
 }
