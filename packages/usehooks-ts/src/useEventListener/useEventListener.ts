@@ -86,6 +86,7 @@ function useEventListener<
 ) {
   // Create a ref that stores handler
   const savedHandler = useRef(handler)
+
   useIsomorphicLayoutEffect(() => {
     savedHandler.current = handler
   }, [handler])
