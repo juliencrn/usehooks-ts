@@ -17,10 +17,7 @@ type ElementToEventMap = {
   RTCDataChannel: [RTCDataChannel, RTCDataChannelEventMap]
   RTCPeerConnection: [RTCPeerConnection, RTCPeerConnectionEventMap]
   SpeechSynthesis: [SpeechSynthesis, SpeechSynthesisEventMap]
-  SpeechSynthesisUtterance: [
-    SpeechSynthesisUtterance,
-    SpeechSynthesisUtteranceEventMap,
-  ]
+  SpeechSynthesisUtterance: [SpeechSynthesisUtterance, SpeechSynthesisUtteranceEventMap,]
 }
 
 /** Return `T` if `M` undefined or never */
@@ -28,15 +25,10 @@ type Fallback<M, T> = [M] extends [undefined | never] ? T : M
 
 /** Return `EventMap` type of matching element ref (from config argument)
  *  Intersected with `CustomEventMap` (from global declaration)
- *  Fallback to HTMLElement (if generic never or undefined) */
-type EventMapOf<E> = Fallback<
-  {
-    [K in keyof ElementToEventMap]: E extends ElementToEventMap[K][0]
-      ? ElementToEventMap[K][1] & CustomEventMap
-      : never
-  }[keyof ElementToEventMap],
-  HTMLElement
->
+ *  If Element not in map default Fallback to HTMLElement */
+type EventMapOf<E> = Fallback<{
+  [K in keyof ElementToEventMap]: E extends ElementToEventMap[K][0] ? ElementToEventMap[K][1] & CustomEventMap : never
+  }[keyof ElementToEventMap], HTMLElement>
 
 /**
  * Custom hook that attaches event listeners to DOM elements, the window, or media query lists.
