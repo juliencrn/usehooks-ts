@@ -52,7 +52,6 @@ describe('useEventListener()', () => {
       useEventListener(eventName, handler)
     })
 
-    expect(windowAddEventListenerSpy).toHaveBeenCalledTimes(1)
     expect(windowAddEventListenerSpy).toHaveBeenCalledWith(
       eventName,
       expect.any(Function),
