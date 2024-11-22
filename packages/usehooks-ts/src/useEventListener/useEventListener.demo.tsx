@@ -25,7 +25,7 @@ export default function Component() {
   // example with window based event
   useEventListener('scroll', onScroll)
 
-  // example with document based event (element prop supports ref or Element)
+  // example with document based event
   useEventListener('visibilitychange', onVisibilityChange, {element: document })
 
   // example with element based event
