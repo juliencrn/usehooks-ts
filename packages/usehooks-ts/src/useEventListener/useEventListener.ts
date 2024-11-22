@@ -19,11 +19,14 @@ type ElementToEventMap = {
   RTCDataChannel: [RTCDataChannel, RTCDataChannelEventMap]
   RTCPeerConnection: [RTCPeerConnection, RTCPeerConnectionEventMap]
   SpeechSynthesis: [SpeechSynthesis, SpeechSynthesisEventMap]
-  SpeechSynthesisUtterance: [SpeechSynthesisUtterance, SpeechSynthesisUtteranceEventMap,]
+  SpeechSynthesisUtterance: [SpeechSynthesisUtterance, SpeechSynthesisUtteranceEventMap]
 }
 
+/** If A exists Return B else C  */
+type ifGen<A, B, C> = [A] extends [undefined | never] ? C : B;
+
 /** Return `T` if `M` undefined or never */
-type Fallback<M, T> = [M] extends [undefined | never] ? T : M
+type Fallback<M, T> = ifGen<M, M, T>
 
 /** Return `EventMap` type of matching element ref (from config argument)
  *  Intersected with `CustomEventMap` (from global declaration)
@@ -63,9 +66,10 @@ type EventMapOf<E> = Fallback<{
  */
 function useEventListener<
   /** Custom Event Map (optional generic)*/
-  M extends Record<string, unknown> | undefined = undefined,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  M extends Record<string, any> | undefined = undefined,
   /** Element Type of Optional refObject (defaults to Window) */
-  E extends ElementToEventMap[keyof ElementToEventMap][0] = Window,
+  E extends ifGen<M, any, ElementToEventMap[keyof ElementToEventMap][0]> = ifGen<M, any, Window>,
   /** eventName Key of type custom EventMap if present */
   K extends keyof Fallback<M, EventMapOf<E>> = keyof Fallback<M, EventMapOf<E>>,
 >(
