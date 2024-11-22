@@ -19,6 +19,11 @@ declare global {
   interface DocumentEventMap {
     'test-event': CustomEvent
   }
+
+  /** Since TestTarget not at ElementsToEventMap, we need to use an EventMap generic override */
+  interface TestTargetEventMap {
+    'boundary': SpeechSynthesisEvent
+  }
 }
 
 const windowAddEventListenerSpy = vitest.spyOn(window, 'addEventListener')
@@ -35,6 +40,14 @@ const docRef = { current: window.document }
 const docAddEventListenerSpy = vitest.spyOn(docRef.current, 'addEventListener')
 const docRemoveEventListenerSpy = vitest.spyOn(
   docRef.current,
+  'removeEventListener',
+)
+
+class TestTarget extends EventTarget {}
+const testTarget = new TestTarget()
+const targetAddEventListenerSpy = vitest.spyOn(testTarget, 'addEventListener')
+const targetRemoveEventListenerSpy = vitest.spyOn(
+  testTarget,
   'removeEventListener',
 )
 
@@ -86,6 +99,31 @@ describe('useEventListener()', () => {
     unmount()
 
     expect(refRemoveEventListenerSpy).toHaveBeenCalledWith(
+      eventName,
+      expect.any(Function),
+      options,
+    )
+  })
+
+  it('should bind/unbind the event listener to the EventTarget when EventTarget is provided', () => {
+    const eventName = 'boundary'
+    const handler = vitest.fn()
+    const options = undefined
+
+    const { unmount } = renderHook(() => {
+      useEventListener<TestTargetEventMap>("boundary", handler, { element: testTarget, options })
+    })
+
+    expect(targetAddEventListenerSpy).toHaveBeenCalledTimes(1)
+    expect(targetAddEventListenerSpy).toHaveBeenCalledWith(
+      eventName,
+      expect.any(Function),
+      options,
+    )
+
+    unmount()
+
+    expect(targetRemoveEventListenerSpy).toHaveBeenCalledWith(
       eventName,
       expect.any(Function),
       options,
