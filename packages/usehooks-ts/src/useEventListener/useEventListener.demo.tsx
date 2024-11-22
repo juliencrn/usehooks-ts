@@ -25,14 +25,14 @@ export default function Component() {
   // example with window based event
   useEventListener('scroll', onScroll)
 
+  // example with EventTarget element based event
+  useEventListener('voiceschanged', ev => console.log('speech!', ev), { element: speechSynthesisRef })
+
   // example with document based event
   useEventListener('visibilitychange', onVisibilityChange, {element: document })
 
   // example with element based event
   useEventListener('click', onClick, { element: buttonRef })
-
-  // example with EventTarget element based event
-  useEventListener('voiceschanged', ev => console.log('speech!', ev), { element: speechSynthesisRef })
 
   return (
     <div style={{ minHeight: '200vh' }}>
