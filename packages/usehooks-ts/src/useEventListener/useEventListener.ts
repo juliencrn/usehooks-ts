@@ -15,13 +15,31 @@ type ElementToEventMap = {
   Window: [Window, WindowEventMap]
   HTMLElement: [HTMLElement, HTMLElementEventMap]
   Document: [Document, DocumentEventMap]
+  //
+  // EventTargets
+  TextTrack: [TextTrack, TextTrackEventMap]
+  BaseAudioContext: [BaseAudioContext, BaseAudioContextEventMap]
+  BroadcastChannel: [BroadcastChannel, BroadcastChannelEventMap]
+  FileReader: [FileReader, FileReaderEventMap]
+  HTMLMediaElement: [HTMLMediaElement, HTMLMediaElementEventMap]
   MediaQueryList: [MediaQueryList, MediaQueryListEventMap]
+  Notification: [Notification, NotificationEventMap]
+  //
+  // ... add more elements here
+  //
   RTCDataChannel: [RTCDataChannel, RTCDataChannelEventMap]
   RTCPeerConnection: [RTCPeerConnection, RTCPeerConnectionEventMap]
   SpeechSynthesis: [SpeechSynthesis, SpeechSynthesisEventMap]
   SpeechSynthesisUtterance: [SpeechSynthesisUtterance, SpeechSynthesisUtteranceEventMap]
+  WebSocket: [WebSocket, WebSocketEventMap]
+  XMLHttpRequest: [XMLHttpRequest, XMLHttpRequestEventMap]
+  //
+  // Audio Nodes
+  AudioScheduledSourceNode: [AudioScheduledSourceNode, AudioScheduledSourceNodeEventMap]
+  AudioWorkletNode: [AudioWorkletNode, AudioWorkletNodeEventMap]
+  //
+  // ... add more elements here
 }
-
 /** If A exists Return B else C  */
 type ifGen<A, B, C> = [A] extends [undefined | never] ? C : B;
 
