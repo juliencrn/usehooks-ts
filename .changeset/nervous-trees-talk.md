@@ -4,4 +4,4 @@
 "www": patch
 ---
 
-Add React 19 support (#602 by @CHE1RON)
+Add React 19 support
