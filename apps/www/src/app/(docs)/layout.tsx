@@ -19,7 +19,7 @@ export default async function DocsLayout({ children }: DocsLayoutProps) {
     <>
       <header className="sticky top-0 z-40 w-full border-b bg-background">
         <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-          <MainNav items={docsConfig.mainNav}>
+          <MainNav>
             <LeftSidebar items={docsConfig.sidebarNav} hooks={hooks} />
           </MainNav>
           <div className="flex flex-1 items-center space-x-4 sm:justify-end">
