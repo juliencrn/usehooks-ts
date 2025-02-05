@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.1.1
+
+### Patch Changes
+
+- b1dffb9: feat: Update peerDependencies to include React 19 @michal-worwag
+
 ## 3.1.0
 
 ### Minor Changes
