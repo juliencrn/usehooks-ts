@@ -1,7 +1,7 @@
 import { PageHeader } from '@/components/docs/page-header'
 import { components } from '@/components/ui/components'
 
-export default async function MigrateToV3Page() {
+export default async function MigrateToV4Page() {
   return (
     <main className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
