@@ -16,8 +16,8 @@ export const docsConfig: DocsConfig = {
           href: '/introduction',
         },
         {
-          title: 'Migrate to v3',
-          href: '/migrate-to-v3',
+          title: 'Migrate to v4',
+          href: '/migrate-to-v4',
         },
       ],
     },
