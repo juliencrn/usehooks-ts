@@ -109,7 +109,7 @@ describe('useScrollLock()', () => {
     const scrollbarWidth = window.innerWidth - document.body.scrollWidth
 
     expect(document.body.style.paddingRight).toBe(
-      `${scrollbarWidth.toFixed()}px`,
+      `${scrollbarWidth.toString()}px`,
     )
     unmount()
     expect(document.body.style.paddingRight).toBe('')
