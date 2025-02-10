@@ -11,6 +11,8 @@ type UseScriptOptions = {
   removeOnUnmount?: boolean
   /** Script's `id` (optional). */
   id?: string
+  /** Script's additional `attributes` (optional). I.e integrity, crossorigin. */
+  attributes?: Record<string, string>
 }
 
 // Cached script statuses
@@ -93,6 +95,12 @@ export function useScript(
         scriptNode.id = options.id
       }
       scriptNode.setAttribute('data-status', 'loading')
+      if (options?.attributes) {
+        for (const key in options.attributes) {
+          const value = options.attributes[key]
+          scriptNode.setAttribute(key, value)
+        }
+      }
       document.body.appendChild(scriptNode)
 
       // Store status in attribute on script
