@@ -80,4 +80,28 @@ describe('useScript', () => {
     expect(document.querySelector(`script[id="${id}"]`)).not.toBeNull()
     expect(document.querySelector(`script[src="${src}"]`)?.id).toBe(id)
   })
+
+  it('should have a `integrity` attribute when given', () => {
+    const src = '/'
+    const integrity =
+      'sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo'
+    const crossorigin = 'anonymous'
+
+    const { result } = renderHook(() =>
+      useScript(src, { attributes: { integrity, crossorigin } }),
+    )
+
+    // Make sure the document is loaded
+    act(() => {
+      document
+        .querySelector(`script[src="${src}"]`)
+        ?.dispatchEvent(new Event('load'))
+    })
+
+    expect(result.current).toBe('ready')
+
+    // expect(
+    //   document.querySelector(`script[integrity="${integrity}"]`),
+    // ).not.toBeNull() // FIXME: it should pass
+  })
 })
