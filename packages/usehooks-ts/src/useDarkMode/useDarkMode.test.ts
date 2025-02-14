@@ -124,4 +124,20 @@ describe('useDarkMode()', () => {
 
     expect(result.current.isDarkMode).toBe(false)
   })
+
+  it('should prioritize localStorage value over OS dark mode on page load', () => {
+    window.localStorage.setItem('custom-key', JSON.stringify(false))
+
+    mockMatchMedia(true)
+    const { result } = renderHook(() =>
+      useDarkMode({ localStorageKey: 'custom-key', initializeWithValue: true }),
+    )
+    expect(result.current.isDarkMode).toBe(false)
+
+    act(() => {
+      result.current.toggle()
+    })
+    expect(result.current.isDarkMode).toBe(true)
+    expect(window.localStorage.getItem('custom-key')).toBe(JSON.stringify(true))
+  })
 })
