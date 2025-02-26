@@ -31,7 +31,7 @@ function useEventListener<
   handler:
     | ((event: HTMLElementEventMap[K]) => void)
     | ((event: SVGElementEventMap[K]) => void),
-  element: RefObject<T>,
+  element: RefObject<T | null | undefined>,
   options?: boolean | AddEventListenerOptions,
 ): void
 
@@ -51,7 +51,7 @@ function useEventListener<K extends keyof DocumentEventMap>(
  * @template T - The type of the DOM element (default is `HTMLElement`).
  * @param {KW | KH | KM} eventName - The name of the event to listen for.
  * @param {(event: WindowEventMap[KW] | HTMLElementEventMap[KH] | SVGElementEventMap[KH] | MediaQueryListEventMap[KM] | Event) => void} handler - The event handler function.
- * @param {RefObject<T>} [element] - The DOM element or media query list to attach the event listener to (optional).
+ * @param {RefObject<T | null | undefined>} [element] - The DOM element or media query list to attach the event listener to (optional).
  * @param {boolean | AddEventListenerOptions} [options] - An options object that specifies characteristics about the event listener (optional).
  * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-event-listener)
@@ -88,7 +88,7 @@ function useEventListener<
       | MediaQueryListEventMap[KM]
       | Event,
   ) => void,
-  element?: RefObject<T>,
+  element?: RefObject<T | null | undefined>,
   options?: boolean | AddEventListenerOptions,
 ) {
   // Create a ref that stores handler

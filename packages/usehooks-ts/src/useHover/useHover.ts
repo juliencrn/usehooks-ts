@@ -7,7 +7,7 @@ import { useEventListener } from '../useEventListener'
 /**
  * Custom hook that tracks whether a DOM element is being hovered over.
  * @template T - The type of the DOM element. Defaults to `HTMLElement`.
- * @param {RefObject<T>} elementRef - The ref object for the DOM element to track.
+ * @param {RefObject<T | null | undefined>} elementRef - The ref object for the DOM element to track.
  * @returns {boolean} A boolean value indicating whether the element is being hovered over.
  * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-hover)
@@ -19,7 +19,7 @@ import { useEventListener } from '../useEventListener'
  * ```
  */
 export function useHover<T extends HTMLElement = HTMLElement>(
-  elementRef: RefObject<T>,
+  elementRef: RefObject<T | null | undefined>,
 ): boolean {
   const [value, setValue] = useState<boolean>(false)
 
