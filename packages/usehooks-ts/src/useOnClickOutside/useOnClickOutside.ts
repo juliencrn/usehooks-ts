@@ -14,7 +14,7 @@ type EventType =
 /**
  * Custom hook that handles clicks outside a specified element.
  * @template T - The type of the element's reference.
- * @param {RefObject<T> | RefObject<T>[]} ref - The React ref object(s) representing the element(s) to watch for outside clicks.
+ * @param {RefObject<T | null | undefined> | RefObject<T | null | undefined>[]} ref - The React ref object(s) representing the element(s) to watch for outside clicks.
  * @param {(event: MouseEvent | TouchEvent | FocusEvent) => void} handler - The callback function to be executed when a click outside the element occurs.
  * @param {EventType} [eventType] - The mouse event type to listen for (optional, default is 'mousedown').
  * @param {?AddEventListenerOptions} [eventListenerOptions] - The options object to be passed to the `addEventListener` method (optional).
@@ -30,7 +30,7 @@ type EventType =
  * ```
  */
 export function useOnClickOutside<T extends HTMLElement = HTMLElement>(
-  ref: RefObject<T> | RefObject<T>[],
+  ref: RefObject<T | null | undefined> | RefObject<T | null | undefined>[],
   handler: (event: MouseEvent | TouchEvent | FocusEvent) => void,
   eventType: EventType = 'mousedown',
   eventListenerOptions: AddEventListenerOptions = {},
