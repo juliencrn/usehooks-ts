@@ -3,7 +3,13 @@ import { act, renderHook } from '@testing-library/react'
 import { useDebounceCallback } from './useDebounceCallback'
 
 describe('useDebounceCallback()', () => {
-  vitest.useFakeTimers()
+  beforeEach(() => {
+    vitest.useFakeTimers()
+  })
+
+  afterEach(() => {
+    vitest.clearAllTimers()
+  })
 
   it('should debounce the callback', () => {
     const delay = 500
@@ -106,5 +112,62 @@ describe('useDebounceCallback()', () => {
 
     // The callback should be invoked immediately after flushing
     expect(debouncedCallback).toHaveBeenCalled()
+  })
+
+  it('should flush pending invocation on unmount', () => {
+    const delay = 500
+    const debouncedCallback = vitest.fn()
+    const { result, unmount } = renderHook(() =>
+      useDebounceCallback(debouncedCallback, delay),
+    )
+
+    act(() => {
+      result.current('argument')
+    })
+
+    vitest.advanceTimersByTime(delay / 2)
+
+    // Unmount the hook
+    unmount()
+
+    // Fast forward time
+    expect(debouncedCallback).toHaveBeenCalled()
+
+    // The callback should not be invoked after unmount
+  })
+
+  it('should flush pending invocation in case of dependency change', () => {
+    const delay = 500
+    const debouncedCallback = vitest.fn()
+    const { result, rerender } = renderHook(
+      ({ callback, wait }) => useDebounceCallback(callback, wait),
+      { initialProps: { callback: debouncedCallback, wait: delay } },
+    )
+
+    act(() => {
+      result.current('test1')
+    })
+
+    // Change the delay
+    const newDelay = 1000
+    rerender({ callback: debouncedCallback, wait: newDelay })
+
+    // The previous call should be flushed
+    expect(debouncedCallback).toHaveBeenCalled()
+    expect(debouncedCallback).toHaveBeenCalledWith('test1')
+
+    vi.clearAllMocks()
+
+    act(() => {
+      result.current('test2')
+    })
+
+    // Fast forward time
+    vitest.advanceTimersByTime(newDelay)
+
+    // The callback should be invoked for the second call
+    expect(debouncedCallback).toHaveBeenCalledTimes(1)
+
+    expect(debouncedCallback).toHaveBeenCalledWith('test2')
   })
 })
