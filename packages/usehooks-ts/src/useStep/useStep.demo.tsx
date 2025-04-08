@@ -1,7 +1,8 @@
 import { useStep } from './useStep'
 
 export default function Component() {
-  const [currentStep, helpers] = useStep(5)
+  const initialStep = 2;
+  const [currentStep, helpers] = useStep(5, intitialStep)
 
   const {
     canGoToPrevStep,
@@ -14,6 +15,7 @@ export default function Component() {
 
   return (
     <>
+      <p>Initial step is {initialStep}</p>
       <p>Current step is {currentStep}</p>
       <p>Can go to previous step {canGoToPrevStep ? 'yes' : 'no'}</p>
       <p>Can go to next step {canGoToNextStep ? 'yes' : 'no'}</p>

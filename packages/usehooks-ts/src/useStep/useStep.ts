@@ -1,28 +1,29 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useState } from "react";
 
-import type { Dispatch, SetStateAction } from 'react'
+import type { Dispatch, SetStateAction } from "react";
 
 /** Represents the second element of the output of the `useStep` hook. */
 type UseStepActions = {
-  /** Go to the next step in the process. */
-  goToNextStep: () => void
-  /** Go to the previous step in the process. */
-  goToPrevStep: () => void
-  /** Reset the step to the initial step. */
-  reset: () => void
-  /** Check if the next step is available. */
-  canGoToNextStep: boolean
-  /** Check if the previous step is available. */
-  canGoToPrevStep: boolean
-  /** Set the current step to a specific value. */
-  setStep: Dispatch<SetStateAction<number>>
-}
+	/** Go to the next step in the process. */
+	goToNextStep: () => void;
+	/** Go to the previous step in the process. */
+	goToPrevStep: () => void;
+	/** Reset the step to the initial step. */
+	reset: () => void;
+	/** Check if the next step is available. */
+	canGoToNextStep: boolean;
+	/** Check if the previous step is available. */
+	canGoToPrevStep: boolean;
+	/** Set the current step to a specific value. */
+	setStep: Dispatch<SetStateAction<number>>;
+};
 
-type SetStepCallbackType = (step: number | ((step: number) => number)) => void
+type SetStepCallbackType = (step: number | ((step: number) => number)) => void;
 
 /**
  * Custom hook that manages and navigates between steps in a multi-step process.
  * @param {number} maxStep - The maximum step in the process.
+ * @param {number} [initialStep] - The initial step for the current step state (default is `1`).
  * @returns {[number, UseStepActions]} An tuple containing the current step and helper functions for navigating steps.
  * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-step)
@@ -32,52 +33,58 @@ type SetStepCallbackType = (step: number | ((step: number) => number)) => void
  * // Access and use the current step and provided helper functions.
  * ```
  */
-export function useStep(maxStep: number): [number, UseStepActions] {
-  const [currentStep, setCurrentStep] = useState(1)
+export function useStep(
+	maxStep: number,
+	initialStep = 1,
+): [number, UseStepActions] {
+  if (!Number.isInteger(initialStep)) {
+    throw new Error('initialStep must be an integer');
+  }
+	const [currentStep, setCurrentStep] = useState(initialStep > 0 && initialStep <= maxStep ? initialStep : 1);
 
-  const canGoToNextStep = currentStep + 1 <= maxStep
-  const canGoToPrevStep = currentStep - 1 > 0
+	const canGoToNextStep = currentStep + 1 <= maxStep;
+	const canGoToPrevStep = currentStep - 1 > 0;
 
-  const setStep = useCallback<SetStepCallbackType>(
-    step => {
-      // Allow value to be a function so we have the same API as useState
-      const newStep = step instanceof Function ? step(currentStep) : step
+	const setStep = useCallback<SetStepCallbackType>(
+		(step) => {
+			// Allow value to be a function so we have the same API as useState
+			const newStep = step instanceof Function ? step(currentStep) : step;
 
-      if (newStep >= 1 && newStep <= maxStep) {
-        setCurrentStep(newStep)
-        return
-      }
+			if (newStep >= 1 && newStep <= maxStep) {
+				setCurrentStep(newStep);
+				return;
+			}
 
-      throw new Error('Step not valid')
-    },
-    [maxStep, currentStep],
-  )
+			throw new Error("Step not valid");
+		},
+		[maxStep, currentStep],
+	);
 
-  const goToNextStep = useCallback(() => {
-    if (canGoToNextStep) {
-      setCurrentStep(step => step + 1)
-    }
-  }, [canGoToNextStep])
+	const goToNextStep = useCallback(() => {
+		if (canGoToNextStep) {
+			setCurrentStep((step) => step + 1);
+		}
+	}, [canGoToNextStep]);
 
-  const goToPrevStep = useCallback(() => {
-    if (canGoToPrevStep) {
-      setCurrentStep(step => step - 1)
-    }
-  }, [canGoToPrevStep])
+	const goToPrevStep = useCallback(() => {
+		if (canGoToPrevStep) {
+			setCurrentStep((step) => step - 1);
+		}
+	}, [canGoToPrevStep]);
 
-  const reset = useCallback(() => {
-    setCurrentStep(1)
-  }, [])
+	const reset = useCallback(() => {
+		setCurrentStep(1);
+	}, []);
 
-  return [
-    currentStep,
-    {
-      goToNextStep,
-      goToPrevStep,
-      canGoToNextStep,
-      canGoToPrevStep,
-      setStep,
-      reset,
-    },
-  ]
+	return [
+		currentStep,
+		{
+			goToNextStep,
+			goToPrevStep,
+			canGoToNextStep,
+			canGoToPrevStep,
+			setStep,
+			reset,
+		},
+	];
 }

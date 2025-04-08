@@ -76,4 +76,31 @@ describe('useStep()', () => {
 
     expect(result.current[1].canGoToNextStep).toBe(true)
   })
+
+  it('should set inital step to 1 if max steps is exceeded', () => {
+    const { result } = renderHook(() => useStep(2, 3))
+
+    expect(result.current[0]).toBe(1)
+  })
+
+  it('should set inital step to 1 if inital step is below minimum', () => {
+    const { result } = renderHook(() => useStep(2, 0))
+
+    expect(result.current[0]).toBe(1)
+  })
+
+  it('should set inital step to 2', () => {
+    const { result } = renderHook(() => useStep(2, 2))
+
+    expect(result.current[0]).toBe(2)
+  })
+
+  it('should throw an error', () => {
+      const nonInteger = '' as never
+      vi.spyOn(console, 'error').mockImplementation(() => vi.fn())
+      expect(() => {
+        renderHook(() => useStep(2, nonInteger))
+      }).toThrowError(/initialStep must be an integer/)
+      vi.resetAllMocks()
+    })
 })
