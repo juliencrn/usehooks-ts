@@ -89,7 +89,7 @@ export function useScrollLock(
           parseInt(window.getComputedStyle(target.current).paddingRight, 10) ||
           0
 
-        const scrollbarWidth = offsetWidth - target.current.scrollWidth
+        const scrollbarWidth = offsetWidth - target.current.clientWidth
         target.current.style.paddingRight = `${scrollbarWidth + currentPaddingRight}px`
       }
 
