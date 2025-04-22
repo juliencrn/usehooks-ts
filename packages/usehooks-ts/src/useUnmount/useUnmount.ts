@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { useIsomorphicLayoutEffect } from 'src/useIsomorphicLayoutEffect'
 
 /**
  * Custom hook that runs a cleanup function when the component is unmounted.
@@ -15,7 +16,9 @@ import { useEffect, useRef } from 'react'
 export function useUnmount(func: () => void) {
   const funcRef = useRef(func)
 
-  funcRef.current = func
+  useIsomorphicLayoutEffect(()=>{
+    funcRef.current = func
+  },[func])
 
   useEffect(
     () => () => {
