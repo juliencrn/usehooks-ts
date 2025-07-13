@@ -1,6 +1,6 @@
 import { useUniqueId } from './useUniqueId'
 
-
+// use in .tsx
 function MyComponent() {
   const id = useUniqueId();
 
@@ -12,7 +12,7 @@ function MyComponent() {
   );
 }
 
-
+// use in .ts
 const id = useUniqueId();
 // → "b1a9dba3bc934b6a84b1cc98b4feab1a"
 

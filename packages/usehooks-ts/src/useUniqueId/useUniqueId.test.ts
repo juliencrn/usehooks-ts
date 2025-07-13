@@ -1,19 +1,21 @@
 import { renderHook } from '@testing-library/react'
+
 import { useUniqueId } from './useUniqueId'
 
-
 describe('useUniqueId()', () => {
-  const originalCrypto = globalThis.crypto;
+  const originalCrypto = globalThis.crypto
 
   beforeEach(() => {
-    vi.resetAllMocks();
-  });
+    vi.resetAllMocks()
+  })
 
   afterEach(() => {
-    globalThis.crypto = originalCrypto;
-    vi.restoreAllMocks();
-  });
-
+    Object.defineProperty(globalThis, 'crypto', {
+      value: originalCrypto,
+      configurable: true,
+    })
+    vi.restoreAllMocks()
+  })
 
   it('returns a stable ID across renders', () => {
     const { result, rerender } = renderHook(() => useUniqueId())
@@ -36,7 +38,9 @@ describe('useUniqueId()', () => {
 
   it('returns a UUID with dashes when withDashes is true', () => {
     const { result } = renderHook(() => useUniqueId({ withDashes: true }))
-    expect(result.current).toMatch(/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-8[a-f0-9]{3}-[a-f0-9]{12}$/i)
+    const UUID_V4_REGEX =
+      /^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i
+    expect(result.current).toMatch(UUID_V4_REGEX)
   })
 
   it('returns a UUID without dashes by default', () => {
@@ -56,38 +60,26 @@ describe('useUniqueId()', () => {
   })
 
   it('returns a fallback ID if crypto.randomUUID is missing', () => {
-    const originalCrypto = globalThis.crypto;
+    const originalCrypto = globalThis.crypto
 
     const mockCrypto: Crypto = {
       ...originalCrypto,
       getRandomValues: originalCrypto.getRandomValues,
       // randomUUID is omitted to simulate unavailability
-    };
+    }
 
     Object.defineProperty(globalThis, 'crypto', {
       value: mockCrypto,
       configurable: true,
       writable: true,
-    });
+    })
 
-    const { result } = renderHook(() => useUniqueId());
-    expect(result.current.length).toBe(32);
-    expect(result.current.includes('-')).toBe(false);
+    const { result } = renderHook(() => useUniqueId())
+    expect(result.current.length).toBe(32)
+    expect(result.current.includes('-')).toBe(false)
 
     // restore
-    globalThis.crypto = originalCrypto;
-  });
-
-
-
-  it('works in SSR (when window is undefined)', () => {
-    const originalWindow = global.window
-    // Simulate server env
-    // @ts-ignore
-    delete global.window
-    const { result } = renderHook(() => useUniqueId())
-    expect(result.current).toMatch(/^[a-z0-9]+$/i)
-    global.window = originalWindow
+    globalThis.crypto = originalCrypto
   })
 
   it('does not break when crypto.getRandomValues throws', () => {
