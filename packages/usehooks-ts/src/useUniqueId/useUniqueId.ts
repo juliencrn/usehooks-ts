@@ -1,9 +1,6 @@
 import { useId, useRef } from 'react'
 
 // Constants
-// https://stackoverflow.com/questions/105034/how-do-i-create-a-guid-uuid/2117523#2117523
-
-// Pattern to generate UUID-like string ([1e7]) + 1e3 + 4e3 + 8e3 + 1e11
 const UUID_TEMPLATE = '10000000100040008000100000000000'
 const BYTE_ARRAY_SIZE = 1
 const BYTE_MAX = 256
@@ -13,7 +10,7 @@ const HEX_RADIX = 16
 const BIT_MASK = 15
 const VERSION_SHIFT_DIVISOR = 4
 
-interface UseUniqueIdOptions {
+type UseUniqueIdOptions = {
   prefix?: string
   withDashes?: boolean
   length?: number // Truncate if needed (e.g. 10 for nano-style)
@@ -21,21 +18,7 @@ interface UseUniqueIdOptions {
 
 /**
  * Generates a cryptographically secure UUID (Universally Unique Identifier) v4–like string (32-character hex, no dashes).
- *
- * Uses `crypto.randomUUID()` if available (most secure and standard).
- * Falls back to `crypto.getRandomValues()` for secure randomness.
- * Uses `Math.random()` only if no crypto APIs are available (e.g., legacy browsers or iframe sandbox).
- *
- * This function is commonly used for generating unique DOM IDs, component instance IDs,
- * or stable keys — especially when SSR-safe or deterministic React behavior is required.
- *
  * @returns {string} A 32-character lowercase hexadecimal UUID string (dashless).
- *
- * @example
- * ```ts
- * const id = generateSecureUUID();
- * // e.g. 'e4b1f8a9fead4d80a12bb93f8cbb81c7'
- * ```
  */
 
 function generateSecureUUID(): string {
@@ -75,13 +58,13 @@ function generateSecureUUID(): string {
 }
 
 /**
- * useUniqueId - A flexible, SSR-safe, secure hook for generating stable unique IDs
- *
- * @param options Optional config:
- *   - prefix: prepend to the ID
- *   - withDashes: return standard UUID format
- *   - length: truncate the ID to desired length
- * @returns Stable unique ID (string)
+ * UseUniqueId - A flexible, SSR-safe, secure hook for generating stable unique IDs.
+ * @param options - Optional config:
+ * - prefix: prepend to the ID
+ * - withDashes: return standard UUID format
+ * - length: truncate the ID to desired length.
+ * @returns Stable unique ID (string).
+ * @example
  */
 export function useUniqueId(options?: UseUniqueIdOptions): string {
   const { prefix = '', withDashes = false, length } = options || {}
