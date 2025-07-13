@@ -86,6 +86,7 @@ function Component() {
 - [`useTernaryDarkMode`](https://usehooks-ts.com/react-hook/use-ternary-dark-mode) — manages ternary (system, dark, light) dark mode with local storage support.
 - [`useTimeout`](https://usehooks-ts.com/react-hook/use-timeout) — handles timeouts in React components using the [setTimeout API](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout).
 - [`useToggle`](https://usehooks-ts.com/react-hook/use-toggle) — manages a boolean toggle state in React components.
+- [`useUniqueId`](https://usehooks-ts.com/react-hook/use-unique-id) — useUniqueId - A flexible, SSR-safe, secure hook for generating stable unique IDs
 - [`useUnmount`](https://usehooks-ts.com/react-hook/use-unmount) — runs a cleanup function when the component is unmounted.
 - [`useWindowSize`](https://usehooks-ts.com/react-hook/use-window-size) — tracks the size of the window.
 <!-- HOOKS:END -->
