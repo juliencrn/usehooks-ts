@@ -42,7 +42,7 @@ type UseDebounceValueOptions<T> = {
  */
 export function useDebounceValue<T>(
   initialValue: T | (() => T),
-  delay: number,
+  delay?: number,
   options?: UseDebounceValueOptions<T>,
 ): [T, DebouncedState<(value: T) => void>] {
   const eq = options?.equalityFn ?? ((left: T, right: T) => left === right)
@@ -53,7 +53,7 @@ export function useDebounceValue<T>(
 
   const updateDebouncedValue = useDebounceCallback(
     setDebouncedValue,
-    delay,
+    delay ?? 500,
     options,
   )
 
