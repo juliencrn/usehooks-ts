@@ -107,4 +107,30 @@ describe('useDebounceCallback()', () => {
     // The callback should be invoked immediately after flushing
     expect(debouncedCallback).toHaveBeenCalled()
   })
+
+  it('should maintain debouncing across rerenders with an unstable options object', () => {
+    const delay = 500
+    const callback = vitest.fn()
+
+    const { result: debouncedCallback, rerender } = renderHook(() =>
+      useDebounceCallback(callback, delay, { leading: false }),
+    )
+
+    act(() => {
+      debouncedCallback.current('first')
+    })
+
+    vitest.advanceTimersByTime(200)
+
+    // Simulate a component rerender, which creates a new instance of the options object
+    rerender()
+
+    act(() => {
+      debouncedCallback.current('second')
+    })
+
+    vitest.advanceTimersByTime(350)
+
+    expect(callback).not.toHaveBeenCalled()
+  })
 })
