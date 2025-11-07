@@ -30,11 +30,17 @@ export function CommandCopy({
   const [, copy] = useCopyToClipboard()
 
   const handleCopy = (text: string) => {
-    setCopiedStatus(true)
-    void copy(text)
-    setTimeout(() => {
-      setCopiedStatus(false)
-    }, 2000)
+    copy(text, {
+      onSuccess: () => {
+        setCopiedStatus(true)
+        setTimeout(() => {
+          setCopiedStatus(false)
+        }, 2000)
+      },
+      onError: ({ error }) => {
+        console.error('Failed to copy to clipboard:', error)
+      },
+    })
   }
   const renderedCommand =
     typeof command === 'string'

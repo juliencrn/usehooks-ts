@@ -6,11 +6,28 @@ import { useCallback, useState } from 'react'
 type CopiedValue = string | null
 
 /**
+ * Options for the copy function.
+ */
+type CopyOptions = {
+  /**
+   * Callback function called when the copy operation succeeds.
+   * @param data - An object containing the copied text.
+   */
+  onSuccess?: (data: { text: string }) => void
+  /**
+   * Callback function called when the copy operation fails.
+   * @param data - An object containing the error and the text that failed to copy.
+   */
+  onError?: (data: { error: Error; text: string }) => void
+}
+
+/**
  * Function to copy text to the clipboard.
  * @param text - The text to copy to the clipboard.
+ * @param options - Optional callbacks for success and error handling.
  * @returns {Promise<boolean>} A promise that resolves to `true` if the text was copied successfully, or `false` otherwise.
  */
-type CopyFn = (text: string) => Promise<boolean>
+type CopyFn = (text: string, options?: CopyOptions) => Promise<boolean>
 
 /**
  * Custom hook that copies text to the clipboard using the [`Clipboard API`](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API).
@@ -22,7 +39,17 @@ type CopyFn = (text: string) => Promise<boolean>
  * const [copiedText, copyToClipboard] = useCopyToClipboard();
  * const textToCopy = 'Hello, world!';
  *
- * // Attempt to copy text to the clipboard
+ * // Using callbacks (recommended)
+ * copyToClipboard(textToCopy, {
+ *   onSuccess: ({ text }) => {
+ *     console.log(`Text "${text}" copied to clipboard successfully.`);
+ *   },
+ *   onError: ({ error, text }) => {
+ *     console.error(`Failed to copy "${text}":`, error);
+ *   }
+ * });
+ *
+ * // Using promises (backward compatible)
  * copyToClipboard(textToCopy)
  *   .then(success => {
  *     if (success) {
@@ -36,9 +63,15 @@ type CopyFn = (text: string) => Promise<boolean>
 export function useCopyToClipboard(): [CopiedValue, CopyFn] {
   const [copiedText, setCopiedText] = useState<CopiedValue>(null)
 
-  const copy: CopyFn = useCallback(async text => {
+  const copy: CopyFn = useCallback(async (text, options) => {
     if (!navigator?.clipboard) {
+      const error = new Error('Clipboard not supported')
       console.warn('Clipboard not supported')
+
+      if (options?.onError) {
+        options.onError({ error, text })
+      }
+
       return false
     }
 
@@ -46,10 +79,22 @@ export function useCopyToClipboard(): [CopiedValue, CopyFn] {
     try {
       await navigator.clipboard.writeText(text)
       setCopiedText(text)
+
+      if (options?.onSuccess) {
+        options.onSuccess({ text })
+      }
+
       return true
     } catch (error) {
       console.warn('Copy failed', error)
       setCopiedText(null)
+
+      const errorObj = error instanceof Error ? error : new Error(String(error))
+
+      if (options?.onError) {
+        options.onError({ error: errorObj, text })
+      }
+
       return false
     }
   }, [])
