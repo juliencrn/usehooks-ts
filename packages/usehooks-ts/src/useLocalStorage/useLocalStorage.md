@@ -1,7 +1,9 @@
 Persist the state with [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) so that it remains after a page refresh. This can be useful for a dark theme.
 This hook is used in the same way as useState except that you must pass the storage key in the 1st parameter.
 
-You can also pass an optional third parameter to use a custom serializer/deserializer.
+You can also pass an optional third parameter to use a custom serializer/deserializer or to set the priority of sync activities.
+
+For example, with `{ priority: 'max' }`, the hook will use `useLayoutEffect` to ensure the most rapid update; ideal for persisted UI settings that affect initial render and the page layout.
 
 **Note**: If you use this hook in an SSR context, set the `initializeWithValue` option to `false`, it will initialize in SSR with the initial value.
 

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useState } from 'react'
 
 import type { Dispatch, SetStateAction } from 'react'
 
@@ -26,6 +26,13 @@ type UseLocalStorageOptions<T> = {
    * @default true
    */
   initializeWithValue?: boolean
+  /**
+   * If 'max', useLayoutEffect will be used to ensure the most rapid update; ideal for
+   * UI settings that affect initial render and the page layout.
+   * If 'default', useEffect will be used to gracefully update without blocking the UI.
+   * @default 'default'
+   */
+  priority?: 'max' | 'default'
 }
 
 const IS_SERVER = typeof window === 'undefined'
@@ -165,10 +172,13 @@ export function useLocalStorage<T>(
     window.dispatchEvent(new StorageEvent('local-storage', { key }))
   })
 
-  useEffect(() => {
-    setStoredValue(readValue())
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [key])
+  const effectCallback = useCallback(() => setStoredValue(readValue()), [])
+
+  if (!IS_SERVER && options.priority === 'max' ) {
+    useLayoutEffect(effectCallback, [key])
+  } else {
+    useEffect(effectCallback, [key])
+  }
 
   const handleStorageChange = useCallback(
     (event: StorageEvent | CustomEvent) => {
