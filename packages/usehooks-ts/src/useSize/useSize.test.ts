@@ -1,10 +1,10 @@
 import { renderHook } from '@testing-library/react'
 
-import { useElementSize } from './index'
+import { useSize } from './index'
 
 describe('useElementSize()', () => {
   it('should return initial values', () => {
-    const { result } = renderHook(() => useElementSize({ frequency: 200 }))
+    const { result } = renderHook(() => useSize({ frequency: 200 }))
 
     expect(result.current.height).toBe(0)
     expect(result.current.width).toBe(0)
@@ -13,14 +13,14 @@ describe('useElementSize()', () => {
   })
 
   it('should return ref object', () => {
-    const { result } = renderHook(() => useElementSize({ frequency: 100 }))
+    const { result } = renderHook(() => useSize({ frequency: 100 }))
 
     expect(result.current.ref).toHaveProperty('current')
   })
 
   it('should accept custom frequency', () => {
-    const { result: result1 } = renderHook(() => useElementSize({ frequency: 100 }))
-    const { result: result2 } = renderHook(() => useElementSize({ frequency: 500 }))
+    const { result: result1 } = renderHook(() => useSize({ frequency: 100 }))
+    const { result: result2 } = renderHook(() => useSize({ frequency: 500 }))
 
     // Both should return the same shape
     expect(result1.current).toHaveProperty('height')
@@ -32,7 +32,7 @@ describe('useElementSize()', () => {
   })
 
   it('should use default frequency of 200ms when not specified', () => {
-    const { result } = renderHook(() => useElementSize({}))
+    const { result } = renderHook(() => useSize({}))
 
     expect(result.current.height).toBe(0)
     expect(result.current.width).toBe(0)
@@ -40,7 +40,7 @@ describe('useElementSize()', () => {
   })
 
   it('should have stable ref across renders', () => {
-    const { result, rerender } = renderHook(() => useElementSize({ frequency: 200 }))
+    const { result, rerender } = renderHook(() => useSize({ frequency: 200 }))
 
     const firstRef = result.current.ref
 

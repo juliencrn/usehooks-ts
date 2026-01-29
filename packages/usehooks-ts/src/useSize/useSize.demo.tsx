@@ -1,7 +1,7 @@
-import { useElementSize } from './index'
+import { useSize } from './index'
 
 export default function Component() {
-  const { ref, width, height } = useElementSize({ frequency: 200 })
+  const { ref, width, height } = useSize({ frequency: 200 })
 
   return (
     <div
@@ -32,7 +32,7 @@ export default function Component() {
 }
 
 export function CustomFrequency() {
-  const { ref, width, height } = useElementSize({ frequency: 500 })
+  const { ref, width, height } = useSize({ frequency: 500 })
 
   return (
     <div
