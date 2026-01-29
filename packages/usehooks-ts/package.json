@@ -1,7 +1,7 @@
 {
   "name": "usehooks-ts",
   "private": false,
-  "version": "3.1.1",
+  "version": "3.2.0",
   "description": "React hook library, ready to use, written in Typescript.",
   "author": "Julien CARON <juliencaron@protonmail.com>",
   "homepage": "https://usehooks-ts.com",
@@ -38,25 +38,27 @@
   },
   "devDependencies": {
     "@juggle/resize-observer": "^3.4.0",
-    "@testing-library/jest-dom": "^6.4.2",
-    "@testing-library/react": "^14.2.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
     "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20.11.19",
-    "@types/react": "18.2.73",
+    "@types/react": "19.2.10",
     "eslint-config-custom": "workspace:*",
     "eslint-plugin-jsdoc": "^48.1.0",
     "eslint-plugin-tree-shaking": "^1.12.1",
-    "jsdom": "^24.0.0",
-    "react": "18.2.0",
-    "tsup": "^8.0.2",
-    "typescript": "^5.3.3",
-    "vitest": "^1.3.1"
+    "jsdom": "^27.4.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8"
   },
   "peerDependencies": {
-    "react": "^16.8.0  || ^17 || ^18 || ^19 || ^19.0.0-rc"
+    "react": "^16.8.0  || ^17 || ^18 || ^19 || ^19.0.0-rc",
+    "react-dom": "^16.8.0  || ^17 || ^18 || ^19 || ^19.0.0-rc"
   },
   "engines": {
     "node": ">=16.15.0"

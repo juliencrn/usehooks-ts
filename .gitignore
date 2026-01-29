@@ -34,3 +34,6 @@ coverage
 
 # Local Netlify folder
 .netlify
+
+# IDE stuff
+/.idea

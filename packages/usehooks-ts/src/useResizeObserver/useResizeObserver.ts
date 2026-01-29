@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 
-import type { RefObject } from 'react'
+import type { Ref } from 'react'
 
 import { useIsMounted } from '../useIsMounted'
+import { refHasCurrent } from '../utils'
 
 /** The size of the observed element. */
 type Size = {
@@ -15,7 +16,7 @@ type Size = {
 /** The options for the ResizeObserver. */
 type UseResizeObserverOptions<T extends HTMLElement = HTMLElement> = {
   /** The ref of the element to observe. */
-  ref: RefObject<T>
+  ref: Ref<T>
   /**
    * When using `onResize`, the hook doesn't re-render on element size changes; it delegates handling to the provided callback.
    * @default undefined
@@ -62,7 +63,7 @@ export function useResizeObserver<T extends HTMLElement = HTMLElement>(
   onResize.current = options.onResize
 
   useEffect(() => {
-    if (!ref.current) return
+    if (!refHasCurrent(ref)) return
 
     if (typeof window === 'undefined' || !('ResizeObserver' in window)) return
 

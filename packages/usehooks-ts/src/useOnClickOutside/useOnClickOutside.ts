@@ -1,6 +1,7 @@
-import type { RefObject } from 'react'
+import type { Ref } from 'react'
 
 import { useEventListener } from '../useEventListener'
+import { refContains } from '../utils'
 
 /** Supported event types. */
 type EventType =
@@ -14,7 +15,7 @@ type EventType =
 /**
  * Custom hook that handles clicks outside a specified element.
  * @template T - The type of the element's reference.
- * @param {RefObject<T> | RefObject<T>[]} ref - The React ref object(s) representing the element(s) to watch for outside clicks.
+ * @param {Ref<T> | Ref<T>[]} ref - The React ref object(s) representing the element(s) to watch for outside clicks.
  * @param {(event: MouseEvent | TouchEvent | FocusEvent) => void} handler - The callback function to be executed when a click outside the element occurs.
  * @param {EventType} [eventType] - The mouse event type to listen for (optional, default is 'mousedown').
  * @param {?AddEventListenerOptions} [eventListenerOptions] - The options object to be passed to the `addEventListener` method (optional).
@@ -30,7 +31,7 @@ type EventType =
  * ```
  */
 export function useOnClickOutside<T extends HTMLElement = HTMLElement>(
-  ref: RefObject<T> | RefObject<T>[],
+  ref: Ref<T> | Ref<T>[],
   handler: (event: MouseEvent | TouchEvent | FocusEvent) => void,
   eventType: EventType = 'mousedown',
   eventListenerOptions: AddEventListenerOptions = {},
@@ -46,10 +47,8 @@ export function useOnClickOutside<T extends HTMLElement = HTMLElement>(
       }
 
       const isOutside = Array.isArray(ref)
-        ? ref
-            .filter(r => Boolean(r.current))
-            .every(r => r.current && !r.current.contains(target))
-        : ref.current && !ref.current.contains(target)
+        ? ref.every(r => !refContains({ ref: r, target }))
+        : !refContains({ ref, target })
 
       if (isOutside) {
         handler(event)
