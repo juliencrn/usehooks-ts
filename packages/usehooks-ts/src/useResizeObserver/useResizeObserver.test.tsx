@@ -5,9 +5,9 @@ import { renderHook } from '@testing-library/react'
 import { useResizeObserver } from './useResizeObserver'
 
 describe('useResizeObserver()', () => {
-  beforeEach(() => {
+  beforeAll(() => {
     // Mock the ResizeObserver
-    window.ResizeObserver = ResizeObserver
+    vi.stubGlobal('ResizeObserver', ResizeObserver)
   })
 
   afterEach(() => {

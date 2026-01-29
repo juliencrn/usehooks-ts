@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import type { RefObject } from 'react'
+import type { Ref } from 'react'
 
 import { useEventListener } from '../useEventListener'
 
@@ -19,7 +19,7 @@ import { useEventListener } from '../useEventListener'
  * ```
  */
 export function useHover<T extends HTMLElement = HTMLElement>(
-  elementRef: RefObject<T>,
+  elementRef: Ref<T>,
 ): boolean {
   const [value, setValue] = useState<boolean>(false)
 
