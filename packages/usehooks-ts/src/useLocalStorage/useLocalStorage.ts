@@ -116,7 +116,6 @@ export function useLocalStorage<T>(
 
     return initialValue instanceof Function ? initialValue() : initialValue
   })
-
   // Return a wrapped version of useState's setter function that ...
   // ... persists the new value to localStorage.
   const setValue: Dispatch<SetStateAction<T>> = useEventCallback(value => {
