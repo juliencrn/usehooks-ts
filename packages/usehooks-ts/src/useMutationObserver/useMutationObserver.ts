@@ -2,8 +2,6 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 
 import type { RefObject } from 'react'
 
-import { useIsMounted } from '../useIsMounted'
-
 /** The options for the MutationObserver hook. */
 type UseMutationObserverOptions<T extends Element = Element> =
   MutationObserverInit & {
@@ -56,7 +54,6 @@ export function useMutationObserver<T extends Element = Element>(
     subtree,
   } = options
   const [mutationList, setMutationList] = useState<MutationRecord[]>([])
-  const isMounted = useIsMounted()
   const onMutation = useRef<
     ((mutations: MutationRecord[]) => void) | undefined
   >(undefined)
@@ -72,15 +69,13 @@ export function useMutationObserver<T extends Element = Element>(
   useEffect(() => {
     if (!ref.current) return
 
-    if (typeof window === 'undefined' || !('MutationObserver' in window)) return
+    if (!('MutationObserver' in window)) return
 
     const observer = new MutationObserver(mutations => {
       if (onMutation.current) {
         onMutation.current(mutations)
       } else {
-        if (isMounted()) {
-          setMutationList(mutations)
-        }
+        setMutationList(mutations)
       }
     })
 
@@ -107,7 +102,6 @@ export function useMutationObserver<T extends Element = Element>(
     characterDataOldValue,
     childList,
     subtree,
-    isMounted,
   ])
 
   return { mutationList, getMutationListByType }
