@@ -21,6 +21,25 @@ describe('useMutationObserver()', () => {
     expect(result.current.getMutationListByType).toBeTypeOf('function')
   })
 
+  it('should not observe when the ref node is null', () => {
+    const observe = vitest.fn()
+
+    class MockMutationObserver {
+      observe = observe
+      disconnect = vitest.fn()
+    }
+
+    window.MutationObserver =
+      MockMutationObserver as unknown as typeof MutationObserver
+
+    const { result } = renderHook(() =>
+      useMutationObserver({ current: null }, { attributes: true }),
+    )
+
+    expect(observe).not.toHaveBeenCalled()
+    expect(result.current.mutationList).toEqual([])
+  })
+
   it('should observe the element and disconnect on unmount', () => {
     const dom = document.createElement('div')
     const observe = vitest.fn()
@@ -91,5 +110,43 @@ describe('useMutationObserver()', () => {
     expect(result.current.getMutationListByType('childList')).toEqual([
       childListMutation,
     ])
+  })
+
+  it('should disconnect previous observer and re-observe on config change', () => {
+    const dom = document.createElement('div')
+    const observe = vitest.fn()
+    const disconnects: Array<ReturnType<typeof vitest.fn>> = []
+
+    class MockMutationObserver {
+      disconnect = vitest.fn()
+      observe = observe
+
+      constructor(_cb: MutationCallback) {
+        disconnects.push(this.disconnect)
+      }
+    }
+
+    window.MutationObserver =
+      MockMutationObserver as unknown as typeof MutationObserver
+
+    const { rerender, unmount } = renderHook(
+      ({ config }: { config: MutationObserverInit }) =>
+        useMutationObserver({ current: dom }, config),
+      { initialProps: { config: { attributes: true } as MutationObserverInit } },
+    )
+
+    expect(observe).toHaveBeenNthCalledWith(1, dom, { attributes: true })
+
+    rerender({ config: { attributes: true, childList: true } })
+
+    expect(disconnects[0]).toHaveBeenCalledTimes(1)
+    expect(observe).toHaveBeenNthCalledWith(2, dom, {
+      attributes: true,
+      childList: true,
+    })
+
+    unmount()
+
+    expect(disconnects[1]).toHaveBeenCalledTimes(1)
   })
 })

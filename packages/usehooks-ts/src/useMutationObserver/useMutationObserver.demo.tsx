@@ -28,7 +28,7 @@ export default function Component() {
   }, [getMutationListByType])
 
   const rotate = () => {
-    setHue(hue + 90)
+    setHue(prevHue => prevHue + 90)
   }
 
   return (
