@@ -1,65 +1,114 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import type { RefObject } from 'react'
 
+import { useIsMounted } from '../useIsMounted'
+
+/** The options for the MutationObserver hook. */
+type UseMutationObserverOptions<T extends Element = Element> =
+  MutationObserverInit & {
+    /** The ref of the element to observe. */
+    ref: RefObject<T>
+    /**
+     * When using `onMutation`, the hook doesn't re-render on DOM changes; it delegates handling to the provided callback.
+     * @default undefined
+     */
+    onMutation?: (mutations: MutationRecord[]) => void
+  }
+
+/** The return type of the useMutationObserver hook. */
 type UseMutationObserverReturn = {
+  /** The latest mutation records. */
   mutationList: MutationRecord[]
+  /** Filter mutations by their type. */
   getMutationListByType: (type: MutationRecordType) => MutationRecord[]
 }
 
 /**
  * Custom hook that observes and tracks changes to a DOM element using the [`MutationObserver API`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver).
- * @param {RefObject<Element>} elementRef - A React ref object pointing to the target element to observe.
- * @param {MutationObserverInit} config - The configuration options for the observer.
+ * @template T - The type of the element to observe.
+ * @param {UseMutationObserverOptions<T>} options - The options for the MutationObserver.
  * @returns {UseMutationObserverReturn} An object containing the latest mutation records and a helper to filter records by type.
  * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-mutation-observer)
  * @example
  * ```tsx
  * const ref = useRef<HTMLDivElement>(null)
- * const { mutationList } = useMutationObserver(ref, {
+ * const { mutationList } = useMutationObserver({
+ *   ref,
  *   attributes: true,
  *   childList: true,
  *   subtree: true,
  * })
  * ```
  */
-export function useMutationObserver(
-  elementRef: RefObject<Element>,
-  config: MutationObserverInit,
+export function useMutationObserver<T extends Element = Element>(
+  options: UseMutationObserverOptions<T>,
 ): UseMutationObserverReturn {
+  const {
+    ref,
+    attributes,
+    attributeFilter,
+    attributeOldValue,
+    characterData,
+    characterDataOldValue,
+    childList,
+    subtree,
+  } = options
   const [mutationList, setMutationList] = useState<MutationRecord[]>([])
+  const isMounted = useIsMounted()
+  const onMutation = useRef<
+    ((mutations: MutationRecord[]) => void) | undefined
+  >(undefined)
+  onMutation.current = options.onMutation
 
   const getMutationListByType = useCallback(
     (type: MutationRecordType) => {
-      return mutationList.filter(
-        (mutation: MutationRecord) => mutation.type === type,
-      )
+      return mutationList.filter(mutation => mutation.type === type)
     },
     [mutationList],
   )
 
   useEffect(() => {
-    const node = elementRef?.current
+    if (!ref.current) return
 
-    if (
-      typeof window === 'undefined' ||
-      !('MutationObserver' in window) ||
-      !node
-    ) {
-      return
-    }
+    if (typeof window === 'undefined' || !('MutationObserver' in window)) return
 
     const observer = new MutationObserver(mutations => {
-      setMutationList(mutations)
+      if (onMutation.current) {
+        onMutation.current(mutations)
+      } else {
+        if (isMounted()) {
+          setMutationList(mutations)
+        }
+      }
     })
 
-    observer.observe(node, config)
+    observer.observe(ref.current, {
+      attributes,
+      attributeFilter,
+      attributeOldValue,
+      characterData,
+      characterDataOldValue,
+      childList,
+      subtree,
+    })
 
     return () => {
       observer.disconnect()
     }
-  }, [elementRef, config])
+  }, [
+    ref,
+    attributes,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    JSON.stringify(attributeFilter),
+    attributeOldValue,
+    characterData,
+    characterDataOldValue,
+    childList,
+    subtree,
+    isMounted,
+  ])
 
   return { mutationList, getMutationListByType }
 }

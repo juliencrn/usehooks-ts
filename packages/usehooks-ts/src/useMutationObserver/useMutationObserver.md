@@ -2,8 +2,11 @@ A React hook for observing DOM changes on a target element using the [MutationOb
 
 ### Parameters
 
-- `elementRef`: A React ref object that points to the DOM element to observe.
-- `config`: The [MutationObserver options](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/observe#parameters), such as `attributes`, `childList`, and `subtree`.
+Takes a single `options` object with the following properties:
+
+- `ref`: A React ref object that points to the DOM element to observe.
+- `attributes`, `childList`, `subtree`, `characterData`, `attributeFilter`, `attributeOldValue`, `characterDataOldValue`: The [MutationObserver options](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/observe#parameters).
+- `onMutation` _(optional)_: A callback invoked with the mutation records. When provided, the hook doesn't re-render on DOM changes; it delegates handling to the callback.
 
 ### Returns
 
@@ -14,3 +17,4 @@ A React hook for observing DOM changes on a target element using the [MutationOb
 
 - The hook uses native `MutationObserver` and runs only in environments where it is available.
 - The observer is disconnected automatically when the component unmounts or dependencies change.
+- Config options are destructured into primitive dependencies, so inline option objects do not cause infinite re-renders.
