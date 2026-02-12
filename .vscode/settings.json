@@ -12,7 +12,8 @@
     "generated/**": true,
     ".cache/**": true,
     ".git/**": true,
-    "**/package-lock.json": true
+    "**/package-lock.json": true,
+    "**/pnpm-lock.yaml": true
   },
   "eslint.validate": [
     "javascript",
@@ -22,20 +23,56 @@
   ],
   "eslint.format.enable": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll": true
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll": "explicit"
   },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "cSpell.words": [
     "algolia",
+    "clsx",
+    "cmdk",
+    "contentlayer",
     "fira",
     "frontmatter",
+    "gtag",
+    "juliencrn",
+    "lucide",
+    "nextjs",
     "okaidia",
     "prismjs",
+    "rehype",
+    "tailwindcss",
+    "UMAMI",
     "usehooks"
   ],
   "eslint.workingDirectories": [
-    { "directory": ".", "changeProcessCWD": true },
-    { "directory": "website", "changeProcessCWD": true },
-    { "directory": "packages/eslint-config-custom", "changeProcessCWD": true }
-  ]
+    {
+      "directory": "apps/www",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "packages/eslint-config-custom",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "packages/usehooks-ts",
+      "changeProcessCWD": true
+    }
+  ],
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "files.associations": { "*.json": "jsonc" }
 }

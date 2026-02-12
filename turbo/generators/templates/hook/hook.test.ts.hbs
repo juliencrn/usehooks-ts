@@ -1,0 +1,14 @@
+import { renderHook } from '@testing-library/react'
+
+import { {{camelCase name}} } from './{{camelCase name}}'
+
+describe('{{camelCase name}}()', () => {
+  it('should {{name}} be ok', () => {
+    const { result } = renderHook(() => {{camelCase name}}())
+    const [value, setNumber] = result.current
+
+    expect(value).toBe(2)
+    expect(typeof setNumber).toBe('function')
+  })
+})
+

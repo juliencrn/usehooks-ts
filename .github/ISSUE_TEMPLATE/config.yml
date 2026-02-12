@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: View documentation 📚
+    url: https://usehooks-ts.com/
+    about: Check out the official docs for answers to common questions.
+  - name: Feature requests 💡
+    url: https://github.com/juliencrn/usehooks-ts/discussions/categories/ideas
+    about: Suggest a new React hook idea.
+  - name: Questions 💭
+    url: https://github.com/juliencrn/usehooks-ts/discussions/categories/help
+    about: Need support with a React hook problem? Open up a help request.
+  - name: Donate ❤️
+    url: https://github.com/sponsors/juliencrn
+    about: Love usehooks-ts? Show your support by donating today!
