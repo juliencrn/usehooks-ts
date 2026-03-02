@@ -4,6 +4,11 @@ A simple countdown implementation. Support increment and decrement.
 
 NEW VERSION: A simple countdown implementation. Accepts `countStop`(new), `countStart` (was `seconds`), `intervalMs`(was `interval`) and `isIncrement` as keys of the call argument. Support increment and decrement. Will stop when at `countStop`.
 
+Also supports:
+
+- `autoStart` to start immediately on mount.
+- `onFinish` callback when the counter reaches `countStop`.
+
 Related hooks:
 
 - [`useBoolean()`](/react-hook/use-boolean)
