@@ -181,4 +181,42 @@ describe('useCountdown()', () => {
     act(result.current[1].resetCountdown)
     expect(result.current[0]).toBe(60)
   })
+
+  it('should auto start when autoStart is true', () => {
+    const { result } = renderHook(() =>
+      useCountdown({ countStart: 5, countStop: 0, intervalMs: 1000, autoStart: true }),
+    )
+
+    act(() => {
+      vitest.advanceTimersByTime(2000)
+    })
+
+    expect(result.current[0]).toBe(3)
+  })
+
+  it('should call onFinish when countdown reaches countStop', () => {
+    const onFinish = vitest.fn()
+
+    renderHook(() =>
+      useCountdown({
+        countStart: 3,
+        countStop: 0,
+        intervalMs: 1000,
+        autoStart: true,
+        onFinish,
+      }),
+    )
+
+    act(() => {
+      vitest.advanceTimersByTime(3000)
+    })
+
+    expect(onFinish).toHaveBeenCalledTimes(1)
+
+    act(() => {
+      vitest.advanceTimersByTime(3000)
+    })
+
+    expect(onFinish).toHaveBeenCalledTimes(1)
+  })
 })

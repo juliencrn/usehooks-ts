@@ -14,6 +14,7 @@ type CountdownOptions = {
    * @default 1000
    */
   intervalMs?: number
+
   /**
    * True if the countdown is increment.
    * @default false
@@ -25,6 +26,17 @@ type CountdownOptions = {
    * @default 0
    */
   countStop?: number
+
+  /**
+   * Starts the countdown immediately when the hook mounts.
+   * @default false
+   */
+  autoStart?: boolean
+
+  /**
+   * Callback fired once the countdown reaches `countStop`.
+   */
+  onFinish?: () => void
 }
 
 /** The countdown's controllers. */
@@ -49,6 +61,8 @@ type CountdownControllers = {
  *   countStart: 10,
  *   intervalMs: 1000,
  *   isIncrement: false,
+ *   autoStart: true,
+ *   onFinish: () => console.log('Done!'),
  * });
  * ```
  */
@@ -57,13 +71,10 @@ export function useCountdown({
   countStop = 0,
   intervalMs = 1000,
   isIncrement = false,
+  autoStart = false,
+  onFinish,
 }: CountdownOptions): [number, CountdownControllers] {
-  const {
-    count,
-    increment,
-    decrement,
-    reset: resetCounter,
-  } = useCounter(countStart)
+  const { count, reset: resetCounter, setCount } = useCounter(countStart)
 
   /*
    * Note: used to control the useInterval
@@ -75,7 +86,7 @@ export function useCountdown({
     value: isCountdownRunning,
     setTrue: startCountdown,
     setFalse: stopCountdown,
-  } = useBoolean(false)
+  } = useBoolean(autoStart)
 
   // Will set running false and reset the seconds to initial value.
   const resetCountdown = useCallback(() => {
@@ -84,17 +95,26 @@ export function useCountdown({
   }, [stopCountdown, resetCounter])
 
   const countdownCallback = useCallback(() => {
-    if (count === countStop) {
-      stopCountdown()
-      return
-    }
+    setCount(previousCount => {
+      if (previousCount === countStop) {
+        stopCountdown()
+        onFinish?.()
+        return previousCount
+      }
 
-    if (isIncrement) {
-      increment()
-    } else {
-      decrement()
-    }
-  }, [count, countStop, decrement, increment, isIncrement, stopCountdown])
+      const nextCount = isIncrement ? previousCount + 1 : previousCount - 1
+      const willReachStop = isIncrement
+        ? nextCount >= countStop
+        : nextCount <= countStop
+
+      if (willReachStop) {
+        stopCountdown()
+        onFinish?.()
+      }
+
+      return nextCount
+    })
+  }, [countStop, isIncrement, onFinish, setCount, stopCountdown])
 
   useInterval(countdownCallback, isCountdownRunning ? intervalMs : null)
 
