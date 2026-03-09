@@ -80,4 +80,25 @@ describe('useScript', () => {
     expect(document.querySelector(`script[id="${id}"]`)).not.toBeNull()
     expect(document.querySelector(`script[src="${src}"]`)?.id).toBe(id)
   })
+
+  it('should set `integrity` when given', () => {
+    const src = 'https://example.com/unique-script-integrity.js'
+    const integrity = 'integrity-hash'
+
+    const { result } = renderHook(() => useScript(src, { integrity }))
+
+    act(() => {
+      document
+        .querySelector(`script[src="${src}"]`)
+        ?.dispatchEvent(new Event('load'))
+    })
+
+    expect(result.current).toBe('ready')
+
+    // Assert the attribute set by setAttribute (impl uses setAttribute for integrity)
+    const script = document.querySelector(`script[src="${src}"]`)
+    expect(script).not.toBeNull()
+    expect((script as HTMLScriptElement)?.integrity).toBe(integrity)
+    expect((script as HTMLScriptElement)?.crossOrigin).toBe('anonymous')
+  })
 })

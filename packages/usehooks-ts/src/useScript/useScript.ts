@@ -11,6 +11,8 @@ type UseScriptOptions = {
   removeOnUnmount?: boolean
   /** Script's `id` (optional). */
   id?: string
+  /** Script's `integrity` property (optional). */
+  integrity?: string
 }
 
 // Cached script statuses
@@ -91,6 +93,10 @@ export function useScript(
       scriptNode.async = true
       if (options?.id) {
         scriptNode.id = options.id
+      }
+      if (options?.integrity) {
+        scriptNode.crossOrigin = 'anonymous'
+        scriptNode.integrity = options.integrity
       }
       scriptNode.setAttribute('data-status', 'loading')
       document.body.appendChild(scriptNode)
