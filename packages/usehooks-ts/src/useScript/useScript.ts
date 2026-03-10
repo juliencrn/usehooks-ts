@@ -103,7 +103,7 @@ export function useScript(
       if (options?.integrity) {
         scriptNode.integrity = options.integrity
       }
-      if (options?.crossOrigin || options?.integrity) {
+      if (!!options?.crossOrigin || !!options?.integrity) {
         scriptNode.crossOrigin = options?.crossOrigin ?? 'anonymous'
       }
       scriptNode.setAttribute('data-status', 'loading')
@@ -150,7 +150,14 @@ export function useScript(
         cachedScriptStatuses.delete(src)
       }
     }
-  }, [src, options?.shouldPreventLoad, options?.removeOnUnmount, options?.id])
+  }, [
+    src,
+    options?.shouldPreventLoad,
+    options?.removeOnUnmount,
+    options?.id,
+    options?.integrity,
+    options?.crossOrigin,
+  ])
 
   return status
 }

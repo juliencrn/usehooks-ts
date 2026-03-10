@@ -97,9 +97,9 @@ describe('useScript', () => {
 
     const script = document.querySelector<HTMLScriptElement>(
       `script[src="${src}"]`,
-    )!
+    )
     expect(script).not.toBeNull()
-    expect(script.crossOrigin).toBe(crossOrigin)
+    expect(script?.crossOrigin).toBe(crossOrigin)
   })
 
   it.each([
@@ -141,9 +141,9 @@ describe('useScript', () => {
 
     const script = document.querySelector<HTMLScriptElement>(
       `script[src="${src}"]`,
-    )!
+    )
     expect(script).not.toBeNull()
-    expect(script.integrity).toBe(integrity)
-    expect(script.crossOrigin).toBe(expectedCrossOrigin)
+    expect(script?.integrity).toBe(integrity)
+    expect(script?.crossOrigin).toBe(expectedCrossOrigin)
   })
 })
