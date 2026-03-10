@@ -4,7 +4,7 @@ import { useScript } from './useScript'
 
 describe('useScript', () => {
   it('should handle script loading error', () => {
-    const src = 'https://example.com/myscript.js'
+    const src = 'https://example.com/test-error.js'
 
     const { result } = renderHook(() => useScript(src))
 
@@ -21,7 +21,7 @@ describe('useScript', () => {
   })
 
   it('should remove script on unmount', () => {
-    const src = '/'
+    const src = 'https://example.com/test-remove-on-unmount.js'
 
     // First load the script
     const { result } = renderHook(() =>
@@ -63,7 +63,7 @@ describe('useScript', () => {
   })
 
   it('should have a `id` attribute when given', () => {
-    const src = '/'
+    const src = 'https://example.com/test-id.js'
     const id = 'my-script'
 
     const { result } = renderHook(() => useScript(src, { id }))
@@ -81,11 +81,11 @@ describe('useScript', () => {
     expect(document.querySelector(`script[src="${src}"]`)?.id).toBe(id)
   })
 
-  it('should set `integrity` when given', () => {
-    const src = 'https://example.com/unique-script-integrity.js'
-    const integrity = 'integrity-hash'
+  it('should have a `crossOrigin` attribute when given', () => {
+    const src = 'https://example.com/test-crossorigin.js'
+    const crossOrigin = 'use-credentials'
 
-    const { result } = renderHook(() => useScript(src, { integrity }))
+    const { result } = renderHook(() => useScript(src, { crossOrigin }))
 
     act(() => {
       document
@@ -95,10 +95,55 @@ describe('useScript', () => {
 
     expect(result.current).toBe('ready')
 
-    // Assert the attribute set by setAttribute (impl uses setAttribute for integrity)
-    const script = document.querySelector(`script[src="${src}"]`)
+    const script = document.querySelector<HTMLScriptElement>(
+      `script[src="${src}"]`,
+    )!
     expect(script).not.toBeNull()
-    expect((script as HTMLScriptElement)?.integrity).toBe(integrity)
-    expect((script as HTMLScriptElement)?.crossOrigin).toBe('anonymous')
+    expect(script.crossOrigin).toBe(crossOrigin)
+  })
+
+  it.each([
+    {
+      scenario:
+        "defaults crossOrigin to 'anonymous' when integrity is set and crossOrigin is not supplied",
+      integrity: 'integrity-hash-1',
+      crossOrigin: undefined,
+      expectedCrossOrigin: 'anonymous',
+    },
+    {
+      scenario:
+        "uses supplied crossOrigin 'anonymous' when both integrity and crossOrigin are set",
+      integrity: 'integrity-hash-2',
+      crossOrigin: 'anonymous',
+      expectedCrossOrigin: 'anonymous',
+    },
+    {
+      scenario:
+        "uses supplied crossOrigin 'use-credentials' when both integrity and crossOrigin are set",
+      integrity: 'integrity-hash-3',
+      crossOrigin: 'use-credentials',
+      expectedCrossOrigin: 'use-credentials',
+    },
+  ])('$scenario', ({ integrity, crossOrigin, expectedCrossOrigin }) => {
+    const src = `https://example.com/file-${integrity}.js`
+
+    const { result } = renderHook(() =>
+      useScript(src, { integrity, crossOrigin }),
+    )
+
+    act(() => {
+      document
+        .querySelector(`script[src="${src}"]`)
+        ?.dispatchEvent(new Event('load'))
+    })
+
+    expect(result.current).toBe('ready')
+
+    const script = document.querySelector<HTMLScriptElement>(
+      `script[src="${src}"]`,
+    )!
+    expect(script).not.toBeNull()
+    expect(script.integrity).toBe(integrity)
+    expect(script.crossOrigin).toBe(expectedCrossOrigin)
   })
 })

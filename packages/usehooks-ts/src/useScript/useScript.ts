@@ -11,8 +11,14 @@ type UseScriptOptions = {
   removeOnUnmount?: boolean
   /** Script's `id` (optional). */
   id?: string
-  /** Script's `integrity` property (optional). */
+  /**
+   * Script's [`integrity` property](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/integrity) (optional).
+   *
+   * _Note:_ As a side effect of this being set the `crossOrigin` property will be set to `'anonymous' unless explicitly configured differently.
+   */
   integrity?: string
+  /** Script's [`crossOrigin` property](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/crossOrigin) (optional). */
+  crossOrigin?: string
 }
 
 // Cached script statuses
@@ -95,8 +101,10 @@ export function useScript(
         scriptNode.id = options.id
       }
       if (options?.integrity) {
-        scriptNode.crossOrigin = 'anonymous'
         scriptNode.integrity = options.integrity
+      }
+      if (options?.crossOrigin || options?.integrity) {
+        scriptNode.crossOrigin = options?.crossOrigin ?? 'anonymous'
       }
       scriptNode.setAttribute('data-status', 'loading')
       document.body.appendChild(scriptNode)
