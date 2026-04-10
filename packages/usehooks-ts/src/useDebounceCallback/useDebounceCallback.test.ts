@@ -85,6 +85,30 @@ describe('useDebounceCallback()', () => {
     expect(debouncedCallback).not.toHaveBeenCalled()
   })
 
+  it('should cancel the debounced callback on unmount', () => {
+    const delay = 500
+    const debouncedCallback = vitest.fn()
+    const { result, unmount } = renderHook(() =>
+      useDebounceCallback(debouncedCallback, delay),
+    )
+
+    act(() => {
+      result.current('argument')
+    })
+
+    // The callback should not be invoked immediately
+    expect(debouncedCallback).not.toHaveBeenCalled()
+
+    // Unmount the component
+    unmount()
+
+    // Fast forward time past the debounce delay
+    vitest.advanceTimersByTime(delay + 100)
+
+    // The callback should not be invoked after unmount
+    expect(debouncedCallback).not.toHaveBeenCalled()
+  })
+
   it('should flush the debounced callback', () => {
     const delay = 500
     const debouncedCallback = vitest.fn()
