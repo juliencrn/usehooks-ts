@@ -51,6 +51,25 @@ function Component() {
 }
 ```
 
+## 🤖 AI Agent Skill
+
+This repository includes a `usehooks-ts` skill for AI coding agents. Install it
+with the [skills.sh](https://skills.sh) CLI:
+
+```shell
+npx skills add https://github.com/juliencrn/usehooks-ts --skill usehooks-ts
+```
+
+From a local checkout, you can install the bundled skill directly:
+
+```shell
+npx skills add ./skills/usehooks-ts
+```
+
+Agent metadata is included in `skills/usehooks-ts/agents` for OpenAI, Codex,
+Claude Code, Cursor, Windsurf, Gemini, Copilot, Aider, Cline, Roo Code, and
+generic agent loaders.
+
 ## 🪝 Available Hooks
 
 <!-- HOOKS:START -->
