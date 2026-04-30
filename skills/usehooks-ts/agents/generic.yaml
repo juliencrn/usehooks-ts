@@ -1,0 +1,21 @@
+interface:
+  display_name: "usehooks-ts"
+  short_description: "Use React hooks from usehooks-ts well"
+  default_prompt: "Use the usehooks-ts skill at ../SKILL.md to choose and integrate the right React hook for this component."
+skill:
+  name: "usehooks-ts"
+  entrypoint: "../SKILL.md"
+  references:
+    - "../references/hook-catalog.md"
+    - "../references/ssr-frameworks.md"
+    - "../references/composition-recipes.md"
+    - "../references/testing-pitfalls.md"
+  scripts:
+    - "../scripts/audit_usehooks_ts_usage.py"
+  triggers:
+    - "usehooks-ts"
+    - "React hooks"
+    - "Next.js hydration"
+    - "localStorage hook"
+    - "debounce hook"
+    - "media query hook"
