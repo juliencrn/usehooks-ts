@@ -13,6 +13,7 @@ A debounced version of the original callback along with control functions.
 ### Dependency
 
 This hook is built upon [`lodash.debounce`](https://www.npmjs.com/package/lodash.debounce).
+Defaults follow [lodash debounce](https://lodash.com/docs/4.17.15#debounce) behavior.
 
 ### Related hooks
 

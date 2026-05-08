@@ -15,7 +15,7 @@ type UseDebounceValueOptions<T> = {
   leading?: boolean
   /**
    * Determines whether the function should be invoked on the trailing edge of the timeout.
-   * @default false
+   * @default true
    */
   trailing?: boolean
   /**
