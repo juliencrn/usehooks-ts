@@ -104,12 +104,14 @@ export function useDebounceCallback<T extends (...args: any) => ReturnType<T>>(
     }
 
     return wrappedFunc
-  }, [func, delay, options])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [func, delay, options?.leading, options?.trailing, options?.maxWait])
 
   // Update the debounced function ref whenever func, wait, or options change
   useEffect(() => {
     debouncedFunc.current = debounce(func, delay, options)
-  }, [func, delay, options])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [func, delay, options?.leading, options?.trailing, options?.maxWait])
 
   return debounced
 }
