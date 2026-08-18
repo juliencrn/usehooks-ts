@@ -17,7 +17,7 @@ type EventType =
  * @param {RefObject<T> | RefObject<T>[]} ref - The React ref object(s) representing the element(s) to watch for outside clicks.
  * @param {(event: MouseEvent | TouchEvent | FocusEvent) => void} handler - The callback function to be executed when a click outside the element occurs.
  * @param {EventType} [eventType] - The mouse event type to listen for (optional, default is 'mousedown').
- * @param {?AddEventListenerOptions} [eventListenerOptions] - The options object to be passed to the `addEventListener` method (optional).
+ * @param {boolean | AddEventListenerOptions} [eventListenerOptions] - The options to be passed to the `addEventListener` method (optional). Avoid passing an inline object literal here, as a new object reference on every render will cause the listener to be re-registered unnecessarily.
  * @returns {void}
  * @public
  * @see [Documentation](https://usehooks-ts.com/react-hook/use-on-click-outside)
@@ -33,7 +33,7 @@ export function useOnClickOutside<T extends HTMLElement = HTMLElement>(
   ref: RefObject<T> | RefObject<T>[],
   handler: (event: MouseEvent | TouchEvent | FocusEvent) => void,
   eventType: EventType = 'mousedown',
-  eventListenerOptions: AddEventListenerOptions = {},
+  eventListenerOptions?: boolean | AddEventListenerOptions,
 ): void {
   useEventListener(
     eventType,
