@@ -93,4 +93,29 @@ describe('useOnClickOutside(', () => {
 
     expect(handler).toHaveBeenCalledTimes(0)
   })
+
+  it('should not re-register the listener when rerendered without options', () => {
+    const addEventListenerSpy = vitest.spyOn(window, 'addEventListener')
+    const removeEventListenerSpy = vitest.spyOn(window, 'removeEventListener')
+    const containerRef = { current: document.createElement('div') }
+    const handler = vitest.fn()
+
+    const { rerender, unmount } = renderHook(() => {
+      useOnClickOutside(containerRef, handler)
+    })
+
+    expect(addEventListenerSpy).toHaveBeenCalledTimes(1)
+
+    rerender()
+
+    expect(addEventListenerSpy).toHaveBeenCalledTimes(1)
+    expect(removeEventListenerSpy).not.toHaveBeenCalled()
+
+    unmount()
+
+    expect(removeEventListenerSpy).toHaveBeenCalledTimes(1)
+
+    addEventListenerSpy.mockRestore()
+    removeEventListenerSpy.mockRestore()
+  })
 })
