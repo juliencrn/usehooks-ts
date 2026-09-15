@@ -42,8 +42,8 @@ importers:
         specifier: ^5.0.5
         version: 5.0.5
       turbo:
-        specifier: ^1.12.4
-        version: 1.12.4
+        specifier: ^2.0.0
+        version: 2.10.13
       typedoc:
         specifier: ^0.25.9
         version: 0.25.9(typescript@5.3.3)
@@ -1869,6 +1869,22 @@ packages:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
     dev: true
 
+  /@turbo/darwin-64@2.10.13:
+    resolution: {integrity: sha512-m5DBcpkxmcKpEJHHFUfqf9GLUjSmw3cDnBJM9nghPW3kjCNb5OyNKmzG7/yT5x5AwzOO+HMwKN+UI4iVKL87YA==}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@turbo/darwin-arm64@2.10.13:
+    resolution: {integrity: sha512-vfKPvSuoY8BJGj8M8yN+a7aq1g+CejbEacDSDlJLDkSbPN3J/U1DbYAmPG8Ype5XvImI0SgfvUhIorNnFj67zw==}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /@turbo/gen@1.12.4(@types/node@20.12.2)(typescript@5.3.3):
     resolution: {integrity: sha512-3Z8KZ6Vnc2x6rr8sNJ4QNYpkAttLBfb91uPzDlFDY7vgJg+vfXT8YWyZznVL+19ZixF2C/F4Ucp4/YjG2e1drg==}
     hasBin: true
@@ -1891,6 +1907,38 @@ packages:
       - supports-color
       - typescript
     dev: true
+
+  /@turbo/linux-64@2.10.13:
+    resolution: {integrity: sha512-Zp0N5M6j9iEjJtFLTA2L+52TLuYy0VbXT3zLZzfMeqqdKSUJ7pDo2pA1NhqjoQcF2dIsktZ8xZRW3pGI6T81fw==}
+    cpu: [x64]
+    os: [android, linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@turbo/linux-arm64@2.10.13:
+    resolution: {integrity: sha512-M8XcfWdS2D4EP3wzd5ehUyCANucMIOsRE6gZuV0Mr2NIn+FpsUjXFCh7r9HY7GnNcjXH4tUnT76OsCDg2c0Fng==}
+    cpu: [arm64]
+    os: [android, linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@turbo/windows-64@2.10.13:
+    resolution: {integrity: sha512-QFd3KBMpBBCc31TbxMnxgdBivie8lxJXV8EqmanH8fg8l2e1BdCLWpZJbxk48VNvcF4LHUnwO0FJOq+veKN1cw==}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@turbo/windows-arm64@2.10.13:
+    resolution: {integrity: sha512-rM+cFO1P8iAHXdasOdMyK9nDk0UGII7VEFLIA8+jwv/+rh48pnVBbF2OSjJDBOw57pxNLIOEDA0JyKcarTBcIw==}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
 
   /@turbo/workspaces@1.12.4:
     resolution: {integrity: sha512-a1hF8Nr6MOeCpvlLR569dGTlzgRLj2Rxo6dTb4jtL+jhHwCb94A9kDPgcRnYGFr45mgulICarVaNZxDjw4/riQ==}
@@ -8269,64 +8317,16 @@ packages:
       yargs: 17.7.2
     dev: true
 
-  /turbo-darwin-64@1.12.4:
-    resolution: {integrity: sha512-dBwFxhp9isTa9RS/fz2gDVk5wWhKQsPQMozYhjM7TT4jTrnYn0ZJMzr7V3B/M/T8QF65TbniW7w1gtgxQgX5Zg==}
-    cpu: [x64]
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-darwin-arm64@1.12.4:
-    resolution: {integrity: sha512-1Uo5iI6xsJ1j9ObsqxYRsa3W26mEbUe6fnj4rQYV6kDaqYD54oAMJ6hM53q9rB8JvFxwdrUXGp3PwTw9A0qqkA==}
-    cpu: [arm64]
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-linux-64@1.12.4:
-    resolution: {integrity: sha512-ONg2aSqKP7LAQOg7ysmU5WpEQp4DGNxSlAiR7um+LKtbmC/UxogbR5+T+Uuq6zGuQ5kJyKjWJ4NhtvUswOqBsA==}
-    cpu: [x64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-linux-arm64@1.12.4:
-    resolution: {integrity: sha512-9FPufkwdgfIKg/9jj87Cdtftw8o36y27/S2vLN7FTR2pp9c0MQiTBOLVYadUr1FlShupddmaMbTkXEhyt9SdrA==}
-    cpu: [arm64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-windows-64@1.12.4:
-    resolution: {integrity: sha512-2mOtxHW5Vjh/5rDVu/aFwsMzI+chs8XcEuJHlY1sYOpEymYTz+u6AXbnzRvwZFMrLKr7J7fQOGl+v96sLKbNdA==}
-    cpu: [x64]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo-windows-arm64@1.12.4:
-    resolution: {integrity: sha512-nOY5wae9qnxPOpT1fRuYO0ks6dTwpKMPV6++VkDkamFDLFHUDVM/9kmD2UTeh1yyrKnrZksbb9zmShhmfj1wog==}
-    cpu: [arm64]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /turbo@1.12.4:
-    resolution: {integrity: sha512-yUJ7elEUSToiGwFZogXpYKJpQ0BvaMbkEuQECIWtkBLcmWzlMOt6bActsIm29oN83mRU0WbzGt4e8H1KHWedhg==}
+  /turbo@2.10.13:
+    resolution: {integrity: sha512-69MkPbjk+G8oyC7pC2DeBk0rPdbLz51wuH5eAT0Q4BVJkzq/b1XM4kUUidsARbmDjwIELSJwd1ezITULY9kWNw==}
     hasBin: true
     optionalDependencies:
-      turbo-darwin-64: 1.12.4
-      turbo-darwin-arm64: 1.12.4
-      turbo-linux-64: 1.12.4
-      turbo-linux-arm64: 1.12.4
-      turbo-windows-64: 1.12.4
-      turbo-windows-arm64: 1.12.4
+      '@turbo/darwin-64': 2.10.13
+      '@turbo/darwin-arm64': 2.10.13
+      '@turbo/linux-64': 2.10.13
+      '@turbo/linux-arm64': 2.10.13
+      '@turbo/windows-64': 2.10.13
+      '@turbo/windows-arm64': 2.10.13
     dev: true
 
   /type-check@0.4.0:
