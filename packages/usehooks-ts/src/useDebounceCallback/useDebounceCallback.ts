@@ -83,9 +83,12 @@ export function useDebounceCallback<T extends (...args: any) => ReturnType<T>>(
       debouncedFunc.current.cancel()
     }
   })
+  const optionsMemo = useMemo(() => {
+    return options
+  },[options?.maxWait, options?.leading, options?.trailing])
 
   const debounced = useMemo(() => {
-    const debouncedFuncInstance = debounce(func, delay, options)
+    const debouncedFuncInstance = debounce(func, delay, optionsMemo)
 
     const wrappedFunc: DebouncedState<T> = (...args: Parameters<T>) => {
       return debouncedFuncInstance(...args)
@@ -104,12 +107,12 @@ export function useDebounceCallback<T extends (...args: any) => ReturnType<T>>(
     }
 
     return wrappedFunc
-  }, [func, delay, options])
+  }, [func, delay, optionsMemo])
 
   // Update the debounced function ref whenever func, wait, or options change
   useEffect(() => {
-    debouncedFunc.current = debounce(func, delay, options)
-  }, [func, delay, options])
+    debouncedFunc.current = debounce(func, delay, optionsMemo)
+  }, [func, delay, optionsMemo])
 
   return debounced
 }
