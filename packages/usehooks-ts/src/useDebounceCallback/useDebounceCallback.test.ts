@@ -107,4 +107,37 @@ describe('useDebounceCallback()', () => {
     // The callback should be invoked immediately after flushing
     expect(debouncedCallback).toHaveBeenCalled()
   })
+  it('should preserve debouncing across rerenders with inline options', () => {
+    const delay = 500
+    const callback = vitest.fn()
+
+    const { result, rerender } = renderHook(() =>
+      useDebounceCallback(callback, delay, { maxWait: 2000 }),
+    )
+
+    act(() => {
+      result.current('first')
+    })
+
+    rerender()
+
+    act(() => {
+      result.current('second')
+    })
+
+    rerender()
+
+    act(() => {
+      result.current('third')
+    })
+
+    expect(callback).not.toHaveBeenCalled()
+
+    act(() => {
+      vitest.advanceTimersByTime(delay)
+    })
+
+    expect(callback).toHaveBeenCalledTimes(1)
+    expect(callback).toHaveBeenCalledWith('third')
+  })
 })
