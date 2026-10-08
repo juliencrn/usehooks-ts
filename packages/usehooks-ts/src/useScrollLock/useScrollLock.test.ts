@@ -112,4 +112,73 @@ describe('useScrollLock()', () => {
     unmount()
     expect(document.body.style.paddingRight).toBe('')
   })
+
+  it('should preserve original styles when locked repeatedly before a rerender', () => {
+    const target = document.createElement('div')
+
+    target.style.overflow = 'auto'
+    target.style.paddingRight = '12px'
+    Object.defineProperty(target, 'offsetWidth', { value: 100 })
+    Object.defineProperty(target, 'scrollWidth', { value: 80 })
+    document.body.appendChild(target)
+
+    const { result } = renderHook(() =>
+      useScrollLock({ autoLock: false, lockTarget: target }),
+    )
+
+    act(() => {
+      result.current.lock()
+      result.current.lock()
+    })
+
+    expect(target.style.paddingRight).toBe('32px')
+    act(() => {
+      result.current.unlock()
+    })
+    expect(target.style.overflow).toBe('auto')
+    expect(target.style.paddingRight).toBe('12px')
+    expect(result.current.isLocked).toBe(false)
+  })
+
+  it('should restore styles on unmount after locking an already locked target', () => {
+    const target = document.createElement('div')
+
+    target.style.overflow = 'scroll'
+    document.body.appendChild(target)
+
+    const { result, unmount } = renderHook(() =>
+      useScrollLock({ lockTarget: target, widthReflow: false }),
+    )
+
+    act(() => {
+      result.current.lock()
+    })
+    unmount()
+
+    expect(target.style.overflow).toBe('scroll')
+  })
+
+  it('should capture current styles again after unlocking and relocking', () => {
+    const target = document.createElement('div')
+
+    target.style.overflow = 'auto'
+    document.body.appendChild(target)
+
+    const { result } = renderHook(() =>
+      useScrollLock({ lockTarget: target, widthReflow: false }),
+    )
+
+    act(() => {
+      result.current.unlock()
+    })
+    target.style.overflow = 'scroll'
+    act(() => {
+      result.current.lock()
+    })
+    act(() => {
+      result.current.unlock()
+    })
+
+    expect(target.style.overflow).toBe('scroll')
+  })
 })
