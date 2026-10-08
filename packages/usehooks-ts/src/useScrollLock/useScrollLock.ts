@@ -71,7 +71,7 @@ export function useScrollLock(
   const originalStyle = useRef<OriginalStyle | null>(null)
 
   const lock = () => {
-    if (target.current) {
+    if (target.current && !originalStyle.current) {
       const { overflow, paddingRight } = target.current.style
 
       // Save the original styles
@@ -108,6 +108,8 @@ export function useScrollLock(
       if (widthReflow) {
         target.current.style.paddingRight = originalStyle.current.paddingRight
       }
+
+      originalStyle.current = null
     }
 
     setIsLocked(false)
