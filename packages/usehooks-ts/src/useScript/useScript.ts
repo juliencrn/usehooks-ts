@@ -69,6 +69,7 @@ export function useScript(
 
   useEffect(() => {
     if (!src || options?.shouldPreventLoad) {
+      setStatus('idle')
       return
     }
 
@@ -85,6 +86,7 @@ export function useScript(
     let scriptNode = script.node
 
     if (!scriptNode) {
+      setStatus('loading')
       // Create script element and add it to document body
       scriptNode = document.createElement('script')
       scriptNode.src = src
