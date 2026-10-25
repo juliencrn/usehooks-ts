@@ -3,6 +3,62 @@ import { act, cleanup, renderHook } from '@testing-library/react'
 import { useScript } from './useScript'
 
 describe('useScript', () => {
+  it('should reset the status when the source changes', () => {
+    const { result, rerender } = renderHook(
+      ({ src }: { src: string | null }) =>
+        useScript(src, { removeOnUnmount: true }),
+      { initialProps: { src: '/first-script.js' as string | null } },
+    )
+
+    act(() => {
+      document
+        .querySelector('script[src="/first-script.js"]')
+        ?.dispatchEvent(new Event('load'))
+    })
+    expect(result.current).toBe('ready')
+
+    rerender({ src: '/second-script.js' })
+    expect(result.current).toBe('loading')
+
+    act(() => {
+      document
+        .querySelector('script[src="/second-script.js"]')
+        ?.dispatchEvent(new Event('error'))
+    })
+    expect(result.current).toBe('error')
+
+    rerender({ src: null })
+    expect(result.current).toBe('idle')
+
+    rerender({ src: '/third-script.js' })
+    expect(result.current).toBe('loading')
+  })
+
+  it('should update the status when loading is enabled or prevented', () => {
+    const src = '/deferred-script.js'
+    const { result, rerender } = renderHook(
+      ({ shouldPreventLoad }) =>
+        useScript(src, { shouldPreventLoad, removeOnUnmount: true }),
+      { initialProps: { shouldPreventLoad: true } },
+    )
+
+    expect(result.current).toBe('idle')
+    expect(document.querySelector(`script[src="${src}"]`)).toBeNull()
+
+    rerender({ shouldPreventLoad: false })
+    expect(result.current).toBe('loading')
+
+    act(() => {
+      document
+        .querySelector(`script[src="${src}"]`)
+        ?.dispatchEvent(new Event('load'))
+    })
+    expect(result.current).toBe('ready')
+
+    rerender({ shouldPreventLoad: true })
+    expect(result.current).toBe('idle')
+  })
+
   it('should handle script loading error', () => {
     const src = 'https://example.com/myscript.js'
 
