@@ -39,7 +39,7 @@
     "tailwindcss-animate": "^1.0.7",
     "usehooks-ts": "workspace:*",
     "voca": "^1.4.1",
-    "zod": "^3.22.4"
+    "zod": "^4.0.0"
   },
   "devDependencies": {
     "@tailwindcss/line-clamp": "^0.4.4",

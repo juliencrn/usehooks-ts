@@ -16,7 +16,7 @@ importers:
         version: 2.27.1
       '@t3-oss/env-core':
         specifier: ^0.9.2
-        version: 0.9.2(typescript@5.3.3)(zod@3.22.4)
+        version: 0.9.2(typescript@5.3.3)(zod@4.6.6)
       '@turbo/gen':
         specifier: ^1.12.4
         version: 1.12.4(@types/node@20.12.2)(typescript@5.3.3)
@@ -57,8 +57,8 @@ importers:
         specifier: ^2.2.0
         version: 2.2.0(typedoc@0.25.9)
       zod:
-        specifier: 3.22.4
-        version: 3.22.4
+        specifier: 4.6.6
+        version: 4.6.6
       zx:
         specifier: ^7.2.3
         version: 7.2.3
@@ -79,7 +79,7 @@ importers:
         version: 1.0.2(@types/react@18.2.73)(react@18.2.0)
       '@t3-oss/env-nextjs':
         specifier: ^0.9.2
-        version: 0.9.2(typescript@5.3.3)(zod@3.22.4)
+        version: 0.9.2(typescript@5.3.3)(zod@4.6.6)
       '@types/voca':
         specifier: ^1.4.1
         version: 1.4.5
@@ -144,8 +144,8 @@ importers:
         specifier: ^1.4.1
         version: 1.4.1
       zod:
-        specifier: ^3.22.4
-        version: 3.22.4
+        specifier: ^4.0.0
+        version: 4.6.6
     devDependencies:
       '@tailwindcss/line-clamp':
         specifier: ^0.4.4
@@ -1743,7 +1743,7 @@ packages:
     dependencies:
       tslib: 2.6.2
 
-  /@t3-oss/env-core@0.9.2(typescript@5.3.3)(zod@3.22.4):
+  /@t3-oss/env-core@0.9.2(typescript@5.3.3)(zod@4.6.6):
     resolution: {integrity: sha512-KgWXljUTHgO3o7GMZQPAD5+P+HqpauMNNHowlm7V2b9IeMitSUpNKwG6xQrup/xARWHTdxRVIl0mSI4wCevQhQ==}
     peerDependencies:
       typescript: ^5.3.3
@@ -1753,9 +1753,9 @@ packages:
         optional: true
     dependencies:
       typescript: 5.3.3
-      zod: 3.22.4
+      zod: 4.6.6
 
-  /@t3-oss/env-nextjs@0.9.2(typescript@5.3.3)(zod@3.22.4):
+  /@t3-oss/env-nextjs@0.9.2(typescript@5.3.3)(zod@4.6.6):
     resolution: {integrity: sha512-dklHrgKLESStNVB67Jdbu6osxDYA+xNKaPBRerlnkEvzbCccSKMvZENx6EZebJuR4snqB3/yRykNMn/bdIAyiQ==}
     peerDependencies:
       typescript: ^5.3.3
@@ -1764,9 +1764,9 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@t3-oss/env-core': 0.9.2(typescript@5.3.3)(zod@3.22.4)
+      '@t3-oss/env-core': 0.9.2(typescript@5.3.3)(zod@4.6.6)
       typescript: 5.3.3
-      zod: 3.22.4
+      zod: 4.6.6
     dev: false
 
   /@tailwindcss/line-clamp@0.4.4(tailwindcss@3.4.3):
@@ -9181,8 +9181,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  /zod@3.22.4:
-    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+  /zod@4.6.6:
+    resolution: {integrity: sha512-4UmzQUF5fxvfcYHlbjBmejU+w+hbDnWFx4aS8kBx7nPBHcO2SqPbpAG8snbdg+Xse4pRefR98hgjFgIMCI/UhA==}
 
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
