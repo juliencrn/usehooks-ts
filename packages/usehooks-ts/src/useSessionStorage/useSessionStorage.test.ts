@@ -125,6 +125,73 @@ describe('useSessionStorage()', () => {
     expect(window.sessionStorage.getItem('count')).toEqual('3')
   })
 
+  it('uses the returned state when the initializer result changes before the first update', () => {
+    let initialCount = 0
+    const { result } = renderHook(() =>
+      useSessionStorage('count', () => initialCount + 1),
+    )
+
+    expect(result.current[0]).toBe(1)
+    initialCount = 2
+
+    act(() => {
+      result.current[1](prev => prev + 1)
+    })
+
+    expect(result.current[0]).toBe(2)
+    expect(window.sessionStorage.getItem('count')).toBe('2')
+  })
+
+  it('uses the returned state when the initial value changes on rerender', () => {
+    const { result, rerender } = renderHook(
+      ({ initialValue }) => useSessionStorage('count', initialValue),
+      { initialProps: { initialValue: 1 } },
+    )
+
+    rerender({ initialValue: 10 })
+    expect(result.current[0]).toBe(1)
+
+    act(() => {
+      result.current[1](prev => prev + 1)
+    })
+
+    expect(result.current[0]).toBe(2)
+    expect(window.sessionStorage.getItem('count')).toBe('2')
+  })
+
+  it('preserves undefined state as the fallback for the first update', () => {
+    const { result, rerender } = renderHook(
+      ({ initialValue }: { initialValue: number | undefined }) =>
+        useSessionStorage<number | undefined>('count', initialValue),
+      { initialProps: { initialValue: undefined as number | undefined } },
+    )
+
+    rerender({ initialValue: 10 })
+    expect(result.current[0]).toBeUndefined()
+    const updater = vitest.fn((prev: number | undefined) => (prev ?? 0) + 1)
+
+    act(() => {
+      result.current[1](updater)
+    })
+
+    expect(updater).toHaveBeenCalledWith(undefined)
+    expect(result.current[0]).toBe(1)
+    expect(window.sessionStorage.getItem('count')).toBe('1')
+  })
+
+  it('reads the latest stored value before a functional update', () => {
+    const { result } = renderHook(() => useSessionStorage('count', 1))
+    window.sessionStorage.setItem('count', '10')
+    expect(result.current[0]).toBe(1)
+
+    act(() => {
+      result.current[1](prev => prev + 1)
+    })
+
+    expect(result.current[0]).toBe(11)
+    expect(window.sessionStorage.getItem('count')).toBe('11')
+  })
+
   it('Update the state with a callback function multiple times per render', () => {
     const { result } = renderHook(() => useSessionStorage('count', 2))
 

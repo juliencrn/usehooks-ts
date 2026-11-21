@@ -91,23 +91,26 @@ export function useSessionStorage<T>(
 
   // Get from session storage then
   // parse stored json or return initialValue
-  const readValue = useCallback((): T => {
-    const initialValueToUse =
-      initialValue instanceof Function ? initialValue() : initialValue
+  const readValue = useCallback(
+    (fallbackValue: T | (() => T) = initialValue): T => {
+      const initialValueToUse =
+        fallbackValue instanceof Function ? fallbackValue() : fallbackValue
 
-    // Prevent build error "window is undefined" but keep working
-    if (IS_SERVER) {
-      return initialValueToUse
-    }
+      // Prevent build error "window is undefined" but keep working
+      if (IS_SERVER) {
+        return initialValueToUse
+      }
 
-    try {
-      const raw = window.sessionStorage.getItem(key)
-      return raw ? deserializer(raw) : initialValueToUse
-    } catch (error) {
-      console.warn(`Error reading sessionStorage key “${key}”:`, error)
-      return initialValueToUse
-    }
-  }, [initialValue, key, deserializer])
+      try {
+        const raw = window.sessionStorage.getItem(key)
+        return raw ? deserializer(raw) : initialValueToUse
+      } catch (error) {
+        console.warn(`Error reading sessionStorage key “${key}”:`, error)
+        return initialValueToUse
+      }
+    },
+    [initialValue, key, deserializer],
+  )
 
   const [storedValue, setStoredValue] = useState(() => {
     if (initializeWithValue) {
@@ -129,7 +132,9 @@ export function useSessionStorage<T>(
 
     try {
       // Allow value to be a function so we have the same API as useState
-      const newValue = value instanceof Function ? value(readValue()) : value
+      // If storage is empty, update the current state instead of re-evaluating initialValue.
+      const newValue =
+        value instanceof Function ? value(readValue(() => storedValue)) : value
 
       // Save to session storage
       window.sessionStorage.setItem(key, serializer(newValue))
