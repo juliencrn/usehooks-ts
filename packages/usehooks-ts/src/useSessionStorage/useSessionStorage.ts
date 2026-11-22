@@ -102,7 +102,7 @@ export function useSessionStorage<T>(
 
     try {
       const raw = window.sessionStorage.getItem(key)
-      return raw ? deserializer(raw) : initialValueToUse
+      return raw !== null ? deserializer(raw) : initialValueToUse
     } catch (error) {
       console.warn(`Error reading sessionStorage key “${key}”:`, error)
       return initialValueToUse

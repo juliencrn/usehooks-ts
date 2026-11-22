@@ -102,7 +102,7 @@ export function useLocalStorage<T>(
 
     try {
       const raw = window.localStorage.getItem(key)
-      return raw ? deserializer(raw) : initialValueToUse
+      return raw !== null ? deserializer(raw) : initialValueToUse
     } catch (error) {
       console.warn(`Error reading localStorage key “${key}”:`, error)
       return initialValueToUse
