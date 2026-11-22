@@ -3,6 +3,31 @@ import { act, cleanup, renderHook } from '@testing-library/react'
 import { useScript } from './useScript'
 
 describe('useScript', () => {
+  it.each(['load', 'error'])(
+    'removes an already cached script after %s',
+    event => {
+      const src = `https://example.com/cached-${event}.js`
+      const first = renderHook(() => useScript(src))
+      const script = document.querySelector(`script[src="${src}"]`)
+
+      act(() => {
+        script?.dispatchEvent(new Event(event))
+      })
+      first.unmount()
+      expect(script?.isConnected).toBe(true)
+
+      const second = renderHook(() => useScript(src, { removeOnUnmount: true }))
+      expect(second.result.current).toBe(event === 'load' ? 'ready' : 'error')
+      second.unmount()
+      expect(document.querySelector(`script[src="${src}"]`)).toBeNull()
+
+      const third = renderHook(() => useScript(src, { removeOnUnmount: true }))
+      expect(third.result.current).toBe('loading')
+      expect(document.querySelector(`script[src="${src}"]`)).not.toBeNull()
+      third.unmount()
+    },
+  )
+
   it('should handle script loading error', () => {
     const src = 'https://example.com/myscript.js'
 
