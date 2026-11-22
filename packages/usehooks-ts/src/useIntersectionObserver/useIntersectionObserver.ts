@@ -98,7 +98,7 @@ export function useIntersectionObserver({
 
   callbackRef.current = onChange
 
-  const frozen = state.entry?.isIntersecting && freezeOnceVisible
+  const frozen = state.isIntersecting && freezeOnceVisible
 
   useEffect(() => {
     // Ensure we have a ref to observe
