@@ -3,6 +3,33 @@ import { act, renderHook } from '@testing-library/react'
 import { useStep } from './useStep'
 
 describe('useStep()', () => {
+  it('composes functional setters in one batch', () => {
+    const { result } = renderHook(() => useStep(3))
+    act(() => {
+      result.current[1].setStep(step => step + 1)
+      result.current[1].setStep(step => step + 1)
+    })
+    expect(result.current[0]).toBe(3)
+  })
+
+  it('keeps batched navigation inside the step bounds', () => {
+    const { result } = renderHook(() => useStep(2))
+
+    act(() => {
+      result.current[1].goToNextStep()
+      result.current[1].goToNextStep()
+    })
+    expect(result.current[0]).toBe(2)
+    expect(result.current[1].canGoToNextStep).toBe(false)
+
+    act(() => {
+      result.current[1].goToPrevStep()
+      result.current[1].goToPrevStep()
+    })
+    expect(result.current[0]).toBe(1)
+    expect(result.current[1].canGoToPrevStep).toBe(false)
+  })
+
   it('should use step', () => {
     const { result } = renderHook(() => useStep(2))
 
