@@ -81,7 +81,7 @@ export function useReadLocalStorage<T>(
 
     try {
       const raw = window.localStorage.getItem(key)
-      return raw ? deserializer(raw) : null
+      return raw !== null ? deserializer(raw) : null
     } catch (error) {
       console.warn(`Error reading localStorage key “${key}”:`, error)
       return null
