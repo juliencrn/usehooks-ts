@@ -41,29 +41,34 @@ export function useStep(maxStep: number): [number, UseStepActions] {
   const setStep = useCallback<SetStepCallbackType>(
     step => {
       // Allow value to be a function so we have the same API as useState
-      const newStep = step instanceof Function ? step(currentStep) : step
+      if (step instanceof Function) {
+        setCurrentStep(previous => {
+          const newStep = step(previous)
+          if (newStep >= 1 && newStep <= maxStep) {
+            return newStep
+          }
+          throw new Error('Step not valid')
+        })
+        return
+      }
 
-      if (newStep >= 1 && newStep <= maxStep) {
-        setCurrentStep(newStep)
+      if (step >= 1 && step <= maxStep) {
+        setCurrentStep(step)
         return
       }
 
       throw new Error('Step not valid')
     },
-    [maxStep, currentStep],
+    [maxStep],
   )
 
   const goToNextStep = useCallback(() => {
-    if (canGoToNextStep) {
-      setCurrentStep(step => step + 1)
-    }
-  }, [canGoToNextStep])
+    setCurrentStep(step => (step + 1 <= maxStep ? step + 1 : step))
+  }, [maxStep])
 
   const goToPrevStep = useCallback(() => {
-    if (canGoToPrevStep) {
-      setCurrentStep(step => step - 1)
-    }
-  }, [canGoToPrevStep])
+    setCurrentStep(step => (step > 1 ? step - 1 : step))
+  }, [])
 
   const reset = useCallback(() => {
     setCurrentStep(1)
