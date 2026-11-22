@@ -76,7 +76,12 @@ export function useScript(
     if (cachedScriptStatus === 'ready' || cachedScriptStatus === 'error') {
       // If the script is already cached, set its status immediately
       setStatus(cachedScriptStatus)
-      return
+      return () => {
+        if (options?.removeOnUnmount) {
+          getScriptNode(src).node?.remove()
+          cachedScriptStatuses.delete(src)
+        }
+      }
     }
 
     // Fetch existing script element by src
