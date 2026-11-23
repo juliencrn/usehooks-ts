@@ -54,44 +54,19 @@ export function useScreen(
     return window.screen
   }
 
-  const [screen, setScreen] = useState<Screen | undefined>(() => {
-    if (initializeWithValue) {
-      return readScreen()
-    }
-    return undefined
-  })
+  const [state, setState] = useState(() => ({
+    screen: initializeWithValue ? readScreen() : undefined,
+  }))
 
-  const debouncedSetScreen = useDebounceCallback(
-    setScreen,
-    options.debounceDelay,
-  )
+  const debouncedSetState = useDebounceCallback(setState, options.debounceDelay)
 
-  // Handles the resize event of the window.
   function handleSize() {
-    const newScreen = readScreen()
-    const setSize = options.debounceDelay ? debouncedSetScreen : setScreen
+    const screen = readScreen()
+    const update = options.debounceDelay ? debouncedSetState : setState
 
-    if (newScreen) {
-      // Create a shallow clone to trigger a re-render (#280).
-      const {
-        width,
-        height,
-        availHeight,
-        availWidth,
-        colorDepth,
-        orientation,
-        pixelDepth,
-      } = newScreen
-
-      setSize({
-        width,
-        height,
-        availHeight,
-        availWidth,
-        colorDepth,
-        orientation,
-        pixelDepth,
-      })
+    if (screen) {
+      // A new state wrapper triggers a render and retains the browser's Screen object.
+      update({ screen })
     }
   }
 
@@ -102,5 +77,5 @@ export function useScreen(
     handleSize()
   }, [])
 
-  return screen
+  return state.screen
 }
